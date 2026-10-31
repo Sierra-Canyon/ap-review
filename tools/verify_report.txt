@@ -1,0 +1,72 @@
+PASS  q3-i01  printed "5 chalk"
+PASS  q3-i02  printed "30"
+PASS  q3-i03  printed "" then ArgumentOutOfRangeException
+PASS  q3-i04  build error CS1061
+PASS  q3-i05  printed "0\n2\nkettle"
+PASS  q3-i06#1  printed "map\nkey"
+PASS  q3-i06#2  printed "" then ArgumentOutOfRangeException
+PASS  q3-i06#3  printed "" then ArgumentOutOfRangeException
+PASS  q3-i06#4  build error CS0103
+PASS  q3-i07  printed "empty\nmap"
+PASS  q3-i08  printed "north north"
+PASS  q3-p01  printed "Pip 7"
+PASS  q3-p02  printed "Mote 6"
+PASS  q3-p03  printed "3 2" then ArgumentOutOfRangeException
+PASS  q3-p04  printed "Bram has 9 mana."
+PASS  q3-p05  build error CS1503
+PASS  q3-p06#1  printed "Mote has 7 health and 3 attack."
+PASS  q3-p06#2  printed "Hero has 8 health and 3 attack."
+PASS  q3-p06#3  build error CS1503
+PASS  q3-p06#4  build error CS1503
+PASS  q3-p07  printed "Wolf is strong\nSlime is weak"
+PASS  q3-b01  printed "-1"
+PASS  q3-b02  printed "1"
+PASS  q3-b03  printed "2"
+PASS  q3-b04  printed "" then ArgumentOutOfRangeException
+PASS  q3-b05  printed "0 0"
+PASS  q3-b06  printed "0" then ArgumentOutOfRangeException
+PASS  q3-b07  printed "8\n7\n-1"
+PASS  q3-b08  build error CS0029
+PASS  q3-f01  printed "0\n1\n2\n3"
+PASS  q3-f02  printed "Swing!\nSwing!\nSwing!\nSwing!\nSwing!"
+PASS  q3-f03  printed "0"
+PASS  q3-f04  printed ">>>\n[]"
+PASS  q3-f05  printed "[===]"
+PASS  q3-f06  printed "###...\n...."
+PASS  q3-f07  printed "0,true,-\n1,true,--\n2,true,---\n3,false,(no pass)"
+PASS  q3-f08  printed "4 5 3 0"
+PASS  q3-f09  printed "Room 1\nRoom 2\nRoom 3"
+PASS  q3-f10  printed "0,false,0\n1,false,0\n2,true,2\n3,true,4\nprinted,,4"
+PASS  q3-l01  printed "0: Bat\n1: Wolf\n2: Slime\n3: Ogre"
+PASS  q3-l02  printed "Bat\nWolf\nSlime" then ArgumentOutOfRangeException
+PASS  q3-l03  printed "1"
+PASS  q3-l04  printed "0\n-1\n-1" · warnings CS0162
+PASS  q3-l05  printed "[Wolf, Bat, Slime, ]"
+PASS  q3-l06  printed "torch\nbread"
+PASS  q3-l07  printed "done"
+PASS  q3-l08  printed "3\n0"
+PASS  q3-l09  printed "Rook\nHero"
+PASS  q3-l10  printed "Rook\nMote\nHero"
+PASS  q3-l11  printed "2\n-1"
+PASS  q3-l12  printed "1" · warnings CS0162
+PASS  q3-l13  printed "0,potion,1\n1,arrow,1\n2,potion,2\nreturns,,2"
+PASS  q3-w01#1  printed "A Bat blocks the way.\nA Wolf blocks the way.\nA Slime blocks the way.\nA Bat blocks the way.\nA Wolf blocks the way.\nA Slime blocks the way.\nA Ogre blocks the way."
+PASS  q3-w01#2  printed "A Bat blocks the way.\nA Wolf blocks the way.\nA Slime blocks the way." · warnings CS0219
+PASS  q3-w02#1  printed "2"
+PASS  q3-w02#2  printed "2\n1"
+PASS  q3-w03#1  printed "1"
+PASS  q3-w03#2  printed "1\n-1"
+PASS  q3-w04#1  printed "A Wolf blocks the way.\nA Slime blocks the way."
+PASS  q3-w04#2  printed "A Bat blocks the way.\nA Wolf blocks the way."
+PASS  q3-w04#3  printed "A Bat blocks the way.\nA Wolf blocks the way.\nA Slime blocks the way." then ArgumentOutOfRangeException
+PASS  q3-w04#4  printed "A Bat blocks the way.\nA Bat blocks the way.\nA Bat blocks the way."
+PASS  q3-w05#1  printed "1" · warnings CS0162
+PASS  q3-w05#2  printed "1"
+PASS  q3-w05#3  printed "2"
+PASS  q3-w05#4  printed "3"
+PASS  q3-w06#1  printed "-1 -1" · warnings CS0162
+PASS  q3-w06#2  printed "-1"
+PASS  q3-w06#3  printed "-1"
+PASS  q3-w06#4  printed "3"
+
+70 of 70 checks pass. dotnet 10.0.114. 2026-10-31T12:51:34.470Z

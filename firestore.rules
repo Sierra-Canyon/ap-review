@@ -1,0 +1,45 @@
+rules_version = '2';
+
+// Paste this into Firebase console > Firestore Database > Rules, then Publish.
+// Students sign in with GitHub. Their GitHub account number decides what they can do:
+//   on the roster: read and write their own progress, nothing else
+//   the teacher (5401810, @jd12): read everyone's progress, manage the roster and requests
+//   anyone else signed in with GitHub: create a request to be added, and nothing more
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null && request.auth.token.firebase.sign_in_provider == 'github.com';
+    }
+    function ghId() {
+      return string(request.auth.token.firebase.identities['github.com'][0]);
+    }
+    function isTeacher() {
+      return signedIn() && ghId() in ['5401810'];
+    }
+    function onRoster() {
+      return signedIn() && exists(/databases/$(database)/documents/roster/$(ghId()));
+    }
+
+    match /roster/{id} {
+      allow get: if signedIn() && (id == ghId() || isTeacher());
+      allow list, write: if isTeacher();
+    }
+
+    match /requests/{id} {
+      allow create, update: if signedIn() && id == ghId()
+        && request.resource.data.keys().hasOnly(['login', 'name', 'ts'])
+        && request.resource.data.login is string && request.resource.data.login.size() < 60
+        && request.resource.data.name is string && request.resource.data.name.size() < 120;
+      allow read, delete: if isTeacher();
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isTeacher());
+      allow write: if signedIn() && request.auth.uid == uid
+        && (onRoster() || isTeacher())
+        && request.resource.data.ghId == ghId()
+        && request.resource.size() < 400000;
+    }
+  }
+}

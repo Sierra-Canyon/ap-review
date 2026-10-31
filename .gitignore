@@ -1,0 +1,5 @@
+node_modules/
+tools/.tmp/
+tools/.shots/
+preview.html
+.DS_Store

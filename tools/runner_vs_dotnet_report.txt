@@ -1,0 +1,18 @@
+DIFF #0 Console.WriteLine(0.1 + 0.2); Console.WriteLine(1e15); Console.WriteLine(1e14); Console.Wr
+   stdout: dotnet "0.30000000000000004\n1000000000000000\n100000000000000\n1E-05\n0.0001\n1.2345678901234568E+17\n-1.5E-07\n0.6666666666666666\nInfinity\n-Infinity\nNaN\n-0"
+          runner "0.30000000000000004\n1000000000000000\n100000000000000\n1E-05\n0.0001\n1.2345678901234568E+17\n-1.5E-07\n0.6666666666666666\n∞\n-∞\nNaN\n-0"
+DIFF #101 int[] a = new int[3];
+   dotnet built; runner: CSP001 This page runs the C# from this course, and arrays is not part of it. Try this code in VS Code.
+DIFF #102 class A { }
+   first error: dotnet CSC : error CS5001: Program does not contain a static 'Main' method suitable for an entry point | runner CSP001 This page runs the C# from this course, and class is not part of it. Try this code in VS Code.
+DIFF #112 string w = "a"; switch (w) { }
+   dotnet built; runner: CSP001 This page runs the C# from this course, and switch is not part of it. Try this code in VS Code.
+DIFF #119 for (int i = 0, i < 3, i++) { }
+   message: dotnet Program.cs(1,15): error CS1002: ; expected
+          runner Program.cs(1,19): error CS1002: ; expected
+DIFF #147 int i = 0; while (i < 3) { Console.WriteLine(i); }
+   stdout: dotnet "0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\
+          runner "0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\
+   exception: dotnet none | runner OutputLimit: The program printed more than 2,000,000 characters.
+
+156 of 162 agree.

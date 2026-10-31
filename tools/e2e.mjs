@@ -131,7 +131,7 @@ async function answer(page, right) {
   await page.screenshot({ path: `${out}/08-mock-done.png`, fullPage: true });
   assert((await overflow(page)) <= 0, "no horizontal scroll on desktop");
   await page.click("text=Home");
-  const mockLine = await page.textContent(".choices-home .mode:nth-child(2) p");
+  const mockLine = await page.textContent(".choices-home .mode:nth-child(3) p");
   assert(/Last: 19 \/ 20/.test(mockLine), "home should show the last mock: " + mockLine);
 }
 

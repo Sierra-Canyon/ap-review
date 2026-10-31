@@ -2,6 +2,7 @@ import { firebaseConfig, teacherGithubIds, teacherName, firebaseSdk } from "./fi
 import { firebaseBackend, demoBackend } from "./backend.js";
 import { blankCard, grade, skillMastery, buildSession, counts, buildMock, normOut, normCell, DAY } from "./srs.js";
 import deck from "./decks/csp-q3.js";
+import { renderLearnHome, renderSection, bookSections, sectionsForSkill, activitiesOf } from "./book-ui.js";
 
 // ------------------------------------------------------------------------------------------ helpers
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -72,6 +73,9 @@ async function save() {
   try { await backend.saveUser(user.uid, profile); }
   catch (e) { toast("Not saved. Check your connection, then answer the next one."); console.error(e); }
 }
+let saveTimer = null;
+function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 1500); }
+const bookApi = { book: () => (profile.book ||= {}), saveSoon };
 function record(item, result, extra = {}) {
   const st = deckState();
   st.cards[item.id] = grade(st.cards[item.id] || blankCard(), result, Date.now(), extra);
@@ -82,11 +86,11 @@ const isTeacher = () => !!user && teacherGithubIds.includes(String(user.ghId));
 // ------------------------------------------------------------------------------------------ chrome
 function renderBar() {
   const r = location.hash.slice(1) || "home";
-  const links = [["home", "Home"], ["review", "Review"], ["mock", "Mock quiz"]];
+  const links = [["home", "Home"], ["learn", "Learn"], ["review", "Review"], ["mock", "Mock quiz"]];
   if (isTeacher()) links.push(["teacher", "Class"]);
   $("#bar").innerHTML = `<div class="bar-in">
     <a class="mark" href="#home"><span class="tile" aria-hidden="true"></span>CSP Review</a>
-    ${user && (onRoster || isTeacher()) ? `<nav aria-label="Sections">${links.map(([h, t]) => `<a href="#${h}" ${r === h ? 'aria-current="page"' : ""}>${t}</a>`).join("")}</nav>` : ""}
+    ${user && (onRoster || isTeacher()) ? `<nav aria-label="Sections">${links.map(([h, t]) => `<a href="#${h}" ${r === h || (h === "learn" && r.startsWith("learn-")) ? 'aria-current="page"' : ""}>${t}</a>`).join("")}</nav>` : ""}
     ${user ? `<div class="who">${user.photo ? `<img src="${esc(user.photo)}" alt="">` : ""}<span>@${esc(profile?.login || user.login || "")}</span><button class="btn ghost small" id="signout">Sign out</button></div>` : ""}
   </div>`;
   $("#signout")?.addEventListener("click", async () => { await backend.signOut(); location.hash = ""; });
@@ -158,6 +162,12 @@ function renderHome() {
       <div class="row"><span class="num">${c.due}</span><span class="muted">due now</span><span class="num">${c.fresh}</span><span class="muted">new</span></div>
       <p class="small muted">${c.due + c.fresh ? "Ten at a time. Anything you miss comes back in the same set." : `All caught up. The next card is due in ${esc(nextTxt)}. Keep going to practice the ones you know least.`}</p>
       <a class="btn primary big" href="#review">${c.due + c.fresh ? "Start review" : "Keep going"}</a>
+    </div>
+    <div class="panel mode">
+      <span class="eyebrow">Learn</span>
+      <div class="row"><span class="num">${bookSections.filter((x) => { const a = activitiesOf(x), pr = (profile.book || {})[x.id]; return a.length && pr && a.every((id) => pr.a && pr.a[id]); }).length}</span><span class="muted">of ${bookSections.length} sections done</span></div>
+      <p class="small muted">Variables, if statements, functions, lists, and for loops, with code you can run and step through.</p>
+      <a class="btn big" href="#learn">Open the book</a>
     </div>
     <div class="panel mode">
       <span class="eyebrow">Mock quiz</span>
@@ -355,6 +365,10 @@ function renderReview() {
       // Missed: it comes back three items later, once.
       if (result === 0 && !s.requeued[it.id]) { s.requeued[it.id] = 1; s.queue.splice(Math.min(s.i + 4, s.queue.length), 0, { it, again: true }); }
       $("#nextrow").hidden = false;
+      if (result < 1) {
+        const secs = sectionsForSkill(it.skill);
+        if (secs.length) $("#card").insertAdjacentHTML("beforeend", `<p class="small">Read it again: ${secs.map((x) => `<a href="#learn-${x.id}">${esc(x.number)} ${esc(x.title)}</a>`).join(" · ")}</p>`);
+      }
       $("#next").focus({ preventScroll: true });
       await record(it, result, extra);
     },
@@ -539,7 +553,7 @@ async function renderTeacher() {
   <section class="panel">
     <div class="row spread"><h2>Students</h2><button class="btn" id="csv">Download CSV</button></div>
     <div class="tablewrap"><table>
-      <thead><tr><th>Student</th><th>Last active</th><th class="num">Answers</th><th class="num">Right</th><th class="num">Mock best</th><th class="num">Mock last</th>${deck.skills.map((s) => `<th title="${esc(s.name)}">${esc(s.from === "Written response" ? (s.id === "wr-nolist" ? "WR: no list" : "WR: logic") : s.from)}</th>`).join("")}</tr></thead>
+      <thead><tr><th>Student</th><th>Last active</th><th class="num">Answers</th><th class="num">Right</th><th class="num">Mock best</th><th class="num">Mock last</th><th class="num" title="Book sections with every activity done">Book</th>${deck.skills.map((s) => `<th title="${esc(s.name)}">${esc(s.from === "Written response" ? (s.id === "wr-nolist" ? "WR: no list" : "WR: logic") : s.from)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map((r) => `<tr>
         <td><b>${esc(r.name || r.login)}</b><br><span class="small muted">@${esc(r.login || "")}${r.off ? " · not on roster" : ""}</span></td>
         <td class="small">${r.user ? ago(r.user.lastActive) : "not signed in yet"}</td>
@@ -547,9 +561,21 @@ async function renderTeacher() {
         <td class="num">${r.s?.n ? pct(r.s.acc) + "%" : "–"}</td>
         <td class="num">${r.s?.mocks.length ? Math.max(...r.s.mocks.map((x) => x.score)) : "–"}</td>
         <td class="num">${r.s?.mocks.length ? r.s.mocks[r.s.mocks.length - 1].score : "–"}</td>
+        <td class="num">${bookDone(r.user)} / ${bookSections.length}</td>
         ${deck.skills.map((s) => `<td>${r.s && r.s.sm[s.id].seen ? heat(r.s.sm[s.id].value) : `<span class="heat hx">–</span>`}</td>`).join("")}
       </tr>`).join("")}</tbody></table></div>
     <p class="small muted">Skill cells are mastery: 100% means every item in the skill was answered right three times in a row, spaced over days. A dash means the student has not tried that skill.</p>
+  </section>
+  <section class="panel">
+    <h2>Book</h2>
+    <p class="small muted">For each section: students who opened it, and students who finished every activity in it.</p>
+    <div class="tablewrap"><table><thead><tr><th>Section</th><th class="num">Opened</th><th class="num">Finished</th><th>Not finished</th></tr></thead><tbody>
+      ${bookSections.map((sec) => {
+        const opened = rows.filter((r) => r.user?.book?.[sec.id]);
+        const fin = opened.filter((r) => { const a = activitiesOf(sec), pr = r.user.book[sec.id]; return a.length && a.every((id) => pr.a && pr.a[id]); });
+        const notFin = opened.filter((r) => !fin.includes(r));
+        return `<tr><td><a href="#learn-${sec.id}">${esc(sec.number)} ${esc(sec.title)}</a></td><td class="num">${opened.length}</td><td class="num">${fin.length}</td><td class="small">${notFin.map((r) => esc(r.name || r.login)).join(", ")}</td></tr>`;
+      }).join("")}</tbody></table></div>
   </section>
   <section class="panel">
     <h2>Items, hardest first</h2>
@@ -613,6 +639,11 @@ async function renderTeacher() {
   });
 }
 
+function bookDone(u) {
+  if (!u?.book) return 0;
+  return bookSections.filter((sec) => { const a = activitiesOf(sec), pr = u.book[sec.id]; return a.length && pr && a.every((id) => pr.a && pr.a[id]); }).length;
+}
+
 // ------------------------------------------------------------------------------------------ routing
 function route() {
   renderBar();
@@ -623,6 +654,8 @@ function route() {
   if (r === "review") { if (!app.session || app.session.i >= app.session.queue.length) app.session = null; return renderReview(); }
   if (r === "mock") { if (app.mock && app.mock.phase === "done") app.mock = null; return renderMock(); }
   if (r === "teacher" && isTeacher()) return renderTeacher();
+  if (r === "learn") return renderLearnHome(view, bookApi);
+  if (r.startsWith("learn-")) return renderSection(view, r.slice(6), bookApi);
   return renderHome();
 }
 window.addEventListener("hashchange", () => { window.scrollTo(0, 0); route(); });

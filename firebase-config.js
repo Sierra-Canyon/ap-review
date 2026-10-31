@@ -1,7 +1,14 @@
 // Paste the config object from Firebase console > Project settings > Your apps > Web app.
 // While this is null the site runs in demo mode (no real sign-in, progress kept in the browser).
 // These values are not secrets: every Firebase web app ships them to the browser. firestore.rules is what protects the data.
-export const firebaseConfig = null;
+export const firebaseConfig = {
+  apiKey: "AIzaSyAHPLLVjTCpndVIpiOenGezPZMCrYZHZlo",
+  authDomain: "ap-review-3eb90.firebaseapp.com",
+  projectId: "ap-review-3eb90",
+  storageBucket: "ap-review-3eb90.firebasestorage.app",
+  messagingSenderId: "800515678249",
+  appId: "1:800515678249:web:a20d6ec523f2d2c2d2bc38",
+};
 /* Example of what it looks like once filled in:
 export const firebaseConfig = {
   apiKey: "AIza...",

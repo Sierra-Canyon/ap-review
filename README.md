@@ -2,7 +2,33 @@
 
 AP Computer Science Principles · Period D · J.D. DeVaughn-Brown · built Sat 10/31/2026
 
-A review site for **Quiz 3: Lists and Loops**. Students sign in with GitHub. It runs on GitHub Pages, with Firebase for sign-in and saved progress. `SETUP.md` is the setup, step by step.
+A review site for AP CSP. Students sign in with GitHub. It runs on GitHub Pages, with Firebase for sign-in and saved progress. `SETUP.md` is the setup, step by step.
+
+Two parts, one sign-in:
+
+- **Learn**: a book of the fall's five topics in 21 sections, modeled on CSAwesome and Captain Coder: runnable C#, a step-through debugger, Check Your Understanding, mixed-up code, and coding exercises checked like the quests.
+- **Review** and **Mock quiz**: spaced review and mock quizzes for **Quiz 3: Lists and Loops**.
+
+## Learn
+
+| Chapter | Sections | From |
+|---|---|---|
+| 1 Variables | 1.1 to 1.3 | Review 1 |
+| 2 If statements | 2.1 to 2.3 | Review 2 |
+| 3 Functions | 3.1 to 3.6 | Functions 1 to 6 and the review day |
+| 4 Lists | 4.1 to 4.3 | Lists 1 to 3 |
+| 5 For loops | 5.1 to 5.6 | For 1 to 6 |
+
+Every section opens with what the student can do after it, then mixes these:
+
+- **Runnable code.** An editable example with **Run**, **Step through**, and **Reset**, plus an input box where the program reads `Console.ReadLine()`. Errors and warnings show in the same form as `dotnet build` (`Program.cs(4,24): error CS1061: ...`), and crashes as `Unhandled exception. System.ArgumentOutOfRangeException: ...` with the line.
+- **Step through.** Captain Coder's Back and Next, with a Variables pane like VS Code's: each function's variables, and every list item by index.
+- **Activities.** Check Your Understanding (a wrong pick explains itself and the student tries again), mixed-up code (any order that prints the right thing passes), and coding exercises whose checker prints `PASS` or `should be X (yours gives Y)`, with hints and, after two checks, a solution.
+- **Callouts.** A recipe for each new piece of syntax, trap notes with the exact error text, and an "On the AP exam" box where the section ties to a written response.
+
+A section is done when every activity in it is done. The Class tab shows, for each section, who opened it, who finished it, and who has not. After a missed review item, the review links to the book section for that skill.
+
+**The C# runner** (`runner/`) is a C# interpreter written in JavaScript, because the real compiler needs packages from NuGet, which this workspace cannot reach. It covers the course's C#: variables, if, functions, `List<T>`, for, foreach, while, `Console`, `int.Parse`, `Math`, and string methods, with .NET's arithmetic, number formatting, compiler messages, and exceptions. Classes, arrays, `switch`, and LINQ (except `Count()`, `Sum()`, `Max()`, `Min()`, `Average()`) get a message to use VS Code. Differences from .NET found in testing: infinity prints as `∞`, as it does on a Mac (the Linux test machine prints `Infinity`), and a `for` header written with commas instead of semicolons reports its error a few columns later than `dotnet build` does.
 
 ## What students get
 
@@ -49,6 +75,10 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `tools/verify.mjs` | Compiles and runs every item's code. |
 | `tools/e2e.mjs` | Runs the demo site in Chromium: a review set, a mock quiz, the not-on-the-list screen, the Class tab, phone width. |
 | `tools/build-preview.mjs` | Builds `preview.html`, the demo as one file. |
+| `book/` | The book: `index.js` (the order), `FORMAT.md` (how a section file is written), one file per section in `ch1` to `ch5`. |
+| `book-ui.js`, `editor.js` | The Learn tab and its code editor. |
+| `runner/` | The C# runner: lexer, parser, checker (types and compiler errors), and exec (running and stepping). |
+| `tools/verify-book.mjs`, `tools/runner-diff.mjs`, `tools/runner-vs-dotnet.mjs`, `tools/e2e-book.mjs` | The checks listed in `SETUP.md`. |
 
 ## Adding the next quiz
 

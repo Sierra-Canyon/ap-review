@@ -13,7 +13,8 @@ export const courses = [
   // passwords: students sign in with a school email and a password (a teacher makes their first one), not GitHub.
   // AP World History has more than one section. Each section is its own course (its own roster and Class tab) on the same deck,
   // so its students share one bank, one set of quizzes and tests, and their progress follows them if they change sections.
-  // To add a section: copy the line with a new id ("whap-d" for Period D), short, and period, and add it to the teacher's courses.
+  // To add a section: copy a line with a new id, short, and period; add the id to the deck's list in firestore.rules
+  // (deckCourses, so its teacher may edit questions); and add it to the teacher's courses on the Class tab.
   { id: "whap", name: "AP World History: Modern", short: "AP World (B)", period: "Period B", book: false, passwords: true, decks: [whap] },
   { id: "whap-c", name: "AP World History: Modern", short: "AP World (C)", period: "Period C", book: false, passwords: true, decks: [whap] },
   { id: "whap-d", name: "AP World History: Modern", short: "AP World (D)", period: "Period D", book: false, passwords: true, decks: [whap] },

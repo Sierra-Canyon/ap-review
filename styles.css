@@ -402,3 +402,17 @@ ul.misses li:last-child { border-bottom: 0; }
 @media print { .bar, .demo-band, .noprint { display: none !important; } .logincard { break-inside: avoid; } body { background: #fff; } }
 textarea.essay-in { min-height: 340px; }
 p.cite { margin-top: 6px; }
+
+/* Questions page (teachers) */
+.qform h3 { margin: 18px 0 8px; }
+details.qitem { border-top: 1px solid var(--line); padding: 8px 0; }
+details.qitem > summary { cursor: pointer; line-height: 1.6; }
+details.qitem .qbody { padding: 10px 0 4px 18px; }
+.qfield p, .qfield ul { margin: 2px 0 0; }
+.qchoices { margin: 0; padding-left: 22px; }
+.qchoices li { margin: 6px 0; }
+.qchoices li.right b { color: var(--good, inherit); }
+.qedit textarea { min-height: 0; width: 100%; }
+.qedit textarea.mono { font-family: var(--font-mono); font-size: 13px; }
+.qchoice { border-left: 3px solid var(--line); padding-left: 10px; display: grid; gap: 6px; margin-bottom: 8px; }
+.wide-in { width: 100%; max-width: 480px; }

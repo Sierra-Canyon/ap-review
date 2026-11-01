@@ -109,6 +109,10 @@ A section is done when every activity in it is done. The Class tab shows, for ea
 - Every item, hardest first: percent right, how many missed it the last time, the wrong answer picked most, and every student's latest written response with their self-score.
 - Accounts waiting to be added, and the roster itself. **Download CSV** saves the student table.
 
+## Questions (teachers)
+
+The **Questions** tab, for any teacher of the course, lists every question: each quiz and test by assessment, then review by skill. A question opens with its sources, its right answer marked, and the explanations. **Edit** changes its wording, the right answer of a multiple-choice question, or hides it. The change is saved in Firestore (`edits/`, only the fields that differ from the deck file), shows for every student in every section that uses the deck from their next visit, and is labeled with who made it and when. A hidden question leaves review and its quiz or test, whose total drops by its points. **Restore original** deletes the edit. The deck files never change, so an edit worth keeping for next year belongs in the file. Code questions were checked by running them; an edited one is not rechecked.
+
 ## The items
 
 52 items in `decks/csp-q3.js`, none of them a copy of Q3 or Q3B:
@@ -134,6 +138,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `index.html`, `styles.css`, `app.js` | The site. |
 | `courses.js` | The courses, their periods, and their decks. |
 | `srs.js` | Spaced review, sessions, and mock-quiz assembly. |
+| `edits.js` | Teachers' edits to questions, laid over the decks after sign-in. |
 | `backend.js` | Firebase (GitHub and email sign-in, the student records), and the demo backend (browser storage). |
 | `firebase-config.js` | The Firebase config (null until Setup step 7), the teacher's GitHub number. |
 | `firestore.rules` | Who can read and write what. Pasted into the Firebase console. |
@@ -144,6 +149,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `tools/verify-java.mjs` | Compiles and runs every Java item with Java 21. |
 | `tools/e2e-accounts.mjs` | Accounts in Chromium: email sign-in, first and changed passwords, reset links, a teacher with one course, cards, a GitHub record gaining a school email, the Teachers panel. |
 | `decks/whap.js`, `decks/whap/`, `decks/whap-mocks/`, `decks/whap-topic/` | AP World History: the bank, one file per unit, the unit assessments, and the topic quizzes. |
+| `tools/e2e-questions.mjs` | Runs the Questions tab in Chromium: read, edit, change the right answer, hide, restore, and the edits reaching a test. |
 | `tools/e2e-whap.mjs` | Runs an AP World unit assessment in Chromium: section labels, scoring short answers and the essay, the score by section, Unit 2 review, phone width. |
 | `tools/e2e-csa.mjs` | Runs the AP CSA course in Chromium: a review set, a Quiz 5 set, a free response, both mock shapes, phone width, the Class tab. |
 | `tools/e2e-cyber.mjs` | Runs the AP Cyber course in Chromium: a review set, a free-response set, a mock test, phone width, the Class tab, a two-course roster entry. |

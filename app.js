@@ -2,6 +2,7 @@ import { firebaseConfig, teacherGithubIds, teacherName, firebaseSdk } from "./fi
 import { firebaseBackend, demoBackend, studentId } from "./backend.js";
 import { blankCard, grade, skillMastery, buildSession, counts, buildMock, partBPoints, partBMax, rowsMax, normOut, normCell, DAY } from "./srs.js";
 import { courses, courseById, coursesOf } from "./courses.js";
+import { snapshot, applyEdits, everyItem, editableFields, editId, originalOf, diffOf, pointsOf } from "./edits.js";
 import { renderLearnHome, renderSection, bookSections, sectionsForSkill, activitiesOf } from "./book-ui.js";
 
 // ------------------------------------------------------------------------------------------ helpers
@@ -87,6 +88,10 @@ const demo = params.has("demo") || !firebaseConfig;
 let backend, user = null, profile = null, me = null, teacher = null;
 // The course on screen. A student sees the courses on their record; a teacher sees the courses they teach (the admin, all).
 let course = courses[0], deck = course.decks[0];
+// Every deck as its file wrote it; teachers' edits (edits.js) are laid over these after sign-in.
+const allDecks = [...new Set(courses.flatMap((c) => c.decks))];
+snapshot(allDecks);
+let edits = [];
 const teacherCourses = () => (!teacher ? [] : teacher.admin ? courses : courses.filter((c) => (teacher.courses || []).includes(c.id)));
 const myCourses = () => { const list = [...teacherCourses(), ...(me ? coursesOf(me).map(courseById) : [])]; return list.filter((c, k) => c && list.indexOf(c) === k); };
 const onRosterOrTeacher = () => !!me || !!teacher;
@@ -119,12 +124,15 @@ function record(item, result, extra = {}) {
 }
 const isTeacher = () => !!teacher;
 const isAdmin = () => !!teacher?.admin;
+// A teacher edits the questions of a deck that one of their courses uses.
+const canEdit = () => isTeacher() && teacherCourses().some((c) => c.decks.includes(deck));
 
 // ------------------------------------------------------------------------------------------ chrome
 function renderBar() {
   const r = location.hash.slice(1) || "home";
   const links = [["home", "Home"], ...(course.book ? [["learn", "Learn"]] : []), ["review", "Review"], ["misses", "My misses"], ...(deck.mock ? [["mock", deck.mock.name]] : [])];
   if (isTeacher()) links.push(["teacher", "Class"]);
+  if (canEdit()) links.push(["questions", "Questions"]);
   const mine = user && onRosterOrTeacher() ? myCourses() : [];
   $("#bar").innerHTML = `<div class="bar-in">
     <a class="mark" href="#home"><span class="tile" aria-hidden="true"></span>AP Review</a>
@@ -958,6 +966,113 @@ function renderMockDone() {
   bindDrills();
 }
 
+// ------------------------------------------------------------------------------------------ questions (teachers)
+// Every question in the course, by quiz or test and then review, each one open to read and to edit. An edit is saved in
+// Firestore and laid over the question for every student, in every section that uses the deck, from their next visit.
+const CODEISH = new Set(["code", "classes", "methods", "given", "solution"]);
+const PREISH = new Set(["log", "sample"]);
+function fieldHTML(k, v) {
+  if (Array.isArray(v)) return `<ul class="small">${v.map((x) => `<li>${prose(x)}</li>`).join("")}</ul>`;
+  if (CODEISH.has(k)) return codeBlock(v);
+  if (PREISH.has(k)) return `<pre class="log">${esc(v)}</pre>`;
+  if (k === "listII") return codeBlock(v, "List (ii)");
+  return `<p>${deck.lang === "java" ? md(v) : prose(v)}</p>`;
+}
+function questionBody(it) {
+  const fields = editableFields(it);
+  const choice = Array.isArray(it.choices) && typeof it.answer === "number";
+  return `${it.set && deck.sets?.[it.set] ? sourcesHTML(deck.sets[it.set], false) : ""}
+    ${fields.filter(([k]) => !(choice && (k === "choices" || k === "why"))).map(([k, label]) => `<div class="qfield"><span class="small muted">${esc(label)}</span>${fieldHTML(k, it[k])}</div>`).join("")}
+    ${choice ? `<ol class="qchoices" type="A">${it.choices.map((c, k) => `<li class="${k === it.answer ? "right" : ""}"><b>${k === it.answer ? "✓ " : ""}${choiceText(c)}</b>${it.why?.[k] ? `<br><span class="small muted">${prose(it.why[k])}</span>` : ""}</li>`).join("")}</ol>` : ""}
+    ${it.rows ? `<div class="qfield"><span class="small muted">Rubric</span><ul class="small">${it.rows.map((r) => `<li><b>${esc(r.name)}</b>${r.earns ? `: ${prose(r.earns)}` : ""}</li>`).join("")}</ul></div>` : ""}
+    <div class="row"><button class="btn small" data-qedit="${esc(it.id)}">Edit</button></div>`;
+}
+function questionEditor(it) {
+  const fields = editableFields(it);
+  const choice = Array.isArray(it.choices) && typeof it.answer === "number";
+  const ta = (name, v, k) => `<textarea class="wr ${CODEISH.has(k) ? "mono" : ""}" name="${name}" rows="${Math.min(14, Math.max(2, Math.ceil(String(v).length / 80) + String(v).split("\n").length - 1))}" spellcheck="${CODEISH.has(k) ? "false" : "true"}">${esc(v)}</textarea>`;
+  return `<form class="stack qedit" data-qform="${esc(it.id)}">
+    ${fields.filter(([k]) => !(choice && (k === "choices" || k === "why"))).map(([k, label]) => `<label class="stack"><span class="small muted">${esc(label)}</span>
+      ${Array.isArray(it[k]) ? it[k].map((v, j) => ta(`${k}.${j}`, v, k)).join("") : ta(k, it[k], k)}</label>`).join("")}
+    ${choice ? `<fieldset class="stack"><legend class="small muted">Choices. Pick the right answer; each choice has its explanation under it.</legend>
+      ${it.choices.map((c, j) => `<div class="qchoice"><label class="small"><input type="radio" name="answer" value="${j}" ${j === it.answer ? "checked" : ""}> Right answer: choice ${"ABCDEFGH"[j]}</label>
+        <span class="small muted">Choice ${"ABCDEFGH"[j]}</span>${ta(`choices.${j}`, c, deck.lang === "none" ? "" : "code")}${Array.isArray(it.why) ? `<span class="small muted">Explanation of choice ${"ABCDEFGH"[j]}</span>${ta(`why.${j}`, it.why[j] || "", "")}` : ""}</div>`).join("")}</fieldset>` : ""}
+    <label class="small"><input type="checkbox" name="hidden" ${it.hidden ? "checked" : ""}> Hide this question from students (it stays here, and its points come off the total)</label>
+    ${it.verify ? `<p class="small muted">This question was checked by running its code. An edit is not rechecked, so run any changed code yourself.</p>` : ""}
+    <div class="row"><button class="btn primary" type="submit">Save</button><button class="btn" type="button" data-qcancel="${esc(it.id)}">Cancel</button>
+      ${it.edited ? `<button class="btn ghost" type="button" data-qrestore="${esc(it.id)}">Restore original</button>` : ""}</div></form>`;
+}
+function questionRow(it, n, open = false) {
+  const chips = `${it.hidden ? `<span class="chip bad">Hidden</span>` : ""}${it.edited ? `<span class="chip warn" title="${esc(new Date(it.edited.ts).toLocaleString())}">Edited by ${esc(it.edited.by || "a teacher")} · ${ago(it.edited.ts)}</span>` : ""}`;
+  return `<details class="qitem" data-qid="${esc(it.id)}" ${open ? "open" : ""}><summary><b>${n}.</b> <span class="chip">${esc(typeLabel(it.type))}</span>${it.topic ? `<span class="chip">${esc(it.topic)}</span>` : ""}${chips} ${esc(snippet(it))}</summary>
+    <div class="qbody stack">${open ? questionBody(it) : ""}</div></details>`;
+}
+function renderQuestions() {
+  view.className = "";
+  const all = everyItem(deck);
+  const byForm = new Map();
+  for (const x of all) { const k = x.form || null; if (!byForm.has(k)) byForm.set(k, []); byForm.get(k).push(x.it); }
+  const groups = [];
+  for (const f of deck.forms || []) { const g = f.group || deck.mock?.title || "Mocks"; let G = groups.find((y) => y.name === g); if (!G) groups.push(G = { name: g, forms: [] }); G.forms.push(f); }
+  const formHead = (f) => { const list = byForm.get(f) || []; const hidden = list.filter((it) => it.hidden).length;
+    return `${esc(f.name)} <span class="small muted">· ${list.length} questions${hidden ? `, ${hidden} hidden` : ""} · ${f.total ?? deck.mock?.total} points</span>`; };
+  const formBlock = (f) => `<div class="qform" data-form="${esc(f.id)}"><h3>${formHead(f)}</h3>${(byForm.get(f) || []).map((it, k) => questionRow(it, k + 1)).join("")}</div>`;
+  const review = byForm.get(null) || [];
+  const bySkill = deck.skills.map((sk) => ({ sk, list: review.filter((it) => it.skill === sk.id) })).filter((x) => x.list.length);
+  const edited = all.filter((x) => x.it.edited).length;
+  view.innerHTML = `<div id="qpage"><section class="hero"><span class="eyebrow">Questions · ${esc(course.name)}</span><h1>Every question</h1>
+      <p class="muted">Open a question to read it with its sources and answer. <b>Edit</b> changes it for every student${courses.filter((c) => c.decks.includes(deck)).length > 1 ? " in every section" : ""}, from their next visit; <b>Hide</b> takes it off without deleting it; <b>Restore original</b> undoes an edit.${edited ? ` ${edited} question${edited === 1 ? " is" : "s are"} edited now.` : ""}</p></section>
+    <div class="row"><label class="sr" for="qsearch">Search the questions</label><input id="qsearch" type="search" placeholder="Search the questions" class="wide-in"></div>
+    ${groups.map((g) => `<details class="panel qgroup"><summary><b>${esc(g.name)}</b> <span class="small muted">· ${g.forms.length} form${g.forms.length === 1 ? "" : "s"}</span></summary>${g.forms.map(formBlock).join("")}</details>`).join("")}
+    ${bySkill.length ? `<details class="panel qgroup"><summary><b>Review</b> <span class="small muted">· ${review.length} questions</span></summary>
+      ${bySkill.map(({ sk, list }) => `<div class="qform"><h3>${esc(sk.name)}</h3>${list.map((it, k) => questionRow(it, k + 1)).join("")}</div>`).join("")}</details>` : ""}</div>`;
+  const root = $("#qpage");
+  const itemOf = (id) => all.find((x) => x.it.id === id)?.it;
+  const numberOf = (el) => +el.querySelector("summary b").textContent.replace(".", "");
+  const redraw = (id, open = true) => {
+    const el = $(`details.qitem[data-qid="${CSS.escape(id)}"]`); el.outerHTML = questionRow(itemOf(id), numberOf(el), open);
+    const f = all.find((x) => x.it.id === id)?.form; if (f) $(`.qform[data-form="${CSS.escape(f.id)}"] h3`).innerHTML = formHead(f);
+  };
+  root.addEventListener("toggle", (e) => {
+    const el = e.target; if (!el.matches?.("details.qitem") || !el.open) return;
+    const body = $(".qbody", el); if (!body.innerHTML.trim()) body.innerHTML = questionBody(itemOf(el.dataset.qid));
+  }, true);
+  root.addEventListener("click", async (e) => {
+    const t = e.target.closest("[data-qedit],[data-qcancel],[data-qrestore]"); if (!t) return;
+    e.preventDefault();
+    if (t.dataset.qedit) { const it = itemOf(t.dataset.qedit); $(".qbody", t.closest("details")).innerHTML = questionEditor(it); return; }
+    if (t.dataset.qcancel) return redraw(t.dataset.qcancel);
+    if (t.dataset.qrestore) {
+      const it = itemOf(t.dataset.qrestore), id = editId(deck, it);
+      try { await backend.deleteEdit(id); } catch (err) { toast("Not restored: " + (err.code || err.message)); return; }
+      edits = edits.filter((x) => x.id !== id); applyEdits(allDecks, edits); redraw(it.id); toast("Restored the original.");
+    }
+  });
+  root.addEventListener("submit", async (e) => {
+    const form = e.target.closest("form[data-qform]"); if (!form) return;
+    e.preventDefault();
+    const it = itemOf(form.dataset.qform), fd = new FormData(form), values = {};
+    for (const [k] of editableFields(originalOf(deck, it))) {
+      const orig = originalOf(deck, it)[k];
+      values[k] = Array.isArray(orig) ? orig.map((_, j) => String(fd.get(`${k}.${j}`) ?? it[k][j]).replace(/\r\n/g, "\n")) : String(fd.get(k) ?? it[k]).replace(/\r\n/g, "\n");
+    }
+    const answer = fd.has("answer") ? +fd.get("answer") : it.answer;
+    const diff = diffOf(deck, it, values, answer, fd.has("hidden"));
+    const id = editId(deck, it);
+    try {
+      if (diff) { const doc = { deck: deck.id, item: it.id, ...diff, by: displayName() || user.email || "", ts: Date.now() }; await backend.saveEdit(id, doc); edits = [...edits.filter((x) => x.id !== id), { id, ...doc }]; }
+      else { await backend.deleteEdit(id).catch(() => {}); edits = edits.filter((x) => x.id !== id); }
+    } catch (err) { toast("Not saved: " + (err.code || err.message)); return; }
+    applyEdits(allDecks, edits); redraw(it.id);
+    toast(diff ? (diff.hidden ? "Saved. The question is hidden from students." : "Saved. Students see the change on their next visit.") : "No changes from the original, so the original stays.");
+  });
+  $("#qsearch").addEventListener("input", (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    $$("details.qitem").forEach((el) => { const it = itemOf(el.dataset.qid); el.hidden = !!q && !JSON.stringify([it.id, ...editableFields(it).map(([k]) => it[k])]).toLowerCase().includes(q); });
+    $$("details.qgroup").forEach((g) => { if (q) g.open = $$("details.qitem", g).some((x) => !x.hidden); });
+  });
+}
+
 // ------------------------------------------------------------------------------------------ teacher
 // ------------------------------------------------------------------------------------------ roster records
 // A pasted line: "Name, school email" with an optional GitHub username (or @username) and GitHub number after it, in any order after the name.
@@ -1276,6 +1391,7 @@ function route() {
   if (r === "mock" && !deck.mock) { location.hash = "home"; return; }
   if (r === "mock") { if (app.mock && app.mock.phase === "done") app.mock = null; return renderMock(); }
   if (r === "teacher" && isTeacher()) return renderTeacher();
+  if (r === "questions" && canEdit()) return renderQuestions();
   if (r === "learn") return renderLearnHome(view, bookApi);
   if (r.startsWith("learn-")) return renderSection(view, r.slice(6), bookApi);
   return renderHome();
@@ -1292,6 +1408,8 @@ async function handleUser(u) {
     }
     ({ teacher, student: me } = await backend.whoIs(u).catch(() => ({ teacher: null, student: null })));
     if (!me && !teacher) { if (u.provider === "github") await backend.requestAccess(u); return route(); }
+    edits = await backend.listEdits().catch(() => []);
+    applyEdits(allDecks, edits);
     profile = await backend.loadProgress(progressId()).catch(() => null);
     // Progress saved before 11/1 sits under the GitHub account (users/<uid>): bring it over once.
     if (!profile && me && u.provider === "github") {

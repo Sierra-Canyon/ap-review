@@ -99,6 +99,11 @@ Do these in order, right after you push this update (about 10 minutes):
 - On first sign-in a student must choose their own password. After that the teacher no longer sees it ("chosen").
 - A student who forgets: **Forgot password?** on the sign-in page, or the teacher's **Send reset link**. Either emails a link to the school address. Teachers cannot see or type a student's password.
 - A student already on another course (yours) keeps it and gets World History too; they can sign in either way.
+- **Questions** tab: every question on the site for World History, by quiz or test, with its answer. **Edit** fixes wording or the right answer, or hides a question, for all three sections at once; **Restore original** undoes it.
+
+## 11. Question edits (the 11/1 evening update)
+
+The **Questions** tab saves teachers' edits in a new `edits/` collection. **Publish the rules again** (**Firestore Database > Rules**, replace everything with `firestore.rules`, **Publish**); until then an edit fails with *permission denied*. A new section of a course must also be added to the deck's list in `deckCourses` in `firestore.rules`, so its teacher may edit.
 
 ## 9. Try it as a student
 

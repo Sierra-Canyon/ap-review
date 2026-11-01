@@ -60,6 +60,23 @@ service cloud.firestore {
       allow create, delete: if isTeacher() && (isAdmin() || teachesAny(studentRec(id).courses));
     }
 
+    // Teachers' edits to questions. Everyone signed in reads them (the site lays them over the questions); a teacher writes
+    // only edits to a deck one of their courses uses. The map lists each deck's courses (courses.js).
+    function deckCourses(d) {
+      return {'csp-q3': ['csp'], 'csa': ['csa'], 'cyber-u2': ['cyber'], 'whap': ['whap', 'whap-c', 'whap-d']}.get(d, []);
+    }
+    function validEdit(id, d) {
+      return d.keys().hasOnly(['deck', 'item', 'fields', 'answer', 'hidden', 'by', 'ts'])
+        && d.deck is string && d.item is string && id == d.deck + ':' + d.item
+        && d.fields is map && d.by is string && d.by.size() < 200 && d.ts is int
+        && (!('answer' in d) || d.answer is int) && (!('hidden' in d) || d.hidden is bool);
+    }
+    match /edits/{id} {
+      allow read: if signedIn();
+      allow create, update: if isTeacher() && validEdit(id, request.resource.data) && teachesAny(deckCourses(request.resource.data.deck));
+      allow delete: if isTeacher() && teachesAny(deckCourses(resource.data.deck));
+    }
+
     match /cards/{id} {
       allow read, write: if isTeacher();
     }

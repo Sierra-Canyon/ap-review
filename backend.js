@@ -10,6 +10,7 @@
 //   cards/{id}      { password, ts }   the first password a teacher made for a student. Teachers only.
 //   teachers/{email} { name, courses }  who may see a course's Class tab. The admin (firebase-config.js) adds teachers.
 //   requests/{ghId} { login, name, ts }  a GitHub account that signed in and is on no roster.
+//   edits/{deck}:{item} { deck, item, fields, answer?, hidden?, by, ts }  a teacher's change to a question (see edits.js).
 //   roster/, users/                      the layout before 11/1, read once to move it over.
 
 const lower = (s) => String(s || "").trim().toLowerCase();
@@ -97,6 +98,9 @@ export async function firebaseBackend(config, firebaseUrl, { adminGithubIds = []
     async listTeachers() { return all(fb.collection(db, "teachers")); },
     async saveTeacher(email, data) { await fb.setDoc(fb.doc(db, "teachers", lower(email)), data); },
     async deleteTeacher(email) { await fb.deleteDoc(fb.doc(db, "teachers", lower(email))); },
+    async listEdits() { return all(fb.collection(db, "edits")); },
+    async saveEdit(id, data) { await fb.setDoc(fb.doc(db, "edits", id), data); },
+    async deleteEdit(id) { await fb.deleteDoc(fb.doc(db, "edits", id)); },
     async listOldRoster() { return all(fb.collection(db, "roster")).catch(() => []); },
     async listOldUsers() { return all(fb.collection(db, "users")).catch(() => []); },
   };
@@ -109,7 +113,7 @@ function readStore() {
 }
 let memory = null;
 function store() {
-  if (!memory) memory = readStore() || { session: null, students: {}, progress: {}, cards: {}, teachers: {}, requests: {}, accounts: {}, sent: [] };
+  if (!memory) memory = readStore() || { session: null, students: {}, progress: {}, cards: {}, teachers: {}, requests: {}, accounts: {}, sent: [], edits: {} };
   return memory;
 }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(memory)); } catch (e) { /* storage blocked: keep it in memory */ } }
@@ -172,6 +176,9 @@ export function demoBackend({ adminGithubIds, seed }) {
     async listTeachers() { return Object.entries(s.teachers).map(([id, d]) => ({ id, ...copy(d) })); },
     async saveTeacher(email, data) { s.teachers[lower(email)] = copy(data); persist(); },
     async deleteTeacher(email) { delete s.teachers[lower(email)]; persist(); },
+    async listEdits() { return Object.entries(s.edits || {}).map(([id, d]) => ({ id, ...copy(d) })); },
+    async saveEdit(id, data) { (s.edits ||= {})[id] = copy(data); persist(); },
+    async deleteEdit(id) { delete (s.edits || {})[id]; persist(); },
     async listOldRoster() { return []; },
     async listOldUsers() { return []; },
     sentResets: () => copy(s.sent),

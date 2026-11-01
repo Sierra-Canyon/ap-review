@@ -1,0 +1,95 @@
+import { graph } from "../../plot.js";
+
+export const sets = {
+  "q601-s1": { name: "A cyclist's velocity", label: "Graph", intro: String.raw`A cyclist rides along a straight road. The graph of the cyclist's velocity $v(t)$, in meters per second, for $0 \le t \le 8$ seconds is shown below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 9], y: [0, 5], xname: "t", yname: "v(t)", segments: [[0, 0, 2, 4], [2, 4, 6, 4], [6, 4, 8, 0]],
+      alt: "Graph of v(t) for 0 to 8 seconds: a line from (0, 0) up to (2, 4), a horizontal segment at height 4 from t = 2 to t = 6, and a line from (6, 4) down to (8, 0)." }) }] }] },
+  "q601-s2": { name: "Water in a tank", label: "Graph", intro: String.raw`The rate at which the amount of water in a tank changes is $R(t)$ liters per minute, where $t$ is measured in minutes. The graph of $R$ for $0 \le t \le 6$ is shown below. At time $t = 0$, the tank holds 20 liters of water.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 7], y: [-5, 7], xname: "t", yname: "R(t)", segments: [[0, 0, 2, 6], [2, 6, 4, 0], [4, 0, 5, -4], [5, -4, 6, 0]],
+      alt: "Graph of R(t) for 0 to 6 minutes: a line from (0, 0) up to (2, 6), a line down to (4, 0), a line down to (5, negative 4), and a line back up to (6, 0)." }) }] }] },
+  "q601-s9": { name: "Unloading grain", label: "Free response", intro: String.raw`Grain is unloaded from a silo into a truck at a rate of $r(t)$ kilograms per minute, where $t$ is measured in minutes. The rate is 30 kilograms per minute for $0 \le t \le 10$. Then the rate decreases at a constant rate until it reaches 0 at $t = 30$, as shown in the graph below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 32], y: [0, 35], step: { x: 5, y: 5 }, xname: "t", yname: "r(t)", segments: [[0, 30, 10, 30], [10, 30, 30, 0]],
+      alt: "Graph of r(t) for 0 to 30 minutes: a horizontal segment at height 30 from t = 0 to t = 10, then a line from (10, 30) down to (30, 0)." }) }] }] },
+};
+
+const items = [
+  { id: "q601-m01", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+    stem: "A printer prints pages at a constant rate of 15 pages per minute for 4 minutes. Then it slows to a constant 6 pages per minute for the next 5 minutes.",
+    question: "How many pages does the printer print during these 9 minutes?",
+    choices: ["$90$", "$21$", "$94.5$", "$135$"],
+    why: [
+      String.raw`The amount is the area under the graph of the rate: $15(4) + 6(5) = 60 + 30 = 90$ pages.`,
+      String.raw`$15 + 6 = 21$ adds the two rates. Each rate has to be multiplied by the time it lasts.`,
+      String.raw`This multiplies the average of the two rates, $10.5$, by 9 minutes. The two rates do not last equally long.`,
+      String.raw`$15(9) = 135$ uses the first rate for all 9 minutes.`,
+    ], answer: 0 },
+  { id: "q601-m02", type: "mcq", skill: "u6", topic: "6.1", calc: false, set: "q601-s1",
+    question: String.raw`What is the cyclist's displacement, in meters, from $t = 0$ to $t = 8$?`,
+    choices: ["$24$", "$32$", "$20$", "$16$"],
+    why: [
+      String.raw`Displacement is the area under the velocity graph: a triangle $\dfrac{1}{2}(2)(4) = 4$, a rectangle $4(4) = 16$, and a triangle $\dfrac{1}{2}(2)(4) = 4$, for a total of $24$ meters.`,
+      String.raw`$4(8) = 32$ treats the velocity as 4 meters per second for all 8 seconds. The velocity is less than 4 on the first and last 2 seconds.`,
+      "This leaves out one of the two triangles.",
+      String.raw`$16$ is only the rectangle from $t = 2$ to $t = 6$. The triangles at each end also add distance.`,
+    ], answer: 0 },
+  { id: "q601-m03", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+    stem: String.raw`Gasoline is pumped into a tank at a rate of $p(t)$ gallons per minute, where $t$ is measured in minutes.`,
+    question: String.raw`What does the area of the region between the graph of $p$ and the $t$-axis from $t = 0$ to $t = 3$ represent?`,
+    choices: [
+      "The number of gallons pumped into the tank during the first 3 minutes",
+      "The rate, in gallons per minute, at which gasoline is pumped at time $t = 3$",
+      "The average rate, in gallons per minute, at which gasoline is pumped during the first 3 minutes",
+      "The rate of change of the pumping rate, in gallons per minute per minute, at time $t = 3$",
+    ],
+    why: [
+      "Area is height times width, so its units are gallons per minute times minutes, which is gallons. The area under a rate graph is the amount that accumulates.",
+      String.raw`$p(3)$ is the rate at $t = 3$. That is a height on the graph, not an area.`,
+      "The average rate is the area divided by 3 minutes. The area itself is measured in gallons.",
+      String.raw`$p'(3)$ is the slope of the graph at $t = 3$, not an area.`,
+    ], answer: 0 },
+  { id: "q601-m04", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+    stem: String.raw`A particle moves along a line with velocity $v(t) = 3 - t$ meters per second for $0 \le t \le 6$ seconds.`,
+    question: String.raw`What is the total distance, in meters, the particle travels from $t = 0$ to $t = 6$?`,
+    choices: ["$9$", "$0$", "$18$", String.raw`$\frac{9}{2}$`],
+    why: [
+      String.raw`The graph of $v$ forms a triangle above the axis on $[0, 3]$ with area $\dfrac{1}{2}(3)(3) = \dfrac{9}{2}$ and a triangle below the axis on $[3, 6]$ with area $\dfrac{9}{2}$. Distance counts both areas as positive: $\dfrac{9}{2} + \dfrac{9}{2} = 9$ meters.`,
+      String.raw`$0$ is the displacement. The area below the axis cancels the area above it, but distance traveled adds the two areas.`,
+      String.raw`$18$ uses a base of 6 and a height of 3 for each triangle. Each triangle has a base of 3.`,
+      String.raw`$\dfrac{9}{2}$ counts only the motion before $t = 3$. The particle keeps moving, in the other direction, after it turns around.`,
+    ], answer: 0 },
+  { id: "q601-m05", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+    stem: "At the start of a storm, there are 6 inches of snow on the ground. Snow falls at a rate of 2 inches per hour for the first 1.5 hours and then at a rate of 0.5 inch per hour for the next 4 hours. No snow melts.",
+    question: "How many inches of snow are on the ground at the end of the 5.5 hours?",
+    choices: ["$11$", "$5$", "$8.5$", "$12.875$"],
+    why: [
+      String.raw`The snow added is $2(1.5) + 0.5(4) = 3 + 2 = 5$ inches, so the depth is $6 + 5 = 11$ inches.`,
+      String.raw`$5$ inches is the amount that fell. The 6 inches already on the ground must be added.`,
+      String.raw`$6 + 2 + 0.5 = 8.5$ adds the rates to the starting depth without multiplying each rate by its time.`,
+      String.raw`This multiplies the average of the rates, $1.25$, by the whole $5.5$ hours and adds the result to the starting $6$ inches. The two rates do not last equally long.`,
+    ], answer: 0 },
+  { id: "q601-m06", type: "mcq", skill: "u6", topic: "6.1", calc: false, set: "q601-s2",
+    question: String.raw`How many liters of water are in the tank at time $t = 6$?`,
+    choices: ["$28$", "$36$", "$8$", "$32$"],
+    why: [
+      String.raw`The water added on $[0, 4]$ is the area of the triangle above the axis, $\dfrac{1}{2}(4)(6) = 12$ liters. The water lost on $[4, 6]$ is the area of the triangle below the axis, $\dfrac{1}{2}(2)(4) = 4$ liters. The amount at $t = 6$ is $20 + 12 - 4 = 28$ liters.`,
+      String.raw`$20 + 12 + 4 = 36$ adds the area below the axis. When $R(t) < 0$, water leaves the tank, so that area is subtracted.`,
+      String.raw`$12 - 4 = 8$ is the net change. The 20 liters in the tank at $t = 0$ must be added.`,
+      String.raw`$20 + 12 = 32$ is the amount at $t = 4$. The water lost from $t = 4$ to $t = 6$ is left out.`,
+    ], answer: 0 },
+  { id: "q601-f1a", type: "frq", skill: "u6", topic: "6.1", calc: false, set: "q601-s9", part: "(a)",
+    prompt: String.raw`How many kilograms of grain are unloaded during the 30 minutes, $0 \le t \le 30$? Indicate units of measure.`,
+    rows: [
+      { name: "Area setup", earns: String.raw`Finds the area under the graph of $r$ as a sum of pieces: $30(10) + \dfrac{1}{2}(20)(30)$.` },
+      { name: "Answer with units", earns: "$600$ kilograms." },
+    ],
+    solution: String.raw`The amount of grain unloaded is the area between the graph of $r$ and the $t$-axis. The rectangle on $[0, 10]$ has area $30(10) = 300$, and the triangle on $[10, 30]$ has area $\dfrac{1}{2}(20)(30) = 300$. The total is $300 + 300 = 600$ kilograms.` },
+  { id: "q601-f1b", type: "frq", skill: "u6", topic: "6.1", calc: false, set: "q601-s9", part: "(b)",
+    prompt: String.raw`Find the area of the region between the graph of $r$ and the $t$-axis from $t = 10$ to $t = 20$. Explain the meaning of this area in the context of the problem.`,
+    rows: [
+      { name: "Answer", earns: String.raw`$225$, from a trapezoid with heights $r(10) = 30$ and $r(20) = 15$ and width 10.` },
+      { name: "Interpretation", earns: String.raw`225 kilograms of grain are unloaded between $t = 10$ and $t = 20$ minutes.` },
+    ],
+    solution: String.raw`The rate falls by 30 kilograms per minute over 20 minutes, so it decreases by $1.5$ kilograms per minute each minute, and $r(20) = 30 - 1.5(10) = 15$. The region from $t = 10$ to $t = 20$ is a trapezoid with area $\dfrac{1}{2}(30 + 15)(10) = 225$. This means 225 kilograms of grain are unloaded during the 10 minutes from $t = 10$ to $t = 20$.` },
+];
+
+export default { forms: [{ id: "q601", name: "Topic 6.1 Quiz: Exploring Accumulations of Change", group: "Unit 6: Integration and Accumulation of Change", items }] };

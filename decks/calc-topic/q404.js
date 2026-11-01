@@ -1,0 +1,88 @@
+export const sets = {
+  "q404-s9": { name: "A changing rectangle", label: "Free response", intro: String.raw`The length $L$ of a rectangle is increasing at a rate of 3 centimeters per second, and its width $W$ is decreasing at a rate of 2 centimeters per second. At a certain instant, $L = 12$ centimeters and $W = 5$ centimeters.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$\dfrac{dL}{dt} = 3, \quad \dfrac{dW}{dt} = -2, \quad L = 12, \quad W = 5$$` }] }] },
+};
+
+const items = [
+  { id: "q404-m01", type: "mcq", skill: "u4", topic: "4.4", calc: false,
+    stem: String.raw`The edge length $s$ and the volume $V = s^3$ of a cube are both functions of time $t$.`,
+    question: String.raw`Which of the following equations relates $\dfrac{dV}{dt}$ and $\dfrac{ds}{dt}$?`,
+    choices: [
+      String.raw`$\frac{dV}{dt} = 3s^2\frac{ds}{dt}$`,
+      String.raw`$\frac{dV}{dt} = 3s^2$`,
+      String.raw`$\frac{dV}{dt} = 3\frac{ds}{dt}$`,
+      String.raw`$\frac{dV}{dt} = \left(\frac{ds}{dt}\right)^3$`,
+    ],
+    why: [
+      String.raw`Differentiate $V = s^3$ with respect to $t$ using the chain rule: $\dfrac{dV}{dt} = 3s^2\dfrac{ds}{dt}$.`,
+      String.raw`$3s^2$ is $\dfrac{dV}{ds}$. Differentiating with respect to $t$ needs the chain rule factor $\dfrac{ds}{dt}$.`,
+      String.raw`The power rule gives $3s^2$, not $3$. The factor $s^2$ is missing.`,
+      String.raw`The derivative of a cube is not the cube of the derivative. Use the chain rule on $s^3$.`,
+    ], answer: 0 },
+  { id: "q404-m02", type: "mcq", skill: "u4", topic: "4.4", calc: false,
+    stem: String.raw`The variables $x$ and $y$ are differentiable functions of $t$ with $y = x^2 - 4x$. When $x = 5$, $\dfrac{dx}{dt} = 3$.`,
+    question: String.raw`What is $\dfrac{dy}{dt}$ when $x = 5$?`,
+    choices: ["$18$", "$6$", "$5$", String.raw`$\frac{1}{2}$`],
+    why: [
+      String.raw`$\dfrac{dy}{dt} = (2x - 4)\dfrac{dx}{dt} = (10 - 4)(3) = 18$.`,
+      String.raw`$6$ is $\dfrac{dy}{dx}$ at $x = 5$. It still has to be multiplied by $\dfrac{dx}{dt} = 3$.`,
+      String.raw`$5$ is the value of $y$ when $x = 5$, not a rate.`,
+      String.raw`This divides $\dfrac{dx}{dt}$ by $\dfrac{dy}{dx}$: $\dfrac{3}{6}$. The chain rule multiplies them.`,
+    ], answer: 0 },
+  { id: "q404-m03", type: "mcq", skill: "u4", topic: "4.4", calc: false,
+    stem: String.raw`The variables $x$ and $y$ are positive differentiable functions of $t$ with $xy = 12$. When $x = 3$, $\dfrac{dx}{dt} = 2$.`,
+    question: String.raw`What is $\dfrac{dy}{dt}$ when $x = 3$?`,
+    choices: [String.raw`$-\frac{8}{3}$`, String.raw`$\frac{8}{3}$`, String.raw`$-\frac{3}{2}$`, String.raw`$-\frac{4}{3}$`],
+    why: [
+      String.raw`When $x = 3$, $y = 4$. The product rule gives $x\dfrac{dy}{dt} + y\dfrac{dx}{dt} = 0$, so $3\dfrac{dy}{dt} + 4(2) = 0$ and $\dfrac{dy}{dt} = -\dfrac{8}{3}$.`,
+      String.raw`The product $xy$ is constant, so as $x$ increases $y$ must decrease. The sign was lost.`,
+      String.raw`This switches $x$ and $y$: $-\dfrac{x}{y}\dfrac{dx}{dt} = -\dfrac{3}{4}(2)$. The correct relation is $\dfrac{dy}{dt} = -\dfrac{y}{x}\dfrac{dx}{dt}$.`,
+      String.raw`$-\dfrac{12}{x^2} = -\dfrac{4}{3}$ is $\dfrac{dy}{dx}$. The factor $\dfrac{dx}{dt} = 2$ is missing.`,
+    ], answer: 0 },
+  { id: "q404-m04", type: "mcq", skill: "u4", topic: "4.4", calc: false,
+    stem: String.raw`The area of an equilateral triangle with side length $s$ is $A = \dfrac{\sqrt{3}}{4}s^2$. The side length is increasing at a rate of 3 inches per minute.`,
+    question: String.raw`At what rate is the area increasing when $s = 10$ inches?`,
+    choices: [String.raw`$15\sqrt{3}$ square inches per minute`, String.raw`$5\sqrt{3}$ square inches per minute`, String.raw`$\frac{15\sqrt{3}}{2}$ square inches per minute`, String.raw`$25\sqrt{3}$ square inches per minute`],
+    why: [
+      String.raw`$\dfrac{dA}{dt} = \dfrac{\sqrt{3}}{2}s\dfrac{ds}{dt} = \dfrac{\sqrt{3}}{2}(10)(3) = 15\sqrt{3}$ square inches per minute.`,
+      String.raw`$\dfrac{\sqrt{3}}{2}(10) = 5\sqrt{3}$ is $\dfrac{dA}{ds}$. The factor $\dfrac{ds}{dt} = 3$ is missing.`,
+      String.raw`This differentiates $s^2$ as $s$, dropping the factor $2$: $\dfrac{\sqrt{3}}{4}(10)(3)$.`,
+      String.raw`$25\sqrt{3}$ is the area when $s = 10$, not its rate of change.`,
+    ], answer: 0 },
+  { id: "q404-m05", type: "mcq", skill: "u4", topic: "4.4", calc: false,
+    stem: String.raw`The positive quantities $x$, $y$, and $z$ are differentiable functions of $t$ with $x^2 + y^2 = z^2$. At a certain instant, $x = 6$, $y = 8$, $\dfrac{dx}{dt} = 4$, and $\dfrac{dy}{dt} = -2$.`,
+    question: String.raw`What is $\dfrac{dz}{dt}$ at that instant?`,
+    choices: [String.raw`$\frac{4}{5}$`, "$2$", "$8$", String.raw`$2\sqrt{5}$`],
+    why: [
+      String.raw`$z = \sqrt{36 + 64} = 10$. Differentiating, $2x\dfrac{dx}{dt} + 2y\dfrac{dy}{dt} = 2z\dfrac{dz}{dt}$, so $6(4) + 8(-2) = 10\dfrac{dz}{dt}$ and $\dfrac{dz}{dt} = \dfrac{8}{10} = \dfrac{4}{5}$.`,
+      String.raw`$4 + (-2) = 2$ adds the rates. Each rate must be weighted by its variable, and the sum divided by $z$.`,
+      String.raw`$8$ is $z\dfrac{dz}{dt}$. It still has to be divided by $z = 10$.`,
+      String.raw`$\sqrt{4^2 + (-2)^2} = 2\sqrt{5}$ applies the Pythagorean theorem to the rates, which is not how the rates are related.`,
+    ], answer: 0 },
+  { id: "q404-m06", type: "mcq", skill: "u4", topic: "4.4", calc: true,
+    stem: String.raw`The resistance $R$, in ohms, of a sensor is related to its temperature $T$, in degrees Celsius, by $R = 100e^{0.0039T}$. The temperature is increasing at a rate of 0.5 degree Celsius per minute.`,
+    question: String.raw`At what rate is the resistance changing when $T = 30$?`,
+    choices: ["$0.219$ ohm per minute", "$0.438$ ohm per minute", "$112.412$ ohms per minute", "$56.206$ ohms per minute"],
+    why: [
+      String.raw`$\dfrac{dR}{dt} = 100(0.0039)e^{0.0039T}\dfrac{dT}{dt} = 0.39e^{0.117}(0.5) \approx 0.219$ ohm per minute.`,
+      String.raw`$0.39e^{0.117} \approx 0.438$ is $\dfrac{dR}{dT}$. The factor $\dfrac{dT}{dt} = 0.5$ is missing.`,
+      String.raw`$100e^{0.117} \approx 112.412$ is the resistance $R$ when $T = 30$, not its rate of change.`,
+      String.raw`$100e^{0.117}(0.5) \approx 56.206$ leaves out the chain rule factor $0.0039$ from the exponent.`,
+    ], answer: 0 },
+  { id: "q404-f1a", type: "frq", skill: "u4", topic: "4.4", calc: false, set: "q404-s9", part: "(a)",
+    prompt: String.raw`At what rate is the area of the rectangle changing at this instant? Indicate units of measure.`,
+    rows: [
+      { name: "Product rule", earns: String.raw`$\dfrac{dA}{dt} = L\dfrac{dW}{dt} + W\dfrac{dL}{dt}$.` },
+      { name: "Answer with units", earns: String.raw`$\dfrac{dA}{dt} = -9$ square centimeters per second.` },
+    ],
+    solution: String.raw`$A = LW$, so $\dfrac{dA}{dt} = L\dfrac{dW}{dt} + W\dfrac{dL}{dt} = 12(-2) + 5(3) = -9$. The area is decreasing at 9 square centimeters per second.` },
+  { id: "q404-f1b", type: "frq", skill: "u4", topic: "4.4", calc: false, set: "q404-s9", part: "(b)",
+    prompt: String.raw`At what rate is the length of a diagonal of the rectangle changing at this instant?`,
+    rows: [
+      { name: "Implicit differentiation", earns: String.raw`$2D\dfrac{dD}{dt} = 2L\dfrac{dL}{dt} + 2W\dfrac{dW}{dt}$, with $D = 13$.` },
+      { name: "Answer", earns: String.raw`$\dfrac{dD}{dt} = 2$ centimeters per second.` },
+    ],
+    solution: String.raw`The diagonal $D$ satisfies $D^2 = L^2 + W^2$, so $D = \sqrt{144 + 25} = 13$. Differentiating, $2D\dfrac{dD}{dt} = 2L\dfrac{dL}{dt} + 2W\dfrac{dW}{dt}$, so $13\dfrac{dD}{dt} = 12(3) + 5(-2) = 26$ and $\dfrac{dD}{dt} = 2$ centimeters per second.` },
+];
+
+export default { forms: [{ id: "q404", name: "Topic 4.4 Quiz: Introduction to Related Rates", group: "Unit 4: Contextual Applications of Differentiation", items }] };

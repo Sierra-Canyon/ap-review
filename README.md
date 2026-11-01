@@ -9,7 +9,8 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | AP Computer Science Principles | D | Quiz 3: Lists and Loops, Tue 11/3 | 52 | 3 mock quizzes |
 | AP Computer Science A | B | Unit 2 now; the countdown follows every assessment to the AP exam | 78 | 33 forms: practice for all 15 assessments of the year |
 | AP Cybersecurity | F | Unit 2 Test: Securing Spaces, Mon 11/2 | 215 | 3 mock tests |
-| AP World History: Modern | (another teacher) | all nine units | 317 | 14 topic quizzes (1.1 to 1.7, 2.1 to 2.7) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
+| AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 317 | 14 topic quizzes (1.1 to 1.7, 2.1 to 2.7) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
+| AP Calculus AB | (another teacher) | all eight AB units | 344 | 81 topic quizzes and 8 unit tests |
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
 
@@ -20,6 +21,16 @@ One record per student (`students/` in Firestore), keyed by the school email, ho
 - Teachers make students' email sign-ins from the Class tab with a first password (printable cards); the student chooses their own at first sign-in, can change it on the account page, and resets it by email (**Forgot password?**, or the teacher's **Send reset link**). Teachers never see a chosen password.
 - Teachers other than @jd12 are listed in `teachers/` (added from the Class tab) and see only their courses. `firestore.rules` enforces all of it: a teacher can add or remove only their own courses on a record and read progress only for their students.
 - Before 11/1 the roster was keyed by GitHub number; @jd12's first visit to the Class tab moves it over, and each student's progress comes along on their first sign-in.
+
+## AP Calculus AB
+
+All eight AB units (CED topics only; nothing from BC), in `decks/calc/` (review), `decks/calc-topic/` (a quiz per topic) and `decks/calc-tests/` (a test per unit). Built like AP World: review that brings back misses, then **Quizzes and tests**.
+
+- **Review** (344): multiple choice and free response for every topic. A free-response question is split into its parts (a), (b), (c); each part lists its points the way the AP scoring guidelines do, the student scores their own work one point at a time, and the full-credit solution follows.
+- **Topic quizzes** (81): 6 multiple choice and one free-response question of 3 or 4 points for each topic, 1.1 to 8.12.
+- **Unit tests** (8): the AP exam in miniature, 33 points: Section I, 10 multiple choice without a calculator then 5 with; Section II, two 9-point free-response questions, the calculator one first. Results show the score by section.
+- Every question says **Calculator** or **No calculator**. Math is LaTeX in the deck files (`$...$`), drawn by the browser as MathML (`vendor/katex.js`, built by `tools/build-katex.mjs`). Graphs, including slope fields, are drawn from a description by `plot.js`; tables are source tables.
+- **Accuracy:** each writer checked every key, distractor and scoring number by computation (sympy), and a second reader solved every item again independently, unit by unit, and fixed what was wrong. `tools/check-calc.mjs` checks shapes, point totals, topics, that every formula renders, and the writing rules: `node tools/check-calc.mjs review decks/calc/u*.js`, `test decks/calc-tests/*.js`, `quiz decks/calc-topic/*.js`. `tools/e2e-calc.mjs` runs a review set, a quiz and a unit test in Chromium.
 
 ## AP World History: Modern
 
@@ -138,6 +149,8 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `index.html`, `styles.css`, `app.js` | The site. |
 | `courses.js` | The courses, their periods, and their decks. |
 | `srs.js` | Spaced review, sessions, and mock-quiz assembly. |
+| `plot.js` | Graphs for math questions (curves, pieces, open and closed dots, asymptotes, slope fields), as SVG. |
+| `decks/calc.js`, `decks/calc/`, `decks/calc-topic/`, `decks/calc-tests/` | AP Calculus AB: review, topic quizzes, unit tests. |
 | `edits.js` | Teachers' edits to questions, laid over the decks after sign-in. |
 | `backend.js` | Firebase (GitHub and email sign-in, the student records), and the demo backend (browser storage). |
 | `firebase-config.js` | The Firebase config (null until Setup step 7), the teacher's GitHub number. |

@@ -1,0 +1,96 @@
+export const sets = {
+  "q511-s9": {
+    name: "A cylindrical can", label: "Free response",
+    intro: String.raw`A closed cylindrical can is to hold $16\pi$ cubic inches. The can has radius $r$ inches and height $h$ inches. Its total surface area, top and bottom included, is $S = 2\pi r^2 + 2\pi rh$ square inches.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$V = \pi r^2 h = 16\pi, \quad S = 2\pi r^2 + 2\pi rh$$` }] }],
+  },
+};
+
+const items = [
+  { id: "q511-m01", type: "mcq", skill: "u5", topic: "5.11", calc: false,
+    stem: String.raw`An open box is made from a 12-inch by 12-inch square of cardboard by cutting equal squares of side $x$ inches from each corner and folding up the sides.`,
+    question: String.raw`What is the greatest possible volume of the box, in cubic inches?`,
+    choices: ["$128$", "$2$", "$108$", "$256$"],
+    why: [
+      String.raw`$V(x) = x(12 - 2x)^2$ for $0 < x < 6$. $V'(x) = (12 - 2x)^2 - 4x(12 - 2x) = (12 - 2x)(12 - 6x)$, which is $0$ in $(0, 6)$ only at $x = 2$. $V'$ changes from positive to negative there, so the maximum volume is $V(2) = 2 \cdot 8^2 = 128$.`,
+      String.raw`$x = 2$ inches is the size of the cut that gives the greatest volume, not the volume.`,
+      String.raw`$V(3) = 3 \cdot 6^2 = 108$ uses the middle of $0 < x < 6$ instead of the critical point.`,
+      String.raw`This uses $12 - x$ for the side of the base. Cutting from both ends of each side removes $2x$, so the base is $12 - 2x$.`,
+    ], answer: 0 },
+  { id: "q511-m02", type: "mcq", skill: "u5", topic: "5.11", calc: false,
+    stem: String.raw`A rectangular poster is to have a printed region of 50 square inches, with margins of 2 inches at the top and bottom and 1 inch on each side.`,
+    question: String.raw`What is the least possible total area of the poster, in square inches?`,
+    choices: ["$98$", "$50$", "$5$", String.raw`$58 + 30\sqrt{2}$`],
+    why: [
+      String.raw`Let the printed region be $w$ inches wide and $\dfrac{50}{w}$ inches tall. The total area is $A(w) = (w + 2)\left(\dfrac{50}{w} + 4\right) = 58 + 4w + \dfrac{100}{w}$. $A'(w) = 4 - \dfrac{100}{w^2} = 0$ at $w = 5$, and $A''(w) = \dfrac{200}{w^3} > 0$, so the least area is $A(5) = 7 \cdot 14 = 98$.`,
+      String.raw`$50$ square inches is the printed region alone. The margins add to the total area.`,
+      String.raw`$5$ inches is the width of the printed region in the best poster, not an area.`,
+      String.raw`$58 + 30\sqrt{2} \approx 100.4$ makes the printed region a square, $\sqrt{50}$ by $\sqrt{50}$. The margins are unequal, so a square is not best.`,
+    ], answer: 0 },
+  { id: "q511-m03", type: "mcq", skill: "u5", topic: "5.11", calc: false,
+    stem: String.raw`A rectangular garden is to have an area of 200 square feet. Fence for the front side costs \$6 per foot, and fence for the other three sides costs \$2 per foot.`,
+    question: String.raw`What length of the front side, in feet, makes the cost of the fence least?`,
+    choices: ["$10$", "$20$", "$160$", String.raw`$10\sqrt{2}$`],
+    why: [
+      String.raw`Let $x$ be the front length; the depth is $\dfrac{200}{x}$. The cost is $C(x) = 6x + 2x + 2 \cdot 2 \cdot \dfrac{200}{x} = 8x + \dfrac{800}{x}$. $C'(x) = 8 - \dfrac{800}{x^2} = 0$ at $x = 10$, and $C''(x) = \dfrac{1600}{x^3} > 0$ for $x > 0$, so the cost is least at $x = 10$ feet.`,
+      String.raw`$20$ feet is the depth $\dfrac{200}{10}$, not the front length.`,
+      String.raw`\$160 is the least cost, $C(10)$, not a length.`,
+      String.raw`$10\sqrt{2} = \sqrt{200}$ makes the garden a square. With the front fence costing more, a square is not the cheapest shape.`,
+    ], answer: 0 },
+  { id: "q511-m04", type: "mcq", skill: "u5", topic: "5.11", calc: false,
+    stem: String.raw`The average cost per item, in dollars, of producing $x$ items is $A(x)$. It is known that $A'(40) = 0$ and $A''(x) > 0$ for all $x > 0$.`,
+    question: String.raw`Which of the following is the best interpretation?`,
+    choices: [
+      String.raw`The average cost per item is least when 40 items are produced.`,
+      String.raw`The average cost per item is greatest when 40 items are produced.`,
+      String.raw`The average cost per item is \$0 when 40 items are produced.`,
+      String.raw`The total cost of production is least when 40 items are produced.`,
+    ],
+    why: [
+      String.raw`$A$ has a critical point at $x = 40$, and $A'' > 0$ for all $x > 0$ means $A'$ is increasing, so $A' < 0$ before $40$ and $A' > 0$ after. $A(40)$ is the absolute minimum: the least average cost per item.`,
+      String.raw`$A'' > 0$ means the graph of $A$ is concave up, so the critical point is a minimum, not a maximum.`,
+      String.raw`$A'(40) = 0$ says the rate of change of the average cost is $0$, not that the average cost is $0$.`,
+      String.raw`The information is about the average cost per item $A$, not the total cost $xA(x)$.`,
+    ], answer: 0 },
+  { id: "q511-m05", type: "mcq", skill: "u5", topic: "5.11", calc: false,
+    stem: String.raw`A rectangle is inscribed in a semicircle of radius 5, with one side of the rectangle along the diameter and the other two vertices on the semicircle.`,
+    question: String.raw`What is the greatest possible area of the rectangle?`,
+    choices: ["$25$", "$50$", String.raw`$\frac{25}{2}$`, String.raw`$\frac{5\sqrt{2}}{2}$`],
+    why: [
+      String.raw`With vertices at $(\pm x, \sqrt{25 - x^2})$, $A(x) = 2x\sqrt{25 - x^2}$. $A'(x) = 2\sqrt{25 - x^2} - \dfrac{2x^2}{\sqrt{25 - x^2}} = \dfrac{2(25 - 2x^2)}{\sqrt{25 - x^2}} = 0$ at $x = \dfrac{5}{\sqrt{2}}$, where $A'$ changes from positive to negative. The area is $2 \cdot \dfrac{5}{\sqrt{2}} \cdot \dfrac{5}{\sqrt{2}} = 25$.`,
+      String.raw`$50$ is the greatest area of a rectangle inscribed in the full circle of radius 5.`,
+      String.raw`$\dfrac{25}{2}$ uses $x\sqrt{25 - x^2}$, the area of only half the rectangle. The base runs from $-x$ to $x$, so its length is $2x$.`,
+      String.raw`$\dfrac{5\sqrt{2}}{2}$ is the value of $x$ (half the base), not the area.`,
+    ], answer: 0 },
+  { id: "q511-m06", type: "mcq", skill: "u5", topic: "5.11", calc: true,
+    stem: String.raw`A wire 10 meters long is cut into two pieces. One piece, of length $x$ meters, is bent into a square, and the other is bent into a circle.`,
+    question: String.raw`What value of $x$ makes the total area enclosed by the two shapes least?`,
+    choices: ["$5.601$", "$4.399$", "$5.000$", "$3.501$"],
+    why: [
+      String.raw`The square has side $\dfrac{x}{4}$ and the circle has radius $\dfrac{10 - x}{2\pi}$, so $A(x) = \dfrac{x^2}{16} + \dfrac{(10 - x)^2}{4\pi}$. $A'(x) = \dfrac{x}{8} - \dfrac{10 - x}{2\pi} = 0$ gives $x = \dfrac{40}{\pi + 4} \approx 5.601$. $A''(x) > 0$, so this is the minimum.`,
+      String.raw`$4.399$ meters is the length of the piece used for the circle, $10 - x$.`,
+      String.raw`$5$ cuts the wire in half. The two shapes enclose area at different rates, so equal pieces do not minimize the total.`,
+      String.raw`$3.501$ square meters is the least total area, $A(5.601)$, not the length $x$.`,
+    ], answer: 0 },
+  { id: "q511-f1a", type: "frq", skill: "u5", topic: "5.11", calc: false, set: "q511-s9", part: "(a)",
+    prompt: String.raw`Write an expression for the surface area $S$ in terms of $r$ alone.`,
+    rows: [
+      { name: "Expression", earns: String.raw`Uses $h = \dfrac{16}{r^2}$ to get $S(r) = 2\pi r^2 + \dfrac{32\pi}{r}$.` },
+    ],
+    solution: String.raw`From $\pi r^2 h = 16\pi$, $h = \dfrac{16}{r^2}$. Then $S(r) = 2\pi r^2 + 2\pi r \cdot \dfrac{16}{r^2} = 2\pi r^2 + \dfrac{32\pi}{r}$ for $r > 0$.` },
+  { id: "q511-f1b", type: "frq", skill: "u5", topic: "5.11", calc: false, set: "q511-s9", part: "(b)",
+    prompt: String.raw`Find the radius that makes the surface area least. Justify that your answer gives the absolute minimum.`,
+    rows: [
+      { name: "Critical point", earns: String.raw`$S'(r) = 4\pi r - \dfrac{32\pi}{r^2} = 0$ gives $r = 2$.` },
+      { name: "Justification", earns: String.raw`$S'(r) < 0$ for $0 < r < 2$ and $S'(r) > 0$ for $r > 2$; since $r = 2$ is the only critical point, $S(2)$ is the absolute minimum.` },
+    ],
+    solution: String.raw`$S'(r) = 4\pi r - \dfrac{32\pi}{r^2} = \dfrac{4\pi(r^3 - 8)}{r^2}$, which is $0$ only at $r = 2$ for $r > 0$. For $0 < r < 2$, $r^3 < 8$ and $S'(r) < 0$; for $r > 2$, $S'(r) > 0$. $S$ decreases on $(0, 2)$ and increases on $(2, \infty)$, and $r = 2$ is the only critical point, so $S$ has its absolute minimum at $r = 2$ inches.` },
+  { id: "q511-f1c", type: "frq", skill: "u5", topic: "5.11", calc: false, set: "q511-s9", part: "(c)",
+    prompt: String.raw`Find the height of the can with the least surface area, and find that least surface area. Indicate units of measure.`,
+    rows: [
+      { name: "Height and area with units", earns: String.raw`$h = 4$ inches and $S = 24\pi$ square inches.` },
+    ],
+    solution: String.raw`$h = \dfrac{16}{2^2} = 4$ inches. $S(2) = 2\pi(4) + \dfrac{32\pi}{2} = 8\pi + 16\pi = 24\pi$ square inches. (The height equals the diameter.)` },
+];
+
+export default { forms: [{ id: "q511", name: "Topic 5.11 Quiz: Solving Optimization Problems", group: "Unit 5: Analytical Applications of Differentiation", items }] };

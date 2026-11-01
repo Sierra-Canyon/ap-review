@@ -56,7 +56,7 @@ function interleave(items, rand) {
 // The next session: what is due first (most overdue, lowest box), then new items, up to size.
 // When nothing is due and nothing is new, it takes the cards that are least solid, so "keep going" always works.
 // types limits the session to some item types (the "only vocabulary" buttons); long items (written and free responses) are capped at two.
-const LONG = new Set(["wr", "fr", "code", "essay"]);
+const LONG = new Set(["wr", "fr", "code", "essay", "frq"]);
 export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, longCap = 2 } = {}) {
   const pool = deck.items.filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)));
   const due = pool.filter((it) => cards[it.id]?.n && cards[it.id].due <= now)

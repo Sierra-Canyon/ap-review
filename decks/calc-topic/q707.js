@@ -1,0 +1,80 @@
+export const sets = {
+  "q707-s9": { name: "A particular solution", label: "Free response", intro: String.raw`Consider the differential equation $\dfrac{dy}{dx} = \dfrac{3x^2}{2y}$. Let $y = f(x)$ be the particular solution to the differential equation with initial condition $f(1) = -2$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$\dfrac{dy}{dx} = \dfrac{3x^2}{2y}, \quad f(1) = -2$$` }] }] },
+};
+
+const items = [
+  { id: "q707-m01", type: "mcq", skill: "u7", topic: "7.7", calc: false,
+    stem: String.raw`Let $y = f(x)$ be the solution to the differential equation $\dfrac{dy}{dx} = \dfrac{2x + 1}{2y}$ with $f(0) = 3$.`,
+    question: String.raw`What is $f(3)$?`,
+    choices: [String.raw`$\sqrt{21}$`, String.raw`$\sqrt{15}$`, String.raw`$2\sqrt{3}$`, "$21$"],
+    why: [
+      String.raw`Separate: $2y\,dy = (2x + 1)\,dx$, so $y^2 = x^2 + x + C$. With $f(0) = 3$: $9 = C$. Since $f(0) > 0$, $f(x) = \sqrt{x^2 + x + 9}$, and $f(3) = \sqrt{9 + 3 + 9} = \sqrt{21}$.`,
+      String.raw`This uses $C = 3$, the value of $y$, in place of $C = y^2 = 9$.`,
+      String.raw`This leaves out the constant of integration: $\sqrt{9 + 3} = \sqrt{12} = 2\sqrt{3}$.`,
+      String.raw`$21$ is the value of $y^2$. The solution is the square root, $\sqrt{21}$.`,
+    ], answer: 0 },
+  { id: "q707-m02", type: "mcq", skill: "u7", topic: "7.7", calc: false,
+    question: String.raw`Which function is the solution to the differential equation $\dfrac{dy}{dx} = y\cos x$ with the initial condition $y(0) = 2$?`,
+    choices: [String.raw`$y = 2e^{\sin x}$`, String.raw`$y = e^{\sin x} + 1$`, String.raw`$y = 2e^{\cos x}$`, String.raw`$y = e^{\sin x + 2}$`],
+    why: [
+      String.raw`Separate: $\dfrac{dy}{y} = \cos x\,dx$, so $\ln|y| = \sin x + C$ and $y = Ae^{\sin x}$. With $y(0) = 2$: $Ae^{0} = 2$, so $A = 2$.`,
+      String.raw`This adds the constant after exponentiating. From $\ln|y| = \sin x + C$, the constant becomes a factor, and $e^{\sin x} + 1$ does not satisfy the differential equation.`,
+      String.raw`The antiderivative of $\cos x$ is $\sin x$, not $\cos x$. Also $2e^{\cos 0} = 2e \neq 2$.`,
+      String.raw`This uses $C = 2$ in $\ln|y| = \sin x + C$. The condition gives $\ln 2 = 0 + C$, so $C = \ln 2$. Here $y(0) = e^2$, not $2$.`,
+    ], answer: 0 },
+  { id: "q707-m03", type: "mcq", skill: "u7", topic: "7.7", calc: false,
+    question: String.raw`Which function is the solution to the differential equation $\dfrac{dy}{dx} = xe^{-y}$ with the initial condition $y(0) = 0$?`,
+    choices: [String.raw`$y = \ln\left(\frac{x^2}{2} + 1\right)$`, String.raw`$y = \ln\left(x^2 + 1\right)$`, String.raw`$y = \frac{x^2}{2}$`, String.raw`$y = -\ln\left(1 - \frac{x^2}{2}\right)$`],
+    why: [
+      String.raw`Separate: $e^{y}\,dy = x\,dx$, so $e^{y} = \dfrac{x^2}{2} + C$. With $y(0) = 0$: $1 = C$. Then $y = \ln\left(\dfrac{x^2}{2} + 1\right)$.`,
+      String.raw`This integrates $x\,dx$ as $x^2$, leaving out the factor $\dfrac{1}{2}$.`,
+      String.raw`This integrates the right side but treats $e^{-y}$ as $1$, solving $\dfrac{dy}{dx} = x$.`,
+      String.raw`This integrates $e^{-y}$ in place of moving it to the left as $e^{y}$. Its derivative is $\dfrac{x}{1 - x^2/2}$, which is not $xe^{-y} = x\left(1 - \dfrac{x^2}{2}\right)$.`,
+    ], answer: 0 },
+  { id: "q707-m04", type: "mcq", skill: "u7", topic: "7.7", calc: false,
+    stem: String.raw`The particular solution of the differential equation $\dfrac{dy}{dx} = y^2$ with $y(0) = \dfrac{1}{2}$ is $y = \dfrac{1}{2 - x}$.`,
+    question: String.raw`On which interval is this particular solution defined?`,
+    choices: [String.raw`$x < 2$`, String.raw`$x > 2$`, String.raw`All $x \neq 2$`, "All real numbers"],
+    why: [
+      String.raw`A particular solution must be differentiable on an open interval containing the initial point $x = 0$. The function is undefined at $x = 2$, so the interval containing $0$ is $x < 2$.`,
+      String.raw`This interval does not contain the initial point $x = 0$.`,
+      String.raw`A solution is defined on one interval containing the initial point. The two pieces are separated at $x = 2$, and only $x < 2$ contains $x = 0$.`,
+      String.raw`At $x = 2$ the denominator $2 - x$ is $0$, so the function is undefined there.`,
+    ], answer: 0 },
+  { id: "q707-m05", type: "mcq", skill: "u7", topic: "7.7", calc: false,
+    question: String.raw`Which function is the solution to the differential equation $\dfrac{dy}{dx} = \cos^2 y$ with the initial condition $y(0) = \dfrac{\pi}{4}$?`,
+    choices: [String.raw`$y = \arctan(x + 1)$`, String.raw`$y = \arctan x + \frac{\pi}{4}$`, String.raw`$y = \arctan x$`, String.raw`$y = \tan x + \frac{\pi}{4}$`],
+    why: [
+      String.raw`Separate: $\sec^2 y\,dy = dx$, so $\tan y = x + C$. With $y(0) = \dfrac{\pi}{4}$: $\tan\dfrac{\pi}{4} = 1 = C$. Then $\tan y = x + 1$ and $y = \arctan(x + 1)$.`,
+      String.raw`This adds the initial value $\dfrac{\pi}{4}$ after solving. The constant is found from $\tan y = x + C$: $C = \tan\dfrac{\pi}{4} = 1$.`,
+      String.raw`This leaves out the constant. It satisfies the differential equation, but $\arctan 0 = 0$, not $\dfrac{\pi}{4}$.`,
+      String.raw`This solves $\tan y = x + C$ incorrectly for $y$. Undoing the tangent requires the arctangent of the whole right side.`,
+    ], answer: 0 },
+  { id: "q707-m06", type: "mcq", skill: "u7", topic: "7.7", calc: true,
+    stem: String.raw`Let $y = f(t)$ be the solution to the differential equation $\dfrac{dy}{dt} = 0.2ty$ with $f(0) = 10$.`,
+    question: String.raw`What is $f(2)$?`,
+    choices: ["$14.918$", "$22.255$", "$10.492$", "$10.400$"],
+    why: [
+      String.raw`Separate: $\dfrac{dy}{y} = 0.2t\,dt$, so $\ln|y| = 0.1t^2 + C$ and $y = Ae^{0.1t^2}$. With $f(0) = 10$, $A = 10$. Then $f(2) = 10e^{0.4} \approx 14.918$.`,
+      String.raw`This integrates $0.2t$ as $0.2t^2$, leaving out the factor $\dfrac{1}{2}$: $10e^{0.8} \approx 22.255$.`,
+      String.raw`This writes the solution as $e^{0.1t^2} + 9$, adding the constant in place of multiplying: $e^{0.4} + 9 \approx 10.492$.`,
+      String.raw`This integrates only the right side, $y = 0.1t^2 + 10$, treating $y$ as the constant $1$.`,
+    ], answer: 0 },
+  { id: "q707-f1a", type: "frq", skill: "u7", topic: "7.7", calc: false, set: "q707-s9", part: "(a)",
+    prompt: String.raw`Find $y = f(x)$, the particular solution to the differential equation with the initial condition $f(1) = -2$.`,
+    rows: [
+      { name: "Separation and antiderivatives", earns: String.raw`$\displaystyle \int 2y\,dy = \int 3x^2\,dx$, giving $y^2 = x^3 + C$.` },
+      { name: "Constant", earns: String.raw`Uses the initial condition: $4 = 1 + C$, so $C = 3$.` },
+      { name: "Solves for y", earns: String.raw`$f(x) = -\sqrt{x^3 + 3}$, choosing the negative root because $f(1) < 0$.` },
+    ],
+    solution: String.raw`Separate: $2y\,dy = 3x^2\,dx$. Integrate: $y^2 = x^3 + C$. With $f(1) = -2$: $(-2)^2 = 1^3 + C$, so $C = 3$ and $y^2 = x^3 + 3$. Since $f(1) = -2 < 0$, take the negative square root: $f(x) = -\sqrt{x^3 + 3}$.` },
+  { id: "q707-f1b", type: "frq", skill: "u7", topic: "7.7", calc: false, set: "q707-s9", part: "(b)",
+    prompt: String.raw`For what values of $x$ is the particular solution $f$ found in part (a) defined? Explain your reasoning.`,
+    rows: [
+      { name: "Domain with reason", earns: String.raw`$x > -\sqrt[3]{3}$, because $x^3 + 3$ must be positive: the square root requires $x^3 + 3 \geq 0$, and $\dfrac{dy}{dx}$ is undefined where $y = 0$.` },
+    ],
+    solution: String.raw`$f(x) = -\sqrt{x^3 + 3}$ requires $x^3 + 3 \geq 0$. At $x^3 + 3 = 0$, $y = 0$ and $\dfrac{dy}{dx} = \dfrac{3x^2}{2y}$ is undefined, so $f$ cannot be a solution there. The solution is defined where $x^3 + 3 > 0$, that is, for $x > -\sqrt[3]{3}$, an interval that contains the initial point $x = 1$.` },
+];
+
+export default { forms: [{ id: "q707", name: "Topic 7.7 Quiz: Particular Solutions with Initial Conditions", group: "Unit 7: Differential Equations", items }] };

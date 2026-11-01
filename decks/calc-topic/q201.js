@@ -1,0 +1,106 @@
+import { graph } from "../../plot.js";
+
+export const sets = {
+  "q201-s1": {
+    name: "Water in a tank",
+    label: "Table",
+    intro: String.raw`Water is pumped into a tank. The volume of water in the tank, $V(t)$ gallons, is recorded at selected times $t$ minutes.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["$t$ (minutes)", "$0$", "$2$", "$5$", "$8$", "$10$"], rows: [["$V(t)$ (gallons)", "$40$", "$52$", "$70$", "$94$", "$101$"]] } }] }],
+  },
+  "q201-s2": {
+    name: "The graph of f",
+    label: "Graph",
+    intro: String.raw`The graph of the function $f$, made of four line segments, is shown below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 6], y: [-2, 4], xname: "x", yname: "y", segments: [[-2, 1, 0, 3], [0, 3, 2, 2], [2, 2, 4, -1], [4, -1, 5, 1]], dots: [[-2, 1, "closed"], [0, 3, "closed"], [2, 2, "closed"], [4, -1, "closed"], [5, 1, "closed"]], alt: "Graph of f on the interval from x = -2 to x = 5, made of line segments joining the points (-2, 1), (0, 3), (2, 2), (4, -1), and (5, 1)." }) }] }],
+  },
+  "q201-s3": {
+    name: "A skateboarder on a ramp",
+    label: "Free response",
+    intro: String.raw`A skateboarder rolls down a straight ramp. Her distance from the top of the ramp at time $t$ seconds is $D(t) = t^{2} + 4t$ feet, for $0 \le t \le 5$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`Answer each part. Show the work that leads to your answers.` }] }],
+  },
+};
+
+export default {
+  forms: [{
+    id: "q201",
+    name: "Topic 2.1 Quiz: Average and Instantaneous Rates of Change",
+    group: "Unit 2: Differentiation: Definition and Fundamental Properties",
+    items: [
+      { id: "q201-m01", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+        question: String.raw`What is the average rate of change of $f(x) = \sqrt{x + 12}$ over the interval $[4, 13]$?`,
+        choices: [String.raw`$\frac{1}{9}$`, "$1$", String.raw`$\frac{9}{2}$`, String.raw`$-\frac{1}{9}$`],
+        why: [
+          String.raw`$f(13) = \sqrt{25} = 5$ and $f(4) = \sqrt{16} = 4$, so the average rate of change is $\dfrac{f(13) - f(4)}{13 - 4} = \dfrac{1}{9}$.`,
+          String.raw`$1$ is the change in $f$, $f(13) - f(4)$. It still has to be divided by the length of the interval, $13 - 4 = 9$.`,
+          String.raw`$\dfrac{9}{2}$ is the average of the two function values, $\dfrac{5 + 4}{2}$. The average rate of change divides the change in $f$ by the change in $x$.`,
+          String.raw`$-\dfrac{1}{9}$ comes from subtracting in the wrong order in the numerator only: $\dfrac{f(4) - f(13)}{13 - 4}$. Both differences must start from the same endpoint.`,
+        ], answer: 0 },
+      { id: "q201-m02", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "q201-s1",
+        question: String.raw`Based on the table, what is the average rate of change of $V$ over the interval $2 \le t \le 8$, in gallons per minute?`,
+        choices: ["$7$", "$42$", "$6.75$", String.raw`$\frac{1}{7}$`],
+        why: [
+          String.raw`$\dfrac{V(8) - V(2)}{8 - 2} = \dfrac{94 - 52}{6} = \dfrac{42}{6} = 7$ gallons per minute.`,
+          String.raw`$42$ gallons is the change in volume. Divide it by the $6$ minutes that passed.`,
+          String.raw`$6.75$ is $\dfrac{V(8) - V(0)}{8 - 0} = \dfrac{54}{8}$, which uses the interval $0 \le t \le 8$ instead of $2 \le t \le 8$.`,
+          String.raw`$\dfrac{1}{7}$ is the reciprocal, $\dfrac{8 - 2}{V(8) - V(2)}$, which gives minutes per gallon.`,
+        ], answer: 0 },
+      { id: "q201-m03", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+        question: String.raw`Which of the following expressions gives the instantaneous rate of change of $g(x) = 5^{x}$ at $x = 2$?`,
+        choices: [
+          String.raw`$\displaystyle \lim_{h \to 0} \frac{5^{2+h} - 25}{h}$`,
+          String.raw`$\displaystyle \lim_{h \to 0} \frac{5^{2+h} - 5^{h}}{h}$`,
+          String.raw`$\displaystyle \lim_{h \to 2} \frac{5^{2+h} - 25}{h}$`,
+          String.raw`$\displaystyle \lim_{h \to 0} \frac{5^{2+h} - 25}{2 + h}$`,
+        ],
+        why: [
+          String.raw`The instantaneous rate of change at $x = 2$ is the limit of the average rates of change $\dfrac{g(2 + h) - g(2)}{h}$ as $h \to 0$, and $g(2) = 5^{2} = 25$.`,
+          String.raw`This subtracts $g(h)$ instead of $g(2)$. The numerator must compare $g$ at $2 + h$ with $g$ at $2$.`,
+          String.raw`Here $h$ approaches $2$, so the expression equals $\dfrac{5^{4} - 25}{2} = 300$, the average rate of change over $[2, 4]$. The width $h$ must approach $0$.`,
+          String.raw`The denominator must be the change in $x$, which is $(2 + h) - 2 = h$, not the new $x$-value $2 + h$. This limit equals $0$.`,
+        ], answer: 0 },
+      { id: "q201-m04", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+        question: String.raw`For $h \ne 0$, the average rate of change of a function $k$ over the interval $[1, 1 + h]$ is $6 + 2h - h^{2}$. What is the instantaneous rate of change of $k$ at $x = 1$?`,
+        choices: ["$6$", "$7$", "$3$", String.raw`It cannot be determined without a formula for $k$.`],
+        why: [
+          String.raw`The instantaneous rate of change is the limit of the average rate of change as $h \to 0$: $\displaystyle \lim_{h \to 0} \left( 6 + 2h - h^{2} \right) = 6$.`,
+          String.raw`$7$ is the value at $h = 1$, the average rate of change over $[1, 2]$. The limit as $h \to 0$ is needed.`,
+          String.raw`$3$ is the value at $h = -1$, the average rate of change over $[0, 1]$. The limit as $h \to 0$ is needed.`,
+          String.raw`The average rates of change for every $h$ are given, and their limit as $h \to 0$ is the instantaneous rate of change. No formula for $k$ is needed.`,
+        ], answer: 0 },
+      { id: "q201-m05", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+        question: String.raw`The height of an elevator above the ground is $A(t) = 3t^{2} + 2t$ feet at time $t$ seconds. For $h \ne 0$, which expression gives the average rate of change of $A$ over the interval $[2, 2 + h]$?`,
+        choices: ["$14 + 3h$", "$14$", "$12 + 3h$", "$14h + 3h^{2}$"],
+        why: [
+          String.raw`$A(2 + h) = 3(4 + 4h + h^{2}) + 4 + 2h = 16 + 14h + 3h^{2}$ and $A(2) = 16$, so $\dfrac{A(2 + h) - A(2)}{h} = \dfrac{14h + 3h^{2}}{h} = 14 + 3h$.`,
+          String.raw`$14$ is the limit of the average rate as $h \to 0$, the instantaneous rate at $t = 2$. The average rate over $[2, 2 + h]$ still depends on $h$.`,
+          String.raw`$12 + 3h$ drops the $2h$ that comes from the $2t$ term when $A(2 + h)$ is expanded.`,
+          String.raw`$14h + 3h^{2}$ is the change $A(2 + h) - A(2)$. It must be divided by the change in time, $h$.`,
+        ], answer: 0 },
+      { id: "q201-m06", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "q201-s2",
+        question: String.raw`What is the instantaneous rate of change of $f$ at $x = 3$?`,
+        choices: [String.raw`$-\frac{3}{2}$`, String.raw`$\frac{1}{2}$`, String.raw`$-\frac{1}{3}$`, String.raw`$-\frac{2}{3}$`],
+        why: [
+          String.raw`Near $x = 3$ the graph is the segment from $(2, 2)$ to $(4, -1)$, so the rate of change at $x = 3$ is its slope, $\dfrac{-1 - 2}{4 - 2} = -\dfrac{3}{2}$.`,
+          String.raw`$\dfrac{1}{2}$ is the value $f(3)$, read from the graph. The rate of change is the slope of the graph there.`,
+          String.raw`$-\dfrac{1}{3}$ is the average rate of change over the whole interval $[-2, 4]$, $\dfrac{-1 - 1}{4 - (-2)}$, not the rate at $x = 3$.`,
+          String.raw`$-\dfrac{2}{3}$ is run over rise for the segment, $\dfrac{4 - 2}{-1 - 2}$. Slope is the change in $y$ over the change in $x$.`,
+        ], answer: 0 },
+      { id: "q201-f1a", type: "frq", skill: "u2", topic: "2.1", calc: false, set: "q201-s3", part: "(a)",
+        prompt: String.raw`Find the average velocity of the skateboarder over the interval $1 \le t \le 4$. Indicate units of measure.`,
+        rows: [{ name: "Answer", earns: String.raw`$\dfrac{D(4) - D(1)}{4 - 1} = \dfrac{32 - 5}{3} = 9$ feet per second, with units.` }],
+        solution: String.raw`$D(4) = 16 + 16 = 32$ and $D(1) = 1 + 4 = 5$. The average velocity is $\dfrac{D(4) - D(1)}{4 - 1} = \dfrac{27}{3} = 9$ feet per second.` },
+      { id: "q201-f1b", type: "frq", skill: "u2", topic: "2.1", calc: false, set: "q201-s3", part: "(b)",
+        prompt: String.raw`Show that for $h \ne 0$, the average velocity of the skateboarder over the interval $[3, 3 + h]$ is $10 + h$.`,
+        rows: [
+          { name: "Difference quotient", earns: String.raw`Writes $\dfrac{D(3 + h) - D(3)}{h}$ with $D(3 + h) = (3 + h)^{2} + 4(3 + h)$ and $D(3) = 21$.` },
+          { name: "Simplification", earns: String.raw`Simplifies the numerator to $10h + h^{2}$ and divides by $h$ to get $10 + h$.` },
+        ],
+        solution: String.raw`$D(3 + h) = 9 + 6h + h^{2} + 12 + 4h = 21 + 10h + h^{2}$ and $D(3) = 9 + 12 = 21$. For $h \ne 0$, $$\frac{D(3 + h) - D(3)}{h} = \frac{10h + h^{2}}{h} = 10 + h.$$` },
+      { id: "q201-f1c", type: "frq", skill: "u2", topic: "2.1", calc: false, set: "q201-s3", part: "(c)",
+        prompt: String.raw`Use the result from part (b) to find the instantaneous velocity of the skateboarder at $t = 3$. Show the limit that gives your answer.`,
+        rows: [{ name: "Limit and answer", earns: String.raw`$\displaystyle \lim_{h \to 0} (10 + h) = 10$ feet per second.` }],
+        solution: String.raw`The instantaneous velocity at $t = 3$ is the limit of the average velocities over $[3, 3 + h]$ as $h \to 0$: $\displaystyle \lim_{h \to 0} (10 + h) = 10$. The skateboarder's velocity at $t = 3$ is $10$ feet per second.` },
+    ],
+  }],
+};

@@ -5,6 +5,7 @@ import cspQ3 from "./decks/csp-q3.js";
 import cyberU2 from "./decks/cyber-u2.js";
 import csa from "./decks/csa.js";
 import whap from "./decks/whap.js";
+import calc from "./decks/calc.js";
 
 export const courses = [
   { id: "csp", name: "AP Computer Science Principles", short: "AP CSP", period: "Period D", book: true, decks: [cspQ3] },
@@ -18,6 +19,7 @@ export const courses = [
   { id: "whap", name: "AP World History: Modern", short: "AP World (B)", period: "Period B", book: false, passwords: true, decks: [whap] },
   { id: "whap-c", name: "AP World History: Modern", short: "AP World (C)", period: "Period C", book: false, passwords: true, decks: [whap] },
   { id: "whap-d", name: "AP World History: Modern", short: "AP World (D)", period: "Period D", book: false, passwords: true, decks: [whap] },
+  { id: "calc", name: "AP Calculus AB", short: "AP Calc AB", period: "", book: false, passwords: true, decks: [calc] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

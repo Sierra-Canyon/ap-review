@@ -1,0 +1,81 @@
+export const sets = {
+  "q607-s9": { name: "A function from its derivative", label: "Free response", intro: String.raw`The function $g$ is differentiable for $x > 0$, with $g(1) = 2$ and derivative $g'(x) = 6\sqrt{x} - \dfrac{3}{x^2}$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$g'(x) = 6\sqrt{x} - \dfrac{3}{x^2}, \qquad g(1) = 2$$` }] }] },
+};
+
+const items = [
+  { id: "q607-m01", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+    question: String.raw`$\displaystyle \int_1^2 \left( 6x^2 - 2x \right) dx =$`,
+    choices: ["$11$", "$13$", "$12$", "$16$"],
+    why: [
+      String.raw`An antiderivative is $F(x) = 2x^3 - x^2$. Then $F(2) - F(1) = (16 - 4) - (2 - 1) = 11$.`,
+      String.raw`$12 + 1 = 13$ adds $F(1)$ in place of subtracting it.`,
+      String.raw`$12$ is $F(2)$ alone. The value of the antiderivative at the lower limit, $F(1) = 1$, must be subtracted.`,
+      String.raw`$16 = 20 - 4$ subtracts values of the integrand, $6x^2 - 2x$, in place of values of an antiderivative.`,
+    ], answer: 0 },
+  { id: "q607-m02", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+    question: String.raw`$\displaystyle \int_0^{\pi/3} \sin x\,dx =$`,
+    choices: [String.raw`$\frac{1}{2}$`, String.raw`$-\frac{1}{2}$`, String.raw`$\frac{\sqrt{3}}{2}$`, String.raw`$\frac{3}{2}$`],
+    why: [
+      String.raw`An antiderivative of $\sin x$ is $-\cos x$, so the integral is $-\cos\dfrac{\pi}{3} - \left( -\cos 0 \right) = -\dfrac{1}{2} + 1 = \dfrac{1}{2}$.`,
+      String.raw`This uses $\cos x$ as the antiderivative of $\sin x$, which gives $\dfrac{1}{2} - 1$. The antiderivative is $-\cos x$.`,
+      String.raw`$\dfrac{\sqrt{3}}{2} = \sin\dfrac{\pi}{3} - \sin 0$ evaluates the integrand in place of an antiderivative.`,
+      String.raw`$\dfrac{1}{2} + 1 = \dfrac{3}{2}$ adds the value at the lower limit in place of subtracting it.`,
+    ], answer: 0 },
+  { id: "q607-m03", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+    question: String.raw`$\displaystyle \int_1^4 \dfrac{1}{\sqrt{x}}\,dx =$`,
+    choices: ["$2$", String.raw`$-\frac{1}{2}$`, "$1$", String.raw`$\frac{14}{3}$`],
+    why: [
+      String.raw`$\dfrac{1}{\sqrt{x}} = x^{-1/2}$ has antiderivative $2x^{1/2}$, so the integral is $2\sqrt{4} - 2\sqrt{1} = 4 - 2 = 2$.`,
+      String.raw`$\dfrac{1}{2} - 1 = -\dfrac{1}{2}$ evaluates the integrand at the limits in place of an antiderivative.`,
+      String.raw`$\sqrt{4} - \sqrt{1} = 1$ leaves out the factor 2 from dividing by the new exponent $\dfrac{1}{2}$.`,
+      String.raw`$\dfrac{2}{3}\left( 8 - 1 \right) = \dfrac{14}{3}$ is the integral of $\sqrt{x}$, not of $\dfrac{1}{\sqrt{x}}$.`,
+    ], answer: 0 },
+  { id: "q607-m04", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+    stem: String.raw`The function $f$ is differentiable, $f(1) = 4$, and $f'(x) = 3x^2 + 2$.`,
+    question: String.raw`What is the value of $f(3)$?`,
+    choices: ["$34$", "$30$", "$29$", "$37$"],
+    why: [
+      String.raw`$f(3) = f(1) + \displaystyle \int_1^3 \left( 3x^2 + 2 \right) dx = 4 + \left[ x^3 + 2x \right]_1^3 = 4 + (33 - 3) = 34$.`,
+      String.raw`$30$ is $\displaystyle \int_1^3 f'(x)\,dx$, the change in $f$. The starting value $f(1) = 4$ must be added.`,
+      String.raw`$29$ is $f'(3)$, the derivative at $x = 3$, not the value of $f$.`,
+      String.raw`$4 + 33 = 37$ adds the antiderivative's value at $x = 3$ without subtracting its value at $x = 1$.`,
+    ], answer: 0 },
+  { id: "q607-m05", type: "mcq", skill: "u6", topic: "6.7", calc: true,
+    stem: String.raw`The function $f$ is differentiable, $f(1) = 4$, and $f'(x) = \sqrt{x^4 + 1}$.`,
+    question: String.raw`What is the value of $f(3)$?`,
+    choices: ["$12.980$", "$8.980$", "$-4.980$", "$9.055$"],
+    why: [
+      String.raw`$f(3) = f(1) + \displaystyle \int_1^3 \sqrt{x^4 + 1}\,dx \approx 4 + 8.980 = 12.980$.`,
+      String.raw`$8.980$ is $\displaystyle \int_1^3 f'(x)\,dx$, the change in $f$ from $x = 1$ to $x = 3$. The value $f(1) = 4$ must be added.`,
+      String.raw`$4 - 8.980 = -4.980$ subtracts the change in $f$. Since $x$ increases from 1 to 3, the change is added.`,
+      String.raw`$9.055$ is $f'(3) = \sqrt{82}$, the derivative at $x = 3$.`,
+    ], answer: 0 },
+  { id: "q607-m06", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+    stem: String.raw`Let $f(x) = \begin{cases} x^2, & x \le 2 \\ 6 - x, & x > 2 \end{cases}$`,
+    question: String.raw`What is the value of $\displaystyle \int_0^4 f(x)\,dx$?`,
+    choices: [String.raw`$\frac{26}{3}$`, String.raw`$\frac{64}{3}$`, "$16$", String.raw`$\frac{56}{3}$`],
+    why: [
+      String.raw`Split at $x = 2$: $\displaystyle \int_0^2 x^2\,dx + \int_2^4 (6 - x)\,dx = \dfrac{8}{3} + \left[ 6x - \dfrac{x^2}{2} \right]_2^4 = \dfrac{8}{3} + (16 - 10) = \dfrac{26}{3}$.`,
+      String.raw`$\dfrac{64}{3}$ integrates $x^2$ over all of $[0, 4]$. For $x > 2$, the function is $6 - x$.`,
+      String.raw`$16$ integrates $6 - x$ over all of $[0, 4]$. For $x \le 2$, the function is $x^2$.`,
+      String.raw`$\dfrac{8}{3} + 16$ evaluates $6x - \dfrac{x^2}{2}$ at $x = 4$ but does not subtract its value at $x = 2$.`,
+    ], answer: 0 },
+  { id: "q607-f1a", type: "frq", skill: "u6", topic: "6.7", calc: false, set: "q607-s9", part: "(a)",
+    prompt: String.raw`Use the Fundamental Theorem of Calculus to find $g(4)$.`,
+    rows: [
+      { name: "Setup", earns: String.raw`$g(4) = g(1) + \displaystyle \int_1^4 g'(x)\,dx$` },
+      { name: "Antiderivative", earns: String.raw`$4x^{3/2} + \dfrac{3}{x}$` },
+      { name: "Answer", earns: String.raw`$g(4) = \dfrac{111}{4}$` },
+    ],
+    solution: String.raw`By the Fundamental Theorem of Calculus,
+$$g(4) = g(1) + \int_1^4 \left( 6x^{1/2} - 3x^{-2} \right) dx = 2 + \left[ 4x^{3/2} + \dfrac{3}{x} \right]_1^4 = 2 + \left( 32 + \dfrac{3}{4} \right) - (4 + 3) = \dfrac{111}{4}.$$` },
+  { id: "q607-f1b", type: "frq", skill: "u6", topic: "6.7", calc: false, set: "q607-s9", part: "(b)",
+    prompt: String.raw`Find the average rate of change of $g$ on the interval $[1, 4]$.`,
+    rows: [
+      { name: "Answer", earns: String.raw`$\dfrac{g(4) - g(1)}{4 - 1} = \dfrac{103}{12}$` },
+    ],
+    solution: String.raw`$$\dfrac{g(4) - g(1)}{4 - 1} = \dfrac{\dfrac{111}{4} - 2}{3} = \dfrac{103/4}{3} = \dfrac{103}{12}.$$` },
+];
+
+export default { forms: [{ id: "q607", name: "Topic 6.7 Quiz: The Fundamental Theorem and Definite Integrals", group: "Unit 6: Integration and Accumulation of Change", items }] };

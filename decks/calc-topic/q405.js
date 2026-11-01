@@ -1,0 +1,83 @@
+export const sets = {
+  "q405-s9": { name: "A rising balloon", label: "Free response", intro: String.raw`A hot-air balloon rises straight up from a level field at a constant rate of 4 meters per second. An observer stands on the field 300 meters from the point where the balloon left the ground. Let $h$ be the height of the balloon, in meters, and let $\theta$ be the angle of elevation from the observer to the balloon.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$\dfrac{dh}{dt} = 4 \text{ meters per second}$$` }] }] },
+};
+
+const items = [
+  { id: "q405-m01", type: "mcq", skill: "u4", topic: "4.5", calc: false,
+    stem: "A boat is pulled toward a dock by a rope attached to its bow. The rope runs through a pulley on the dock that is 6 feet higher than the bow. The rope is pulled in at a rate of 2 feet per second.",
+    question: "When 10 feet of rope are out, at what rate is the boat approaching the dock?",
+    choices: [String.raw`$\frac{5}{2}$ feet per second`, String.raw`$\frac{8}{5}$ feet per second`, "$2$ feet per second", String.raw`$\frac{10}{3}$ feet per second`],
+    why: [
+      String.raw`With horizontal distance $x$ and rope length $L$, $x^2 + 36 = L^2$. When $L = 10$, $x = 8$. Then $2x\dfrac{dx}{dt} = 2L\dfrac{dL}{dt}$ gives $8\dfrac{dx}{dt} = 10(-2)$, so $\dfrac{dx}{dt} = -\dfrac{5}{2}$. The boat approaches at $\dfrac{5}{2}$ feet per second.`,
+      String.raw`This switches $x$ and $L$: $\dfrac{8}{10}(2)$. Solving $x\dfrac{dx}{dt} = L\dfrac{dL}{dt}$ for $\dfrac{dx}{dt}$ gives $\dfrac{L}{x}\dfrac{dL}{dt}$.`,
+      "The boat and the rope do not move at the same rate, because the rope is slanted.",
+      String.raw`This uses the pulley height 6 in place of the horizontal distance 8: $\dfrac{10}{6}(2)$.`,
+    ], answer: 0 },
+  { id: "q405-m02", type: "mcq", skill: "u4", topic: "4.5", calc: false,
+    stem: "A water trough is 10 meters long. Its cross section is an isosceles triangle, pointing down, that is 2 meters wide at the top and 1 meter deep. Water is pumped into the trough at a rate of 0.4 cubic meter per minute.",
+    question: "How fast is the water level rising when the water is 0.25 meter deep?",
+    choices: ["$0.08$ meter per minute", "$0.04$ meter per minute", "$0.32$ meter per minute", "$12.5$ meters per minute"],
+    why: [
+      String.raw`By similar triangles, water of depth $h$ has surface width $2h$, so $V = 10 \cdot \dfrac{1}{2}(2h)(h) = 10h^2$. Then $\dfrac{dV}{dt} = 20h\dfrac{dh}{dt}$, so $0.4 = 20(0.25)\dfrac{dh}{dt}$ and $\dfrac{dh}{dt} = 0.08$ meter per minute.`,
+      String.raw`This keeps the width at 2 meters for every depth, giving $V = 10h$. The width of the water's surface changes with $h$.`,
+      String.raw`This inverts the similar triangles ratio, using width $\dfrac{h}{2}$ in place of $2h$.`,
+      String.raw`This is $\dfrac{20h}{dV/dt}$, the reciprocal of the rate.`,
+    ], answer: 0 },
+  { id: "q405-m03", type: "mcq", skill: "u4", topic: "4.5", calc: false,
+    stem: "A person 5 feet tall walks away from a 20-foot lamppost at a rate of 3 feet per second.",
+    question: "At what rate is the length of the person's shadow increasing?",
+    choices: ["$1$ foot per second", "$4$ feet per second", "$3$ feet per second", String.raw`$\frac{3}{4}$ foot per second`],
+    why: [
+      String.raw`Let $x$ be the person's distance from the post and $s$ the shadow length. Similar triangles give $\dfrac{20}{x + s} = \dfrac{5}{s}$, so $15s = 5x$ and $s = \dfrac{x}{3}$. Then $\dfrac{ds}{dt} = \dfrac{1}{3}(3) = 1$ foot per second.`,
+      String.raw`$4$ feet per second is the rate at which the tip of the shadow moves, $\dfrac{d}{dt}(x + s)$, not the rate at which the shadow lengthens.`,
+      "The shadow does not lengthen at the walking rate. The similar triangles give a shadow one third as long as the distance to the post.",
+      String.raw`This sets $\dfrac{s}{x} = \dfrac{5}{20}$, matching the shadow to the distance from the post in place of the distance from the post to the shadow's tip.`,
+    ], answer: 0 },
+  { id: "q405-m04", type: "mcq", skill: "u4", topic: "4.5", calc: false,
+    stem: "Car A is 8 miles east of an intersection, driving west toward it at 50 miles per hour. At the same moment, car B is 6 miles north of the intersection, driving north away from it at 30 miles per hour.",
+    question: "At that moment, at what rate is the distance between the cars changing?",
+    choices: ["$-22$ miles per hour", "$-20$ miles per hour", "$22$ miles per hour", "$-220$ miles per hour"],
+    why: [
+      String.raw`With $D^2 = x^2 + y^2$, $D = 10$, and $D\dfrac{dD}{dt} = x\dfrac{dx}{dt} + y\dfrac{dy}{dt} = 8(-50) + 6(30) = -220$, so $\dfrac{dD}{dt} = -22$ miles per hour.`,
+      String.raw`$-50 + 30 = -20$ adds the speeds without weighting each by its distance and dividing by $D$.`,
+      String.raw`Car A moves toward the intersection, so $\dfrac{dx}{dt} = -50$. Treating it as $+50$ and B as $-30$ reverses the sign.`,
+      String.raw`$-220$ is $D\dfrac{dD}{dt}$. It still has to be divided by $D = 10$.`,
+    ], answer: 0 },
+  { id: "q405-m05", type: "mcq", skill: "u4", topic: "4.5", calc: false,
+    stem: "A lighthouse stands 2 kilometers from a straight shoreline. Its beam rotates at 3 radians per minute and makes a spot of light that moves along the shore.",
+    question: "How fast is the spot moving along the shore when it is 1 kilometer from the point on the shore nearest the lighthouse?",
+    choices: [String.raw`$\frac{15}{2}$ kilometers per minute`, "$6$ kilometers per minute", String.raw`$3\sqrt{5}$ kilometers per minute`, String.raw`$\frac{24}{5}$ kilometers per minute`],
+    why: [
+      String.raw`With $x = 2\tan\theta$, $\dfrac{dx}{dt} = 2\sec^2\theta\dfrac{d\theta}{dt}$. When $x = 1$, $\tan\theta = \dfrac{1}{2}$, so $\sec^2\theta = 1 + \dfrac{1}{4} = \dfrac{5}{4}$. Then $\dfrac{dx}{dt} = 2\left(\dfrac{5}{4}\right)(3) = \dfrac{15}{2}$ kilometers per minute.`,
+      String.raw`$2(3) = 6$ leaves out $\sec^2\theta$, the derivative of $\tan\theta$.`,
+      String.raw`This uses $\sec\theta = \dfrac{\sqrt{5}}{2}$ in place of $\sec^2\theta$.`,
+      String.raw`This uses $\cos^2\theta = \dfrac{4}{5}$ in place of $\sec^2\theta = \dfrac{5}{4}$.`,
+    ], answer: 0 },
+  { id: "q405-m06", type: "mcq", skill: "u4", topic: "4.5", calc: true,
+    stem: "Air is pumped into a spherical balloon at a rate of 40 cubic centimeters per second.",
+    question: "At what rate is the surface area of the balloon increasing when the radius is 6.5 centimeters?",
+    choices: ["$12.308$ square centimeters per second", "$0.075$ square centimeters per second", "$163.363$ square centimeters per second", "$6.154$ square centimeters per second"],
+    why: [
+      String.raw`$\dfrac{dV}{dt} = 4\pi r^2\dfrac{dr}{dt}$ gives $\dfrac{dr}{dt} = \dfrac{40}{4\pi(6.5)^2} \approx 0.07534$. Then $\dfrac{dS}{dt} = 8\pi r\dfrac{dr}{dt} = 8\pi(6.5)(0.07534) \approx 12.308$ square centimeters per second.`,
+      String.raw`$0.075$ is $\dfrac{dr}{dt}$, the rate of change of the radius, in centimeters per second.`,
+      String.raw`$8\pi(6.5) \approx 163.363$ is $\dfrac{dS}{dr}$. The factor $\dfrac{dr}{dt}$ is missing.`,
+      String.raw`This differentiates $4\pi r^2$ as $4\pi r$, dropping the factor $2$.`,
+    ], answer: 0 },
+  { id: "q405-f1a", type: "frq", skill: "u4", topic: "4.5", calc: false, set: "q405-s9", part: "(a)",
+    prompt: String.raw`At what rate is the distance between the observer and the balloon changing when the balloon is 400 meters high? Indicate units of measure.`,
+    rows: [
+      { name: "Related rates equation", earns: String.raw`$2D\dfrac{dD}{dt} = 2h\dfrac{dh}{dt}$ from $D^2 = 300^2 + h^2$.` },
+      { name: "Answer with units", earns: String.raw`$\dfrac{dD}{dt} = \dfrac{16}{5} = 3.2$ meters per second.` },
+    ],
+    solution: String.raw`Let $D$ be the distance from the observer to the balloon. Then $D^2 = 300^2 + h^2$, and when $h = 400$, $D = 500$. Differentiating, $2D\dfrac{dD}{dt} = 2h\dfrac{dh}{dt}$, so $500\dfrac{dD}{dt} = 400(4)$ and $\dfrac{dD}{dt} = \dfrac{16}{5} = 3.2$ meters per second.` },
+  { id: "q405-f1b", type: "frq", skill: "u4", topic: "4.5", calc: false, set: "q405-s9", part: "(b)",
+    prompt: String.raw`At what rate is the angle of elevation $\theta$ changing when the balloon is 400 meters high?`,
+    rows: [
+      { name: "Related rates equation", earns: String.raw`$\sec^2\theta\dfrac{d\theta}{dt} = \dfrac{1}{300}\dfrac{dh}{dt}$ from $\tan\theta = \dfrac{h}{300}$.` },
+      { name: "Answer", earns: String.raw`$\dfrac{d\theta}{dt} = \dfrac{3}{625} = 0.0048$ radian per second.` },
+    ],
+    solution: String.raw`$\tan\theta = \dfrac{h}{300}$, so $\sec^2\theta\dfrac{d\theta}{dt} = \dfrac{1}{300}\dfrac{dh}{dt}$. When $h = 400$, $\cos\theta = \dfrac{300}{500} = \dfrac{3}{5}$, so $\dfrac{d\theta}{dt} = \cos^2\theta \cdot \dfrac{4}{300} = \dfrac{9}{25} \cdot \dfrac{4}{300} = \dfrac{3}{625}$ radian per second.` },
+];
+
+export default { forms: [{ id: "q405", name: "Topic 4.5 Quiz: Solving Related Rates Problems", group: "Unit 4: Contextual Applications of Differentiation", items }] };

@@ -3,6 +3,7 @@ import { firebaseBackend, demoBackend, studentId } from "./backend.js";
 import { blankCard, grade, skillMastery, buildSession, counts, buildMock, partBPoints, partBMax, rowsMax, normOut, normCell, DAY } from "./srs.js";
 import { courses, courseById, coursesOf } from "./courses.js";
 import { snapshot, applyEdits, everyItem, editableFields, editId, originalOf, diffOf, pointsOf } from "./edits.js";
+import katex from "./vendor/katex.js";
 import { renderLearnHome, renderSection, bookSections, sectionsForSkill, activitiesOf } from "./book-ui.js";
 
 // ------------------------------------------------------------------------------------------ helpers
@@ -11,10 +12,21 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const skillName = (id) => deck.skills.find((s) => s.id === id)?.name || id;
 const skillFrom = (id) => deck.skills.find((s) => s.id === id)?.from || "";
-const baseTypes = { mcq: "Code reading", output: "Type the output", trace: "Trace table", wr: "Written response", vocab: "Vocabulary", fr: "Free response" };
+const baseTypes = { mcq: "Code reading", output: "Type the output", trace: "Trace table", wr: "Written response", vocab: "Vocabulary", fr: "Free response", frq: "Free response" };
+// Math: $...$ inline and $$...$$ on its own line, in LaTeX, drawn as MathML (no fonts or stylesheet needed). \$ is a dollar sign.
+const katexOut = (t, display) => { try { return katex.renderToString(t, { displayMode: display, output: "mathml", throwOnError: false }); } catch (e) { return esc(t); } };
+function mathText(s) {
+  return String(s ?? "").replace(/\\\$/g, "\u0000").split(/(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g).map((part) => {
+    if (/^\$\$[\s\S]+\$\$$/.test(part)) return katexOut(part.slice(2, -2), true);
+    if (/^\$[^$]+\$$/.test(part)) return katexOut(part.slice(1, -1), false);
+    return esc(part).replace(/\n/g, "<br>");
+  }).join("").replace(/\u0000/g, "$");
+}
+// Text a student reads: math where the course has it, plain text otherwise.
+const tx = (s) => (deck.lang === "math" ? mathText(s) : esc(s));
 const typeLabel = (t) => deck.typeNames?.[t] || baseTypes[t] || t;
 const isChoice = (it) => it.type === "mcq" || it.type === "vocab";
-const choiceText = (t) => (deck.lang === "java" ? md(t) : esc(t));
+const choiceText = (t) => (deck.lang === "java" ? md(t) : deck.lang === "math" ? mathText(t) : esc(t));
 const shuffle = (a) => { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
 const pct = (x) => Math.round(x * 100);
 
@@ -47,6 +59,7 @@ function md(s) {
 // Short inline code in prose: anything that looks like C# goes in a code span.
 function prose(s) {
   if (deck.lang === "java") return md(s);
+  if (deck.lang === "math") return mathText(s);
   if (deck.lang !== "csharp") return esc(s);
   return esc(s).replace(/(\b[A-Za-z_]+\[[^\]]*\]|\b[A-Za-z_]+\.(?:Count|Add|Length)\b(?: - \d)?|\b(?:i|n) (?:&lt;|&lt;=|&gt;|==|!=) [\w.]+|\bi\+\+|\breturn [-\w]+;?|\bint i = \d|\belse if\b|\bList&lt;\w+&gt;|\b[A-Z][a-zA-Z]+\([^)]*\))/g, "<code>$1</code>");
 }
@@ -329,21 +342,34 @@ function renderHome() {
 function sourcesHTML(set, open = true) {
   const block = (b) => {
     const lead = b.lead ? `<b>${esc(b.lead)}</b> ` : "";
-    if (b.ul) return `<div class="sblock">${lead ? `<p>${lead}</p>` : ""}<ul>${b.ul.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
+    if (b.ul) return `<div class="sblock">${lead ? `<p>${lead}</p>` : ""}<ul>${b.ul.map((x) => `<li>${tx(x)}</li>`).join("")}</ul></div>`;
+    // A graph drawn by plot.js from the deck file (trusted markup, never student text).
+    if (b.svg) return `<figure class="graphwrap">${b.svg}${b.caption ? `<figcaption class="small muted">${tx(b.caption)}</figcaption>` : ""}</figure>`;
     if (b.cite !== undefined) return `<p class="cite small muted">${b.kind === "practice" ? esc(b.cite) : `Source: ${esc(b.cite)}${b.url ? ` <a href="${esc(b.url)}" target="_blank" rel="noopener">(text)</a>` : ""}`}</p>`;
-    if (b.table) return `<div class="tablewrap"><table class="srctable"><thead><tr>${b.table.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${b.table.rows.map((r) => `<tr>${r.map((v) => `<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
-    return `<p>${lead}${esc(b.p)}</p>`;
+    if (b.table) return `<div class="tablewrap"><table class="srctable"><thead><tr>${b.table.head.map((h) => `<th>${tx(h)}</th>`).join("")}</tr></thead><tbody>${b.table.rows.map((r) => `<tr>${r.map((v) => `<td>${tx(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    return `<p>${lead}${tx(b.p)}</p>`;
   };
-  return `<details class="sources" ${open ? "open" : ""}><summary>Sources: ${esc(set.name)}</summary>
-    <p class="small muted">${esc(set.intro)}</p>
-    ${set.sources.map((src) => `<section class="source"><h3>${esc(src.title)}</h3>${src.blocks.map(block).join("")}</section>`).join("")}</details>`;
+  return `<details class="sources" ${open ? "open" : ""}><summary>${esc(set.label || "Sources")}: ${esc(set.name)}</summary>
+    <p class="small muted">${tx(set.intro)}</p>
+    ${set.sources.map((src) => `<section class="source">${src.title ? `<h3>${esc(src.title)}</h3>` : ""}${src.blocks.map(block).join("")}</section>`).join("")}</details>`;
 }
 const frPrompt = (item) => /^SAQ/.test(item.part)
-  ? `<p class="small muted">${esc(item.part)}. ${esc(item.lead)}</p><div class="prompt"><b>(${esc(item.sub)})</b> ${esc(item.prompt)}</div>`
-  : `<p class="small muted">Part ${esc(item.part)}. ${esc(item.lead)}</p><div class="prompt"><b>${esc(item.part)} (${esc(item.sub)})</b> ${esc(item.prompt)}</div>`;
+  ? `<p class="small muted">${esc(item.part)}. ${tx(item.lead)}</p><div class="prompt"><b>(${esc(item.sub)})</b> ${tx(item.prompt)}</div>`
+  : `<p class="small muted">Part ${esc(item.part)}. ${tx(item.lead)}</p><div class="prompt"><b>${esc(item.part)} (${esc(item.sub)})</b> ${tx(item.prompt)}</div>`;
+// A part of a math free-response question: the shared lead, then this part's prompt.
+const frqPrompt = (item) => `${item.lead ? `<p>${tx(item.lead)}</p>` : ""}<div class="prompt">${item.part ? `<b>${esc(item.part)}</b> ` : ""}${tx(item.prompt)}</div>`;
 
+// In a math course every question says whether a calculator is allowed, as on the AP exam.
+const calcChip = (it) => (deck.lang === "math" && (isChoice(it) || it.type === "frq") ? `<span class="chip ${it.calc ? "accent" : ""}">${it.calc ? "Calculator" : "No calculator"}</span>` : "");
 function itemHTML(item, opts = {}) {
-  const head = `<div class="row"><span class="chip accent">${esc(skillName(item.skill))}</span><span class="chip">${esc(typeLabel(item.type))}</span>${opts.tag ? `<span class="chip">${esc(opts.tag)}</span>` : ""}</div>`;
+  const head = `<div class="row"><span class="chip accent">${esc(skillName(item.skill))}</span><span class="chip">${esc(typeLabel(item.type))}</span>${calcChip(item)}${opts.tag ? `<span class="chip">${esc(opts.tag)}</span>` : ""}</div>`;
+  if (item.type === "frq") {
+    return `${head}
+      ${item.set ? sourcesHTML(deck.sets[item.set], opts.sourcesOpen !== false) : ""}
+      ${frqPrompt(item)}
+      <label for="wr-${item.id}" class="small muted">Your work and answer (or work on paper, then score yourself)</label>
+      <textarea class="wr" id="wr-${item.id}" spellcheck="false"></textarea>`;
+  }
   if (item.type === "essay") {
     return `${head}
       ${item.set ? sourcesHTML(deck.sets[item.set], opts.sourcesOpen !== false) : ""}
@@ -472,6 +498,19 @@ function mountItem(host, item, { mode = "review", onAnswer, saved, sourcesOpen =
     return;
   }
 
+  if (item.type === "frq") {
+    const ta = $("textarea", host);
+    if (saved?.text) ta.value = saved.text;
+    if (mode === "mock") { ta.addEventListener("input", () => onAnswer?.({ text: ta.value })); return; }
+    area.innerHTML = `<div class="row"><button class="btn primary" id="score">Score my answer</button></div>`;
+    $("#score", area).addEventListener("click", () => {
+      ta.readOnly = true;
+      $("#score", area).remove();
+      scoreRubric(area, item, (score, levels) => onAnswer?.({ result: cardResult(item, score), extra: { wr: { text: ta.value.slice(0, 4000), score, levels, ts: Date.now() } } }));
+    });
+    return;
+  }
+
   if (item.type === "essay") {
     const ta = $("textarea", host);
     if (saved?.text) ta.value = saved.text;
@@ -533,7 +572,7 @@ function scoreRubric(area, item, done, { showModel = true } = {}) {
   const box = document.createElement("div");
   box.className = "stack";
   const rows = item.rows.map((r) => ({ ...r, levels: r.levels || ["Not earned", r.earns] }));
-  box.innerHTML = `<p><b>${item.type === "essay" ? "Score your essay with the AP rubric, one row at a time." : "Score your code, one row at a time."}</b> ${item.type === "essay" ? "Pick the level your essay reaches in each row." : "Each row is a point. Give the point only when your code does what the row says."}</p>
+  box.innerHTML = `<p><b>${item.type === "essay" ? "Score your essay with the AP rubric, one row at a time." : item.type === "frq" ? "Score your work with the scoring guidelines, one point at a time." : "Score your code, one row at a time."}</b> ${item.type === "essay" ? "Pick the level your essay reaches in each row." : item.type === "frq" ? "Give a point only when your work shows exactly what it says, with the supporting work." : "Each row is a point. Give the point only when your code does what the row says."}</p>
     <div class="rubric">${rows.map((row, r) => `<fieldset class="rrow"><legend>${esc(row.name)}</legend>
       ${row.levels.map((lv, p) => `<label class="lvl"><input type="radio" name="r-${item.id}-${r}" value="${p}" id="r-${item.id}-${r}-${p}"><span class="pts">${p} pt${p === 1 ? "" : "s"}</span><span>${prose(lv)}</span></label>`).join("")}
     </fieldset>`).join("")}</div>
@@ -554,6 +593,8 @@ function scoreRubric(area, item, done, { showModel = true } = {}) {
 function solutionHTML(item, score) {
   const max = rowsMax(item);
   const verdict = `<div class="feedback ${score === max ? "ok" : score * 2 >= max ? "part" : "no"}"><span class="verdict">${score} / ${max}.</span></div>`;
+  if (item.type === "frq") return `${verdict}
+    <div class="stack"><b>A full-credit solution</b><div class="model">${tx(item.solution)}</div></div>`;
   if (item.type === "essay") return `${verdict}
     <div class="stack"><b>A strong response</b><div class="model">${esc(item.model)}</div></div>
     ${item.docs?.length ? `<div class="stack"><b>What each document offers</b><ul class="small">${item.docs.map((d) => `<li>${esc(d)}</li>`).join("")}</ul></div>` : ""}
@@ -649,9 +690,13 @@ function skillReport(cards) {
     .sort((a, b) => (b.missed / b.seen - a.missed / a.seen) || (a.acc - b.acc));
 }
 const snippet = (it) => {
-  const t = it.type === "essay" ? it.prompt : it.type === "code" ? it.title : it.type === "fr" ? `${it.part} (${it.sub}) ${it.prompt}` : it.type === "wr" ? it.prompt : it.type === "vocab" ? it.stem : (it.stem && !/^Consider the following/.test(it.stem) ? it.stem + " " : "") + (it.question || "");
+  const t = it.type === "essay" ? it.prompt : it.type === "code" ? it.title : it.type === "fr" ? `${it.part} (${it.sub}) ${it.prompt}` : it.type === "frq" ? `${it.part || ""} ${it.prompt}` : it.type === "wr" ? it.prompt : it.type === "vocab" ? it.stem : (it.stem && !/^Consider the following/.test(it.stem) ? it.stem + " " : "") + (it.question || "");
   const plain = String(t).replace(/`/g, "").replace(/\*\*/g, "");
-  return plain.length > 110 ? plain.slice(0, 107) + "..." : plain;
+  if (plain.length <= 110) return plain;
+  // Never cut a $...$ in half: if the cut leaves one open, run on to its closing $.
+  let cut = 107;
+  if (((plain.slice(0, cut).match(/(^|[^\\])\$/g) || []).length) % 2) { const close = plain.indexOf("$", cut); cut = close < 0 ? plain.length : close + 1; }
+  return plain.slice(0, cut) + (cut < plain.length ? "..." : "");
 };
 function missesPanel(cards) {
   const m = missesOf(cards), weak = skillReport(cards).filter((r) => r.missed).slice(0, 3);
@@ -675,7 +720,7 @@ function drillSkill(skill) {
   // Then the review items in the skill that are least solid, then new ones.
   const rest = deck.items.filter((it) => it.skill === skill && !missed.includes(it))
     .sort((a, b) => ((cards[a.id]?.n ? cards[a.id].b : 0.5) - (cards[b.id]?.n ? cards[b.id].b : 0.5)) || ((cards[a.id]?.ts || 0) - (cards[b.id]?.ts || 0)));
-  startCustom([...missed, ...rest.filter((it) => !["wr", "fr", "code", "essay"].includes(it.type)), ...rest.filter((it) => ["wr", "fr", "code", "essay"].includes(it.type)).slice(0, 1)], skillName(skill), () => drillSkill(skill));
+  startCustom([...missed, ...rest.filter((it) => !["wr", "fr", "code", "essay", "frq"].includes(it.type)), ...rest.filter((it) => ["wr", "fr", "code", "essay", "frq"].includes(it.type)).slice(0, 1)], skillName(skill), () => drillSkill(skill));
 }
 function bindDrills(root = view) {
   $$("[data-drill]", root).forEach((b) => b.addEventListener("click", () => {
@@ -707,7 +752,7 @@ function renderMisses() {
     <p class="small muted">Ten at a time, most recent first. A skill's Practice button starts with its misses, then the questions in that skill you know least.</p>
     ${Object.entries(bySkill).map(([sk, list]) => `<h3>${esc(skillName(sk))}</h3><ul class="list-plain misses">${list.map((it) => {
       const c = cards[it.id]; const wrongs = c.n - Math.round(c.c);
-      return `<li><span class="chip">${esc(typeLabel(it.type))}</span> <span>${esc(snippet(it))}</span>${it.code ? ` <code class="small">${esc(it.code.split("\n")[0].slice(0, 60))}</code>` : ""}<br><span class="small muted">${esc(whereFrom(it))} · missed ${wrongs} of ${c.n} · ${ago(c.ts)}</span></li>`;
+      return `<li><span class="chip">${esc(typeLabel(it.type))}</span> <span>${tx(snippet(it))}</span>${it.code ? ` <code class="small">${esc(it.code.split("\n")[0].slice(0, 60))}</code>` : ""}<br><span class="small muted">${esc(whereFrom(it))} · missed ${wrongs} of ${c.n} · ${ago(c.ts)}</span></li>`;
     }).join("")}</ul>`).join("")}
   </section>` : rep.length ? `<section class="panel"><p><b>No misses right now.</b> Every question you have answered, you got right the last time.</p></section>` : ""}`;
   bindDrills();
@@ -790,7 +835,7 @@ const isFR = () => deck.mock.partB.kind === "fr";
 const bScore = (it, m) => m.wr[it.id]?.score || 0;
 const formOf = (id) => deck.forms?.find((f) => f.id === id);
 // "Part A" and "Part B", or the deck's own names for its sections (AP World: Section I, Part A and so on).
-const partName = (it, inB) => deck.mock.sections?.[it.type] || (inB ? "Part B" : "Part A");
+const partName = (it, inB) => deck.mock.sections?.[it.type + (it.calc ? "-calc" : "")] || deck.mock.sections?.[it.type] || (inB ? "Part B" : "Part A");
 const ptsLabel = (n) => `${n} point${n === 1 ? "" : "s"}`;
 function startMock(formId) {
   const m = buildMock(deck, deckState().cards, Math.random, formId);
@@ -815,7 +860,7 @@ function renderMock() {
   if (m.phase === "done") return renderMockDone();
   const it = m.items[m.i];
   const partB = m.i >= m.partA;
-  const pts = ptsLabel(partB ? (isFR() ? 1 : ["code", "essay", "fr"].includes(it.type) ? rowsMax(it) : cfg.partB.points) : cfg.partA.points);
+  const pts = ptsLabel(partB ? (isFR() ? 1 : ["code", "essay", "fr", "frq"].includes(it.type) ? rowsMax(it) : cfg.partB.points) : cfg.partA.points);
   view.className = partB && (isFR() || it.set) ? "wide" : "";
   view.innerHTML = `
     <div class="progress">${m.items.map((x, k) => `<span class="${m.answers[x.id] && (m.answers[x.id].choice !== undefined || m.answers[x.id].text) ? "done" : ""} ${k === m.i ? "here" : ""}"></span>`).join("")}</div>
@@ -858,6 +903,8 @@ function renderMockScore() {
     ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div><h3 class="ctitle">${esc(it.title)}</h3><details class="sources"><summary>The task</summary><div class="md"><p>${md(it.prompt)}</p></div>${it.given ? codeBlock(it.given) : ""}</details>${yourCode}`
     : it.type === "fr"
     ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frPrompt(it)}${yours}`
+    : it.type === "frq"
+    ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span>${calcChip(it)}</div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frqPrompt(it)}${yours}`
     : it.type === "essay"
     ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}<div class="prompt"><b>${it.kind === "dbq" ? "Document-based question" : "Long essay question"}.</b> ${esc(it.prompt)}</div><div class="stack"><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div></div>`
     : `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span><span class="src">${esc(it.source)}</span></div>
@@ -872,7 +919,7 @@ function renderMockScore() {
     });
     $("#nextwr").focus({ preventScroll: true });
   };
-  if (it.type === "code" || it.type === "essay") scoreRubric(area, it, after, { showModel: false });
+  if (it.type === "code" || it.type === "essay" || it.type === "frq") scoreRubric(area, it, after, { showModel: false });
   else if (it.type === "fr") scoreFR(area, it, (score) => after(score), { showExamples: false });
   else scoreWR(area, it, m.answers[it.id]?.text || "", after, { showModel: false });
 }
@@ -952,9 +999,9 @@ function renderMockDone() {
     ${set ? sourcesHTML(set, false) : ""}
     ${B.map((it, k) => (cfg.sections && partName(it) !== partName(B[k - 1] || A[0]) ? `<h2>${esc(partName(it, true))}</h2>` : "")
       + (!set && it.set && it.set !== B[k - 1]?.set ? sourcesHTML(deck.sets[it.set], false) : "")
-      + (it.type === "code" || it.type === "essay"
-      ? `<details class="panel" open><summary><span class="chip ${bScore(it, m) === rowsMax(it) ? "good" : bScore(it, m) * 2 >= rowsMax(it) ? "warn" : "bad"}">${bScore(it, m)} / ${rowsMax(it)}</span> ${esc(it.type === "essay" ? (it.kind === "dbq" ? "Document-based question" : "Long essay question") : it.title)}</summary>
-        <div class="stack">${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>` : `<b>Your code</b><pre class="code"><code>${esc(m.answers[it.id]?.text || "(blank)")}</code></pre>`}
+      + (it.type === "code" || it.type === "essay" || it.type === "frq"
+      ? `<details class="panel" open><summary><span class="chip ${bScore(it, m) === rowsMax(it) ? "good" : bScore(it, m) * 2 >= rowsMax(it) ? "warn" : "bad"}">${bScore(it, m)} / ${rowsMax(it)}</span> ${it.type === "essay" ? (it.kind === "dbq" ? "Document-based question" : "Long essay question") : it.type === "frq" ? `${esc(it.part || "")} ${tx(it.prompt)}` : esc(it.title)}</summary>
+        <div class="stack">${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>` : it.type === "frq" ? `<b>Your work</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>` : `<b>Your code</b><pre class="code"><code>${esc(m.answers[it.id]?.text || "(blank)")}</code></pre>`}
         <div class="tablewrap"><table><tbody>${it.rows.map((r, k) => { const got = (m.wr[it.id].levels || [])[k] || 0, mx = r.max ?? (r.levels ? r.levels.length - 1 : 1); return `<tr><td class="num">${mx === 1 ? (got ? "✓" : "·") : `${got} / ${mx}`}</td><td><b>${esc(r.name)}</b><br><span class="small">${prose(r.levels ? r.levels[got] : r.earns || "")}</span></td></tr>`; }).join("")}</tbody></table></div>
         ${solutionHTML(it, bScore(it, m))}</div></details>`
       : it.type === "fr"
@@ -971,9 +1018,10 @@ function renderMockDone() {
 // Firestore and laid over the question for every student, in every section that uses the deck, from their next visit.
 const CODEISH = new Set(["code", "classes", "methods", "given", "solution"]);
 const PREISH = new Set(["log", "sample"]);
+const codeish = (k) => deck.lang !== "math" && CODEISH.has(k);
 function fieldHTML(k, v) {
   if (Array.isArray(v)) return `<ul class="small">${v.map((x) => `<li>${prose(x)}</li>`).join("")}</ul>`;
-  if (CODEISH.has(k)) return codeBlock(v);
+  if (codeish(k)) return codeBlock(v);
   if (PREISH.has(k)) return `<pre class="log">${esc(v)}</pre>`;
   if (k === "listII") return codeBlock(v, "List (ii)");
   return `<p>${deck.lang === "java" ? md(v) : prose(v)}</p>`;
@@ -990,7 +1038,7 @@ function questionBody(it) {
 function questionEditor(it) {
   const fields = editableFields(it);
   const choice = Array.isArray(it.choices) && typeof it.answer === "number";
-  const ta = (name, v, k) => `<textarea class="wr ${CODEISH.has(k) ? "mono" : ""}" name="${name}" rows="${Math.min(14, Math.max(2, Math.ceil(String(v).length / 80) + String(v).split("\n").length - 1))}" spellcheck="${CODEISH.has(k) ? "false" : "true"}">${esc(v)}</textarea>`;
+  const ta = (name, v, k) => `<textarea class="wr ${codeish(k) ? "mono" : ""}" name="${name}" rows="${Math.min(14, Math.max(2, Math.ceil(String(v).length / 80) + String(v).split("\n").length - 1))}" spellcheck="${codeish(k) ? "false" : "true"}">${esc(v)}</textarea>`;
   return `<form class="stack qedit" data-qform="${esc(it.id)}">
     ${fields.filter(([k]) => !(choice && (k === "choices" || k === "why"))).map(([k, label]) => `<label class="stack"><span class="small muted">${esc(label)}</span>
       ${Array.isArray(it[k]) ? it[k].map((v, j) => ta(`${k}.${j}`, v, k)).join("") : ta(k, it[k], k)}</label>`).join("")}
@@ -1004,7 +1052,7 @@ function questionEditor(it) {
 }
 function questionRow(it, n, open = false) {
   const chips = `${it.hidden ? `<span class="chip bad">Hidden</span>` : ""}${it.edited ? `<span class="chip warn" title="${esc(new Date(it.edited.ts).toLocaleString())}">Edited by ${esc(it.edited.by || "a teacher")} · ${ago(it.edited.ts)}</span>` : ""}`;
-  return `<details class="qitem" data-qid="${esc(it.id)}" ${open ? "open" : ""}><summary><b>${n}.</b> <span class="chip">${esc(typeLabel(it.type))}</span>${it.topic ? `<span class="chip">${esc(it.topic)}</span>` : ""}${chips} ${esc(snippet(it))}</summary>
+  return `<details class="qitem" data-qid="${esc(it.id)}" ${open ? "open" : ""}><summary><b>${n}.</b> <span class="chip">${esc(typeLabel(it.type))}</span>${it.topic ? `<span class="chip">${esc(it.topic)}</span>` : ""}${chips} ${tx(snippet(it))}</summary>
     <div class="qbody stack">${open ? questionBody(it) : ""}</div></details>`;
 }
 function renderQuestions() {
@@ -1283,10 +1331,10 @@ async function renderTeacher() {
     <div class="stack">${items.filter((x) => x.n).map(({ it, n, acc, missedLast, students, top, wrs }) => `<details>
       <summary><span class="row" style="display:inline-flex">${heat(acc)} <span class="mono small">${esc(it.id)}</span>${it.form ? ` <span class="chip">${esc(it.form)}</span>` : ""} <span>${esc(skillName(it.skill))} · ${esc(typeLabel(it.type))}${it.type === "fr" ? ` · ${esc(it.set ? deck.sets[it.set]?.short || deck.sets[it.set]?.name || "" : "")} ${esc(it.part)} (${esc(it.sub)})` : ""}</span> <span class="small muted">${students} students · ${n} attempts${missedLast ? ` · missed last: ${missedLast}` : ""}</span></span></summary>
       <div class="stack panel">
-        ${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div>` : it.type === "code" ? `<h3 class="ctitle">${esc(it.title)}</h3><div class="md"><p>${md(it.prompt)}</p></div>` : it.type === "wr" ? `${codeBlock(it.listII, "List (ii)")}<div class="prompt">${esc(it.prompt)}</div>` : it.type === "fr" ? `${frPrompt(it)}<p class="small"><b>Earns the point:</b> ${esc(it.earns)}</p>` : `${it.stem ? `<p>${prose(it.stem)}</p>` : ""}${it.code ? codeBlock(it.code) : ""}${it.log ? `<pre class="log">${esc(it.log)}</pre>` : ""}<p><b>${prose(it.question)}</b></p>`}
+        ${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div>` : it.type === "code" ? `<h3 class="ctitle">${esc(it.title)}</h3><div class="md"><p>${md(it.prompt)}</p></div>` : it.type === "wr" ? `${codeBlock(it.listII, "List (ii)")}<div class="prompt">${esc(it.prompt)}</div>` : it.type === "fr" ? `${frPrompt(it)}<p class="small"><b>Earns the point:</b> ${esc(it.earns)}</p>` : it.type === "frq" ? `${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frqPrompt(it)}` : `${it.stem ? `<p>${prose(it.stem)}</p>` : ""}${it.code ? codeBlock(it.code) : ""}${it.log ? `<pre class="log">${esc(it.log)}</pre>` : ""}<p><b>${prose(it.question)}</b></p>`}
         ${isChoice(it) ? `<p><b>Answer:</b> ${choiceText(it.choices[it.answer])}</p>${top ? `<p><b>Wrong answer picked most</b> (${top[1]} times): ${choiceText(it.choices[top[0]])}<br><span class="small muted">${prose(it.why[top[0]])}</span></p>` : ""}` : ""}
         ${it.type === "output" ? `<p><b>Answer:</b></p><pre class="code"><code>${esc(it.answer)}</code></pre>` : ""}
-        ${wrs.length ? `<b>Latest written responses</b>${wrs.sort((a, b) => b.ts - a.ts).map((w) => `<div class="stack"><span class="small"><b>${esc(w.who)}</b> · self-scored ${w.score} / ${it.type === "fr" ? 1 : it.type === "code" || it.type === "essay" ? rowsMax(it) : 4}${it.type === "fr" ? "" : ` (${(w.levels || []).join(" + ")})`} · ${ago(w.ts)}</span><div class="your">${esc(w.text || "(blank)")}</div></div>`).join("")}` : ""}
+        ${wrs.length ? `<b>Latest written responses</b>${wrs.sort((a, b) => b.ts - a.ts).map((w) => `<div class="stack"><span class="small"><b>${esc(w.who)}</b> · self-scored ${w.score} / ${it.type === "fr" ? 1 : it.type === "code" || it.type === "essay" || it.type === "frq" ? rowsMax(it) : 4}${it.type === "fr" ? "" : ` (${(w.levels || []).join(" + ")})`} · ${ago(w.ts)}</span><div class="your">${esc(w.text || "(blank)")}</div></div>`).join("")}` : ""}
       </div></details>`).join("")}</div>
   </section>
   <section class="panel">
@@ -1459,7 +1507,7 @@ function seedDemo(s, people) {
           } else if (it.type === "essay") {
             const max = rowsMax(it), sc = ok ? max - Math.floor(rnd() * 3) : Math.floor(rnd() * 3);
             card = grade(card, sc === max ? 1 : sc * 2 >= max ? 0.5 : 0, t, { wr: { text: "(example essay)", score: sc, levels: it.rows.map(() => 0), ts: t } });
-          } else if (it.type === "code") {
+          } else if (it.type === "code" || it.type === "frq") {
             const max = it.rows.length, sc = ok ? max - Math.floor(rnd() * 2) : Math.floor(rnd() * 4);
             card = grade(card, sc === max ? 1 : sc * 2 >= max ? 0.5 : 0, t, { wr: { text: "(example code)", score: sc, levels: it.rows.map((_, r) => (r < sc ? 1 : 0)), ts: t } });
           } else if (it.type === "fr") {
@@ -1482,7 +1530,7 @@ function seedDemo(s, people) {
   s.accounts["demo.email@scsstudent.org"] = { password: "maple-river-42" };
   s.cards["demo.email@scsstudent.org"] = { password: "maple-river-42", ts: Date.now() };
   // A teacher who signs in with a school email and sees only their course.
-  s.teachers["history.teacher@sierracanyonschool.org"] = { name: "Example History Teacher", courses: courses.filter((c) => c.passwords).map((c) => c.id) };
+  s.teachers["history.teacher@sierracanyonschool.org"] = { name: "Example History Teacher", courses: courses.filter((c) => c.id.startsWith("whap")).map((c) => c.id) };
   s.accounts["history.teacher@sierracanyonschool.org"] = { password: "teach-demo-7" };
 }
 

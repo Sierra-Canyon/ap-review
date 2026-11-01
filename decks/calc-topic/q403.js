@@ -1,0 +1,88 @@
+export const sets = {
+  "q403-s9": { name: "A cooling metal bar", label: "Free response", intro: String.raw`A metal bar is taken out of a furnace and left to cool. Its temperature, in degrees Celsius, $t$ minutes after it is taken out is modeled by $H(t) = 25 + 400e^{-0.08t}$ for $t \ge 0$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$H(t) = 25 + 400e^{-0.08t}$$` }] }] },
+};
+
+const items = [
+  { id: "q403-m01", type: "mcq", skill: "u4", topic: "4.3", calc: true,
+    stem: String.raw`The number of fish in a hatchery $t$ years after it opens is modeled by $P(t) = 500e^{0.04t}$.`,
+    question: String.raw`At what rate is the number of fish changing at $t = 10$ years?`,
+    choices: ["$29.836$ fish per year", "$745.912$ fish per year", "$20.000$ fish per year", "$24.591$ fish per year"],
+    why: [
+      String.raw`$P'(t) = 500(0.04)e^{0.04t} = 20e^{0.04t}$, so $P'(10) = 20e^{0.4} \approx 29.836$ fish per year.`,
+      String.raw`$745.912$ is $P(10)$, the number of fish, not the rate of change.`,
+      String.raw`$20$ is $P'(0)$. The factor $e^{0.04t}$ was left out or evaluated at $t = 0$.`,
+      String.raw`$\dfrac{P(10) - P(0)}{10} \approx 24.591$ is the average rate of change over the first 10 years, not the rate at $t = 10$.`,
+    ], answer: 0 },
+  { id: "q403-m02", type: "mcq", skill: "u4", topic: "4.3", calc: false,
+    stem: String.raw`The cost, in dollars, of producing $x$ backpacks is $C(x) = 0.02x^2 + 3x + 400$.`,
+    question: String.raw`What is the marginal cost $C'(100)$, in dollars per backpack?`,
+    choices: ["$7$", "$900$", "$9$", "$5$"],
+    why: [
+      String.raw`$C'(x) = 0.04x + 3$, so $C'(100) = 4 + 3 = 7$ dollars per backpack.`,
+      String.raw`$900$ is $C(100) = 200 + 300 + 400$, the total cost, not the rate.`,
+      String.raw`$\dfrac{C(100)}{100} = 9$ is the average cost per backpack, not the marginal cost.`,
+      String.raw`The derivative of $0.02x^2$ is $0.04x$, not $0.02x$. Using $0.02x + 3$ gives $5$.`,
+    ], answer: 0 },
+  { id: "q403-m03", type: "mcq", skill: "u4", topic: "4.3", calc: false,
+    stem: String.raw`A cylinder has a fixed height of 10 centimeters, so its volume is $V = 10\pi r^2$ cubic centimeters, where $r$ is the radius in centimeters.`,
+    question: String.raw`What is the rate of change of the volume with respect to the radius when $r = 4$?`,
+    choices: [String.raw`$80\pi$ cubic centimeters per centimeter`, String.raw`$160\pi$ cubic centimeters per centimeter`, String.raw`$40\pi$ cubic centimeters per centimeter`, String.raw`$16\pi$ cubic centimeters per centimeter`],
+    why: [
+      String.raw`$\dfrac{dV}{dr} = 20\pi r$, so at $r = 4$ the rate is $80\pi$ cubic centimeters per centimeter.`,
+      String.raw`$160\pi$ is the volume when $r = 4$, not its rate of change.`,
+      String.raw`This differentiates $r^2$ as $r$, dropping the factor $2$: $10\pi(4) = 40\pi$.`,
+      String.raw`$\pi r^2 = 16\pi$ is the rate of change of $\pi r^2 h$ with respect to the height $h$, not the radius.`,
+    ], answer: 0 },
+  { id: "q403-m04", type: "mcq", skill: "u4", topic: "4.3", calc: false,
+    stem: String.raw`The mass, in grams, of the first $x$ centimeters of a wire is $m(x) = 4\sqrt{x}$. The linear density of the wire at a point is the rate of change of mass with respect to length there.`,
+    question: String.raw`What is the linear density of the wire at $x = 9$ centimeters?`,
+    choices: [String.raw`$\frac{2}{3}$ gram per centimeter`, "$12$ grams per centimeter", String.raw`$\frac{4}{3}$ grams per centimeter`, String.raw`$\frac{1}{6}$ gram per centimeter`],
+    why: [
+      String.raw`$m'(x) = 4 \cdot \dfrac{1}{2}x^{-1/2} = \dfrac{2}{\sqrt{x}}$, so $m'(9) = \dfrac{2}{3}$ gram per centimeter.`,
+      String.raw`$12$ is $m(9)$, the mass of the first 9 centimeters, not a density.`,
+      String.raw`$\dfrac{m(9)}{9} = \dfrac{12}{9} = \dfrac{4}{3}$ is the average density of the first 9 centimeters, not the density at $x = 9$.`,
+      String.raw`$\dfrac{1}{2\sqrt{9}} = \dfrac{1}{6}$ leaves out the constant factor $4$.`,
+    ], answer: 0 },
+  { id: "q403-m05", type: "mcq", skill: "u4", topic: "4.3", calc: false,
+    stem: String.raw`At a constant temperature, the pressure $P$, in kilopascals, of a gas in a container with volume $V$, in liters, is $P = \dfrac{800}{V}$.`,
+    question: String.raw`What is the rate of change of the pressure with respect to the volume when $V = 20$ liters?`,
+    choices: ["$-2$ kilopascals per liter", "$2$ kilopascals per liter", "$40$ kilopascals per liter", "$-40$ kilopascals per liter"],
+    why: [
+      String.raw`$\dfrac{dP}{dV} = -\dfrac{800}{V^2}$, so at $V = 20$ the rate is $-\dfrac{800}{400} = -2$ kilopascals per liter.`,
+      String.raw`The derivative of $800V^{-1}$ is $-800V^{-2}$. The negative sign was dropped.`,
+      String.raw`$40$ is the pressure $\dfrac{800}{20}$, not its rate of change.`,
+      String.raw`This uses $-\dfrac{800}{V}$ as the derivative. The power rule gives $-800V^{-2}$, so $V$ is squared.`,
+    ], answer: 0 },
+  { id: "q403-m06", type: "mcq", skill: "u4", topic: "4.3", calc: true,
+    stem: String.raw`The depth of the water at a harbor entrance, in feet, $t$ hours after midnight is modeled by $D(t) = 8 + 3\sin(0.5t)$.`,
+    question: String.raw`What is the rate of change of the depth of the water at $t = 4$ hours?`,
+    choices: ["$-0.624$ feet per hour", "$0.624$ feet per hour", "$10.728$ feet per hour", "$-1.248$ feet per hour"],
+    why: [
+      String.raw`$D'(t) = 3(0.5)\cos(0.5t) = 1.5\cos(0.5t)$, so $D'(4) = 1.5\cos 2 \approx -0.624$ feet per hour.`,
+      String.raw`$\cos 2 < 0$, so $D'(4)$ is negative. The depth is decreasing at $t = 4$.`,
+      String.raw`$10.728$ is $D(4)$, the depth, not its rate of change.`,
+      String.raw`$3\cos 2 \approx -1.248$ leaves out the chain rule factor $0.5$.`,
+    ], answer: 0 },
+  { id: "q403-f1a", type: "frq", skill: "u4", topic: "4.3", calc: true, set: "q403-s9", part: "(a)",
+    prompt: String.raw`Find $H'(10)$. Using correct units, interpret the meaning of $H'(10)$ in the context of the problem.`,
+    rows: [
+      { name: "Answer", earns: String.raw`$H'(10) = -32e^{-0.8} \approx -14.379$.` },
+      { name: "Interpretation", earns: String.raw`At time $t = 10$ minutes, the temperature of the bar is decreasing at a rate of $14.379$ degrees Celsius per minute.` },
+    ],
+    solution: String.raw`$H'(t) = 400(-0.08)e^{-0.08t} = -32e^{-0.08t}$, so $H'(10) = -32e^{-0.8} \approx -14.379$. At time $t = 10$ minutes, the temperature of the bar is decreasing at a rate of $14.379$ degrees Celsius per minute.` },
+  { id: "q403-f1b", type: "frq", skill: "u4", topic: "4.3", calc: true, set: "q403-s9", part: "(b)",
+    prompt: String.raw`At what time $t$ is the temperature of the bar decreasing at a rate of 10 degrees Celsius per minute?`,
+    rows: [
+      { name: "Answer", earns: String.raw`Solves $H'(t) = -10$: $t = 12.5\ln(3.2) \approx 14.539$ minutes.` },
+    ],
+    solution: String.raw`$-32e^{-0.08t} = -10$ gives $e^{-0.08t} = \dfrac{10}{32}$, so $t = \dfrac{\ln(3.2)}{0.08} \approx 14.539$ minutes.` },
+  { id: "q403-f1c", type: "frq", skill: "u4", topic: "4.3", calc: true, set: "q403-s9", part: "(c)",
+    prompt: String.raw`Find $H''(t)$. Is the rate at which the bar cools getting faster or slower as $t$ increases? Give a reason for your answer.`,
+    rows: [
+      { name: "Answer with reason", earns: String.raw`Slower, because $H''(t) = 2.56e^{-0.08t} > 0$ while $H'(t) < 0$, so $H'(t)$ increases toward $0$.` },
+    ],
+    solution: String.raw`$H''(t) = 2.56e^{-0.08t}$, which is positive for all $t$. Since $H'(t) = -32e^{-0.08t} < 0$ and $H'$ is increasing, the rate of change of temperature moves toward $0$. The bar cools more slowly as $t$ increases.` },
+];
+
+export default { forms: [{ id: "q403", name: "Topic 4.3 Quiz: Rates of Change in Other Contexts", group: "Unit 4: Contextual Applications of Differentiation", items }] };

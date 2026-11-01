@@ -1,0 +1,96 @@
+export const sets = {
+  "q406-s9": { name: "A hiker's elevation", label: "Free response", intro: String.raw`A hiker climbs a mountain trail. The hiker's elevation, in meters, $t$ minutes after starting is given by a twice-differentiable function $E$. It is known that $E(10) = 300$, $E'(10) = 12$, and $E''(t) < 0$ for $0 < t < 20$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`$$E(10) = 300, \quad E'(10) = 12, \quad E''(t) < 0 \text{ for } 0 < t < 20$$` }] }] },
+};
+
+const items = [
+  { id: "q406-m01", type: "mcq", skill: "u4", topic: "4.6", calc: false,
+    stem: String.raw`A differentiable function $f$ has $f(2) = 5$ and $f'(2) = -3$.`,
+    question: String.raw`Using the line tangent to the graph of $f$ at $x = 2$, what is the approximate value of $f(2.1)$?`,
+    choices: ["$4.7$", "$5.3$", "$-1.3$", "$2$"],
+    why: [
+      String.raw`The tangent line is $y = 5 - 3(x - 2)$. At $x = 2.1$, $y = 5 - 3(0.1) = 4.7$.`,
+      String.raw`The slope is $-3$, so the change is $-0.3$, not $+0.3$.`,
+      String.raw`This uses $5 - 3x$, leaving out the shift: the tangent line is $5 - 3(x - 2)$.`,
+      String.raw`$5 + (-3) = 2$ uses a step of 1 in place of $2.1 - 2 = 0.1$.`,
+    ], answer: 0 },
+  { id: "q406-m02", type: "mcq", skill: "u4", topic: "4.6", calc: false,
+    question: String.raw`Using the local linear approximation of $f(x) = \sqrt[3]{x}$ at $x = 8$, what is the approximate value of $\sqrt[3]{7.8}$?`,
+    choices: [String.raw`$\frac{119}{60}$`, String.raw`$\frac{121}{60}$`, String.raw`$\frac{29}{15}$`, String.raw`$\frac{59}{30}$`],
+    why: [
+      String.raw`$f(8) = 2$ and $f'(x) = \dfrac{1}{3}x^{-2/3}$, so $f'(8) = \dfrac{1}{3 \cdot 4} = \dfrac{1}{12}$. Then $\sqrt[3]{7.8} \approx 2 + \dfrac{1}{12}(-0.2) = 2 - \dfrac{1}{60} = \dfrac{119}{60}$.`,
+      String.raw`$7.8 - 8 = -0.2$, so the correction is subtracted, not added.`,
+      String.raw`This uses a slope of $\dfrac{1}{3}$, leaving out the factor $x^{-2/3} = \dfrac{1}{4}$.`,
+      String.raw`This uses $8^{2/3} = 2$, but $8^{2/3} = 4$, so the slope is $\dfrac{1}{12}$, not $\dfrac{1}{6}$.`,
+    ], answer: 0 },
+  { id: "q406-m03", type: "mcq", skill: "u4", topic: "4.6", calc: false,
+    stem: String.raw`A twice-differentiable function $f$ has $f(1) = 4$, $f'(1) = 2$, and $f''(x) < 0$ for all $x$.`,
+    question: String.raw`The line tangent to the graph of $f$ at $x = 1$ is used to approximate $f(1.2)$. Which of the following is true?`,
+    choices: [
+      String.raw`The approximation is $4.4$, and it is an overestimate.`,
+      String.raw`The approximation is $4.4$, and it is an underestimate.`,
+      String.raw`The approximation is $3.6$, and it is an overestimate.`,
+      String.raw`The approximation is $4.4$, and it cannot be determined whether it is an overestimate or an underestimate.`,
+    ],
+    why: [
+      String.raw`$f(1.2) \approx 4 + 2(0.2) = 4.4$. Since $f'' < 0$, the graph of $f$ is concave down and lies below its tangent line, so $4.4$ is an overestimate.`,
+      String.raw`A graph that is concave down lies below its tangent lines, so the tangent line value is too large, not too small.`,
+      String.raw`The slope is $+2$ and $1.2 - 1 = 0.2$, so the change is $+0.4$, not $-0.4$.`,
+      String.raw`The sign of $f''$ is given for all $x$, which is enough to decide: concave down means the tangent line overestimates.`,
+    ], answer: 0 },
+  { id: "q406-m04", type: "mcq", skill: "u4", topic: "4.6", calc: false,
+    stem: String.raw`The line tangent to the graph of a differentiable function $f$ at $x = -1$ has equation $4x + 2y = 6$.`,
+    question: String.raw`What is the approximate value of $f(-0.9)$ using this tangent line?`,
+    choices: ["$4.8$", "$5.2$", "$5.4$", "$5$"],
+    why: [
+      String.raw`Solving for $y$, the tangent line is $y = 3 - 2x$. At $x = -0.9$, $y = 3 + 1.8 = 4.8$.`,
+      String.raw`From $x = -1$ to $x = -0.9$ the step is $+0.1$, so the change is $-2(0.1) = -0.2$, not $+0.2$.`,
+      String.raw`This uses the coefficient $4$ as the slope. Solving $4x + 2y = 6$ for $y$ gives slope $-2$.`,
+      String.raw`$5$ is $f(-1)$. The approximation at $x = -0.9$ must use the slope of the tangent line.`,
+    ], answer: 0 },
+  { id: "q406-m05", type: "mcq", skill: "u4", topic: "4.6", calc: true,
+    stem: String.raw`A function $f$ has $f(1) = 3$ and derivative $f'(x) = e^{\sin x}$.`,
+    question: String.raw`What is the approximation of $f(1.2)$ given by the line tangent to the graph of $f$ at $x = 1$?`,
+    choices: ["$3.464$", "$3.508$", "$5.320$", "$2.536$"],
+    why: [
+      String.raw`$f'(1) = e^{\sin 1} \approx 2.31978$. The tangent line gives $f(1.2) \approx 3 + 2.31978(0.2) \approx 3.464$.`,
+      String.raw`This uses the slope at $x = 1.2$, $f'(1.2) = e^{\sin 1.2}$. The tangent line at $x = 1$ uses $f'(1)$.`,
+      String.raw`$3 + f'(1) \approx 5.320$ leaves out the step $1.2 - 1 = 0.2$.`,
+      String.raw`$3 - 0.2f'(1)$ subtracts the change. The step $0.2$ is positive and so is $f'(1)$.`,
+    ], answer: 0 },
+  { id: "q406-m06", type: "mcq", skill: "u4", topic: "4.6", calc: false,
+    question: String.raw`What is the local linear approximation $L(x)$ of $f(x) = \sqrt{3x - 3}$ at $x = 4$?`,
+    choices: [
+      String.raw`$L(x) = 3 + \frac{1}{2}(x - 4)$`,
+      String.raw`$L(x) = 3 + \frac{1}{2}x$`,
+      String.raw`$L(x) = 3 + \frac{1}{6}(x - 4)$`,
+      String.raw`$L(x) = 3 + (x - 4)$`,
+    ],
+    why: [
+      String.raw`$f(4) = \sqrt{9} = 3$ and $f'(x) = \dfrac{3}{2\sqrt{3x - 3}}$, so $f'(4) = \dfrac{3}{6} = \dfrac{1}{2}$. Then $L(x) = 3 + \dfrac{1}{2}(x - 4)$.`,
+      String.raw`The linear approximation at $x = 4$ uses $x - 4$, not $x$. This line does not pass through $(4, 3)$.`,
+      String.raw`This uses $\dfrac{1}{2\sqrt{3x - 3}}$, leaving out the chain rule factor $3$.`,
+      String.raw`This uses $\dfrac{3}{\sqrt{3x - 3}}$, leaving out the factor $\dfrac{1}{2}$ from the power rule.`,
+    ], answer: 0 },
+  { id: "q406-f1a", type: "frq", skill: "u4", topic: "4.6", calc: false, set: "q406-s9", part: "(a)",
+    prompt: String.raw`Write an equation for the line tangent to the graph of $E$ at $t = 10$. Use it to approximate the hiker's elevation at $t = 10.5$ minutes.`,
+    rows: [
+      { name: "Tangent line", earns: String.raw`$y = 300 + 12(t - 10)$.` },
+      { name: "Approximation", earns: String.raw`$E(10.5) \approx 306$ meters.` },
+    ],
+    solution: String.raw`The tangent line is $y = 300 + 12(t - 10)$. At $t = 10.5$, $E(10.5) \approx 300 + 12(0.5) = 306$ meters.` },
+  { id: "q406-f1b", type: "frq", skill: "u4", topic: "4.6", calc: false, set: "q406-s9", part: "(b)",
+    prompt: String.raw`Is the approximation in part (a) an overestimate or an underestimate of $E(10.5)$? Give a reason for your answer.`,
+    rows: [
+      { name: "Answer with reason", earns: String.raw`Overestimate, because $E''(t) < 0$ on $10 < t < 10.5$, so the graph of $E$ is concave down and lies below its tangent line.` },
+    ],
+    solution: String.raw`$E''(t) < 0$ for $0 < t < 20$, so the graph of $E$ is concave down on an interval containing $10 \le t \le 10.5$ and lies below the tangent line there. The approximation $306$ is an overestimate.` },
+  { id: "q406-f1c", type: "frq", skill: "u4", topic: "4.6", calc: false, set: "q406-s9", part: "(c)",
+    prompt: String.raw`Use the tangent line from part (a) to estimate the time at which the hiker reaches an elevation of 315 meters.`,
+    rows: [
+      { name: "Answer", earns: String.raw`Solves $300 + 12(t - 10) = 315$: $t \approx 11.25$ minutes.` },
+    ],
+    solution: String.raw`$300 + 12(t - 10) = 315$ gives $t - 10 = \dfrac{15}{12} = 1.25$, so the hiker reaches an elevation of 315 meters at about $t = 11.25$ minutes.` },
+];
+
+export default { forms: [{ id: "q406", name: "Topic 4.6 Quiz: Local Linearity and Linearization", group: "Unit 4: Contextual Applications of Differentiation", items }] };

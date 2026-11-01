@@ -1,0 +1,110 @@
+import { graph } from "../../plot.js";
+
+export const sets = {
+  "q202-s1": {
+    name: "The graph of g",
+    label: "Graph",
+    intro: String.raw`The graph of the function $g(x) = \dfrac{x^{3}}{3} - x$ is shown below for $-2.5 \le x \le 2.5$.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 3], y: [-3, 3], xname: "x", yname: "y", fns: [{ f: (x) => x ** 3 / 3 - x, from: -2.5, to: 2.5, label: "g", labelAt: 2.2 }], alt: "Graph of g(x) = x cubed over 3 minus x from x = -2.5 to x = 2.5. The curve rises to a peak at (-1, 2/3), falls through the origin to a low point at (1, -2/3), and then rises steeply, reaching about 2.7 at x = 2.5." }) }] }],
+  },
+  "q202-s2": {
+    name: "The function f(x) = square root of (2x + 1)",
+    label: "Free response",
+    intro: String.raw`Let $f$ be the function given by $f(x) = \sqrt{2x + 1}$ for $x \ge -\dfrac{1}{2}$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`Answer each part. Show the work that leads to your answers.` }] }],
+  },
+};
+
+export default {
+  forms: [{
+    id: "q202",
+    name: "Topic 2.2 Quiz: The Derivative and Its Notation",
+    group: "Unit 2: Differentiation: Definition and Fundamental Properties",
+    items: [
+      { id: "q202-m01", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+        question: String.raw`The expression $\displaystyle \lim_{h \to 0} \dfrac{\sqrt[4]{16 + h} - 2}{h}$ is equal to $f'(a)$ for which function $f$ and number $a$?`,
+        choices: [
+          String.raw`$f(x) = \sqrt[4]{x}$ and $a = 16$`,
+          String.raw`$f(x) = \sqrt[4]{x}$ and $a = 2$`,
+          String.raw`$f(x) = x^{4}$ and $a = 2$`,
+          String.raw`$f(x) = \sqrt[4]{16x}$ and $a = 1$`,
+        ],
+        why: [
+          String.raw`$f'(a) = \displaystyle \lim_{h \to 0} \dfrac{f(a + h) - f(a)}{h}$. With $f(x) = \sqrt[4]{x}$ and $a = 16$, $f(16 + h) = \sqrt[4]{16 + h}$ and $f(16) = 2$, which matches the expression.`,
+          String.raw`$f'(2)$ would have $\sqrt[4]{2 + h} - \sqrt[4]{2}$ in the numerator. The number added to $h$ is $a$, so $a = 16$. The $2$ is $f(16)$.`,
+          String.raw`For $f(x) = x^{4}$ and $a = 2$ the numerator is $(2 + h)^{4} - 16$. The expression takes the fourth root of $16 + h$, so $f$ is the fourth root function and $a = 16$.`,
+          String.raw`For $f(x) = \sqrt[4]{16x}$ and $a = 1$, $f(1 + h) = \sqrt[4]{16 + 16h}$, not $\sqrt[4]{16 + h}$.`,
+        ], answer: 0 },
+      { id: "q202-m02", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+        question: String.raw`Let $f(x) = \dfrac{6}{x}$. What is the value of $\displaystyle \lim_{x \to 2} \dfrac{f(x) - f(2)}{x - 2}$?`,
+        choices: [String.raw`$-\frac{3}{2}$`, String.raw`$\frac{3}{2}$`, "$3$", "The limit does not exist."],
+        why: [
+          String.raw`$\dfrac{\frac{6}{x} - 3}{x - 2} = \dfrac{6 - 3x}{x(x - 2)} = \dfrac{-3(x - 2)}{x(x - 2)} = -\dfrac{3}{x}$ for $x \ne 2$, so the limit is $-\dfrac{3}{2}$.`,
+          String.raw`This drops the negative sign when $6 - 3x$ is factored. $6 - 3x = -3(x - 2)$, so the quotient simplifies to $-\dfrac{3}{x}$.`,
+          String.raw`$3$ is the value $f(2)$. The limit is the slope of the tangent line at $x = 2$, not the height of the graph.`,
+          String.raw`Direct substitution gives $\dfrac{0}{0}$, which is indeterminate. After simplifying, the limit exists and equals $-\dfrac{3}{2}$.`,
+        ], answer: 0 },
+      { id: "q202-m03", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+        question: String.raw`Let $y = f(x)$ be a differentiable function. Which of the following is NOT equal to $f'(-2)$?`,
+        choices: [
+          String.raw`$\dfrac{d}{dx}\left[ f(-2) \right]$`,
+          String.raw`$\left. \dfrac{dy}{dx} \right|_{x = -2}$`,
+          String.raw`$\displaystyle \lim_{x \to -2} \frac{f(x) - f(-2)}{x + 2}$`,
+          String.raw`$\displaystyle \lim_{h \to 0} \frac{f(-2 + h) - f(-2)}{h}$`,
+        ],
+        why: [
+          String.raw`$f(-2)$ is a single number, a constant, so $\dfrac{d}{dx}\left[ f(-2) \right] = 0$. The derivative must be found first and then evaluated at $x = -2$.`,
+          String.raw`This is Leibniz notation for the derivative evaluated at $x = -2$, so it equals $f'(-2)$.`,
+          String.raw`This is the definition of the derivative at $x = -2$ written with $x \to -2$. The denominator $x + 2$ is $x - (-2)$, so it equals $f'(-2)$.`,
+          String.raw`This is the definition of the derivative at $x = -2$ written with $h \to 0$, so it equals $f'(-2)$.`,
+        ], answer: 0 },
+      { id: "q202-m04", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+        question: String.raw`For a function $g$, $g(-1) = 6$ and $\displaystyle \lim_{x \to -1} \dfrac{g(x) - 6}{x + 1} = 3$. At what value of $x$ does the line tangent to the graph of $g$ at $x = -1$ cross the $x$-axis?`,
+        choices: ["$-3$", String.raw`$-\frac{3}{2}$`, "$-2$", "$9$"],
+        why: [
+          String.raw`The limit is $g'(-1) = 3$, the slope of the tangent line, and the line passes through $(-1, 6)$: $y = 6 + 3(x + 1)$. Setting $y = 0$ gives $x + 1 = -2$, so $x = -3$.`,
+          String.raw`$-\dfrac{3}{2}$ comes from swapping the value and the slope, $y = 3 + 6(x + 1)$. The slope is the limit, $3$, and the point is $(-1, 6)$.`,
+          String.raw`$-2$ comes from the line $y = 6 + 3x$, which passes through $(0, 6)$ instead of the point of tangency $(-1, 6)$.`,
+          String.raw`$9$ is where the tangent line crosses the $y$-axis: at $x = 0$, $y = 6 + 3(1) = 9$. The question asks where it crosses the $x$-axis.`,
+        ], answer: 0 },
+      { id: "q202-m05", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+        question: String.raw`$\displaystyle \lim_{h \to 0} \dfrac{3(x + h)^{2} - 5(x + h) - \left( 3x^{2} - 5x \right)}{h}$ is`,
+        choices: ["$6x - 5$", "$6x - 5 + 3h$", "$-5$", "$3x - 5$"],
+        why: [
+          String.raw`The numerator is $3x^{2} + 6xh + 3h^{2} - 5x - 5h - 3x^{2} + 5x = 6xh + 3h^{2} - 5h$. Dividing by $h$ gives $6x + 3h - 5$, and the limit as $h \to 0$ is $6x - 5$.`,
+          String.raw`$6x - 5 + 3h$ is the difference quotient after dividing by $h$. The limit as $h \to 0$ still has to be taken.`,
+          String.raw`$-5$ comes from expanding $(x + h)^{2}$ as $x^{2} + h^{2}$, which loses the $2xh$ term.`,
+          String.raw`$3x - 5$ comes from expanding $(x + h)^{2}$ as $x^{2} + xh + h^{2}$. The middle term is $2xh$.`,
+        ], answer: 0 },
+      { id: "q202-m06", type: "mcq", skill: "u2", topic: "2.2", calc: false, set: "q202-s1",
+        question: String.raw`Which of the following is true?`,
+        choices: [
+          "$g'(0) < g'(1) < g'(2)$",
+          "$g'(1) < g'(0) < g'(2)$",
+          "$g'(2) < g'(1) < g'(0)$",
+          "$g'(1) < g'(2) < g'(0)$",
+        ],
+        why: [
+          String.raw`$g'(x)$ is the slope of the tangent line. At $x = 0$ the graph is falling, so $g'(0) < 0$. At $x = 1$ the graph has its low point and a horizontal tangent, so $g'(1) = 0$. At $x = 2$ the graph is rising steeply, so $g'(2) > 0$. (In fact $g'(0) = -1$, $g'(1) = 0$, and $g'(2) = 3$.)`,
+          String.raw`This orders the function values: $g(1) = -\frac{2}{3} < g(0) = 0 < g(2) = \frac{2}{3}$. The question asks about the slopes, and the slope at $x = 1$ is $0$ while the slope at $x = 0$ is negative.`,
+          String.raw`This reverses the order of the slopes. The graph is steepest and rising at $x = 2$, so $g'(2)$ is the largest.`,
+          String.raw`At $x = 0$ the graph is falling, so $g'(0)$ is negative and is the smallest of the three, not the largest.`,
+        ], answer: 0 },
+      { id: "q202-f1a", type: "frq", skill: "u2", topic: "2.2", calc: false, set: "q202-s2", part: "(a)",
+        prompt: String.raw`Write $f'(12)$ as the limit of a difference quotient. Do not evaluate the limit.`,
+        rows: [{ name: "Limit", earns: String.raw`$f'(12) = \displaystyle \lim_{h \to 0} \frac{\sqrt{25 + 2h} - 5}{h}$, or an equivalent limit.` }],
+        solution: String.raw`$f(12) = \sqrt{25} = 5$ and $f(12 + h) = \sqrt{2(12 + h) + 1} = \sqrt{25 + 2h}$, so $$f'(12) = \lim_{h \to 0} \frac{\sqrt{25 + 2h} - 5}{h}.$$` },
+      { id: "q202-f1b", type: "frq", skill: "u2", topic: "2.2", calc: false, set: "q202-s2", part: "(b)",
+        prompt: String.raw`Evaluate the limit from part (a) algebraically to find $f'(12)$.`,
+        rows: [
+          { name: "Algebra", earns: String.raw`Multiplies by the conjugate $\dfrac{\sqrt{25 + 2h} + 5}{\sqrt{25 + 2h} + 5}$ and simplifies to $\dfrac{2}{\sqrt{25 + 2h} + 5}$.` },
+          { name: "Answer", earns: String.raw`$f'(12) = \dfrac{1}{5}$` },
+        ],
+        solution: String.raw`$$\frac{\sqrt{25 + 2h} - 5}{h} \cdot \frac{\sqrt{25 + 2h} + 5}{\sqrt{25 + 2h} + 5} = \frac{(25 + 2h) - 25}{h\left( \sqrt{25 + 2h} + 5 \right)} = \frac{2}{\sqrt{25 + 2h} + 5}$$ for $h \ne 0$. So $f'(12) = \displaystyle \lim_{h \to 0} \frac{2}{\sqrt{25 + 2h} + 5} = \frac{2}{5 + 5} = \frac{1}{5}$.` },
+      { id: "q202-f1c", type: "frq", skill: "u2", topic: "2.2", calc: false, set: "q202-s2", part: "(c)",
+        prompt: String.raw`Write an equation for the line tangent to the graph of $f$ at $x = 12$.`,
+        rows: [{ name: "Tangent line", earns: String.raw`$y = 5 + \dfrac{1}{5}(x - 12)$` }],
+        solution: String.raw`The tangent line passes through $(12, f(12)) = (12, 5)$ with slope $f'(12) = \dfrac{1}{5}$: $y = 5 + \dfrac{1}{5}(x - 12)$.` },
+    ],
+  }],
+};

@@ -1,0 +1,86 @@
+export const sets = {
+  "q210-s1": {
+    name: "The function f(x) = 4x - tan x",
+    label: "Free response",
+    intro: String.raw`Let $f$ be the function given by $f(x) = 4x - \tan x$ for $-\dfrac{\pi}{2} < x < \dfrac{\pi}{2}$.`,
+    sources: [{ title: "", blocks: [{ p: String.raw`Answer each part. Show the work that leads to your answers.` }] }],
+  },
+};
+
+export default {
+  forms: [{
+    id: "q210",
+    name: "Topic 2.10 Quiz: Derivatives of tan x, cot x, sec x, and csc x",
+    group: "Unit 2: Differentiation: Definition and Fundamental Properties",
+    items: [
+      { id: "q210-m01", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+        question: String.raw`If $f(x) = 3\tan x + 2\csc x$, what is the value of $f'\left( \dfrac{\pi}{6} \right)$?`,
+        choices: [String.raw`$4 - 4\sqrt{3}$`, String.raw`$4 + 4\sqrt{3}$`, String.raw`$-2\sqrt{3}$`, String.raw`$4 + \sqrt{3}$`],
+        why: [
+          String.raw`$f'(x) = 3\sec^{2} x - 2\csc x \cot x$. At $x = \dfrac{\pi}{6}$, $\sec^{2} x = \dfrac{4}{3}$, $\csc x = 2$, and $\cot x = \sqrt{3}$, so $f'\left( \frac{\pi}{6} \right) = 4 - 4\sqrt{3}$.`,
+          String.raw`The derivative of $\csc x$ is $-\csc x \cot x$, so the $4\sqrt{3}$ is subtracted.`,
+          String.raw`This uses $\sec x$ for the derivative of $\tan x$: $3 \cdot \dfrac{2}{\sqrt{3}} - 4\sqrt{3} = -2\sqrt{3}$. The derivative of $\tan x$ is $\sec^{2} x$.`,
+          String.raw`$4 + \sqrt{3}$ is $f\left( \frac{\pi}{6} \right) = 3 \cdot \dfrac{\sqrt{3}}{3} + 2 \cdot 2$, the value of the function.`,
+        ], answer: 0 },
+      { id: "q210-m02", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+        question: String.raw`What is the slope of the line tangent to the graph of $y = 2\cot x$ at $x = \dfrac{2\pi}{3}$?`,
+        choices: [String.raw`$-\frac{8}{3}$`, String.raw`$\frac{8}{3}$`, String.raw`$-\frac{4\sqrt{3}}{3}$`, "$-8$"],
+        why: [
+          String.raw`$\dfrac{dy}{dx} = -2\csc^{2} x$. At $x = \dfrac{2\pi}{3}$, $\sin x = \dfrac{\sqrt{3}}{2}$, so $\csc^{2} x = \dfrac{4}{3}$ and the slope is $-\dfrac{8}{3}$.`,
+          String.raw`The derivative of $\cot x$ is $-\csc^{2} x$, which is negative. The graph of $\cot x$ falls on $0 < x < \pi$.`,
+          String.raw`$-\dfrac{4\sqrt{3}}{3}$ is $-2\csc x$ at $x = \frac{2\pi}{3}$. The derivative is $-2\csc^{2} x$, so $\csc x$ must be squared.`,
+          String.raw`$-8$ is $-2\sec^{2} x$ at $x = \frac{2\pi}{3}$. The derivative of $\cot x$ uses $\csc x$, not $\sec x$.`,
+        ], answer: 0 },
+      { id: "q210-m03", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+        question: String.raw`If $f(x) = \sec x \tan x$, what is the value of $f'\left( \dfrac{\pi}{4} \right)$?`,
+        choices: [String.raw`$3\sqrt{2}$`, String.raw`$2\sqrt{2}$`, String.raw`$\sqrt{2}$`, String.raw`$2 + \sqrt{2}$`],
+        why: [
+          String.raw`By the product rule, $f'(x) = \sec x \tan x \cdot \tan x + \sec x \cdot \sec^{2} x = \sec x \tan^{2} x + \sec^{3} x$. At $x = \dfrac{\pi}{4}$: $\sqrt{2}(1) + \left( \sqrt{2} \right)^{3} = \sqrt{2} + 2\sqrt{2} = 3\sqrt{2}$.`,
+          String.raw`$2\sqrt{2}$ is $\sec x \tan x \cdot \sec^{2} x$, the product of the two derivatives. The product rule adds $f'g$ and $fg'$.`,
+          String.raw`$\sqrt{2}$ is $f\left( \frac{\pi}{4} \right) = \sqrt{2} \cdot 1$, the value of the function.`,
+          String.raw`$2 + \sqrt{2}$ uses $\sec x$ for the derivative of $\tan x$, giving $\sec x \tan^{2} x + \sec^{2} x$. The derivative of $\tan x$ is $\sec^{2} x$.`,
+        ], answer: 0 },
+      { id: "q210-m04", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+        question: String.raw`Writing $\csc x = \dfrac{1}{\sin x}$ and using the quotient rule, $\dfrac{d}{dx}(\csc x) =$`,
+        choices: [String.raw`$-\frac{\cos x}{\sin^{2} x}$`, String.raw`$\frac{\cos x}{\sin^{2} x}$`, String.raw`$\frac{1}{\cos x}$`, String.raw`$-\csc^{2} x$`],
+        why: [
+          String.raw`$\dfrac{d}{dx}\left( \dfrac{1}{\sin x} \right) = \dfrac{\sin x \cdot 0 - 1 \cdot \cos x}{\sin^{2} x} = -\dfrac{\cos x}{\sin^{2} x}$, which equals $-\csc x \cot x$.`,
+          String.raw`This reverses the order in the numerator. The derivative of the constant numerator is $0$, so the numerator is $0 - \cos x$.`,
+          String.raw`$\dfrac{1}{\cos x}$ is the reciprocal of the derivative of $\sin x$. The derivative of $\dfrac{1}{\sin x}$ is not $\dfrac{1}{\cos x}$. Use the quotient rule.`,
+          String.raw`$-\csc^{2} x$ is the derivative of $\cot x$, not of $\csc x$.`,
+        ], answer: 0 },
+      { id: "q210-m05", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+        question: String.raw`For $0 < x < \pi$, at which values of $x$ does the graph of $y = 2\sec x - \tan x$ have a horizontal tangent line?`,
+        choices: [String.raw`$\frac{\pi}{6}$ and $\frac{5\pi}{6}$`, String.raw`$\frac{\pi}{6}$ only`, String.raw`$\frac{\pi}{2}$`, "There are no such values."],
+        why: [
+          String.raw`$\dfrac{dy}{dx} = 2\sec x \tan x - \sec^{2} x = \dfrac{2\sin x - 1}{\cos^{2} x}$, which is $0$ when $\sin x = \dfrac{1}{2}$: $x = \dfrac{\pi}{6}$ and $x = \dfrac{5\pi}{6}$.`,
+          String.raw`$\sin x = \dfrac{1}{2}$ also holds at $x = \dfrac{5\pi}{6}$, where $\cos x \ne 0$, so both points have horizontal tangents.`,
+          String.raw`At $x = \dfrac{\pi}{2}$, $\cos x = 0$, so $\sec x$ and $\tan x$ are undefined. The function has no tangent line there.`,
+          String.raw`This comes from swapping the rules: $2\sec^{2} x - \sec x \tan x = \dfrac{2 - \sin x}{\cos^{2} x}$ is never $0$. The derivative of $\sec x$ is $\sec x \tan x$ and the derivative of $\tan x$ is $\sec^{2} x$.`,
+        ], answer: 0 },
+      { id: "q210-m06", type: "mcq", skill: "u2", topic: "2.10", calc: true,
+        question: String.raw`Let $f(x) = \tan x - x^{2}$. For $0 < x < \dfrac{\pi}{2}$, at what value of $x$ is $f'(x) = 4$?`,
+        choices: ["$1.162$", "$1.405$", "$1.424$", "$1.180$"],
+        why: [
+          String.raw`$f'(x) = \sec^{2} x - 2x$. Solving $\sec^{2} x - 2x = 4$ on a calculator gives $x = 1.162$.`,
+          String.raw`$1.405$ solves $f(x) = 4$, which sets the function, not its derivative, equal to $4$.`,
+          String.raw`$1.424$ solves $\sec x - 2x = 4$, which uses $\sec x$ for the derivative of $\tan x$. The derivative is $\sec^{2} x$.`,
+          String.raw`$1.180$ solves $\sec x \tan x - 2x = 4$, which uses the derivative of $\sec x$ in place of the derivative of $\tan x$.`,
+        ], answer: 0 },
+      { id: "q210-f1a", type: "frq", skill: "u2", topic: "2.10", calc: false, set: "q210-s1", part: "(a)",
+        prompt: String.raw`Find $f'(x)$. Find the $x$-coordinates of all points on the graph of $f$ at which the tangent line is horizontal.`,
+        rows: [
+          { name: "Derivative", earns: String.raw`$f'(x) = 4 - \sec^{2} x$` },
+          { name: "Answer", earns: String.raw`$x = \dfrac{\pi}{3}$ and $x = -\dfrac{\pi}{3}$` },
+        ],
+        solution: String.raw`$f'(x) = 4 - \sec^{2} x$. Setting $f'(x) = 0$ gives $\sec^{2} x = 4$, so $\cos^{2} x = \dfrac{1}{4}$ and $\cos x = \pm\dfrac{1}{2}$. On $-\dfrac{\pi}{2} < x < \dfrac{\pi}{2}$, $\cos x > 0$, so $\cos x = \dfrac{1}{2}$ and $x = \dfrac{\pi}{3}$ or $x = -\dfrac{\pi}{3}$.` },
+      { id: "q210-f1b", type: "frq", skill: "u2", topic: "2.10", calc: false, set: "q210-s1", part: "(b)",
+        prompt: String.raw`Write an equation for the line tangent to the graph of $f$ at $x = \dfrac{\pi}{6}$.`,
+        rows: [
+          { name: "Point and slope", earns: String.raw`$f\left( \frac{\pi}{6} \right) = \dfrac{2\pi}{3} - \dfrac{\sqrt{3}}{3}$ and $f'\left( \frac{\pi}{6} \right) = \dfrac{8}{3}$` },
+          { name: "Tangent line", earns: String.raw`$y = \dfrac{2\pi}{3} - \dfrac{\sqrt{3}}{3} + \dfrac{8}{3}\left( x - \dfrac{\pi}{6} \right)$` },
+        ],
+        solution: String.raw`$f\left( \frac{\pi}{6} \right) = 4 \cdot \dfrac{\pi}{6} - \tan\dfrac{\pi}{6} = \dfrac{2\pi}{3} - \dfrac{\sqrt{3}}{3}$. Since $\cos\frac{\pi}{6} = \frac{\sqrt{3}}{2}$, $\sec^{2}\frac{\pi}{6} = \frac{4}{3}$ and $f'\left( \frac{\pi}{6} \right) = 4 - \dfrac{4}{3} = \dfrac{8}{3}$. The tangent line is $y = \dfrac{2\pi}{3} - \dfrac{\sqrt{3}}{3} + \dfrac{8}{3}\left( x - \dfrac{\pi}{6} \right)$.` },
+    ],
+  }],
+};

@@ -1,0 +1,20 @@
+PASS  q3m1-a1  printed "1 helmet"
+PASS  q3m1-a2  printed "" then ArgumentOutOfRangeException
+PASS  q3m1-a3  printed "blue"
+PASS  q3m1-a4  printed "9"
+PASS  q3m1-a5  printed "15"
+PASS  q3m1-a6  build error CS0103
+PASS  q3m2-a1  build error CS0029
+PASS  q3m2-a2  printed "Ogre drops 9"
+PASS  q3m2-a3  printed "Troll"
+PASS  q3m2-a4  printed "123"
+PASS  q3m2-a5  printed "4"
+PASS  q3m2-a6  printed "cellar: coin\ntower: gem" then ArgumentOutOfRangeException
+PASS  q3m3-a1  printed "vault 3"
+PASS  q3m3-a2  printed "Ghoul carries 5"
+PASS  q3m3-a3  build error CS0161
+PASS  q3m3-a4  printed "10"
+PASS  q3m3-a5  printed "gate to bridge\nbridge to keep" then ArgumentOutOfRangeException
+PASS  q3m3-a6  printed "5"
+
+18 of 18 checks pass. dotnet 10.0.114. 2026-11-01T01:03:47.737Z

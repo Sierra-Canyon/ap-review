@@ -3,7 +3,7 @@
 //   demoBackend: a pretend sign-in, progress in this browser's localStorage. Used when no Firebase config is set, or with ?demo in the URL.
 //
 // Firestore layout (see firestore.rules):
-//   roster/{githubId}    { login, name }            who may use the site. Written by the teacher.
+//   roster/{githubId}    { login, name, courses }   who may use the site, and in which courses (no courses: AP CSP). Written by the teacher.
 //   requests/{githubId}  { login, name, ts }        someone signed in who is not on the roster yet.
 //   users/{firebaseUid}  { ghId, login, name, photo, firstSeen, lastActive, decks: { <deckId>: { cards, mocks } } }
 
@@ -30,9 +30,9 @@ export async function firebaseBackend(config, firebaseUrl) {
       return toUser(res.user);
     },
     async signOut() { await fb.signOut(auth); },
-    async onRoster(user) {
-      try { return (await fb.getDoc(fb.doc(db, "roster", user.ghId))).exists(); }
-      catch (e) { return false; }
+    async getRoster(user) {
+      try { const d = await fb.getDoc(fb.doc(db, "roster", user.ghId)); return d.exists() ? d.data() : null; }
+      catch (e) { return null; }
     },
     async requestAccess(user) {
       try { await fb.setDoc(fb.doc(db, "requests", user.ghId), { login: user.login || "", name: user.name || "", ts: Date.now() }); } catch (e) { /* already asked */ }
@@ -42,14 +42,14 @@ export async function firebaseBackend(config, firebaseUrl) {
     async listUsers() { return (await fb.getDocs(fb.collection(db, "users"))).docs.map((d) => ({ uid: d.id, ...d.data() })); },
     async listRoster() { return (await fb.getDocs(fb.collection(db, "roster"))).docs.map((d) => ({ ghId: d.id, ...d.data() })); },
     async listRequests() { return (await fb.getDocs(fb.collection(db, "requests"))).docs.map((d) => ({ ghId: d.id, ...d.data() })); },
-    async addRoster(entries) { for (const e of entries) await fb.setDoc(fb.doc(db, "roster", e.ghId), { login: e.login, name: e.name }); },
+    async addRoster(entries) { for (const e of entries) await fb.setDoc(fb.doc(db, "roster", e.ghId), { login: e.login, name: e.name, courses: e.courses }); },
     async removeRoster(ghId) { await fb.deleteDoc(fb.doc(db, "roster", ghId)); },
     async removeRequest(ghId) { await fb.deleteDoc(fb.doc(db, "requests", ghId)); },
   };
 }
 
 // ---------------------------------------------------------------------------------------------- demo
-const KEY = "csp-review-demo-v1";
+const KEY = "ap-review-demo-v3";
 function readStore() {
   try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch (e) { return null; }
 }
@@ -69,7 +69,7 @@ export function demoBackend({ teacherGithubIds, seed }) {
   let listener = () => {};
   const s = store();
   if (!s.seeded && seed) { seed(s, people); s.seeded = true; persist(); }
-  s.roster[people.student.ghId] = { login: people.student.login, name: "Demo Student" };
+  s.roster[people.student.ghId] = { login: people.student.login, name: "Demo Student", courses: ["csp", "csa", "cyber"] };
 
   return {
     mode: "demo",
@@ -77,14 +77,14 @@ export function demoBackend({ teacherGithubIds, seed }) {
     onAuth(cb) { listener = cb; cb(s.session ? people[s.session] : null); },
     async signIn(as = "student") { s.session = as; persist(); listener(people[as]); return people[as]; },
     async signOut() { s.session = null; persist(); listener(null); },
-    async onRoster(user) { return !!s.roster[user.ghId]; },
+    async getRoster(user) { return s.roster[user.ghId] || null; },
     async requestAccess(user) { s.requests[user.ghId] = { login: user.login, name: user.name, ts: Date.now() }; persist(); },
     async loadUser(uid) { return s.users[uid] ? JSON.parse(JSON.stringify(s.users[uid])) : null; },
     async saveUser(uid, data) { s.users[uid] = JSON.parse(JSON.stringify(data)); persist(); },
     async listUsers() { return Object.entries(s.users).map(([uid, d]) => ({ uid, ...d })); },
     async listRoster() { return Object.entries(s.roster).map(([ghId, d]) => ({ ghId, ...d })); },
     async listRequests() { return Object.entries(s.requests).map(([ghId, d]) => ({ ghId, ...d })); },
-    async addRoster(entries) { for (const e of entries) s.roster[e.ghId] = { login: e.login, name: e.name }; persist(); },
+    async addRoster(entries) { for (const e of entries) s.roster[e.ghId] = { login: e.login, name: e.name, courses: e.courses }; persist(); },
     async removeRoster(ghId) { delete s.roster[ghId]; persist(); },
     async removeRequest(ghId) { delete s.requests[ghId]; persist(); },
     reset() { memory = null; try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ } },

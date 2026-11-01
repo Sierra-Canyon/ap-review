@@ -13,7 +13,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const deckPath = resolve(process.argv[2] || join(here, "../decks/csp-q3.js"));
 const deck = (await import(pathToFileURL(deckPath))).default;
 const WORKERS = Math.max(1, Math.min(4, os.cpus().length));
-const root = join(os.tmpdir(), "deck-verify");
+const root = process.env.VERIFY_DIR || join(os.tmpdir(), "deck-verify");
 
 const csproj = `<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>

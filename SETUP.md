@@ -38,7 +38,7 @@ Register it under the organization too, so the authorization screen students see
 4. **Register application**, then **Generate a new client secret**.
 5. Back in the Firebase tab, paste the **Client ID** and **Client secret** into the GitHub provider and **Save**.
 
-If you already registered the app under @jd12: change its Homepage URL to the address above, and either keep it there or transfer it. To transfer, press **Transfer ownership** on the app's page, type the application's name exactly as it appears, `AP Review` (not the repo name), and the new owner `Sierra-Canyon`. If you are not an organization owner, the transfer waits until an owner approves it. The Client ID and secret stay the same after a transfer, so Firebase needs no change.
+If you already registered the app under @jd12: change its Homepage URL to the address above, and either keep it there or transfer it. The Client ID and secret stay the same after a transfer, so Firebase needs no change.
 
 ## 4. Allow the Pages domain
 
@@ -64,12 +64,19 @@ In `firebase-config.js`, replace `export const firebaseConfig = null;` with the 
 
 1. Sign in on the site as @jd12. The **Class** tab appears.
 2. Open `../private/roster_import.txt`, copy every line, paste it into **Roster > Students to add**, and press **Add to roster**. The lines already carry each account's GitHub number, so nothing is looked up.
-3. Two students are not in that file:
-   - **Harrison Suh**: `harrisonsuh2030` from the form no longer exists on GitHub (404 on 10/31). Probably renamed.
-   - **Audrey Yang**: no GitHub username on record.
-   When either signs in, the account shows under **Waiting to be added**. Type the name and press **Add**.
+3. Harrison Suh is in the file under `hjsuhmail-png`, the account he uses on Classroom 50.
 
-Anyone else who signs in lands in the same list and can save nothing until you add them.
+Anyone not on the roster who signs in shows under **Waiting to be added** and can save nothing until you press **Add**. **Dismiss** clears the request.
+
+### The AP Cybersecurity and AP CSA rosters
+
+The site has three courses. Each roster entry lists the courses a student is in, and a student sees only those courses. The course menu at the top of the page switches courses; the Class tab, its roster box, and **Add** all work on the course that is showing.
+
+1. Switch the course menu to **AP Cyber**, then open the **Class** tab.
+2. Open `../private/roster_import_cyber.txt`, copy all six lines, paste them into **Roster > Students to add**, and press **Add to roster**.
+3. Switch the menu to **AP CSA** and do the same with `../private/roster_import_csa.txt` (eleven lines). Jimmy Lin and Ashley Gao dropped and are not in it.
+
+A student already on another course's roster is added to this one too; **Remove** takes a student off only the course that is showing. Entries added before 11/1 have no course list and count as AP CSP, so the 14 CSP students need nothing. Julius Chappell filled in the GitHub form (`JuliusChappell`) but is not one of the six, so he is not in the file.
 
 ## 9. Try it as a student
 
@@ -90,10 +97,12 @@ Sign in from a private window with a student account you have, or ask one studen
 | Command | What it checks |
 |---|---|
 | `node tools/verify.mjs decks/csp-q3.js` | every review item on real .NET 10 (70 checks) |
+| `node tools/verify.mjs decks/csp-q3-mocks/mc.js` and `.../wr.js` | the three mock quizzes on real .NET 10 (18 and 21 checks) |
 | `node tools/verify-book.mjs` | every book block on real .NET 10, and the writing rules (318 checks) |
 | `node tools/runner-diff.mjs` | the page's C# runner against those same .NET results (388 programs) |
 | `node tools/runner-vs-dotnet.mjs` | the runner against .NET on 162 extra programs, mostly student mistakes |
-| `node tools/e2e.mjs` and `node tools/e2e-book.mjs` | the whole site in Chromium (serve the folder on port 8765 first) |
+| `node tools/verify-java.mjs decks/csa-u2/<file>.js` (and `decks/csa-year/<file>.js`) | every AP CSA item and free-response solution with Java 21, one file at a time (about 1,000 checks in all) |
+| `node tools/e2e.mjs`, `e2e-book.mjs`, `e2e-csa.mjs`, `e2e-cyber.mjs` | the whole site in Chromium: AP CSP, the book, AP CSA, and AP Cybersecurity (serve the folder on port 8765 first) |
 
 The first two and the fourth need the .NET 10 SDK. All of them need Node.
 
@@ -106,3 +115,13 @@ node tools/verify.mjs decks/csp-q3.js
 ```
 
 *You should see* `70 of 70 checks pass`, and the details in `tools/verify_report.txt`. Then commit and push. Students keep their progress on items whose `id` did not change.
+
+The AP Cybersecurity items are in `decks/cyber-u2/` (review) and `decks/cyber-u2-mocks/` (the three mock tests). The vocabulary items are built from the course Anki deck; after a change to the deck, export it as text and rebuild them:
+
+```
+node tools/build-cyber-vocab.mjs <path to AP_Cybersecurity_Anki_Deck.txt>
+```
+
+## Adding a course or a test
+
+The courses are listed in `courses.js`: a name, a period, whether it has the Learn book, and its decks. A new test is a new deck file in `decks/` (its own `id`, skills, `mock` shape, and items), imported in `courses.js` and put first in its course's `decks`. Progress is stored per deck, so earlier tests keep their progress.

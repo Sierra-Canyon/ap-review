@@ -8,7 +8,7 @@ import { mkdirSync } from "node:fs";
 const out = process.argv[2] || "tools/.shots";
 mkdirSync(out, { recursive: true });
 const BASE = "http://localhost:8765/index.html?demo";
-const byId = Object.fromEntries(deck.items.map((i) => [i.id, i]));
+const byId = Object.fromEntries([...deck.items, ...(deck.forms || []).flatMap((f) => f.items)].map((i) => [i.id, i]));
 const errors = [];
 const log = (...a) => console.log(...a);
 const assert = (c, m) => { if (!c) { errors.push(m); console.log("  FAIL:", m); } };
@@ -94,7 +94,7 @@ async function answer(page, right) {
   // One of each type that may not have come up, straight from the review flow: run sets until each type has been seen.
   let guard = 0; const typesSeen = new Set(types);
   while (typesSeen.size < 4 && guard++ < 6) {
-    await page.click("a.btn[href='#review']");
+    await page.click("button[data-focus='']");
     await page.waitForSelector("#card");
     while (await page.$("#card")) {
       const it = await answer(page, true); typesSeen.add(it.type);
@@ -108,7 +108,7 @@ async function answer(page, right) {
 
   // Mock quiz: all Part A right, Part B scored 2+2 and 2+1 = 7 of 8, so 19 / 20.
   await page.click("a.btn[href='#mock']");
-  await page.click("#go");
+  await page.click("[data-form=m1]");
   for (let i = 0; i < 8; i++) {
     const id = await page.getAttribute("#card", "data-item");
     const it = byId[id];
@@ -185,7 +185,7 @@ const shared = await newPage();
   await page.waitForSelector(".choices-home");
   await page.screenshot({ path: `${out}/12-phone-dark-home.png`, fullPage: true });
   assert((await overflow(page)) <= 0, "no horizontal scroll on the phone home");
-  await page.click("a.btn[href='#review']");
+  await page.click("button[data-focus='']");
   await page.waitForSelector("#card");
   await answer(page, false);
   await page.screenshot({ path: `${out}/13-phone-dark-item.png`, fullPage: true });

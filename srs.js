@@ -2,6 +2,7 @@
 // Right: the card moves up a box and comes back later (1, 2, 4, 8, 16 days for boxes 1 to 5).
 // Wrong: back to box 0, due again in 5 minutes, and it comes back later in the same session.
 // A written response scored 4 of 4 counts as right, 2 or 3 keeps its box and comes back tomorrow, 0 or 1 counts as wrong.
+// A free-response subpart (1 point) counts as right when it earns the point.
 
 export const DAY = 24 * 60 * 60 * 1000;
 export const MIN = 60 * 1000;
@@ -54,22 +55,25 @@ function interleave(items, rand) {
 
 // The next session: what is due first (most overdue, lowest box), then new items, up to size.
 // When nothing is due and nothing is new, it takes the cards that are least solid, so "keep going" always works.
-export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random } = {}) {
-  const due = deck.items.filter((it) => cards[it.id]?.n && cards[it.id].due <= now)
+// types limits the session to some item types (the "only vocabulary" buttons); long items (written and free responses) are capped at two.
+const LONG = new Set(["wr", "fr", "code", "essay"]);
+export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, longCap = 2 } = {}) {
+  const pool = deck.items.filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)));
+  const due = pool.filter((it) => cards[it.id]?.n && cards[it.id].due <= now)
     .sort((a, b) => (cards[a.id].b - cards[b.id].b) || (cards[a.id].due - cards[b.id].due));
-  const fresh = interleave(deck.items.filter((it) => !cards[it.id]?.n), rand);
-  // Written responses take longer: at most two in a session.
+  const fresh = interleave(pool.filter((it) => !cards[it.id]?.n), rand);
   const pick = [];
-  let wr = 0;
+  let long = 0;
   for (const it of [...due, ...fresh]) {
     if (pick.length >= size) break;
-    if (it.type === "wr") { if (wr >= 2) continue; wr++; }
+    if (LONG.has(it.type)) { if (long >= longCap) continue; long++; }
     pick.push(it);
   }
   let extra = false;
   if (!pick.length) {
     extra = true;
-    const rest = deck.items.filter((it) => it.type !== "wr")
+    const onlyLong = pool.every((it) => LONG.has(it.type));
+    const rest = pool.filter((it) => onlyLong || !LONG.has(it.type))
       .sort((a, b) => ((cards[a.id]?.b ?? 0) - (cards[b.id]?.b ?? 0)) || ((cards[a.id]?.due ?? 0) - (cards[b.id]?.due ?? 0)));
     pick.push(...rest.slice(0, size));
   }
@@ -87,28 +91,52 @@ export function counts(deck, cards, now = Date.now()) {
   return { due, fresh, next };
 }
 
-// A mock quiz in the shape of the real one: Part A, six multiple-choice items at 2 points;
-// Part B, two written responses at 4 points (one without the list, one logic error). 20 points.
-export function buildMock(deck, cards, rand = Math.random) {
-  const mcq = (skill) => deck.items.filter((it) => it.type === "mcq" && it.skill === skill);
+// A mock in the shape of the real quiz or test, from the deck's mock config.
+// Part A: one multiple-choice item per slot (a slot lists the skills it may come from), least recently seen first.
+// Part B: written responses, one per slot (kind "wr"), or every subpart of one free response (kind "fr").
+export function buildMock(deck, cards, rand = Math.random, formId = null) {
+  const cfg = deck.mock;
+  // A fixed form: its own items, in its own order.
+  const form = deck.forms?.find((f) => f.id === formId);
+  if (form) return { partA: form.items.filter((x) => x.type === "mcq"), partB: form.items.filter((x) => x.type !== "mcq") };
+  const seen = (it) => cards[it.id]?.ts || 0;
   const pickOne = (list, taken) => {
-    const pool = list.filter((it) => !taken.has(it.id)).sort((a, b) => ((cards[a.id]?.ts || 0) - (cards[b.id]?.ts || 0)) || (rand() - 0.5));
+    const pool = list.filter((it) => !taken.has(it.id)).sort((a, b) => (seen(a) - seen(b)) || (rand() - 0.5));
     // least recently seen, with a little shuffle among the oldest three
-    const top = pool.slice(0, 3).sort(() => rand() - 0.5);
-    return top[0];
+    return pool.slice(0, 3).sort(() => rand() - 0.5)[0];
   };
   const taken = new Set();
   const partA = [];
-  for (const s of ["index", "parallel", "byhand", "forloop", "listloop", rand() < 0.5 ? "forloop" : "listloop"]) {
-    const it = pickOne(mcq(s), taken);
+  for (const slot of cfg.partA.slots) {
+    const it = pickOne(deck.items.filter((x) => x.type === "mcq" && slot.includes(x.skill)), taken);
     if (it) { taken.add(it.id); partA.push(it); }
   }
-  const partB = [];
-  for (const s of ["wr-nolist", "wr-logic"]) {
-    const it = pickOne(deck.items.filter((x) => x.skill === s), taken);
-    if (it) { taken.add(it.id); partB.push(it); }
+  let partB = [];
+  if (cfg.partB.kind === "wr") {
+    for (const slot of cfg.partB.slots) {
+      const it = pickOne(deck.items.filter((x) => slot.includes(x.skill)), taken);
+      if (it) { taken.add(it.id); partB.push(it); }
+    }
+  } else {
+    // the free response whose subparts were seen least recently
+    const sets = Object.keys(deck.sets).map((id) => ({ id, items: deck.items.filter((x) => x.type === "fr" && x.set === id) }))
+      .map((s) => ({ ...s, last: Math.max(0, ...s.items.map(seen)) + rand() }))
+      .sort((a, b) => a.last - b.last);
+    partB = sets[0]?.items || [];
   }
   return { partA, partB };
+}
+
+// Points for Part B: the rubric total for written responses; for a free response, subparts earned times the scale.
+// "rubric": each free response is scored row by row, one point a row (or a row's max), and the rows add up.
+export function partBPoints(deck, scores) {
+  const raw = scores.reduce((t, x) => t + (x || 0), 0);
+  return deck.mock.partB.kind === "fr" ? raw * deck.mock.partB.scale : raw;
+}
+export const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
+export function partBMax(deck, items) {
+  const k = deck.mock.partB.kind;
+  return k === "fr" ? items.length * deck.mock.partB.scale : k === "rubric" ? items.reduce((t, it) => t + rowsMax(it), 0) : items.length * deck.mock.partB.points;
 }
 
 export function normOut(s) {

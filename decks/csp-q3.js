@@ -2,20 +2,48 @@
 // Every block of code here was compiled and run on .NET 10 by tools/verify.mjs.
 // In a multiple-choice item the right choice is always written first; the site shuffles them.
 
+import mockMC from "./csp-q3-mocks/mc.js";
+import mockWR from "./csp-q3-mocks/wr.js";
+// Three fixed mock quizzes, written only for the mocks: none of their items is in review.
+const mockItems = [...mockMC.items, ...mockWR.items];
+const form = (n) => mockItems.filter((it) => it.id.startsWith(`q3m${n}-`));
+
 export default {
   id: "csp-q3",
   course: "AP Computer Science Principles",
   title: "Quiz 3: Lists and Loops",
   quizDate: "2026-11-03",
+  quizName: "Quiz 3",
+  lang: "csharp",
+  blurb: "Code-reading questions, output and trace tables, and written responses scored with the quiz's own rubric rows.",
   skills: [
-    { id: "index", name: "Index and Count", from: "Lists 1" },
-    { id: "parallel", name: "Parallel lists", from: "Lists 2" },
-    { id: "byhand", name: "Finding with if", from: "Lists 3" },
-    { id: "forloop", name: "The parts of a for loop", from: "For 1" },
-    { id: "listloop", name: "A loop over a list", from: "For 2" },
-    { id: "wr-nolist", name: "Without the list (2026, 2(c))", from: "Written response" },
-    { id: "wr-logic", name: "A logic error (2025 Set 2, 2(b))", from: "Written response" },
+    { id: "index", name: "Index and Count", from: "Lists 1", short: "Lists 1" },
+    { id: "parallel", name: "Parallel lists", from: "Lists 2", short: "Lists 2" },
+    { id: "byhand", name: "Finding with if", from: "Lists 3", short: "Lists 3" },
+    { id: "forloop", name: "The parts of a for loop", from: "For 1", short: "For 1" },
+    { id: "listloop", name: "A loop over a list", from: "For 2", short: "For 2" },
+    { id: "wr-nolist", name: "Without the list (2026, 2(c))", from: "Written response", short: "WR: no list" },
+    { id: "wr-logic", name: "A logic error (2025 Set 2, 2(b))", from: "Written response", short: "WR: logic" },
   ],
+  forms: [
+    { id: "m1", name: "Mock Quiz 1", items: form(1) },
+    { id: "m2", name: "Mock Quiz 2", items: form(2) },
+    { id: "m3", name: "Mock Quiz 3", items: form(3) },
+  ],
+  mock: {
+    name: "Mock quiz",
+    title: "Quiz 3 practice",
+    total: 20,
+    clock: "25:00",
+    blurb: "Three mock quizzes, each six multiple choice and two written responses, the same shape as the quiz. None of their questions are in review.",
+    intro: [
+      ["Part A.", "Six multiple-choice items, 2 points each. Read the code and choose what it does."],
+      ["Part B.", "Two written responses, 4 points each, scored with the quiz's rubric rows: one about the code without the list (2026 exam, 2(c)), and one about a logic error (2025 exam, Set 2, 2(b))."],
+      ["", "No feedback until the end. The quiz itself is 25 minutes, with LockDown on. None of these questions are in review, so each mock quiz shows how you do on code you have not practiced."],
+    ],
+    partA: { points: 2, slots: [["index"], ["parallel"], ["byhand"], ["forloop"], ["listloop"], ["forloop", "listloop"]] },
+    partB: { kind: "wr", points: 4, slots: [["wr-nolist"], ["wr-logic"]] },
+  },
   items: [
     // ---------------------------------------------------------------- Index and Count
     {

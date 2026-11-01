@@ -1,0 +1,23 @@
+PASS  q3m1-b1#1  printed "45\n75"
+PASS  q3m1-b1#2  printed "45\n45" · warnings CS0219
+PASS  q3m1-b2#1  printed "45"
+PASS  q3m1-b2#2  printed "8"
+PASS  q3m1-b2#3  printed "33"
+PASS  q3m1-b2#4  printed "6"
+PASS  q3m1-b2#5  printed "" then ArgumentOutOfRangeException
+PASS  q3m2-b1#1  printed "11\n15"
+PASS  q3m2-b1#2  printed "11\n9"
+PASS  q3m2-b2#1  printed "11"
+PASS  q3m2-b2#2  printed "4\n4"
+PASS  q3m2-b2#3  printed "9"
+PASS  q3m2-b2#4  printed "3"
+PASS  q3m2-b2#5  printed "11"
+PASS  q3m3-b1#1  printed "12\n22"
+PASS  q3m3-b1#2  printed "12\n1"
+PASS  q3m3-b2#1  printed "12\n22"
+PASS  q3m3-b2#2  printed "2"
+PASS  q3m3-b2#3  printed "11"
+PASS  q3m3-b2#4  printed "12\n12"
+PASS  q3m3-b2#5  printed "12"
+
+21 of 21 checks pass. dotnet 10.0.114. 2026-11-01T01:04:28.266Z

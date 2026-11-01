@@ -27,15 +27,36 @@ import * as w6a from "./whap-mocks/w6a.js";
 import * as w7a from "./whap-mocks/w7a.js";
 import * as w8a from "./whap-mocks/w8a.js";
 import * as w9a from "./whap-mocks/w9a.js";
+// Topic quizzes (decks/whap-topic/): one for each CED topic in Units 1 and 2, 8 source-based multiple choice and one
+// short-answer question (3 parts), 11 points. Written only for the quizzes: no item or source in them is in review or a unit assessment.
+import * as t11 from "./whap-topic/t11.js";
+import * as t12 from "./whap-topic/t12.js";
+import * as t13 from "./whap-topic/t13.js";
+import * as t14 from "./whap-topic/t14.js";
+import * as t15 from "./whap-topic/t15.js";
+import * as t16 from "./whap-topic/t16.js";
+import * as t17 from "./whap-topic/t17.js";
+import * as t21 from "./whap-topic/t21.js";
+import * as t22 from "./whap-topic/t22.js";
+import * as t23 from "./whap-topic/t23.js";
+import * as t24 from "./whap-topic/t24.js";
+import * as t25 from "./whap-topic/t25.js";
+import * as t26 from "./whap-topic/t26.js";
+import * as t27 from "./whap-topic/t27.js";
 
 const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9];
 const mocks = [w1a, w2a, w2b, w3a, w4a, w5a, w6a, w7a, w8a, w9a];
 const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
-const forms = mocks.flatMap((m) => m.default.forms).map((f) => ({
-  ...f,
-  short: { w2a: "U2A", w2b: "U2B" }[f.id] || "U" + f.id[1],
-  total: f.items.reduce((t, it) => t + (it.type === "essay" ? rowsMax(it) : 1), 0),
-}));
+const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27];
+const total = (f) => f.items.reduce((t, it) => t + (it.type === "essay" ? rowsMax(it) : 1), 0);
+// On the page each unit lists its topic quizzes, then its assessments. The Class tab gives the quizzes their own column.
+const assessments = mocks.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: { w2a: "U2A", w2b: "U2B" }[f.id] || "U" + f.id[1], total: total(f) }));
+const quizzes = topics.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: f.id[1] + "." + f.id[2], col: `Unit ${f.id[1]} topic quizzes`, total: total(f) }));
+const forms = [1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((n) => {
+  const unit = [...quizzes, ...assessments].filter((f) => f.id[1] === String(n));
+  const date = unit.find((f) => f.date)?.date;
+  return unit.map((f) => (date ? { ...f, date } : f));
+});
 
 export default {
   id: "whap",
@@ -62,16 +83,19 @@ export default {
     { id: "u8", name: "Unit 8: Cold War and Decolonization", from: "c. 1900 to the present", short: "U8" },
     { id: "u9", name: "Unit 9: Globalization", from: "c. 1900 to the present", short: "U9" },
   ],
-  sets: Object.assign({}, ...units.map((u) => u.sets), ...mocks.map((m) => m.sets)),
+  sets: Object.assign({}, ...units.map((u) => u.sets), ...mocks.map((m) => m.sets), ...topics.map((m) => m.sets)),
   forms,
   mock: {
-    name: "Unit assessment",
-    title: "Unit assessments",
+    name: "Quizzes and tests",
+    title: "Topic quizzes and unit assessments",
+    cta: "Take a quiz or test",
+    stat: [forms.length, "quizzes and tests"],
     total: 27,
     clock: null,
-    blurb: "One for each unit, two for Unit 2, in the shape of the AP exam. None of their sources or questions are in review.",
+    blurb: "A quiz for each topic in Units 1 and 2, and an assessment for each unit in the shape of the AP exam. None of their sources or questions are in review.",
     intro: [
-      ["", "Each unit assessment is the AP exam in miniature: Section I, Part A is 15 multiple-choice questions on sources; Section I, Part B is two short-answer questions of three parts each; Section II is one long essay question. 27 points: 1 for each multiple-choice question, 1 for each short-answer part, and up to 6 for the essay."],
+      ["Topic quizzes", "(Units 1 and 2) check one topic at a time: 8 multiple-choice questions on sources and one short-answer question of three parts, 11 points."],
+      ["Unit assessments", "are the AP exam in miniature: Section I, Part A is 15 multiple-choice questions on sources; Section I, Part B is two short-answer questions of three parts each; Section II is one long essay question. 27 points: 1 for each multiple-choice question, 1 for each short-answer part, and up to 6 for the essay."],
       ["How scoring works.", "Multiple choice is scored for you. When you finish, you score each short-answer part and the essay yourself, with the AP scoring guidelines and rubric, before the model answers appear."],
       ["On the exam,", "Section I, Part A is 55 minutes for 55 questions, Part B is 40 minutes for three short answers, and the long essay is 40 minutes."],
     ],

@@ -293,9 +293,9 @@ function renderHome() {
     </div>` : ""}
     ${deck.mock ? `<div class="panel mode">
       <span class="eyebrow">${esc(deck.mock.name)}</span>
-      <div class="row"><span class="num">${deck.mock.total}</span><span class="muted">points</span></div>
+      <div class="row"><span class="num">${deck.mock.stat ? deck.mock.stat[0] : deck.mock.total}</span><span class="muted">${esc(deck.mock.stat ? deck.mock.stat[1] : "points")}</span></div>
       <p class="small muted">${esc(deck.mock.blurb)}${lastMock ? ` Last: ${lastMock.score} / ${lastMock.total ?? deck.mock.total}.` : ""}</p>
-      <a class="btn big" href="#mock">Take a ${esc(deck.mock.name.toLowerCase())}</a>
+      <a class="btn big" href="#mock">${esc(deck.mock.cta || `Take a ${deck.mock.name.toLowerCase()}`)}</a>
     </div>` : ""}
   </section>
   ${missesPanel(st.cards)}
@@ -1096,9 +1096,10 @@ async function renderTeacher() {
   const revSkills = deck.skills.filter((sk) => deck.items.some((it) => it.skill === sk.id));
   // One column per mock form, or, when a course has many forms, one per assessment (the best percent on any of its forms), only for assessments someone has taken.
   const takenForms = new Set(rows.flatMap((r) => (r.s?.mocks || []).map((x) => x.form)));
-  const groupsOf = [...new Set((deck.forms || []).map((f) => f.group || f.name))];
+  const colOf = (f) => f.col || f.group || f.name;
+  const groupsOf = [...new Set((deck.forms || []).map(colOf))];
   const mockCols = (deck.forms || []).length > 6
-    ? groupsOf.map((g) => { const fs = deck.forms.filter((f) => (f.group || f.name) === g); return { label: g.replace(/^Quiz (\d+).*/, "Q$1").replace(/^Unit (\w+) Test.*/, "U$1").replace(/^Unit (\d+): .*/, "U$1 test").replace(/^Unit 4A Checkpoint/, "4A").replace(/^AP Practice Section/, "PS").replace(/^AP Practice Exam/, "AP").replace(/^Midterm/, "Mid"), title: g + ": best percent on any practice form", ids: fs.map((f) => f.id), fmt: (t) => pct(Math.max(...t.map((x) => x.score / (x.total || 1)))) + "%" }; })
+    ? groupsOf.map((g) => { const fs = deck.forms.filter((f) => colOf(f) === g); return { label: g.replace(/^Quiz (\d+).*/, "Q$1").replace(/^Unit (\w+) Test.*/, "U$1").replace(/^Unit (\d+): .*/, "U$1 test").replace(/^Unit (\d+) topic quizzes$/, "U$1 quiz").replace(/^Unit 4A Checkpoint/, "4A").replace(/^AP Practice Section/, "PS").replace(/^AP Practice Exam/, "AP").replace(/^Midterm/, "Mid"), title: g + ": best percent on any practice form", ids: fs.map((f) => f.id), fmt: (t) => pct(Math.max(...t.map((x) => x.score / (x.total || 1)))) + "%" }; })
         .filter((c) => c.ids.some((id) => takenForms.has(id)))
     : (deck.forms || []).map((f) => ({ label: f.short || f.name.replace(/^Mock (Test|Quiz) /, "Mock "), title: `${f.name}: best score of ${f.total ?? deck.mock.total}`, ids: [f.id], fmt: (t) => Math.max(...t.map((x) => x.score)) }));
   const active = rows.filter((r) => r.user?.lastActive > Date.now() - 7 * DAY).length;
@@ -1349,8 +1350,9 @@ function seedDemo(s, people) {
         }
         cards[it.id] = card;
       }
-      const f0 = d.forms?.[d.forms.length - 1], tot = f0?.total ?? d.mock?.total;
-      const mocks = d.mock && rnd() < 0.7 ? [{ ts: t, score: Math.round(tot * (0.45 + skill * 0.4)), total: tot, a: 0, b: 0, minutes: 21, form: f0 ? f0.id : null, items: [] }] : [];
+      // A mock taken: the last dated form (or the last form), and in a course with topic quizzes, a quiz too.
+      const picks = d.forms ? [d.forms.find((f) => f.col && f.date), d.forms.filter((f) => f.date && !f.col).pop() || d.forms[d.forms.length - 1]].filter(Boolean) : [null];
+      const mocks = d.mock && rnd() < 0.7 ? picks.map((f0) => { const tot = f0?.total ?? d.mock.total; return { ts: t, score: Math.round(tot * (0.45 + skill * 0.4)), total: tot, a: 0, b: 0, minutes: 21, form: f0 ? f0.id : null, items: [] }; }) : [];
       s.progress[sid] = { firstSeen: t - DAY, lastActive: t - Math.floor(rnd() * 4) * DAY, pwSet: rnd() < 0.6, decks: { [d.id]: { cards, mocks } } };
     }
   }

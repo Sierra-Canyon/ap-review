@@ -20,18 +20,25 @@ for (const it of all) { assert(!ids.has(it.id), "duplicate id " + it.id); ids.ad
 for (const it of all) if (it.set) assert(deck.sets[it.set], "missing set " + it.set);
 for (const it of all) if (it.type === "mcq") assert(it.choices.length === 4 && it.why.length === 4 && it.answer === 0, "mcq shape " + it.id);
 for (const it of all) if (it.type === "essay") assert(it.rows.every((r) => r.levels.length === r.max + 1) && it.model, "essay shape " + it.id);
-assert(deck.forms.length === 10, "ten unit assessments, got " + deck.forms.length);
+assert(deck.forms.length === 24, "ten unit assessments and fourteen topic quizzes, got " + deck.forms.length);
 for (const f of deck.forms) {
   const n = (t) => f.items.filter((x) => x.type === t).length;
-  assert(n("mcq") === 15 && n("fr") === 6 && n("essay") === 1, `${f.name}: 15 multiple choice, 6 short-answer parts, 1 essay`);
-  assert(f.total === 27, `${f.name}: 27 points, got ${f.total}`);
+  if (f.id.startsWith("t")) {
+    assert(n("mcq") === 8 && n("fr") === 3 && f.total === 11, `${f.name}: 8 multiple choice, 3 short-answer parts, 11 points`);
+    assert(f.items.every((x) => x.topic === `${f.id[1]}.${f.id[2]}`), `${f.name}: every item on its topic`);
+  } else {
+    assert(n("mcq") === 15 && n("fr") === 6 && n("essay") === 1, `${f.name}: 15 multiple choice, 6 short-answer parts, 1 essay`);
+    assert(f.total === 27, `${f.name}: 27 points, got ${f.total}`);
+  }
   assert(f.items.every((x) => x.skill === "u" + f.id[1]), `${f.name}: every item is in its unit`);
 }
 const reviewIds = new Set(deck.items.map((x) => x.id));
 assert(deck.forms.every((f) => f.items.every((x) => !reviewIds.has(x.id))), "no assessment item is in review");
 const reviewSets = new Set(deck.items.map((x) => x.set).filter(Boolean));
 assert(deck.forms.every((f) => f.items.every((x) => !x.set || !reviewSets.has(x.set))), "no assessment source is in review");
-log("deck:", deck.items.length, "review items,", deck.forms.length, "unit assessments");
+const formSets = deck.forms.map((f) => new Set(f.items.map((x) => x.set).filter(Boolean)));
+assert(formSets.every((a, i) => formSets.every((b, j) => i === j || ![...a].some((x) => b.has(x)))), "no two forms share a source");
+log("deck:", deck.items.length, "review items,", deck.forms.length, "quizzes and tests");
 
 const browser = await chromium.launch();
 async function newPage(opts = {}) {
@@ -52,7 +59,8 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   await page.click("[data-as=teacher]");
   await page.waitForSelector("#coursepick");
   await page.selectOption("#coursepick", "whap");
-  await page.waitForSelector("text=Unit assessment");
+  await page.waitForSelector("text=Take a quiz or test");
+  assert(/24\s*quizzes and tests/.test(await page.textContent(".panel.mode:has-text('Quizzes and tests')")), "the home page counts the quizzes and tests");
   assert(/Unit 2 Test/.test(await page.textContent(".hero")), "the countdown names the Unit 2 Test");
   await page.screenshot({ path: `${out}/w01-home.png`, fullPage: true });
 
@@ -62,6 +70,8 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   log("first assessment listed:", first.trim());
   assert(/^Unit 2: Networks of Exchange/.test(first.trim()), "Unit 2 is listed first");
   assert((await page.$$(".fgroup")).length === 9, "nine units on the page");
+  const firstForms = await page.$$eval(".fgroup:first-of-type .formrow b", (b) => b.map((x) => x.textContent));
+  assert(firstForms.length === 9 && /^Topic 2\.1 Quiz/.test(firstForms[0]) && /^Unit 2 Assessment B/.test(firstForms[8]), "Unit 2 lists its seven topic quizzes, then its two assessments: " + firstForms.join(" | "));
   await page.screenshot({ path: `${out}/w02-mock-list.png`, fullPage: true });
 
   // Unit 2 Assessment A: 12 of 15 multiple choice, 4 of 6 short-answer parts, 4 of 6 on the essay: 20 / 27
@@ -107,6 +117,28 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   await page.click("#again");
   assert(/Taken once · best 20 \/ 27/.test(await page.textContent(".forms")), "the list shows Unit 2 Assessment A taken");
 
+  // Topic 2.3 Quiz: 6 of 8 multiple choice and 2 of 3 short-answer parts: 8 / 11
+  await page.click("[data-form=t23]");
+  let k = 0;
+  for (let i = 0; i < 11; i++) {
+    const it = byId[await page.getAttribute("#card", "data-item")];
+    if (it.type === "mcq") { await page.click(`#card .opt[data-k="${k < 6 ? it.answer : (it.answer + 1) % 4}"]`); k++; }
+    else await page.fill("#card textarea", "My answer for " + it.id);
+    await page.click(i < 10 ? "#next" : "#finish");
+  }
+  for (let w = 0; w < 3; w++) {
+    const id = (await page.$$eval("#card input[type=radio]", (els) => els[0].id)).replace(/^f-/, "").replace(/-\d$/, "");
+    await page.check(`#f-${id}-${w < 2 ? 1 : 0}`);
+    await page.click("#savewr");
+    await page.click("#nextwr");
+  }
+  await page.waitForSelector(".scorebig");
+  const tq = (await page.textContent(".scorebig")).trim();
+  log("topic quiz:", tq);
+  assert(tq === "8 / 11", "Topic 2.3 Quiz should be 8 / 11, got " + tq);
+  await page.screenshot({ path: `${out}/w07b-topic-done.png`, fullPage: true });
+  await page.click("#again");
+
   // Unit 2 only in review
   await page.click("text=Home");
   await page.click("button[data-focus='u2']");
@@ -123,6 +155,9 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   // The class view has a column for Unit 2
   await page.click("nav a[href='#teacher']");
   await page.waitForSelector("text=Items, hardest first");
+  const heads = await page.$$eval("section.panel:has(h2:text('Students')) thead th", (t) => t.map((x) => x.textContent.trim()));
+  log("class columns:", heads.join(", "));
+  assert(heads.includes("U2 test") && heads.includes("U2 quiz"), "the Class tab has Unit 2 test and quiz columns");
   await page.screenshot({ path: `${out}/w08-teacher.png`, fullPage: true });
 }
 

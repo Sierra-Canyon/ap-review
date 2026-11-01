@@ -1098,7 +1098,7 @@ async function renderTeacher() {
   const takenForms = new Set(rows.flatMap((r) => (r.s?.mocks || []).map((x) => x.form)));
   const groupsOf = [...new Set((deck.forms || []).map((f) => f.group || f.name))];
   const mockCols = (deck.forms || []).length > 6
-    ? groupsOf.map((g) => { const fs = deck.forms.filter((f) => (f.group || f.name) === g); return { label: g.replace(/^Quiz (\d+).*/, "Q$1").replace(/^Unit (\w+) Test.*/, "U$1").replace(/^Unit (\d+): .*/, "U$1").replace(/^Unit 4A Checkpoint/, "4A").replace(/^AP Practice Section/, "PS").replace(/^AP Practice Exam/, "AP").replace(/^Midterm/, "Mid"), title: g + ": best percent on any practice form", ids: fs.map((f) => f.id), fmt: (t) => pct(Math.max(...t.map((x) => x.score / (x.total || 1)))) + "%" }; })
+    ? groupsOf.map((g) => { const fs = deck.forms.filter((f) => (f.group || f.name) === g); return { label: g.replace(/^Quiz (\d+).*/, "Q$1").replace(/^Unit (\w+) Test.*/, "U$1").replace(/^Unit (\d+): .*/, "U$1 test").replace(/^Unit 4A Checkpoint/, "4A").replace(/^AP Practice Section/, "PS").replace(/^AP Practice Exam/, "AP").replace(/^Midterm/, "Mid"), title: g + ": best percent on any practice form", ids: fs.map((f) => f.id), fmt: (t) => pct(Math.max(...t.map((x) => x.score / (x.total || 1)))) + "%" }; })
         .filter((c) => c.ids.some((id) => takenForms.has(id)))
     : (deck.forms || []).map((f) => ({ label: f.short || f.name.replace(/^Mock (Test|Quiz) /, "Mock "), title: `${f.name}: best score of ${f.total ?? deck.mock.total}`, ids: [f.id], fmt: (t) => Math.max(...t.map((x) => x.score)) }));
   const active = rows.filter((r) => r.user?.lastActive > Date.now() - 7 * DAY).length;

@@ -109,10 +109,10 @@ p { margin: 0; }
 
 /* home */
 .hero { display: grid; gap: 6px; }
-.countdown { font-family: var(--font-display); font-size: 1.05rem; color: var(--accent); }
+.countdown { font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; color: var(--accent); }
 .choices-home { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
 .mode { display: grid; gap: 10px; align-content: start; }
-.mode .num { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; }
+.mode .num { font-family: var(--font-body); font-weight: 700; font-size: 2.2rem; line-height: 1; font-variant-numeric: tabular-nums; }
 
 .skills { display: grid; gap: 10px; }
 .skill { display: grid; grid-template-columns: minmax(0, 1fr) 140px 44px; gap: 12px; align-items: center; }
@@ -157,7 +157,7 @@ pre.code, code, .mono, textarea.out, table.trace input, .opt.mono .txt, .cmp pre
   display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; cursor: pointer; width: 100%;
 }
 .opt:hover:not([disabled]) { border-color: var(--accent); }
-.opt .letter { font-family: var(--font-display); color: var(--muted); }
+.opt .letter { font-family: var(--font-body); font-weight: 700; color: var(--muted); }
 .opt.mono .txt { font-family: var(--font-mono); font-size: .92rem; }
 .opt.picked { border-color: var(--accent); background: var(--accent-soft); }
 .opt.right { border-color: var(--good); background: var(--good-soft); }
@@ -208,7 +208,7 @@ table.trace input.no { border-color: var(--bad); background: var(--bad-soft); }
 .model { white-space: pre-wrap; background: var(--surface-2); border-radius: 8px; padding: 12px 14px; }
 .your { white-space: pre-wrap; border: 1px dashed var(--line); border-radius: 8px; padding: 12px 14px; }
 
-.scorebig { font-family: var(--font-display); font-size: 3rem; line-height: 1; }
+.scorebig { font-family: var(--font-body); font-weight: 700; font-size: 3rem; line-height: 1; font-variant-numeric: tabular-nums; }
 .list-plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 
 /* sign in */
@@ -219,7 +219,7 @@ table.trace input.no { border-color: var(--bad); background: var(--bad-soft); }
 /* dashboard */
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
 .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
-.kpi b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 1.8rem; line-height: 1.1; }
+.kpi b { display: block; font-family: var(--font-body); font-weight: 700; font-size: 1.8rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .mini { display: inline-block; width: 44px; height: 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; vertical-align: middle; }
 .mini i { display: block; height: 100%; }
 .heat { font-variant-numeric: tabular-nums; font-weight: 700; padding: 2px 7px; border-radius: 6px; display: inline-block; min-width: 46px; text-align: center; }
@@ -250,7 +250,7 @@ main.book { max-width: 900px; gap: 18px; }
 .crumbs a { color: var(--muted); }
 .sec-head { display: grid; gap: 8px; }
 .sec-head h1 { font-size: 1.9rem; }
-.sec-n { font-family: var(--font-display); font-weight: 500; color: var(--accent); margin-right: 4px; }
+.sec-n { font-family: var(--font-body); font-weight: 700; color: var(--accent); margin-right: 4px; }
 .sec-prog { display: flex; align-items: center; gap: 10px; }
 .sec-prog .meter { width: 160px; }
 .goals { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 14px 18px; }
@@ -281,7 +281,7 @@ main.book { max-width: 900px; gap: 18px; }
 .toc { list-style: none; margin: 0; padding: 0; display: grid; }
 .toc li a { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 9px 6px; border-top: 1px solid var(--line); text-decoration: none; color: var(--fg); border-radius: 6px; }
 .toc li a:hover { background: var(--surface-2); }
-.toc-n { font-family: var(--font-display); color: var(--accent); }
+.toc-n { font-family: var(--font-body); font-weight: 700; color: var(--accent); }
 .toc-p { font-size: .85rem; color: var(--muted); font-weight: 700; white-space: nowrap; }
 .toc-p.full { color: var(--good); }
 .resume { text-decoration: none; color: var(--fg); }

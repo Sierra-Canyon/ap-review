@@ -133,7 +133,7 @@ export function partBPoints(deck, scores) {
   const raw = scores.reduce((t, x) => t + (x || 0), 0);
   return deck.mock.partB.kind === "fr" ? raw * deck.mock.partB.scale : raw;
 }
-export const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
+export const rowsMax = (it) => it.type === "fr" ? 1 : (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
 export function partBMax(deck, items) {
   const k = deck.mock.partB.kind;
   return k === "fr" ? items.length * deck.mock.partB.scale : k === "rubric" ? items.reduce((t, it) => t + rowsMax(it), 0) : items.length * deck.mock.partB.points;

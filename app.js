@@ -773,7 +773,7 @@ function formsHTML(cfg) {
   };
   const block = (g) => `<div class="fgroup"><h3>${esc(g.name)}${g.date ? ` <span class="small muted">· ${label(g.date)}</span>` : ""}</h3><div class="forms">${g.forms.map(row).join("")}</div></div>`;
   const dated = groups.some((g) => g.date);
-  const next = dated ? groups.filter((g) => !g.date || when(g.date) >= today) : groups;
+  const next = dated ? [...groups.filter((g) => g.date && when(g.date) >= today), ...groups.filter((g) => !g.date)] : groups;
   const past = dated ? groups.filter((g) => g.date && when(g.date) < today).reverse() : [];
   return `${next.length ? `${dated && past.length ? "<h2>Coming up</h2>" : ""}${next.map(block).join("")}` : ""}
     ${past.length ? `<details class="pastforms"${next.length ? "" : " open"}><summary><b>Earlier this year</b> <span class="small muted">(${past.length} assessments, for review before the midterm and the AP exam)</span></summary>${past.map(block).join("")}</details>` : ""}
@@ -782,6 +782,9 @@ function formsHTML(cfg) {
 const isFR = () => deck.mock.partB.kind === "fr";
 const bScore = (it, m) => m.wr[it.id]?.score || 0;
 const formOf = (id) => deck.forms?.find((f) => f.id === id);
+// "Part A" and "Part B", or the deck's own names for its sections (AP World: Section I, Part A and so on).
+const partName = (it, inB) => deck.mock.sections?.[it.type] || (inB ? "Part B" : "Part A");
+const ptsLabel = (n) => `${n} point${n === 1 ? "" : "s"}`;
 function startMock(formId) {
   const m = buildMock(deck, deckState().cards, Math.random, formId);
   app.mock = { deck: deck.id, form: formId || null, items: [...m.partA, ...m.partB], partA: m.partA.length, i: 0, answers: {}, start: Date.now(), phase: "take" };
@@ -805,11 +808,11 @@ function renderMock() {
   if (m.phase === "done") return renderMockDone();
   const it = m.items[m.i];
   const partB = m.i >= m.partA;
-  const pts = partB ? (isFR() ? "1 point" : it.type === "code" ? `${rowsMax(it)} points` : `${cfg.partB.points} points`) : `${cfg.partA.points} point${cfg.partA.points === 1 ? "" : "s"}`;
-  view.className = partB && isFR() ? "wide" : "";
+  const pts = ptsLabel(partB ? (isFR() ? 1 : ["code", "essay", "fr"].includes(it.type) ? rowsMax(it) : cfg.partB.points) : cfg.partA.points);
+  view.className = partB && (isFR() || it.set) ? "wide" : "";
   view.innerHTML = `
     <div class="progress">${m.items.map((x, k) => `<span class="${m.answers[x.id] && (m.answers[x.id].choice !== undefined || m.answers[x.id].text) ? "done" : ""} ${k === m.i ? "here" : ""}"></span>`).join("")}</div>
-    <div class="row spread small muted"><span>${m.form ? esc(formOf(m.form).name) + " · " : ""}${partB ? "Part B" : "Part A"} · ${m.i + 1} of ${m.items.length} · ${pts}</span><span id="clock"></span></div>
+    <div class="row spread small muted"><span>${m.form ? esc(formOf(m.form).name) + " · " : ""}${esc(partName(it, partB))} · ${m.i + 1} of ${m.items.length} · ${pts}</span><span id="clock"></span></div>
     <section class="panel enter" id="card"></section>
     <div class="row spread"><button class="btn" id="prev" ${m.i === 0 ? "disabled" : ""}>Back</button>
       ${m.i < m.items.length - 1 ? `<button class="btn primary big" id="next">Next</button>` : `<button class="btn primary big" id="finish">Finish and score</button>`}</div>`;
@@ -838,8 +841,8 @@ function renderMockScore() {
   const m = app.mock;
   const wrs = m.items.slice(m.partA);
   const it = wrs[m.wi];
-  view.className = isFR() ? "wide" : "";
-  view.innerHTML = `<div class="row spread small muted"><span>Scoring Part B · ${m.wi + 1} of ${wrs.length}</span></div>
+  view.className = isFR() || it.set ? "wide" : "";
+  view.innerHTML = `<div class="row spread small muted"><span>Scoring ${deck.mock.sections ? "your written answers" : "Part B"} · ${m.wi + 1} of ${wrs.length} · ${esc(partName(it, true))}</span></div>
     <section class="panel enter" id="card"></section>`;
   const card = $("#card");
   const yours = `<div class="stack"><b>Your answer</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div></div>`;
@@ -847,7 +850,9 @@ function renderMockScore() {
   card.innerHTML = it.type === "code"
     ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div><h3 class="ctitle">${esc(it.title)}</h3><details class="sources"><summary>The task</summary><div class="md"><p>${md(it.prompt)}</p></div>${it.given ? codeBlock(it.given) : ""}</details>${yourCode}`
     : it.type === "fr"
-    ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${sourcesHTML(deck.sets[it.set], false)}${frPrompt(it)}${yours}`
+    ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frPrompt(it)}${yours}`
+    : it.type === "essay"
+    ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}<div class="prompt"><b>${it.kind === "dbq" ? "Document-based question" : "Long essay question"}.</b> ${esc(it.prompt)}</div><div class="stack"><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div></div>`
     : `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span><span class="src">${esc(it.source)}</span></div>
     ${codeBlock(it.listII, "List (ii)")}<div class="prompt">${esc(it.prompt)}</div>${yours}`;
   const area = document.createElement("div"); area.className = "stack"; card.append(area);
@@ -860,7 +865,7 @@ function renderMockScore() {
     });
     $("#nextwr").focus({ preventScroll: true });
   };
-  if (it.type === "code") scoreRubric(area, it, after, { showModel: false });
+  if (it.type === "code" || it.type === "essay") scoreRubric(area, it, after, { showModel: false });
   else if (it.type === "fr") scoreFR(area, it, (score) => after(score), { showExamples: false });
   else scoreWR(area, it, m.answers[it.id]?.text || "", after, { showModel: false });
 }
@@ -892,31 +897,42 @@ async function finishMock() {
   await save();
   renderMock();
 }
+// Points by section, for a deck that names its sections: "Section I, Part A 12 / 15 · Section I, Part B 4 / 6 · Section II 3 / 6".
+function sectionTotals(m, A, B) {
+  const by = [];
+  for (const it of [...A, ...B]) {
+    const name = partName(it, B.includes(it));
+    let r = by.find((x) => x.name === name); if (!r) by.push(r = { name, got: 0, max: 0 });
+    r.got += A.includes(it) ? (m.answers[it.id]?.choice === it.answer ? deck.mock.partA.points : 0) : bScore(it, m);
+    r.max += A.includes(it) ? deck.mock.partA.points : rowsMax(it);
+  }
+  return by.map((r) => `${esc(r.name)} ${r.got} / ${r.max}`).join(" · ");
+}
 function renderMockDone() {
   const m = app.mock;
   const cfg = deck.mock;
   const A = m.items.slice(0, m.partA), B = m.items.slice(m.partA);
   const aMax = A.length * cfg.partA.points, bMax = partBMax(deck, B);
-  const set = B[0]?.type === "fr" ? deck.sets[B[0].set] : null;
+  const set = isFR() && B[0]?.set ? deck.sets[B[0].set] : null;
   const total = formOf(m.form)?.total ?? (aMax + bMax);
   // Where the points went, by skill, and a set made of exactly the missed questions.
   const lost = {}, missedIds = [];
   for (const it of A) if (m.answers[it.id]?.choice !== it.answer) { lost[it.skill] = (lost[it.skill] || 0) + cfg.partA.points; missedIds.push(it.id); }
   for (const it of B) {
-    const max = it.type === "fr" ? 1 : it.type === "wr" ? 4 : rowsMax(it), got = bScore(it, m);
-    if (got < max) { lost[it.skill] = (lost[it.skill] || 0) + (it.type === "fr" ? cfg.partB.scale : 1) * (max - got); missedIds.push(it.id); }
+    const max = it.type === "wr" ? 4 : rowsMax(it), got = bScore(it, m);
+    if (got < max) { lost[it.skill] = (lost[it.skill] || 0) + (it.type === "fr" && isFR() ? cfg.partB.scale : 1) * (max - got); missedIds.push(it.id); }
   }
   const lostRows = Object.entries(lost).sort((a, b) => b[1] - a[1]);
   view.className = "";
   view.innerHTML = `<section class="panel enter">
       <span class="eyebrow">${m.form ? esc(formOf(m.form).name) : esc(cfg.name)}</span>
-      <div class="row"><span class="scorebig">${m.score} / ${total}</span><span class="muted">${B.length ? `Part A ${m.a} / ${aMax} · Part B ${m.b} / ${bMax}` : `${A.length} multiple choice`}${set ? ` (${B.filter((it) => bScore(it, m)).length} of ${B.length} subparts × ${cfg.partB.scale})` : ""}${cfg.clock ? ` · ${m.minutes} min` : ""}</span></div>
+      <div class="row"><span class="scorebig">${m.score} / ${total}</span><span class="muted">${B.length ? (cfg.sections ? sectionTotals(m, A, B) : `Part A ${m.a} / ${aMax} · Part B ${m.b} / ${bMax}`) : `${A.length} multiple choice`}${set ? ` (${B.filter((it) => bScore(it, m)).length} of ${B.length} subparts × ${cfg.partB.scale})` : ""}${cfg.clock ? ` · ${m.minutes} min` : ""}</span></div>
       ${lostRows.length ? `<div class="stack"><b>Where you lost points</b>
         <div class="tablewrap"><table><tbody>${lostRows.map(([sk, pts]) => `<tr><td>${esc(skillName(sk))}</td><td class="num">${+pts.toFixed(1)} point${pts === 1 ? "" : "s"}</td><td class="num"><button class="btn small" data-drill="skill:${esc(sk)}">Practice this skill</button></td></tr>`).join("")}</tbody></table></div>
         <div class="row"><button class="btn primary" data-drill="mock:${missedIds.join(",")}">Practice the ${missedIds.length} I missed</button></div></div>` : `<p><b>Every point earned.</b></p>`}
       <div class="row"><button class="btn primary" id="again">${deck.forms ? "All mocks" : `Another ${esc(cfg.name.toLowerCase())}`}</button><a class="btn" href="#review">Review</a><a class="btn ghost" href="#home">Home</a></div>
     </section>
-    ${B.length ? "<h2>Part A</h2>" : ""}
+    ${B.length ? `<h2>${esc(cfg.sections?.mcq || "Part A")}</h2>` : ""}
     ${A.map((it, k) => {
       const ch = m.answers[it.id]?.choice;
       const ok = ch === it.answer;
@@ -925,18 +941,20 @@ function renderMockDone() {
         ${ch !== undefined && !ok ? `<div class="feedback no"><span class="verdict">You chose: ${choiceText(it.choices[ch])}</span><p>${prose(it.why[ch])}</p></div>` : ch === undefined ? `<div class="feedback no"><span class="verdict">Left blank.</span></div>` : ""}
         <div class="feedback ok"><span class="verdict">Answer: ${choiceText(it.choices[it.answer])}</span><p>${prose(it.why[it.answer])}</p></div></div></details>`;
     }).join("")}
-    ${B.length ? `<h2>Part B${set ? `: ${esc(set.name)}` : ""}</h2>` : ""}
+    ${B.length && !cfg.sections ? `<h2>Part B${set ? `: ${esc(set.name)}` : ""}</h2>` : ""}
     ${set ? sourcesHTML(set, false) : ""}
-    ${B.map((it) => it.type === "code"
-      ? `<details class="panel" open><summary><span class="chip ${bScore(it, m) === rowsMax(it) ? "good" : bScore(it, m) * 2 >= rowsMax(it) ? "warn" : "bad"}">${bScore(it, m)} / ${rowsMax(it)}</span> ${esc(it.title)}</summary>
-        <div class="stack"><b>Your code</b><pre class="code"><code>${esc(m.answers[it.id]?.text || "(blank)")}</code></pre>
-        <div class="tablewrap"><table><tbody>${it.rows.map((r, k) => `<tr><td>${(m.wr[it.id].levels || [])[k] ? "✓" : "·"}</td><td><b>${esc(r.name)}</b><br><span class="small">${prose(r.earns || "")}</span></td></tr>`).join("")}</tbody></table></div>
+    ${B.map((it, k) => (cfg.sections && partName(it) !== partName(B[k - 1] || A[0]) ? `<h2>${esc(partName(it, true))}</h2>` : "")
+      + (!set && it.set && it.set !== B[k - 1]?.set ? sourcesHTML(deck.sets[it.set], false) : "")
+      + (it.type === "code" || it.type === "essay"
+      ? `<details class="panel" open><summary><span class="chip ${bScore(it, m) === rowsMax(it) ? "good" : bScore(it, m) * 2 >= rowsMax(it) ? "warn" : "bad"}">${bScore(it, m)} / ${rowsMax(it)}</span> ${esc(it.type === "essay" ? (it.kind === "dbq" ? "Document-based question" : "Long essay question") : it.title)}</summary>
+        <div class="stack">${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>` : `<b>Your code</b><pre class="code"><code>${esc(m.answers[it.id]?.text || "(blank)")}</code></pre>`}
+        <div class="tablewrap"><table><tbody>${it.rows.map((r, k) => { const got = (m.wr[it.id].levels || [])[k] || 0, mx = r.max ?? (r.levels ? r.levels.length - 1 : 1); return `<tr><td class="num">${mx === 1 ? (got ? "✓" : "·") : `${got} / ${mx}`}</td><td><b>${esc(r.name)}</b><br><span class="small">${prose(r.levels ? r.levels[got] : r.earns || "")}</span></td></tr>`; }).join("")}</tbody></table></div>
         ${solutionHTML(it, bScore(it, m))}</div></details>`
       : it.type === "fr"
       ? `<details class="panel" ${bScore(it, m) ? "" : "open"}><summary><span class="chip ${bScore(it, m) ? "good" : "bad"}">${bScore(it, m)} / 1</span> ${esc(it.part)} (${esc(it.sub)}) ${esc(it.prompt)}</summary>
         <div class="stack"><b>Your answer</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>${frExamplesHTML(it, bScore(it, m))}</div></details>`
       : `<details class="panel" open><summary><span class="chip ${bScore(it, m) === 4 ? "good" : bScore(it, m) >= 2 ? "warn" : "bad"}">${bScore(it, m)} / 4</span> ${esc(skillName(it.skill))}</summary>
-      <div class="stack"><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>${modelHTML(it, bScore(it, m), m.wr[it.id].levels.every((x) => x === 2))}</div></details>`).join("")}`;
+      <div class="stack"><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>${modelHTML(it, bScore(it, m), m.wr[it.id].levels.every((x) => x === 2))}</div></details>`)).join("")}`;
   $("#again").addEventListener("click", () => { app.mock = null; if (deck.forms) renderMock(); else startMock(); window.scrollTo(0, 0); });
   bindDrills();
 }
@@ -1080,7 +1098,7 @@ async function renderTeacher() {
   const takenForms = new Set(rows.flatMap((r) => (r.s?.mocks || []).map((x) => x.form)));
   const groupsOf = [...new Set((deck.forms || []).map((f) => f.group || f.name))];
   const mockCols = (deck.forms || []).length > 6
-    ? groupsOf.map((g) => { const fs = deck.forms.filter((f) => (f.group || f.name) === g); return { label: g.replace(/^Quiz (\d+).*/, "Q$1").replace(/^Unit (\w+) Test.*/, "U$1").replace(/^Unit 4A Checkpoint/, "4A").replace(/^AP Practice Section/, "PS").replace(/^AP Practice Exam/, "AP").replace(/^Midterm/, "Mid"), title: g + ": best percent on any practice form", ids: fs.map((f) => f.id), fmt: (t) => pct(Math.max(...t.map((x) => x.score / (x.total || 1)))) + "%" }; })
+    ? groupsOf.map((g) => { const fs = deck.forms.filter((f) => (f.group || f.name) === g); return { label: g.replace(/^Quiz (\d+).*/, "Q$1").replace(/^Unit (\w+) Test.*/, "U$1").replace(/^Unit (\d+): .*/, "U$1").replace(/^Unit 4A Checkpoint/, "4A").replace(/^AP Practice Section/, "PS").replace(/^AP Practice Exam/, "AP").replace(/^Midterm/, "Mid"), title: g + ": best percent on any practice form", ids: fs.map((f) => f.id), fmt: (t) => pct(Math.max(...t.map((x) => x.score / (x.total || 1)))) + "%" }; })
         .filter((c) => c.ids.some((id) => takenForms.has(id)))
     : (deck.forms || []).map((f) => ({ label: f.short || f.name.replace(/^Mock (Test|Quiz) /, "Mock "), title: `${f.name}: best score of ${f.total ?? deck.mock.total}`, ids: [f.id], fmt: (t) => Math.max(...t.map((x) => x.score)) }));
   const active = rows.filter((r) => r.user?.lastActive > Date.now() - 7 * DAY).length;

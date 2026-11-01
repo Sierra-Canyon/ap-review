@@ -9,7 +9,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | AP Computer Science Principles | D | Quiz 3: Lists and Loops, Tue 11/3 | 52 | 3 mock quizzes |
 | AP Computer Science A | B | Unit 2 now; the countdown follows every assessment to the AP exam | 78 | 33 forms: practice for all 15 assessments of the year |
 | AP Cybersecurity | F | Unit 2 Test: Securing Spaces, Mon 11/2 | 215 | 3 mock tests |
-| AP World History: Modern | (another teacher) | all nine units | 317 | none yet |
+| AP World History: Modern | (another teacher) | all nine units | 317 | 10 unit assessments (2 for the Unit 2 Test, 11/4) |
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
 
@@ -23,7 +23,9 @@ One record per student (`students/` in Firestore), keyed by the school email, ho
 
 ## AP World History: Modern
 
-The bank in `decks/whap/` (one file per unit), modeled on the AP exam's format, which Albert's bank follows: 211 stimulus-based multiple-choice questions on 79 sources, 27 short-answer questions (81 parts, each scored 0 or 1 against what earns the point), 18 long essay questions and 7 DBQs scored row by row on the AP rubrics, with a strong response, what each document offers, and evidence to use. Primary sources are public-domain texts quoted verbatim with a citation and a link; passages summarizing historians' views were written for the bank and say so. The quotes were copied in short pieces from their pages: spot-check them against the links. No mocks yet.
+The bank in `decks/whap/` (one file per unit), modeled on the AP exam's format, which Albert's bank follows: 211 stimulus-based multiple-choice questions on 79 sources, 27 short-answer questions (81 parts, each scored 0 or 1 against what earns the point), 18 long essay questions and 7 DBQs scored row by row on the AP rubrics, with a strong response, what each document offers, and evidence to use. Primary sources are public-domain texts quoted verbatim with a citation and a link; passages summarizing historians' views were written for the bank and say so. The quotes were copied in short pieces from their pages: spot-check them against the links.
+
+**Unit assessments** (`decks/whap-mocks/`), separate from the practice questions the way Albert's are: one per unit and two for Unit 2 (the Unit 2 Test on 11/4, listed first), each the AP exam in miniature, 27 points: Section I, Part A is 15 source-based multiple choice on five or six sources; Section I, Part B is two short-answer questions (one with a source, one without, 6 parts); Section II is one long essay question on the 6-point rubric. Every source and question is new, used nowhere in review. Students score their short answers and essay with the guidelines and rubric, then see the model essay and the evidence; the score shows by section. The home page can also limit review to Unit 2.
 
 ## My misses (every course)
 
@@ -139,7 +141,8 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `decks/csa-u2.js`, `decks/csa-u2/` | AP CSA: the deck, its review items, and the five mocks. |
 | `tools/verify-java.mjs` | Compiles and runs every Java item with Java 21. |
 | `tools/e2e-accounts.mjs` | Accounts in Chromium: email sign-in, first and changed passwords, reset links, a teacher with one course, cards, a GitHub record gaining a school email, the Teachers panel. |
-| `decks/whap.js`, `decks/whap/` | AP World History: the bank, one file per unit. |
+| `decks/whap.js`, `decks/whap/`, `decks/whap-mocks/` | AP World History: the bank, one file per unit, and the unit assessments. |
+| `tools/e2e-whap.mjs` | Runs an AP World unit assessment in Chromium: section labels, scoring short answers and the essay, the score by section, Unit 2 review, phone width. |
 | `tools/e2e-csa.mjs` | Runs the AP CSA course in Chromium: a review set, a Quiz 5 set, a free response, both mock shapes, phone width, the Class tab. |
 | `tools/e2e-cyber.mjs` | Runs the AP Cyber course in Chromium: a review set, a free-response set, a mock test, phone width, the Class tab, a two-course roster entry. |
 | `vendor/firebase.js` | The Firebase SDK, bundled (`tools/build-firebase.mjs`), so the site needs no CDN. |

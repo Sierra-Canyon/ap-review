@@ -1016,7 +1016,7 @@ function renderQuestions() {
   for (const f of deck.forms || []) { const g = f.group || deck.mock?.title || "Mocks"; let G = groups.find((y) => y.name === g); if (!G) groups.push(G = { name: g, forms: [] }); G.forms.push(f); }
   const formHead = (f) => { const list = byForm.get(f) || []; const hidden = list.filter((it) => it.hidden).length;
     return `${esc(f.name)} <span class="small muted">· ${list.length} questions${hidden ? `, ${hidden} hidden` : ""} · ${f.total ?? deck.mock?.total} points</span>`; };
-  const formBlock = (f) => `<div class="qform" data-form="${esc(f.id)}"><h3>${formHead(f)}</h3>${(byForm.get(f) || []).map((it, k) => questionRow(it, k + 1)).join("")}</div>`;
+  const formBlock = (f) => `<details class="qform" data-form="${esc(f.id)}"><summary><h3>${formHead(f)}</h3></summary>${(byForm.get(f) || []).map((it, k) => questionRow(it, k + 1)).join("")}</details>`;
   const review = byForm.get(null) || [];
   const bySkill = deck.skills.map((sk) => ({ sk, list: review.filter((it) => it.skill === sk.id) })).filter((x) => x.list.length);
   const edited = all.filter((x) => x.it.edited).length;
@@ -1025,7 +1025,7 @@ function renderQuestions() {
     <div class="row"><label class="sr" for="qsearch">Search the questions</label><input id="qsearch" type="search" placeholder="Search the questions" class="wide-in"></div>
     ${groups.map((g) => `<details class="panel qgroup"><summary><b>${esc(g.name)}</b> <span class="small muted">· ${g.forms.length} form${g.forms.length === 1 ? "" : "s"}</span></summary>${g.forms.map(formBlock).join("")}</details>`).join("")}
     ${bySkill.length ? `<details class="panel qgroup"><summary><b>Review</b> <span class="small muted">· ${review.length} questions</span></summary>
-      ${bySkill.map(({ sk, list }) => `<div class="qform"><h3>${esc(sk.name)}</h3>${list.map((it, k) => questionRow(it, k + 1)).join("")}</div>`).join("")}</details>` : ""}</div>`;
+      ${bySkill.map(({ sk, list }) => `<details class="qform"><summary><h3>${esc(sk.name)} <span class="small muted">· ${list.length} questions</span></h3></summary>${list.map((it, k) => questionRow(it, k + 1)).join("")}</details>`).join("")}</details>` : ""}</div>`;
   const root = $("#qpage");
   const itemOf = (id) => all.find((x) => x.it.id === id)?.it;
   const numberOf = (el) => +el.querySelector("summary b").textContent.replace(".", "");
@@ -1069,7 +1069,8 @@ function renderQuestions() {
   $("#qsearch").addEventListener("input", (e) => {
     const q = e.target.value.trim().toLowerCase();
     $$("details.qitem").forEach((el) => { const it = itemOf(el.dataset.qid); el.hidden = !!q && !JSON.stringify([it.id, ...editableFields(it).map(([k]) => it[k])]).toLowerCase().includes(q); });
-    $$("details.qgroup").forEach((g) => { if (q) g.open = $$("details.qitem", g).some((x) => !x.hidden); });
+    // While searching, only the topics and groups with a match stay, opened.
+    $$("details.qform, details.qgroup").forEach((g) => { const any = $$("details.qitem", g).some((x) => !x.hidden); g.hidden = !!q && !any; if (q) g.open = any; });
   });
 }
 

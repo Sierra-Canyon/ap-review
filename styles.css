@@ -404,7 +404,10 @@ textarea.essay-in { min-height: 340px; }
 p.cite { margin-top: 6px; }
 
 /* Questions page (teachers) */
-.qform h3 { margin: 18px 0 8px; }
+details.qform { margin-top: 6px; }
+details.qform > summary { cursor: pointer; padding: 6px 0; }
+details.qform > summary h3 { display: inline; margin: 0; }
+details.qform[open] > summary { margin-bottom: 4px; }
 details.qitem { border-top: 1px solid var(--line); padding: 8px 0; }
 details.qitem > summary { cursor: pointer; line-height: 1.6; }
 details.qitem .qbody { padding: 10px 0 4px 18px; }

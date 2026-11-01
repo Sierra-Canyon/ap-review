@@ -41,6 +41,8 @@ const groups = await page.$$eval("details.qgroup > summary b", (b) => b.map((x) 
 log("groups:", groups.join(" | "));
 assert(groups[0] === "Unit 1: The Global Tapestry" && groups.includes("Unit 2: Networks of Exchange") && groups.at(-1) === "Review", "groups by unit, then review");
 await page.click("details.qgroup:has(summary:has-text('Unit 2: Networks')) > summary");
+assert(!(await page.isVisible("details.qitem[data-qid='w2a-m01']")), "each quiz or test starts closed");
+await page.click("details.qform[data-form='w2a'] > summary");
 await page.click("details.qitem[data-qid='w2a-m01'] > summary");
 await page.waitForSelector("details.qitem[data-qid='w2a-m01'] .qchoices");
 assert(await page.$("details.qitem[data-qid='w2a-m01'] details.sources"), "the question shows its sources");

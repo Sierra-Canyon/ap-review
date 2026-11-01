@@ -6,8 +6,10 @@ import { writeFileSync, mkdirSync } from "node:fs";
 mkdirSync("tools/.tmp", { recursive: true });
 writeFileSync("tools/.tmp/firebase-entry.js", `
 export { initializeApp } from "firebase/app";
-export { getAuth, GithubAuthProvider, signInWithPopup, signOut, onAuthStateChanged, getAdditionalUserInfo } from "firebase/auth";
-export { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs } from "firebase/firestore";
+export { getAuth, GithubAuthProvider, signInWithPopup, signOut, onAuthStateChanged, getAdditionalUserInfo,
+  signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, updatePassword,
+  reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+export { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs, query, where, limit } from "firebase/firestore";
 `);
 await build({
   entryPoints: ["tools/.tmp/firebase-entry.js"],

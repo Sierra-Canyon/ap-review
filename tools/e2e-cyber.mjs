@@ -150,12 +150,12 @@ async function answer(page, right) {
   assert(!(await page.$("h2:text('Book')")), "no Book section in AP Cyber");
   await page.screenshot({ path: `${out}/c08-teacher.png`, fullPage: true });
   // Add a CSP example student to the Cyber roster: they stay in CSP too.
-  await page.fill("#rosterin", "example-csp-1, 2000000, Example AP CSP Student A");
+  await page.fill("#rosterin", "Example AP CSP Student A, example.csp1@scsstudent.org");
   await page.click("#addroster");
-  await page.waitForTimeout(500);
+  await page.waitForSelector(".toast:has-text('Added')");
   await page.waitForSelector("text=Items, hardest first");
-  const roster = await page.evaluate(() => JSON.parse(localStorage.getItem("ap-review-demo-v3")).roster["2000000"]);
-  assert(JSON.stringify(roster.courses) === '["csp","cyber"]', "courses merge: " + JSON.stringify(roster.courses));
+  const rec = await page.evaluate(() => JSON.parse(localStorage.getItem("ap-review-demo-v4")).students["example.csp1@scsstudent.org"]);
+  assert(JSON.stringify(rec.courses) === '["csp","cyber"]', "courses merge: " + JSON.stringify(rec.courses));
   await page.selectOption("#coursepick", "csp");
   await page.waitForSelector("h1:has-text('Period D')");
 }

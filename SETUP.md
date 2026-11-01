@@ -78,6 +78,27 @@ The site has three courses. Each roster entry lists the courses a student is in,
 
 A student already on another course's roster is added to this one too; **Remove** takes a student off only the course that is showing. Entries added before 11/1 have no course list and count as AP CSP, so the 14 CSP students need nothing. Julius Chappell filled in the GitHub form (`JuliusChappell`) but is not one of the six, so he is not in the file.
 
+## 10. School email sign-in (the 11/1 update)
+
+The site now keeps **one record per student**, keyed by their school email (`first.last@scsstudent.org`), and lets a student in by either way: GitHub (your courses) or that email and a password (courses like AP World History, where the teacher makes the accounts). Both open the same record, so a student in your class and in World History sees both courses after either sign-in. The site shows only the **name the student goes by in class**; the email is the sign-in and nothing else.
+
+Do these in order, right after you push this update (about 10 minutes):
+
+1. **Turn on email sign-in.** Firebase console, **Authentication > Sign-in method > Add new provider > Email/Password**. Turn on the first switch (Email/Password), leave Email link off, **Save**. Leave **Authentication > Settings > User actions > Enable create (sign-up)** on: the Class tab uses it to make students' sign-ins.
+2. **Publish the new rules.** **Firestore Database > Rules**, replace everything with the contents of `firestore.rules`, **Publish**. Until you do, the site cannot read the new records.
+3. **Move your roster.** Sign in as @jd12 and open the **Class** tab. The first time, the old roster (keyed by GitHub number) becomes student records with their progress; a message says how many moved. Students' own progress also comes along the first time each one signs in.
+4. **Add school emails to AP CSP.** With the course menu on **AP CSP**, paste `../private/roster_csp_emails.txt` (14 lines: name, school email, GitHub username, GitHub number) into **Roster > Students to add** and press **Add to roster**. Each record moves to the school email and keeps its progress and its GitHub sign-in. Then switch the menu to **AP CSA** and paste `../private/roster_csa_emails.txt` (11 lines) the same way. Then **AP Cyber** with `../private/roster_cyber_emails.txt` (6 lines). Later additions use the same form: `Name, school email, @github, number`.
+5. **Add the World History teacher.** Still on the Class tab, at the bottom: **Teachers > Add a teacher**: name, school email, check **AP World**. Their sign-in is made and they are emailed a link to choose a password. They see only the courses checked for them.
+6. **Check that reset emails arrive.** Firebase sends them from `noreply@ap-review-3eb90.firebaseapp.com`. Ask one student to use **Forgot password?** on the sign-in page. If nothing arrives (check spam), ask IT to allow that sender for `@scsstudent.org`. **Authentication > Templates > Password reset** sets the sender name and subject.
+
+### How the World History teacher runs a class
+
+- **Class** tab, **Roster**: paste one student per line, `Name in class, school email` (for example `Brooklyn Chen, Sicheng.Chen@scsstudent.org`). A name left off is made from the email and can be changed in the table (type, then Enter).
+- Each new email gets a sign-in with a **first password** (like `maple-river-42`), shown in the Password column. **Print first-password cards** prints one card per student who has not chosen their own yet.
+- On first sign-in a student must choose their own password. After that the teacher no longer sees it ("chosen").
+- A student who forgets: **Forgot password?** on the sign-in page, or the teacher's **Send reset link**. Either emails a link to the school address. Teachers cannot see or type a student's password.
+- A student already on another course (yours) keeps it and gets World History too; they can sign in either way.
+
 ## 9. Try it as a student
 
 Sign in from a private window with a student account you have, or ask one student to try it first. The first sign-in opens a GitHub pop-up asking to authorize **AP Review**: it reads the public profile only.
@@ -90,7 +111,10 @@ Sign in from a private window with a student account you have, or ask one studen
 | GitHub says the redirect URI is not associated | Step 3: the Redirect URI in the OAuth app is not the callback URL Firebase shows. |
 | `auth/popup-blocked` | The browser blocked the pop-up. Allow pop-ups for `sierra-canyon.github.io`. |
 | Signed in, but nothing saves | Step 5: the rules were not published, or the student is not on the roster. |
-| **Could not load the class** on the Class tab | Your GitHub number is not `5401810` in `firestore.rules`. |
+| **Could not load the class** on the Class tab | Step 10.2: the new rules are not published, or your GitHub number is not `5401810` in `firestore.rules`. |
+| "That email and password do not match" for every student | Step 10.1: the Email/Password provider is off. |
+| A student signs in and sees "not on a class list" | Their school email (or GitHub number) is on no roster. Add the line on the Class tab. |
+| Reset emails never arrive | Step 10.6: school email is filtering the sender. |
 
 ## Checking the site after a change
 
@@ -102,7 +126,7 @@ Sign in from a private window with a student account you have, or ask one studen
 | `node tools/runner-diff.mjs` | the page's C# runner against those same .NET results (388 programs) |
 | `node tools/runner-vs-dotnet.mjs` | the runner against .NET on 162 extra programs, mostly student mistakes |
 | `node tools/verify-java.mjs decks/csa-u2/<file>.js` (and `decks/csa-year/<file>.js`) | every AP CSA item and free-response solution with Java 21, one file at a time (about 1,000 checks in all) |
-| `node tools/e2e.mjs`, `e2e-book.mjs`, `e2e-csa.mjs`, `e2e-cyber.mjs` | the whole site in Chromium: AP CSP, the book, AP CSA, and AP Cybersecurity (serve the folder on port 8765 first) |
+| `node tools/e2e.mjs`, `e2e-book.mjs`, `e2e-csa.mjs`, `e2e-cyber.mjs`, `e2e-accounts.mjs` | the whole site in Chromium: AP CSP, the book, AP CSA, and AP Cybersecurity (serve the folder on port 8765 first) |
 
 The first two and the fourth need the .NET 10 SDK. All of them need Node.
 

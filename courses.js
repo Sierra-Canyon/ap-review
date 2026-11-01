@@ -4,11 +4,14 @@
 import cspQ3 from "./decks/csp-q3.js";
 import cyberU2 from "./decks/cyber-u2.js";
 import csa from "./decks/csa.js";
+import whap from "./decks/whap.js";
 
 export const courses = [
   { id: "csp", name: "AP Computer Science Principles", short: "AP CSP", period: "Period D", book: true, decks: [cspQ3] },
   { id: "csa", name: "AP Computer Science A", short: "AP CSA", period: "Period B", book: false, decks: [csa] },
   { id: "cyber", name: "AP Cybersecurity", short: "AP Cyber", period: "Period F", book: false, decks: [cyberU2] },
+  // passwords: students sign in with a school email and a password (a teacher makes their first one), not GitHub.
+  { id: "whap", name: "AP World History: Modern", short: "AP World", period: "", book: false, passwords: true, decks: [whap] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

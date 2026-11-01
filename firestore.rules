@@ -1,45 +1,83 @@
 rules_version = '2';
 
 // Paste this into Firebase console > Firestore Database > Rules, then Publish.
-// Students sign in with GitHub. Their GitHub account number decides what they can do:
-//   on the roster: read and write their own progress, nothing else
-//   the teacher (5401810, @jd12): read everyone's progress, manage the roster and requests
+// One record per student (students/), however they sign in: GitHub, or a school email and password.
+//   the admin (GitHub 5401810, @jd12): everything, including adding teachers
+//   a teacher (a teachers/ document for their sign-in email): every student's roster record, and the progress of
+//     students in their own courses; they may add or remove only their own courses on a record
+//   a student: their own roster record (read), their own progress (read and write)
 //   anyone else signed in with GitHub: create a request to be added, and nothing more
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    function signedIn() {
-      return request.auth != null && request.auth.token.firebase.sign_in_provider == 'github.com';
-    }
+    function signedIn() { return request.auth != null; }
+    function provider() { return request.auth.token.firebase.sign_in_provider; }
     function ghId() {
-      return string(request.auth.token.firebase.identities['github.com'][0]);
+      return signedIn() && provider() == 'github.com' ? string(request.auth.token.firebase.identities['github.com'][0]) : '';
     }
+    function myEmail() { return signedIn() && provider() == 'password' ? request.auth.token.email.lower() : ''; }
+    function isAdmin() { return ghId() in ['5401810']; }
+    function teacherDoc() { return get(/databases/$(database)/documents/teachers/$(myEmail())); }
     function isTeacher() {
-      return signedIn() && ghId() in ['5401810'];
+      return isAdmin() || (myEmail() != '' && exists(/databases/$(database)/documents/teachers/$(myEmail())));
     }
-    function onRoster() {
-      return signedIn() && exists(/databases/$(database)/documents/roster/$(ghId()));
+    function myCourses() { return isAdmin() ? [] : teacherDoc().data.courses; }
+    function teachesAny(courses) { return isAdmin() || (isTeacher() && courses.hasAny(myCourses())); }
+    function isStudentOf(s) { return (ghId() != '' && s.ghId == ghId()) || (myEmail() != '' && s.email == myEmail()); }
+    function studentRec(id) { return get(/databases/$(database)/documents/students/$(id)).data; }
+    function validStudent(d) {
+      return d.keys().hasOnly(['name', 'email', 'ghId', 'login', 'courses'])
+        && d.name is string && d.name.size() < 120
+        && d.email is string && d.email.size() < 200 && d.email == d.email.lower()
+        && d.ghId is string && d.login is string && d.courses is list;
+    }
+    // A teacher may change a record's courses only by adding or removing their own.
+    function keepsOthersCourses() {
+      return isAdmin() || request.resource.data.courses.toSet().difference(myCourses().toSet())
+        == resource.data.courses.toSet().difference(myCourses().toSet());
     }
 
-    match /roster/{id} {
-      allow get: if signedIn() && (id == ghId() || isTeacher());
-      allow list, write: if isTeacher();
+    match /teachers/{email} {
+      allow get: if isAdmin() || myEmail() == email;
+      allow list, write: if isAdmin();
+    }
+
+    match /students/{id} {
+      allow get, list: if isTeacher() || isStudentOf(resource.data);
+      allow create: if teachesAny(request.resource.data.courses) && validStudent(request.resource.data);
+      allow update: if isTeacher() && validStudent(request.resource.data)
+        && (teachesAny(resource.data.courses) || teachesAny(request.resource.data.courses)) && keepsOthersCourses();
+      allow delete: if isAdmin() || (isTeacher() && resource.data.courses.toSet().difference(myCourses().toSet()).size() == 0);
+    }
+
+    match /progress/{id} {
+      // A teacher's own practice is kept under t-<their Firebase uid>.
+      allow read, write: if signedIn() && id == 't-' + request.auth.uid && request.resource.size() < 400000;
+      allow read: if signedIn() && id == 't-' + request.auth.uid;
+      allow read: if isStudentOf(studentRec(id)) || (isTeacher() && teachesAny(studentRec(id).courses));
+      allow create, update: if isStudentOf(studentRec(id)) && request.resource.size() < 400000;
+      // Teachers move progress when a record gets a school email (gh-<number> becomes the email).
+      allow create, delete: if isTeacher() && (isAdmin() || teachesAny(studentRec(id).courses));
+    }
+
+    match /cards/{id} {
+      allow read, write: if isTeacher();
     }
 
     match /requests/{id} {
-      allow create, update: if signedIn() && id == ghId()
+      allow create, update: if ghId() != '' && id == ghId()
         && request.resource.data.keys().hasOnly(['login', 'name', 'ts'])
         && request.resource.data.login is string && request.resource.data.login.size() < 60
         && request.resource.data.name is string && request.resource.data.name.size() < 120;
       allow read, delete: if isTeacher();
     }
 
+    // Before 11/1: read once to move progress and the roster over.
     match /users/{uid} {
-      allow read: if signedIn() && (request.auth.uid == uid || isTeacher());
-      allow write: if signedIn() && request.auth.uid == uid
-        && (onRoster() || isTeacher())
-        && request.resource.data.ghId == ghId()
-        && request.resource.size() < 400000;
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+    }
+    match /roster/{id} {
+      allow read: if isAdmin();
     }
   }
 }

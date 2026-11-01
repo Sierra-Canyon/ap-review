@@ -1,0 +1,756 @@
+// Unit 6: Consequences of Industrialization, c. 1750 to c. 1900
+// Sources: every stimulus (multiple-choice sets, SAQs with a source, DBQ documents), keyed by id.
+export const sets = {
+  "u6-s1": {
+    id: "u6-s1", name: "Kipling, The White Man's Burden", intro: "Use the poem below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "Take up the White Man's burden-- / Send forth the best ye breed-- / Go bind your sons to exile / To serve your captives' need; / To wait in heavy harness, / On fluttered folk and wild-- / Your new-caught, sullen peoples, / Half-devil and half-child." },
+        { p: "Take up the White Man's burden-- / In patience to abide, / To veil the threat of terror / And check the show of pride; / By open speech and simple, / An hundred times made plain / To seek another's profit, / And work another's gain." },
+        { cite: "Rudyard Kipling, \"The White Man's Burden,\" poem published in February 1899, stanzas 1 and 2. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://fordham.edu/Halsall/mod/Kipling.asp", kind: "primary" },
+      ] },
+    ],
+  },
+  "u6-s2": {
+    id: "u6-s2", name: "Ukhtomskii on Russia in Asia", intro: "Use the passage below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "The idea of invading a complex foreign life, of using Asia as a tool for the advancement of the selfish interests of modern, so-called civilized, mankind, was repugnant to us. For more than two hundred years we have remained at home; for our natural union with Turkestan and the region of the Amur cannot be regarded as political annexations." },
+        { p: "Russia alone does not know what it is annually to send forth to foreign lands thousands of her sons who cannot find food and shelter amid the superfluity of wealth and labor falling to the share of their countrymen. With us there is work for all---work to last for hundreds of years; with us everyone who has hands to work is a welcome guest on our eastern, or, rather, southeastern borders, ..." },
+        { cite: "Prince E. Ukhtomskii, Travels in the East of Nicholas II, Emperor of Russia, When Cesarewitch, 1890 to 1891, 2 vols. (London, 1896), vol. II. English translation published in London in 1896; the source page names no translator. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1891ukhtomskii.asp", kind: "primary" },
+      ] },
+    ],
+  },
+  "u6-s3": {
+    id: "u6-s3", name: "Moshweshewe to Governor Grey", intro: "Use the letter below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "Unfortunately it was not with the English Government that my first intercourse with the whites commenced. People who had come from the Colony first presented themselves to us, they called themselves Boers. I thought all white men were honest. ... I was led to believe they would live with me as my own people lived, that is, looking to me as to a father and a friend." },
+        { p: "About sixteen years since, one of the Governors of the Colony, Sir George Napier, marked down my limits on a treaty he made with me. I was to be ruler within those limits. A short time after, another Governor came, it was Sir P. Maitland. The Boers then began to talk of their right to places I had then lent to them." },
+        { cite: "Moshweshewe (Moshoeshoe), king of the Basotho, letter to Sir George Grey, governor of the Cape Colony, 1858. English text printed in G. M. Theal, ed., Records of Southeastern Africa (Capetown: Government of Capetown, 1898 to 1903), as cited by the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1858basuto.asp", kind: "primary" },
+      ] },
+    ],
+  },
+  "u6-s4": {
+    id: "u6-s4", name: "Naoroji on British rule in India", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "[Benefits] Materially: Loans for railways and irrigation. Development of a few valuable products, such as indigo, tea, coffee, silk, etc. Increase of exports. Telegraphs." },
+        { p: "The Detriments of British Rule: ... Materially: The political drain, up to this time, from India to England, ... The consequent continuous impoverishment and exhaustion of the country, except so far as it has been very partially relieved and replenished by the railway and irrigation loans, ... Even with this relief, the material condition of India is such that the great mass of the poor have hardly tuppence a day and a few rags, or a scanty subsistence. ... An increase of exports without adequate compensation; loss of manufacturing industry and skill." },
+        { cite: "Dadabhai Naoroji, \"The Benefits of British Rule,\" 1871, in Essays, Speeches, Addresses and Writings (Bombay: Caxton Printing Works, 1887), pp. 131 to 136. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.fordham.edu/mod/1871britishrule.asp", kind: "primary" },
+      ] },
+    ],
+  },
+  "u6-s5": {
+    id: "u6-s5", name: "Export economies and foreign investment", intro: "Use the passage below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "During the nineteenth century, industrialization in Western Europe and the United States reshaped economies far beyond the factory towns. Textile mills needed cotton, machines needed rubber, and growing city populations needed cheap food. In response, many regions in Latin America, Africa, and Asia came to specialize in exporting one or two raw materials or cash crops, such as Egyptian cotton, Argentine beef and wheat, Malayan tin, or rubber from the Amazon and the Congo. Much of the money that built the railroads, ports, and telegraph lines linking these regions to world markets came from British and other European investors. Even where countries stayed politically independent, as in most of Latin America, foreign investors and local landowning elites took most of the profits, and export economies were left exposed to sudden drops in world prices." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      ] },
+    ],
+  },
+  "u6-s6": {
+    id: "u6-s6", name: "Immigration to the United States by decade", intro: "Use the table below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "Persons admitted to the United States as permanent residents, by country of origin and decade" },
+        { table: {
+          head: ["Country of origin", "1850 to 1859", "1860 to 1869", "1870 to 1879", "1880 to 1889", "1890 to 1899", "1900 to 1909"],
+          rows: [
+            ["Ireland", "1,029,486", "427,419", "422,264", "674,061", "405,710", "344,940"],
+            ["Germany", "976,072", "723,734", "751,769", "1,445,181", "579,072", "328,722"],
+            ["Italy", "8,643", "9,853", "46,296", "267,660", "603,761", "1,930,475"],
+            ["Austria-Hungary", "0", "3,375", "60,127", "314,787", "534,059", "2,001,376"],
+            ["Russia", "423", "1,667", "34,977", "173,081", "413,382", "1,501,301"],
+            ["China", "35,933", "54,028", "133,139", "65,797", "15,268", "19,884"],
+            ["Japan", "0", "138", "193", "1,583", "13,998", "139,712"],
+            ["All countries", "2,814,554", "2,081,261", "2,742,137", "5,248,568", "3,694,294", "8,202,388"],
+          ],
+        } },
+        { cite: "U.S. Department of Homeland Security, 2019 Yearbook of Immigration Statistics, Table 2: Persons Obtaining Lawful Permanent Resident Status by Region and Selected Country of Last Residence, Fiscal Years 1820 to 2019. Before 1906, the table records country of origin. Fiscal year 1850 covers 15 months. Figures checked against the same table in the 2013 Yearbook.", url: "https://ohss.dhs.gov/sites/default/files/2023-12/yearbook_immigration_statistics_2019_0.pdf", kind: "data" },
+      ] },
+    ],
+  },
+  "u6-s7": {
+    id: "u6-s7", name: "Indentured labor after abolition", intro: "Use the passage below to answer all parts of the question that follows.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "After Britain abolished slavery in its empire in the 1830s, sugar planters in the Caribbean, Mauritius, and later Natal and Fiji faced a shortage of workers willing to labor on plantations for low wages. Planters and colonial governments turned to indentured servitude. Recruiters signed up laborers, mostly from British India and southern China, who agreed to work for a fixed term, often five years, in exchange for passage, wages, and sometimes a return ticket. Between the 1830s and the early twentieth century, more than one million Indians left home under such contracts. Many recruits came from regions hit by famine, debt, and the decline of local crafts. Contracts were often poorly explained, and plantation conditions could resemble slavery. Yet many migrants stayed after their terms ended and built lasting Indian and Chinese communities abroad." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      ] },
+    ],
+  },
+  "u6-s8": {
+    id: "u6-s8", name: "Chinese Exclusion Act, 1882", intro: "Use the source below to answer all parts of the question that follows.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "Whereas, in the opinion of the Government of the United States the coming of Chinese laborers to this country endangers the good order of certain localities within the territory thereof: Therefore," },
+        { p: "... That from and after the expiration of ninety days next after the passage of this act, and until the expiration of ten years next after the passage of this act, the coming of Chinese laborers to the United States be, and the same is hereby, suspended; and during such suspension it shall not be lawful for any Chinese laborer to come, or having so come after the expiration of said ninety days, to remain within the United States. ..." },
+        { p: "[Section 14] That hereafter no State court or court of the United States shall admit Chinese to citizenship; and all laws in conflict with this act are hereby repealed." },
+        { cite: "United States Congress, An Act to Execute Certain Treaty Stipulations Relating to Chinese (Chinese Exclusion Act), May 6, 1882, preamble and sections 1 and 14, from the United States Statutes at Large. Text from the Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/19th_century/chinese_exclusion_act.asp", kind: "primary" },
+      ] },
+    ],
+  },
+  "u6-dbq": {
+    id: "u6-dbq", name: "DBQ: Motives for imperial expansion", intro: "Use the seven documents below to answer the document-based question.",
+    sources: [
+      { title: "Document 1", blocks: [
+        { p: "The exportation of laborers and capital from old to new countries, from a place where their productive power is less, to a place where it is greater, increases by so much the aggregate produce of the labor and capital of the world. It adds to the joint wealth of the old and the new country, what amounts in a short period to many times the mere cost of effecting the transport. There needs be no hesitation in affirming that Colonization, in the present state of the world, is the best affair of business, in which the capital of an old and wealthy country can engage." },
+        { cite: "John Stuart Mill, British economist and philosopher, Principles of Political Economy, first published 1848; from the edition by J. Laurence Laughlin (New York: D. Appleton and Co., 1891), pp. 540 to 560. The Internet Modern History Sourcebook notes that the text was modernized by Jerome S. Arkenberg. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1849jsmill-colonies.asp", kind: "primary" },
+      ] },
+      { title: "Document 2", blocks: [
+        { p: "During the reigns of the emperors Kien-lung and Kia-king these English barbarians humbly besought an entrance and permission to deliver tribute and presents; they afterwards presumptuously asked to have Chu-san; but our sovereigns, clearly perceiving their traitorous designs, gave them a determined refusal. From that time, linking themselves with traitorous Chinese traders, they have carried on a large trade and poisoned our brave people with opium. Verily, the English barbarians murder all of us that they can. They are dogs, whose desires can never be satisfied. Therefore we need not inquire whether the peace they have now made be real or pretended. Let us all rise, arm, unite, and go against them." },
+        { cite: "Declaration of a public meeting of the people of Canton (Guangzhou), China, against the English, 1842. English text in Eva March Tappan, ed., China, Japan, and the Islands of the Pacific, vol. I of The World's Story (Boston: Houghton Mifflin, 1914), p. 197. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1842canton.asp", kind: "primary" },
+      ] },
+      { title: "Document 3", blocks: [
+        { p: "For the following reasons we think the British government ought now to take possession of the New Hebrides group of the South Sea islands, ..." },
+        { p: "4. All the men and all the money used in civilizing and Christianizing the New Hebrides have been British. ..." },
+        { p: "5. Because the New Hebrides are already a British dependency in this sense---all its imports are from Sydney and Melbourne and British colonies, and all its exports are also to British colonies." },
+        { p: "7. Because if any other nation takes possession of them, their excellent and spacious harbors, as on Efate, so well-supplied with the best fresh water, and their near-proximity to Great Britain's Australasian colonies, would in time of war make them dangerous to British interests and commerce in the South Seas and her colonies." },
+        { cite: "John G. Paton, Presbyterian missionary of the New Hebrides Mission, published letter urging British annexation of the New Hebrides (present-day Vanuatu), in Accounts and Papers 1883 (London: Her Majesty's Stationery Office, 1883), vol. XLVII, pp. 29 to 30. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1883hebrides.asp", kind: "primary" },
+      ] },
+      { title: "Document 4", blocks: [
+        { p: "It is sufficient to reiterate here that, as long as our policy is one of free trade, we are compelled to seek new markets; for old ones are being closed to us by hostile tariffs, and our great dependencies, which formerly were the consumers of our goods, are now becoming our commercial rivals. It is inherent in a great colonial and commercial empire like ours that we go forward or go backward. ... We owe to the instincts of colonial expansion of our ancestors those vast and noble dependencies which are our pride and the outlets of our trade today; and we are accountable to posterity that opportunities which now present themselves of extending the sphere of our industrial enterprise are not neglected, for the opportunities now offered will never recur again." },
+        { cite: "Captain F. D. Lugard, British army officer and agent of the Imperial British East Africa Company, The Rise of Our East African Empire (Edinburgh, 1893), excerpts from vol. I, pp. 585 to 587, and vol. II, pp. 69 to 75. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.fordham.edu/mod/1893lugard.asp", kind: "primary" },
+      ] },
+      { title: "Document 5", blocks: [
+        { p: "Policies of the Pan-German League, 1898:" },
+        { p: "2. Laying of a cable from Kiachow [China] to Port Arthur [Dairen, in Manchuria], with connection with the Russian-Siberian cable." },
+        { p: "3. Strengthening of the German foothold in Kiaochow." },
+        { p: "4. German coaling and cable stations in the Red Sea, the West Indies, and near Singapore." },
+        { p: "5. Complete possession of Samoa." },
+        { p: "6. More subsidized German steamship lines to Kiaochow and Korea. ..." },
+        { p: "8. Development of harbor of Swakopmund [in German Southwest Africa] and railroads to Windhoek [the capital of the territory]." },
+        { p: "9. Securing of concessions for commerce and industry in Asia Minor. . ." },
+        { cite: "Pan-German League, a German nationalist organization, program of 1898, in Mildred S. Wertheimer, The Pan-German League (New York: Columbia University Press, 1923), pp. 31 to 34, 106 to 108. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1890pangerman.asp", kind: "primary" },
+      ] },
+      { title: "Document 6", blocks: [
+        { p: "In spite of the fact that we have no such fleet as we should have, we have conquered for ourselves a place in the sun. It will now be my task to see to it that this place in the sun shall remain our undisputed possession, in order that the sun's rays may fall fruitfully upon our activity and trade in foreign parts, that our industry and agriculture may develop within the state and our sailing sports upon the water, for our future lies upon the water. The more Germans go out upon the waters, whether it be in races or regattas, whether it be in journeys across the ocean, or in the service of the battle flag, so much the better it will be for us." },
+        { cite: "Kaiser Wilhelm II, emperor of Germany, speech to the North German Regatta Association, 1901, in C. Gauss, The German Kaiser as Shown in His Public Utterances (New York: Charles Scribner's Sons, 1915), pp. 181 to 183. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1901Kaiser.asp", kind: "primary" },
+      ] },
+      { title: "Document 7", blocks: [
+        { p: "... it has to be borne in mind that in 1882 the [Egyptian] army was in a state of mutiny; the treasury was bankrupt; every branch of the administration had been dislocated; the ancient and arbitrary method, under which the country had for centuries been governed, had received a severe blow, whilst, at the same time, no more orderly and law-abiding form of government had been inaugurated to take its place. Is it probable that a government composed of the rude elements described above, and led by men of such poor ability as Arabi and his coadjutators [associates], would have been able to control a complicated machine of this nature? There can be but one answer to these questions." },
+        { cite: "The Earl of Cromer (Evelyn Baring), British consul-general in Egypt from 1883 to 1907, Modern Egypt, 2 vols. (New York: Macmillan, 1908), vol. I, pp. 326 to 330. Text from the Internet Modern History Sourcebook, Fordham University.", url: "https://sourcebooks.web.fordham.edu/mod/1908cromer.asp", kind: "primary" },
+      ] },
+    ],
+  },
+};
+
+export default [
+  // ---------- Set 1: Kipling ----------
+  { id: "u6-m01", skill: "u6", type: "mcq", set: "u6-s1", topic: "6.1", reasoning: "Causation",
+    question: "Kipling published the poem in February 1899. Which of the following developments most directly prompted the poem?",
+    choices: [
+      "The United States' acquisition of the Philippines after its war with Spain in 1898",
+      "The British takeover of direct rule in India after the Indian Rebellion of 1857",
+      "The division of Africa among European powers after the Berlin Conference of 1884 to 1885",
+      "The opening of Japan to Western trade after the arrival of Commodore Perry in 1853",
+    ],
+    why: [
+      "Correct. Kipling wrote the poem as the United States debated keeping the Philippines, which it took from Spain in 1898, and he urged Americans to take up colonial rule.",
+      "Britain did take direct rule of India in 1858, but that happened four decades before the poem and does not explain its timing in 1899.",
+      "The Scramble for Africa was a major example of imperial expansion, but the poem's 1899 timing points to the American debate over the Philippines.",
+      "Perry's arrival opened Japan to trade in the 1850s, but Japan was never colonized, so it does not fit a poem about ruling \"new-caught\" peoples.",
+    ], answer: 0 },
+  { id: "u6-m02", skill: "u6", type: "mcq", set: "u6-s1", topic: "6.1", reasoning: "Causation",
+    question: "The poem's description of colonized peoples as \"Half-devil and half-child\" most directly reflects which belief used to justify imperialism?",
+    choices: [
+      "The belief that Westerners had a duty to \"civilize\" peoples they viewed as culturally inferior",
+      "The belief that settler colonies should govern themselves through elected assemblies",
+      "The belief that free trade among nations would make colonies unnecessary",
+      "The belief that colonial governments should not interfere with local religions",
+    ],
+    why: [
+      "Correct. By calling colonized peoples childlike and savage, the poem presents imperial rule as a burden of guidance that \"superior\" peoples owed to others, the core of the civilizing mission.",
+      "Settler colonies such as Canada did gain self-government in this period, but the poem argues for ruling colonized peoples, not for their self-rule.",
+      "Some British free traders did argue that colonies were unnecessary, but the poem calls for taking on colonies, not giving them up.",
+      "Queen Victoria's 1858 proclamation did promise not to interfere with Indian religions, but the poem stresses transforming colonized peoples, not leaving their beliefs alone.",
+    ], answer: 0 },
+  { id: "u6-m03", skill: "u6", type: "mcq", set: "u6-s1", topic: "6.1", reasoning: "Comparison",
+    question: "The ideas in the poem were most strongly reinforced in the late nineteenth century by which of the following?",
+    choices: [
+      "Social Darwinism, which misapplied ideas about natural selection to claim that some races and nations were superior to others",
+      "Marxism, which argued that class struggle would lead workers to overthrow capitalism",
+      "Liberalism, which stressed individual rights and limits on government power",
+      "Romanticism, which celebrated emotion, nature, and national folk traditions",
+    ],
+    why: [
+      "Correct. Social Darwinists used the language of science to rank peoples, which supported the poem's picture of Western peoples as fit to rule others.",
+      "Marxism was an important nineteenth-century ideology, but it criticized capitalist societies rather than justifying their rule over others.",
+      "Liberalism shaped the Atlantic revolutions, but its stress on rights and consent worked against, not for, ruling peoples without their consent.",
+      "Romanticism influenced nationalism and the arts, but it did not provide the racial ranking the poem relies on.",
+    ], answer: 0 },
+  { id: "u6-m04", skill: "u6", type: "mcq", set: "u6-s1", topic: "6.3", reasoning: "Continuity and change",
+    question: "Which of the following developments in the Philippines most directly challenged the view of colonized peoples in the poem?",
+    choices: [
+      "Filipino nationalists led by Emilio Aguinaldo fought a war against United States forces beginning in 1899.",
+      "Spanish missionaries had converted much of the Philippine population to Catholicism by the seventeenth century.",
+      "Manila served as a trading hub where Chinese merchants exchanged silk for silver from the Americas.",
+      "American planters built large sugar plantations in Hawaii before the United States annexed it in 1898.",
+    ],
+    why: [
+      "Correct. Filipinos who had already declared independence from Spain organized armed resistance to American rule, which contradicts the poem's image of passive, childlike peoples needing guidance.",
+      "Spanish conversion of Filipinos is accurate, but it was a much earlier development and does not show Filipinos resisting the kind of rule the poem promotes.",
+      "The Manila galleon trade linked Asia and the Americas from the sixteenth century, but it is unrelated to the American colonial debate of 1899.",
+      "American planters did shape Hawaii's annexation, but that development took place in Hawaii, not the Philippines, and it did not challenge the poem's view.",
+    ], answer: 0 },
+
+  // ---------- Set 2: Ukhtomskii ----------
+  { id: "u6-m05", skill: "u6", type: "mcq", set: "u6-s2", topic: "6.2", reasoning: "Causation",
+    question: "The author's reference to \"Turkestan and the region of the Amur\" refers to which nineteenth-century development?",
+    choices: [
+      "Russia's expansion over land into Central Asia and the Pacific coast of East Asia",
+      "Russia's sale of Alaska to the United States in 1867",
+      "Russia's defeat by Britain, France, and the Ottoman Empire in the Crimean War",
+      "Russia's support for Slavic nationalist movements in the Balkans",
+    ],
+    why: [
+      "Correct. In the mid and late nineteenth century Russia conquered the Central Asian khanates of Turkestan and took the Amur region from Qing China, extending its land empire.",
+      "The sale of Alaska shrank Russia's territory, so it does not fit a passage about Russia's \"natural union\" with new lands.",
+      "The Crimean War (1853 to 1856) was a Russian defeat near the Black Sea, not an expansion into Central or East Asia.",
+      "Russia did back Slavic movements in the Balkans, but the Balkans are in southeastern Europe, not Turkestan or the Amur.",
+    ], answer: 0 },
+  { id: "u6-m06", skill: "u6", type: "mcq", set: "u6-s2", topic: "6.2", reasoning: "Comparison",
+    question: "Russian expansion as described in the passage was most similar to which of the following?",
+    choices: [
+      "The westward expansion of the United States across North America in the nineteenth century",
+      "The British East India Company's trade from coastal posts in India in the eighteenth century",
+      "Japan's takeover of Taiwan after the Sino-Japanese War of 1894 to 1895",
+      "King Leopold II's claim to the Congo as his personal possession in 1885",
+    ],
+    why: [
+      "Correct. Like Russia, the United States expanded across a continent into lands next to its existing borders and then sent settlers to farm and work there.",
+      "The East India Company began as a trading company based in coastal posts, which is unlike Russia's overland annexation and settlement of neighboring lands.",
+      "Japan gained Taiwan as an overseas colony through war with China, which differs from the overland expansion the passage describes.",
+      "Leopold's Congo was an overseas colony run largely to extract rubber and ivory, the kind of \"selfish\" exploitation the author says Russia rejected.",
+    ], answer: 0 },
+  { id: "u6-m07", skill: "u6", type: "mcq", set: "u6-s2", topic: "6.2", reasoning: "Comparison",
+    question: "Ukhtomskii traveled with the future Tsar Nicholas II on a tour of Asia in 1890 and 1891. Which of the following best describes the author's purpose in the passage?",
+    choices: [
+      "To present Russian expansion as more natural and less exploitative than the empires of Western Europe",
+      "To argue that Russia should withdraw from Central Asia and focus on industry at home",
+      "To urge Russian peasants to move to the Americas in search of land",
+      "To call for an alliance with Japan to divide China between the two powers",
+    ],
+    why: [
+      "Correct. The author contrasts Russia with \"so-called civilized\" Western powers that use Asia for selfish ends and claims Russia's growth is a \"natural union\" rather than conquest.",
+      "Russia did push industrial growth in the 1890s, but the passage defends Russia's presence in Asia rather than calling for withdrawal.",
+      "The passage claims that Russia, unlike other countries, does not need to send its people abroad, so it does not encourage emigration.",
+      "Russia and Japan competed for influence in Manchuria and Korea and went to war in 1904, and the passage does not propose any alliance.",
+    ], answer: 0 },
+  { id: "u6-m08", skill: "u6", type: "mcq", set: "u6-s2", topic: "6.6", reasoning: "Causation",
+    question: "Which of the following would most directly challenge the author's claim in the second paragraph?",
+    choices: [
+      "Hundreds of thousands of people from the Russian Empire, including many Jews fleeing persecution, moved to the United States in the 1880s and 1890s.",
+      "Millions of Russian peasants moved east to settle in Siberia in the decades around 1900.",
+      "Russia began building the Trans-Siberian Railway in 1891 to link Moscow with the Pacific coast.",
+      "Russia freed its serfs in 1861 but left many of them in debt for their land.",
+    ],
+    why: [
+      "Correct. The author claims Russia does not send its people abroad, but large numbers left the Russian Empire for the United States, pushed by poverty and by pogroms after 1881.",
+      "Peasant settlement in Siberia supports the author's claim that Russia had \"work for all\" on its eastern borders rather than challenging it.",
+      "The Trans-Siberian Railway helped Russia settle and control its eastern lands, which fits the author's view instead of contradicting it.",
+      "Emancipation and peasant debt are accurate, but this fact alone does not show that Russians were leaving the country.",
+    ], answer: 0 },
+
+  // ---------- Set 3: Moshweshewe ----------
+  { id: "u6-m09", skill: "u6", type: "mcq", set: "u6-s3", topic: "6.2", reasoning: "Causation",
+    question: "The arrival of the \"Boers\" described in the letter was part of which broader development?",
+    choices: [
+      "The movement of Dutch-speaking settlers inland from the Cape Colony, partly to escape British rule, beginning in the 1830s",
+      "The founding of a British penal colony at Sydney in Australia in 1788",
+      "The rise of the Zulu kingdom under Shaka, whose wars displaced many peoples of southern Africa in the 1820s",
+      "The recruitment of Indian indentured laborers for sugar plantations in Natal after 1860",
+    ],
+    why: [
+      "Correct. In the Great Trek, Boer settlers left the British-ruled Cape and moved into the interior, where they claimed land held by African peoples such as the Basotho.",
+      "The Sydney penal colony began British settlement in Australia, but it took place on another continent and did not involve the Boers.",
+      "Shaka's wars did reshape southern Africa and helped Moshweshewe build his kingdom, but the Zulu were not the settlers \"from the Colony\" in the letter.",
+      "Indian laborers did arrive in Natal from 1860, but they came as plantation workers, not as the Boer landholders the letter describes.",
+    ], answer: 0 },
+  { id: "u6-m10", skill: "u6", type: "mcq", set: "u6-s3", topic: "6.3", reasoning: "Comparison",
+    question: "The letter best illustrates which type of response to state expansion?",
+    choices: [
+      "Using diplomacy and appeals to one imperial power to resist land claims by settlers",
+      "Joining a religious revival that promised the disappearance of foreign settlers",
+      "Building a state with modern weapons to defeat a European army in battle",
+      "Leading a revolt of colonial soldiers against their European officers",
+    ],
+    why: [
+      "Correct. Moshweshewe writes to the British governor, recounts treaties and boundaries, and seeks British help against Boer claims, a diplomatic strategy.",
+      "Religious revivals such as the Ghost Dance in North America were real responses to expansion, but the letter relies on treaties and negotiation, not prophecy.",
+      "Ethiopia's victory over Italy at Adwa in 1896 fits this description, but the letter describes negotiation, not a military victory.",
+      "The Indian Rebellion of 1857 began as a revolt of sepoys in the British army, which is a different kind of resistance than this letter shows.",
+    ], answer: 0 },
+  { id: "u6-m11", skill: "u6", type: "mcq", set: "u6-s3", topic: "6.2", reasoning: "Comparison",
+    question: "The pattern in the letter, in which settlers claimed land that a local ruler believed he had only lent to them, was most similar to which of the following?",
+    choices: [
+      "Disputes between British settlers and the Maori over land in New Zealand after the Treaty of Waitangi of 1840",
+      "The Qing dynasty's opening of treaty ports to British merchants after 1842",
+      "The Greek war that won independence from the Ottoman Empire in the 1820s",
+      "The British occupation of Egypt in 1882 to protect the Suez Canal and European loans",
+    ],
+    why: [
+      "Correct. In New Zealand, as in southern Africa, settlers and colonial officials read treaties as giving them land that indigenous leaders believed they had not given up, which led to wars over land.",
+      "Treaty ports gave foreign merchants trading rights in China, but they did not bring large numbers of settlers claiming farmland.",
+      "Greek independence was a nationalist revolt against an empire, not a dispute between settlers and a local ruler over land.",
+      "The occupation of Egypt was driven by strategy and debt, and Britain ruled through officials rather than through settlers seizing land.",
+    ], answer: 0 },
+  { id: "u6-m12", skill: "u6", type: "mcq", set: "u6-s3", topic: "6.3", reasoning: "Continuity and change",
+    question: "Which of the following later developments most directly resulted from the conflict described in the letter?",
+    choices: [
+      "At Moshweshewe's request, Britain made Basutoland a British territory in 1868, keeping it out of Boer control.",
+      "Britain defeated the Zulu kingdom in 1879 after an early Zulu victory at Isandlwana.",
+      "The discovery of gold on the Witwatersrand in 1886 led to the founding of Johannesburg.",
+      "The Xhosa killed their cattle in 1856 and 1857 after a prophet promised that the British would leave.",
+    ],
+    why: [
+      "Correct. After more wars with the Orange Free State, Moshweshewe sought British protection, and Basutoland (later the independent country of Lesotho) came under British rule in 1868.",
+      "The Anglo-Zulu War was a separate conflict between Britain and the Zulu, not a result of the Basotho and Boer land dispute.",
+      "The Witwatersrand gold rush transformed South Africa's economy, but it came decades later and had different causes.",
+      "The Xhosa cattle killing was a separate response to British expansion on the eastern Cape frontier, and it came before this letter.",
+    ], answer: 0 },
+
+  // ---------- Set 4: Naoroji ----------
+  { id: "u6-m13", skill: "u6", type: "mcq", set: "u6-s4", topic: "6.5", reasoning: "Causation",
+    question: "The \"loss of manufacturing industry and skill\" that Naoroji describes most likely resulted from which development?",
+    choices: [
+      "Competition from machine-made British cotton cloth sold in Indian markets",
+      "Heavy taxes that Mughal emperors placed on artisans in the seventeenth century",
+      "Famines in the late nineteenth century that killed millions in rural India",
+      "The British practice of recruiting Indian soldiers for the colonial army",
+    ],
+    why: [
+      "Correct. Cheap factory textiles from Britain entered India on favorable terms and undercut Indian hand spinners and weavers, shrinking a major Indian industry.",
+      "Mughal taxes were a feature of an earlier empire, and they do not explain a decline that Naoroji ties to British rule in the nineteenth century.",
+      "Famines did devastate India, but they were a separate harm, not the cause of the decline in Indian manufacturing.",
+      "The British army did rely on Indian soldiers, but military recruitment does not explain the loss of manufacturing skill.",
+    ], answer: 0 },
+  { id: "u6-m14", skill: "u6", type: "mcq", set: "u6-s4", topic: "6.4", reasoning: "Continuity and change",
+    question: "The \"Development of a few valuable products, such as indigo, tea, coffee, silk\" most directly reflects which broader pattern of the period c. 1750 to c. 1900?",
+    choices: [
+      "Colonized regions were reshaped to export raw materials and cash crops to industrial economies.",
+      "Independent states such as Meiji Japan built heavy industry under government direction.",
+      "Joint-stock companies raised money from investors to pay for long-distance trading voyages.",
+      "Silver from the Americas paid for most European purchases of Asian goods.",
+    ],
+    why: [
+      "Correct. Under colonial rule, India's economy was pushed toward exporting cash crops and raw materials to Britain while buying British manufactured goods.",
+      "Meiji Japan did industrialize under state direction, but the excerpt describes colonial India producing raw goods, not building heavy industry.",
+      "Joint-stock companies such as the British East India Company date from the seventeenth century, and they do not explain the shift toward cash crops described here.",
+      "American silver did fund European trade with Asia, but that pattern belongs mainly to the sixteenth to eighteenth centuries.",
+    ], answer: 0 },
+  { id: "u6-m15", skill: "u6", type: "mcq", set: "u6-s4", topic: "6.5", reasoning: "Comparison",
+    question: "Naoroji's point of view in the excerpt was most likely shaped by which of the following?",
+    choices: [
+      "His position as an Indian reformer who wanted British rule to serve Indian interests and who later helped found the Indian National Congress",
+      "His position as a British official responsible for collecting land taxes in Bengal",
+      "His support for the rebels of 1857 who tried to restore the Mughal emperor",
+      "His work as a Christian missionary seeking converts in rural India",
+    ],
+    why: [
+      "Correct. Naoroji was an Indian reformer who lived much of his life in Britain, argued that British rule drained India's wealth, and helped found the Indian National Congress in 1885.",
+      "British revenue officials did collect land taxes in Bengal, but Naoroji was an Indian critic of British policy, not a British official.",
+      "The rebels of 1857 rejected British rule by force, while Naoroji weighs benefits and harms and asks Britain to govern better.",
+      "Christian missionaries were active in India, but Naoroji was a Parsi reformer, and his concerns here are economic, not religious.",
+    ], answer: 0 },
+  { id: "u6-m16", skill: "u6", type: "mcq", set: "u6-s4", topic: "6.3", reasoning: "Continuity and change",
+    question: "Which later development most directly built on the argument of the excerpt?",
+    choices: [
+      "The swadeshi movement of the early twentieth century, which urged Indians to buy Indian-made goods instead of British imports",
+      "The proclamation of Queen Victoria as Empress of India in 1877",
+      "The opening of the Suez Canal in 1869, which shortened the sea route between Britain and India",
+      "The partition of British India into India and Pakistan in 1947",
+    ],
+    why: [
+      "Correct. Swadeshi activists built on the idea that British trade drained India and destroyed Indian industry by asking Indians to boycott British goods.",
+      "Making Victoria empress strengthened the symbolism of British rule rather than continuing Naoroji's economic critique.",
+      "The Suez Canal tightened economic ties between Britain and India, but it was a British project, not a development that built on Naoroji's critique.",
+      "Partition came at independence and was driven mainly by divisions between Hindus and Muslims, not by Naoroji's economic argument.",
+    ], answer: 0 },
+
+  // ---------- Set 5: Export economies (practice passage) ----------
+  { id: "u6-m17", skill: "u6", type: "mcq", set: "u6-s5", topic: "6.5", reasoning: "Causation",
+    question: "Which of the following would best support the passage's argument about foreign investment?",
+    choices: [
+      "British investors financed and owned much of Argentina's railroad network in the late nineteenth century.",
+      "The Meiji government built state-owned factories and later sold many of them to private firms.",
+      "Spanish officials used the mita system to force Andean workers into the Potosí silver mines.",
+      "The Haitian Revolution ended slavery and French rule in Saint-Domingue by 1804.",
+    ],
+    why: [
+      "Correct. British capital built much of Argentina's railroad network, which carried beef and wheat to ports for export, matching the passage's claim about foreign-funded infrastructure.",
+      "Meiji Japan relied mainly on its own government to fund industry, so this example shows a country avoiding the dependence the passage describes.",
+      "The mita was coerced labor under Spanish colonial rule from the sixteenth century on, not foreign investment in an independent nineteenth-century country.",
+      "The Haitian Revolution was a political and social revolution, and it does not show foreign investors shaping an export economy.",
+    ], answer: 0 },
+  { id: "u6-m18", skill: "u6", type: "mcq", set: "u6-s5", topic: "6.5", reasoning: "Comparison",
+    question: "The passage's description of Latin America best illustrates which concept?",
+    choices: [
+      "Economic imperialism, in which foreign powers gained influence through investment and trade without formal political control",
+      "Mercantilism, in which a colonizing state required its colonies to trade only with it",
+      "Settler colonialism, in which migrants from a colonizing country took over land from local populations",
+      "Feudalism, in which lords granted land to vassals in return for military service",
+    ],
+    why: [
+      "Correct. The passage stresses that Latin American countries stayed independent while foreign investors still controlled key parts of their economies, which is economic imperialism.",
+      "Mercantilism shaped colonial trade before independence, but the passage describes independent countries trading freely with many partners.",
+      "Settler colonialism describes places such as Australia, but the passage is about investment and trade, not settlers seizing land.",
+      "Feudalism describes medieval political and landholding systems, not nineteenth-century global trade and investment.",
+    ], answer: 0 },
+  { id: "u6-m19", skill: "u6", type: "mcq", set: "u6-s5", topic: "6.8", reasoning: "Causation",
+    question: "According to the passage, which of the following was the most important cause of the export economies in Latin America, Africa, and Asia?",
+    choices: [
+      "Demand for raw materials and food created by industrialization in Western Europe and the United States",
+      "The spread of Enlightenment ideas about natural rights and popular sovereignty",
+      "Britain's abolition of the Atlantic slave trade in 1807",
+      "The rise of nationalist movements seeking independence from European rule",
+    ],
+    why: [
+      "Correct. The passage opens by linking factory needs for cotton and rubber and urban demand for food to the rise of specialized export economies.",
+      "Enlightenment ideas shaped the revolutions of the period, but the passage explains export economies through industrial demand, not political ideas.",
+      "Britain did abolish the slave trade in 1807, but the passage does not present abolition as the cause of export economies.",
+      "Nationalist movements grew in this period, but the passage does not connect them to the rise of export economies.",
+    ], answer: 0 },
+  { id: "u6-m20", skill: "u6", type: "mcq", set: "u6-s5", topic: "6.4", reasoning: "Continuity and change",
+    question: "The pattern of export dependence in the passage most closely continued which development from the period c. 1450 to c. 1750?",
+    choices: [
+      "Spanish colonies in the Americas exported silver mined with coerced labor to global markets.",
+      "The Ming dynasty limited private overseas trade by its subjects.",
+      "The Ottoman Empire controlled trade routes through the eastern Mediterranean.",
+      "American food crops such as maize and potatoes spread to Africa, Asia, and Europe.",
+    ],
+    why: [
+      "Correct. Colonial Latin America already depended on exporting a few raw goods, especially silver, to outside markets, a pattern that continued with nineteenth-century beef, wheat, and other exports.",
+      "Ming trade limits were a policy of a strong state controlling its own trade, not a region depending on exports to outside powers.",
+      "Ottoman control of trade routes shows a powerful empire profiting from trade, the opposite of dependence on foreign investors.",
+      "The spread of American food crops was part of the Columbian Exchange, which changed diets and populations but is not an example of export dependence.",
+    ], answer: 0 },
+
+  // ---------- Set 6: Immigration data ----------
+  { id: "u6-m21", skill: "u6", type: "mcq", set: "u6-s6", topic: "6.6", reasoning: "Causation",
+    question: "Which of the following most directly explains the number of migrants from Ireland in the 1850s?",
+    choices: [
+      "The Great Famine of the late 1840s and early 1850s, caused by potato blight and made worse by British policy",
+      "The failure of the revolutions of 1848 in the German states",
+      "The completion of the first transcontinental railroad in the United States in 1869",
+      "Attacks on Jews in the Russian Empire after 1881",
+    ],
+    why: [
+      "Correct. About a million people died and more than a million emigrated during and after the famine, which explains Ireland's very high numbers in the 1850s.",
+      "The failed 1848 revolutions help explain German emigration, not Irish emigration.",
+      "The transcontinental railroad was finished in 1869, too late to explain migration in the 1850s.",
+      "Pogroms after 1881 pushed Jews out of the Russian Empire, which helps explain the Russia row, not the Ireland row.",
+    ], answer: 0 },
+  { id: "u6-m22", skill: "u6", type: "mcq", set: "u6-s6", topic: "6.7", reasoning: "Continuity and change",
+    question: "Which of the following best explains the change in migration from China between the 1870s and the 1890s?",
+    choices: [
+      "The United States passed a law in 1882 that barred most Chinese laborers from entering the country.",
+      "The Taiping Rebellion ended in 1864 after devastating much of southern China.",
+      "Many Chinese migrants went to Southeast Asia to work in mines and on plantations.",
+      "The Qing government sent students to the United States to study Western technology in the 1870s.",
+    ],
+    why: [
+      "Correct. The Chinese Exclusion Act of 1882 suspended the entry of Chinese laborers, and the numbers fell from 133,139 in the 1870s to 15,268 in the 1890s.",
+      "The Taiping Rebellion pushed people to leave China in the 1850s and 1860s, but its end does not explain the sharp drop after 1882.",
+      "Chinese migration to Southeast Asia was large in this period, but it does not explain the sudden drop in arrivals to the United States after 1882.",
+      "The Chinese Educational Mission sent about 120 students, too few to affect the totals in the table.",
+    ], answer: 0 },
+  { id: "u6-m23", skill: "u6", type: "mcq", set: "u6-s6", topic: "6.8", reasoning: "Causation",
+    question: "The rise in migration from Italy, Austria-Hungary, and Russia between the 1870s and the decade 1900 to 1909 was most likely caused by which of the following?",
+    choices: [
+      "Rural poverty and population growth in southern and eastern Europe combined with demand for workers in American industries",
+      "United States laws that limited immigration from southern and eastern Europe",
+      "The spread of factory industrialization to Britain before other European states",
+      "The Irish Great Famine, which pushed millions of people out of Europe",
+    ],
+    why: [
+      "Correct. Push factors such as land shortage and poverty and pull factors such as factory, mine, and railroad jobs in the United States drove this \"new immigration.\"",
+      "United States quota laws limiting southern and eastern Europeans came in the 1920s and reduced migration rather than causing it to rise.",
+      "Britain did industrialize first, starting in the eighteenth century, but that does not explain why emigration from Italy, Austria-Hungary, and Russia rose after 1870.",
+      "The Irish famine explains Irish emigration in the 1840s and 1850s, not later migration from southern and eastern Europe.",
+    ], answer: 0 },
+  { id: "u6-m24", skill: "u6", type: "mcq", set: "u6-s6", topic: "6.7", reasoning: "Continuity and change",
+    question: "Which later development was most directly a response to the trend shown in the row for Japan?",
+    choices: [
+      "The Gentlemen's Agreement of 1907 to 1908, in which Japan agreed to limit the emigration of laborers to the United States",
+      "The Meiji Restoration of 1868, which ended rule by the Tokugawa shogunate",
+      "Japan's victory over Russia in the Russo-Japanese War of 1904 to 1905",
+      "The Chinese Exclusion Act of 1882, which barred Chinese laborers from the United States",
+    ],
+    why: [
+      "Correct. As Japanese arrivals rose sharply after 1890, anti-Japanese pressure grew on the West Coast, and the two governments agreed that Japan would stop issuing passports to laborers bound for the United States.",
+      "The Meiji Restoration came before the rise in Japanese migration, so it could be a cause but not a response.",
+      "The Russo-Japanese War showed Japan's growing power, but it was a conflict with Russia, not a response to migration to the United States.",
+      "The Chinese Exclusion Act targeted Chinese laborers and came before the rise in Japanese migration, so it cannot be a response to it.",
+    ], answer: 0 },
+
+  // ---------- SAQ 1: practice passage on indentured labor ----------
+  { id: "u6-q1a", skill: "u6", type: "fr", set: "u6-s7", part: "SAQ 1", sub: "a", topic: "6.6",
+    lead: "Use the passage below to answer all parts of the question that follows.",
+    prompt: "Identify ONE piece of historical evidence that would support the passage's argument about why indentured migration began.",
+    earns: "The response names a specific, accurate piece of evidence connecting the end of slavery or plantation labor demand to the recruitment of indentured workers.",
+    yes: [
+      "After slavery ended in 1834 in Mauritius, planters brought in Indian indentured workers to grow sugar.",
+      "Planters in British Guiana and Trinidad recruited workers from India to replace formerly enslaved people who left the sugar estates.",
+      "Indentured Indians were brought to Fiji from 1879 to work on sugar plantations.",
+    ],
+    no: [
+      "\"Slavery ended.\" This is too vague and does not connect the end of slavery to indentured recruitment.",
+      "\"The Atlantic slave trade brought Africans to the Americas.\" This is accurate but describes forced migration before abolition, not the start of indenture.",
+    ],
+    example: "After Britain abolished slavery, sugar planters in British Guiana and Trinidad struggled to keep workers on their estates, so they recruited indentured laborers from India, which supports the passage's claim that indenture filled a labor gap left by abolition.",
+    notExample: "People moved to new places for many reasons." },
+  { id: "u6-q1b", skill: "u6", type: "fr", set: "u6-s7", part: "SAQ 1", sub: "b", topic: "6.6",
+    lead: "Use the passage below to answer all parts of the question that follows.",
+    prompt: "Explain ONE way that economic developments in the period c. 1750 to c. 1900 pushed people to leave their homes as migrants.",
+    earns: "The response explains how a specific economic development created conditions that pushed people to emigrate.",
+    yes: [
+      "Cheap British factory cloth undercut Indian hand weavers, leaving many artisans without work and willing to sign indenture contracts.",
+      "Population growth and small landholdings in southern Italy left many peasants too poor to farm, so millions left for Argentina and the United States.",
+      "Famine and crop failure in Ireland in the 1840s pushed more than a million people to emigrate.",
+    ],
+    no: [
+      "\"People wanted more money.\" This does not name a specific development or explain how it pushed migration.",
+      "\"The Chinese Exclusion Act stopped migration.\" This describes a restriction on migration, not a cause pushing people to leave.",
+    ],
+    example: "Machine-made British textiles flooded Indian markets in the nineteenth century and ruined many hand spinners and weavers. Without their old livelihoods, many of these workers and their families were pushed to sign indenture contracts to work abroad.",
+    notExample: "Industrialization happened, so people migrated." },
+  { id: "u6-q1c", skill: "u6", type: "fr", set: "u6-s7", part: "SAQ 1", sub: "c", topic: "6.7",
+    lead: "Use the passage below to answer all parts of the question that follows.",
+    prompt: "Explain ONE way the migration described in the passage changed the societies that received migrants in the period c. 1830 to c. 1920.",
+    earns: "The response explains a specific, accurate effect of Indian or Chinese labor migration on a receiving society.",
+    yes: [
+      "Indian migrants who stayed in Trinidad and British Guiana built Hindu temples and Muslim mosques, adding new religions and festivals to Caribbean society.",
+      "By the early twentieth century, people of Indian descent made up a large share of Fiji's population, which changed its politics and culture.",
+      "In Natal, Indian merchants and laborers formed a large community that faced discrimination, and Mohandas Gandhi organized protests there against unequal laws.",
+    ],
+    no: [
+      "\"The societies changed a lot.\" This does not explain any specific change.",
+      "\"Migrants sent money home.\" Remittances affected the sending societies, not the receiving societies the prompt asks about.",
+    ],
+    example: "Many Indian indentured workers in Trinidad stayed after their contracts ended. They built temples and mosques and celebrated festivals such as Diwali, so Trinidad became a society with large Hindu and Muslim communities alongside its African and European populations.",
+    notExample: "The migrants worked on plantations." },
+
+  // ---------- SAQ 2: Chinese Exclusion Act ----------
+  { id: "u6-q2a", skill: "u6", type: "fr", set: "u6-s8", part: "SAQ 2", sub: "a", topic: "6.6",
+    lead: "Use the source below to answer all parts of the question that follows.",
+    prompt: "Describe ONE historical development that brought Chinese laborers to the United States before 1882.",
+    earns: "The response accurately describes a specific development that drew or pushed Chinese laborers to the United States before 1882.",
+    yes: [
+      "The California Gold Rush that began in 1848 drew thousands of Chinese miners to California.",
+      "The Central Pacific Railroad hired thousands of Chinese workers to build the western part of the first transcontinental railroad in the 1860s.",
+      "Violence and poverty in southern China during the Taiping Rebellion pushed many people to seek work overseas.",
+    ],
+    no: [
+      "\"Chinese people wanted to come to America.\" This does not describe a specific development.",
+      "\"The Opium Wars.\" Naming the wars without describing how they led to migration does not earn the point.",
+    ],
+    example: "In the 1860s, the Central Pacific Railroad recruited thousands of Chinese laborers to blast tunnels and lay track through the Sierra Nevada for the first transcontinental railroad.",
+    notExample: "China had a lot of people." },
+  { id: "u6-q2b", skill: "u6", type: "fr", set: "u6-s8", part: "SAQ 2", sub: "b", topic: "6.7",
+    lead: "Use the source below to answer all parts of the question that follows.",
+    prompt: "Explain ONE reason why many Americans supported the law in the source.",
+    earns: "The response explains a specific, accurate reason for support of Chinese exclusion, such as labor competition or racial and nativist ideas.",
+    yes: [
+      "White workers in California, organized in groups such as the Workingmen's Party, blamed Chinese laborers for lowering wages during the economic depression of the 1870s.",
+      "Racial ideas of the time portrayed Chinese immigrants as unable to become American, which is reflected in the law's ban on Chinese citizenship.",
+      "Nativist politicians in the West won votes by promising to stop Chinese immigration, and Congress responded to that pressure.",
+    ],
+    no: [
+      "\"Americans did not like the Chinese.\" This states an attitude without explaining a reason for it.",
+      "\"The law banned Chinese laborers.\" This restates the source instead of explaining why people supported it.",
+    ],
+    example: "During the depression of the 1870s, white workers in California feared that Chinese laborers, who were often paid less, would take their jobs and drive down wages. Labor groups and politicians turned that fear into demands for exclusion, which Congress answered with this law.",
+    notExample: "The government wanted good order." },
+  { id: "u6-q2c", skill: "u6", type: "fr", set: "u6-s8", part: "SAQ 2", sub: "c", topic: "6.7",
+    lead: "Use the source below to answer all parts of the question that follows.",
+    prompt: "Explain ONE way another receiving society responded to Asian migrants in a way similar to the law in the source in the period c. 1850 to c. 1910.",
+    earns: "The response explains a specific policy or action in another receiving society that limited or discriminated against Asian migrants, and connects it to the source.",
+    yes: [
+      "Canada placed a head tax on Chinese immigrants in 1885, which, like the American law, aimed to discourage Chinese laborers from coming.",
+      "Australia's Immigration Restriction Act of 1901 used a dictation test to keep out Asian migrants, part of the White Australia policy, similar to the American ban on Chinese laborers.",
+      "In Natal, colonial laws placed special taxes and limits on Indian residents, treating Asian migrants as a group to be controlled, as the American law did.",
+    ],
+    no: [
+      "\"Other countries were racist too.\" This does not name a specific policy or society.",
+      "\"Britain abolished slavery.\" This is accurate but is not a response to Asian migrants.",
+    ],
+    example: "In 1885 Canada began charging a head tax on each Chinese immigrant. Like the American law, the tax was meant to cut the number of Chinese laborers entering the country after they had helped build its railroads.",
+    notExample: "Many people did not want immigrants." },
+
+  // ---------- SAQ 3: no source ----------
+  { id: "u6-q3a", skill: "u6", type: "fr", part: "SAQ 3", sub: "a", topic: "6.8",
+    lead: "Answer (a), (b), and (c).",
+    prompt: "Identify ONE technological development that helped European states expand their empires in Africa or Asia in the period c. 1850 to c. 1900.",
+    earns: "The response names a specific technology that helped Europeans conquer or control territory in Africa or Asia.",
+    yes: [
+      "The Maxim gun, an early machine gun, let small European forces defeat much larger African armies.",
+      "Quinine, which protected Europeans from malaria, made it possible to send troops and officials into tropical Africa.",
+      "Steamships and the telegraph let Europeans move troops up rivers and send orders across long distances.",
+    ],
+    no: [
+      "\"Better weapons.\" This is too vague to identify a specific development.",
+      "\"Gunpowder.\" Gunpowder had been in use for centuries and was not a new development of this period.",
+    ],
+    example: "The Maxim gun allowed small European armies to defeat much larger African forces, as at the Battle of Omdurman in Sudan in 1898.",
+    notExample: "Europeans were more advanced." },
+  { id: "u6-q3b", skill: "u6", type: "fr", part: "SAQ 3", sub: "b", topic: "6.3",
+    lead: "Answer (a), (b), and (c).",
+    prompt: "Explain ONE way that a group in Africa or Asia resisted European imperial expansion in the period c. 1850 to c. 1900.",
+    earns: "The response explains how a specific group resisted European expansion, using accurate details.",
+    yes: [
+      "Emperor Menelik II of Ethiopia bought modern rifles and defeated an Italian army at Adwa in 1896, keeping Ethiopia independent.",
+      "Samori Touré built an army in West Africa that fought French expansion for years before his capture in 1898.",
+      "Sepoys in the British army in India rebelled in 1857, and the revolt spread to civilians who wanted to restore the Mughal emperor.",
+    ],
+    no: [
+      "\"Africans fought back.\" This does not name a group or explain how it resisted.",
+      "\"The Boxers.\" A name alone, without explaining what the group did, does not earn the point.",
+    ],
+    example: "In Ethiopia, Menelik II bought modern rifles and artillery from European suppliers and raised a large army. In 1896 his forces defeated an Italian invasion at the Battle of Adwa, so Ethiopia remained independent while most of Africa was colonized.",
+    notExample: "Some people did not like imperialism." },
+  { id: "u6-q3c", skill: "u6", type: "fr", part: "SAQ 3", sub: "c", topic: "6.5",
+    lead: "Answer (a), (b), and (c).",
+    prompt: "Explain ONE way that European imperialism changed the economy of a colonized region in the period c. 1850 to c. 1900.",
+    earns: "The response explains a specific economic change in a named colonized region and links it to imperial rule.",
+    yes: [
+      "In the Congo Free State, King Leopold II's agents forced Africans to collect rubber for export, turning the economy toward a single forced-labor export.",
+      "In British India, railroads built under British rule carried raw cotton to ports for export and brought British manufactured goods inland.",
+      "In the Dutch East Indies, colonial officials required villagers to grow export crops such as sugar and coffee for the colonial government.",
+    ],
+    no: [
+      "\"Europeans took resources.\" This is too general and does not explain a specific change in a specific region.",
+      "\"The Industrial Revolution began in Britain.\" This describes Europe, not a colonized region.",
+    ],
+    example: "In the Congo Free State, Leopold II's agents forced villagers to gather wild rubber and punished those who failed to meet quotas. The region's economy was turned toward exporting rubber for European factories, while local farming suffered.",
+    notExample: "Imperialism changed the economy." },
+
+  // ---------- LEQ 1 ----------
+  { id: "u6-leq1", skill: "u6", type: "essay", kind: "leq", topic: "6.6", reasoning: "Causation",
+    prompt: "In the period c. 1750 to c. 1900, millions of people migrated within and between regions of the world. Develop an argument that evaluates the extent to which industrialization caused migration in this period.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: The response restates the prompt, makes a claim that is not historically defensible, or makes a claim that does not take a position on how far industrialization caused migration.",
+        "1 point: The response makes a historically defensible claim that establishes a line of reasoning about how far industrialization caused migration, for example that industrial demand for labor and new transport technology drove most migration, though famine, persecution, and the end of slavery also played major roles.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: The response gives no context, or mentions context only in a phrase.",
+        "1 point: The response describes a broader context relevant to the prompt, such as the spread of industrialization from Britain to Western Europe, the United States, and Japan, the growth of world population, or the abolition of slavery and the slave trade in the nineteenth century.",
+      ] },
+      { name: "Evidence", max: 2, levels: [
+        "0 points: The response gives no specific examples relevant to migration in this period.",
+        "1 point: The response gives at least two specific examples relevant to the topic, such as the Irish Great Famine and Chinese railroad workers in the United States.",
+        "2 points: The response uses specific and relevant examples to support an argument about how far industrialization caused migration, for example explaining how steamships cut the cost of crossing the Atlantic or how factory jobs in the United States drew southern Italian peasants.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: The response does not use causation to frame its argument.",
+        "1 point: The response uses causation to frame the argument, explaining how industrialization led to some kinds of migration.",
+        "2 points: The response shows a complex understanding, for example by weighing industrial causes against non-industrial causes such as famine or pogroms, separating push and pull factors, or showing that industrial demand worked together with older forms of coerced labor in the shift from slavery to indenture.",
+      ] },
+    ],
+    evidence: [
+      "Rural people moved to industrial cities such as Manchester and Birmingham in Britain in the late eighteenth and nineteenth centuries to work in factories.",
+      "Steamships and railroads made long-distance travel cheaper and faster, making mass migration across oceans possible.",
+      "The Irish Great Famine (1845 to 1852) killed about a million people and pushed more than a million to emigrate, many to the United States and Britain.",
+      "Southern Italians emigrated in large numbers to the United States and Argentina from the 1880s to work in factories, construction, and farming.",
+      "Pogroms in the Russian Empire after 1881 pushed many Jews to emigrate to the United States.",
+      "After the abolition of slavery in the British Empire in the 1830s, planters recruited indentured laborers from India and China for plantations in the Caribbean, Mauritius, Natal, and Fiji.",
+      "Chinese workers came to California for the Gold Rush and helped build the Central Pacific Railroad in the 1860s.",
+      "Japanese laborers went to Hawaii to work on sugar plantations from the 1880s.",
+      "Britain sent convicts to Australia from 1788 until the 1860s, a form of migration driven by state policy rather than industry.",
+      "Receiving states pushed back, as with the Chinese Exclusion Act of 1882 in the United States.",
+      "Migrants formed ethnic enclaves such as Chinatowns and Little Italys and sent money home.",
+    ],
+    model: "Thesis: Industrialization was the main cause of migration in the period c. 1750 to c. 1900 because factory jobs, plantation demand for raw materials, and new transport technology pulled people across regions, but famine, persecution, and the end of slavery also drove migration in ways that industrialization alone does not explain. Outline: (1) Context: industrialization spread from Britain to Western Europe, the United States, and Japan while world population grew. (2) Industrial pull and technology: rural to urban migration in Britain; southern Italians and eastern Europeans drawn to American factories and mines; steamships and railroads cut the cost of travel. (3) Industrial demand for raw materials and coerced labor: indentured Indians and Chinese replaced enslaved workers on sugar plantations, showing that industrial demand worked through older systems of unfree labor. (4) Limits: the Irish Great Famine and Russian pogroms pushed people out for reasons not caused by industry, and Britain's convict transport to Australia was state policy. (5) Complexity: industrialization often turned local crises into long-distance migration by offering destinations, jobs, and cheap passage, so even famine migrants traveled on industrial-era ships to industrial cities.",
+  },
+
+  // ---------- LEQ 2 ----------
+  { id: "u6-leq2", skill: "u6", type: "essay", kind: "leq", topic: "6.3", reasoning: "Comparison",
+    prompt: "In the period c. 1750 to c. 1900, peoples in many regions resisted the expansion of states and empires. Develop an argument that evaluates the extent to which resistance to imperial expansion was similar in two regions in this period.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: The response restates the prompt, names two regions without a claim about similarity, or makes a claim that is not historically defensible.",
+        "1 point: The response makes a historically defensible claim that establishes a line of reasoning about how similar resistance was in two regions, for example that resistance in India and southern Africa was similar in its causes but different in its methods.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: The response gives no context, or mentions context only in a phrase.",
+        "1 point: The response describes a broader context relevant to the prompt, such as industrial states' new military and transport technology, their demand for land and raw materials, or the rapid European partition of Africa after the Berlin Conference of 1884 to 1885.",
+      ] },
+      { name: "Evidence", max: 2, levels: [
+        "0 points: The response gives no specific examples of resistance in this period.",
+        "1 point: The response gives at least two specific examples of resistance, such as the Indian Rebellion of 1857 and the Battle of Adwa in 1896.",
+        "2 points: The response uses specific and relevant examples from two regions to support an argument about how similar their resistance was.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: The response does not use comparison to frame its argument.",
+        "1 point: The response uses comparison to frame the argument, describing a similarity or difference between resistance in two regions.",
+        "2 points: The response shows a complex understanding, for example by explaining both similarities and differences and why they existed, or by showing how resistance in one region combined armed, religious, and diplomatic strategies.",
+      ] },
+    ],
+    evidence: [
+      "The Indian Rebellion of 1857 began among sepoys and spread to civilians who rallied around the last Mughal emperor; Britain ended East India Company rule in 1858.",
+      "The Xhosa cattle killing of 1856 to 1857 followed a prophecy that the British would be driven out if the Xhosa destroyed their cattle and crops.",
+      "The Zulu kingdom defeated a British army at Isandlwana in 1879 before Britain conquered it later that year.",
+      "Moshweshewe of the Basotho used diplomacy and appeals to Britain to resist Boer land claims, and Basutoland became a British territory in 1868.",
+      "Menelik II of Ethiopia bought modern weapons and defeated Italy at the Battle of Adwa in 1896, preserving Ethiopian independence.",
+      "Samori Touré resisted French expansion in West Africa until his capture in 1898.",
+      "The Mahdist state in Sudan captured Khartoum in 1885 and held power until British and Egyptian forces won at Omdurman in 1898.",
+      "The Ghost Dance spread among Plains peoples in the United States around 1890 and ended in the massacre at Wounded Knee.",
+      "The Cherokee used American courts to resist removal, winning Worcester v. Georgia in 1832, but were forced west on the Trail of Tears in 1838.",
+      "The Maori fought British settlers and troops in the New Zealand Wars of the 1840s to 1870s over land.",
+      "The Boxer Rebellion of 1899 to 1901 in China attacked foreigners and Chinese Christians before an international army crushed it.",
+    ],
+    model: "Thesis: Resistance to imperial expansion in sub-Saharan Africa and North America was similar in that both drew on religious revival to rally people against settlers and armies, but it differed because some African states, such as Ethiopia, could buy modern weapons and win, while Native American nations faced a settler state that had already surrounded them. Outline: (1) Context: industrial states had new weapons, railroads, and steamships and sought land and raw materials. (2) Similarity in religious resistance: the Xhosa cattle killing and the Ghost Dance both promised that faith would remove the newcomers, and both ended in disaster. (3) Similarity in diplomacy: Moshweshewe appealed to Britain against the Boers, and the Cherokee went to American courts. (4) Difference in military outcomes: Ethiopia's victory at Adwa preserved independence, while American forces crushed Plains resistance at Wounded Knee. (5) Complexity: the differences came from the balance of power and access to weapons and allies, not from different goals, since both sets of peoples sought to keep their land and self-rule.",
+  },
+
+  // ---------- DBQ ----------
+  { id: "u6-dbq1", skill: "u6", type: "essay", kind: "dbq", set: "u6-dbq", topic: "6.1", reasoning: "Causation",
+    prompt: "Evaluate the extent to which economic motives drove imperial expansion in the period c. 1840 to c. 1900.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: The response restates the prompt, lists motives without weighing them, or makes a claim that is not historically defensible.",
+        "1 point: The response makes a historically defensible claim that establishes a line of reasoning about how far economic motives drove imperial expansion, for example that the search for markets, raw materials, and investment outlets was the leading motive, but strategic rivalry, national prestige, and religious and civilizing missions shaped where and how empires expanded.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: The response gives no context, or mentions context only in a phrase.",
+        "1 point: The response describes a broader context relevant to the prompt, such as the spread of industrialization and the competition for raw materials and markets, the unification of Germany and Italy and the rise of new rivals to Britain, or the technologies such as steamships, quinine, and the Maxim gun that made conquest cheaper.",
+      ] },
+      { name: "Evidence", max: 3, levels: [
+        "0 points: The response does not accurately describe the content of at least three documents.",
+        "1 point: The response accurately describes the content of at least three documents and addresses the prompt, for example noting that Mill calls colonization the best business for capital, that Lugard says Britain must find new markets, and that the Pan-German League wanted coaling stations.",
+        "2 points: The response uses at least four documents to support an argument about how far economic motives drove expansion.",
+        "3 points: The response uses at least four documents to support the argument and also uses at least one specific piece of evidence not in the documents, such as Britain's purchase of Suez Canal shares in 1875 or Leopold II's rubber profits in the Congo.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: The response does not explain the point of view, purpose, historical situation, or audience of any document, and does not show complexity.",
+        "1 point: For at least two documents, the response explains how the point of view, purpose, historical situation, or audience is relevant to the argument, for example that Cromer wrote Document 7 to defend his own long rule in Egypt, or that Paton in Document 3 appeals to trade and strategy to persuade a government that might not act for religious reasons alone.",
+        "2 points: The response earns the sourcing point and shows a complex understanding, for example by showing that economic, strategic, and religious motives reinforced one another, by explaining why motives differed between established and newer imperial powers, or by contrasting how imperial leaders and colonized peoples described the same motives.",
+      ] },
+    ],
+    docs: [
+      "Document 1 (Mill, 1848): An economist calls colonization the most profitable use of a wealthy country's capital and labor; supports an economic motive, and its date shows the idea predated the Scramble for Africa. The source page notes the text was modernized.",
+      "Document 2 (Canton declaration, 1842): Chinese residents describe the British as greedy traders who forced opium on China; supports an economic motive from the point of view of people facing imperial pressure, and its purpose of rallying armed resistance explains its harsh language.",
+      "Document 3 (Paton, 1883): A missionary urges annexation for religious, commercial, agricultural, and strategic reasons; shows economic motives mixed with religion and rivalry with France, and his audience, the British government, explains why he stresses trade and harbors.",
+      "Document 4 (Lugard, 1893): An imperial agent argues that tariffs and rivals force Britain to seize new markets or decline; strong support for economic motives tied to great-power competition, and his purpose was to keep Britain committed to East Africa, where he had served.",
+      "Document 5 (Pan-German League, 1898): A nationalist group demands cables, coaling stations, steamship lines, and commercial concessions; shows strategic and national goals bound up with commerce, from a pressure group pushing its own government.",
+      "Document 6 (Wilhelm II, 1901): The emperor links a German \"place in the sun\" to trade, sea power, and national pride; supports both economic and prestige motives, and his audience of sailors and shipping supporters explains the focus on the sea and the navy.",
+      "Document 7 (Cromer, 1908): A former British ruler of Egypt justifies the 1882 occupation by pointing to mutiny, bankruptcy, and disorder; can show political and strategic motives, or hidden financial ones, since the bankrupt treasury owed money to European lenders, and his purpose was to defend his own record.",
+    ],
+    evidence: [
+      "Britain bought a large share of the Suez Canal Company in 1875, and the canal was a key route to India.",
+      "Egypt's debts to European bondholders led to Anglo-French financial control before the British occupation of 1882.",
+      "The Treaty of Nanjing (1842) ended the First Opium War, gave Hong Kong to Britain, and opened five treaty ports to British trade.",
+      "King Leopold II ran the Congo Free State for profit from rubber and ivory, using forced labor.",
+      "Cecil Rhodes and the British South Africa Company sought gold and land north of the Limpopo River in the 1890s.",
+      "The discovery of diamonds at Kimberley (1867) and gold on the Witwatersrand (1886) drew British investment and power into southern Africa.",
+      "The Berlin Conference of 1884 to 1885 set rules for European claims in Africa and declared free trade in the Congo basin.",
+      "The Fashoda Incident of 1898 showed Anglo-French strategic rivalry over the Nile.",
+      "Social Darwinism and Kipling's \"The White Man's Burden\" (1899) expressed racial and civilizing justifications for empire.",
+      "Germany leased Jiaozhou Bay (Kiaochow) from China in 1898 after the killing of two German missionaries.",
+      "The United States annexed Hawaii in 1898 after American sugar planters overthrew the Hawaiian queen in 1893.",
+    ],
+    model: "Thesis: In the period c. 1840 to c. 1900, economic motives such as the search for markets, raw materials, and places to invest capital were the most important driver of imperial expansion, but they worked together with strategic rivalry, national prestige, and religious missions, which often decided where empires expanded and how leaders justified it. Outline: (1) Context: industrialization in Britain and then in Germany, the United States, and others created a need for raw materials and markets, while new technologies made conquest cheaper. (2) Economic motives: Mill (Doc 1) calls colonization the best business for capital; the Canton declaration (Doc 2) shows that the Chinese saw British aims as trade and opium; Lugard (Doc 4) warns that Britain must find new markets or decline; outside evidence such as Leopold II's rubber profits in the Congo. (3) Strategic and national motives: the Pan-German League (Doc 5) wants coaling stations and cables, and Wilhelm II (Doc 6) ties a \"place in the sun\" to German pride; sourcing shows both spoke for a newer power eager to catch up with Britain. (4) Political order and religion: Cromer (Doc 7) stresses disorder in Egypt, though the bankrupt treasury points to European creditors; Paton (Doc 3) blends missions with trade and harbors, and his audience explains why he lists commercial reasons. (5) Complexity: economic interests rarely acted alone; imperial leaders described their aims in terms of duty and prestige, while colonized peoples such as the Cantonese described the same expansion as greed.",
+  },
+];

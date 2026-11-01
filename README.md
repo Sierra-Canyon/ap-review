@@ -9,8 +9,21 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | AP Computer Science Principles | D | Quiz 3: Lists and Loops, Tue 11/3 | 52 | 3 mock quizzes |
 | AP Computer Science A | B | Unit 2 now; the countdown follows every assessment to the AP exam | 78 | 33 forms: practice for all 15 assessments of the year |
 | AP Cybersecurity | F | Unit 2 Test: Securing Spaces, Mon 11/2 | 215 | 3 mock tests |
+| AP World History: Modern | (another teacher) | all nine units | 317 | none yet |
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
+
+## Accounts
+
+One record per student (`students/` in Firestore), keyed by the school email, however the student signs in: **GitHub** (the computer science courses) or **school email and password** (courses marked `passwords: true` in `courses.js`, such as AP World History). A record holds the name the student goes by in class (the only name the site shows), the school email, the GitHub account if any, and the courses. Progress is one document per student (`progress/`).
+
+- Teachers make students' email sign-ins from the Class tab with a first password (printable cards); the student chooses their own at first sign-in, can change it on the account page, and resets it by email (**Forgot password?**, or the teacher's **Send reset link**). Teachers never see a chosen password.
+- Teachers other than @jd12 are listed in `teachers/` (added from the Class tab) and see only their courses. `firestore.rules` enforces all of it: a teacher can add or remove only their own courses on a record and read progress only for their students.
+- Before 11/1 the roster was keyed by GitHub number; @jd12's first visit to the Class tab moves it over, and each student's progress comes along on their first sign-in.
+
+## AP World History: Modern
+
+The bank in `decks/whap/` (one file per unit), modeled on the AP exam's format, which Albert's bank follows: 211 stimulus-based multiple-choice questions on 79 sources, 27 short-answer questions (81 parts, each scored 0 or 1 against what earns the point), 18 long essay questions and 7 DBQs scored row by row on the AP rubrics, with a strong response, what each document offers, and evidence to use. Primary sources are public-domain texts quoted verbatim with a citation and a link; passages summarizing historians' views were written for the bank and say so. The quotes were copied in short pieces from their pages: spot-check them against the links. No mocks yet.
 
 ## My misses (every course)
 
@@ -117,7 +130,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `index.html`, `styles.css`, `app.js` | The site. |
 | `courses.js` | The courses, their periods, and their decks. |
 | `srs.js` | Spaced review, sessions, and mock-quiz assembly. |
-| `backend.js` | Firebase, and the demo backend (browser storage). |
+| `backend.js` | Firebase (GitHub and email sign-in, the student records), and the demo backend (browser storage). |
 | `firebase-config.js` | The Firebase config (null until Setup step 7), the teacher's GitHub number. |
 | `firestore.rules` | Who can read and write what. Pasted into the Firebase console. |
 | `decks/csp-q3.js`, `decks/csp-q3-mocks/` | AP CSP: the review items and the three mock quizzes. |
@@ -125,6 +138,8 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `tools/build-cyber-vocab.mjs` | Builds the Cyber vocabulary items from the Anki deck export. |
 | `decks/csa-u2.js`, `decks/csa-u2/` | AP CSA: the deck, its review items, and the five mocks. |
 | `tools/verify-java.mjs` | Compiles and runs every Java item with Java 21. |
+| `tools/e2e-accounts.mjs` | Accounts in Chromium: email sign-in, first and changed passwords, reset links, a teacher with one course, cards, a GitHub record gaining a school email, the Teachers panel. |
+| `decks/whap.js`, `decks/whap/` | AP World History: the bank, one file per unit. |
 | `tools/e2e-csa.mjs` | Runs the AP CSA course in Chromium: a review set, a Quiz 5 set, a free response, both mock shapes, phone width, the Class tab. |
 | `tools/e2e-cyber.mjs` | Runs the AP Cyber course in Chromium: a review set, a free-response set, a mock test, phone width, the Class tab, a two-course roster entry. |
 | `vendor/firebase.js` | The Firebase SDK, bundled (`tools/build-firebase.mjs`), so the site needs no CDN. |

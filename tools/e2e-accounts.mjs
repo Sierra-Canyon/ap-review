@@ -65,10 +65,11 @@ await page.click("text=Home"); await page.click("button[data-focus='saq']"); awa
 assert(/^\(\w\)/.test((await page.textContent("#card .prompt")).trim()), "a short answer shows its part letter");
 await signOut();
 
-// The history teacher signs in with email and sees only World History.
+// The history teacher signs in with email and sees only her World History sections.
 await signInEmail("history.teacher@sierracanyonschool.org", "teach-demo-7");
 await page.waitForSelector("nav a[href='#teacher']");
-assert(!(await page.$("#coursepick")), "the history teacher has one course, so no course menu");
+const sections = await page.$$eval("#coursepick option", (o) => o.map((x) => x.textContent));
+assert(sections.join() === "AP World (B),AP World (C),AP World (D)", "the history teacher sees her three sections and nothing else: " + sections.join());
 await page.click("nav a[href='#teacher']"); await page.waitForSelector("text=Roster:");
 assert(!(await page.$("#teacherspanel")), "only the admin sees the Teachers panel");
 await page.fill("#rosterin", "Brooklyn Chen, Sicheng.Chen@scsstudent.org\nyutong.liu@scsstudent.org");

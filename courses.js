@@ -11,7 +11,12 @@ export const courses = [
   { id: "csa", name: "AP Computer Science A", short: "AP CSA", period: "Period B", book: false, decks: [csa] },
   { id: "cyber", name: "AP Cybersecurity", short: "AP Cyber", period: "Period F", book: false, decks: [cyberU2] },
   // passwords: students sign in with a school email and a password (a teacher makes their first one), not GitHub.
-  { id: "whap", name: "AP World History: Modern", short: "AP World", period: "", book: false, passwords: true, decks: [whap] },
+  // AP World History has more than one section. Each section is its own course (its own roster and Class tab) on the same deck,
+  // so its students share one bank, one set of quizzes and tests, and their progress follows them if they change sections.
+  // To add a section: copy the line with a new id ("whap-d" for Period D), short, and period, and add it to the teacher's courses.
+  { id: "whap", name: "AP World History: Modern", short: "AP World (B)", period: "Period B", book: false, passwords: true, decks: [whap] },
+  { id: "whap-c", name: "AP World History: Modern", short: "AP World (C)", period: "Period C", book: false, passwords: true, decks: [whap] },
+  { id: "whap-d", name: "AP World History: Modern", short: "AP World (D)", period: "Period D", book: false, passwords: true, decks: [whap] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

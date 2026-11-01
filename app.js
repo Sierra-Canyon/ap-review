@@ -158,7 +158,6 @@ function renderSignIn() {
     <span class="eyebrow">Sierra Canyon</span>
     <h1>AP Review</h1>
     <p>Spaced review and mock tests for your AP course. What you get wrong comes back sooner.</p>
-    <ul class="list-plain courses-list">${courses.map((c) => `<li><b>${esc(c.name)}</b><br><span class="small muted">${esc(c.decks[0].title)}</span></li>`).join("")}</ul>
     <div class="stack">
       <b>Sign in with GitHub</b>
       ${demo ? `<button class="btn primary big" data-as="student">${ghIcon} Try it as a student (GitHub)</button>

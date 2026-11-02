@@ -77,6 +77,23 @@ service cloud.firestore {
       allow delete: if isTeacher() && teachesAny(deckCourses(resource.data.deck));
     }
 
+    // Assessments a teacher puts on the calendar. Everyone signed in reads them; a teacher writes only assessments whose
+    // courses are all theirs.
+    function allMine(courses) { return isAdmin() || (isTeacher() && courses.toSet().difference(myCourses().toSet()).size() == 0); }
+    function validAssessment(d) {
+      return d.keys().hasOnly(['courses', 'deck', 'name', 'date', 'topics', 'by', 'ts'])
+        && d.courses is list && d.courses.size() > 0 && d.courses.size() < 20 && d.deck is string
+        && d.name is string && d.name.size() > 0 && d.name.size() < 120
+        && d.date is string && d.date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && d.topics is list && d.topics.size() > 0 && d.topics.size() < 300 && d.by is string && d.by.size() < 200 && d.ts is int;
+    }
+    match /assessments/{id} {
+      allow read: if signedIn();
+      allow create: if validAssessment(request.resource.data) && allMine(request.resource.data.courses);
+      allow update: if validAssessment(request.resource.data) && allMine(request.resource.data.courses) && allMine(resource.data.courses);
+      allow delete: if allMine(resource.data.courses);
+    }
+
     match /cards/{id} {
       allow read, write: if isTeacher();
     }

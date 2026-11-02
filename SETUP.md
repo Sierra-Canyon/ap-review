@@ -101,6 +101,10 @@ Do these in order, right after you push this update (about 10 minutes):
 - A student already on another course (yours) keeps it and gets World History too; they can sign in either way.
 - **Questions** tab: every question on the site for World History, by quiz or test, with its answer. **Edit** fixes wording or the right answer, or hides a question, for all three sections at once; **Restore original** undoes it.
 
+## 14. Assessments on the calendar
+
+Teachers add their quizzes and tests on the Class tab (**Assessments**), and students get a countdown and a review set for each. The site keeps them in a new `assessments/` collection: **publish `firestore.rules` again** (Firestore Database > Rules, replace, Publish). Until then, adding one fails with *permission denied*.
+
 ## 13. GitHub first for students in two kinds of course
 
 A student in one of your courses (GitHub) who is also in AP World or AP Calc (email and password) signs in with **GitHub**. The site no longer makes a password login for a student whose record has a GitHub account, and the roster's Password column says "GitHub" for them.

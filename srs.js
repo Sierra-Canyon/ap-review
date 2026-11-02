@@ -57,8 +57,8 @@ function interleave(items, rand) {
 // When nothing is due and nothing is new, it takes the cards that are least solid, so "keep going" always works.
 // types limits the session to some item types (the "only vocabulary" buttons); long items (written and free responses) are capped at two.
 const LONG = new Set(["wr", "fr", "code", "essay", "frq"]);
-export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, longCap = 2 } = {}) {
-  const pool = deck.items.filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)));
+export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, filter = null, longCap = 2 } = {}) {
+  const pool = deck.items.filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)) && (!filter || filter(it)));
   const due = pool.filter((it) => cards[it.id]?.n && cards[it.id].due <= now)
     .sort((a, b) => (cards[a.id].b - cards[b.id].b) || (cards[a.id].due - cards[b.id].due));
   const fresh = interleave(pool.filter((it) => !cards[it.id]?.n), rand);

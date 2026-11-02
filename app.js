@@ -77,10 +77,30 @@ function ago(ts) {
   if (s < 86400) return `${Math.round(s / 3600)} h ago`;
   return `${Math.round(s / 86400)} d ago`;
 }
+// ------------------------------------------------------------------------------------------ assessments
+const isoDay = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const dayLabel = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric" }); };
+// This course's assessments from today on, soonest first.
+const upcoming = () => assessments.filter((a) => (a.courses || []).includes(course.id) && a.date >= isoDay()).sort((a, b) => a.date.localeCompare(b.date));
+// An assessment covers whole units ("u2") or topics ("2.3").
+const covers = (a) => { const t = new Set(a.topics || []); return (it) => t.has(it.skill) || (it.topic !== undefined && t.has(String(it.topic))); };
+// The units of a deck and, where its questions are tagged by topic, the topics in each (names from the topic quizzes).
+function topicCatalog(d) {
+  const names = {};
+  for (const f of d.forms || []) { const m = /^Topic (\d+\.\d+) Quiz: (.*)$/.exec(f.name); if (m) names[m[1]] = m[2]; }
+  const all = [...d.items, ...(d.forms || []).flatMap((f) => f.items)];
+  const order = (a, b) => { const [a1, a2] = a.split(".").map(Number), [b1, b2] = b.split(".").map(Number); return (a1 - b1) || (a2 - b2) || a.localeCompare(b); };
+  return d.skills.map((sk) => ({ sk, topics: [...new Set(all.filter((it) => it.skill === sk.id && it.topic !== undefined).map((it) => String(it.topic)))].sort(order).map((t) => ({ t, name: names[t] || "" })) }))
+    .filter((x) => all.some((it) => it.skill === x.sk.id));
+}
+const coversText = (a) => (a.topics || []).map((t) => deck.skills.find((s) => s.id === t)?.name || t).join(", ");
+
 function quizCountdown() {
   const today0 = new Date(); today0.setHours(0, 0, 0, 0);
   const at = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); };
-  const next = (deck.dates || (deck.quizDate ? [{ name: deck.quizName || deck.title, date: deck.quizDate }] : [])).find((x) => at(x.date) >= today0);
+  const list = [...(deck.dates || (deck.quizDate ? [{ name: deck.quizName || deck.title, date: deck.quizDate }] : [])), ...upcoming().map((a) => ({ name: a.name, date: a.date }))]
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const next = list.find((x) => at(x.date) >= today0);
   if (!next) return "";
   const [y, m, d] = next.date.split("-").map(Number);
   const quiz = new Date(y, m - 1, d);
@@ -105,6 +125,8 @@ let course = courses[0], deck = course.decks[0];
 const allDecks = [...new Set(courses.flatMap((c) => c.decks))];
 snapshot(allDecks);
 let edits = [];
+// Assessments teachers put on the calendar (Class tab), for every course; loaded after sign-in.
+let assessments = [];
 const teacherCourses = () => (!teacher ? [] : teacher.admin ? courses : courses.filter((c) => (teacher.courses || []).includes(c.id)));
 const myCourses = () => { const list = [...teacherCourses(), ...(me ? coursesOf(me).map(courseById) : [])]; return list.filter((c, k) => c && list.indexOf(c) === k); };
 const onRosterOrTeacher = () => !!me || !!teacher;
@@ -316,6 +338,8 @@ function renderHome() {
       <p class="small muted">${c.due + c.fresh ? "Ten at a time. Anything you miss comes back in the same set." : `All caught up. The next card is due in ${esc(nextTxt)}. Keep going to practice the ones you know least.`}</p>
       <button class="btn primary big" data-focus="">${c.due + c.fresh ? "Start review" : "Keep going"}</button>
       ${deck.focus ? `<div class="row small"><span class="muted">Only:</span>${deck.focus.map((f) => `<button class="btn ghost small" data-focus="${f.id}">${esc(f.name)}</button>`).join("")}</div>` : ""}
+      ${upcoming().slice(0, 3).map((a) => `<div class="assess"><div><b>${esc(a.name)}</b> <span class="small muted">· ${esc(dayLabel(a.date))} · ${deck.items.filter(covers(a)).length} questions on ${esc(coversText(a))}</span></div>
+        <div class="row small"><button class="btn small" data-focus="a:${esc(a.id)}">Review for it</button>${(deck.forms || []).filter((f) => f.items.length && f.items.every(covers(a))).map((f) => `<button class="btn ghost small" data-startform="${esc(f.id)}" title="${esc(f.name)}">${esc(f.short || f.name)} quiz</button>`).join("")}</div></div>`).join("")}
     </div>
     ${course.book ? `<div class="panel mode">
       <span class="eyebrow">Learn</span>
@@ -342,6 +366,7 @@ function renderHome() {
     <p class="small muted">A skill is full when every item in it has been answered right three times in a row, spaced out over days.</p>
   </section>`;
   bindDrills();
+  $$("[data-startform]").forEach((b) => b.addEventListener("click", () => { app.startForm = b.dataset.startform; app.mock = null; if (location.hash === "#mock") route(); else location.hash = "mock"; }));
   $$("[data-focus]").forEach((b) => b.addEventListener("click", () => {
     app.focus = b.dataset.focus || null; app.session = null;
     if (location.hash === "#review") route(); else location.hash = "review";
@@ -772,8 +797,9 @@ function renderMisses() {
 
 function startReview() {
   const st = deckState();
-  const f = deck.focus?.find((x) => x.id === app.focus);
-  const s = buildSession(deck, st.cards, f ? { types: f.types, skills: f.skills, size: f.size || 10, longCap: f.size || 2 } : {});
+  const a = app.focus?.startsWith("a:") ? assessments.find((x) => x.id === app.focus.slice(2)) : null;
+  const f = a ? { name: "Review for " + a.name, filter: covers(a) } : deck.focus?.find((x) => x.id === app.focus);
+  const s = buildSession(deck, st.cards, f ? { types: f.types, skills: f.skills, filter: f.filter, size: f.size || 10, longCap: f.size || 2 } : {});
   app.session = { queue: s.items.map((it) => ({ it, again: false })), i: 0, marks: [], extra: s.extra, requeued: {}, focus: f?.name || "" };
   renderReview();
 }
@@ -1201,6 +1227,64 @@ async function moveOldRoster() {
   if (moved) toast(`Moved ${moved} students from the old roster.`);
 }
 // The admin's list of teachers: who may see which course's Class tab.
+// The Class tab's Assessments panel: put a quiz or test on the calendar, with its date, sections, and what it covers.
+// Students in those sections see the countdown and a "Review for it" set made of exactly those questions.
+function renderAssessPanel(editing = null) {
+  const box = $("#assesspanel"); if (!box) return;
+  const mine = teacherCourses().filter((c) => c.decks[0] === deck);
+  const list = assessments.filter((a) => a.deck === deck.id && (a.courses || []).some((id) => mine.some((c) => c.id === id))).sort((a, b) => a.date.localeCompare(b.date));
+  const today = isoDay(), cat = topicCatalog(deck);
+  const ed = editing ? assessments.find((a) => a.id === editing) : null;
+  const sel = new Set(ed?.topics || []);
+  const secText = (a) => mine.length > 1 ? a.courses.map((id) => courseById(id)?.period || id).join(", ") + " · " : "";
+  box.innerHTML = `<h2>Assessments</h2>
+    <p class="small muted">Put a quiz or test on the calendar with the units or topics it covers. Students in the sections checked see a countdown and a <b>Review for it</b> set made of just those questions.</p>
+    ${list.length ? `<div class="tablewrap"><table><tbody>${list.map((a) => `<tr${a.date < today ? ' class="muted"' : ""}><td><b>${esc(a.name)}</b> <span class="small muted">· ${esc(dayLabel(a.date))}${a.date < today ? " (past)" : ""}</span><br><span class="small muted">${esc(secText(a))}${esc(coversText(a))} · ${deck.items.filter(covers(a)).length} review questions</span></td>
+      <td class="num"><button class="btn ghost small" data-aedit="${esc(a.id)}">Edit</button><button class="btn ghost small" data-adel="${esc(a.id)}">Delete</button></td></tr>`).join("")}</tbody></table></div>` : `<p class="small muted">None yet.</p>`}
+    <details id="assessadd" ${ed ? "open" : ""}><summary><b>${ed ? "Edit " + esc(ed.name) : "Add an assessment"}</b></summary>
+    <form id="assessform" class="stack">
+      <div class="row"><label class="stack"><span class="small muted">Name</span><input name="name" required maxlength="100" value="${esc(ed?.name || "")}" placeholder="Unit 3 Quiz"></label>
+        <label class="stack"><span class="small muted">Date</span><input type="date" name="date" required value="${esc(ed?.date || "")}"></label></div>
+      ${mine.length > 1 ? `<div class="row small"><span class="muted">Sections:</span>${mine.map((c) => `<label><input type="checkbox" name="course" value="${c.id}" ${(ed ? ed.courses.includes(c.id) : c === course) ? "checked" : ""}> ${esc(c.period || c.short)}</label>`).join("")}</div>` : ""}
+      <div class="stack"><span class="small muted">What it covers: check a whole unit, or open a unit and check its topics.</span>
+        ${cat.map(({ sk, topics }) => `<details class="aunit"><summary><label><input type="checkbox" name="unit" value="${esc(sk.id)}" ${sel.has(sk.id) ? "checked" : ""}> ${esc(sk.name)}</label>${topics.length ? ` <span class="small muted">· ${topics.length} topics</span>` : ""}</summary>
+          ${topics.length ? `<div class="atopics">${topics.map(({ t, name }) => `<label class="small"><input type="checkbox" name="topic" value="${esc(t)}" data-unit="${esc(sk.id)}" ${sel.has(t) || sel.has(sk.id) ? "checked" : ""}> <b>${esc(t)}</b>${name ? " " + esc(name) : ""}</label>`).join("")}</div>` : ""}</details>`).join("")}</div>
+      <div class="row"><button class="btn primary" type="submit">${ed ? "Save" : "Add"}</button>${ed ? `<button class="btn" type="button" id="acancel">Cancel</button>` : ""}<span class="small" id="amsg"></span></div>
+    </form></details>`;
+  const form = $("#assessform", box);
+  // A unit box checks or clears its topics; a topic box keeps its unit box in step.
+  form.addEventListener("change", (e) => {
+    const t = e.target;
+    if (t.name === "unit") $$(`input[name=topic][data-unit="${CSS.escape(t.value)}"]`, form).forEach((x) => { x.checked = t.checked; });
+    if (t.name === "topic") { const all = $$(`input[name=topic][data-unit="${CSS.escape(t.dataset.unit)}"]`, form); $(`input[name=unit][value="${CSS.escape(t.dataset.unit)}"]`, form).checked = all.every((x) => x.checked); }
+  });
+  $("#acancel", box)?.addEventListener("click", () => renderAssessPanel());
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form), msg = $("#amsg", box);
+    const topics = [];
+    for (const { sk, topics: ts } of cat) {
+      if ($(`input[name=unit][value="${CSS.escape(sk.id)}"]`, form).checked) topics.push(sk.id);
+      else topics.push(...ts.map((x) => x.t).filter((t) => $(`input[name=topic][value="${CSS.escape(t)}"]`, form).checked));
+    }
+    const chosen = mine.length > 1 ? fd.getAll("course") : [course.id];
+    if (!topics.length) { msg.textContent = "Check at least one unit or topic."; return; }
+    if (!chosen.length) { msg.textContent = "Check at least one section."; return; }
+    const id = ed?.id || "a" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    const doc = { courses: chosen, deck: deck.id, name: String(fd.get("name")).trim().slice(0, 100), date: String(fd.get("date")), topics, by: displayName() || user.email || "", ts: Date.now() };
+    try { await backend.saveAssessment(id, doc); } catch (err) { msg.textContent = "Not saved: " + (err.code || err.message); return; }
+    assessments = [...assessments.filter((a) => a.id !== id), { id, ...doc }];
+    toast(`${doc.name} is on the calendar for ${dayLabel(doc.date)}. Students see it on their next visit.`);
+    renderAssessPanel();
+  });
+  $$("[data-aedit]", box).forEach((b) => b.addEventListener("click", () => { renderAssessPanel(b.dataset.aedit); $("#assessadd").scrollIntoView({ block: "nearest" }); }));
+  $$("[data-adel]", box).forEach((b) => b.addEventListener("click", async () => {
+    if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Delete it?"; return; }
+    try { await backend.deleteAssessment(b.dataset.adel); } catch (err) { toast("Not deleted: " + (err.code || err.message)); return; }
+    assessments = assessments.filter((a) => a.id !== b.dataset.adel); toast("Deleted."); renderAssessPanel();
+  }));
+}
+
 async function renderTeachersPanel() {
   const box = $("#teacherspanel"); if (!box) return;
   const list = await backend.listTeachers().catch(() => []);
@@ -1369,6 +1453,7 @@ async function renderTeacher() {
       <td class="num">${r.email && course.passwords ? `<button class="btn ghost small" data-reset="${esc(r.email)}">Send reset link</button>` : ""}<button class="btn ghost small" data-remove="${esc(r.id)}">Remove</button></td></tr>`).join("")}</tbody></table></div>
       <p class="small muted">Edit a name and press Enter to save it.${course.passwords ? " Send reset link emails the student a link to choose a new password." : ""} Remove takes the student off ${esc(course.short)} only.</p></div></details>
   </section>
+  <section class="panel" id="assesspanel"></section>
   ${isAdmin() ? `<section class="panel" id="teacherspanel"><h2>Teachers</h2><p class="muted">Loading...</p></section>` : ""}`;
 
   $$("[data-name]").forEach((inp) => inp.addEventListener("keydown", async (e) => {
@@ -1417,6 +1502,7 @@ async function renderTeacher() {
     toast(`Added ${made.added}.${made.logins ? ` ${made.logins} new sign-ins with first passwords.` : ""}${miss.length ? ` Not added: ${miss.join(", ")}.` : ""}`);
     if (!miss.length) renderTeacher();
   });
+  renderAssessPanel();
   if (isAdmin()) renderTeachersPanel();
   $("#csv").addEventListener("click", () => {
     const head = ["name", "login", "last_active", "answers", "right_pct", "mock_best", "mock_last", "to_redo", ...(deck.forms || []).map((f) => f.id + "_best"), ...deck.skills.map((s) => s.id)];
@@ -1456,7 +1542,7 @@ function route() {
   if (r === "misses") return renderMisses();
   if (r === "review") { if (!app.session || app.session.i >= app.session.queue.length) app.session = null; return renderReview(); }
   if (r === "mock" && !deck.mock) { location.hash = "home"; return; }
-  if (r === "mock") { if (app.mock && app.mock.phase === "done") app.mock = null; return renderMock(); }
+  if (r === "mock") { if (app.mock && app.mock.phase === "done") app.mock = null; if (app.startForm) { const id = app.startForm; app.startForm = null; return startMock(id); } return renderMock(); }
   if (r === "teacher" && isTeacher()) return renderTeacher();
   if (r === "questions" && canEdit()) return renderQuestions();
   if (r === "learn") return renderLearnHome(view, bookApi);
@@ -1476,6 +1562,7 @@ async function handleUser(u) {
     ({ teacher, student: me } = await backend.whoIs(u).catch(() => ({ teacher: null, student: null })));
     if (!me && !teacher) { if (u.provider === "github") await backend.requestAccess(u); return route(); }
     edits = await backend.listEdits().catch(() => []);
+    assessments = await backend.listAssessments().catch(() => []);
     applyEdits(allDecks, edits);
     profile = await backend.loadProgress(progressId()).catch(() => null);
     // Progress saved before 11/1 sits under the GitHub account (users/<uid>): bring it over once.

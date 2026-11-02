@@ -120,6 +120,10 @@ A section is done when every activity in it is done. The Class tab shows, for ea
 - Every item, hardest first: percent right, how many missed it the last time, the wrong answer picked most, and every student's latest written response with their self-score.
 - Accounts waiting to be added, and the roster itself. **Download CSV** saves the student table.
 
+## Assessments (teachers)
+
+On the Class tab, **Assessments > Add an assessment**: a name, a date, the sections it is for, and what it covers (check a whole unit, or open a unit and check its topics). It is saved in Firestore (`assessments/`). Students in those sections see it in the countdown and on their home page with **Review for it**, a review set made of exactly those units' or topics' questions, plus a button for each topic quiz it covers. **Edit** and **Delete** change it for everyone at once. `tools/e2e-assess.mjs` runs it in Chromium.
+
 ## Questions (teachers)
 
 The **Questions** tab, for any teacher of the course, lists every question: each quiz and test by assessment, then review by skill. A question opens with its sources, its right answer marked, and the explanations. **Edit** changes its wording, the right answer of a multiple-choice question, or hides it. The change is saved in Firestore (`edits/`, only the fields that differ from the deck file), shows for every student in every section that uses the deck from their next visit, and is labeled with who made it and when. A hidden question leaves review and its quiz or test, whose total drops by its points. **Restore original** deletes the edit. The deck files never change, so an edit worth keeping for next year belongs in the file. Code questions were checked by running them; an edited one is not rechecked.
@@ -162,6 +166,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `tools/verify-java.mjs` | Compiles and runs every Java item with Java 21. |
 | `tools/e2e-accounts.mjs` | Accounts in Chromium: email sign-in, first and changed passwords, reset links, a teacher with one course, cards, a GitHub record gaining a school email, the Teachers panel. |
 | `decks/whap.js`, `decks/whap/`, `decks/whap-mocks/`, `decks/whap-topic/` | AP World History: the bank, one file per unit, the unit assessments, and the topic quizzes. |
+| `tools/e2e-assess.mjs` | Runs teacher-made assessments in Chromium: add one for two sections and two topics, the countdown, the review set, a matching quiz, edit, delete. |
 | `tools/e2e-questions.mjs` | Runs the Questions tab in Chromium: read, edit, change the right answer, hide, restore, and the edits reaching a test. |
 | `tools/e2e-whap.mjs` | Runs an AP World unit assessment in Chromium: section labels, scoring short answers and the essay, the score by section, Unit 2 review, phone width. |
 | `tools/e2e-csa.mjs` | Runs the AP CSA course in Chromium: a review set, a Quiz 5 set, a free response, both mock shapes, phone width, the Class tab. |

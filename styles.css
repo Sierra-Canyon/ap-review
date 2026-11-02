@@ -438,3 +438,10 @@ svg.graph .g-dot { fill: var(--accent); stroke: var(--accent); stroke-width: 2; 
 svg.graph .g-open { fill: var(--surface, #fff); stroke: var(--accent); stroke-width: 2; }
 math[display="block"] { margin: 8px 0; overflow-x: auto; overflow-y: hidden; }
 .katex math { font-size: 1.08em; }
+
+/* Assessments (Class tab) and the review set for one (home) */
+.assess { display: flex; gap: 10px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px; margin-top: 4px; flex-wrap: wrap; }
+details.aunit { border-top: 1px solid var(--line); padding: 6px 0; }
+details.aunit > summary { cursor: pointer; }
+.atopics { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 4px 14px; padding: 6px 0 4px 22px; }
+#assessform input[name=name] { min-width: 14em; }

@@ -94,10 +94,10 @@ service cloud.firestore {
       allow delete: if allMine(resource.data.courses);
     }
 
-    // First passwords were stored here before 11/2. Every student now starts with the same first password, and nothing is
-    // stored per student: nobody writes here, and the admin may read or delete what is left.
+    // First passwords saved for printing (before 11/2 the site wrote them; now every student starts with goblazers).
+    // Teachers may still read and write here.
     match /cards/{id} {
-      allow read, delete: if isAdmin();
+      allow read, write: if isTeacher();
     }
 
     match /requests/{id} {

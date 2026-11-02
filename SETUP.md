@@ -95,11 +95,21 @@ Do these in order, right after you push this update (about 10 minutes):
 ### How the World History teacher runs a class
 
 - **Class** tab, **Roster**: paste one student per line, `Name in class, school email` (for example `Brooklyn Chen, Sicheng.Chen@scsstudent.org`). A name left off is made from the email and can be changed in the table (type, then Enter).
-- Each new email gets a sign-in with a **first password** (like `maple-river-42`), shown in the Password column. **Print sign-in cards** prints one card per student who has not chosen their own yet.
+- Each new email gets a sign-in with the first password **goblazers** (the same for everyone; the Password column says `first: goblazers` until the student chooses their own). **Print sign-in cards** prints one card per student who has not chosen their own yet.
 - On first sign-in a student must choose their own password. After that the teacher no longer sees it ("chosen").
 - A student who forgets: **Forgot password?** on the sign-in page, or the teacher's **Send reset link**. Either emails a link to the school address. Teachers cannot see or type a student's password.
 - A student already on another course (yours) keeps it and gets World History too; they can sign in either way.
 - **Questions** tab: every question on the site for World History, by quiz or test, with its answer. **Edit** fixes wording or the right answer, or hides a question, for all three sections at once; **Restore original** undoes it.
+
+## 15. One first password: goblazers (the 11/2 update)
+
+Every student sign-in made from a roster now starts with **goblazers**. Nothing stores passwords any more: the site no longer writes the `cards` collection, and at first sign-in the student must choose their own password (the site will not take goblazers). Do this once after pushing:
+
+1. **Publish the rules again** (Firestore Database > Rules, replace with `firestore.rules`, Publish).
+2. **Delete the old saved passwords:** Firestore Database > Data, click **cards**, the **⋮** at the top of that column, **Delete collection**.
+3. **Move the sign-ins already made onto goblazers.** The sign-ins made before this update still have their old random passwords, and a web page cannot change another person's password. In **Authentication > Users**, delete the student accounts whose **Signed in** column is empty (they have never used them). Leave the teachers' accounts and anyone who has signed in. Then, on the Class tab, paste each section's roster file again: the site makes those sign-ins again with goblazers, and the student records and progress are untouched. A student who already chose their own password keeps it.
+
+Until a student signs in and chooses their own password, anyone who knows their school email and goblazers can sign in as them, so have students do their first sign-in soon.
 
 ## 14. Assessments on the calendar
 

@@ -229,7 +229,7 @@ function renderSignIn() {
       <input type="password" id="pwpass" autocomplete="current-password" required>
       <div class="row"><button class="btn primary" type="submit">Sign in</button><button class="btn ghost" type="button" id="forgot">Forgot password?</button></div>
       <p class="small muted" id="pwmsg" role="status"></p>
-      ${demo ? `<p class="small muted">Demo: try <code>demo.email@scsstudent.org</code> with the password <code>maple-river-42</code>, or the history teacher <code>history.teacher@sierracanyonschool.org</code> with <code>teach-demo-7</code>.</p>` : ""}
+      ${demo ? `<p class="small muted">Demo: try <code>demo.email@scsstudent.org</code> with the password <code>${FIRST_PASSWORD}</code>, or the history teacher <code>history.teacher@sierracanyonschool.org</code> with <code>teach-demo-7</code>.</p>` : ""}
     </form>
     ${demo ? `<p class="small muted">Demo mode: there is no real sign-in, and progress is kept in this browser only.</p>` : ""}
   </section>`;
@@ -277,6 +277,7 @@ function passwordFields(withCurrent) {
 async function changePassword(form, withCurrent) {
   const msg = $(".pwmsg", form), next = $("#pwnew", form).value;
   if (next.length < 8) { msg.textContent = "Use at least 8 characters."; return false; }
+  if (next.trim().toLowerCase() === FIRST_PASSWORD) { msg.textContent = `Choose a password other than ${FIRST_PASSWORD}: everyone starts with that one.`; return false; }
   if (next !== $("#pwnew2", form).value) { msg.textContent = "The two new passwords are different. Type them again."; return false; }
   msg.textContent = "Saving...";
   try { await backend.setPassword(next, withCurrent ? $("#pwcur", form).value : undefined); }
@@ -291,7 +292,7 @@ function renderChoosePassword() {
   view.className = "";
   view.innerHTML = `<section class="panel signin enter">
     <h1>Choose your own password</h1>
-    <p>You signed in with the first password your teacher gave you. Choose one only you know. You sign in with <b>${esc(user.email)}</b> and this password from now on.</p>
+    <p>You signed in with the first password everyone starts with. Choose one only you know. You sign in with <b>${esc(user.email)}</b> and this password from now on.</p>
     <form class="stack" id="firstpw">${passwordFields(false)}<div class="row"><button class="btn primary" type="submit">Save my password</button></div><p class="small muted pwmsg" role="status"></p></form>
   </section>`;
   $("#firstpw").addEventListener("submit", async (ev) => { ev.preventDefault(); if (await changePassword(ev.target, false)) { toast("Password saved."); route(); } });
@@ -1181,8 +1182,11 @@ function parseRosterLine(line) {
 }
 // Only the fields the rules allow, in their types.
 const recordOf = (r) => ({ name: r.name || "", email: (r.email || "").toLowerCase(), ghId: r.ghId ? String(r.ghId) : "", login: r.login || "", courses: r.courses || [] });
+// The first password of every student sign-in made from a roster. Nothing stores it per student; the site makes each
+// student choose their own at first sign-in and will not accept this one.
+const FIRST_PASSWORD = "goblazers";
 const WORDS = "maple river cedar harbor meadow canyon pebble summit willow lantern falcon orchard prairie comet island garden copper violet amber thunder".split(" ");
-const firstPassword = () => `${WORDS[Math.floor(Math.random() * WORDS.length)]}-${WORDS[Math.floor(Math.random() * WORDS.length)]}-${10 + Math.floor(Math.random() * 90)}`;
+const randomPassword = () => `${WORDS[Math.floor(Math.random() * WORDS.length)]}-${WORDS[Math.floor(Math.random() * WORDS.length)]}-${10 + Math.floor(Math.random() * 90)}`;
 // Adds or updates records for a course. A student already on file (same school email or same GitHub number) keeps everything
 // and gets this course; a record that gains a school email moves from gh-<number> to the email, progress and all.
 async function addStudents(list, c, say = () => {}) {
@@ -1203,8 +1207,8 @@ async function addStudents(list, c, say = () => {}) {
     }
     // A student with GitHub on file signs in with GitHub: no password login is made for them.
     if (c.passwords && rec.email && !rec.ghId) {
-      const pw = firstPassword();
-      if ((await backend.createLogin(rec.email, pw)) === "created") { await backend.saveCard(id, { password: pw, ts: Date.now() }); logins++; }
+      // Every new sign-in starts with the same first password; the student must choose their own at first sign-in.
+      if ((await backend.createLogin(rec.email, FIRST_PASSWORD)) === "created") logins++;
     }
     added++;
   }
@@ -1308,7 +1312,7 @@ async function renderTeachersPanel() {
     if (!cs.length) { $("#tmsg", box).textContent = "Check at least one course."; return; }
     $("#tmsg", box).textContent = "Adding...";
     try {
-      const made = await backend.createLogin(email, firstPassword() + firstPassword());
+      const made = await backend.createLogin(email, randomPassword() + randomPassword());
       await backend.saveTeacher(email, { name, courses: cs });
       await backend.sendReset(email);
       toast(made === "created" ? `Added. ${email} was emailed a link to choose a password.` : `Added. ${email} already had a sign-in; a reset link was emailed too.`);
@@ -1328,7 +1332,7 @@ async function renderCards() {
   for (const r of roster.sort((a, b) => a.name.localeCompare(b.name))) {
     if (r.ghId) { rows.push({ ...r, github: true }); continue; }
     if (prog[r.id]?.pwSet) continue;
-    const card = await backend.getCard(r.id); if (card) rows.push({ ...r, password: card.password });
+    rows.push({ ...r, password: FIRST_PASSWORD });
   }
   const link = location.origin + location.pathname;
   const gh = rows.filter((r) => r.github).length;
@@ -1347,7 +1351,6 @@ async function renderTeacher() {
     if (isAdmin()) await moveOldRoster();
     [roster, requests] = await Promise.all([backend.listStudents(course.id), backend.listRequests()]);
     progressById = await backend.loadProgressMany(roster.map((r) => r.id));
-    if (course.passwords) cards = Object.fromEntries(await Promise.all(roster.filter((r) => r.email).map(async (r) => [r.id, await backend.getCard(r.id)])));
   }
   catch (e) { view.innerHTML = `<section class="panel"><h1>Could not load the class</h1><p>${esc(e.message)}</p><p class="muted">Check that the rules in firestore.rules are published, and that your account is a teacher of this course.</p></section>`; return; }
   const rows = roster.map((r) => ({ ...r, user: progressById[r.id] })).sort((a, b) => (a.name || a.login || "").localeCompare(b.name || b.login || ""));
@@ -1449,7 +1452,7 @@ async function renderTeacher() {
       <td><input type="text" value="${esc(r.name)}" data-name="${esc(r.id)}" aria-label="Name in class"></td>
       <td class="small">${esc(r.email) || `<span class="muted">none yet</span>`}</td>
       <td class="small mono">${r.login ? "@" + esc(r.login) : r.ghId ? esc(r.ghId) : ""}</td>
-      ${course.passwords ? `<td class="small">${r.ghId ? "GitHub" : !r.email ? "" : r.user?.pwSet ? "chosen" : cards[r.id] ? `first: <span class="mono">${esc(cards[r.id].password)}</span>` : "own"}</td>` : ""}
+      ${course.passwords ? `<td class="small">${r.ghId ? "GitHub" : !r.email ? "" : r.user?.pwSet ? "chosen" : `first: <span class="mono">${esc(FIRST_PASSWORD)}</span>`}</td>` : ""}
       <td class="num">${r.email && course.passwords ? `<button class="btn ghost small" data-reset="${esc(r.email)}">Send reset link</button>` : ""}<button class="btn ghost small" data-remove="${esc(r.id)}">Remove</button></td></tr>`).join("")}</tbody></table></div>
       <p class="small muted">Edit a name and press Enter to save it.${course.passwords ? " Send reset link emails the student a link to choose a new password." : ""} Remove takes the student off ${esc(course.short)} only.</p></div></details>
   </section>
@@ -1596,7 +1599,7 @@ function seedDemo(s, people) {
       const ghId = String(2000000 + k), uid = "demo-ex-" + k, skill = 0.75 + (rnd() - 0.5) * 0.5;
       const email = `example.${c.id}${j + 1}@scsstudent.org`, sid = email;
       s.students[sid] = { name, email, ghId: c.passwords ? "" : ghId, login: c.passwords ? "" : `example-${c.id}-${j + 1}`, courses: [c.id] };
-      if (c.passwords) { s.accounts[email] = { password: "maple-river-42" }; s.cards[sid] = { password: "maple-river-42", ts: Date.now() }; }
+      if (c.passwords) s.accounts[email] = { password: FIRST_PASSWORD };
       if (j === n - 1) continue; // one has not signed in
       const cards = {}; let t = Date.now() - 3 * DAY;
       for (const it of d.items) {
@@ -1632,8 +1635,7 @@ function seedDemo(s, people) {
   s.students["demo.student@scsstudent.org"] = { name: "Demo Student", email: "demo.student@scsstudent.org", ghId: people.student.ghId, login: people.student.login, courses: courses.filter((c) => !c.passwords).map((c) => c.id) };
   // A student with only a school email and a first password, in every password course (and AP CSP, to show both kinds).
   s.students["demo.email@scsstudent.org"] = { name: "Demo Email Student", email: "demo.email@scsstudent.org", ghId: "", login: "", courses: [...courses.filter((c) => c.passwords).map((c) => c.id), "csp"] };
-  s.accounts["demo.email@scsstudent.org"] = { password: "maple-river-42" };
-  s.cards["demo.email@scsstudent.org"] = { password: "maple-river-42", ts: Date.now() };
+  s.accounts["demo.email@scsstudent.org"] = { password: FIRST_PASSWORD };
   // A teacher who signs in with a school email and sees only their course.
   s.teachers["history.teacher@sierracanyonschool.org"] = { name: "Example History Teacher", courses: courses.filter((c) => c.id.startsWith("whap")).map((c) => c.id) };
   s.accounts["history.teacher@sierracanyonschool.org"] = { password: "teach-demo-7" };

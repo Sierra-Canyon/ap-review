@@ -31,11 +31,13 @@ await page.waitForSelector("text=a link to choose a new password is on its way")
 assert((await store()).sent.some((x) => x.email === "demo.email@scsstudent.org"), "forgot password sends a reset email");
 
 // First sign-in with the first password: must choose their own.
-await signInEmail("demo.email@scsstudent.org", "maple-river-42");
+await signInEmail("demo.email@scsstudent.org", "goblazers");
 await page.waitForSelector("text=Choose your own password");
 await page.screenshot({ path: `${out}/p01-choose.png`, fullPage: true });
 await page.fill("#pwnew", "short"); await page.fill("#pwnew2", "short"); await page.click("#firstpw button[type=submit]");
 await page.waitForSelector("text=at least 8");
+await page.fill("#pwnew", "GoBlazers"); await page.fill("#pwnew2", "GoBlazers"); await page.click("#firstpw button[type=submit]");
+await page.waitForSelector("text=other than goblazers");
 await page.fill("#pwnew", "my-own-pass-1"); await page.fill("#pwnew2", "my-own-pass-1"); await page.click("#firstpw button[type=submit]");
 await page.waitForSelector(".choices-home");
 assert((await store()).accounts["demo.email@scsstudent.org"].password === "my-own-pass-1", "the chosen password is saved");
@@ -77,7 +79,8 @@ await page.fill("#rosterin", "Brooklyn Chen, Sicheng.Chen@scsstudent.org\nyutong
 await page.click("#addroster"); await page.waitForSelector(".toast:has-text('Added 2')");
 await page.waitForSelector("text=Roster:");
 let st = await store();
-assert(st.accounts["sicheng.chen@scsstudent.org"] && st.cards["sicheng.chen@scsstudent.org"], "a new email gets a sign-in and a card");
+assert(st.accounts["sicheng.chen@scsstudent.org"]?.password === "goblazers" && !st.cards["sicheng.chen@scsstudent.org"], "a new email gets a sign-in with the first password, and no password is stored");
+assert(/first: goblazers/.test(await page.textContent("table.rostertable tr:has-text('sicheng.chen@scsstudent.org')")), "the roster shows the first password until the student chooses one");
 assert(st.students["yutong.liu@scsstudent.org"].name === "Yutong Liu", "a name left off comes from the email");
 // Rename to the name used in class.
 await page.fill('[data-name="yutong.liu@scsstudent.org"]', "Queenie Liu"); await page.press('[data-name="yutong.liu@scsstudent.org"]', "Enter");
@@ -95,7 +98,7 @@ await signOut();
 
 // The new student signs in with the card's password.
 st = await store();
-await signInEmail("Sicheng.Chen@scsstudent.org", st.cards["sicheng.chen@scsstudent.org"].password);
+await signInEmail("Sicheng.Chen@scsstudent.org", "goblazers");
 await page.waitForSelector("text=Choose your own password");
 await page.fill("#pwnew", "brooklyn-pass-9"); await page.fill("#pwnew2", "brooklyn-pass-9"); await page.click("#firstpw button[type=submit]");
 await page.waitForSelector(".choices-home");

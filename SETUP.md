@@ -109,7 +109,7 @@ Students added before this change may already have a password login for their sc
 
 ## 12. AP Calculus AB
 
-The course is on the site (`calc` in `courses.js`), with email and password sign-in like AP World. When the teacher is known: on the Class tab, **Teachers > Add a teacher** with their school email and **AP Calc AB** checked, then paste each section's roster (`Name, school email` per line) on the Calc Class tab. For more than one section, add a course line per section in `courses.js` (as for AP World) and add its id to `'calc'` in `deckCourses` in `firestore.rules`. Publish the rules again after this update.
+The course is on the site, with email and password sign-in like AP World. The teacher is Veronica Bryan: on the Class tab, **Teachers > Add a teacher**, name **Veronica Bryan**, email **rbryan@sierracanyonschool.org**, check **AP Calc AB (A)**, **AP Calc AB (B)**, and **AP Calc AB (D)**. Then switch the course menu to **AP Calc AB (A)** and paste `../private/roster_calc_a_emails.txt` (17 lines), **AP Calc AB (B)** with `../private/roster_calc_b_emails.txt` (15 lines), and **AP Calc AB (D)** with `../private/roster_calc_d_emails.txt` (15 lines). Twelve Calculus students are also in AP World or one of your courses (same school email); they keep those courses and get Calculus on the same sign-in, and the ones with GitHub keep signing in with GitHub (Queenie Liu in AP CSP, Ayan Rajkondawar and Matti Miller in AP CSA, Jonah Plishner in AP Cyber). For more than one section, add a course line per section in `courses.js` (as for AP World) and add its id to `'calc'` in `deckCourses` in `firestore.rules`. Publish the rules again after this update.
 
 ## 11. Question edits (the 11/1 evening update)
 

@@ -19,7 +19,10 @@ export const courses = [
   { id: "whap", name: "AP World History: Modern", short: "AP World (B)", period: "Period B", book: false, passwords: true, decks: [whap] },
   { id: "whap-c", name: "AP World History: Modern", short: "AP World (C)", period: "Period C", book: false, passwords: true, decks: [whap] },
   { id: "whap-d", name: "AP World History: Modern", short: "AP World (D)", period: "Period D", book: false, passwords: true, decks: [whap] },
-  { id: "calc", name: "AP Calculus AB", short: "AP Calc AB", period: "", book: false, passwords: true, decks: [calc] },
+  // AP Calculus AB (Ms. Bryan) has three sections on one deck, like AP World. Periods A, B, D.
+  { id: "calc-a", name: "AP Calculus AB", short: "AP Calc AB (A)", period: "Period A", book: false, passwords: true, decks: [calc] },
+  { id: "calc", name: "AP Calculus AB", short: "AP Calc AB (B)", period: "Period B", book: false, passwords: true, decks: [calc] },
+  { id: "calc-d", name: "AP Calculus AB", short: "AP Calc AB (D)", period: "Period D", book: false, passwords: true, decks: [calc] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

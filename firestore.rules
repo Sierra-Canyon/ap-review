@@ -63,7 +63,7 @@ service cloud.firestore {
     // Teachers' edits to questions. Everyone signed in reads them (the site lays them over the questions); a teacher writes
     // only edits to a deck one of their courses uses. The map lists each deck's courses (courses.js).
     function deckCourses(d) {
-      return {'csp-q3': ['csp'], 'csa': ['csa'], 'cyber-u2': ['cyber'], 'whap': ['whap', 'whap-c', 'whap-d'], 'calc': ['calc']}.get(d, []);
+      return {'csp-q3': ['csp'], 'csa': ['csa'], 'cyber-u2': ['cyber'], 'whap': ['whap', 'whap-c', 'whap-d'], 'calc': ['calc', 'calc-a', 'calc-d']}.get(d, []);
     }
     function validEdit(id, d) {
       return d.keys().hasOnly(['deck', 'item', 'fields', 'answer', 'hidden', 'by', 'ts'])

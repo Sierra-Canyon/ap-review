@@ -130,7 +130,7 @@ export default {
           question: "The losses of the nation with the most battle deaths in the table most directly contributed to which of the following?",
           choices: [
             "The fall of the tsar and the Bolshevik seizure of power in 1917",
-            "Russia's defeat in its war with Japan in 1905",
+            "Russia's defeat in its war with Japan",
             "The emancipation of the serfs",
             "The creation of the League of Nations mandates in the Middle East",
           ],

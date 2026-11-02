@@ -192,7 +192,7 @@ export default {
             "\"Ferdinand and Isabella took Granada in 1492.\" This is after c. 1450 and is not in the period the prompt asks about.",
             "\"They fought Muslims.\" This is too vague to describe how they expanded.",
           ],
-          example: "During the Reconquista, the kingdom of Castile pushed south against Muslim states and captured major cities such as Córdoba in 1236 and Seville in 1248, so that by 1250 only Granada was still ruled by Muslims.",
+          example: "During the Reconquista, the kingdom of Castile pushed south against Muslim states and captured major cities such as Córdoba in 1236 and Seville in 1248, so that by the 1260s only Granada was still ruled by Muslims.",
           notExample: "Spain and Portugal became powerful countries." },
         { id: "t16-q1c", skill: "u1", type: "fr", part: "SAQ 1", sub: "c", topic: "1.6",
           lead: "Answer all parts of the question that follows.",

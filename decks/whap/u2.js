@@ -173,7 +173,7 @@ export default [
   { id: "u2-m06", skill: "u2", type: "mcq", set: "u2-s2", topic: "2.6", reasoning: "Causation",
     question: "Boccaccio's explanation of the cause of the pestilence best reflects which of the following?",
     choices: [
-      "People in the fourteenth century did not know how disease spreads, so they explained epidemics through astrology or divine punishment.",
+      "People in the fourteenth century did not know the biological cause of disease, so they explained epidemics through astrology or divine punishment.",
       "Thinkers of the Scientific Revolution had begun to explain disease through experiments and careful observation.",
       "Confucian scholars taught that natural disasters showed that a ruler had lost the Mandate of Heaven.",
       "Protestant reformers had challenged the authority of the Catholic Church over religious teaching.",
@@ -393,7 +393,7 @@ export default [
       "The longest stage of the journey was the river trip from Gintarchan to Sara.",
     ],
     why: [
-      "The stages with stated times add up to more than 270 days, and the table lists ox wagons, river boats, camel wagons, asses, and horses.",
+      "The stages with stated times add up to roughly 265 to 285 days, plus a river trip of unstated length, and the table lists ox wagons, river boats, camel wagons, asses, and horses.",
       "The route was overland and by river; no stage is by sea.",
       "The table lists oxen, asses, and horses as well as camels.",
       "That stage took one day; the longest was the 70 days from Armalec to Camexu.",
@@ -432,13 +432,13 @@ export default [
   { id: "u2-m23", skill: "u2", type: "mcq", set: "u2-s6", topic: "2.7", reasoning: "Comparison",
     question: "Compared with the route shown in the table, Indian Ocean trade in the same period",
     choices: [
-      "carried larger and heavier cargoes at lower cost, because ships could use predictable monsoon winds",
+      "carried larger and heavier cargoes at lower cost, because ships could hold far more than pack animals",
       "depended more heavily on the protection of the Mongol Empire",
       "moved mostly luxury goods, because ships could carry only small loads",
       "was limited to merchants who belonged to a single religion",
     ],
     why: [
-      "Ships carried far more than pack animals, so Indian Ocean trade moved bulk goods such as cotton cloth, rice, and timber along with luxuries.",
+      "A ship carried far more than a caravan of pack animals, and monsoon winds made voyages predictable, so Indian Ocean trade moved bulk goods such as cotton cloth, rice, and timber along with luxuries.",
       "The Mongols controlled overland routes; Indian Ocean trade was largely outside their control.",
       "Ships could carry heavy loads, which is why bulk goods were common in Indian Ocean trade.",
       "Muslim, Hindu, Buddhist, Jewish, and Christian merchants all traded in the Indian Ocean.",

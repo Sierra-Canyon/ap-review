@@ -315,7 +315,7 @@ export default {
             "\"The Ottomans lost at Vienna in 1683.\" This supports the decline view, not the passage's argument.",
             "\"The empire changed.\" This repeats the passage without any evidence.",
           ],
-          example: "The Köprülü grand viziers, beginning with Köprülü Mehmed Pasha in 1656, restored the treasury and won back territory such as Crete in 1669, which shows the empire could recover after a crisis.",
+          example: "The Köprülü grand viziers, beginning with Köprülü Mehmed Pasha in 1656, restored the treasury and completed the conquest of Crete from Venice in 1669, which shows the empire could recover after a crisis.",
           notExample: "The Ottomans took Constantinople in 1453." },
         { id: "w3a-q1b", skill: "u3", type: "fr", set: "w3a-s6", part: "SAQ 1", sub: "b", topic: "3.2",
           lead: "Use the passage below to answer all parts of the question that follows.",

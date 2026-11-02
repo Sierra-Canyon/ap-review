@@ -100,7 +100,7 @@ export default {
           ],
           answer: 0 },
         { id: "w6a-m04", skill: "u6", type: "mcq", set: "w6a-s1", topic: "6.1", reasoning: "Causation",
-          question: "Beveridge gave this speech while running for office in 1898. Which of the following best describes his purpose?",
+          question: "Beveridge gave this campaign speech in 1898. Which of the following best describes his purpose?",
           choices: [
             "To win voters' support for keeping the lands taken from Spain by answering critics of overseas rule",
             "To persuade Spain to accept American terms for ending the war",
@@ -303,7 +303,7 @@ export default {
           earns: "The response explains how a specific industry or need in industrial countries required a raw material that came mainly from outside Western Europe and the United States.",
           yes: [
             "British textile mills needed far more cotton than Britain could grow, so they imported it from the American South, India, and Egypt.",
-            "Rubber, used for bicycle and car tires and to insulate electrical wires, came from the Amazon and the Congo.",
+            "Rubber, used for bicycle tires and to insulate electrical and telegraph wires, came from the Amazon and the Congo.",
             "Palm oil from West Africa was used as a machine lubricant and to make soap for growing city populations.",
           ],
           no: [

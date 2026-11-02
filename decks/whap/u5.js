@@ -604,7 +604,7 @@ export default [
     prompt: "In the period c. 1750 to c. 1900, revolutions broke out in many parts of the Atlantic world. Develop an argument that evaluates the extent to which Enlightenment ideas caused revolutions in the Atlantic world in this period.",
     rows: [
       { name: "Thesis/Claim", max: 1, levels: [
-        "0 points: no claim, a claim that only restates the prompt, or a claim that is not defensible (for example, \"Enlightenment ideas had many effects\").",
+        "0 points: no claim, a claim that only restates the prompt or is too vague to take a position (for example, \"Enlightenment ideas had many effects\"), or a claim that is not historically defensible.",
         "1 point: a historically defensible claim about how much Enlightenment ideas caused Atlantic revolutions, with a line of reasoning, such as arguing that they shaped revolutionaries' goals while economic grievances, slavery, and imperial crises set off the revolts.",
       ] },
       { name: "Contextualization", max: 1, levels: [
@@ -674,7 +674,7 @@ export default [
       "Ottoman Empire: Tanzimat reforms (1839 to 1876) and state factories making uniforms and weapons, alongside growing foreign debt.",
       "Ottoman Empire: the Ottoman Public Debt Administration (1881) let European creditors control key tax revenues.",
     ],
-    model: "Thesis: Japan's and Russia's programs were highly similar in method, because in both the state built railways and heavy industry to keep up with the West, but they differed in results, since Japan built a more balanced industrial base while Russia remained dependent on foreign capital and a mostly peasant population. Outline: (1) Context: British industrial power and Western military pressure, from the Crimean War to Perry's ships, convinced Russian and Japanese leaders they had to industrialize. (2) Similarities: both governments funded railways (Tokyo to Yokohama in 1872; the Trans-Siberian from 1891), used tariffs and taxes to raise capital, and brought in foreign experts and technology. (3) Differences: Japan sold state enterprises to private firms in the 1880s, creating the zaibatsu, while Russia relied heavily on French loans and kept most people as peasants. Complexity: both programs aimed at military strength, which Japan showed by defeating Russia in 1905, a sign that similar methods produced different outcomes.",
+    model: "Thesis: Japan's and Russia's programs were highly similar in method, because in both the state built railways and heavy industry to keep up with the West, but they differed in results, since Japan built a more balanced industrial base while Russia remained dependent on foreign capital and a mostly peasant population. Outline: (1) Context: British industrial power and Western military pressure, from the Crimean War to Perry's ships, convinced Russian and Japanese leaders they had to industrialize. (2) Similarities: both governments funded railways (Tokyo to Yokohama in 1872; the Trans-Siberian from 1891), raised capital through taxes (Japan's 1873 land tax) and, in Russia, protective tariffs, and brought in foreign experts and technology. (3) Differences: Japan sold state enterprises to private firms in the 1880s, creating the zaibatsu, while Russia relied heavily on French loans and kept most people as peasants. Complexity: both programs aimed at military strength, which Japan showed by defeating Russia in 1905, a sign that similar methods produced different outcomes.",
   },
 
   // ---------- Document-based question ----------
@@ -682,7 +682,7 @@ export default [
     prompt: "Evaluate the extent to which industrialization improved the lives of workers in the period c. 1780 to c. 1900.",
     rows: [
       { name: "Thesis/Claim", max: 1, levels: [
-        "0 points: no claim, a claim that only restates the prompt, or a claim that is not defensible (for example, \"Industrialization changed workers' lives\").",
+        "0 points: no claim, a claim that only restates the prompt or is too vague to take a position (for example, \"Industrialization changed workers' lives\"), or a claim that is not historically defensible.",
         "1 point: a historically defensible claim that evaluates how much industrialization improved workers' lives and sets out a line of reasoning, such as arguing that early industrialization made conditions worse for most workers and that gains came later, unevenly, and often through reform.",
       ] },
       { name: "Contextualization", max: 1, levels: [

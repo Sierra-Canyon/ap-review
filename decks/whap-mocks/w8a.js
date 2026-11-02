@@ -230,13 +230,13 @@ export default {
             "In the 1980s the United States armed the Contra rebels fighting the leftist Sandinista government of Nicaragua.",
             "In 1994 the United States, Canada, and Mexico formed the North American Free Trade Agreement.",
             "In the 1970s Cuba sent troops to support the government of Angola in its civil war.",
-            "In the 1910s the Mexican Revolution overthrew the government of Porfirio Díaz.",
+            "In the 1980s and 1990s many Latin American states replaced military rule with elected civilian governments.",
           ],
           why: [
             "Correct. The United States again treated a reform government as a communist threat and backed armed opposition to it.",
             "NAFTA was a trade agreement made after the Cold War, not a response to a reform movement.",
             "Cuban troops in Angola show Cuba's role in the Cold War, but not American treatment of reform movements in Latin America.",
-            "The Mexican Revolution came before the Cold War, so it cannot continue a Cold War pattern.",
+            "The return to elected government ended many of the military regimes that had treated reformers as communist threats, so it was a break from the pattern, not a continuation of it.",
           ],
           answer: 0 },
 

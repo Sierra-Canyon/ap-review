@@ -1233,7 +1233,7 @@ export default [
         "levels": [
           "0 points: Does not explain the point of view, purpose, historical situation, or audience of any document.",
           "1 point: For at least two documents, explains how or why the point of view, purpose, historical situation, or audience is relevant to the argument, for example, that Bossuet wrote as a bishop tutoring the king's heir or that Abu'l-Fazl wrote as Akbar's own court historian.",
-          "2 points: Earns the sourcing point and shows a complex understanding, for example by explaining that religion could both support and limit royal power, by contrasting tolerance (Documents 2 and 3) with religious uniformity (Document 7), or by showing that religious claims worked alongside merit, law, and taxation (Documents 2 and 5)."
+          "2 points: Earns the sourcing point and shows a complex understanding, for example by explaining that religion could both support and limit royal power, by contrasting tolerance (Document 3) with religious uniformity (Document 7), or by showing that religious claims worked alongside merit, law, and taxation (Documents 2 and 5)."
         ]
       }
     ],

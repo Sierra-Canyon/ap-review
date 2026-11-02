@@ -11,7 +11,7 @@ const items = [
       String.raw`With $\Delta x = \dfrac{2}{n}$ and $x_k = 3 + \dfrac{2k}{n}$, the sample points run from just above 3 up to 5, and the height at each is $\dfrac{1}{x_k}$. The limit is $\displaystyle \int_3^5 \dfrac{1}{x}\,dx$.`,
       String.raw`This uses $x_k = \dfrac{k}{n}$ on $[0, 1]$, which needs a width of $\dfrac{1}{n}$. The sum has width $\dfrac{2}{n}$, so this integral is only half of the limit.`,
       String.raw`This counts the 3 twice: the interval already starts at 3, so the height at $x_k$ is $\dfrac{1}{x_k}$, not $\dfrac{1}{3 + x_k}$.`,
-      String.raw`This starts the interval at the width numerator 2 in place of the starting value 3 in $3 + \dfrac{2k}{n}$.`,
+      String.raw`This starts the interval at $2$, the numerator of the width $\dfrac{2}{n}$. The interval starts at $3$, the first term of $3 + \dfrac{2k}{n}$.`,
     ], answer: 0 },
   { id: "q603-m02", type: "mcq", skill: "u6", topic: "6.3", calc: false,
     question: String.raw`Which of the following limits of right Riemann sums is equal to $\displaystyle \int_2^5 x^3\,dx$?`,

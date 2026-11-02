@@ -31,7 +31,7 @@ export const sets = {
     sources: [{ title: "", blocks: [{ svg: s1Graph }] }] },
   "c8t-s2": { name: "A region between a logarithm and a parabola", label: "Free response", intro: String.raw`Let $f(x) = 4\ln(x + 1)$ and $g(x) = \dfrac{x^2}{2}$. Let $R$ be the region in the first quadrant enclosed by the graphs of $f$ and $g$, shown below.`,
     sources: [{ title: "", blocks: [{ svg: s2Graph }, { p: String.raw`A graphing calculator is allowed. Give decimal answers to three decimal places.` }] }] },
-  "c8t-s3": { name: "Water in a tank", label: "Free response", intro: String.raw`A tank contains $20$ liters of water at time $t = 0$. For $0 \le t \le 8$ minutes, water flows into the tank at a rate of $E(t)$ liters per minute, where the graph of $E$ consists of three line segments, as shown below. Water drains out of the tank at a constant rate of $3$ liters per minute. Let $A(t)$ be the number of liters of water in the tank at time $t$.`,
+  "c8t-s3": { name: "Water in a tank", label: "Free response", intro: String.raw`A tank contains $20$ liters of water at time $t = 0$. For $0 \le t \le 8$ minutes, water flows into the tank at a rate of $E(t)$ liters per minute, where the graph of $E$ consists of three line segments, as shown below. Water drains out of the tank at a constant rate of $3$ liters per minute, shown by the dashed line. Let $A(t)$ be the number of liters of water in the tank at time $t$.`,
     sources: [{ title: "", blocks: [{ svg: s3Graph }, { p: String.raw`Answer each part without a calculator. Show the work that leads to each answer.` }] }] },
 };
 

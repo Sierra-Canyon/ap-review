@@ -128,7 +128,7 @@ export default {
           ],
           why: [
             "Correct. The deaths followed English visits, struck town after town, and came from a disease no one in the region had seen before, a pattern of Afro-Eurasian diseases spreading among peoples with no prior exposure.",
-            "Hariot stresses that the people died \"without weapons\" being used, so the deaths were not caused by fighting.",
+            "Hariot describes a strange disease, and local people believed the English could kill \"without weapons,\" so the deaths were not caused by fighting.",
             "The Roanoke colonists did strain Indigenous food supplies, but Hariot describes a strange disease, not hunger.",
             "European livestock damaged Indigenous fields in many colonies, but the excerpt describes a sudden disease, not the loss of crops.",
           ],
@@ -198,7 +198,7 @@ export default {
         { id: "w4a-m09", skill: "u4", type: "mcq", set: "w4a-s3", topic: "4.8", reasoning: "Continuity and change",
           question: "Which later policy of Japan's Tokugawa shogunate most directly continued the concern with controlling foreign contact shown in the excerpt?",
           choices: [
-            "Banning Christianity, expelling the Portuguese, and allowing only the Dutch among Europeans to trade, at Nagasaki, in the early seventeenth century",
+            "Banning Christianity, expelling the Portuguese, and allowing only the Dutch among Europeans to trade, at Nagasaki, in the first half of the seventeenth century",
             "Opening Japanese ports to American and European trade after the arrival of United States warships in the 1850s",
             "Invading Korea in the 1590s in an attempt to conquer the Ming dynasty",
             "Exporting large amounts of Japanese silver that eventually reached China",

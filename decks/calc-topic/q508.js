@@ -93,7 +93,7 @@ const items = [
       String.raw`The graph of $f$ changes concavity where $f'$ changes from increasing to decreasing or back. $f'$ rises to $x = -1$ and then falls, and falls to $x = 1$ and then rises.`,
       String.raw`These are the zeros of $f'$, where $f$ has relative extrema, not where its concavity changes.`,
       String.raw`$f'$ changes from positive to negative at $x = 0$, so $f$ has a relative maximum there.`,
-      String.raw`$f'$ changes from negative to positive at $x = -2$ and $x = 2$, so $f$ has relative minimums there.`,
+      String.raw`$f'$ changes from negative to positive at $x = -2$ and $x = 2$, so $f$ has relative minima there.`,
     ], answer: 0 },
   { id: "q508-m03", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s3",
     question: String.raw`What are the values of $f'(x)$ for $0 < x < 3$ and for $3 < x < 5$, in that order?`,

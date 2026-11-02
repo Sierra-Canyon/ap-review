@@ -21,7 +21,7 @@ const items = [
       String.raw`$f(8) = 2$ and $f'(x) = \dfrac{1}{3}x^{-2/3}$, so $f'(8) = \dfrac{1}{3 \cdot 4} = \dfrac{1}{12}$. Then $\sqrt[3]{7.8} \approx 2 + \dfrac{1}{12}(-0.2) = 2 - \dfrac{1}{60} = \dfrac{119}{60}$.`,
       String.raw`$7.8 - 8 = -0.2$, so the correction is subtracted, not added.`,
       String.raw`This uses a slope of $\dfrac{1}{3}$, leaving out the factor $x^{-2/3} = \dfrac{1}{4}$.`,
-      String.raw`This uses $8^{2/3} = 2$, but $8^{2/3} = 4$, so the slope is $\dfrac{1}{12}$, not $\dfrac{1}{6}$.`,
+      String.raw`This evaluates $8^{-2/3}$ as $\dfrac{1}{2}$, giving a slope of $\dfrac{1}{6}$. Since $8^{2/3} = 4$, the slope is $\dfrac{1}{3} \cdot \dfrac{1}{4} = \dfrac{1}{12}$.`,
     ], answer: 0 },
   { id: "q406-m03", type: "mcq", skill: "u4", topic: "4.6", calc: false,
     stem: String.raw`A twice-differentiable function $f$ has $f(1) = 4$, $f'(1) = 2$, and $f''(x) < 0$ for all $x$.`,

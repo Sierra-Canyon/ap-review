@@ -19,14 +19,14 @@ const items = [
     why: [
       String.raw`$y' = 2\cos(2x)$ and $y'' = -4\sin(2x)$, so $y'' + 4y = -4\sin(2x) + 4\sin(2x) = 0$.`,
       String.raw`$y'' = -16\sin(4x)$, so $y'' + 4y = -12\sin(4x)$, which is not $0$ for all $x$.`,
-      String.raw`$y'' = 4e^{2x}$, so $y'' + 4y = 8e^{2x} \neq 0$. A sign change is needed, which exponentials do not give.`,
+      String.raw`$y'' = 4e^{2x}$, so $y'' + 4y = 8e^{2x} \neq 0$. The equation needs $y'' = -4y$, but for $e^{2x}$, $y'' = 4y$.`,
       String.raw`$y'' = -\cos x$, so $y'' + 4y = 3\cos x$, which is not $0$ for all $x$.`,
     ], answer: 0 },
   { id: "q702-m03", type: "mcq", skill: "u7", topic: "7.2", calc: false,
     question: String.raw`For which of the following values of $k$ is $y = e^{kx}$ a solution of the differential equation $y'' - y' - 6y = 0$?`,
     choices: ["$3$", "$2$", "$-3$", "$6$"],
     why: [
-      String.raw`$y' = ke^{kx}$ and $y'' = k^2e^{kx}$, so $y'' - y' - 6y = (k^2 - k - 6)e^{kx} = (k - 3)(k + 2)e^{kx}$. This is $0$ when $k = 3$.`,
+      String.raw`$y' = ke^{kx}$ and $y'' = k^2e^{kx}$, so $y'' - y' - 6y = (k^2 - k - 6)e^{kx} = (k - 3)(k + 2)e^{kx}$. This is $0$ when $k = 3$ or $k = -2$, and $3$ is the only one listed.`,
       String.raw`With $k = 2$: $k^2 - k - 6 = 4 - 2 - 6 = -4 \neq 0$. The factors are $(k - 3)(k + 2)$, so the roots are $3$ and $-2$.`,
       String.raw`With $k = -3$: $9 + 3 - 6 = 6 \neq 0$. This flips the signs of the roots $3$ and $-2$.`,
       String.raw`With $k = 6$: $36 - 6 - 6 = 24 \neq 0$. This takes the constant term $6$ as the answer.`,

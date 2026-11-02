@@ -492,7 +492,7 @@ export default [
       "The Berlin Airlift, which flew food and fuel into West Berlin",
     ],
     why: [
-      "Correct. Kennedy created the Peace Corps weeks after this speech to help people in Asia, Africa, and Latin America, and he admits that competition with \"the communists\" was part of the picture.",
+      "Correct. Kennedy created the Peace Corps weeks after this speech to help people in Asia, Africa, and Latin America, and his mention of \"the communists\" shows that the pledge was made in a Cold War setting.",
       "The Marshall Plan began in 1948 and aided industrial Europe, not \"huts and villages of half the globe.\"",
       "Aid to Greece and Turkey began in 1947, well before this speech.",
       "The Berlin Airlift (1948 to 1949) supplied one city during a Soviet blockade and came long before this speech.",
@@ -519,10 +519,10 @@ export default [
   { id: "u8-m22", skill: "u8", type: "mcq", set: "u8-s6", topic: "8.8", reasoning: "Continuity and Change",
     question: "Which of the following developments most directly followed the speech in the excerpt?",
     choices: [
-      "The opening of the Berlin Wall in 1989 and the fall of communist governments across Eastern Europe",
-      "The building of the Berlin Wall in 1961",
-      "The Berlin Airlift of 1948 to 1949",
-      "The Soviet invasion of Czechoslovakia in 1968",
+      "The opening of the Berlin Wall and the fall of communist governments across Eastern Europe",
+      "The building of the Berlin Wall",
+      "The Berlin Airlift",
+      "The Soviet invasion of Czechoslovakia",
     ],
     why: [
       "Correct. Two years after the speech, East Germany opened the wall, and communist governments in Poland, Hungary, Czechoslovakia, and elsewhere fell.",

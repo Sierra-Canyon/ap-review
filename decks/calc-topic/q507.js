@@ -14,12 +14,12 @@ export const sets = {
 const items = [
   { id: "q507-m01", type: "mcq", skill: "u5", topic: "5.7", calc: false,
     stem: String.raw`Let $f(x) = 2x^3 - 9x^2 + 12x$.`,
-    question: String.raw`Using the second derivative test, which of the following is true?`,
+    question: String.raw`Using the Second Derivative Test, which of the following is true?`,
     choices: [
       String.raw`$f$ has a relative maximum at $x = 1$ and a relative minimum at $x = 2$.`,
       String.raw`$f$ has a relative minimum at $x = 1$ and a relative maximum at $x = 2$.`,
       String.raw`$f$ has a relative minimum at $x = \frac{3}{2}$.`,
-      String.raw`The second derivative test gives no conclusion at $x = 1$ or $x = 2$.`,
+      String.raw`The Second Derivative Test gives no conclusion at $x = 1$ or $x = 2$.`,
     ],
     why: [
       String.raw`$f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)$ and $f''(x) = 12x - 18$. $f''(1) = -6 < 0$, so $x = 1$ is a relative maximum; $f''(2) = 6 > 0$, so $x = 2$ is a relative minimum.`,
@@ -33,7 +33,7 @@ const items = [
       String.raw`$f$ has a relative maximum at $x = 1$ and a relative minimum at $x = 3$.`,
       String.raw`$f$ has a relative minimum at $x = 1$ and a relative maximum at $x = 3$.`,
       String.raw`$f$ has a relative extremum at $x = 2$ because $f''(2) = 0$.`,
-      String.raw`The second derivative test gives no conclusion at $x = 1$ or $x = 3$.`,
+      String.raw`The Second Derivative Test gives no conclusion at $x = 1$ or $x = 3$.`,
     ],
     why: [
       String.raw`At $x = 1$, $f'(1) = 0$ and $f''(1) < 0$, so $f$ has a relative maximum. At $x = 3$, $f'(3) = 0$ and $f''(3) > 0$, so $f$ has a relative minimum.`,
@@ -43,7 +43,7 @@ const items = [
     ], answer: 0 },
   { id: "q507-m03", type: "mcq", skill: "u5", topic: "5.7", calc: false,
     stem: String.raw`The function $f(x) = 3x^4 - 8x^3$ has critical points at $x = 0$ and $x = 2$.`,
-    question: String.raw`What does the second derivative test conclude about these critical points?`,
+    question: String.raw`What does the Second Derivative Test conclude about these critical points?`,
     choices: [
       String.raw`A relative minimum at $x = 2$; no conclusion at $x = 0$`,
       String.raw`A relative minimum at $x = 2$ and a relative maximum at $x = 0$`,
@@ -51,10 +51,10 @@ const items = [
       String.raw`A relative minimum at $x = 2$ and a relative minimum at $x = 0$`,
     ],
     why: [
-      String.raw`$f'(x) = 12x^3 - 24x^2$ and $f''(x) = 36x^2 - 48x$. $f''(2) = 144 - 96 = 48 > 0$, so $x = 2$ is a relative minimum. $f''(0) = 0$, so the second derivative test gives no conclusion at $x = 0$.`,
+      String.raw`$f'(x) = 12x^3 - 24x^2$ and $f''(x) = 36x^2 - 48x$. $f''(2) = 144 - 96 = 48 > 0$, so $x = 2$ is a relative minimum. $f''(0) = 0$, so the Second Derivative Test gives no conclusion at $x = 0$.`,
       String.raw`$f''(0) = 0$, which is neither positive nor negative, so the test cannot classify $x = 0$.`,
       String.raw`$f''(2) = 48 > 0$ means concave up at $x = 2$, which gives a relative minimum.`,
-      String.raw`$f''(0) = 0$, so the test gives no conclusion at $x = 0$. (The first derivative test shows $f$ has no extremum there, since $f'(x) = 12x^2(x - 2) < 0$ on both sides of $0$.)`,
+      String.raw`$f''(0) = 0$, so the test gives no conclusion at $x = 0$. (The First Derivative Test shows $f$ has no extremum there, since $f'(x) = 12x^2(x - 2) < 0$ on both sides of $0$.)`,
     ], answer: 0 },
   { id: "q507-m04", type: "mcq", skill: "u5", topic: "5.7", calc: false,
     question: String.raw`At what value of $x$ in the interval $0 < x < 2\pi$ does $f(x) = x + 2\cos x$ have a relative maximum?`,
@@ -91,7 +91,7 @@ const items = [
     ],
     solution: String.raw`$f'(x) = 4x^3 - 36x = 4x(x^2 - 9) = 4x(x - 3)(x + 3)$. $f'$ is defined everywhere and $f'(x) = 0$ at $x = -3$, $x = 0$, and $x = 3$.` },
   { id: "q507-f1b", type: "frq", skill: "u5", topic: "5.7", calc: false, set: "q507-s9", part: "(b)",
-    prompt: String.raw`Use the second derivative test to determine whether each critical point is the location of a relative maximum or a relative minimum of $f$.`,
+    prompt: String.raw`Use the Second Derivative Test to determine whether each critical point is the location of a relative maximum or a relative minimum of $f$.`,
     rows: [
       { name: "Second derivative values", earns: String.raw`$f''(x) = 12x^2 - 36$; $f''(-3) = 72$, $f''(0) = -36$, $f''(3) = 72$.` },
       { name: "Conclusions", earns: String.raw`Relative minimums at $x = -3$ and $x = 3$ because $f'' > 0$ there; relative maximum at $x = 0$ because $f''(0) < 0$.` },

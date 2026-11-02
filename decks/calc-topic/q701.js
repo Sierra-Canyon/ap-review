@@ -63,7 +63,7 @@ const items = [
     prompt: String.raw`Write a differential equation for $\dfrac{dT}{dt}$ that models this situation, and find the value of the constant of proportionality.`,
     rows: [
       { name: "Differential equation", earns: String.raw`$\dfrac{dT}{dt} = k(T - 70)$.` },
-      { name: "Constant", earns: String.raw`Uses $T(0) = 350$ and $T'(0) = -14$ to find $k = -0.05$.` },
+      { name: "Constant", earns: String.raw`Uses $T(0) = 350$ and $T'(0) = -14$ to find $k = -0.05$ (or $k = 0.05$ if the equation is written as $\dfrac{dT}{dt} = -k(T - 70)$).` },
     ],
     solution: String.raw`The difference between the temperatures is $T - 70$, so $\dfrac{dT}{dt} = k(T - 70)$. At $t = 0$: $-14 = k(350 - 70) = 280k$, so $k = -\dfrac{14}{280} = -0.05$. The differential equation is $\dfrac{dT}{dt} = -0.05(T - 70)$.` },
   { id: "q701-f1b", type: "frq", skill: "u7", topic: "7.1", calc: false, set: "q701-s9", part: "(b)",

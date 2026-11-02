@@ -79,7 +79,7 @@ const items = [
   { id: "q801-f1c", type: "frq", skill: "u8", topic: "8.1", calc: false, set: "q801-s9", part: "(c)",
     prompt: String.raw`Is there a value $c$ in the interval $[-2, 6]$ for which $f(c)$ equals the average value of $f$ on $[-2, 6]$? Justify your answer.`,
     rows: [
-      { name: "Answer with justification", earns: String.raw`Yes, with a reason that names the Intermediate Value Theorem and checks its conditions: $f$ is continuous on $[0, 4]$ and $f(4) = 0 < \dfrac{7}{4} < 4 = f(0)$.` },
+      { name: "Answer with justification", earns: String.raw`Yes, with a reason: either the Intermediate Value Theorem with its conditions checked ($f$ is continuous on $[0, 4]$ and $f(4) = 0 < \dfrac{7}{4} < 4 = f(0)$), or an explicit value such as $c = \dfrac{25}{8}$, where $f(c) = 8 - 2c = \dfrac{7}{4}$.` },
     ],
     solution: String.raw`Yes. The graph of $f$ is made of connected line segments, so $f$ is continuous on $[0, 4]$. Since $f(4) = 0 < \dfrac{7}{4} < 4 = f(0)$, the Intermediate Value Theorem guarantees a value $c$ between $0$ and $4$ with $f(c) = \dfrac{7}{4}$, the average value from part (a).` },
 ];

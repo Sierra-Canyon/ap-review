@@ -22,10 +22,10 @@ const items = [
     stem: String.raw`A new app is released in a town of $5000$ people. The number of people $N$ in the town who have downloaded the app $t$ days after its release satisfies $\dfrac{dN}{dt} = 0.3(5000 - N)$.`,
     question: String.raw`Which of the following statements describes this model?`,
     choices: [
-      "The rate at which N increases is proportional to the number of people in the town who have not yet downloaded the app.",
-      "The rate at which N increases is proportional to the number of people who have already downloaded the app.",
-      "N increases at a constant rate of 0.3 people per day.",
-      "The rate at which N increases is greatest when N is close to 5000.",
+      String.raw`The rate at which $N$ increases is proportional to the number of people who have not yet downloaded the app.`,
+      String.raw`The rate at which $N$ increases is proportional to the number of people who have already downloaded the app.`,
+      String.raw`$N$ increases at a constant rate of $0.3$ people per day.`,
+      String.raw`The rate at which $N$ increases is greatest when $N$ is close to $5000$.`,
     ],
     why: [
       String.raw`$5000 - N$ is the number of people who have not downloaded the app, and $\dfrac{dN}{dt}$ is a constant, $0.3$, times that number.`,

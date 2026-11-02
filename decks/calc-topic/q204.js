@@ -4,7 +4,7 @@ export const sets = {
   "q204-s1": {
     name: "The graph of f",
     label: "Graph",
-    intro: String.raw`The graph of the function $f$, defined on the closed interval $[-4, 5]$, is shown below. It is made of three line segments, with an open circle at $(-2, 2)$ and $(3, 0)$ and a filled circle at $(-2, -1)$ and $(3, 2)$.`,
+    intro: String.raw`The graph of the function $f$, defined on the closed interval $[-4, 5]$, is shown below. It is made of three line segments, with open circles at $(-2, 2)$ and $(3, 0)$ and filled circles at $(-2, -1)$ and $(3, 2)$.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-4, 5], y: [-3, 3], xname: "x", yname: "y", segments: [[-4, 0, -2, 2], [-2, -1, 1, 2], [1, 2, 5, -2]], dots: [[-4, 0, "closed"], [-2, 2, "open"], [-2, -1, "closed"], [3, 0, "open"], [3, 2, "closed"], [5, -2, "closed"]], alt: "Graph of f on [-4, 5]. A segment rises from (-4, 0) to an open circle at (-2, 2). A second segment rises from a filled point at (-2, -1) to (1, 2). A third segment falls from (1, 2) to (5, -2), with an open circle at (3, 0) on it and a filled point above it at (3, 2)." }) }] }],
   },
   "q204-s2": {

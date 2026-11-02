@@ -171,7 +171,7 @@ export default {
 
         // ===== Set 3: Kabir (1.3) =====
         { id: "w1a-m07", skill: "u1", type: "mcq", set: "w1a-s3", topic: "1.3", reasoning: "Contextualization",
-          question: "The references to both the temple and the mosque, and to both Allah and Ram, best reflect which situation in South Asia in the period c. 1200 to c. 1450?",
+          question: "The references to both the temple and the mosque, and to both Allah and Ram, best reflect which situation in northern India in the fifteenth century, when Kabir lived?",
           choices: [
             "Muslim rulers such as the Delhi sultans governed a mostly Hindu population, which brought the two traditions into close contact.",
             "Buddhism had become the religion of most people in northern India.",
@@ -181,7 +181,7 @@ export default {
           why: [
             "Correct. From 1206 the Delhi Sultanate brought Muslim rulers, soldiers, and Sufis into northern India, where most people remained Hindu, and poets like Kabir drew on both faiths.",
             "Buddhism had declined in India by this period, and Kabir's songs name Hindu and Muslim ideas, not Buddhist ones.",
-            "Europeans did not reach India by sea until Vasco da Gama's voyage of 1498, after this period.",
+            "Europeans did not reach India by sea until Vasco da Gama's voyage of 1498, and they landed on the southwest coast, far from Kabir's Benares.",
             "Akbar did promote a blend of faiths, but he ruled in the late sixteenth century, after Kabir's death.",
           ],
           answer: 0 },

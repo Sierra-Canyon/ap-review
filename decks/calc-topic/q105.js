@@ -24,7 +24,7 @@ export const sets = {
     name: "Limits and values of f and g", label: "Free response",
     intro: String.raw`The functions $f$ and $g$ have the limits and values shown in the table.`,
     sources: [{ title: "", blocks: [{ table: {
-      head: ["Function", String.raw`$\lim_{x \to 1}$`, "Value at $x = 1$"],
+      head: ["Function", "Limit as $x \\to 1$", "Value at $x = 1$"],
       rows: [["$f$", String.raw`$\lim_{x \to 1} f(x) = 4$`, "$f(1) = 2$"], ["$g$", String.raw`$\lim_{x \to 1} g(x) = -1$`, "$g(1) = 3$"]],
     } }] }],
   },

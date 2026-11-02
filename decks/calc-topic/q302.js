@@ -26,7 +26,7 @@ const items = [
     why: [String.raw`By the product rule, $e^{y} + xe^{y}\dfrac{dy}{dx} = \dfrac{dy}{dx}$. At $(2, 0)$: $1 + 2\dfrac{dy}{dx} = \dfrac{dy}{dx}$, so $\dfrac{dy}{dx} = -1$.`,
       String.raw`This differentiates $xe^{y}$ as $xe^{y}\dfrac{dy}{dx}$ only. Dropping the term $e^{y}$ from the product rule leaves $2\dfrac{dy}{dx} = \dfrac{dy}{dx}$.`,
       String.raw`This differentiates $e^{y}$ as $e^{y}$, without the factor $\dfrac{dy}{dx}$. Then $1 + 2 = \dfrac{dy}{dx}$.`,
-      String.raw`This differentiates the right side as $0$. The derivative of $2 + y$ is $\dfrac{dy}{dx}$, so $1 + 2\dfrac{dy}{dx} = 0$ is the wrong equation.`], answer: 0 },
+      String.raw`This differentiates the right side $2 + y$ as $0$, giving $1 + 2\dfrac{dy}{dx} = 0$. The derivative of $2 + y$ is $\dfrac{dy}{dx}$.`], answer: 0 },
   { id: "q302-m05", type: "mcq", skill: "u3", topic: "3.2", calc: false, question: String.raw`If $\sin(xy) = x$, then $\dfrac{dy}{dx} =$`,
     choices: [String.raw`$\frac{1 - y\cos(xy)}{x\cos(xy)}$`, String.raw`$\frac{1}{\cos(xy)}$`, String.raw`$\frac{1 - x\cos(xy)}{y\cos(xy)}$`, String.raw`$\frac{1 + y\cos(xy)}{x\cos(xy)}$`],
     why: [String.raw`By the chain rule and the product rule, $\cos(xy)\left(y + x\dfrac{dy}{dx}\right) = 1$. Then $x\cos(xy)\dfrac{dy}{dx} = 1 - y\cos(xy)$, so $\dfrac{dy}{dx} = \dfrac{1 - y\cos(xy)}{x\cos(xy)}$.`,

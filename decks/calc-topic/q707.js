@@ -30,7 +30,7 @@ const items = [
       String.raw`Separate: $e^{y}\,dy = x\,dx$, so $e^{y} = \dfrac{x^2}{2} + C$. With $y(0) = 0$: $1 = C$. Then $y = \ln\left(\dfrac{x^2}{2} + 1\right)$.`,
       String.raw`This integrates $x\,dx$ as $x^2$, leaving out the factor $\dfrac{1}{2}$.`,
       String.raw`This integrates the right side but treats $e^{-y}$ as $1$, solving $\dfrac{dy}{dx} = x$.`,
-      String.raw`This integrates $e^{-y}$ in place of moving it to the left as $e^{y}$. Its derivative is $\dfrac{x}{1 - x^2/2}$, which is not $xe^{-y} = x\left(1 - \dfrac{x^2}{2}\right)$.`,
+      String.raw`This separates as $e^{-y}\,dy = x\,dx$, which is the equation $\dfrac{dy}{dx} = xe^{y}$. Its derivative is $\dfrac{x}{1 - x^2/2}$, which is not $xe^{-y} = x\left(1 - \dfrac{x^2}{2}\right)$.`,
     ], answer: 0 },
   { id: "q707-m04", type: "mcq", skill: "u7", topic: "7.7", calc: false,
     stem: String.raw`The particular solution of the differential equation $\dfrac{dy}{dx} = y^2$ with $y(0) = \dfrac{1}{2}$ is $y = \dfrac{1}{2 - x}$.`,

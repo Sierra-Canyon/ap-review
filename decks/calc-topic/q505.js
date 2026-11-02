@@ -76,7 +76,7 @@ const items = [
     prompt: String.raw`Find the absolute maximum concentration of the medication for $0 \le t \le 6$. Justify your answer.`,
     rows: [
       { name: "Critical point", earns: String.raw`Sets $C'(t) = 0$: $t = 2$.` },
-      { name: "Answer with candidates test", earns: String.raw`Compares $C(0) = 0$, $C(2) = \dfrac{40}{e}$, and $C(6) = \dfrac{120}{e^{3}}$; the absolute maximum is $\dfrac{40}{e}$ milligrams per liter, at $t = 2$.` },
+      { name: "Answer with Candidates Test", earns: String.raw`Compares $C(0) = 0$, $C(2) = \dfrac{40}{e}$, and $C(6) = \dfrac{120}{e^{3}}$; the absolute maximum is $\dfrac{40}{e}$ milligrams per liter, at $t = 2$.` },
     ],
     solution: String.raw`$C'(t) = 10e^{-t/2}(2 - t) = 0$ only at $t = 2$, since $e^{-t/2} > 0$. $C$ is continuous on $[0, 6]$, so the absolute maximum occurs at a critical point or an endpoint. $C(0) = 0$, $C(2) = 40e^{-1} = \dfrac{40}{e}$, and $C(6) = 120e^{-3} = \dfrac{120}{e^{3}}$. Since $\dfrac{120}{e^{3}} = \dfrac{40}{e} \cdot \dfrac{3}{e^{2}}$ and $\dfrac{3}{e^{2}} < 1$, the greatest value is $\dfrac{40}{e}$. The absolute maximum concentration is $\dfrac{40}{e} \approx 14.7$ milligrams per liter, at $t = 2$ hours.` },
 ];

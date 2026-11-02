@@ -14,7 +14,7 @@ export const sets = {
   "c2r-s2": {
     name: "A curve and its tangent line",
     label: "Graph",
-    intro: String.raw`The graph of the function $f$ is shown below, along with the line tangent to the graph of $f$ at $x = -2$ (dashed). The points $(-2, 3)$, $(2, 3)$, and $(4, 9)$ are on the graph of $f$.`,
+    intro: String.raw`The graph of the function $f$ is shown below, along with the line tangent to the graph of $f$ at $x = -2$ (dashed). The points $(-2, 3)$, $(2, 3)$, and $(4, 9)$ are on the graph of $f$, and the points $(-3, 5)$ and $(-1, 1)$ are on the tangent line.`,
     sources: [{ title: "", blocks: [{ svg: graph({
       x: [-4, 5], y: [-2, 10], step: 1, xname: "x", yname: "y",
       fns: [{ f: s2f, from: -4, to: 4.4, label: "f", labelAt: 3.2 }, { f: (x) => -2 * x - 1, from: -4, to: 0.5, dash: true }],

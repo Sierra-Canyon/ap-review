@@ -16,7 +16,7 @@ export const sets = {
   "c7r-s5": { name: "A particular solution", label: "Free response", intro: String.raw`Consider the differential equation $\dfrac{dy}{dx} = e^{x}y^2$. Let $y = f(x)$ be the particular solution to the differential equation with the initial condition $f(0) = \dfrac{1}{2}$.`,
     sources: [{ title: "", blocks: [{ p: String.raw`Answer each part without a calculator. Show the work that leads to each answer.` }] }] },
   "c7r-s6": { name: "A slope field and a line", label: "Free response", intro: String.raw`Consider the differential equation $\dfrac{dy}{dx} = 3x - y + 1$. Its slope field is shown below.`,
-    sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 3], y: [-2, 6], xname: "x", yname: "y", field: { f: (x, y) => 3 * x - y + 1, step: 1 },
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 3], y: [-2, 6], height: 460, xname: "x", yname: "y", field: { f: (x, y) => 3 * x - y + 1, step: 1 },
       alt: "Slope field for dy/dx = 3x - y + 1 on the grid from x = -1 to 3 and y = -2 to 6. The segments are horizontal along the line y = 3x + 1, for example at (-1, -2), (0, 1) and (1, 4). The segments at the points (0, -2), (1, 1), (2, 4) all have slope 3 and lie along the line y = 3x - 2." }) }, { p: String.raw`Answer each part without a calculator. Show the work that leads to each answer.` }] }] },
   "c7r-s7": { name: "Subscribers to a channel", label: "Free response", intro: String.raw`The number of subscribers to a new video channel $t$ months after it launches is $N(t)$. The number of subscribers increases at a rate proportional to the number of subscribers. At time $t = 0$ there are $1200$ subscribers, and at time $t = 4$ months there are $1800$ subscribers.`,
     sources: [{ title: "", blocks: [{ p: String.raw`A graphing calculator is allowed. Give decimal answers to three decimal places.` }] }] },
@@ -191,7 +191,7 @@ export default [
       String.raw`$\dfrac{dy}{dx} = 1 - 4 = -3 < 0$, so $f$ is decreasing. By implicit differentiation, $\dfrac{d^2y}{dx^2} = 1 - 2y\dfrac{dy}{dx} = 1 - 2(2)(-3) = 13 > 0$, so the graph is concave up.`,
       String.raw`This uses $\dfrac{d^2y}{dx^2} = 1 - 2y = -3$, which leaves out the factor $\dfrac{dy}{dx}$ from the chain rule on $y^2$.`,
       String.raw`The slope $x - y^2$ at $(1, 2)$ is $1 - 4 = -3$, which is negative. Using $y^2 - x = 3$ reverses the sign.`,
-      String.raw`The slope at $(1, 2)$ is $-3$, so $f$ is decreasing, and the concavity comes from leaving out $\dfrac{dy}{dx}$ in the chain rule, which gives $-3$ instead of $13$.`,
+      String.raw`The slope at $(1, 2)$ is $-3$, so $f$ is decreasing, not increasing. Concave down also comes from leaving out $\dfrac{dy}{dx}$ in the chain rule, which gives $-3$ instead of $13$.`,
     ],
     answer: 0 },
 

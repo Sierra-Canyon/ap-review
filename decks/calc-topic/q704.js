@@ -14,12 +14,12 @@ export const sets = {
 const items = [
   { id: "q704-m01", type: "mcq", skill: "u7", topic: "7.4", calc: false, set: "q704-s1",
     question: String.raw`The solution curve of the differential equation that passes through the point $(0, -1)$ has which of the following at $x = 0$?`,
-    choices: ["A relative maximum", "A relative minimum", "A point of inflection", "Neither a relative extremum nor a point of inflection, since the slope is not zero there"],
+    choices: ["A relative maximum", "A relative minimum", "A point of inflection", "Neither a relative extremum nor a point of inflection"],
     why: [
       String.raw`At $(0, -1)$ the slope is $0$. Just to the left, $x < 0$ and $y < 0$, so the slopes are positive; just to the right they are negative. The curve rises and then falls, so $x = 0$ is a relative maximum.`,
       String.raw`Below the $x$-axis the slopes are positive to the left of $x = 0$ and negative to the right, so the curve rises then falls. That is a maximum, not a minimum.`,
       String.raw`The slope changes sign from positive to negative at $x = 0$, which gives a relative extremum. At $(0, -1)$, $\dfrac{d^2y}{dx^2} = \dfrac{y}{2} + \dfrac{x}{2}\cdot\dfrac{dy}{dx} = -\dfrac{1}{2} \neq 0$.`,
-      String.raw`The slope at $(0, -1)$ is $\dfrac{0 \cdot (-1)}{2} = 0$, and the segment there is horizontal.`,
+      String.raw`The slope at $(0, -1)$ is $\dfrac{0 \cdot (-1)}{2} = 0$, and it changes from positive to negative there, so the curve has a relative maximum.`,
     ], answer: 0 },
   { id: "q704-m02", type: "mcq", skill: "u7", topic: "7.4", calc: false,
     question: String.raw`Which of the following constant functions is a solution of the differential equation $\dfrac{dy}{dx} = (y - 3)(x + 1)$?`,

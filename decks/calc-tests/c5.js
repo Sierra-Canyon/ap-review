@@ -5,7 +5,7 @@ import { graph } from "../../plot.js";
 // f'(-2) = 2, f'(-1) = 0, f'(1) = 2, f'(2) = 0, f'(3) = -8; f' has a relative minimum at x = -1 and a relative maximum at x = 1.
 const fp = (x) => ((x + 1) ** 2 * (2 - x)) / 2;
 const fpGraph = graph({
-  x: [-2, 3], y: [-8, 3], step: { x: 1, y: 1 }, labelEvery: 2, height: 300, xname: "x", yname: "y",
+  x: [-2, 3], y: [-8, 3], step: { x: 1, y: 2 }, height: 300, xname: "x", yname: "y",
   fns: [{ f: fp, from: -2, to: 3, label: "f'", labelAt: 2.6 }],
   dots: [[-2, 2, "closed"], [3, -8, "closed"]],
   alt: "Graph of the derivative f prime on the interval from x = -2 to x = 3. The graph starts at (-2, 2), falls to touch the x-axis at (-1, 0), where it has a low point, rises to a high point at (1, 2), then falls, crossing the x-axis at x = 2, down to (3, -8).",
@@ -44,7 +44,7 @@ const items = [
       String.raw`The average rate of change is $\dfrac{\sqrt{9} - \sqrt{1}}{9 - 1} = \dfrac{2}{8} = \dfrac{1}{4}$. Setting $f'(c) = \dfrac{1}{2\sqrt{c}} = \dfrac{1}{4}$ gives $\sqrt{c} = 2$, so $c = 4$, which is in $(1, 9)$.`,
       String.raw`$5$ is the midpoint of the interval. $f'(5) = \dfrac{1}{2\sqrt{5}} \ne \dfrac{1}{4}$.`,
       String.raw`This uses $f'(c) = \dfrac{1}{\sqrt{c}}$, leaving out the factor $\dfrac{1}{2}$ from the power rule. Also, $16$ is not in $(1, 9)$.`,
-      String.raw`This uses the reciprocal of the average rate of change, $\dfrac{9 - 1}{3 - 1} = 4$, solving $\dfrac{1}{2\sqrt{c}} = 4$.`,
+      String.raw`This flips the average rate of change, using $\dfrac{9 - 1}{\sqrt{9} - \sqrt{1}} = 4$, and solves $\dfrac{1}{2\sqrt{c}} = 4$.`,
     ],
     answer: 0 },
   { id: "c5t-m02", type: "mcq", skill: "u5", topic: "5.2", calc: false,

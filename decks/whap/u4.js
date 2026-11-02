@@ -223,7 +223,7 @@ export default [
     why: [
       "Correct. The Portuguese had tried to control Indian Ocean trade since the early sixteenth century, and the English and Dutch arrived as rivals.",
       "Portugal and England were rivals in Asia, which is why Jahangir promises that Portugal will not molest the English.",
-      "Portuguese silver came mostly from trade, not from mines in South Asia.",
+      "The Portuguese did not mine silver in South Asia; the letter mentions Portugal as a rival that might harm English merchants.",
       "The Mughal economy did not depend on plantations worked by enslaved people supplied by Portugal.",
     ], answer: 0 },
   { id: "u4-m08", skill: "u4", type: "mcq", set: "u4-s2", topic: "4.8", reasoning: "Continuity and change",

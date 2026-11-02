@@ -19,7 +19,7 @@ const items = [
     why: [
       String.raw`The form is $\dfrac{\infty}{\infty}$. By L'Hospital's Rule, the limit is $\displaystyle \lim_{x \to \infty} \dfrac{1/x}{1/(2\sqrt{x})} = \lim_{x \to \infty} \dfrac{2}{\sqrt{x}} = 0$.`,
       String.raw`$\dfrac{1/x}{1/(2\sqrt{x})}$ simplifies to $\dfrac{2\sqrt{x}}{x} = \dfrac{2}{\sqrt{x}}$, not $2$.`,
-      String.raw`This inverts the quotient of derivatives and drops $\sqrt{x}$. The quotient is $\dfrac{2}{\sqrt{x}}$, which approaches $0$.`,
+      String.raw`This keeps only the constant $\dfrac{1}{2}$ from $\dfrac{1}{2\sqrt{x}}$. The quotient of the derivatives is $\dfrac{2}{\sqrt{x}}$, which approaches $0$.`,
       String.raw`The form $\dfrac{\infty}{\infty}$ is indeterminate, not a reason the limit fails to exist. L'Hospital's Rule gives $0$.`,
     ], answer: 0 },
   { id: "q407-m03", type: "mcq", skill: "u4", topic: "4.7", calc: false,

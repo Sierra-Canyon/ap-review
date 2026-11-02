@@ -39,7 +39,7 @@ const items = [
     why: [
       String.raw`$f'(x) > 0$ on $(-3, 1)$ and $f'(x) < 0$ on $(1, 3)$. $f'$ changes from positive to negative only at $x = 1$.`,
       String.raw`$f'$ has its greatest value at $x = -1$, but $f'(-1) = 2 > 0$, so $f$ is still increasing there.`,
-      String.raw`$f'$ changes from negative to positive at $x = -3$ and $x = 3$, so these are relative minimums.`,
+      String.raw`$f'$ changes from negative to positive at $x = -3$ and $x = 3$, so these are relative minima.`,
       String.raw`$f'$ has its least value at $x = 2$, but $f'$ does not change sign there.`,
     ], answer: 0 },
   { id: "q504-m03", type: "mcq", skill: "u5", topic: "5.4", calc: false,
@@ -57,7 +57,7 @@ const items = [
     why: [
       String.raw`$f'(x) = 2xe^{x} + x^2e^{x} = xe^{x}(x + 2)$. Since $e^{x} > 0$, $f'$ is positive for $x < -2$, negative for $-2 < x < 0$, and positive for $x > 0$. $f'$ changes from positive to negative at $x = -2$.`,
       String.raw`$f'$ changes from negative to positive at $x = 0$, so $f(0) = 0$ is a relative minimum.`,
-      String.raw`This uses $f'(x) = xe^{x}(x - 2)$, a sign error. Even then, $f'$ would change from negative to positive at $x = 2$, a minimum. In fact $f'(2) = 8e^{2} > 0$, so $x = 2$ is not a critical point.`,
+      String.raw`This comes from a sign error, $f'(x) = xe^{x}(x - 2)$. In fact $f'(2) = 8e^{2} > 0$, so $x = 2$ is not a critical point.`,
       String.raw`$e^{x}$ is always increasing, but the factor $x^2$ makes $f$ rise and then fall on $(-\infty, 0)$. $f'$ changes from positive to negative at $x = -2$.`,
     ], answer: 0 },
   { id: "q504-m05", type: "mcq", skill: "u5", topic: "5.4", calc: false,

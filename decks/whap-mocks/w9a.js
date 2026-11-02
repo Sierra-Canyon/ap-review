@@ -126,7 +126,7 @@ export default {
             "Correct. Bush says the lower cost \"places a tremendous possibility within our grasp\" and then proposes a plan to treat at least 2 million people.",
             "Bush says millions need treatment and the plan aims to prevent 7 million new infections, so the disease was still spreading.",
             "Bush proposes that the United States fund the plan, not that African governments pay for it alone.",
-            "Bush does not claim the epidemic had ended in the United States, and in the full speech he says the country will continue to confront HIV/AIDS at home.",
+            "The excerpt discusses only the crisis in Africa and makes no claim that the epidemic had ended in the United States.",
           ],
           answer: 0 },
         { id: "w9a-m03", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Comparison",
@@ -139,7 +139,7 @@ export default {
           ],
           why: [
             "Correct. No drug could treat the 1918 influenza, but by 2003 antiretroviral drugs could \"extend life for many years,\" even though Bush says only 50,000 people in Africa were receiving them.",
-            "AIDS was a worldwide epidemic, and in the full speech Bush also mentions HIV/AIDS in the United States, so Africa was the worst affected region but not the only one.",
+            "AIDS was a worldwide epidemic, so Africa was the worst affected region but not the only one.",
             "This describes the 1918 influenza pandemic, which spread with troop movements at the end of the First World War.",
             "HIV is a virus, not bacteria, and antiretroviral drugs control it without curing it.",
           ],

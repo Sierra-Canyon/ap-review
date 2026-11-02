@@ -176,7 +176,7 @@ export default {
             "\"The sultan wanted to conquer the world.\" The source gives this as a reason for the policy, not a result of it.",
             "\"The sultan issued copper coins.\" This describes the policy itself, not a result.",
           ],
-          example: "According to the author, the copper money made the state poorer, because people made copper coins in their own homes and used them to pay their taxes.",
+          example: "According to the author, the copper money made the state poorer, because people made copper coins in their own homes and spent them as if they were gold and silver.",
           notExample: "The source is about money in India." },
         { id: "t13-q1b", skill: "u1", type: "fr", set: "t13-s3", part: "SAQ 1", sub: "b", topic: "1.3",
           lead: "Use the source below to answer all parts of the question that follows.",
@@ -200,7 +200,7 @@ export default {
           earns: "The response names a specific feature of Barani's situation or point of view and explains how it could have affected what he wrote about the policy or about the Hindus.",
           yes: [
             "Barani was a Muslim noble who distrusted Hindu chiefs, so he stressed that the policy made \"all the Hindus\" proud and prosperous and may have blamed them for the failure more than the evidence allowed.",
-            "Barani wrote under Firoz Shah, who reversed many of Muhammad bin Tughluq's policies, so describing the old sultan's plans as an \"impossible design\" could please the new ruler.",
+            "Barani wrote under Firoz Shah, who reversed many of Muhammad bin Tughluq's policies, so blaming the old sultan's \"lofty ambition\" for the harm could please the new ruler.",
             "Barani had served at Muhammad bin Tughluq's court and saw the policy fail, so he wrote with hindsight and called it a \"project\" that \"did great harm\" rather than explaining what it was meant to do.",
           ],
           no: [

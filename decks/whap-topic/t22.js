@@ -133,7 +133,7 @@ export default {
             "Correct. The Yuan employed Mongols, Central Asians, Persians, and others in high posts and held no examinations until 1315, while the Song filled its government with scholar-officials who passed the examinations.",
             "This reverses the two dynasties. The Song was known for its examination system, and the Yuan stopped the examinations for decades.",
             "Yuan China welcomed foreign merchants, and travelers from Persia, Arabia, and Europe reached its ports and capital.",
-            "The Yuan ruled all of the former Song lands plus Mongolia and northern China, a far larger area than the Song ever held.",
+            "The Yuan ruled all of China as well as Mongolia, a far larger area than the Song ever held.",
           ],
           answer: 0 },
         { id: "t22-m07", skill: "u2", type: "mcq", set: "t22-s3", topic: "2.2", reasoning: "Sourcing and situation",

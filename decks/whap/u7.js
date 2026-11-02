@@ -229,7 +229,7 @@ export default [
       "persuade Germany to accept the mediation of the League of Nations",
     ],
     why: [
-      "Correct. Many Americans had opposed joining a European war, and Wilson framed the war as a defense of democracy and of \"the rights of nations\" with \"no selfish ends.\"",
+      "Correct. Many Americans had opposed joining a European war, and Wilson framed the war as a fight to make the world \"safe for democracy\" with \"no selfish ends.\"",
       "Wilson says the United States has no selfish ends, and it did not take any German colonies.",
       "The speech asks Congress to declare war, so it ends American neutrality.",
       "The League of Nations did not exist until after the war ended.",
@@ -377,10 +377,10 @@ export default [
   { id: "u7-m16", skill: "u7", type: "mcq", set: "u7-s4", topic: "7.7", reasoning: "Continuity and Change",
     question: "Which of the following later developments most directly continued the policy described in the passage?",
     choices: [
-      "Japan's full-scale invasion of China in 1937 and its move into Southeast Asia to gain oil and rubber",
-      "Japan's alliance with Britain in 1902",
+      "Japan's full-scale invasion of China and its move into Southeast Asia to gain oil and rubber",
+      "Japan's alliance with Britain",
       "Japan's surrender to the Allies in 1945",
-      "Japan's victory over Russia in 1905",
+      "Japan's victory over Russia",
     ],
     why: [
       "Correct. Japan widened the war into China in 1937 and then seized European colonies in Southeast Asia for their resources in 1941 and 1942.",
@@ -437,12 +437,12 @@ export default [
     ],
     answer: 0 },
   { id: "u7-m20", skill: "u7", type: "mcq", set: "u7-s5", topic: "7.7", reasoning: "Continuity and Change",
-    question: "Which of the following later developments best shows a limit on how the third point was applied?",
+    question: "Which of the following best shows a limit on how the third point was applied?",
     choices: [
       "Churchill told Parliament that the point applied mainly to European nations under Nazi rule, not to British colonies such as India.",
-      "Germany and Japan signed an alliance with Italy in 1940.",
+      "Germany and Japan signed an alliance with Italy.",
       "Japan attacked the United States fleet at Pearl Harbor.",
-      "The Soviet Union and Germany signed a nonaggression pact in 1939.",
+      "The Soviet Union and Germany signed a nonaggression pact.",
     ],
     why: [
       "Correct. In September 1941 Churchill said the self-government point did not change British policy toward India and Burma, which angered Indian nationalists.",
@@ -550,7 +550,7 @@ export default [
     prompt: "Explain ONE way the targeting of civilians described in the passage affected international efforts after 1945.",
     earns: "Explains an accurate postwar development that responded to the harm done to civilians in the Second World War.",
     yes: [
-      "The United Nations was founded in 1945 to prevent another world war.",
+      "The United Nations was founded in 1945 to prevent another world war that would again kill civilians on a massive scale.",
       "The Geneva Conventions of 1949 added protections for civilians in wartime.",
       "The use of atomic bombs led to efforts to control nuclear weapons, such as the Nuclear Non-Proliferation Treaty of 1968.",
     ],
@@ -704,7 +704,7 @@ export default [
       ] },
       { name: "Contextualization", max: 1, levels: [
         "0 points: gives no broader context, or only a sentence or phrase about the period.",
-        "1 point: describes a broader context relevant to the prompt, such as industrialization in the late nineteenth century, which gave states the factories, railroads, and mass armies needed to fight long wars, or the imperial empires that let Britain and France draw on colonial soldiers and resources.",
+        "1 point: describes a broader context relevant to the prompt, such as industrialization in the late nineteenth century, which gave states the factories, railroads, and mass armies needed to fight long wars, or the overseas empires that let Britain and France draw on colonial soldiers and resources.",
       ] },
       { name: "Evidence", max: 2, levels: [
         "0 points: gives no specific examples relevant to the prompt.",
@@ -763,7 +763,7 @@ export default [
       "Document 3 (Dumba note, July 24, 1914): shows Austria-Hungary blaming Serbian nationalism and the assassination and using a 48-hour ultimatum. Sourcing: written to a neutral government to justify Austria's actions and win sympathy.",
       "Document 4 (Wilhelm II, August 4, 1914): shows Germany citing its duty to its ally and its \"position in the world\" against hostile powers. Sourcing: a public speech meant to unite Germans and present the war as defensive.",
       "Document 5 (Bethmann Hollweg, August 4, 1914): shows German war plans requiring an invasion of neutral Belgium and Luxembourg, which the chancellor admits broke international law. Sourcing: spoken to the Reichstag to justify the invasion as a military necessity.",
-      "Document 6 (Japanese ultimatum, August 15, 1914): shows Japan using its alliance with Britain to demand Germany's leased territory in China, spreading the war to Asia. Sourcing: the text was handed to the United States, a neutral power that worried about Japanese gains in China, which helps explain the promise of \"eventual restoration\" of Kiaochow to China.",
+      "Document 6 (Japanese ultimatum, August 15, 1914): shows Japan using its alliance with Britain to demand Germany's leased territory in China, spreading the war to Asia. Sourcing: Japan shared the text with the United States, a neutral power wary of Japanese gains in China, and the promise of \"eventual restoration\" of Kiaochow to China was meant to reassure such powers.",
       "Document 7 (Treaty of Versailles, Article 231, 1919): shows the victors assigning blame for the war to Germany and its allies. Sourcing: written by the winning side after the war, so it reflects their interest in justifying reparations.",
     ],
     evidence: [

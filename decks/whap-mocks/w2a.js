@@ -223,13 +223,13 @@ export default {
     choices: [
       "Ibn Battuta dictated his account years later, in the 1350s, and death tolls in this period were rough estimates rather than exact counts",
       "the account was written by European Christians who wanted to blame Muslims for the plague",
-      "the plague did not reach Egypt until the sixteenth century",
+      "Ibn Battuta copied the figures from a European chronicle written in Latin",
       "Mamluk officials kept careful written records that show almost no deaths in Cairo",
     ],
     why: [
       "Ibn Battuta told his story to a writer in Morocco about 1355 to 1356, and no government of the time counted deaths exactly, so the numbers may be rounded or exaggerated, even though they show how deadly the plague was.",
       "The account was written down in Arabic by a Muslim scholar at the court of the sultan of Morocco.",
-      "The plague reached Egypt in 1347 and killed a large share of the people of Cairo.",
+      "Nothing suggests that Ibn Battuta read Latin or used European writings; he reported what he saw and heard in Muslim lands.",
       "No such records exist; Egyptian writers of the period described very high death tolls in Cairo.",
     ], answer: 0 },
 
@@ -250,7 +250,7 @@ export default {
 
   // ---------- Set 5: The Yuan expedition to Java ----------
   { id: "w2a-m13", skill: "u2", type: "mcq", set: "w2a-s5", topic: "2.3", reasoning: "Continuity and Change",
-    question: "Which of the following best describes a change in Chinese policy toward the Indian Ocean world in the century after the expedition described in the excerpt?",
+    question: "Which of the following best describes a change in Chinese policy toward the Indian Ocean world in the early fifteenth century, compared with the expedition described in the excerpt?",
     choices: [
       "Ming emperors sent large fleets mainly to display Chinese power and collect tribute rather than to conquer territory, and then ended the voyages after 1433.",
       "Chinese rulers stopped all trade with Southeast Asia as soon as the Yuan dynasty fell in 1368.",

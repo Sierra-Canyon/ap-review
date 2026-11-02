@@ -3,7 +3,7 @@ import { graph } from "../../plot.js";
 export const sets = {
   "q604-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the continuous function $f$, made of three line segments, is shown below. Let $g(x) = \displaystyle \int_1^x f(t)\,dt$.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 6], y: [-2, 4], xname: "x", yname: "y", segments: [[-1, 1, 1, 3], [1, 3, 3, -1], [3, -1, 5, 1]], labels: [[4.2, 1.3, "f"]],
-      alt: "Graph of f made of three segments: from (negative 1, 1) up to (1, 3), from (1, 3) down to (3, negative 1), and from (3, negative 1) up to (5, 1). The value f(2) is 1." }) }] }] },
+      alt: "Graph of f made of three segments: from (negative 1, 1) up to (1, 3), from (1, 3) down to (3, negative 1), and from (3, negative 1) up to (5, 1)." }) }] }] },
   "q604-s9": { name: "An accumulation function", label: "Free response", intro: String.raw`Let $F(x) = \displaystyle \int_1^x \sqrt{t^2 + 3}\,dt$.`,
     sources: [{ title: "", blocks: [{ p: String.raw`$$F(x) = \int_1^x \sqrt{t^2 + 3}\,dt$$` }] }] },
 };
@@ -50,12 +50,12 @@ const items = [
   { id: "q604-m05", type: "mcq", skill: "u6", topic: "6.4", calc: false,
     stem: String.raw`The function $f$ is continuous, and $\displaystyle \int_4^x f(t)\,dt = x^2 - 3x - 4$ for all real numbers $x$.`,
     question: String.raw`What is the value of $f(4)$?`,
-    choices: ["$5$", "$0$", "$2$", "$13$"],
+    choices: ["$5$", "$0$", "$2$", "$1$"],
     why: [
       String.raw`Differentiating both sides and using the Fundamental Theorem of Calculus gives $f(x) = 2x - 3$, so $f(4) = 5$.`,
       String.raw`$0$ is the value of the integral at $x = 4$, where the limits are equal. The function $f$ is the derivative of the integral.`,
       String.raw`$2$ is the second derivative of $x^2 - 3x - 4$, which is $f'(4)$.`,
-      String.raw`$13$ comes from $x^2 - 3$, which drops the $x$ when differentiating $3x$.`,
+      String.raw`$1$ comes from $2x - 3 - 4$, which keeps the constant $-4$. The derivative of a constant is $0$, so $f(x) = 2x - 3$.`,
     ], answer: 0 },
   { id: "q604-m06", type: "mcq", skill: "u6", topic: "6.4", calc: false,
     stem: String.raw`Let $F(x) = \displaystyle \int_{-1}^x \left( t^3 - 4t \right) dt$.`,

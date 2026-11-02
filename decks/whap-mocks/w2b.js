@@ -128,7 +128,7 @@ export default {
         { id: "w2b-m04", skill: "u2", type: "mcq", set: "w2b-s2", topic: "2.1", reasoning: "Claims and evidence in sources",
           question: "The second paragraph of the excerpt best supports which claim about the Silk Roads in the early fifteenth century?",
           choices: [
-            "Overland routes still carried high-value goods such as silk, musk, and spices from China and India to Central Asia.",
+            "Overland routes still carried high-value goods such as silk and spices from China and India to Central Asia.",
             "Overland trade had nearly stopped after the Mongol khanates broke apart in the fourteenth century.",
             "Most goods reached Samarkand by sea after passing through the markets of Alexandria.",
             "Bulk goods such as grain and timber made up most of the trade between China and Central Asia.",
@@ -137,13 +137,13 @@ export default {
             "Clavijo describes markets \"amply stored\" with goods from \"distant and foreign countries,\" including the finest Chinese silk and costly Indian spices, which shows that overland luxury trade continued after the Mongol era.",
             "The breakup of the khanates did make some routes less safe, but the excerpt describes a busy market, not a halt in trade.",
             "Samarkand lies far inland in Central Asia, and the excerpt names overland sources such as Russia, Tartary, and Cathay.",
-            "Animal transport made overland trade costly, so it carried mainly luxuries; the excerpt lists silk, gems, and spices, not bulk goods.",
+            "Animal transport made overland trade costly, so it carried mainly luxuries; the excerpt lists fine silk and costly spices, not grain or timber.",
           ], answer: 0 },
 
         { id: "w2b-m05", skill: "u2", type: "mcq", set: "w2b-s2", topic: "2.5", reasoning: "Causation",
           question: "Timur's actions described in the first paragraph most directly contributed to which development?",
           choices: [
-            "The transfer of craft skills, such as silk weaving, from conquered cities to Central Asia",
+            "The transfer of craft skills, such as weaving, from conquered cities to Central Asia",
             "The rise of a merchant class that took control of Samarkand's government",
             "The spread of Buddhism from Central Asia into Southwest Asia",
             "The decline of Samarkand after Timur moved his capital to Damascus",
@@ -211,7 +211,7 @@ export default {
           ],
           why: [
             "Mongol rulers generally allowed Buddhists, Muslims, Christians, and others to practice and teach, which let a Catholic friar build a church in Khanbaliq even though the emperor did not convert.",
-            "The excerpt says the emperor did not accept the Catholic faith, only that he was kind to Christians.",
+            "The excerpt says only that the emperor was kind to Christians, and the Yuan emperors never became Catholic.",
             "Portuguese missionaries reached China only in the sixteenth century.",
             "The Ming dynasty did not begin until 1368, decades after this letter.",
           ], answer: 0 },

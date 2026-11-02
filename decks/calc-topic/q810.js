@@ -20,7 +20,7 @@ const items = [
       String.raw`The discs are horizontal. At height $y$, $0 \le y \le 4$, the region runs from $x = \sqrt{y}$ to $x = 2$, so the radius is $2 - \sqrt{y}$. The volume is $\pi\displaystyle\int_0^4 \left(2 - \sqrt{y}\right)^2 dy = \dfrac{8\pi}{3}$.`,
       String.raw`This squares $2$ and $\sqrt{y}$ separately. The radius $2 - \sqrt{y}$ must be squared as a whole.`,
       String.raw`This adds $\sqrt{y}$ to $2$. The distance from the curve to the line $x = 2$ is $2 - \sqrt{y}$.`,
-      String.raw`Revolving about a vertical line gives horizontal discs, so the integral is in $y$. This expression is not a radius measured from $x = 2$.`,
+      String.raw`This uses vertical discs with radius $2 - x^2$, as if the axis were the horizontal line $y = 2$. Revolving about the vertical line $x = 2$ gives horizontal discs, so the integral is in $y$.`,
     ], answer: 0 },
   { id: "q810-m03", type: "mcq", skill: "u8", topic: "8.10", calc: false,
     question: String.raw`The region bounded by the line $y = x$, the $x$-axis, and the line $x = 3$ is revolved about the line $x = 3$. What is the volume of the resulting solid?`,

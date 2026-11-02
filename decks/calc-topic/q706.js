@@ -63,7 +63,7 @@ const items = [
     rows: [
       { name: "Separation of variables", earns: String.raw`$\dfrac{1}{y^2}\,dy = x\,dx$.` },
       { name: "Antiderivatives", earns: String.raw`$-\dfrac{1}{y} = \dfrac{x^2}{2} + C_1$.` },
-      { name: "Solves for y", earns: String.raw`$y = -\dfrac{2}{x^2 + C}$, with a constant of integration.` },
+      { name: "Solves for y", earns: String.raw`$y = -\dfrac{2}{x^2 + C}$, or an equivalent form such as $y = -\dfrac{1}{\frac{x^2}{2} + C_1}$, with a constant of integration.` },
     ],
     solution: String.raw`Separate: $\dfrac{dy}{y^2} = x\,dx$. Integrate: $-\dfrac{1}{y} = \dfrac{x^2}{2} + C_1$. Then $\dfrac{1}{y} = -\dfrac{x^2 + 2C_1}{2}$, so $y = -\dfrac{2}{x^2 + C}$, where $C = 2C_1$.` },
   { id: "q706-f1b", type: "frq", skill: "u7", topic: "7.6", calc: false, set: "q706-s9", part: "(b)",

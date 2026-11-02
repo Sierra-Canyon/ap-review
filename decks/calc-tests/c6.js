@@ -224,28 +224,28 @@ With a calculator, $\displaystyle\int_{0}^{8} L(t)\,dt = 1020.236$.
 
 So the number of visitors is approximately $1410 - 1020.236 = 389.764$, or about $390$ visitors.` },
   { id: "c6t-f1c", type: "frq", skill: "u6", topic: "6.4", calc: true, set: "c6t-s1", part: "(c)",
-    prompt: String.raw`For parts (c) and (d), the rate at which visitors arrive is modeled by $e(t) = 110 + 50t - 7t^2$ visitors per hour, and the number of visitors in the aquarium at time $t$ is $N(t) = \displaystyle\int_{0}^{t} \left(e(x) - L(x)\right)dx$. Find $N'(5)$. Is the number of visitors in the aquarium increasing or decreasing at time $t = 5$? Give a reason for your answer.`,
+    prompt: String.raw`For parts (c) and (d), use the model $A(t) = 110 + 50t - 7t^2$ visitors per hour, in place of the table, for the rate at which visitors arrive, and the number of visitors in the aquarium at time $t$ is $N(t) = \displaystyle\int_{0}^{t} \left(A(x) - L(x)\right)dx$. Find $N'(5)$. Is the number of visitors in the aquarium increasing or decreasing at time $t = 5$? Give a reason for your answer.`,
     rows: [
-      { name: "N'(5)", earns: String.raw`$N'(5) = e(5) - L(5) = 5.827$` },
+      { name: "N'(5)", earns: String.raw`$N'(5) = A(5) - L(5) = 5.827$` },
       { name: "Answer with reason", earns: String.raw`Increasing, because $N'(5) > 0$.` },
     ],
-    solution: String.raw`By the Fundamental Theorem of Calculus, $N'(t) = e(t) - L(t)$.
+    solution: String.raw`By the Fundamental Theorem of Calculus, $N'(t) = A(t) - L(t)$.
 
-$N'(5) = e(5) - L(5) = 185 - 180\sin\left(\dfrac{5}{3}\right) = 185 - 179.173 = 5.827$.
+$N'(5) = A(5) - L(5) = 185 - 180\sin\left(\dfrac{5}{3}\right) = 185 - 179.173 = 5.827$.
 
 Since $N'(5) > 0$, the number of visitors in the aquarium is increasing at $t = 5$.` },
   { id: "c6t-f1d", type: "frq", skill: "u6", topic: "6.5", calc: true, set: "c6t-s1", part: "(d)",
     prompt: String.raw`Using the model in part (c), find the time $t$, for $0 \le t \le 8$, at which the number of visitors in the aquarium is greatest. How many visitors are in the aquarium at that time? Justify your answer.`,
     rows: [
-      { name: "Critical point", earns: String.raw`Sets $N'(t) = e(t) - L(t) = 0$ and finds $t = 5.450$.` },
+      { name: "Critical point", earns: String.raw`Sets $N'(t) = A(t) - L(t) = 0$ and finds $t = 5.450$.` },
       { name: "Justification", earns: String.raw`$N'(t) > 0$ for $0 \le t < 5.450$ and $N'(t) < 0$ for $5.450 < t \le 8$, so $N$ has its absolute maximum at $t = 5.450$.` },
       { name: "Answer", earns: String.raw`$N(5.450) = 292.909$ visitors` },
     ],
-    solution: String.raw`$N'(t) = e(t) - L(t) = 0$ at $t = 5.450$ on $0 \le t \le 8$ (with a calculator).
+    solution: String.raw`$N'(t) = A(t) - L(t) = 0$ at $t = 5.450$ on $0 \le t \le 8$ (with a calculator).
 
-$N'(t) = e(t) - L(t)$ is positive for $0 \le t < 5.450$ and negative for $5.450 < t \le 8$. So $N$ increases until $t = 5.450$ and decreases after it, and the absolute maximum of $N$ on $[0, 8]$ is at $t = 5.450$. (As a check by the Candidates Test, $N(0) = 0$ and $N(8) = 265.097$, both less than $N(5.450)$.)
+$N'(t) = A(t) - L(t)$ is positive for $0 \le t < 5.450$ and negative for $5.450 < t \le 8$. So $N$ increases until $t = 5.450$ and decreases after it, and the absolute maximum of $N$ on $[0, 8]$ is at $t = 5.450$. (As a check by the Candidates Test, $N(0) = 0$ and $N(8) = 265.097$, both less than $N(5.450)$.)
 
-$N(5.450) = \displaystyle\int_{0}^{5.450} \left(e(x) - L(x)\right)dx = 292.909$, so about $293$ visitors are in the aquarium at that time.` },
+$N(5.450) = \displaystyle\int_{0}^{5.450} \left(A(x) - L(x)\right)dx = 292.909$, so about $293$ visitors are in the aquarium at that time.` },
 
   // Free response 2: accumulation function from a graph (no calculator)
   { id: "c6t-f2a", type: "frq", skill: "u6", topic: "6.4", calc: false, set: "c6t-s2", part: "(a)",

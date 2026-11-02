@@ -409,7 +409,7 @@ export default [
       String.raw`Solving for $x$ gives $x = e^{y} - 2$. For $0 \le y \le 1$, each disc at height $y$ runs from the axis $x = -1$ to the curve, so its radius is $\left(e^{y} - 2\right) - (-1) = e^{y} - 1$. The volume is $\pi\displaystyle\int_0^1 \left(e^{y} - 1\right)^2 dy = 2.381$.`,
       String.raw`This uses the radius $e^{y} - 2$, the distance from the curve to the $y$-axis, not to the line $x = -1$.`,
       String.raw`This is $\pi\displaystyle\int_0^1 \left(e^{y} - 1\right)dy$. The radius was not squared.`,
-      String.raw`This uses the radius $e^{y} - 3$, which subtracts $1$ instead of $-1$, the distance to the line $x = 1$.`,
+      String.raw`This uses the radius $\left(e^{y} - 2\right) - 1 = e^{y} - 3$, the distance to the line $x = 1$, not to $x = -1$.`,
     ],
     answer: 0 },
 

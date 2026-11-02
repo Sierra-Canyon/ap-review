@@ -406,7 +406,7 @@ export default {
           prompt: "In the period c. 1750 to c. 1900, industrialization transformed economies in western Europe, the United States, and Japan. Develop an argument that evaluates the extent to which industrialization changed social hierarchies in industrializing societies in this period.",
           rows: [
             { name: "Thesis/Claim", max: 1, levels: [
-              "0 points: no claim, a claim that only restates the prompt, or a claim that is not historically defensible (for example, \"Industrialization changed society in many ways\").",
+              "0 points: no claim, a claim that only restates the prompt or is too vague to take a position (for example, \"Industrialization changed society in many ways\"), or a claim that is not historically defensible.",
               "1 point: a historically defensible claim about how much industrialization changed social hierarchies, with a line of reasoning, such as arguing that industrialization created new classes based on wealth from industry, while older inequalities of gender, race, and landed wealth largely continued.",
             ] },
             { name: "Contextualization", max: 1, levels: [

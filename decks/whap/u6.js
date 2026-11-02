@@ -344,7 +344,7 @@ export default [
   { id: "u6-m15", skill: "u6", type: "mcq", set: "u6-s4", topic: "6.5", reasoning: "Comparison",
     question: "Naoroji's point of view in the excerpt was most likely shaped by which of the following?",
     choices: [
-      "His position as an Indian reformer who wanted British rule to serve Indian interests and who later helped found the Indian National Congress",
+      "His position as an Indian reformer who wanted British rule to serve Indian interests",
       "His position as a British official responsible for collecting land taxes in Bengal",
       "His support for the rebels of 1857 who tried to restore the Mughal emperor",
       "His work as a Christian missionary seeking converts in rural India",
@@ -492,7 +492,7 @@ export default [
     prompt: "Identify ONE piece of historical evidence that would support the passage's argument about why indentured migration began.",
     earns: "The response names a specific, accurate piece of evidence connecting the end of slavery or plantation labor demand to the recruitment of indentured workers.",
     yes: [
-      "After slavery ended in 1834 in Mauritius, planters brought in Indian indentured workers to grow sugar.",
+      "After Britain abolished slavery in the 1830s, planters in Mauritius brought in Indian indentured workers to grow sugar.",
       "Planters in British Guiana and Trinidad recruited workers from India to replace formerly enslaved people who left the sugar estates.",
       "Indentured Indians were brought to Fiji from 1879 to work on sugar plantations.",
     ],
@@ -732,7 +732,7 @@ export default [
     docs: [
       "Document 1 (Mill, 1848): An economist calls colonization the most profitable use of a wealthy country's capital and labor; supports an economic motive, and its date shows the idea predated the Scramble for Africa. The source page notes the text was modernized.",
       "Document 2 (Canton declaration, 1842): Chinese residents describe the British as greedy traders who forced opium on China; supports an economic motive from the point of view of people facing imperial pressure, and its purpose of rallying armed resistance explains its harsh language.",
-      "Document 3 (Paton, 1883): A missionary urges annexation for religious, commercial, agricultural, and strategic reasons; shows economic motives mixed with religion and rivalry with France, and his audience, the British government, explains why he stresses trade and harbors.",
+      "Document 3 (Paton, 1883): A missionary urges annexation for religious, commercial, and strategic reasons; shows economic motives mixed with religion and rivalry with other powers (France, in practice), and his audience, the British government, explains why he stresses trade and harbors.",
       "Document 4 (Lugard, 1893): An imperial agent argues that tariffs and rivals force Britain to seize new markets or decline; strong support for economic motives tied to great-power competition, and his purpose was to keep Britain committed to East Africa, where he had served.",
       "Document 5 (Pan-German League, 1898): A nationalist group demands cables, coaling stations, steamship lines, and commercial concessions; shows strategic and national goals bound up with commerce, from a pressure group pushing its own government.",
       "Document 6 (Wilhelm II, 1901): The emperor links a German \"place in the sun\" to trade, sea power, and national pride; supports both economic and prestige motives, and his audience of sailors and shipping supporters explains the focus on the sea and the navy.",

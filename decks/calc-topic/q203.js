@@ -12,7 +12,7 @@ export const sets = {
   "q203-s2": {
     name: "The graph of f and a tangent line",
     label: "Graph",
-    intro: String.raw`The graph of the function $f$ and the line tangent to the graph of $f$ at $x = 6$ (dashed) are shown below.`,
+    intro: String.raw`The graph of the function $f$ and the line tangent to the graph of $f$ at $x = 6$ (dashed) are shown below. The tangent line passes through the points $(4, 2)$ and $(8, 8)$.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 8], y: [0, 9], xname: "x", yname: "y", fns: [{ f: f3, from: -1, to: 8, label: "f", labelAt: 1 }, { f: (x) => 5 + 1.5 * (x - 6), from: 3, to: 8, dash: true }], dots: [[6, 5, "closed"], [4, 2, "closed"], [8, 8, "closed"]], alt: "Graph of f, a curve that opens upward, with its lowest point near x = 3. The dashed tangent line at x = 6 touches the curve at (6, 5) and also passes through the grid points (4, 2) and (8, 8)." }) }] }],
   },
   "q203-s3": {

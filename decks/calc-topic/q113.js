@@ -97,7 +97,7 @@ const items = [
   },
   {
     id: "q113-f1a", type: "frq", skill: "u1", topic: "1.13", calc: false, set: "q113-s2", part: "(a)",
-    prompt: String.raw`Find the value of $k$ for which $\displaystyle \lim_{x \to -3} h(x)$ exists. Explain the reasoning.`,
+    prompt: String.raw`Find the value of $k$ for which $\displaystyle \lim_{x \to -3} h(x)$ exists. Explain your reasoning.`,
     rows: [
       { name: "Condition", earns: String.raw`States that the numerator must be $0$ at $x = -3$, since otherwise the quotient is unbounded near $x = -3$: $(-3)^2 + k(-3) + 6 = 0$.` },
       { name: "Answer", earns: String.raw`$k = 5$` },
@@ -106,7 +106,7 @@ const items = [
   },
   {
     id: "q113-f1b", type: "frq", skill: "u1", topic: "1.13", calc: false, set: "q113-s2", part: "(b)",
-    prompt: String.raw`Using the value of $k$ from part (a), find the value of $c$ for which $h$ is continuous at $x = -3$. Show the work that leads to the answer.`,
+    prompt: String.raw`Using the value of $k$ from part (a), find the value of $c$ for which $h$ is continuous at $x = -3$. Show the work that leads to your answer.`,
     rows: [
       { name: "Limit", earns: String.raw`$\lim_{x \to -3} h(x) = -1$, from $\dfrac{(x + 2)(x + 3)}{x + 3} = x + 2$ for $x \neq -3$.` },
       { name: "Answer", earns: String.raw`$c = -1$, because continuity requires $h(-3) = \lim_{x \to -3} h(x)$.` },

@@ -1,7 +1,7 @@
 import { graph } from "../../plot.js";
 
 export const sets = {
-  "q604-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the continuous function $f$, made of three line segments, is shown below. Let $g(x) = \displaystyle \int_1^x f(t)\,dt$.`,
+  "q604-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the continuous function $f$ on the closed interval $[-1, 5]$, made of three line segments, is shown below. Let $g(x) = \displaystyle \int_1^x f(t)\,dt$.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 6], y: [-2, 4], xname: "x", yname: "y", segments: [[-1, 1, 1, 3], [1, 3, 3, -1], [3, -1, 5, 1]], labels: [[4.2, 1.3, "f"]],
       alt: "Graph of f made of three segments: from (negative 1, 1) up to (1, 3), from (1, 3) down to (3, negative 1), and from (3, negative 1) up to (5, 1)." }) }] }] },
   "q604-s9": { name: "An accumulation function", label: "Free response", intro: String.raw`Let $F(x) = \displaystyle \int_1^x \sqrt{t^2 + 3}\,dt$.`,

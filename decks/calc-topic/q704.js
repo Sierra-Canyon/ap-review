@@ -3,7 +3,7 @@ import { graph } from "../../plot.js";
 export const sets = {
   "q704-s1": { name: "A slope field", label: "Graph", intro: String.raw`The slope field for the differential equation $\dfrac{dy}{dx} = \dfrac{xy}{2}$ is shown below.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 3], y: [-3, 3], xname: "x", yname: "y", field: { f: (x, y) => (x * y) / 2, step: 1 },
-      alt: "Slope field on the grid from x = -3 to 3 and y = -3 to 3. Segments on both axes are horizontal. Slopes are positive in the first and third quadrants and negative in the second and fourth quadrants. Below the x-axis, segments to the left of the y-axis rise and segments to the right of the y-axis fall." }) }] }] },
+      alt: "Slope field on the grid from x = -3 to 3 and y = -3 to 3. Segments on both axes are horizontal. Slopes are positive in the first and third quadrants and negative in the second and fourth quadrants, and they grow steeper farther from the axes." }) }] }] },
   "q704-s2": { name: "A slope field", label: "Graph", intro: String.raw`The slope field for a differential equation is shown below.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 3], y: [-3, 3], xname: "x", yname: "y", field: { f: (x, y) => -x, step: 1 },
       alt: "Slope field on the grid from x = -3 to 3 and y = -3 to 3. All segments in the same vertical column have the same slope. Segments on the y-axis are horizontal. In the column x = 1 the slope is -1, in the column x = 2 it is -2, in the column x = -1 it is 1, and in the column x = -2 it is 2." }) }] }] },

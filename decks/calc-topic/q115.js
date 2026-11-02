@@ -82,7 +82,7 @@ const items = [
   },
   {
     id: "q115-f1a", type: "frq", skill: "u1", topic: "1.15", calc: false, set: "q115-s1", part: "(a)",
-    prompt: String.raw`Find $\displaystyle \lim_{x \to \infty} g(x)$. Show the work that leads to the answer.`,
+    prompt: String.raw`Find $\displaystyle \lim_{x \to \infty} g(x)$. Show the work that leads to your answer.`,
     rows: [
       { name: "Limit with work", earns: String.raw`$\lim_{x \to \infty} g(x) = 2$, with work: for $x > 0$, $\dfrac{\sqrt{16x^2 + 9}}{2x - 1} = \dfrac{\sqrt{16 + \frac{9}{x^2}}}{2 - \frac{1}{x}} \to \dfrac{4}{2}$.` },
     ],
@@ -90,7 +90,7 @@ const items = [
   },
   {
     id: "q115-f1b", type: "frq", skill: "u1", topic: "1.15", calc: false, set: "q115-s1", part: "(b)",
-    prompt: String.raw`Find $\displaystyle \lim_{x \to -\infty} g(x)$. Show the work that leads to the answer.`,
+    prompt: String.raw`Find $\displaystyle \lim_{x \to -\infty} g(x)$. Show the work that leads to your answer.`,
     rows: [
       { name: "Uses the absolute value", earns: String.raw`Uses $\sqrt{x^2} = |x| = -x$ for $x < 0$, such as $\sqrt{16x^2 + 9} = -x\sqrt{16 + \frac{9}{x^2}}$.` },
       { name: "Answer", earns: String.raw`$\lim_{x \to -\infty} g(x) = -2$` },

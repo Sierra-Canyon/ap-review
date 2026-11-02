@@ -134,7 +134,7 @@ export default {
             "The fall of Constantinople changed who ruled a key city, but it did not itself move trade from land routes to the sea.",
           ],
           answer: 0 },
-        { id: "t21-m08", skill: "u2", type: "mcq", set: "t21-s2", topic: "2.1", reasoning: "Claims and evidence",
+        { id: "t21-m08", skill: "u2", type: "mcq", set: "t21-s2", topic: "2.1", reasoning: "Claims and evidence in sources",
           question: "Which of the following, not mentioned in the passage, would best support the argument that Italian merchants took part in overland trade with China?",
           choices: [
             "Around 1340, a merchant from Florence wrote a handbook describing the route from the Black Sea to China, the costs of the journey, and the use of paper money there.",

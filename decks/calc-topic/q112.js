@@ -114,7 +114,7 @@ const items = [
   },
   {
     id: "q112-f1c", type: "frq", skill: "u1", topic: "1.12", calc: false, set: "q112-s2", part: "(c)",
-    prompt: String.raw`Let $k(x) = \dfrac{1}{f(x)}$. Is $k$ continuous on the closed interval $[-2, 0]$? Justify the answer.`,
+    prompt: String.raw`Let $k(x) = \dfrac{1}{f(x)}$. Is $k$ continuous on the closed interval $[-2, 0]$? Justify your answer.`,
     rows: [
       { name: "Answer with reason", earns: String.raw`No: $f\left(-\sqrt{3}\right) = 3 - 3 = 0$ and $-2 < -\sqrt{3} < 0$, so $k$ is undefined at $x = -\sqrt{3}$, a point of $[-2, 0]$.` },
     ],

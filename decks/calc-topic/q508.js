@@ -68,7 +68,7 @@ export const sets = {
   "q508-s4": { name: "The graph of f'", label: "Graph", intro: String.raw`The graph of $f'$, the derivative of a function $f$, is the parabola shown below.`, sources: box(g4) },
   "q508-s5": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of a twice-differentiable function $f$ is shown below for $-2 \le x \le 4$. Its relative minimum is at $(0, 1)$, its relative maximum is at $\left(2, \frac{5}{3}\right)$, and its point of inflection is at $\left(1, \frac{4}{3}\right)$.`, sources: box(g5) },
   "q508-s6": { name: "The graph of f'", label: "Graph", intro: String.raw`The graph of $f'$, the derivative of a function $f$, is the line shown below.`, sources: box(g6) },
-  "q508-s9": { name: "The graph of f'", label: "Free response", intro: String.raw`The function $f$ is continuous on $[-3, 4]$. The graph of its derivative $f'$, which consists of four line segments, is shown below.`, sources: box(g9) },
+  "q508-s9": { name: "The graph of f'", label: "Free response", intro: String.raw`The function $f$ is differentiable on the closed interval $[-3, 4]$. The graph of its derivative $f'$, which consists of four line segments, is shown below.`, sources: box(g9) },
 };
 
 const items = [

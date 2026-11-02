@@ -5,7 +5,7 @@ const s1Graph = graph({
   x: [-2, 2], y: [-2, 3], step: { x: 0.5, y: 1 }, labelEvery: 2, xname: "x", yname: "y",
   fns: [{ f: (x) => 2 * Math.cos(x), label: "f", labelAt: -0.5 }, { f: (x) => x * x - 1, label: "g", labelAt: 1.7 }],
   labels: [[-0.15, 0.4, "R"]],
-  alt: "The graphs of f(x) = 2cos x and g(x) = x^2 - 1. They intersect at two points, near x = -1.265 and x = 1.265. The region R lies between them, with the graph of f above the graph of g. Part of R is below the x-axis, but all of R is above the line y = -2.",
+  alt: "The graphs of f(x) = 2cos x and g(x) = x^2 - 1. They intersect at two points, symmetric about the y-axis, one between x = -1.5 and x = -1 and one between x = 1 and x = 1.5. The region R lies between them, with the graph of f above the graph of g. Part of R is below the x-axis, but all of R is above the line y = -2.",
 });
 
 // c8t-s2 (free response): f(x) = 4 ln(x + 1) and g(x) = x^2/2 meet at x = 0 and x = 3.458.
@@ -14,7 +14,7 @@ const s2Graph = graph({
   fns: [{ f: (x) => 4 * Math.log(x + 1), label: "f", labelAt: 1.3 }, { f: (x) => (x * x) / 2, label: "g", labelAt: 3.6 }],
   dots: [[0, 0, "closed"], [3.458, 5.9789, "closed"]],
   labels: [[1.6, 2.6, "R"]],
-  alt: "The graphs of f(x) = 4 ln(x + 1) and g(x) = x^2/2 for x from 0 to 4. They intersect at the origin and near x = 3.458. The region R lies between them for x from 0 to 3.458, with the graph of f above the graph of g, and R is above the x-axis.",
+  alt: "The graphs of f(x) = 4 ln(x + 1) and g(x) = x^2/2 for x from 0 to 4. They intersect at the origin and at a second point, marked with a dot, just before x = 3.5. The region R lies between them from the origin to that dot, with the graph of f above the graph of g, and R is above the x-axis.",
 });
 
 // c8t-s3 (free response): E(t) through (0, 1), (2, 5), (6, 5), (8, 1).
@@ -23,7 +23,7 @@ const s3Graph = graph({
   segments: [[0, 1, 2, 5], [2, 5, 6, 5], [6, 5, 8, 1]],
   dots: [[0, 1, "closed"], [8, 1, "closed"]],
   hlines: [{ y: 3, dash: true }],
-  alt: "Graph of E(t) for 0 to 8 minutes, made of three line segments: from (0, 1) up to (2, 5), level at 5 from (2, 5) to (6, 5), then down from (6, 5) to (8, 1). A dashed horizontal line at height 3 crosses the graph at t = 1 and t = 7.",
+  alt: "Graph of E(t) for 0 to 8 minutes, made of three line segments: from (0, 1) up to (2, 5), level at 5 from (2, 5) to (6, 5), then down from (6, 5) to (8, 1). A dashed horizontal line at height 3 runs across the whole window.",
 });
 
 export const sets = {

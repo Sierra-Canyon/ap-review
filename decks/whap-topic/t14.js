@@ -123,9 +123,9 @@ export default {
           question: "Which of the following, not mentioned in the passage, would best support the argument that states in the Americas took very different forms?",
           choices: [
             "The Inca ruled a centralized empire through appointed officials and thousands of miles of roads, while many peoples of North America lived in small, independent villages.",
-            "Many societies across the Americas grew maize, beans, and squash.",
-            "Both the Maya and the Mexica built temples on top of stepped pyramids.",
-            "Spanish ships reached the islands of the Caribbean in 1492.",
+            "Many societies across the Americas, from the Mississippi valley to Mesoamerica, grew maize, beans, and squash together.",
+            "Both the Maya and the Mexica built temples on top of stepped pyramids and held religious ceremonies there.",
+            "Spanish ships reached the islands of the Caribbean in 1492, and Spanish armies reached the mainland within a few decades.",
           ],
           why: [
             "Correct. The contrast between a huge centralized empire and small independent villages adds a new example of how different American states and societies were.",

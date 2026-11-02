@@ -187,7 +187,7 @@ export const sets = {
         "title": "Source",
         "blocks": [
           {
-            "p": "The Manchus who founded the Qing dynasty in 1644 were a small minority ruling a huge Han Chinese population. Many historians argue that Qing rulers held power by blending Manchu traditions with Chinese ones. The Qing kept the Confucian civil service examinations and staffed much of the government with Han scholars, and emperors such as Kangxi paid for large Confucian scholarly projects. At the same time, the Qing kept their own Manchu military units, called banners, often placed a Manchu and a Han official side by side in top posts, and ordered Han men to wear the Manchu queue hairstyle as a sign of loyalty. In Inner Asia, Qing emperors presented themselves to Mongols and Tibetans as patrons of Tibetan Buddhism."
+            "p": "The Manchus, who conquered China and began Qing rule there in 1644, were a small minority ruling a huge Han Chinese population. Many historians argue that Qing rulers held power by blending Manchu traditions with Chinese ones. The Qing kept the Confucian civil service examinations and staffed much of the government with Han scholars, and emperors such as Kangxi paid for large Confucian scholarly projects. At the same time, the Qing kept their own Manchu military units, called banners, often placed a Manchu and a Han official side by side in top posts, and ordered Han men to wear the Manchu queue hairstyle as a sign of loyalty. In Inner Asia, Qing emperors presented themselves to Mongols and Tibetans as patrons of Tibetan Buddhism."
           },
           {
             "cite": "Practice passage written for this review, summarizing an interpretation held by many historians.",
@@ -615,7 +615,7 @@ export default [
       "The Peace of Augsburg let each prince decide the religion of his territory, which shows how the Reformation increased rulers' power over religion.",
       "The Holy Roman Empire stayed divided into many states, and the emperor failed to restore Catholic unity.",
       "Shah Ismail I made Shia Islam the state religion after 1501, but this came from the Sunni and Shia split, not from the Reformation.",
-      "The devshirme began in the late fourteenth century and had no connection to Luther."
+      "The devshirme began in the late fourteenth or early fifteenth century and had no connection to Luther."
     ],
     "answer": 0
   },
@@ -760,7 +760,7 @@ export default [
     "reasoning": "Comparison",
     "question": "Russian expansion as shown in the table was most similar to which development in the same period?",
     "choices": [
-      "The Qing conquest of Mongolia and Xinjiang, which brought many non-Chinese peoples under Manchu rule",
+      "The Qing expansion into Mongolia and Central Asia, which brought many non-Chinese peoples under Manchu rule",
       "The Mali Empire's control of the gold and salt trade across the Sahara",
       "The Portuguese seizure of ports such as Goa and Malacca",
       "The Ottoman use of the millet system to govern religious minorities"
@@ -812,7 +812,7 @@ export default [
     "why": [
       "Like the Qing, Akbar came from a ruling minority and brought members of the majority population into government to win their loyalty.",
       "The Safavids demanded religious uniformity, the opposite of the blending the passage describes.",
-      "Peter forced new customs on his own elite to make Russia more like western Europe; this resembles the queue order, but not the passage's main point about sharing power with the conquered majority.",
+      "Peter forced Western customs on his own nobles to modernize Russia; this resembles the queue order, but it did not bring a conquered majority into government, which is the passage's main point.",
       "The encomienda forced labor from conquered peoples; it did not bring them into government."
     ],
     "answer": 0
@@ -1241,7 +1241,7 @@ export default [
       "Document 1 (Luther, 1520): Luther urges German rulers to use their God-given power over the clergy, showing that the Reformation gave secular rulers a religious reason to take control of the church. Sourcing: Luther needed the protection of German princes against the pope.",
       "Document 2 (Busbecq, 1555): Ottoman officials rose by merit, not birth, so the sultan's power rested on a trained, loyal service class. Use it to qualify the argument: Ottoman strength did not rest on religion alone. Sourcing: Busbecq, a Habsburg diplomat, wrote for European readers and stressed Ottoman merit to contrast it with European societies where birth decided rank.",
       "Document 3 (Abu'l-Fazl, c. 1590s): Mughal kingship is a divine light given directly by God, and a good king ends sectarian strife. Use it to show religion legitimizing rule through tolerance rather than one faith. Sourcing: the author was Akbar's court historian and friend.",
-      "Document 4 (James I, 1610): Kings are called gods and subjects may not question them, but just kings explain their actions and follow the laws. Use it for divine right and for its limits. Sourcing: James spoke to a Parliament that was resisting his demands for money.",
+      "Document 4 (James I, 1610): Kings are called gods and subjects may not question them, but just kings declare what they will do, or they incur the curse of God. Use it for divine right and for its limits. Sourcing: James spoke to a Parliament that was resisting his demands for money.",
       "Document 5 (Kangxi, 1670): The Sacred Edict promotes Confucian morality, schools, the orthodox doctrine, laws, and tax payment. Use it to show a Manchu ruler using Confucian orthodoxy to win Chinese loyalty and secure revenue. Sourcing: the maxims were read aloud to villagers, so the audience was ordinary subjects.",
       "Document 6 (Bossuet, c. 1679): The royal throne is the throne of God, and attacking the king is sacrilege. Use it as the clearest statement of divine right absolutism. Sourcing: Bossuet was a bishop teaching the heir of Louis XIV.",
       "Document 7 (Louis XIV, 1685): The king revokes the Edict of Nantes and orders Protestant churches destroyed to restore religious unity. Use it to show a ruler enforcing one faith to strengthen royal power. Sourcing: the edict claims most Protestants had already converted, a claim that hides the pressure used against them."
@@ -1259,6 +1259,6 @@ export default [
       "The Inca ruler claimed descent from the sun god Inti, and the Aztecs practiced human sacrifice to honor gods such as Huitzilopochtli.",
       "Louis XIV's palace of Versailles displayed royal power through monumental architecture."
     ],
-    "model": "Thesis: Rulers in Europe and Asia relied heavily on religion to legitimize their power, presenting themselves as chosen by God or as defenders of the true faith, but religion worked in different ways, uniting subjects under one faith in France while promoting tolerance in Mughal India, and it always worked alongside nonreligious tools such as merit-based officials, laws, and taxes.\n\nContext: After 1517 the Protestant Reformation split Christian Europe, and the Sunni Ottomans and Shia Safavids fought for land and religious leadership, so rulers everywhere had to decide how to handle religious difference.\n\nBody 1 (divine right): Bossuet (Doc. 6) and James I (Doc. 4) claim that kings sit on God's throne, and Abu'l-Fazl (Doc. 3) calls kingship a divine light. Sourcing: each author served or was the ruler, so each had reason to raise royal authority.\n\nBody 2 (religious unity versus tolerance): Louis XIV (Doc. 7) destroyed Protestant churches to make France Catholic, and Luther (Doc. 1) urged princes to take power over the clergy. Akbar (Doc. 3) instead won support by ending sectarian strife, and outside evidence such as the Ottoman millet system shows another tolerant model.\n\nBody 3 (beyond religion): Busbecq (Doc. 2) shows Ottoman power resting on officials chosen by merit, and the Kangxi Emperor (Doc. 5) mixed Confucian orthodoxy with orders to obey laws and pay taxes.\n\nComplexity: Religion could also limit rulers. James I admits that just kings must follow the laws to avoid God's curse, so the same beliefs that raised kings also set expectations they had to meet."
+    "model": "Thesis: Rulers in Europe and Asia relied heavily on religion to legitimize their power, presenting themselves as chosen by God or as defenders of the true faith, but religion worked in different ways, uniting subjects under one faith in France while promoting tolerance in Mughal India, and it always worked alongside nonreligious tools such as merit-based officials, laws, and taxes.\n\nContext: After 1517 the Protestant Reformation split Christian Europe, and the Sunni Ottomans and Shia Safavids fought for land and religious leadership, so rulers everywhere had to decide how to handle religious difference.\n\nBody 1 (divine right): Bossuet (Doc. 6) and James I (Doc. 4) claim that kings sit on God's throne, and Abu'l-Fazl (Doc. 3) calls kingship a divine light. Sourcing: each author served or was the ruler, so each had reason to raise royal authority.\n\nBody 2 (religious unity versus tolerance): Louis XIV (Doc. 7) destroyed Protestant churches to make France Catholic, and Luther (Doc. 1) urged princes to take power over the clergy. Akbar (Doc. 3) instead won support by ending sectarian strife, and outside evidence such as the Ottoman millet system shows another tolerant model.\n\nBody 3 (beyond religion): Busbecq (Doc. 2) shows Ottoman power resting on officials chosen by merit, and the Kangxi Emperor (Doc. 5) mixed Confucian orthodoxy with orders to obey laws and pay taxes.\n\nComplexity: Religion could also limit rulers. James I admits that just kings must declare what they will do or incur God's curse, so the same beliefs that raised kings also set expectations they had to meet."
   }
 ];

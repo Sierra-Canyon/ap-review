@@ -135,7 +135,7 @@ export default [
     why: [
       "Polo was born c. 1254 and did not set out for Asia until c. 1271, so he could only have learned of the 1258 conquest secondhand, which helps explain legendary details such as the caliph being shut in with his treasure.",
       "Polo was about four years old in 1258 and was not in Baghdad during the siege.",
-      "There is no evidence that Polo read Arabic or used Abbasid records; he dictated his book from memory and travel notes.",
+      "There is no evidence that Polo read Arabic or used Abbasid records; he dictated his book to a fellow prisoner in Genoa after his return.",
       "The excerpt does not draw on any letters, and Polo never claims such a source.",
     ], answer: 0 },
 
@@ -296,8 +296,8 @@ export default [
     question: "Which of the following technologies most directly helped sailors take part in the trade described in the passage?",
     choices: [
       "The magnetic compass, the astrolabe, and the lateen sail",
-      "The camel saddle",
-      "The caravanserai",
+      "The camel saddle and the camel caravan",
+      "The caravanserai, an inn for overland travelers",
       "The relay stations of the Mongol messenger system",
     ],
     why: [
@@ -341,7 +341,7 @@ export default [
   { id: "u2-m17", skill: "u2", type: "mcq", set: "u2-s5", topic: "2.4", reasoning: "Causation",
     question: "Which of the following provides the best evidence for the passage's claim that Islam offered West African rulers \"ties to a wider world\"?",
     choices: [
-      "Mansa Musa's pilgrimage to Mecca in 1324, during which he spent so much gold in Cairo that its value fell, and after which he brought scholars and an architect to Mali",
+      "Mansa Musa's pilgrimage to Mecca in 1324, after which he brought Muslim scholars and an architect back to Mali",
       "Sundiata's defeat of the Sosso kingdom, which led to the founding of the Mali Empire",
       "The use of camel caravans to carry salt south across the desert",
       "The building of Great Zimbabwe, whose rulers traded gold to the Swahili coast",
@@ -393,7 +393,7 @@ export default [
       "The longest stage of the journey was the river trip from Gintarchan to Sara.",
     ],
     why: [
-      "The stages with stated times add up to roughly 265 to 285 days, plus a river trip of unstated length, and the table lists ox wagons, river boats, camel wagons, asses, and horses.",
+      "The stages with stated times add up to about 280 days (about 265 if the first stage is by horse wagon), plus a river trip of unstated length, and the table lists ox wagons, river boats, camel wagons, asses, and horses.",
       "The route was overland and by river; no stage is by sea.",
       "The table lists oxen, asses, and horses as well as camels.",
       "That stage took one day; the longest was the 70 days from Armalec to Camexu.",
@@ -514,7 +514,7 @@ export default [
     earns: "The response describes a specific rule in the source that tied workers to employers or held wages at their earlier level.",
     yes: [
       "It ordered workers to take only the wages that were normal before the plague, in the twentieth year of the king's reign or the years just before.",
-      "It required able-bodied men and women under sixty who had no land or trade to work for anyone who asked them.",
+      "It required able-bodied men and women under sixty, bond or free, to serve anyone who sought them for work.",
       "It aimed to stop people from refusing work in hopes of higher pay, which kept power in the hands of lords and employers.",
     ],
     no: [
@@ -652,8 +652,8 @@ export default [
     evidence: [
       "Silk Road merchants traded mainly luxury goods such as silk, porcelain, and precious metals, because overland transport by animal was slow and costly.",
       "Caravanserais, camel saddles, and Mongol relay stations supported overland travel.",
-      "Song and Yuan China used paper money and \"flying cash\" credit, which made long-distance trade easier.",
-      "Mongol rule in the thirteenth and fourteenth centuries made overland routes safer and helped cities such as Samarkand, Kashgar, and Tabriz grow.",
+      "Song and Yuan China used paper money and forms of credit, which made long-distance trade easier.",
+      "Mongol rule in the thirteenth and fourteenth centuries made overland routes safer and helped trading cities such as Tabriz, Sarai, and Kashgar grow.",
       "Indian Ocean ships used the monsoon winds, the compass, the astrolabe, and the lateen sail, and Chinese junks and Arab dhows carried heavy cargoes.",
       "The Indian Ocean network carried bulk goods such as cotton textiles, rice, timber, and spices along with luxuries.",
       "Arab and Persian Muslim merchants settled on the Swahili coast and in India, and Chinese merchants settled in Southeast Asian ports.",

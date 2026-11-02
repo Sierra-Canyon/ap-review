@@ -28,7 +28,7 @@ export const sets = {
     id: "w8a-s3", name: "Revolution and intervention in Latin America", intro: "Use the passage below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "In Latin America, the Cold War became tied to older struggles over land and foreign economic power. In Guatemala, an elected government began giving unused land from large estates, including land held by the American-owned United Fruit Company, to peasants. In 1954 the United States backed a coup that overthrew that government. In Cuba, Fidel Castro's revolution took power in 1959 promising land reform and an end to American control of the island's economy. As relations with the United States broke down, Castro turned to the Soviet Union for aid and trade, and in 1961 he declared the revolution socialist. The United States answered with a trade embargo and the failed Bay of Pigs invasion. Across the region, American leaders often treated reform movements as communist threats, and many reformers in turn came to see communism as the path to national independence." },
+        { p: "In Latin America, the Cold War became tied to older struggles over land and foreign economic power. In Guatemala, an elected government began giving unused land from large estates, including land held by the American-owned United Fruit Company, to peasants. In 1954 the United States backed a coup that overthrew it. In Cuba, Fidel Castro's revolution took power in 1959 promising land reform and an end to American control of the island's economy. As relations with the United States broke down, Castro turned to the Soviet Union for aid and trade. The United States answered with a trade embargo and the failed Bay of Pigs invasion of April 1961, and Castro declared the revolution socialist. Across the region, American leaders often treated reform movements as communist threats, and many reformers came to see communism as the path to national independence." },
         { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
       ] },
     ],
@@ -105,7 +105,7 @@ export default {
           why: [
             "Correct. In early 1946 the two wartime allies were clashing over Soviet control of Eastern Europe, and Kennan was asked to explain Soviet behavior.",
             "The Berlin Wall went up in 1961, fifteen years after the telegram.",
-            "The first major arms limitation treaties, such as SALT I, came in 1972.",
+            "The first treaties limiting the number of nuclear weapons the superpowers could hold, such as SALT I, came in 1972.",
             "The Communist victory in China came in 1949, three years after the telegram.",
           ],
           answer: 0 },
@@ -245,9 +245,9 @@ export default {
           question: "Which of the following most directly provides the context for the \"acts of repression\" condemned in the resolution?",
           choices: [
             "The South African government's violent response to Black protest, including police shootings of students in the Soweto uprising of 1976 and the death of Steve Biko in police custody in 1977",
-            "The release of Nelson Mandela from prison and the start of talks to end apartheid",
-            "The founding of the African National Congress to defend the rights of Black South Africans",
-            "The passage of sanctions against South Africa by the United States Congress",
+            "The release of Nelson Mandela from prison and the start of talks between the government and the African National Congress to end apartheid",
+            "The founding of the African National Congress by Black lawyers, ministers, and chiefs to defend the rights of Black South Africans",
+            "The passage of economic sanctions against South Africa by the United States Congress over the objections of the president",
           ],
           why: [
             "Correct. Police killings at Soweto and Biko's death in detention drew worldwide outrage and led directly to the mandatory arms embargo in 1977.",

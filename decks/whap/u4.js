@@ -528,7 +528,7 @@ export default [
     earns: "Gives an accurate reason connected to the situation in 1494, such as rivalry after Columbus's voyage or the wish to avoid war.",
     yes: [
       "Columbus's 1493 return made Portugal fear Spain would claim lands it wanted, so both sides wanted to settle claims without war.",
-      "Both Catholic kingdoms wanted to settle their rivalry over Atlantic exploration in a way the pope would support.",
+      "Both kingdoms wanted a clear division of the Atlantic so that each could explore and claim lands without interfering with the other.",
       "Portugal wanted to protect its route around Africa to Asia from Spanish claims.",
     ],
     no: [

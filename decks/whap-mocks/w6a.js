@@ -57,7 +57,7 @@ export default {
         { id: "w6a-m01", skill: "u6", type: "mcq", set: "w6a-s1", topic: "6.1", reasoning: "Causation",
           question: "Beveridge's argument in the first paragraph relies most directly on which of the following ideas used to justify imperialism?",
           choices: [
-            "Some peoples were not capable of governing themselves and would benefit from rule by a more \"civilized\" nation.",
+            "Some peoples cannot govern themselves and benefit from rule by a more \"civilized\" nation.",
             "All peoples have an equal natural right to choose their own government.",
             "Colonies exist mainly to supply the ruling country with gold and silver bullion.",
             "The Western Hemisphere should be closed to new colonization by European powers.",
@@ -147,13 +147,13 @@ export default {
         { id: "w6a-m07", skill: "u6", type: "mcq", set: "w6a-s2", topic: "6.5", reasoning: "Causation",
           question: "Which of the following was a direct result of the conflict over the trade Lin describes?",
           choices: [
-            "Britain defeated China in the First Opium War, and the Treaty of Nanjing (1842) opened five ports to British trade and gave Hong Kong to Britain.",
+            "Britain defeated China in the First Opium War, and the Treaty of Nanjing opened five ports to British trade and gave Hong Kong to Britain.",
             "Britain banned the growing of opium in India to end the dispute with China.",
             "China closed all of its ports and expelled every foreign merchant for the rest of the century.",
             "Japan forced China to sign the Treaty of Shimonoseki and give up its claims to Korea.",
           ],
           why: [
-            "Correct. After Lin seized and destroyed British opium in 1839, Britain went to war. China's defeat led to the Treaty of Nanjing, the first of the unequal treaties.",
+            "Correct. After Lin seized and destroyed British opium in 1839, Britain went to war. China's defeat led to the Treaty of Nanjing (1842), the first of the unequal treaties.",
             "Britain did not ban opium in India. The trade grew after the Opium Wars and was later made legal in China.",
             "China was forced to open more ports, not close them.",
             "The Treaty of Shimonoseki followed the Sino-Japanese War of 1894 to 1895 and was not a result of the opium dispute.",
@@ -162,13 +162,13 @@ export default {
         { id: "w6a-m08", skill: "u6", type: "mcq", set: "w6a-s2", topic: "6.5", reasoning: "Comparison",
           question: "The pressure that British merchants put on China's economy was most similar to which development in Latin America in the late nineteenth century?",
           choices: [
-            "British investors gained control of much of Chile's nitrate mining after the War of the Pacific (1879 to 1884).",
+            "British investors gained control of much of Chile's nitrate mining after the War of the Pacific.",
             "Spanish officials forced Andean workers to labor in the silver mines of Potosí.",
             "Enslaved people in Saint-Domingue rose up and founded the independent state of Haiti.",
             "Latin American states adopted constitutions modeled on that of the United States.",
           ],
           why: [
-            "Correct. In both cases, foreign businesses gained great economic power over a country that stayed politically independent, a pattern called economic imperialism.",
+            "Correct. After the War of the Pacific (1879 to 1884), British firms came to control Chile's nitrate exports. In both cases, foreign businesses gained great economic power over a country that stayed politically independent, a pattern called economic imperialism.",
             "The mita labor system was colonial rule by Spain from the sixteenth century on, not foreign business pressure on an independent state.",
             "The Haitian Revolution was a slave revolt that ended in independence in 1804. It did not involve foreign economic pressure.",
             "Adopting constitutions was a political choice by Latin American leaders, not economic pressure from foreign merchants.",

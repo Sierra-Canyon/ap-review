@@ -235,13 +235,13 @@ export default [
   { id: "u5-m08", skill: "u5", type: "mcq", set: "u5-s3", topic: "5.3", reasoning: "Causation",
     question: "Which of the following pieces of evidence would best support the passage's argument about farming?",
     choices: [
-      "Enclosure of common fields and new crop rotations in eighteenth-century Britain raised food output with fewer workers",
+      "Parliamentary enclosure acts and the four-field rotation with turnips and clover raised English grain yields in the eighteenth century while farms needed fewer hands",
       "The Irish Potato Famine of the 1840s killed about a million people and pushed many more to emigrate",
       "Britain's Corn Laws placed tariffs on imported grain until they were repealed in 1846",
       "Russian peasants remained legally bound to the land as serfs until 1861",
     ],
     why: [
-      "Correct. The passage claims that changes in farming raised output while freeing workers for mines and mills, and enclosure and crop rotation did both.",
+      "Correct. The passage claims that changes in farming raised output while freeing workers for mines and mills; enclosure and the new rotations are specific examples that did both.",
       "The famine is a real event, but it came after British industrialization was well under way and shows a food disaster, not rising output.",
       "The Corn Laws are real, but they concern trade policy on grain, not how farm changes freed workers for industry.",
       "Russian serfdom is a contrast case and does not show what happened in Britain.",

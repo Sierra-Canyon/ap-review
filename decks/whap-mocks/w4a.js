@@ -16,7 +16,7 @@ export const sets = {
     sources: [
       { title: "Source", blocks: [
         { p: "There was no towne where we had any subtile deuise practised against vs, we leauing it vnpunished or not reuenged ... but that within a few dayes after our departure from euerie such towne, the people began to die very fast, and many in short space ... The disease also so strange, that they neither knew what it was, nor how to cure it; the like by the report of the oldest men in the countrey neuer happened before, time out of minde. ... Insomuch that when some of the inhabitantes which were our friends ... had obserued such effects in foure or fiue towns to follow their wicked practises, they were preswaded that it was the worke of our God through our meanes, and that wee by him might kil and slai whom we would without weapons and not come neere them." },
-        { cite: "Thomas Hariot (also spelled Harriot), English scientist who sailed with the Roanoke expedition of 1585 to 1586 sponsored by Sir Walter Raleigh, A Briefe and True Report of the New Found Land of Virginia (first printed London, 1588), section \"Of the nature and manners of the people.\" Text of the 1590 edition printed by Theodor de Bry at Frankfurt, original spelling.", url: "https://gutenberg.org/cache/epub/4247/pg4247-images.html", kind: "primary" },
+        { cite: "Thomas Hariot (also spelled Harriot), English scientist who sailed with the Roanoke expedition of 1585 to 1586 sponsored by Sir Walter Raleigh, A Briefe and True Report of the New Found Land of Virginia (first printed London, 1588), section \"Of the nature and manners of the people.\" Text of the 1590 edition published by Theodor de Bry at Frankfurt, original spelling.", url: "https://gutenberg.org/cache/epub/4247/pg4247-images.html", kind: "primary" },
       ] },
     ],
   },
@@ -134,7 +134,7 @@ export default {
           ],
           answer: 0 },
         { id: "w4a-m05", skill: "u4", type: "mcq", set: "w4a-s2", topic: "4.3", reasoning: "Sourcing and situation",
-          question: "Hariot's description of which towns suffered deaths most likely reflects his",
+          question: "Hariot's explanation of which towns the disease struck most likely reflects his",
           choices: [
             "belief that God favored the English and punished those who acted against them",
             "scientific conclusion that the disease spread through contaminated water",
@@ -198,7 +198,7 @@ export default {
         { id: "w4a-m09", skill: "u4", type: "mcq", set: "w4a-s3", topic: "4.8", reasoning: "Continuity and change",
           question: "Which later policy of Japan's Tokugawa shogunate most directly continued the concern with controlling foreign contact shown in the excerpt?",
           choices: [
-            "Banning Christianity, expelling the Portuguese, and allowing only the Dutch among Europeans to trade, at Nagasaki, in the first half of the seventeenth century",
+            "Banning Christianity, expelling the Portuguese, and allowing only the Dutch among Europeans to trade at Nagasaki",
             "Opening Japanese ports to American and European trade after the arrival of United States warships in the 1850s",
             "Invading Korea in the 1590s in an attempt to conquer the Ming dynasty",
             "Exporting large amounts of Japanese silver that eventually reached China",
@@ -245,9 +245,9 @@ export default {
         { id: "w4a-m12", skill: "u4", type: "mcq", set: "w4a-s4", topic: "4.7", reasoning: "Comparison",
           question: "Compared with the social hierarchy in Spanish America in the same period, the laws in the two sources show that Virginia",
           choices: [
-            "drew a sharper line between free people of European descent and enslaved people of African descent, instead of recognizing many ranked categories of mixed ancestry",
+            "drew a sharp line between free Europeans and enslaved Africans rather than ranking many categories of mixed ancestry",
             "relied mainly on the forced labor of Indigenous people, as the encomienda system did",
-            "gave the Catholic Church the power to decide which people were free",
+            "gave the Catholic Church, rather than a colonial assembly, the power to decide which people were free",
             "placed people born in Europe above people of European descent born in the colonies",
           ],
           why: [
@@ -262,7 +262,7 @@ export default {
         { id: "w4a-m13", skill: "u4", type: "mcq", set: "w4a-s5", topic: "4.6", reasoning: "Contextualization",
           question: "The complaints in the excerpt are best understood in the context of",
           choices: [
-            "conflict between colonists who wanted war and more frontier land and a colonial government that tried to limit war with Native Americans",
+            "conflict between frontier colonists who wanted war with Native Americans and a governor who tried to limit it",
             "a revolt by enslaved Africans against the planters of Virginia",
             "competition between England and Spain for control of the Chesapeake region",
             "the English Civil War between supporters of the king and supporters of Parliament",
@@ -423,7 +423,7 @@ export default {
               "2 points: uses specific and relevant examples, such as the mita at Potosí, sugar plantations in Brazil, and indentured servants in Virginia, to support an argument about the extent of change.",
             ] },
             { name: "Analysis and Reasoning", max: 2, levels: [
-              "0 points: gives no use of historical reasoning to frame the argument.",
+              "0 points: does not use historical reasoning to frame the argument.",
               "1 point: uses continuity and change to frame the argument, explaining what changed and what stayed the same in how labor was organized in the Americas.",
               "2 points: shows a complex understanding, for example by explaining both change and continuity, by explaining why labor systems differed between regions such as the Andes, Brazil, and the Chesapeake, or by connecting changes in American labor to the growth of the Atlantic slave trade in Africa.",
             ] },

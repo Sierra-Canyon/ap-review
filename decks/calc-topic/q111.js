@@ -131,7 +131,7 @@ const items = [
   },
   {
     id: "q111-f1b", type: "frq", skill: "u1", topic: "1.11", calc: false, set: "q111-s2", part: "(b)",
-    prompt: String.raw`Is $h$ continuous at $x = 3$? Justify the answer using the definition of continuity.`,
+    prompt: String.raw`Is $h$ continuous at $x = 3$? Justify your answer using the definition of continuity.`,
     rows: [
       { name: "Conclusion with justification", earns: String.raw`Yes: $h(3) = 5$ is defined, $\lim_{x \to 3} h(x) = 5$ because both one-sided limits are $5$, and $\lim_{x \to 3} h(x) = h(3)$.` },
     ],
@@ -139,7 +139,7 @@ const items = [
   },
   {
     id: "q111-f1c", type: "frq", skill: "u1", topic: "1.11", calc: false, set: "q111-s2", part: "(c)",
-    prompt: String.raw`The function $k$ is equal to $h$ for all $x \neq 3$, and $k(3) = 4$. Is $k$ continuous at $x = 3$? Explain.`,
+    prompt: String.raw`The function $k$ is equal to $h$ for all $x \neq 3$, and $k(3) = 4$. Is $k$ continuous at $x = 3$? Give a reason for your answer.`,
     rows: [
       { name: "Answer with reason", earns: String.raw`No, because $\lim_{x \to 3} k(x) = 5$, the same as the limit of $h$, but $k(3) = 4 \neq 5$.` },
     ],

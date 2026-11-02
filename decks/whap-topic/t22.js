@@ -14,7 +14,7 @@ export const sets = {
     id: "t22-s2", name: "The Mongols and Eurasian exchange", intro: "Use the passage below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Many historians argue that the Mongol Empire, for all the destruction of its conquests, did much to connect the peoples of Afro-Eurasia. By the 1260s, Mongol rulers controlled lands from China to Persia and Russia. They protected the overland routes, set up relay stations where official messengers changed horses, and issued metal tablets of authority, called paizas, that let approved travelers pass safely. Mongol rulers also moved people. They sent artisans, physicians, astronomers, and scholars from one end of their empire to the other, and they employed officials from many backgrounds, including Persians, Uyghurs, and Chinese. The Mongols themselves adopted the Uyghur script to write their own language. Through these networks, Chinese gunpowder weapons and printing became better known in Southwest Asia, and Persian and Arab astronomy and medicine reached China. The same networks later helped carry the plague across Eurasia in the fourteenth century." },
+        { p: "Many historians argue that the Mongol Empire, for all the destruction of its conquests, did much to connect the peoples of Afro-Eurasia. By the 1260s, Mongol rulers controlled lands from China to Persia and Russia. They protected the overland routes, set up relay stations where official messengers changed horses, and issued metal tablets of authority, called paizas, that let approved travelers pass safely. Mongol rulers also moved people. They sent artisans, physicians, astronomers, and scholars across their empire, and they employed officials from many backgrounds, including Persians, Uyghurs, and Chinese. The Mongols themselves adopted the Uyghur script to write their own language. Through these networks, Chinese gunpowder weapons and printing became better known in Southwest Asia, and Persian and Arab astronomy and medicine reached China. The same networks later helped carry the plague across Eurasia in the fourteenth century." },
         { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
       ] },
     ],
@@ -122,7 +122,7 @@ export default {
           ],
           answer: 0 },
         { id: "t22-m06", skill: "u2", type: "mcq", set: "t22-s2", topic: "2.2", reasoning: "Comparison",
-          question: "Which of the following describes a difference between Mongol rule in China under the Yuan dynasty and the Song dynasty that came before it?",
+          question: "Which of the following best describes a difference between Mongol rule in China under the Yuan dynasty and the Song dynasty that came before it?",
           choices: [
             "The Yuan rulers were steppe nomads who relied on officials from many conquered peoples, while the Song relied on Chinese scholar-officials chosen through civil service examinations.",
             "The Yuan rulers chose all officials through Confucian examinations, while the Song gave offices only to hereditary nobles.",

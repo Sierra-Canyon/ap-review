@@ -7,7 +7,7 @@ const g1 = graph({
   fns: [{ f: f1, from: 0, to: 6.5 }],
   dots: [[1, f1(1), "closed"], [2, f1(2), "closed"], [4, f1(4), "closed"], [5.5, f1(5.5), "closed"]],
   labels: [[0.75, f1(1) + 0.45, "A"], [2.1, f1(2) + 0.4, "B"], [3.65, f1(4) - 0.3, "C"], [5.6, f1(5.5) - 0.3, "D"]],
-  alt: "Graph of y = f(x) for x from 0 to 6.5, a wave that rises from the origin to a high point near x = 1.6, falls through about (3.1, 0), where it changes from concave down to concave up, to a low point near x = 4.7, and rises again. Point A is at x = 1, on the rising part before the high point. Point B is at x = 2, on the falling part just after the high point. Point C is at x = 4, on the falling part before the low point. Point D is at x = 5.5, on the rising part after the low point.",
+  alt: "Graph of y = f(x) for x from 0 to 6.5, a wave that rises from the origin to a high point near x = 1.6, falls through about (3.1, 0) to a low point near x = 4.7, and rises again. Point A is at x = 1, on the rising part before the high point. Point B is at x = 2, on the falling part just after the high point. Point C is at x = 4, on the falling part before the low point. Point D is at x = 5.5, on the rising part after the low point.",
 });
 
 // s2: f'(x) = x^2 - 2x on [-1, 3]

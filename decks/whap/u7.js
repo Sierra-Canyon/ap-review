@@ -52,7 +52,7 @@ export const sets = {
     id: "u7-s4", name: "Japanese expansion in the 1930s", intro: "Use the passage below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Japan's turn toward conquest in the 1930s grew out of both economic crisis and older ambitions. Since the late nineteenth century, Japanese leaders had argued that an island nation with few natural resources needed secure access to raw materials and markets on the Asian mainland. The Great Depression sharpened these fears. As world trade shrank and other countries raised tariffs, Japanese exports of silk and textiles fell sharply, and rural families suffered. Army officers and nationalist groups blamed party politicians and claimed that an empire in Manchuria and China would solve the crisis. In 1931, officers of Japan's Kwantung Army staged an explosion near Mukden and used it as an excuse to seize Manchuria without the approval of the cabinet in Tokyo. When the League of Nations condemned the invasion, Japan left the League rather than give up its new territory." },
+        { p: "Japan's turn toward conquest in the 1930s grew out of economic crisis and older ambitions. Since the late nineteenth century, Japanese leaders had argued that an island nation with few natural resources needed secure access to raw materials and markets on the Asian mainland. The Great Depression sharpened these fears. As world trade shrank and other countries raised tariffs, Japanese exports of silk and textiles fell sharply, and rural families suffered. Army officers and nationalist groups blamed party politicians and claimed that an empire in Manchuria and China would solve the crisis. In 1931, officers of Japan's Kwantung Army staged an explosion near Mukden and used it as an excuse to seize Manchuria without the approval of the cabinet in Tokyo. When the League of Nations condemned the invasion, Japan left the League rather than give up its new territory." },
         { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
       ] },
     ],
@@ -191,10 +191,10 @@ export default [
   { id: "u7-m04", skill: "u7", type: "mcq", set: "u7-s1", topic: "7.5", reasoning: "Continuity and Change",
     question: "Which of the following developments most directly challenged the claim that the peoples described in the excerpt were \"not yet able to stand by themselves\"?",
     choices: [
-      "The armed revolts against British rule in Iraq in 1920 and against French rule in Syria in the 1920s",
-      "The Berlin Conference, at which European powers set rules for claiming land in Africa",
-      "The Meiji Restoration, which modernized Japan's government and economy",
-      "The signing of the Atlantic Charter by the United States and Britain",
+      "Armed revolts against British rule in Iraq and against French rule in Syria in the 1920s",
+      "The Berlin Conference of 1884 to 1885, at which European powers set rules for claiming land in Africa",
+      "The Meiji Restoration of 1868, which modernized Japan's government and economy",
+      "The Atlantic Charter of 1941, in which the United States and Britain endorsed self-government",
     ],
     why: [
       "Correct. These uprisings showed that people in the mandates rejected outside rule and wanted to govern themselves.",
@@ -348,9 +348,9 @@ export default [
     question: "Which of the following pieces of evidence would best support the argument of the passage?",
     choices: [
       "Japan set up the state of Manchukuo in 1932 under Japanese control and developed Manchuria's coal, iron, and farmland for its own industry.",
-      "Japan adopted a written constitution in 1889 that created an elected parliament.",
-      "Japan sent delegates to the Paris Peace Conference in 1919.",
-      "The United States occupied Japan after the Second World War.",
+      "Japan adopted a written constitution in 1889 that created an elected parliament with limited powers.",
+      "Japan sent delegates to the Paris Peace Conference in 1919 and received a seat on the League of Nations Council.",
+      "The United States occupied Japan after the Second World War and wrote a new constitution for it.",
     ],
     why: [
       "Correct. Using Manchuria's resources to support Japan's economy shows the link between conquest and the search for raw materials.",
@@ -378,9 +378,9 @@ export default [
     question: "Which of the following later developments most directly continued the policy described in the passage?",
     choices: [
       "Japan's full-scale invasion of China and its move into Southeast Asia to gain oil and rubber",
-      "Japan's alliance with Britain",
-      "Japan's surrender to the Allies in 1945",
-      "Japan's victory over Russia",
+      "Japan's alliance with Britain, signed in 1902 to check Russian expansion in East Asia",
+      "Japan's surrender to the Allies in 1945 after the atomic bombings and the Soviet entry into the war",
+      "Japan's victory over Russia in the war of 1904 to 1905, which gave it a foothold in Manchuria",
     ],
     why: [
       "Correct. Japan widened the war into China in 1937 and then seized European colonies in Southeast Asia for their resources in 1941 and 1942.",
@@ -440,9 +440,9 @@ export default [
     question: "Which of the following best shows a limit on how the third point was applied?",
     choices: [
       "Churchill told Parliament that the point applied mainly to European nations under Nazi rule, not to British colonies such as India.",
-      "Germany and Japan signed an alliance with Italy.",
-      "Japan attacked the United States fleet at Pearl Harbor.",
-      "The Soviet Union and Germany signed a nonaggression pact.",
+      "Germany, Italy, and Japan signed the Tripartite Pact, pledging to aid one another if attacked by a new enemy.",
+      "Japan attacked the United States fleet at Pearl Harbor, bringing the United States into the war.",
+      "The Soviet Union and Germany signed a nonaggression pact that secretly divided Poland between them.",
     ],
     why: [
       "Correct. In September 1941 Churchill said the self-government point did not change British policy toward India and Burma, which angered Indian nationalists.",

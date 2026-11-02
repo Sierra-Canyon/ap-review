@@ -259,9 +259,9 @@ export default {
           question: "Clinton's purpose in the excerpt was most likely to",
           choices: [
             "persuade Americans, including members of Congress, that normal trade with China would serve both American economic interests and the spread of freedom",
-            "warn the Chinese government that the United States would raise tariffs on Chinese goods",
-            "announce a military alliance with China against the Soviet Union",
-            "criticize the World Trade Organization for lowering trade barriers too quickly",
+            "warn the Chinese government that the United States would raise tariffs on Chinese goods unless China opened its markets",
+            "announce a military alliance between the United States and China against the Soviet Union and its allies in Asia",
+            "criticize the World Trade Organization for lowering trade barriers too quickly and putting American workers at risk",
           ],
           why: [
             "Correct. In 2000 Clinton was asking Congress to approve permanent normal trade relations with China, and the excerpt argues that trade would bring both markets for \"our products\" and political change.",
@@ -306,9 +306,9 @@ export default {
           question: "The trend shown in the table most directly contributed to which of the following developments in global culture?",
           choices: [
             "Music, films, and videos from many countries, such as South Korean pop music, reaching worldwide audiences through streaming and social media",
-            "American jazz spreading to Europe for the first time through radio and phonograph records",
-            "The revival of the Olympic Games as an international sporting event",
-            "English losing its place as a common language of international business",
+            "American jazz spreading to Europe for the first time through radio broadcasts and phonograph records sold in city shops",
+            "The revival of the Olympic Games as an international sporting event held every four years in a different host city",
+            "English losing its place as a common language of international business and science to other world languages",
           ],
           why: [
             "Correct. As billions of people went online, video sites and social media let artists outside the United States, such as South Korean pop groups, build global fan bases.",

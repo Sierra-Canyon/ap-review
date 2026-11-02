@@ -97,7 +97,7 @@ const items = [
   },
   {
     id: "q114-f1a", type: "frq", skill: "u1", topic: "1.14", calc: false, set: "q114-s2", part: "(a)",
-    prompt: String.raw`Find the equation of each vertical asymptote of the graph of $g$. Explain the reasoning.`,
+    prompt: String.raw`Find the equation of each vertical asymptote of the graph of $g$. Explain your reasoning.`,
     rows: [
       { name: "Asymptotes with reason", earns: String.raw`$x = 3$ and $x = -2$, because $x^2 - x - 6 = (x - 3)(x + 2)$ is $0$ there while the numerator $2x + 1$ is not $0$ (it equals $7$ and $-3$).` },
     ],
@@ -105,7 +105,7 @@ const items = [
   },
   {
     id: "q114-f1b", type: "frq", skill: "u1", topic: "1.14", calc: false, set: "q114-s2", part: "(b)",
-    prompt: String.raw`Find $\displaystyle \lim_{x \to 3^{-}} g(x)$ and $\displaystyle \lim_{x \to 3^{+}} g(x)$. Explain the reasoning.`,
+    prompt: String.raw`Find $\displaystyle \lim_{x \to 3^{-}} g(x)$ and $\displaystyle \lim_{x \to 3^{+}} g(x)$. Explain your reasoning.`,
     rows: [
       { name: "Left-hand limit", earns: String.raw`$\lim_{x \to 3^{-}} g(x) = -\infty$, because the numerator approaches $7$, $x + 2$ approaches $5$, and $x - 3$ is negative and approaches $0$.` },
       { name: "Right-hand limit", earns: String.raw`$\lim_{x \to 3^{+}} g(x) = \infty$, because $x - 3$ is positive and approaches $0$.` },
@@ -114,7 +114,7 @@ const items = [
   },
   {
     id: "q114-f1c", type: "frq", skill: "u1", topic: "1.14", calc: false, set: "q114-s2", part: "(c)",
-    prompt: String.raw`Find $\displaystyle \lim_{x \to -2^{+}} g(x)$. Explain the reasoning.`,
+    prompt: String.raw`Find $\displaystyle \lim_{x \to -2^{+}} g(x)$. Explain your reasoning.`,
     rows: [
       { name: "Limit with reason", earns: String.raw`$\lim_{x \to -2^{+}} g(x) = \infty$, because the numerator approaches $-3$, $x - 3$ approaches $-5$, and $x + 2$ is positive, so the denominator is negative and approaches $0$.` },
     ],

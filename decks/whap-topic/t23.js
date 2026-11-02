@@ -164,7 +164,7 @@ export default {
           ],
           why: [
             "Correct. The Ming faced Mongol threats on the northern frontier, and officials at court argued that the costly fleets brought little return, so the voyages stopped.",
-            "The Portuguese did not enter the Indian Ocean until 1498, decades after the last voyage.",
+            "The Portuguese did not reach India until 1498, decades after the last voyage.",
             "The Black Death struck in the mid-fourteenth century, long before the voyages began in 1405.",
             "Indian Ocean ports kept trading with Chinese merchants after 1433. The voyages ended because of decisions at the Ming court.",
           ],

@@ -83,9 +83,9 @@ export default {
           question: "The events described in the excerpt took place in which broader historical context?",
           choices: [
             "Chinggis Khan's campaigns against the Khwarazmian Empire in Central Asia and Persia, c. 1219 to 1221",
-            "Hulagu's conquest of Baghdad, which ended the Abbasid Caliphate",
-            "Timur's campaigns from Samarkand against Persia, India, and Syria",
-            "The Seljuk Turks' conquest of Persia and their arrival in Baghdad",
+            "Hulagu's conquest of Baghdad in 1258, which ended the Abbasid Caliphate",
+            "Timur's campaigns from Samarkand against Persia, India, and Syria, c. 1380 to 1405",
+            "The Seljuk Turks' conquest of Persia and their arrival in Baghdad in 1055",
           ],
           why: [
             "The excerpt names Samarqand, Bukhara, and the defeat of Muhammad Khwarazmshah, which places it in the Mongol war on the Khwarazmian Empire that began after a Khwarazmian governor killed a caravan of merchants sent by Chinggis Khan.",
@@ -248,7 +248,7 @@ export default {
           ], answer: 0 },
 
         { id: "w2b-m12", skill: "u2", type: "mcq", set: "w2b-s4", topic: "2.4", reasoning: "Sourcing and situation",
-          question: "Cadamosto's account, written for European readers in the 1450s, best reflects which development of that time?",
+          question: "Cadamosto's account of his voyages in the 1450s, written for European readers, best reflects which development of that time?",
           choices: [
             "Portuguese efforts to trade with West Africa by sea and reach its gold without going through North African merchants",
             "The Mongol conquest of North Africa and the Saharan trade routes",
@@ -336,7 +336,7 @@ export default {
           ],
           no: [
             "\"Other people traded too.\" It does not describe any specific evidence.",
-            "\"The Portuguese controlled the Indian Ocean.\" Portuguese ships did not reach the Indian Ocean until 1498, after this period.",
+            "\"The Portuguese controlled the Indian Ocean.\" Portuguese ships did not reach India until 1498, after this period.",
           ],
           example: "The passage gives too little credit to the Mongols. In the thirteenth century, Mongol khans who were not Muslim protected merchants and built relay stations across Eurasia, which let travelers such as Marco Polo cross from Europe to China.",
           notExample: "The passage is wrong because Islam is only one religion." },

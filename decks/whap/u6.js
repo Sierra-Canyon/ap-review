@@ -54,17 +54,17 @@ export const sets = {
     id: "u6-s6", name: "Immigration to the United States by decade", intro: "Use the table below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Persons admitted to the United States as permanent residents, by country of origin and decade" },
+        { p: "Persons admitted to the United States as permanent residents, by country of origin and decade. No data means the source reports no figure for that decade." },
         { table: {
           head: ["Country of origin", "1850 to 1859", "1860 to 1869", "1870 to 1879", "1880 to 1889", "1890 to 1899", "1900 to 1909"],
           rows: [
             ["Ireland", "1,029,486", "427,419", "422,264", "674,061", "405,710", "344,940"],
             ["Germany", "976,072", "723,734", "751,769", "1,445,181", "579,072", "328,722"],
             ["Italy", "8,643", "9,853", "46,296", "267,660", "603,761", "1,930,475"],
-            ["Austria-Hungary", "0", "3,375", "60,127", "314,787", "534,059", "2,001,376"],
+            ["Austria-Hungary", "No data", "3,375", "60,127", "314,787", "534,059", "2,001,376"],
             ["Russia", "423", "1,667", "34,977", "173,081", "413,382", "1,501,301"],
             ["China", "35,933", "54,028", "133,139", "65,797", "15,268", "19,884"],
-            ["Japan", "0", "138", "193", "1,583", "13,998", "139,712"],
+            ["Japan", "No data", "138", "193", "1,583", "13,998", "139,712"],
             ["All countries", "2,814,554", "2,081,261", "2,742,137", "5,248,568", "3,694,294", "8,202,388"],
           ],
         } },
@@ -170,7 +170,7 @@ export default [
   { id: "u6-m03", skill: "u6", type: "mcq", set: "u6-s1", topic: "6.1", reasoning: "Comparison",
     question: "The ideas in the poem were most strongly reinforced in the late nineteenth century by which of the following?",
     choices: [
-      "Social Darwinism, which misapplied ideas about natural selection to claim that some races and nations were superior to others",
+      "Social Darwinism, which claimed that some races and nations were naturally fitter to rule than others",
       "Marxism, which argued that class struggle would lead workers to overthrow capitalism",
       "Liberalism, which stressed individual rights and limits on government power",
       "Romanticism, which celebrated emotion, nature, and national folk traditions",
@@ -338,7 +338,7 @@ export default [
     why: [
       "Correct. Under colonial rule, India's economy was pushed toward exporting cash crops and raw materials to Britain while buying British manufactured goods.",
       "Meiji Japan did industrialize under state direction, but the excerpt describes colonial India producing raw goods, not building heavy industry.",
-      "Joint-stock companies such as the British East India Company date from the seventeenth century, and they do not explain the shift toward cash crops described here.",
+      "Joint-stock companies such as the British East India Company were founded around 1600, and they do not explain the shift toward cash crops described here.",
       "American silver did fund European trade with Asia, but that pattern belongs mainly to the sixteenth to eighteenth centuries.",
     ], answer: 0 },
   { id: "u6-m15", skill: "u6", type: "mcq", set: "u6-s4", topic: "6.5", reasoning: "Comparison",

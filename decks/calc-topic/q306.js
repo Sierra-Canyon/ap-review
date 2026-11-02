@@ -2,7 +2,7 @@ import { graph } from "../../plot.js";
 export const sets = {
   "q306-s1": { name: "The graph of f'", label: "Graph", intro: String.raw`The graph of $f'$, the derivative of the function $f$, is shown below. It is made of three line segments.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-4, 6], y: [-4, 5], xname: "x", yname: "y", segments: [[-3, 4, -1, 0], [-1, 0, 2, 3], [2, 3, 5, -3]], dots: [[-3, 4, "closed"], [-1, 0, "closed"], [2, 3, "closed"], [5, -3, "closed"]], labels: [[0.3, 2.2, "f'"]],
-      alt: "Graph of f prime made of three line segments: from (-3, 4) to (-1, 0), from (-1, 0) to (2, 3), and from (2, 3) to (5, -3). The slopes of the segments are -2, 1, and -2. The point (4, -1) is on the third segment." }) }] }] },
+      alt: "Graph of f prime made of three line segments: from (-3, 4) to (-1, 0), from (-1, 0) to (2, 3), and from (2, 3) to (5, -3). The point (4, -1) is on the third segment." }) }] }] },
   "q306-s2": { name: "Derivatives of a product", label: "Free response", intro: String.raw`Let $f$ be the function defined by $f(x) = x^2e^{-x}$ for all real numbers $x$.`,
     sources: [{ title: "", blocks: [{ p: String.raw`It can be shown that $f'(x) = \left(2x - x^2\right)e^{-x}$.` }] }] },
 };

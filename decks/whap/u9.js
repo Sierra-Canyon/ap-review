@@ -478,9 +478,9 @@ export default [
     question: "Which of the following later developments most directly continued the goals stated in the excerpt?",
     choices: [
       "The adoption by the UN General Assembly in 2015 of the Sustainable Development Goals, which set targets for ending poverty and reducing inequality by 2030",
-      "The formation of the North Atlantic Treaty Organization as a defensive alliance",
-      "The vote by the United Kingdom in 2016 to leave the European Union",
-      "The creation of the International Monetary Fund at the Bretton Woods conference",
+      "The formation of the North Atlantic Treaty Organization in 1949 as a military alliance against the Soviet Union",
+      "The vote by the United Kingdom in 2016 to leave the European Union and take back control of its borders and laws",
+      "The creation of the International Monetary Fund at the Bretton Woods conference in 1944 to stabilize the world's currencies",
     ],
     why: [
       "Correct. The Sustainable Development Goals replaced the Millennium Development Goals and continued the effort to share the gains of development more fairly.",
@@ -531,7 +531,7 @@ export default [
     ],
     no: [
       "\"Technology made things faster.\" This does not name a technology or describe how it spread culture.",
-      "\"The steam engine spread culture.\" The steam engine was a nineteenth-century technology and the response does not connect it to popular culture after 1900.",
+      "\"The steam engine spread culture.\" The steam engine was developed long before 1900, and the response does not connect it to popular culture after 1900.",
       "\"Radio.\" Naming a technology without describing how it spread culture does not earn the point.",
     ],
     example: "After the 1990s, the internet and video-sharing sites allowed fans anywhere in the world to watch South Korean music videos as soon as they were posted, which helped K-pop gain audiences far outside Korea.",
@@ -613,7 +613,7 @@ export default [
     no: [
       "\"The League of Nations.\" It was created after the First World War, not after 1945.",
       "\"NATO.\" It is a military alliance, not mainly an economic organization.",
-      "\"The United Nations.\" Its main purpose is keeping peace and security, not economic cooperation.",
+      "\"The United Nations.\" It was founded in 1945, not after it, and its main purpose was keeping peace and security rather than economic cooperation.",
     ],
     example: "The World Trade Organization, created in 1995 to lower trade barriers and settle trade disputes among its members.",
     notExample: "The League of Nations." },

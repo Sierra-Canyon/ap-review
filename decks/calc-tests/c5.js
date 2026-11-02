@@ -54,7 +54,7 @@ const items = [
     why: [
       String.raw`By the chain rule, $f'(x) = \dfrac{2}{3}\left(x^2 - 4\right)^{-1/3}(2x) = \dfrac{4x}{3\sqrt[3]{x^2 - 4}}$. $f'(0) = 0$, and $f'(\pm 2)$ does not exist while $f(\pm 2) = 0$ is defined, so all three are critical points.`,
       String.raw`This finds only where $f'(x) = 0$. Points of the domain where $f'$ does not exist, $x = \pm 2$, are also critical points.`,
-      String.raw`This finds only where $f'$ does not exist. It comes from leaving out the chain rule factor $2x$, which gives the zero of $f'$ at $x = 0$.`,
+      String.raw`This finds only where $f'$ does not exist. Leaving out the chain rule factor $2x$ loses the zero of $f'$ at $x = 0$.`,
       String.raw`This solves $x^2 - 4 = 0$ as $x = \pm 4$. The zeros of $x^2 - 4$ are $x = \pm 2$.`,
     ],
     answer: 0 },

@@ -111,7 +111,7 @@ export default {
           why: [
             "Correct. Muslim merchants carried Islam south across the Sahara, and rulers who became Muslims gained trading partners, literate advisers, and ties to the wider Muslim world.",
             "The Mongols never conquered any part of West Africa, and some Mongol rulers adopted Islam only after their conquests in Asia.",
-            "The Portuguese were Christians and did not reach West Africa until the fifteenth century, after these rulers had adopted Islam.",
+            "The Portuguese were Christians, and their ships did not reach the West African coast until the 1440s, long after Mali's rulers had adopted Islam.",
             "The Ottomans did not rule or protect West African cities in this period; their empire was centered in Anatolia and southeastern Europe.",
           ],
           answer: 0 },
@@ -133,7 +133,7 @@ export default {
         { id: "t15-m06", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Comparison",
           question: "According to the passage, the Hausa states differed from the Mali Empire in that the Hausa states",
           choices: [
-            "remained separate cities that were never united under a single ruler",
+            "remained separate cities rather than uniting under a single ruler",
             "rejected Islam and kept only their older religions",
             "took no part in the trade that crossed the Sahara",
             "were ruled by kings who claimed descent from King Solomon",
@@ -159,7 +159,7 @@ export default {
             "Correct. The table lists the capital city of a major state at Great Zimbabwe, a palace and mosque at Kilwa, rock-cut churches at Lalibela, and mosques at Timbuktu, in four different regions.",
             "Lalibela's churches are Christian, and Great Zimbabwe was not a Muslim state, so the table does not support this claim.",
             "Chinese and Persian goods were found at Great Zimbabwe, an inland city, which contradicts this claim.",
-            "Portuguese ships reached East Africa in 1498, and almost every date in the table is earlier than that.",
+            "Portuguese ships reached East Africa in 1498, and every date in the table is earlier than that.",
           ],
           answer: 0 },
         { id: "t15-m08", skill: "u1", type: "mcq", set: "t15-s3", topic: "1.5", reasoning: "Causation",
@@ -172,9 +172,9 @@ export default {
           ],
           why: [
             "Correct. Gold from the plateau passed through coastal towns such as Kilwa, which traded it for porcelain and other goods brought by Indian Ocean merchants, and some of those goods went back inland.",
-            "Zheng He's fleets visited East African ports between 1417 and 1433 but did not travel inland, and Chinese goods were reaching the region long before his voyages.",
+            "Zheng He's fleets visited East African ports in the early fifteenth century but did not travel inland, and Chinese goods were reaching the region long before his voyages.",
             "Trans-Saharan caravans connected North Africa with West Africa, not with the East African coast or the southern plateau.",
-            "The Portuguese did not reach the Indian Ocean until 1498, decades after Great Zimbabwe was abandoned.",
+            "The Portuguese did not reach the East African coast until 1498, decades after Great Zimbabwe was abandoned.",
           ],
           answer: 0 },
 

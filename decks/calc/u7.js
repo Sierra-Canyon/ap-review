@@ -134,10 +134,10 @@ export default [
   { id: "c7r-m11", type: "mcq", skill: "u7", topic: "7.3", calc: false,
     question: String.raw`Which of the following describes the slope field for the differential equation $\dfrac{dy}{dx} = 1 + y^2$?`,
     choices: [
-      "Every segment has positive slope, and segments in the same row (the same value of y) are parallel.",
-      "Every segment has positive slope, and segments in the same column (the same value of x) are parallel.",
-      "The segments along the x-axis are horizontal.",
-      "The segments below the x-axis have negative slope.",
+      "Every segment has positive slope, and segments in the same row (the same value of $y$) are parallel.",
+      "Every segment has positive slope, and segments in the same column (the same value of $x$) are parallel.",
+      "The segments along the $x$-axis are horizontal.",
+      "The segments below the $x$-axis have negative slope.",
     ],
     why: [
       String.raw`The slope $1 + y^2$ depends only on $y$, so points with the same $y$ have the same slope. Since $y^2 \ge 0$, the slope is at least $1$ everywhere.`,

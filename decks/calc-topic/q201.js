@@ -4,7 +4,7 @@ export const sets = {
   "q201-s1": {
     name: "Water in a tank",
     label: "Table",
-    intro: String.raw`Water is pumped into a tank. The volume of water in the tank, $V(t)$ gallons, is recorded at selected times $t$ minutes.`,
+    intro: String.raw`Water is pumped into a tank. The volume of water in the tank at time $t$ minutes is $V(t)$ gallons. Selected values of $V(t)$ are given in the table.`,
     sources: [{ title: "", blocks: [{ table: { head: ["$t$ (minutes)", "$0$", "$2$", "$5$", "$8$", "$10$"], rows: [["$V(t)$ (gallons)", "$40$", "$52$", "$70$", "$94$", "$101$"]] } }] }],
   },
   "q201-s2": {

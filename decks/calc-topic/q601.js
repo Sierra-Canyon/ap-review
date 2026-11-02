@@ -7,7 +7,7 @@ export const sets = {
   "q601-s2": { name: "Water in a tank", label: "Graph", intro: String.raw`The rate at which the amount of water in a tank changes is $R(t)$ liters per minute, where $t$ is measured in minutes. The graph of $R$ for $0 \le t \le 6$ is shown below. At time $t = 0$, the tank holds 20 liters of water.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 7], y: [-5, 7], xname: "t", yname: "R(t)", segments: [[0, 0, 2, 6], [2, 6, 4, 0], [4, 0, 5, -4], [5, -4, 6, 0]],
       alt: "Graph of R(t) for 0 to 6 minutes: a line from (0, 0) up to (2, 6), a line down to (4, 0), a line down to (5, negative 4), and a line back up to (6, 0)." }) }] }] },
-  "q601-s9": { name: "Unloading grain", label: "Free response", intro: String.raw`Grain is unloaded from a silo into a truck at a rate of $r(t)$ kilograms per minute, where $t$ is measured in minutes. The rate is 30 kilograms per minute for $0 \le t \le 10$. Then the rate decreases at a constant rate until it reaches 0 at $t = 30$, as shown in the graph below.`,
+  "q601-s9": { name: "Unloading grain", label: "Free response", intro: String.raw`Grain is unloaded from a silo into a truck at a rate of $r(t)$ kilograms per minute, where $t$ is measured in minutes. The rate is 30 kilograms per minute for $0 \le t \le 10$. Then $r(t)$ decreases at a constant rate until it reaches 0 at $t = 30$, as shown in the graph below.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 32], y: [0, 35], step: { x: 5, y: 5 }, xname: "t", yname: "r(t)", segments: [[0, 30, 10, 30], [10, 30, 30, 0]],
       alt: "Graph of r(t) for 0 to 30 minutes: a horizontal segment at height 30 from t = 0 to t = 10, then a line from (10, 30) down to (30, 0)." }) }] }] },
 };

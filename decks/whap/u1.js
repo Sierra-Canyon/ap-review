@@ -120,8 +120,8 @@ export default [
     choices: [
       "they come from a document written to impress a conqueror, so its authors had a reason to make the city seem as large and valuable as possible",
       "Polo was a Muslim scholar who wished to show that Chinese cities were weaker than Islamic ones",
-      "the Song government did not keep written records of its people or its economy",
-      "the document was written centuries after the Song dynasty ended",
+      "the Song government did not keep written records of its people or its economy, so the figures could only be guesses",
+      "the document was written centuries after the Song dynasty ended, by writers who had never seen the city",
     ],
     why: [
       "Correct. The first paragraph states the purpose of the document: to make the Great Kaan aware of the city's grandeur so he would save it. That purpose gave the writers a reason to exaggerate.",
@@ -181,15 +181,15 @@ export default [
     question: "Which of the following best explains why Ibn Battuta, a traveler from Morocco, was able to visit and serve rulers across so much of Afro-Eurasia?",
     choices: [
       "He was trained in Islamic law, and shared religion, law, and the Arabic language of scholarship made such scholars welcome across Dar al-Islam.",
-      "He traveled as an official ambassador of the Byzantine emperor.",
-      "Every state he visited used the same coins and the same written language for daily life.",
-      "He was a Mongol nobleman who could pass freely through the lands of the khans.",
+      "He traveled as an official ambassador of the Byzantine emperor, who paid for his journeys to the courts of the East.",
+      "Every state he visited used the same coins and the same written language for daily life, so he needed no interpreters.",
+      "He was a Mongol nobleman, and his family ties let him pass freely through the lands of the khans and their allies.",
     ],
     why: [
       "Correct. Ibn Battuta was a legal scholar who worked as a judge in places such as Delhi and the Maldives. Muslim rulers valued scholars trained in Islamic law, and Arabic was the language of religion and learning across Dar al-Islam.",
       "He did travel with Uzbeg Khan's Byzantine wife to Constantinople, but he was not a Byzantine official.",
       "States in this period minted their own coins, and people spoke and wrote many languages, such as Turkish, Persian, and Arabic.",
-      "Ibn Battuta was a Moroccan Arab, not a Mongol, though he did travel through Mongol lands.",
+      "Ibn Battuta was a Muslim scholar from Morocco, not a Mongol, though he did travel through Mongol lands.",
     ],
     answer: 0 },
   { id: "u1-m08", skill: "u1", type: "mcq", set: "u1-s2", topic: "1.7", reasoning: "Comparison",
@@ -327,7 +327,7 @@ export default [
     why: [
       "Correct. The Mexica appointed officials to judge disputes and collect tribute, and the Inca used a large body of officials to count people, collect labor, and run storehouses.",
       "Tenochtitlan was built on an island in Lake Texcoco, but the Inca capital, Cusco, was a mountain city.",
-      "Quipu were an Inca record keeping tool. The Mexica used painted books called codices.",
+      "Quipu were an Inca record-keeping tool. The Mexica used painted books called codices.",
       "The mit'a was an Inca labor system. The Mexica relied mainly on tribute in goods.",
     ],
     answer: 0 },
@@ -381,7 +381,7 @@ export default [
   { id: "u1-m20", skill: "u1", type: "mcq", set: "u1-s5", topic: "1.5", reasoning: "Continuity and Change",
     question: "Which of the following later developments most clearly continued the pattern of West African state building described in the passage?",
     choices: [
-      "The rise of the Songhai Empire, centered on Gao and Timbuktu, which grew rich from trans-Saharan trade in the fifteenth and sixteenth centuries",
+      "The rise of the Songhai Empire, which grew rich from trans-Saharan trade in the fifteenth and sixteenth centuries",
       "The Portuguese building of a trading fort at Elmina on the Gold Coast in 1482",
       "The growth of Swahili city-states such as Kilwa on the Indian Ocean coast",
       "The expansion of the Zulu kingdom in southern Africa in the nineteenth century",
@@ -425,7 +425,7 @@ export default [
       "This is the idea of the divine right of kings, which the bull rejects by placing kings under the pope.",
     ],
     answer: 0 },
-  { id: "u1-m23", skill: "u1", type: "mcq", set: "u1-s6", topic: "1.6", reasoning: "Comparison",
+  { id: "u1-m23", skill: "u1", type: "mcq", set: "u1-s6", topic: "1.6", reasoning: "Contextualization",
     question: "The excerpt best illustrates which feature of western Europe in the period c. 1200 to c. 1450?",
     choices: [
       "The Roman Catholic Church was a powerful institution whose leaders competed with monarchs for authority in a politically divided Europe.",

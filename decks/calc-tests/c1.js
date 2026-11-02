@@ -2,8 +2,8 @@
 import { graph } from "../../plot.js";
 
 export const sets = {
-  "c1t-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the function $f$ on the interval $[-3, 5]$ consists of three line segments and is shown below.`,
-    sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 5], y: [-2, 4], xname: "x", yname: "y",
+  "c1t-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the function $f$ on the closed interval $[-3, 5]$ consists of three line segments and a single point, and is shown below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-3.5, 5.5], y: [-2, 4], xname: "x", yname: "y",
       segments: [[-3, -1, 0, 2], [0, 2, 2, 0], [2, 3, 5, 3]],
       dots: [[-3, -1, "closed"], [0, 2, "open"], [0, -1, "closed"], [2, 0, "closed"], [2, 3, "open"], [5, 3, "closed"]],
       alt: "Graph of f on [-3, 5]. A line rises from the filled point (-3, -1) to an open circle at (0, 2). A separate filled point is at (0, -1). From the open circle at (0, 2) a line falls to the filled point (2, 0). A horizontal segment at height 3 runs from an open circle at (2, 3) to the filled point (5, 3)." }) }] }] },
@@ -106,7 +106,7 @@ const items = [
   // Section I, Part B: graphing calculator
   { id: "c1t-m11", type: "mcq", skill: "u1", topic: "1.1", calc: true,
     stem: String.raw`The amount of a medication in a patient's bloodstream is modeled by $A(t) = 250e^{-0.12t}$ milligrams, where $t$ is measured in hours.`,
-    question: String.raw`Which of the following is the average rate of change of $A$ over the interval $5 \le t \le 5.001$, an estimate of the rate at which the amount is changing at the instant $t = 5$, in milligrams per hour?`,
+    question: String.raw`The average rate of change of $A$ over the interval $5 \le t \le 5.001$ is used to estimate the rate at which the amount is changing at the instant $t = 5$. Which of the following is this estimate, in milligrams per hour?`,
     choices: ["$-16.463$", "$-22.559$", "$137.203$", "$16.463$"],
     why: [String.raw`$\dfrac{A(5.001) - A(5)}{0.001} \approx -16.463$. The amount is decreasing at about $16.463$ milligrams per hour at $t = 5$.`,
       String.raw`$-22.559$ is the average rate of change over $[0, 5]$, $\dfrac{A(5) - A(0)}{5}$. That interval is too wide to estimate the rate at $t = 5$.`,
@@ -132,7 +132,7 @@ const items = [
       String.raw`$1.999$ comes from solving with the calculator in degree mode. Calculus uses radian measure.`],
     answer: 0 },
   { id: "c1t-m14", type: "mcq", skill: "u1", topic: "1.13", calc: true,
-    stem: String.raw`$f(x) = \begin{cases} ke^{x} & \text{for } x < 1 \\ x^2 + 4 & \text{for } x \ge 1 \end{cases}$, where $k$ is a constant.`,
+    stem: String.raw`Let $f$ be the function defined by $f(x) = \begin{cases} ke^{x} & \text{for } x < 1 \\ x^2 + 4 & \text{for } x \ge 1 \end{cases}$, where $k$ is a constant.`,
     question: "For what value of $k$ is $f$ continuous at $x = 1$?",
     choices: ["$1.839$", "$13.591$", "$1.472$", "$1.609$"],
     why: [String.raw`$\displaystyle \lim_{x \to 1^-} f(x) = ke$ and $\displaystyle \lim_{x \to 1^+} f(x) = f(1) = 1 + 4 = 5$. Continuity requires $ke = 5$, so $k = \dfrac{5}{e} \approx 1.839$.`,

@@ -161,7 +161,7 @@ export default {
         { id: "w7a-m05", skill: "u7", type: "mcq", set: "w7a-s2", topic: "7.1", reasoning: "Causation",
           question: "German leaders most likely expected Mexico to consider the proposal in the excerpt because, at that time, Mexico was",
           choices: [
-            "emerging from a revolution that had overthrown the dictator Porfirio Diaz and had led to clashes with United States troops",
+            "in the midst of a revolution that had overthrown the dictator Porfirio Diaz and had led to clashes with United States troops",
             "ruled by an emperor whom French troops had placed on the throne",
             "a member of the Axis alliance with Germany and Japan",
             "a colony fighting for its independence from Spain",
@@ -271,9 +271,9 @@ export default {
           question: "Economic crises like the one described in the excerpt contributed to the outbreak of war in East Asia most directly by",
           choices: [
             "strengthening Japanese military leaders who argued that conquering Manchuria and China would secure raw materials and markets",
-            "persuading the Chinese government to invade Japan to seize its factories",
-            "leading the United States to take control of the Philippines",
-            "causing the League of Nations to place Japan under a mandate",
+            "persuading the Chinese Nationalist government to invade Japan in order to seize its factories and ports",
+            "leading the United States to seize the Philippines from Spain as a source of cheap raw materials",
+            "causing the League of Nations to place Japan under a mandate administered by Britain and France",
           ],
           why: [
             "Correct. The Depression hurt Japanese exports such as silk, and army officers seized Manchuria in 1931; full-scale war with China followed in 1937.",
@@ -318,9 +318,9 @@ export default {
           question: "The approach to the defeated enemy described in the first paragraph differed from the peace settlement after the First World War in that the Allies in 1945",
           choices: [
             "held individual leaders legally responsible before an international court, while the 1919 settlement placed the main responsibility on Germany as a state",
-            "refused to occupy any part of the defeated country",
-            "allowed Germany to keep the territory it had conquered during the war",
-            "negotiated the terms of peace as equals with the German government",
+            "refused to occupy any part of the defeated country and left its existing government in charge",
+            "allowed Germany to keep the territory it had conquered during the war in exchange for reparations",
+            "negotiated the terms of peace as equals with a new German government chosen by the German people",
           ],
           why: [
             "Correct. The Treaty of Versailles blamed Germany and its allies and demanded reparations, and the planned trials of German leaders after 1919 mostly did not happen; at Nuremberg, leading Nazis were tried for crimes against peace, war crimes, and crimes against humanity.",

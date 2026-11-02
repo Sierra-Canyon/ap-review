@@ -69,7 +69,7 @@ export default {
         { id: "w5a-m01", skill: "u5", type: "mcq", set: "w5a-s1", topic: "5.1", reasoning: "Causation",
           question: "Which of the following best explains the historical context in which Rousseau wrote the excerpt?",
           choices: [
-            "Enlightenment thinkers were applying reason to questions about government and society, as scientists of the Scientific Revolution had done for the natural world.",
+            "Enlightenment thinkers were applying reason to questions about government, as Scientific Revolution thinkers had to the natural world.",
             "Protestant reformers were challenging the authority of the pope over Christian belief and practice.",
             "Socialist writers were criticizing the factory system and calling for workers to control production.",
             "European monarchs were restoring their power after the defeat of Napoleon at the Congress of Vienna.",
@@ -116,9 +116,9 @@ export default {
         { id: "w5a-m04", skill: "u5", type: "mcq", set: "w5a-s2", topic: "5.2", reasoning: "Causation",
           question: "The excerpt is best understood in the context of which of the following?",
           choices: [
-            "The revolutions of 1848, in which many European peoples rose against conservative monarchies and multiethnic empires such as the Austrian Empire",
+            "The revolutions of 1848, in which many European peoples rose against conservative monarchies and multiethnic empires",
             "The Congress of Vienna's decision to draw Europe's borders around national groups",
-            "The completion of the unification of Italy and Germany",
+            "The completion of the unification of Italy and Germany under Piedmont and Prussia",
             "The growth of socialist parties that called for workers to take control of factories",
           ],
           why: [
@@ -146,7 +146,7 @@ export default {
         { id: "w5a-m06", skill: "u5", type: "mcq", set: "w5a-s2", topic: "5.2", reasoning: "Comparison",
           question: "The unification of Germany in 1871 differed from the kind of national movement Mazzini praises in the excerpt mainly because German unification",
           choices: [
-            "was achieved through wars directed by the Prussian government under Otto von Bismarck rather than through a rising of the people",
+            "was achieved through wars directed by Prussia's government under Bismarck rather than through a popular rising",
             "brought German-speaking Austria into the new German state",
             "created a republic in which all adult men and women could vote",
             "was opposed by most German nationalists, who wanted to keep many separate states",
@@ -225,7 +225,7 @@ export default {
         { id: "w5a-m11", skill: "u5", type: "mcq", set: "w5a-s4", topic: "5.6", reasoning: "Comparison",
           question: "The argument in the excerpt is most similar to the reasoning behind which of the following?",
           choices: [
-            "The Meiji government's funding of railways and model factories so that Japan could compete with Western industrial powers",
+            "The Meiji government's funding of railways and model factories so Japan could compete with Western industry",
             "The Qing government's restriction of European merchants to the port of Canton",
             "The French revolutionaries' abolition of craft guilds, which removed limits on who could make and sell goods",
             "The emancipation of the serfs in the Russian Empire in 1861",

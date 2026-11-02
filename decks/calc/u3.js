@@ -18,7 +18,7 @@ export const sets = {
       ["$f'(x)$", "$2$", "$3$", "$4$", "$1$"],
     ] } }] }] },
   "c3r-s3": { name: "The graph of f", label: "Graph",
-    intro: String.raw`The graph of the piecewise linear function $f$ on the interval $[-2, 5]$ is shown below. Let $g(x) = x^2 - 1$.`,
+    intro: String.raw`The graph of the piecewise linear function $f$ on the closed interval $[-2, 5]$ is shown below. Let $g(x) = x^2 - 1$.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 6], y: [-3, 5], xname: "x", yname: "y",
       segments: [[-2, 4, 1, -2], [1, -2, 3, 2], [3, 2, 5, 3]],
       dots: [[-2, 4, "closed"], [1, -2, "closed"], [3, 2, "closed"], [5, 3, "closed"]],

@@ -1,7 +1,7 @@
 export const sets = {
   "c4t-s1": { name: "A patch of algae", label: "Free response", intro: String.raw`The radius of a circular patch of algae on a pond is modeled by $r(t) = 6 - 5e^{-0.2t}$, where $r(t)$ is measured in meters and $t$ is measured in days, $0 \le t \le 12$. The area of the patch is $A(t) = \pi\left(r(t)\right)^2$ square meters.`,
     sources: [{ title: "", blocks: [{ p: String.raw`A graphing calculator is allowed. Give decimal answers to three decimal places.` }] }] },
-  "c4t-s2": { name: "A robot on a track", label: "Free response", intro: String.raw`A robot moves along a straight track. Its position at time $t$ seconds, $0 \le t \le 3$, is $x(t) = \left(t^2 - 5t + 7\right)e^{t}$ meters to the right of a fixed marker. Its velocity is $v(t)$ and its acceleration is $a(t)$.`,
+  "c4t-s2": { name: "A robot on a track", label: "Free response", intro: String.raw`A robot moves along a straight track. Its position at time $t$ seconds, $0 \le t \le 4$, is $x(t) = \left(t^2 - 5t + 7\right)e^{t}$ meters to the right of a fixed marker. Its velocity is $v(t)$ and its acceleration is $a(t)$.`,
     sources: [{ title: "", blocks: [{ p: String.raw`Answer each part without a calculator. Show the work that leads to each answer.` }] }] },
 };
 

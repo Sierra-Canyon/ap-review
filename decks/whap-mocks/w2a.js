@@ -116,7 +116,7 @@ export default {
     choices: [
       "the Mongol conquest of the Khwarazmian Empire, during which Chinggis Khan's armies captured Samarkand in 1220",
       "the spread of the bubonic plague from Central Asia along caravan routes",
-      "the campaigns of Timur, who later made Samarkand the capital of his empire",
+      "the campaigns of Timur, who made Samarkand the capital of his empire after 1370",
       "the drying up of the rivers that supplied the city's canals",
     ],
     why: [
@@ -214,7 +214,7 @@ export default {
     why: [
       "The plague moved west along caravan routes and reached the Black Sea by the 1340s; ships then carried it to ports such as Alexandria, and it spread from there to Cairo and Syria.",
       "The Columbian Exchange began after 1492.",
-      "The last crusader stronghold in Syria fell in 1291, decades before the plague arrived.",
+      "The last crusader stronghold on the coast, Acre, fell in 1291, decades before the plague arrived.",
       "Zheng He's Ming fleets sailed from 1405 to 1433, more than fifty years after the plague reached Damascus.",
     ], answer: 0 },
 
@@ -252,10 +252,10 @@ export default {
   { id: "w2a-m13", skill: "u2", type: "mcq", set: "w2a-s5", topic: "2.3", reasoning: "Continuity and Change",
     question: "Which of the following best describes a change in Chinese policy toward the Indian Ocean world in the early fifteenth century, compared with the expedition described in the excerpt?",
     choices: [
-      "Ming emperors sent large fleets mainly to display Chinese power and collect tribute rather than to conquer territory, and then ended the voyages after 1433.",
+      "Ming emperors sent large fleets to display Chinese power and collect tribute rather than to conquer, and then ended the voyages after 1433.",
       "Chinese rulers stopped all trade with Southeast Asia as soon as the Yuan dynasty fell in 1368.",
-      "The Ming dynasty conquered Java and ruled it as a Chinese province.",
-      "Chinese emperors gave European merchants control of the ports of southern China.",
+      "The Ming dynasty conquered Java in the early fifteenth century and ruled it as a Chinese province.",
+      "Chinese emperors gave European merchants control of the ports of southern China after 1400.",
     ],
     why: [
       "Unlike Khubilai Khan's army sent to \"subdue Java,\" Zheng He's voyages from 1405 to 1433 used a huge fleet mainly to show Ming power and bring rulers into the tribute system, and the court then stopped the voyages.",
@@ -283,9 +283,9 @@ export default {
     question: "The order to the governor of Fukien to send out a thousand ships best reflects which feature of China in this period?",
     choices: [
       "The coastal provinces of southern China had large shipbuilding industries and busy ports, such as Quanzhou, that were linked to Indian Ocean trade.",
-      "Chinese emperors had banned ocean voyages and broken up the navy.",
-      "Most Chinese trade with Southeast Asia moved over land along the Silk Roads.",
-      "European merchants controlled the main ports of the Chinese coast.",
+      "Chinese emperors had banned ocean voyages and broken up the navy after the fall of the Song dynasty.",
+      "Most Chinese trade with Southeast Asia moved over land along the Silk Roads through Central Asia.",
+      "European merchants had taken control of the main ports of the Chinese coast under the Yuan.",
     ],
     why: [
       "Fukien (Fujian) was home to Quanzhou, one of the largest ports in the world under the Song and Yuan, and its shipyards and sailors made it possible to gather a fleet this large.",

@@ -167,7 +167,7 @@ export const sets = {
         { p: "Whereas naval units of the Communist regime in Vietnam, in violation of the principles of the Charter of the United Nations and of international law, have deliberately and repeatedly attacked United States naval vessels lawfully present in international waters, and have thereby created a serious threat to international peace; and ..." },
         { p: "Resolved by the Senate and House of Representatives of the United States of America in Congress assembled, That the Congress approves and supports the determination of the President, as Commander in Chief, to take all necessary measures to repel any armed attack against the forces of the United States and to prevent further aggression." },
         { p: "Section 2. The United States regards as vital to its national interest and to world peace the maintenance of international peace and security in southeast Asia. ..." },
-        { cite: "United States Congress, Tonkin Gulf Resolution (H.J. Res. 1145), approved August 7, 1964. Transcript, National Archives, Milestone Documents.", url: "https://www.archives.gov/milestone-documents/tonkin-gulf-resolution", kind: "primary" },
+        { cite: "United States Congress, Tonkin Gulf Resolution (H.J. Res. 1145), passed by Congress August 7, 1964, and signed by President Johnson August 10, 1964. Transcript, National Archives, Milestone Documents.", url: "https://www.archives.gov/milestone-documents/tonkin-gulf-resolution", kind: "primary" },
       ] },
     ],
   },
@@ -520,9 +520,9 @@ export default [
     question: "Which of the following developments most directly followed the speech in the excerpt?",
     choices: [
       "The opening of the Berlin Wall and the fall of communist governments across Eastern Europe",
-      "The building of the Berlin Wall",
-      "The Berlin Airlift",
-      "The Soviet invasion of Czechoslovakia",
+      "The building of the Berlin Wall to stop East Germans from fleeing to the West",
+      "The Berlin Airlift, which supplied West Berlin during a Soviet blockade",
+      "The Soviet invasion of Czechoslovakia to crush the Prague Spring reforms",
     ],
     why: [
       "Correct. Two years after the speech, East Germany opened the wall, and communist governments in Poland, Hungary, Czechoslovakia, and elsewhere fell.",
@@ -589,7 +589,7 @@ export default [
     yes: [
       "The Nigerian Civil War (1967 to 1970), when the Igbo region tried to break away as Biafra, showed the conflict that came from colonial borders joining rival groups.",
       "The 1947 to 1948 war between India and Pakistan over Kashmir grew out of partition.",
-      "Ghana under Kwame Nkrumah used the state to build the Akosombo Dam on the Volta River to reduce dependence on cocoa exports.",
+      "Ghana under Kwame Nkrumah used the state to build the Akosombo Dam on the Volta River to power an aluminum smelter and reduce dependence on cocoa exports.",
     ],
     no: [
       "\"The partition of India.\" This is already in the passage.",
@@ -657,7 +657,7 @@ export default [
     earns: "The point goes to a named movement outside South Africa and an explanation of how its goals or methods were like or unlike the anti-apartheid movement.",
     yes: [
       "Similarity: The American civil rights movement and the anti-apartheid movement both used boycotts, marches, and mass protest to end laws that separated people by race.",
-      "Difference: Gandhi's campaign in India stayed committed to nonviolence, while the African National Congress formed an armed wing in 1961 after peaceful protest was banned.",
+      "Difference: Gandhi's campaign in India stayed committed to nonviolence, while the African National Congress formed an armed wing in 1961 after the government banned the ANC in 1960.",
       "Similarity: Like the anti-apartheid movement, Solidarity in Poland used strikes and outside support to pressure a one-party government into negotiations in the 1980s.",
     ],
     no: [

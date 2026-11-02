@@ -125,7 +125,7 @@ const items = [
   },
   {
     id: "q109-f1b", type: "frq", skill: "u1", topic: "1.9", calc: false, set: "q109-s3", part: "(b)",
-    prompt: String.raw`Find $\displaystyle \lim_{x \to 3} u(x)$. Show the work that leads to the answer.`,
+    prompt: String.raw`Find $\displaystyle \lim_{x \to 3} u(x)$. Show the work that leads to your answer.`,
     rows: [
       { name: "Factors and cancels", earns: String.raw`Writes $u(x) = \dfrac{(x-3)(x+3)}{(x-3)(x+1)} = \dfrac{x+3}{x+1}$ for $x \neq 3$.` },
       { name: "Answer", earns: String.raw`$\lim_{x \to 3} u(x) = \dfrac{3}{2}$` },

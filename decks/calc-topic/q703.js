@@ -3,7 +3,7 @@ import { graph } from "../../plot.js";
 export const sets = {
   "q703-s1": { name: "A slope field", label: "Graph", intro: String.raw`The slope field for a differential equation is shown below.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 3], y: [-3, 3], xname: "x", yname: "y", field: { f: (x, y) => x + y, step: 1 },
-      alt: "Slope field on the grid from x = -3 to 3 and y = -3 to 3. Segments are horizontal at the points on the line y = -x, such as (0, 0), (1, -1) and (-2, 2). Slopes are positive above that line and negative below it, and they grow steeper farther from it. Along each line x + y = c the segments are parallel." }) }] }] },
+      alt: "Slope field on the grid from x = -3 to 3 and y = -3 to 3. Segments are horizontal at the points on the line y = -x, such as (0, 0), (1, -1) and (-2, 2). Slopes are positive above that line and negative below it, and they grow steeper farther from it. The segments along any line parallel to y = -x all have the same slope." }) }] }] },
   "q703-s2": { name: "Another slope field", label: "Graph", intro: String.raw`The slope field for a differential equation is shown below.`,
     sources: [{ title: "", blocks: [{ svg: graph({ x: [-3, 3], y: [-2, 4], xname: "x", yname: "y", field: { f: (x, y) => y - 1, step: 1 },
       alt: "Slope field on the grid from x = -3 to 3 and y = -2 to 4. All segments in the same horizontal row have the same slope. Segments in the row y = 1 are horizontal. Slopes are positive in the rows above y = 1 and negative in the rows below it, and they grow steeper farther from y = 1." }) }] }] },
@@ -61,7 +61,7 @@ const items = [
     question: String.raw`Which statement about the slope field for the differential equation $\dfrac{dy}{dx} = x^2 + y^2$ is true?`,
     choices: [
       "Every segment except the one at the origin has a positive slope.",
-      "Every segment on the y-axis is horizontal.",
+      String.raw`Every segment on the $y$-axis is horizontal.`,
       "The segments in the second quadrant have negative slopes.",
       "Every segment on a vertical line has the same slope.",
     ],

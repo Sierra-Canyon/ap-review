@@ -16,7 +16,7 @@ export const sets = {
     id: "t13-s2", name: "Religion and kingship in Southeast Asia and Sri Lanka", intro: "Use the passage below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Many historians argue that rulers in Southeast Asia and Sri Lanka did not simply copy Indian religions but used them to build their own authority. In the Khmer Empire, kings linked themselves with the Hindu gods Shiva and Vishnu and paid for temples at Angkor with rice taxes and the labor of their subjects. Around 1200, King Jayavarman VII turned to Mahayana Buddhism and built the Bayon temple. In the thirteenth and fourteenth centuries, Theravada Buddhism, carried by monks trained in Sri Lanka, grew stronger in Burma and spread to the Thai kingdom of Sukhothai and to Cambodia. Kings won the support of these monks by giving land and gifts to monasteries. In Sri Lanka, Sinhala kings presented themselves as protectors of the Buddhist faith and guarded the Tooth Relic of the Buddha as a sign of their right to rule." },
+        { p: "Many historians argue that rulers in Southeast Asia and Sri Lanka did not simply copy Indian religions but used them to build their authority. In the Khmer Empire, kings linked themselves with the Hindu gods Shiva and Vishnu and paid for temples at Angkor with rice taxes and the labor of their subjects. Around 1200, King Jayavarman VII turned to Mahayana Buddhism and built the Bayon temple. In the thirteenth and fourteenth centuries, Theravada Buddhism, carried by monks trained in Sri Lanka, grew stronger in Burma and spread to the Thai kingdom of Sukhothai and to Cambodia. Kings won the support of these monks by giving land and gifts to monasteries. In Sri Lanka, Sinhala kings presented themselves as protectors of the Buddhist faith and guarded the Tooth Relic of the Buddha as a sign of their right to rule." },
         { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
       ] },
     ],
@@ -155,7 +155,7 @@ export default {
           ],
           why: [
             "Correct. Khmer kings built temples at Angkor and linked themselves with gods, and Sinhala kings guarded the Tooth Relic, so both used religion to support their power.",
-            "The passage describes Hindu and Buddhist rulers. Islam reached some Southeast Asian ports, such as Malacca, in the fifteenth century, but not the Khmer or Sinhala courts.",
+            "The passage describes Hindu and Buddhist rulers. Islam reached Southeast Asian ports such as Samudra Pasai and Malacca by the fifteenth century, but not the Khmer or Sinhala courts.",
             "Control of the Strait of Malacca made Srivijaya rich, but the passage says Khmer kings relied on rice taxes and the labor of their subjects.",
             "The passage describes no forced conversion, and Hindu traditions continued in both regions alongside Buddhism.",
           ],

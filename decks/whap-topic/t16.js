@@ -200,7 +200,7 @@ export default {
           earns: "The response gives a specific, accurate way the Church limited a ruler's power and explains how it did so.",
           yes: [
             "Popes could excommunicate rulers or close churches in a kingdom; Pope Innocent III placed England under an interdict in 1208 and excommunicated King John, which pressured John to accept the pope's choice of archbishop.",
-            "Pope Boniface VIII ordered in 1296 that kings could not tax the clergy without papal consent, which cut kings off from the wealth of the Church.",
+            "Pope Boniface VIII ordered in 1296 that kings could not tax the clergy without papal consent, which challenged the kings' right to draw on the wealth of the Church.",
             "The Church held large estates and collected tithes, and clergy were tried in Church courts, so a large share of land, wealth, and people lay partly outside the king's control.",
           ],
           no: [

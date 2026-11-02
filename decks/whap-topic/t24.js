@@ -76,7 +76,7 @@ export default {
             "Mali, and the Songhai Empire after it, drew wealth from taxing the caravan trade that met at cities such as Timbuktu, so the gold, salt, and books Leo describes continue a pattern from the Mali era.",
             "The Bantu migrations took place over many centuries before 1200 and spread farming, not the caravan trade in gold and salt.",
             "The Mongol conquest of Persia shaped the Silk Roads, not the trade between West and North Africa.",
-            "The peak of the Atlantic slave trade came about two hundred years after Leo's visit, so it cannot be an earlier development.",
+            "The peak of the Atlantic slave trade came more than two hundred years after Leo's visit, so it cannot be an earlier development.",
           ], answer: 0 },
         { id: "t24-m04", skill: "u2", type: "mcq", set: "t24-s1", topic: "2.4", reasoning: "Sourcing and situation",
           question: "Leo Africanus traveled the trans-Saharan routes as a diplomat for the ruler of Fez and wrote this account in Rome in 1526 for European readers. A historian could best use the excerpt as evidence of",
@@ -171,7 +171,7 @@ export default {
         { id: "t24-q1b", skill: "u2", type: "fr", set: "t24-s3", part: "SAQ 1", sub: "b", topic: "2.4",
           lead: "Use the passage below to answer all parts of the question that follows.",
           prompt: "Explain ONE piece of historical evidence, not mentioned in the passage, that would support the passage's argument.",
-          earns: "The response gives a specific piece of evidence from outside the passage, c. 1200 to c. 1450 or shortly before, and explains how it shows that desert peoples were needed for the trade or held power over it.",
+          earns: "The response gives a specific piece of evidence from outside the passage, c. 1200 to c. 1450 or earlier, and explains how it shows that desert peoples were needed for the trade or held power over it.",
           yes: [
             "Camel saddles developed by desert peoples let camels carry heavy loads, and caravans depended on the herders who bred and handled the camels, which shows the trade relied on their skills.",
             "Travelers such as Ibn Battuta, who crossed the Sahara in 1352, depended on a hired desert guide and on scouts sent ahead to the next town for water, which shows that caravans could not cross without desert peoples' knowledge.",

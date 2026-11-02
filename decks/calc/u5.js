@@ -499,7 +499,7 @@ export default [
     answer: 0 },
   { id: "c5r-m33", type: "mcq", skill: "u5", topic: "5.11", calc: true,
     stem: String.raw`A cylindrical tank with a bottom and no top is to hold $400$ cubic feet. Its surface area is $S = \pi r^2 + 2\pi rh$, where $r$ is the radius and $h$ is the height, in feet.`,
-    question: String.raw`What radius makes the surface area as small as possible?`,
+    question: String.raw`What radius, in feet, makes the surface area as small as possible?`,
     choices: ["$5.031$", "$3.993$", "$6.338$", "$11.284$"],
     why: [
       String.raw`$\pi r^2h = 400$, so $h = \dfrac{400}{\pi r^2}$ and $S(r) = \pi r^2 + \dfrac{800}{r}$. $S'(r) = 2\pi r - \dfrac{800}{r^2} = 0$ gives $r^3 = \dfrac{400}{\pi}$, so $r = 5.031$. $S'$ changes from negative to positive there, so this is the minimum.`,
@@ -595,10 +595,10 @@ The absolute maximum value of $f$ on $[-3, 5]$ is $6 - \dfrac{\pi}{2}$, at $x = 
   { id: "c5r-f2a", type: "frq", skill: "u5", topic: "5.1", calc: true, set: "c5r-s6", part: "(a)",
     prompt: String.raw`Find the average rate of change of $D$ over the interval $0 \le t \le 12$. Must there be a time $t$, $0 < t < 12$, at which $D'(t)$ equals this average rate of change? Justify your answer.`,
     rows: [
-      { name: "Average rate of change", earns: String.raw`$\dfrac{D(12) - D(0)}{12} = -0.347$ foot per hour` },
+      { name: "Average rate of change", earns: String.raw`$\dfrac{D(12) - D(0)}{12} = -0.347$ feet per hour` },
       { name: "Answer with justification", earns: String.raw`Yes. $D$ is differentiable, so it is continuous on $[0, 12]$ and differentiable on $(0, 12)$, and the Mean Value Theorem guarantees such a time.` },
     ],
-    solution: String.raw`$D(0) = 6$ and $D(12) = 6 + 2\sin 6 - 3.6 = 1.84117$, so the average rate of change is $\dfrac{1.84117 - 6}{12} = -0.347$ foot per hour.
+    solution: String.raw`$D(0) = 6$ and $D(12) = 6 + 2\sin 6 - 3.6 = 1.84117$, so the average rate of change is $\dfrac{1.84117 - 6}{12} = -0.347$ feet per hour.
 
 $D$ is a sum of a sine function and a linear function, so it is differentiable for all $t$. So $D$ is continuous on $[0, 12]$ and differentiable on $(0, 12)$. By the Mean Value Theorem, there is a time $t$ in $(0, 12)$ with $D'(t) = -0.347$.
 

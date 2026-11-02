@@ -37,14 +37,14 @@ const s2Graph = graph({
   x: [-2, 2], y: [-0.5, 4.5], step: { x: 0.5, y: 1 }, labelEvery: 2, xname: "x", yname: "y",
   fns: [{ f: (x) => 4 / (1 + x * x), label: "f", labelAt: -0.6 }, { f: (x) => x * x, label: "g", labelAt: 1.6 }],
   labels: [[-0.1, 2.2, "R"]],
-  alt: "The graphs of f(x) = 4/(1 + x^2), a hump with its peak at (0, 4), and g(x) = x^2. They intersect at two points, near x = -1.250 and x = 1.250, where y is about 1.562. The region R lies between them, with the graph of f above the graph of g, and the whole region is on or above the x-axis.",
+  alt: "The graphs of f(x) = 4/(1 + x^2), a hump with its peak at (0, 4), and g(x) = x^2. They intersect at two points, one with x between -1.5 and -1 and one with x between 1 and 1.5, both at a height between 1 and 2. The region R lies between them, with the graph of f above the graph of g, and the whole region is on or above the x-axis.",
 });
 
 // c8r-m17: y = x^3 - 4x + 1 and y = e^(-x) meet at x = -1.365, 0, and 1.884.
 const m17Graph = graph({
   x: [-2.5, 2.5], y: [-5, 8], xname: "x", yname: "y",
   fns: [{ f: (x) => x ** 3 - 4 * x + 1, label: "y = x³ − 4x + 1", labelAt: 1.2 }, { f: (x) => Math.exp(-x), from: -2.05, to: 2.5, label: "y = e⁻ˣ", labelAt: -1.9 }],
-  alt: "The graphs of y = x^3 - 4x + 1 and y = e^(-x). They intersect at three points: x near -1.365, x = 0, and x near 1.884. Between -1.365 and 0 the cubic is above the exponential curve, and between 0 and 1.884 the exponential curve is above the cubic.",
+  alt: "The graphs of y = x^3 - 4x + 1 and y = e^(-x). They intersect at three points: one with x between -1.5 and -1, one at (0, 1), and one with x between 1.5 and 2. Between the first two intersections the cubic is above the exponential curve, and between the last two the exponential curve is above the cubic.",
 });
 
 // c8r-s7 (free response): f(x) = 2x + 2 and g(x) = x^2 - 2x + 2 meet at x = 0 and x = 4.
@@ -186,7 +186,7 @@ export default [
     answer: 0 },
   { id: "c8r-m10", type: "mcq", skill: "u8", topic: "8.3", calc: false,
     stem: String.raw`Oil leaks from a pipe at a rate of $r(t) = 6e^{-0.5t}$ liters per hour, where $t$ is measured in hours.`,
-    question: "How many liters of oil leak from the pipe during the first 4 hours?",
+    question: "How many liters of oil leak from the pipe during the first $4$ hours?",
     choices: [String.raw`$12\left(1 - e^{-2}\right)$`, String.raw`$6\left(1 - e^{-2}\right)$`, String.raw`$3\left(1 - e^{-2}\right)$`, String.raw`$24e^{-2}$`],
     why: [
       String.raw`$\displaystyle\int_0^4 6e^{-0.5t}\,dt = \Big[-12e^{-0.5t}\Big]_0^4 = -12e^{-2} + 12 = 12\left(1 - e^{-2}\right)$.`,
@@ -550,7 +550,7 @@ $$\int_0^4 \left(4x - x^2\right)^2 dx = \int_0^4 \left(16x^2 - 8x^3 + x^4\right)
   { id: "c8r-f2c", type: "frq", skill: "u8", topic: "8.12", calc: false, set: "c8r-s7", part: "(c)",
     prompt: String.raw`Write, but do not evaluate, an integral expression for the volume of the solid generated when $R$ is revolved about the line $y = -1$.`,
     rows: [
-      { name: "Limits and constant", earns: String.raw`$\pi\displaystyle\int_0^4$ with an integrand of the form $R(x)^2 - r(x)^2$` },
+      { name: "Limits and constant", earns: String.raw`$\pi\displaystyle\int_0^4$ with an integrand of the form $(\text{outer radius})^2 - (\text{inner radius})^2$` },
       { name: "Outer radius", earns: String.raw`Outer radius $2x + 3$` },
       { name: "Inner radius", earns: String.raw`Inner radius $x^2 - 2x + 3$` },
     ],
@@ -578,7 +578,7 @@ The particle is at $x = 4.553$ meters at $t = 5$.` },
 
 The particle travels $14.565$ meters.` },
   { id: "c8r-f3c", type: "frq", skill: "u8", topic: "8.2", calc: true, set: "c8r-s10", part: "(c)",
-    prompt: String.raw`At what time $t$, for $0 < t < 5$, does the particle change direction? Find the position of the particle at that time.`,
+    prompt: String.raw`At what time $t$, for $0 < t < 5$, does the particle change direction? Give a reason for your answer. Find the position of the particle at that time.`,
     rows: [
       { name: "Time with reason", earns: String.raw`$t = 3.545$, because $v(t)$ changes sign from positive to negative there.` },
       { name: "Position", earns: String.raw`$x(3.545) = 8.059$` },

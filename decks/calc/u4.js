@@ -5,7 +5,7 @@ const vGraph = graph({
   x: [0, 8], y: [-4, 3], xname: "t", yname: "v(t)",
   segments: [[0, -2, 2, 2], [2, 2, 5, 2], [5, 2, 8, -4]],
   dots: [[0, -2, "closed"], [8, -4, "closed"]],
-  alt: "Graph of the velocity v(t) for 0 to 8 seconds, made of three line segments: from (0, -2) up to (2, 2), level at 2 from (2, 2) to (5, 2), then down from (5, 2) to (8, -4). The graph crosses the t-axis at t = 1 and t = 6.",
+  alt: "Graph of the velocity v(t) for 0 to 8 seconds, made of three line segments: from (0, -2) up to (2, 2), level at 2 from (2, 2) to (5, 2), then down from (5, 2) to (8, -4).",
 });
 
 export const sets = {
@@ -245,7 +245,7 @@ export default [
   { id: "c4r-m18", type: "mcq", skill: "u4", topic: "4.5", calc: false,
     stem: String.raw`A softball field is a square with sides of $60$ feet. A runner runs from home plate toward first base at $20$ feet per second.`,
     question: String.raw`At what rate is the distance between the runner and third base changing when the runner is $45$ feet from home plate?`,
-    choices: ["$12$ feet per second", "$20$ feet per second", String.raw`$\frac{80}{3}$ feet per second`, "$16$ feet per second"],
+    choices: ["$12$ feet per second", "$20$ feet per second", String.raw`$\frac{100}{3}$ feet per second`, "$16$ feet per second"],
     why: [
       String.raw`Home to first and home to third are perpendicular sides of the square. With $x$ the runner's distance from home, the distance to third base is $D = \sqrt{x^2 + 60^2}$. When $x = 45$, $D = 75$. From $2D\dfrac{dD}{dt} = 2x\dfrac{dx}{dt}$, $\dfrac{dD}{dt} = \dfrac{45(20)}{75} = 12$ feet per second.`,
       String.raw`This assumes the distance to third base changes at the runner's speed. The rates are related through $D^2 = x^2 + 60^2$, not equal.`,

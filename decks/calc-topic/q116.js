@@ -107,7 +107,7 @@ const items = [
   },
   {
     id: "q116-f1a", type: "frq", skill: "u1", topic: "1.16", calc: false, set: "q116-s2", part: "(a)",
-    prompt: String.raw`Must there be a time $t$, for $3 < t < 7$, at which $W(t) = 24$? Justify the answer.`,
+    prompt: String.raw`Must there be a time $t$, for $3 < t < 7$, at which $W(t) = 24$? Justify your answer.`,
     rows: [
       { name: "Conditions", earns: String.raw`States that $W$ is continuous on $[3, 7]$ and that $W(7) = 21 < 24 < 25 = W(3)$.` },
       { name: "Conclusion", earns: "Yes, by the Intermediate Value Theorem." },
@@ -116,7 +116,7 @@ const items = [
   },
   {
     id: "q116-f1b", type: "frq", skill: "u1", topic: "1.16", calc: false, set: "q116-s2", part: "(b)",
-    prompt: String.raw`Can the Intermediate Value Theorem be used with the data in the table to conclude that $W(t) = 32$ for some $t$ in the interval $0 < t < 12$? Explain.`,
+    prompt: String.raw`Can the Intermediate Value Theorem be used with the data in the table to conclude that $W(t) = 32$ for some $t$ in the interval $0 < t < 12$? Give a reason for your answer.`,
     rows: [
       { name: "Answer with reason", earns: String.raw`No, because $32$ is greater than every value in the table ($18$, $25$, $21$, and $30$), so $32$ is not between $W(a)$ and $W(b)$ for any two times $a$ and $b$ in the table.` },
     ],

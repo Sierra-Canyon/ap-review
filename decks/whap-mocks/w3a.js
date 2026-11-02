@@ -16,7 +16,7 @@ export const sets = {
       { title: "Source", blocks: [
         { p: "Not only did he expect all persons of distinction to be in continual attendance at Court, but he was quick to notice the absence of those of inferior degree; ... any one who seldom or never appeared there was certain to incur his displeasure." },
         { p: "He loved splendour, magnificence, and profusion in all things, and encouraged similar tastes in his Court; to spend money freely on equipages and buildings, on feasting and at cards, was a sure way to gain his favour ... Motives of policy had something to do with this; by making expensive habits the fashion, and, for people in a certain position, a necessity, he compelled his courtiers to live beyond their income, and gradually reduced them to depend on his bounty for the means of subsistence." },
-        { cite: "Louis de Rouvroy, Duke of Saint-Simon, French noble who lived for many years at the court of Louis XIV, describing the king, Memoirs (written in the 1740s), from The Memoirs of the Duke de Saint-Simon, edited by F. Arkwright, vol. 5 (New York: Brentano's, n.d.), pages 254 to 278. Equipages: carriages with horses and servants.", url: "https://sourcebooks.web.fordham.edu/mod/17stsimon.asp", kind: "primary" },
+        { cite: "Louis de Rouvroy, Duke of Saint-Simon, French noble who lived for many years at the court of Louis XIV, describing the king, Memoirs (written in the 1740s), from The Memoirs of the Duke de Saint-Simon, edited by F. Arkwright, vol. 5 (New York: Brentano's, n.d.), selected pages between 254 and 278. Equipages: carriages with horses and servants.", url: "https://sourcebooks.web.fordham.edu/mod/17stsimon.asp", kind: "primary" },
       ] },
     ],
   },
@@ -108,9 +108,9 @@ export default {
           question: "Sidi Ali's claim that the Ottoman sultan held \"Ofen and Vienna\" is best explained by which aspect of his point of view?",
           choices: [
             "As an Ottoman officer abroad, he wanted to make his sultan's power seem as great as possible, since Ottoman armies had besieged Vienna in 1529 but never captured it.",
-            "As a guest of Humayun, he wanted to flatter the Mughal emperor by making the Ottoman Empire seem smaller than India.",
-            "As a Safavid diplomat, he wanted to warn Humayun about the danger of Ottoman expansion.",
-            "As a European merchant, he had little knowledge of the lands the Ottomans actually ruled.",
+            "As a guest of Humayun, he wanted to flatter the Mughal emperor by making the Ottoman Empire seem smaller and weaker than India.",
+            "As a Safavid diplomat, he wanted to warn Humayun about the danger of Ottoman expansion toward Persia and India.",
+            "As a European merchant, he had little knowledge of the lands the Ottomans actually ruled and confused them with other lands.",
           ],
           why: [
             "The Ottomans did rule Ofen (Buda) from 1541, but they failed to take Vienna in 1529, so including Vienna shows Sidi Ali exaggerating his sultan's power to impress a rival ruler.",
@@ -339,7 +339,7 @@ export default {
           earns: "The response names another land-based empire and explains a specific financial or military pressure it faced that resembles the Ottoman pressures in the passage.",
           yes: [
             "Aurangzeb's long wars in the Deccan against the Marathas and other states drained the Mughal treasury, and there were not enough land revenue grants (jagirs) to pay the nobles.",
-            "Philip II of Spain fought costly wars against the Ottomans, the Dutch, and England and had to stop payment on his debts several times, as in 1557 and 1575.",
+            "Shah Abbas I of the Safavid Empire built a salaried army of musketeers and gunners to fight the Ottomans and Uzbeks, and to pay for it he took provinces away from tribal chiefs and taxed them directly as crown lands.",
             "Russian rulers raised new taxes, such as Peter the Great's head tax, to pay for a large standing army and navy in the Great Northern War.",
           ],
           no: [

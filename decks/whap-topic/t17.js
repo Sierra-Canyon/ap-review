@@ -74,7 +74,7 @@ export default {
           ],
           answer: 0 },
         { id: "t17-m02", skill: "u1", type: "mcq", set: "t17-s1", topic: "1.7", reasoning: "Comparison",
-          question: "The way of winning support for the government shown in the excerpt differed most from the way the Song and Ming emperors governed China in that the Chinese emperors",
+          question: "The method of governing shown in the excerpt differed most from the way the Song and Ming emperors governed China in that the Chinese emperors",
           choices: [
             "relied on officials chosen through civil service examinations rather than on assemblies of nobles and elected townsmen",
             "had to win the approval of hereditary nobles before they could collect any tax",

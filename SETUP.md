@@ -101,6 +101,12 @@ Do these in order, right after you push this update (about 10 minutes):
 - A student already on another course (yours) keeps it and gets World History too; they can sign in either way.
 - **Questions** tab: every question on the site for World History, by quiz or test, with its answer. **Edit** fixes wording or the right answer, or hides a question, for all three sections at once; **Restore original** undoes it.
 
+## 13. GitHub first for students in two kinds of course
+
+A student in one of your courses (GitHub) who is also in AP World or AP Calc (email and password) signs in with **GitHub**. The site no longer makes a password login for a student whose record has a GitHub account, and the roster's Password column says "GitHub" for them.
+
+Students added before this change may already have a password login for their school email, and Firebase then refuses their GitHub sign-in ("account exists with different credential"). Turn this off once: **Firebase console > Authentication > Settings > User account linking**, choose **Create multiple accounts for each identity provider**, **Save**. After that, GitHub and email sign-ins are separate Firebase accounts that both open the same student record (the site matches the GitHub number and the school email), so GitHub works and the password still works too.
+
 ## 12. AP Calculus AB
 
 The course is on the site (`calc` in `courses.js`), with email and password sign-in like AP World. When the teacher is known: on the Class tab, **Teachers > Add a teacher** with their school email and **AP Calc AB** checked, then paste each section's roster (`Name, school email` per line) on the Calc Class tab. For more than one section, add a course line per section in `courses.js` (as for AP World) and add its id to `'calc'` in `deckCourses` in `firestore.rules`. Publish the rules again after this update.

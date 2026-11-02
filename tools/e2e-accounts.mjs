@@ -122,6 +122,16 @@ await page.click("#addroster"); await page.waitForSelector(".toast:has-text('Add
 st = await store();
 assert(!st.students["gh-2000099"] && st.students["example.new@scsstudent.org"]?.ghId === "2000099", "the record moved to the school email");
 assert(st.progress["example.new@scsstudent.org"]?.decks?.["csp-q3"], "its progress moved with it");
+// GitHub first: a student with GitHub on file who joins AP World gets no password login.
+await page.selectOption("#coursepick", "whap");
+await page.waitForSelector("#rosterin");
+await page.fill("#rosterin", "Example New Account, Example.New@scsstudent.org");
+await page.click("#addroster"); await page.waitForSelector(".toast:has-text('Added 1')");
+st = await store();
+assert(JSON.stringify(st.students["example.new@scsstudent.org"]?.courses) === '["csp","whap"]', "the GitHub student joins AP World");
+assert(!st.accounts["example.new@scsstudent.org"] && !st.cards["example.new@scsstudent.org"], "no password login for a GitHub student");
+await page.waitForSelector("text=Items, hardest first");
+assert(/GitHub/.test(await page.textContent("table.rostertable tr:has-text('example.new@scsstudent.org')")), "the roster shows GitHub as the sign-in");
 // The Teachers panel adds a teacher and emails a link.
 await page.fill("#tname", "New Teacher"); await page.fill("#temail", "new.teacher@sierracanyonschool.org");
 await page.check("#addteacher input[value='whap']"); await page.click("#addteacher button[type=submit]");

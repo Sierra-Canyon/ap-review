@@ -170,7 +170,7 @@ function signInError(e) {
   if (c === "auth/popup-blocked") return "The sign-in window was blocked. Allow pop-ups for this site and try again.";
   if (c === "auth/invalid-credential" || c === "auth/wrong-password" || c === "auth/user-not-found" || c === "auth/invalid-email") return "That email and password do not match. Check both, or use Forgot password.";
   if (c === "auth/too-many-requests") return "Too many tries. Wait a few minutes, or use Forgot password.";
-  if (c === "auth/account-exists-with-different-credential") return "This GitHub account uses your school email, which already has a password sign-in. Sign in with your school email and password instead.";
+  if (c === "auth/account-exists-with-different-credential") return "GitHub sign-in is not turned on yet for an email that also has a password. For now, sign in with your school email and password, and tell your teacher.";
   return "Sign-in did not finish: " + (c || e?.message || "unknown error");
 }
 function renderSignIn() {
@@ -1163,7 +1163,8 @@ async function addStudents(list, c, say = () => {}) {
       if (old) { await backend.saveProgress(id, old); await backend.deleteProgress(had.id); }
       await backend.deleteStudent(had.id);
     }
-    if (c.passwords && rec.email) {
+    // A student with GitHub on file signs in with GitHub: no password login is made for them.
+    if (c.passwords && rec.email && !rec.ghId) {
       const pw = firstPassword();
       if ((await backend.createLogin(rec.email, pw)) === "created") { await backend.saveCard(id, { password: pw, ts: Date.now() }); logins++; }
     }
@@ -1223,7 +1224,7 @@ async function renderTeachersPanel() {
 async function renderCards() {
   view.className = "wide";
   view.innerHTML = `<p class="muted">Loading...</p>`;
-  const roster = (await backend.listStudents(course.id)).filter((r) => r.email);
+  const roster = (await backend.listStudents(course.id)).filter((r) => r.email && !r.ghId);
   const prog = await backend.loadProgressMany(roster.map((r) => r.id));
   const rows = [];
   for (const r of roster.sort((a, b) => a.name.localeCompare(b.name))) {
@@ -1347,7 +1348,7 @@ async function renderTeacher() {
       <td><input type="text" value="${esc(r.name)}" data-name="${esc(r.id)}" aria-label="Name in class"></td>
       <td class="small">${esc(r.email) || `<span class="muted">none yet</span>`}</td>
       <td class="small mono">${r.login ? "@" + esc(r.login) : r.ghId ? esc(r.ghId) : ""}</td>
-      ${course.passwords ? `<td class="small">${!r.email ? "" : r.user?.pwSet ? "chosen" : cards[r.id] ? `first: <span class="mono">${esc(cards[r.id].password)}</span>` : "own"}</td>` : ""}
+      ${course.passwords ? `<td class="small">${r.ghId ? "GitHub" : !r.email ? "" : r.user?.pwSet ? "chosen" : cards[r.id] ? `first: <span class="mono">${esc(cards[r.id].password)}</span>` : "own"}</td>` : ""}
       <td class="num">${r.email && course.passwords ? `<button class="btn ghost small" data-reset="${esc(r.email)}">Send reset link</button>` : ""}<button class="btn ghost small" data-remove="${esc(r.id)}">Remove</button></td></tr>`).join("")}</tbody></table></div>
       <p class="small muted">Edit a name and press Enter to save it.${course.passwords ? " Send reset link emails the student a link to choose a new password." : ""} Remove takes the student off ${esc(course.short)} only.</p></div></details>
   </section>

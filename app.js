@@ -1236,17 +1236,22 @@ async function renderTeachersPanel() {
 async function renderCards() {
   view.className = "wide";
   view.innerHTML = `<p class="muted">Loading...</p>`;
-  const roster = (await backend.listStudents(course.id)).filter((r) => r.email && !r.ghId);
-  const prog = await backend.loadProgressMany(roster.map((r) => r.id));
+  // Students with GitHub on file sign in with GitHub: their card says so, with no password. The others get their first
+  // password until they choose their own.
+  const roster = (await backend.listStudents(course.id)).filter((r) => r.email || r.ghId);
+  const prog = await backend.loadProgressMany(roster.filter((r) => !r.ghId).map((r) => r.id));
   const rows = [];
   for (const r of roster.sort((a, b) => a.name.localeCompare(b.name))) {
+    if (r.ghId) { rows.push({ ...r, github: true }); continue; }
     if (prog[r.id]?.pwSet) continue;
     const card = await backend.getCard(r.id); if (card) rows.push({ ...r, password: card.password });
   }
   const link = location.origin + location.pathname;
-  view.innerHTML = `<div class="row noprint"><a class="btn" href="#teacher">Back to the Class tab</a><button class="btn primary" id="printcards">Print</button><span class="small muted">${rows.length} students have not chosen their own password yet.</span></div>
+  const gh = rows.filter((r) => r.github).length;
+  view.innerHTML = `<div class="row noprint"><a class="btn" href="#teacher">Back to the Class tab</a><button class="btn primary" id="printcards">Print</button><span class="small muted">${rows.length - gh} students have not chosen their own password yet${gh ? `; ${gh} sign in with GitHub` : ""}.</span></div>
     <div class="cards">${rows.map((r) => `<div class="logincard"><b>${esc(r.name)}</b><span>${esc(course.name)}</span><span>Go to <span class="mono">${esc(link)}</span></span>
-      <span>Email: <span class="mono">${esc(r.email)}</span></span><span>First password: <span class="mono">${esc(r.password)}</span></span><span class="small">You choose your own password the first time you sign in.</span></div>`).join("")}</div>`;
+      ${r.github ? `<span><b>Sign in with GitHub</b>${r.login ? `, as <span class="mono">@${esc(r.login)}</span>` : ""}.</span><span class="small">Use the GitHub button, not the email form. Your progress is the same in every course.</span>`
+      : `<span>Email: <span class="mono">${esc(r.email)}</span></span><span>First password: <span class="mono">${esc(r.password)}</span></span><span class="small">You choose your own password the first time you sign in.</span>`}</div>`).join("")}</div>`;
   $("#printcards").addEventListener("click", () => window.print());
 }
 
@@ -1355,7 +1360,7 @@ async function renderTeacher() {
     <p class="small muted">Paste one student per line: <code>Name, school email</code>, with a GitHub username after it for a course that signs in with GitHub. Name is what the student goes by in class; it is the only name the site shows. A student already on another course keeps that course and gets this one too.${course.passwords ? " A new school email gets a sign-in with a first password you can print; the student chooses their own the first time." : ""}</p>
     <label for="rosterin" class="small muted">Students to add</label>
     <textarea id="rosterin" rows="5" class="out" placeholder="Brooklyn Chen, Sicheng.Chen@scsstudent.org${course.passwords ? "" : ", brooklyn-gh"}"></textarea>
-    <div class="row"><button class="btn primary" id="addroster">Add to roster</button>${course.passwords ? `<a class="btn" href="#cards">Print first-password cards</a>` : ""}<span class="small muted" id="rostermsg"></span></div>
+    <div class="row"><button class="btn primary" id="addroster">Add to roster</button>${course.passwords ? `<a class="btn" href="#cards">Print sign-in cards</a>` : ""}<span class="small muted" id="rostermsg"></span></div>
     <details ${roster.length < 40 ? "open" : ""}><summary>${roster.length} on the roster</summary><div class="stack"><div class="tablewrap"><table class="rostertable"><thead><tr><th>Name</th><th>School email</th><th>GitHub</th>${course.passwords ? "<th>Password</th>" : ""}<th></th></tr></thead><tbody>${rows.map((r) => `<tr>
       <td><input type="text" value="${esc(r.name)}" data-name="${esc(r.id)}" aria-label="Name in class"></td>
       <td class="small">${esc(r.email) || `<span class="muted">none yet</span>`}</td>

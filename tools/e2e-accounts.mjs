@@ -133,6 +133,10 @@ assert(JSON.stringify(st.students["example.new@scsstudent.org"]?.courses) === '[
 assert(!st.accounts["example.new@scsstudent.org"] && !st.cards["example.new@scsstudent.org"], "no password login for a GitHub student");
 await page.waitForSelector("text=Items, hardest first");
 assert(/GitHub/.test(await page.textContent("table.rostertable tr:has-text('example.new@scsstudent.org')")), "the roster shows GitHub as the sign-in");
+await page.click("a[href='#cards']"); await page.waitForSelector(".logincard");
+const ghCard = await page.textContent(".logincard:has-text('Example New Account')");
+assert(/Sign in with GitHub/.test(ghCard) && !/password/i.test(ghCard), "the GitHub student's card says to sign in with GitHub, with no password: " + ghCard);
+await page.click("text=Back to the Class tab");
 // The Teachers panel adds a teacher and emails a link.
 await page.fill("#tname", "New Teacher"); await page.fill("#temail", "new.teacher@sierracanyonschool.org");
 await page.check("#addteacher input[value='whap']"); await page.click("#addteacher button[type=submit]");

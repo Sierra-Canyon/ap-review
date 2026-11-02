@@ -106,7 +106,11 @@ Do these in order, right after you push this update (about 10 minutes):
 Every student sign-in made from a roster now starts with **goblazers**. The site no longer saves a first password per student in the `cards` collection (teachers can still read and write it), and at first sign-in the student must choose their own password (the site will not take goblazers). Do this once after pushing:
 
 1. **Publish the rules again** (Firestore Database > Rules, replace with `firestore.rules`, Publish).
-2. **Move the sign-ins already made onto goblazers.** The sign-ins made before this update still have their old random passwords, and a web page cannot change another person's password. In **Authentication > Users**, delete the student accounts whose **Signed in** column is empty (they have never used them). Leave the teachers' accounts and anyone who has signed in. Then, on the Class tab, paste each section's roster file again: the site makes those sign-ins again with goblazers, and the student records and progress are untouched. A student who already chose their own password keeps it.
+2. **Move the sign-ins already made onto goblazers.** The sign-ins made before this update still have their old random passwords, and a web page cannot change another person's password, so this runs once on your computer with a Firebase key. (The Authentication page cannot tell you who has signed in: making a sign-in counts as a sign-in there.)
+   1. Firebase console > **Project settings** (gear) > **Service accounts** > **Generate new private key**. Save the file in `../private/` as `firebase-admin-key.json` (never in this repo: anyone with it controls the project).
+   2. In Terminal, in this repo: `npm install`, then `node tools/set-first-passwords.mjs ../private/firebase-admin-key.json`. It lists what it would do and changes nothing.
+   3. Then `node tools/set-first-passwords.mjs ../private/firebase-admin-key.json --go`. Every student on an AP World or AP Calc roster who has not chosen their own password now has goblazers. It skips students who chose their own, students with GitHub on file, and teachers.
+   4. Delete the key file, or keep it only in `private/`.
 
 Until a student signs in and chooses their own password, anyone who knows their school email and goblazers can sign in as them, so have students do their first sign-in soon.
 

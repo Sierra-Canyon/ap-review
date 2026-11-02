@@ -35,7 +35,7 @@ await page.evaluate(() => localStorage.clear());
 await page.goto(BASE);
 await page.click("[data-as=teacher]");
 await page.waitForSelector("#coursepick");
-await page.selectOption("#coursepick", "calc");
+await page.selectOption("#coursepick", { label: "AP Calc AB" });
 await page.waitForSelector("text=Take a quiz or test");
 assert(/89\s*quizzes and tests/.test(await page.textContent(".panel.mode:has-text('Quizzes and tests')")), "the home page counts 89 quizzes and tests");
 
@@ -105,7 +105,7 @@ const phone = await (await browser.newContext({ viewport: { width: 375, height: 
 await phone.goto(BASE + "&course=calc");
 await phone.click("[data-as=teacher]").catch(() => {});
 await phone.waitForSelector("#coursepick");
-await phone.selectOption("#coursepick", "calc");
+await phone.selectOption("#coursepick", { label: "AP Calc AB" });
 await phone.click("nav a[href='#mock']").catch(async () => { await phone.goto(BASE + "#mock"); });
 await phone.click("[data-form=c8t]");
 await phone.waitForSelector("#card");

@@ -363,6 +363,8 @@ pre.code, code, .mono, textarea.out, .opt.mono .txt { font-variant-ligatures: no
 /* ---------------------------------------------------------------- courses, sources, free response */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .coursepick select { font: inherit; font-size: 14px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); max-width: 9.5em; }
+.coursepick + .coursepick { margin-left: -4px; }
+#sectionpick { max-width: 7.5em; }
 pre.log { font-family: var(--font-mono); font-size: 13px; line-height: 1.5; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
 details.sources { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface-2); padding: 10px 14px; }
 details.sources > summary { cursor: pointer; font-weight: 700; }

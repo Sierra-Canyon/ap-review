@@ -112,7 +112,7 @@ const progressId = () => (me ? me.id : "t-" + user.uid);
 const displayName = () => me?.name || user?.name || (user?.login ? "@" + user.login : user?.email || "");
 function setCourse(id, remember = true) {
   const c = myCourses().find((x) => x.id === id) || myCourses()[0] || courses[0];
-  course = c; deck = c.decks[0];
+  course = c; deck = c.decks[0]; lastSection[deck.id] = c.id;
   if (remember) try { localStorage.setItem("ap-review-course", c.id); } catch (e) { /* storage blocked */ }
 }
 const view = document.getElementById("view");
@@ -141,6 +141,18 @@ const isAdmin = () => !!teacher?.admin;
 const canEdit = () => isTeacher() && teacherCourses().some((c) => c.decks.includes(deck));
 
 // ------------------------------------------------------------------------------------------ chrome
+// The course menus: one entry per subject (AP World, not AP World (B), (C), (D)), and, when there is more than one
+// section of the subject on screen, a second menu of its periods. A subject opens on the section last used.
+const subjectOf = (c) => c.subject || c.short.replace(/ \([^)]*\)$/, "");
+const lastSection = {};
+function coursePickers(mine) {
+  if (mine.length < 2) return "";
+  const subjects = [...new Set(mine.map((c) => c.decks[0]))].map((d) => mine.filter((c) => c.decks[0] === d));
+  const pick = (list) => (list.includes(course) ? course : list.find((c) => c.id === lastSection[c.decks[0].id]) || list[0]);
+  const sections = subjects.find((list) => list.includes(course)) || [];
+  return `${subjects.length > 1 ? `<label class="coursepick"><span class="sr">Course</span><select id="coursepick">${subjects.map((list) => `<option value="${pick(list).id}" ${list.includes(course) ? "selected" : ""}>${esc(subjectOf(list[0]))}</option>`).join("")}</select></label>` : ""}
+    ${sections.length > 1 ? `<label class="coursepick"><span class="sr">Section</span><select id="sectionpick">${sections.map((c) => `<option value="${c.id}" ${c === course ? "selected" : ""}>${esc(c.period || c.short)}</option>`).join("")}</select></label>` : ""}`;
+}
 function renderBar() {
   const r = location.hash.slice(1) || "home";
   const links = [["home", "Home"], ...(course.book ? [["learn", "Learn"]] : []), ["review", "Review"], ["misses", "My misses"], ...(deck.mock ? [["mock", deck.mock.name]] : [])];
@@ -149,16 +161,16 @@ function renderBar() {
   const mine = user && onRosterOrTeacher() ? myCourses() : [];
   $("#bar").innerHTML = `<div class="bar-in">
     <a class="mark" href="#home"><span class="tile" aria-hidden="true"></span>AP Review</a>
-    ${mine.length > 1 ? `<label class="coursepick"><span class="sr">Course</span><select id="coursepick">${mine.map((c) => `<option value="${c.id}" ${c.id === course.id ? "selected" : ""}>${esc(c.short)}</option>`).join("")}</select></label>` : ""}
+    ${coursePickers(mine)}
     ${user && onRosterOrTeacher() ? `<nav aria-label="Sections">${links.map(([h, t]) => `<a href="#${h}" ${r === h || (h === "learn" && r.startsWith("learn-")) ? 'aria-current="page"' : ""}>${t}</a>`).join("")}</nav>` : ""}
     ${user ? `<div class="who">${user.photo ? `<img src="${esc(user.photo)}" alt="">` : ""}<a href="#account" title="Your account">${esc(displayName())}</a><button class="btn ghost small" id="signout">Sign out</button></div>` : ""}
   </div>`;
   $("#signout")?.addEventListener("click", async () => { await backend.signOut(); location.hash = ""; });
-  $("#coursepick")?.addEventListener("change", (e) => {
+  $$("#coursepick, #sectionpick").forEach((el) => el.addEventListener("change", (e) => {
     setCourse(e.target.value); app.session = null; app.mock = null; app.focus = null;
     const r = location.hash.slice(1) || "home";
-    if (r === "home" || r === "review" || r === "mock" || r === "teacher") route(); else location.hash = "home";
-  });
+    if (r === "home" || r === "review" || r === "mock" || r === "teacher" || r === "questions") route(); else location.hash = "home";
+  }));
   $("#demoband").hidden = !demo;
 }
 

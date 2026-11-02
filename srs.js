@@ -20,6 +20,9 @@ export function grade(card, result, now = Date.now(), extra = {}) {
   else { c.b = 0; c.due = now + WAIT[0]; c.last = 0; }
   if (extra.choice !== undefined && result !== 1) c.wrong[extra.choice] = (c.wrong[extra.choice] || 0) + 1;
   if (extra.wr) c.wr = extra.wr;
+  // The last answer itself, for the teacher's view of a student: the choice picked, or the output typed.
+  if (extra.choice !== undefined) c.pick = extra.choice;
+  if (extra.typed !== undefined) c.typed = String(extra.typed).slice(0, 500);
   return c;
 }
 

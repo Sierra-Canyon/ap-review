@@ -445,3 +445,10 @@ details.aunit { border-top: 1px solid var(--line); padding: 6px 0; }
 details.aunit > summary { cursor: pointer; }
 .atopics { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 4px 14px; padding: 6px 0 4px 22px; }
 #assessform input[name=name] { min-width: 14em; }
+
+/* A student's page (teachers) */
+details.stuattempt, details.stuskill { border-top: 1px solid var(--line); padding: 8px 0; }
+details.stuattempt > summary, details.stuskill > summary { cursor: pointer; }
+.stuq { border-left: 3px solid var(--line); padding: 4px 0 4px 12px; margin: 8px 0; }
+.stuq p { margin: 0 0 6px; }
+.rostertable input[data-gh] { width: 11em; }

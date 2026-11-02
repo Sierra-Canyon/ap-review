@@ -158,6 +158,9 @@ function record(item, result, extra = {}) {
   return save();
 }
 const isTeacher = () => !!teacher;
+// Class lists sort by last name (the last word of the name the student goes by), then first name.
+const lastNameKey = (r) => { const n = (r.name || r.login || r.email || "").trim().toLowerCase(); const w = n.split(/\s+/); return w[w.length - 1] + " " + n; };
+const byLastName = (a, b) => lastNameKey(a).localeCompare(lastNameKey(b));
 const isAdmin = () => !!teacher?.admin;
 // A teacher edits the questions of a deck that one of their courses uses.
 const canEdit = () => isTeacher() && teacherCourses().some((c) => c.decks.includes(deck));
@@ -503,7 +506,7 @@ function mountItem(host, item, { mode = "review", onAnswer, saved, sourcesOpen =
         <span class="verdict">${right ? "Right." : "Not quite. The first line that differs is marked."}</span>
         ${right ? "" : `<div class="cmp"><div><span class="small muted">You typed</span><pre>${show(tl, bad)}</pre></div><div><span class="small muted">Printed</span><pre>${show(wl, -1)}</pre></div></div>`}
         <p>${prose(item.why)}</p></div>`);
-      onAnswer?.({ result: right ? 1 : 0 });
+      onAnswer?.({ result: right ? 1 : 0, extra: { typed: ta.value } });
     });
     return;
   }
@@ -984,7 +987,9 @@ async function finishMock() {
     st.cards[it.id] = grade(st.cards[it.id] || blankCard(), cardResult(it, sc), now, { wr: { text: (m.answers[it.id]?.text || "").slice(0, 3000), score: sc, levels: m.wr[it.id]?.levels, ts: now } });
   }
   const total = formOf(m.form)?.total ?? (A.length * deck.mock.partA.points + partBMax(deck, B));
-  st.mocks.push({ ts: now, score: m.score, total, a, b, minutes: m.minutes, form: m.form, items: m.items.map((x) => x.id) });
+  // resp: what this attempt answered (a choice, or the self-score of a written part), so the teacher sees every attempt.
+  const resp = Object.fromEntries(m.items.map((it, k) => [it.id, k < m.partA ? (m.answers[it.id]?.choice ?? -1) : bScore(it, m)]));
+  st.mocks.push({ ts: now, score: m.score, total, a, b, minutes: m.minutes, form: m.form, items: m.items.map((x) => x.id), resp });
   if (st.mocks.length > 30) st.mocks = st.mocks.slice(-30);
   m.phase = "done";
   await save();
@@ -1329,7 +1334,7 @@ async function renderCards() {
   const roster = (await backend.listStudents(course.id)).filter((r) => r.email || r.ghId);
   const prog = await backend.loadProgressMany(roster.filter((r) => !r.ghId).map((r) => r.id));
   const rows = [];
-  for (const r of roster.sort((a, b) => a.name.localeCompare(b.name))) {
+  for (const r of roster.sort(byLastName)) {
     if (r.ghId) { rows.push({ ...r, github: true }); continue; }
     if (prog[r.id]?.pwSet) continue;
     rows.push({ ...r, password: FIRST_PASSWORD });
@@ -1343,6 +1348,61 @@ async function renderCards() {
   $("#printcards").addEventListener("click", () => window.print());
 }
 
+// One student, for their teacher: every quiz and test they took (open one for each answer they gave), then review by skill
+// (open a skill for each question and their last answer).
+async function renderStudent(id) {
+  view.className = "wide";
+  view.innerHTML = `<p class="muted">Loading...</p>`;
+  const roster = await backend.listStudents(course.id).catch(() => []);
+  const r = roster.find((x) => x.id === id);
+  if (!r) { view.innerHTML = `<section class="panel"><p>That student is not on the ${esc(course.short)} roster.</p><a class="btn" href="#teacher">Back to the class</a></section>`; return; }
+  const p = (await backend.loadProgressMany([id]))[id];
+  const st = p?.decks?.[deck.id] || { cards: {}, mocks: [] };
+  const cards = st.cards || {};
+  const byId = Object.fromEntries(allItems().map((it) => [it.id, it]));
+  const formName = (fid) => deck.forms?.find((f) => f.id === fid)?.name || deck.mock?.name || "Mock";
+  const when = (ts) => new Date(ts).toLocaleString("en-US", { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" });
+  const n = Object.values(cards).reduce((t, c) => t + (c.n || 0), 0), c = Object.values(cards).reduce((t, x) => t + (x.c || 0), 0);
+  const maxOf = (it) => it.type === "fr" ? 1 : it.type === "wr" ? 4 : rowsMax(it);
+  // One question with this student's answer. choice: the choice they picked (-1 blank); score: their self-score on a written one.
+  const answerHTML = (it, { choice, score, latest }) => {
+    const card = cards[it.id];
+    if (isChoice(it)) {
+      const ok = choice === it.answer;
+      return `<div class="feedback ${ok ? "ok" : "no"}"><span class="verdict">${choice === undefined || choice === null ? "Answer not recorded." : choice < 0 ? "Left blank." : `${ok ? "Right" : "Wrong"}: ${choiceText(it.choices[choice])}`}</span></div>${ok ? "" : `<p class="small"><b>Answer:</b> ${choiceText(it.choices[it.answer])}</p>`}`;
+    }
+    if (it.type === "output" || it.type === "trace") return `<div class="feedback ${card?.last === 1 ? "ok" : "no"}"><span class="verdict">${card?.last === 1 ? "Right" : "Wrong"}</span></div>${card?.typed ? `<pre class="log">${esc(card.typed)}</pre>` : ""}`;
+    const text = latest !== false && card?.wr ? card.wr.text : null, sc = score ?? card?.wr?.score;
+    return `<div class="feedback ${sc === maxOf(it) ? "ok" : sc ? "part" : "no"}"><span class="verdict">Self-scored ${sc ?? "?"} / ${maxOf(it)}</span></div>${text !== null ? `<div class="your">${esc(text || "(blank)")}</div>` : `<p class="small muted">The written answer kept is from their latest attempt.</p>`}`;
+  };
+  const question = (it, k, ans) => `<div class="stuq"><p><b>${k + 1}.</b> <span class="chip">${esc(typeLabel(it.type))}</span>${it.topic ? `<span class="chip">${esc(it.topic)}</span>` : ""} ${tx(snippet(it))}</p>${answerHTML(it, ans)}</div>`;
+  const mocks = [...(st.mocks || [])].sort((a, b) => b.ts - a.ts);
+  const reviewBySkill = deck.skills.map((sk) => ({ sk, list: deck.items.filter((it) => it.skill === sk.id && cards[it.id]?.n) })).filter((x) => x.list.length);
+  view.innerHTML = `<p><a href="#teacher">&larr; ${esc(course.period || course.short)} class</a></p>
+    <section class="hero"><span class="eyebrow">${esc(course.name)}</span><h1>${esc(r.name || r.login)}</h1>
+      <p class="muted">${esc(r.email || "")}${r.login ? ` · GitHub @${esc(r.login)}` : ""} · ${p ? "last active " + ago(p.lastActive) : "not signed in yet"} · ${n} answers${n ? `, ${pct(c / n)}% right` : ""} · ${missesOf(cards).length} to redo</p></section>
+    <section class="panel"><h2>Quizzes and tests</h2>
+      ${mocks.length ? mocks.map((mk, k) => `<details class="stuattempt" data-k="${k}"><summary><b>${esc(formName(mk.form))}</b> <span class="small muted">· ${esc(when(mk.ts))}${mk.minutes ? ` · ${mk.minutes} min` : ""}</span> <span class="chip ${mk.score >= mk.total * 0.8 ? "good" : mk.score >= mk.total * 0.5 ? "warn" : "bad"}">${mk.score} / ${mk.total}</span></summary><div class="stack"></div></details>`).join("") : `<p class="muted">None taken yet.</p>`}
+    </section>
+    <section class="panel"><h2>Review</h2>
+      ${reviewBySkill.length ? reviewBySkill.map(({ sk, list }) => { const nn = list.reduce((t, it) => t + cards[it.id].n, 0), cc = list.reduce((t, it) => t + cards[it.id].c, 0); return `<details class="stuskill" data-skill="${esc(sk.id)}"><summary><b>${esc(sk.name)}</b> <span class="small muted">· ${list.length} question${list.length === 1 ? "" : "s"}, ${nn} answer${nn === 1 ? "" : "s"}, ${pct(cc / nn)}% right</span></summary><div class="stack"></div></details>`; }).join("") : `<p class="muted">No review yet.</p>`}
+    </section>`;
+  // Open a quiz or test: each question with what this attempt answered. Attempts saved before 11/2 show the latest answer.
+  $$("details.stuattempt").forEach((d) => d.addEventListener("toggle", () => {
+    const body = $(".stack", d); if (!d.open || body.innerHTML) return;
+    const mk = mocks[+d.dataset.k], latest = mk === mocks.find((x) => x.form === mk.form);
+    const ids = mk.items?.length ? mk.items : (deck.forms?.find((f) => f.id === mk.form)?.items || []).map((x) => x.id);
+    body.innerHTML = ids.map((iid, k) => { const it = byId[iid]; if (!it) return ""; const rv = mk.resp?.[iid];
+      return question(it, k, isChoice(it) ? { choice: rv !== undefined ? rv : latest ? cards[iid]?.pick : undefined } : { score: rv, latest }); }).join("") || `<p class="muted">The questions of this attempt were not recorded.</p>`;
+  }));
+  $$("details.stuskill").forEach((d) => d.addEventListener("toggle", () => {
+    const body = $(".stack", d); if (!d.open || body.innerHTML) return;
+    const list = reviewBySkill.find((x) => x.sk.id === d.dataset.skill).list.sort((a, b) => cards[b.id].ts - cards[a.id].ts);
+    body.innerHTML = list.map((it, k) => { const cd = cards[it.id];
+      return `${question(it, k, isChoice(it) ? { choice: cd.last === 1 ? it.answer : cd.pick } : {})}<p class="small muted">Seen ${cd.n} time${cd.n === 1 ? "" : "s"}, last ${ago(cd.ts)}.</p>`; }).join("");
+  }));
+}
+
 async function renderTeacher() {
   view.className = "wide";
   view.innerHTML = `<p class="muted">Loading the class...</p>`;
@@ -1353,7 +1413,7 @@ async function renderTeacher() {
     progressById = await backend.loadProgressMany(roster.map((r) => r.id));
   }
   catch (e) { view.innerHTML = `<section class="panel"><h1>Could not load the class</h1><p>${esc(e.message)}</p><p class="muted">Check that the rules in firestore.rules are published, and that your account is a teacher of this course.</p></section>`; return; }
-  const rows = roster.map((r) => ({ ...r, user: progressById[r.id] })).sort((a, b) => (a.name || a.login || "").localeCompare(b.name || b.login || ""));
+  const rows = roster.map((r) => ({ ...r, user: progressById[r.id] })).sort(byLastName);
   const stats = (u) => {
     const st = u?.decks?.[deck.id]; if (!st) return null;
     const cards = Object.values(st.cards || {});
@@ -1407,7 +1467,7 @@ async function renderTeacher() {
     <div class="tablewrap"><table>
       <thead><tr><th>Student</th><th>Last active</th><th class="num">Answers</th><th class="num">Right</th><th class="num" title="Questions answered wrong the last time, review and mocks">To redo</th>${deck.forms ? mockCols.map((c) => `<th class="num" title="${esc(c.title)}">${esc(c.label)}</th>`).join("") : `<th class="num">Mock best</th><th class="num">Mock last</th>`}${course.book ? `<th class="num" title="Book sections with every activity done">Book</th>` : ""}${revSkills.map((s) => `<th title="${esc(s.name)}">${esc(s.short || s.from)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map((r) => `<tr>
-        <td><b>${esc(r.name || r.login)}</b><br><span class="small muted">${esc(r.email || (r.login ? "@" + r.login : ""))}</span></td>
+        <td><a href="#student-${encodeURIComponent(r.id)}"><b>${esc(r.name || r.login)}</b></a><br><span class="small muted">${esc(r.email || (r.login ? "@" + r.login : ""))}</span></td>
         <td class="small">${r.user ? ago(r.user.lastActive) : "not signed in yet"}</td>
         <td class="num">${r.s?.n || 0}</td>
         <td class="num">${r.s?.n ? pct(r.s.acc) + "%" : "–"}</td>
@@ -1451,10 +1511,10 @@ async function renderTeacher() {
     <details ${roster.length < 40 ? "open" : ""}><summary>${roster.length} on the roster</summary><div class="stack"><div class="tablewrap"><table class="rostertable"><thead><tr><th>Name</th><th>School email</th><th>GitHub</th>${course.passwords ? "<th>Password</th>" : ""}<th></th></tr></thead><tbody>${rows.map((r) => `<tr>
       <td><input type="text" value="${esc(r.name)}" data-name="${esc(r.id)}" aria-label="Name in class"></td>
       <td class="small">${esc(r.email) || `<span class="muted">none yet</span>`}</td>
-      <td class="small mono">${r.login ? "@" + esc(r.login) : r.ghId ? esc(r.ghId) : ""}</td>
+      <td class="small"><input type="text" class="mono" value="${r.login ? "@" + esc(r.login) : r.ghId ? esc(r.ghId) : ""}" data-gh="${esc(r.id)}" placeholder="@username" aria-label="GitHub username"></td>
       ${course.passwords ? `<td class="small">${r.ghId ? "GitHub" : !r.email ? "" : r.user?.pwSet ? "chosen" : `first: <span class="mono">${esc(FIRST_PASSWORD)}</span>`}</td>` : ""}
       <td class="num">${r.email && course.passwords ? `<button class="btn ghost small" data-reset="${esc(r.email)}">Send reset link</button>` : ""}<button class="btn ghost small" data-remove="${esc(r.id)}">Remove</button></td></tr>`).join("")}</tbody></table></div>
-      <p class="small muted">Edit a name and press Enter to save it.${course.passwords ? " Send reset link emails the student a link to choose a new password." : ""} Remove takes the student off ${esc(course.short)} only.</p></div></details>
+      <p class="small muted">Edit a name and press Enter to save it. Type a GitHub username and press Enter, and that student signs in with GitHub from then on (their email sign-in still works).${course.passwords ? " Send reset link emails the student a link to choose a new password." : ""} Remove takes the student off ${esc(course.short)} only.</p></div></details>
   </section>
   <section class="panel" id="assesspanel"></section>
   ${isAdmin() ? `<section class="panel" id="teacherspanel"><h2>Teachers</h2><p class="muted">Loading...</p></section>` : ""}`;
@@ -1464,6 +1524,19 @@ async function renderTeacher() {
     const r = roster.find((x) => x.id === inp.dataset.name), name = inp.value.trim();
     if (!name) return;
     await backend.saveStudent(r.id, recordOf({ ...r, name })); toast("Saved."); inp.blur();
+  }));
+  // A GitHub username for a student: looked up to its account number, which is what sign-in matches.
+  $$("[data-gh]").forEach((inp) => inp.addEventListener("keydown", async (e) => {
+    if (e.key !== "Enter") return;
+    const r = roster.find((x) => x.id === inp.dataset.gh), login = inp.value.trim().replace(/^@/, "");
+    if (!login) { await backend.saveStudent(r.id, recordOf({ ...r, ghId: "", login: "" })); toast("GitHub removed."); return renderTeacher(); }
+    let j;
+    try { const res = await fetch(`https://api.github.com/users/${encodeURIComponent(login)}`); if (!res.ok) throw new Error(res.status); j = await res.json(); }
+    catch (x) { toast(`No GitHub account named @${login}.`); return; }
+    const other = await backend.findStudent({ ghId: String(j.id) });
+    if (other && other.id !== r.id) { toast(`@${j.login} is already on file for ${other.name}.`); return; }
+    await backend.saveStudent(r.id, recordOf({ ...r, ghId: String(j.id), login: j.login }));
+    toast(`${r.name} signs in with GitHub as @${j.login} from now on.`); renderTeacher();
   }));
   $$("[data-reset]").forEach((b) => b.addEventListener("click", async () => {
     try { await backend.sendReset(b.dataset.reset); toast(`Reset link sent to ${b.dataset.reset}.`); } catch (e) { toast("Not sent: " + (e.code || e.message)); }
@@ -1547,6 +1620,7 @@ function route() {
   if (r === "mock" && !deck.mock) { location.hash = "home"; return; }
   if (r === "mock") { if (app.mock && app.mock.phase === "done") app.mock = null; if (app.startForm) { const id = app.startForm; app.startForm = null; return startMock(id); } return renderMock(); }
   if (r === "teacher" && isTeacher()) return renderTeacher();
+  if (r.startsWith("student-") && isTeacher()) return renderStudent(decodeURIComponent(r.slice(8)));
   if (r === "questions" && canEdit()) return renderQuestions();
   if (r === "learn") return renderLearnHome(view, bookApi);
   if (r.startsWith("learn-")) return renderSection(view, r.slice(6), bookApi);

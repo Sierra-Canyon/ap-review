@@ -7,7 +7,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | Course | Period | Test | Review items | Mocks |
 |---|---|---|---:|---|
 | AP Computer Science Principles | D | Quiz 3 (11/3), WR4 to WR6 (11/4 to 11/10), Quiz 4: Functions and Loops (11/20) | 107 | 6 mock quizzes |
-| AP Computer Science A | B | Unit 2 now; the countdown follows every assessment to the AP exam | 78 | 33 forms: practice for all 15 assessments of the year |
+| AP Computer Science A | B | Unit 2 now (Quiz 5 11/6, Progress Check 11/13, Unit 2 Test 11/17); the countdown follows every assessment to the AP exam | 109 | 34 forms: practice for all 15 assessments of the year |
 | AP Cybersecurity | F | Unit 2 Test: Securing Spaces, Mon 11/2 | 215 | 3 mock tests |
 | AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 317 | 14 topic quizzes (1.1 to 1.7, 2.1 to 2.7) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
 | AP Calculus AB | (another teacher) | all eight AB units | 344 | 81 topic quizzes and 8 unit tests |
@@ -47,7 +47,8 @@ The **My misses** tab lists every question a student answered wrong the last tim
 ## AP Computer Science A: Unit 2, Selection and Iteration
 
 - Modeled on the class's own AP Classroom quizzes and tests (Q3 to Q5, U2T and its forms, the free-response rubrics) and on the AP exam's format, which Albert's AP CSA bank also follows. None of their items is reused: Q5B, Q5C, U2TB, and U2TC are live retake and makeup forms.
-- **Review** (78): code reading (4 choices) and type-the-output items for 2.2 to 2.12, with String algorithms (2.10) the largest set for Quiz 5, plus six free responses in the Methods and Control Structures style. A free response is written in a code box, then scored one rubric row at a time (one point a row, as in AP Classroom); the full-credit solution shows after. The home page can limit a set to Quiz 5 Strings, code reading, or free response.
+- **Review** (78): code reading (4 choices) and type-the-output items for 2.2 to 2.12, with String algorithms (2.10) the largest set for Quiz 5, plus six free responses in the Methods and Control Structures style. A free response is written in a code box, then scored one rubric row at a time (one point a row, as in AP Classroom); the full-credit solution shows after. The home page can limit a set to Quiz 5, the Unit 2 Test, Quests 13 to 17, code reading, or free response.
+- **From the crawler quests** (31, `decks/csa-u2/review-crawler.js`, added 11/3): items built on Quests 13 to 17 in the crawler world (the battle report, the sentinel loop on `quit`, the level as one String with `/` and `%`, the arrow with two reasons to stop, `row * width + col`), and two free responses on them. **Quiz 5 Practice C** (`decks/csa-u2/mocks-3.js`) is a third Quiz 5 mock in the same world. Verified with Java 21 (57 and 9 checks).
 - **Mocks for the whole year** (`decks/csa-year/`, plus the Quiz 5 and Unit 2 Test forms in `decks/csa-u2/`), each in the exact shape of its real assessment, grouped on the page by assessment, next ones first:
 
   | Assessment | Date | Forms | Shape |

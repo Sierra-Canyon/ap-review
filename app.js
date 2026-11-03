@@ -1,6 +1,6 @@
 import { firebaseConfig, teacherGithubIds, teacherName, firebaseSdk } from "./firebase-config.js";
 import { firebaseBackend, demoBackend, studentId } from "./backend.js";
-import { blankCard, grade, skillMastery, buildSession, counts, buildMock, partBPoints, partBMax, rowsMax, normOut, normCell, DAY } from "./srs.js";
+import { openItems, blankCard, grade, skillMastery, buildSession, counts, buildMock, partBPoints, partBMax, rowsMax, normOut, normCell, DAY } from "./srs.js";
 import { courses, courseById, coursesOf } from "./courses.js";
 import { snapshot, applyEdits, everyItem, editableFields, editId, originalOf, diffOf, pointsOf } from "./edits.js";
 import katex from "./vendor/katex.js";
@@ -763,7 +763,7 @@ function drillSkill(skill) {
   const cards = deckState().cards;
   const missed = missesOf(cards).filter((it) => it.skill === skill);
   // Then the review items in the skill that are least solid, then new ones.
-  const rest = deck.items.filter((it) => it.skill === skill && !missed.includes(it))
+  const rest = openItems(deck).filter((it) => it.skill === skill && !missed.includes(it))
     .sort((a, b) => ((cards[a.id]?.n ? cards[a.id].b : 0.5) - (cards[b.id]?.n ? cards[b.id].b : 0.5)) || ((cards[a.id]?.ts || 0) - (cards[b.id]?.ts || 0)));
   startCustom([...missed, ...rest.filter((it) => !["wr", "fr", "code", "essay", "frq"].includes(it.type)), ...rest.filter((it) => ["wr", "fr", "code", "essay", "frq"].includes(it.type)).slice(0, 1)], skillName(skill), () => drillSkill(skill));
 }

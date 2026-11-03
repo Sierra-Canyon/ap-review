@@ -61,7 +61,9 @@ async function answer(page, right) {
   await page.click("[data-as=student]");
   await page.waitForSelector(".choices-home");
   await page.selectOption("#coursepick", "cyber");
-  await page.waitForSelector("text=Unit 2 Test: Securing Spaces");
+  await page.waitForSelector("text=Unit 3: Securing Networks");
+  assert(/Quiz 2[3-9]|Quiz 3\d|midterm|Unit 3 Test/.test(await page.textContent(".countdown")), "the countdown names the next quiz");
+  assert(/Quiz \d+ words|Newest words/.test(await page.textContent("body")), "Home has the next quiz's words button");
   assert(!(await page.$("nav a[href='#learn']")), "no Learn tab in AP Cyber");
   await page.screenshot({ path: `${out}/c01-home.png`, fullPage: true });
 

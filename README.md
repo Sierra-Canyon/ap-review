@@ -8,7 +8,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 |---|---|---|---:|---|
 | AP Computer Science Principles | D | Quiz 3 (11/3), WR4 to WR6 (11/4 to 11/10), Quiz 4: Functions and Loops (11/20) | 107 | 6 mock quizzes |
 | AP Computer Science A | B | Unit 2 now (Quiz 5 11/6, Progress Check 11/13, Unit 2 Test 11/17); the countdown follows every assessment to the AP exam | 109 | 34 forms: practice for all 15 assessments of the year |
-| AP Cybersecurity | F | Unit 2 Test: Securing Spaces, Mon 11/2 | 215 | 3 mock tests |
+| AP Cybersecurity | F | Unit 3 now: the daily quizzes (Quiz 23, 11/3, to Quiz 43, 1/8), the midterm 12/16, the Unit 3 Test 1/12 | 354 (opening by meeting) | 3 Unit 2 mock tests |
 | AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 317 | 14 topic quizzes (1.1 to 1.7, 2.1 to 2.7) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
 | AP Calculus AB | (another teacher) | all eight AB units | 344 | 81 topic quizzes and 8 unit tests |
 
@@ -70,7 +70,15 @@ The **My misses** tab lists every question a student answered wrong the last tim
   No IDE and no compiler, as on the real assessments. None of their items is in review or copied from AP Classroom.
 - Every key, distractor claim, output, exception, and free-response solution was compiled and run with Java 21 (`tools/verify-java.mjs`; reports next to each file in `decks/csa-u2/`). Java code is highlighted, and prose uses backticks for code.
 
-## AP Cybersecurity: Unit 2 Test
+## AP Cybersecurity: Unit 3, and Unit 2 for the midterm
+
+- **Unit 3 (added 11/3)** follows the Unit 3 Design Spec v3 and the quiz release schedule, and **opens on the course's own schedule** (`decks/cyber-u2/meetings.js`): a word opens the day before its meeting (students have it in Anki by then, and the quiz is that morning), a scenario on its meeting day. Review, the skill meters, and the counts leave out anything not yet open, so no term shows up before it is taught. Any item can carry `opens: "YYYY-MM-DD"`; the teacher's Questions tab shows everything.
+  - **Vocabulary** (88, `vocab-u3.js`, built by `tools/build-cyber-vocab-u3.mjs` from the deck export): the deck's definitions word for word; distractors are only Unit 3 terms released by the same meeting (Unit 1 and 2 terms fill in at M28, where there are too few).
+  - **Scenarios** (51, `mc-u3.js`): three per meeting from M28 to M44, at Kestrel Coffee Roasters (the spec's canon) and the CED's transfer settings, more than half of them evidence items in Practice Exam 1's style (a network log, a subnet table, an ACL traced for one packet, an alert, an SSID list). Each uses only terms released by its meeting.
+  - Home has a **next quiz** button ("Quiz 24 words (Wed, 11/4)"), which changes by itself to the next quiz's newest words, and **Unit 3 so far**. The countdown names the next daily quiz, then the midterm (12/16) and the Unit 3 Test (1/12).
+  - Not yet: Unit 3 free responses and mock tests. M43's practice free response and the midterm's format (spec, "Downstream") are the models for them, once those are written.
+
+### Unit 2 (the test was 11/2; it stays for the midterm)
 
 - **Review** mixes three kinds of item, and the home page can limit a set to one kind:
   - **Vocabulary** (95): every Unit 2 term in the course Anki deck, plus the Unit 1 social engineering terms the test uses. The definition is the deck's, word for word (`tools/build-cyber-vocab.mjs` builds them from the deck export); a wrong pick shows that term's own definition.
@@ -173,7 +181,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `firebase-config.js` | The Firebase config (null until Setup step 7), the teacher's GitHub number. |
 | `firestore.rules` | Who can read and write what. Pasted into the Firebase console. |
 | `decks/csp-q3.js`, `decks/csp-q3-mocks/`, `decks/csp-q4/` | AP CSP: the deck, Quiz 3's review and mocks, and the WR4 to WR6 and Quiz 4 review and mocks. |
-| `decks/cyber-u2.js`, `decks/cyber-u2/`, `decks/cyber-u2-mocks/` | AP Cybersecurity: the deck, its review items (vocabulary, scenarios, free responses), and the three mock tests. |
+| `decks/cyber-u2.js`, `decks/cyber-u2/`, `decks/cyber-u2-mocks/` | AP Cybersecurity: the deck (Units 2 and 3; the id stays `cyber-u2`), its review items, the Unit 3 meeting dates (`meetings.js`), and the three Unit 2 mock tests. |
 | `tools/build-cyber-vocab.mjs` | Builds the Cyber vocabulary items from the Anki deck export. |
 | `decks/csa-u2.js`, `decks/csa-u2/` | AP CSA: the deck, its review items, and the five mocks. |
 | `tools/verify-java.mjs` | Compiles and runs every Java item with Java 21. |

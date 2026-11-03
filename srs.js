@@ -31,10 +31,15 @@ export function mastery(card) {
   return Math.min(card.b, 3) / 3;
 }
 
+// An item with opens ("YYYY-MM-DD") stays out of review until that day: a term is never practiced before it is taught.
+const isoDay = (t) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+export const isOpen = (it, now = Date.now()) => !it.opens || it.opens <= isoDay(now);
+export const openItems = (deck, now = Date.now()) => deck.items.filter((it) => isOpen(it, now));
+
 export function skillMastery(deck, cards) {
   const out = {};
   for (const s of deck.skills) {
-    const items = deck.items.filter((it) => it.skill === s.id);
+    const items = openItems(deck).filter((it) => it.skill === s.id);
     const seen = items.filter((it) => cards[it.id]?.n);
     out[s.id] = {
       value: items.length ? items.reduce((t, it) => t + mastery(cards[it.id]), 0) / items.length : 0,
@@ -61,7 +66,7 @@ function interleave(items, rand) {
 // types limits the session to some item types (the "only vocabulary" buttons); long items (written and free responses) are capped at two.
 const LONG = new Set(["wr", "fr", "code", "essay", "frq"]);
 export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, filter = null, longCap = 2 } = {}) {
-  const pool = deck.items.filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)) && (!filter || filter(it)));
+  const pool = openItems(deck, now).filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)) && (!filter || filter(it)));
   const due = pool.filter((it) => cards[it.id]?.n && cards[it.id].due <= now)
     .sort((a, b) => (cards[a.id].b - cards[b.id].b) || (cards[a.id].due - cards[b.id].due));
   const fresh = interleave(pool.filter((it) => !cards[it.id]?.n), rand);
@@ -85,7 +90,7 @@ export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = 
 
 export function counts(deck, cards, now = Date.now()) {
   let due = 0, fresh = 0, next = Infinity;
-  for (const it of deck.items) {
+  for (const it of openItems(deck, now)) {
     const c = cards[it.id];
     if (!c?.n) fresh++;
     else if (c.due <= now) due++;
@@ -111,13 +116,13 @@ export function buildMock(deck, cards, rand = Math.random, formId = null) {
   const taken = new Set();
   const partA = [];
   for (const slot of cfg.partA.slots) {
-    const it = pickOne(deck.items.filter((x) => x.type === "mcq" && slot.includes(x.skill)), taken);
+    const it = pickOne(openItems(deck).filter((x) => x.type === "mcq" && slot.includes(x.skill)), taken);
     if (it) { taken.add(it.id); partA.push(it); }
   }
   let partB = [];
   if (cfg.partB.kind === "wr") {
     for (const slot of cfg.partB.slots) {
-      const it = pickOne(deck.items.filter((x) => slot.includes(x.skill)), taken);
+      const it = pickOne(openItems(deck).filter((x) => slot.includes(x.skill)), taken);
       if (it) { taken.add(it.id); partB.push(it); }
     }
   } else {

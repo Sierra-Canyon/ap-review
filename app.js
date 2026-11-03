@@ -98,7 +98,8 @@ const coversText = (a) => (a.topics || []).map((t) => deck.skills.find((s) => s.
 function quizCountdown() {
   const today0 = new Date(); today0.setHours(0, 0, 0, 0);
   const at = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); };
-  const list = [...(deck.dates || (deck.quizDate ? [{ name: deck.quizName || deck.title, date: deck.quizDate }] : [])), ...upcoming().map((a) => ({ name: a.name, date: a.date }))]
+  // A teacher's assessment comes first, so on a day that also has a date in the deck the countdown names the teacher's.
+  const list = [...upcoming().map((a) => ({ name: a.name, date: a.date })), ...(deck.dates || (deck.quizDate ? [{ name: deck.quizName || deck.title, date: deck.quizDate }] : []))]
     .sort((a, b) => a.date.localeCompare(b.date));
   const next = list.find((x) => at(x.date) >= today0);
   if (!next) return "";
@@ -439,9 +440,9 @@ function itemHTML(item, opts = {}) {
     return `${head}
       <span class="src">${esc(item.source)}</span>
       <p class="small muted">Answer in full sentences, about the code shown. Use the names from the code.</p>
-      ${codeBlock(item.listI, "List (i)")}
-      ${codeBlock(item.listII, "List (ii)")}
-      <p class="small">It is called as <code>${esc(item.call)}</code></p>
+      ${codeBlock(item.listI, wrLabel(item, 0))}
+      ${codeBlock(item.listII, wrLabel(item, 1))}
+      ${item.call ? `<p class="small">It is called as <code>${esc(item.call)}</code></p>` : ""}
       <div class="prompt">${esc(item.prompt)}</div>
       <label for="wr-${item.id}" class="small muted">Your answer</label>
       <textarea class="wr" id="wr-${item.id}" spellcheck="true"></textarea>`;
@@ -675,6 +676,9 @@ function frExamplesHTML(item, score) {
 }
 
 // The rubric rows, then the model answer once the student has scored themselves.
+// A written response shows two pieces of code from a Personalized Project Reference: List (i) and (ii) by default,
+// or the item's own labels (["Procedure (i)", "Procedure (ii)"] for a prompt about the Procedure section).
+const wrLabel = (it, k) => it.labels?.[k] || ["List (i)", "List (ii)"][k];
 function scoreWR(area, item, text, done, { showModel = true } = {}) {
   const box = document.createElement("div");
   box.className = "stack";
@@ -950,7 +954,7 @@ function renderMockScore() {
     : it.type === "essay"
     ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}<div class="prompt"><b>${it.kind === "dbq" ? "Document-based question" : "Long essay question"}.</b> ${esc(it.prompt)}</div><div class="stack"><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div></div>`
     : `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span><span class="src">${esc(it.source)}</span></div>
-    ${codeBlock(it.listII, "List (ii)")}<div class="prompt">${esc(it.prompt)}</div>${yours}`;
+    ${codeBlock(it.listII, wrLabel(it, 1))}<div class="prompt">${esc(it.prompt)}</div>${yours}`;
   const area = document.createElement("div"); area.className = "stack"; card.append(area);
   const after = (score, levels) => {
     m.wr[it.id] = { score, levels: levels || [score] };
@@ -1496,7 +1500,7 @@ async function renderTeacher() {
     <div class="stack">${items.filter((x) => x.n).map(({ it, n, acc, missedLast, students, top, wrs }) => `<details>
       <summary><span class="row" style="display:inline-flex">${heat(acc)} <span class="mono small">${esc(it.id)}</span>${it.form ? ` <span class="chip">${esc(it.form)}</span>` : ""} <span>${esc(skillName(it.skill))} · ${esc(typeLabel(it.type))}${it.type === "fr" ? ` · ${esc(it.set ? deck.sets[it.set]?.short || deck.sets[it.set]?.name || "" : "")} ${esc(it.part)} (${esc(it.sub)})` : ""}</span> <span class="small muted">${students} students · ${n} attempts${missedLast ? ` · missed last: ${missedLast}` : ""}</span></span></summary>
       <div class="stack panel">
-        ${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div>` : it.type === "code" ? `<h3 class="ctitle">${esc(it.title)}</h3><div class="md"><p>${md(it.prompt)}</p></div>` : it.type === "wr" ? `${codeBlock(it.listII, "List (ii)")}<div class="prompt">${esc(it.prompt)}</div>` : it.type === "fr" ? `${frPrompt(it)}<p class="small"><b>Earns the point:</b> ${esc(it.earns)}</p>` : it.type === "frq" ? `${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frqPrompt(it)}` : `${it.stem ? `<p>${prose(it.stem)}</p>` : ""}${it.code ? codeBlock(it.code) : ""}${it.log ? `<pre class="log">${esc(it.log)}</pre>` : ""}<p><b>${prose(it.question)}</b></p>`}
+        ${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div>` : it.type === "code" ? `<h3 class="ctitle">${esc(it.title)}</h3><div class="md"><p>${md(it.prompt)}</p></div>` : it.type === "wr" ? `${codeBlock(it.listII, wrLabel(it, 1))}<div class="prompt">${esc(it.prompt)}</div>` : it.type === "fr" ? `${frPrompt(it)}<p class="small"><b>Earns the point:</b> ${esc(it.earns)}</p>` : it.type === "frq" ? `${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frqPrompt(it)}` : `${it.stem ? `<p>${prose(it.stem)}</p>` : ""}${it.code ? codeBlock(it.code) : ""}${it.log ? `<pre class="log">${esc(it.log)}</pre>` : ""}<p><b>${prose(it.question)}</b></p>`}
         ${isChoice(it) ? `<p><b>Answer:</b> ${choiceText(it.choices[it.answer])}</p>${top ? `<p><b>Wrong answer picked most</b> (${top[1]} times): ${choiceText(it.choices[top[0]])}<br><span class="small muted">${prose(it.why[top[0]])}</span></p>` : ""}` : ""}
         ${it.type === "output" ? `<p><b>Answer:</b></p><pre class="code"><code>${esc(it.answer)}</code></pre>` : ""}
         ${wrs.length ? `<b>Latest written responses</b>${wrs.sort((a, b) => b.ts - a.ts).map((w) => `<div class="stack"><span class="small"><b>${esc(w.who)}</b> · self-scored ${w.score} / ${it.type === "fr" ? 1 : it.type === "code" || it.type === "essay" || it.type === "frq" ? rowsMax(it) : 4}${it.type === "fr" ? "" : ` (${(w.levels || []).join(" + ")})`} · ${ago(w.ts)}</span><div class="your">${esc(w.text || "(blank)")}</div></div>`).join("")}` : ""}

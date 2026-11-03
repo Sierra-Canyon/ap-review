@@ -1,48 +1,82 @@
-// AP CSP · Quiz 3: Lists and Loops · review deck
-// Every block of code here was compiled and run on .NET 10 by tools/verify.mjs.
+// AP CSP · fall review deck: Quiz 3 (Lists and Loops), the written-response drills WR4 to WR6, and Quiz 4 (Functions and Loops).
+// The id stays "csp-q3" so students' progress and the Firestore rules keep working.
+// Every block of code here was compiled and run on .NET 10 by tools/verify.mjs (run it on each file: this one, csp-q4/*.js, csp-q3-mocks/*.js).
 // In a multiple-choice item the right choice is always written first; the site shuffles them.
 
 import mockMC from "./csp-q3-mocks/mc.js";
 import mockWR from "./csp-q3-mocks/wr.js";
-// Three fixed mock quizzes, written only for the mocks: none of their items is in review.
-const mockItems = [...mockMC.items, ...mockWR.items];
-const form = (n) => mockItems.filter((it) => it.id.startsWith(`q3m${n}-`));
+import q4A from "./csp-q4/review-a.js";
+import q4WR from "./csp-q4/review-wr.js";
+import q4Mocks from "./csp-q4/mocks.js";
+// Fixed mock quizzes, written only for the mocks: none of their items is in review.
+const mockItems = [...mockMC.items, ...mockWR.items, ...q4Mocks.items];
+const form = (prefix) => mockItems.filter((it) => it.id.startsWith(prefix + "-"));
+const Q3 = { group: "Quiz 3: Lists and Loops", date: "2026-11-03" };
+const Q4 = { group: "Quiz 4: Functions and Loops", date: "2026-11-20" };
 
 export default {
   id: "csp-q3",
   course: "AP Computer Science Principles",
-  title: "Quiz 3: Lists and Loops",
-  quizDate: "2026-11-03",
-  quizName: "Quiz 3",
+  title: "Lists, Loops, and Functions",
+  // The countdown shows the next of these.
+  dates: [
+    { name: "Quiz 3", date: "2026-11-03" },
+    { name: "WR4", date: "2026-11-04" },
+    { name: "WR5", date: "2026-11-09" },
+    { name: "WR6", date: "2026-11-10" },
+    { name: "Quiz 4", date: "2026-11-20" },
+    { name: "WR7", date: "2026-11-23" },
+    { name: "WR8", date: "2026-12-09" },
+  ],
   lang: "csharp",
   blurb: "Code-reading questions, output and trace tables, and written responses scored with the quiz's own rubric rows.",
+  focus: [
+    { id: "wr4", name: "WR4 (11/4)", skills: ["wr-nolist", "wr-calls"], size: 4 },
+    { id: "wr5", name: "WR5 (11/9)", skills: ["wr-grows", "wr-validity"], size: 4 },
+    { id: "wr6", name: "WR6 (11/10)", skills: ["wr-algo", "wr-proc"], size: 4 },
+    { id: "q4", name: "Quiz 4 (11/20)", skills: ["totals", "grid", "draw", "walk", "rewrite", "wr-params", "wr-logic"] },
+  ],
   skills: [
     { id: "index", name: "Index and Count", from: "Lists 1", short: "Lists 1" },
     { id: "parallel", name: "Parallel lists", from: "Lists 2", short: "Lists 2" },
     { id: "byhand", name: "Finding with if", from: "Lists 3", short: "Lists 3" },
     { id: "forloop", name: "The parts of a for loop", from: "For 1", short: "For 1" },
     { id: "listloop", name: "A loop over a list", from: "For 2", short: "For 2" },
+    { id: "totals", name: "Totals and records", from: "For 3, Quest 13", short: "For 3" },
+    { id: "grid", name: "Rows and columns", from: "For 4, Quest 14", short: "For 4" },
+    { id: "draw", name: "Drawing a level", from: "For 5, Quest 15", short: "For 5" },
+    { id: "walk", name: "The walk", from: "For 6, Quest 16", short: "For 6" },
+    { id: "rewrite", name: "The Milestone 2 functions", from: "Milestone 2", short: "Rewrites" },
     { id: "wr-nolist", name: "Without the list (2026, 2(c))", from: "Written response", short: "WR: no list" },
+    { id: "wr-calls", name: "A call with the same outcome (2024 Set 2, 2(b))", from: "Written response", short: "WR: calls" },
+    { id: "wr-grows", name: "When the list grows (2025 Set 1, 2(c))", from: "Written response", short: "WR: grows" },
+    { id: "wr-validity", name: "checkValidity (2024 Set 1, 2(c))", from: "Written response", short: "WR: valid" },
+    { id: "wr-algo", name: "What stops the loop (2026, 2(a))", from: "Written response", short: "WR: stops" },
+    { id: "wr-proc", name: "A logic error in the procedure (2025 Set 1, 2(b))", from: "Written response", short: "WR: proc" },
+    { id: "wr-params", name: "Parameters (2024 Set 2, 2(c))", from: "Written response", short: "WR: params" },
     { id: "wr-logic", name: "A logic error (2025 Set 2, 2(b))", from: "Written response", short: "WR: logic" },
   ],
   forms: [
-    { id: "m1", name: "Mock Quiz 1", items: form(1) },
-    { id: "m2", name: "Mock Quiz 2", items: form(2) },
-    { id: "m3", name: "Mock Quiz 3", items: form(3) },
+    { id: "m1", name: "Quiz 3 Mock 1", items: form("q3m1"), ...Q3 },
+    { id: "m2", name: "Quiz 3 Mock 2", items: form("q3m2"), ...Q3 },
+    { id: "m3", name: "Quiz 3 Mock 3", items: form("q3m3"), ...Q3 },
+    { id: "q4m1", name: "Quiz 4 Mock 1", items: form("q4m1"), ...Q4 },
+    { id: "q4m2", name: "Quiz 4 Mock 2", items: form("q4m2"), ...Q4 },
+    { id: "q4m3", name: "Quiz 4 Mock 3", items: form("q4m3"), ...Q4 },
   ],
   mock: {
     name: "Mock quiz",
-    title: "Quiz 3 practice",
+    title: "Quiz practice",
     total: 20,
     clock: "25:00",
-    blurb: "Three mock quizzes, each six multiple choice and two written responses, the same shape as the quiz. None of their questions are in review.",
+    blurb: "Mock quizzes for Quiz 3 and Quiz 4, each six multiple choice and two written responses, the same shape as the quiz. None of their questions are in review.",
     intro: [
       ["Part A.", "Six multiple-choice items, 2 points each. Read the code and choose what it does."],
-      ["Part B.", "Two written responses, 4 points each, scored with the quiz's rubric rows: one about the code without the list (2026 exam, 2(c)), and one about a logic error (2025 exam, Set 2, 2(b))."],
+      ["Part B.", "Two written responses, 4 points each, scored with the quiz's rubric rows. Quiz 3: the code without the list (2026 exam, 2(c)) and a logic error (2025 exam, Set 2, 2(b)). Quiz 4: the parameters of a procedure (2024 exam, Set 2, 2(c)) and a logic error (2025 exam, Set 2, 2(b))."],
       ["", "No feedback until the end. The quiz itself is 25 minutes, with LockDown on. None of these questions are in review, so each mock quiz shows how you do on code you have not practiced."],
     ],
-    partA: { points: 2, slots: [["index"], ["parallel"], ["byhand"], ["forloop"], ["listloop"], ["forloop", "listloop"]] },
-    partB: { kind: "wr", points: 4, slots: [["wr-nolist"], ["wr-logic"]] },
+    partA: { points: 2, slots: [["totals"], ["grid"], ["draw"], ["walk"], ["rewrite"], ["rewrite"]] },
+    partB: { kind: "wr", points: 4, slots: [["wr-params"], ["wr-logic"]] },
   },
   items: [
     // ---------------------------------------------------------------- Index and Count
@@ -1710,5 +1744,7 @@ int F(List<string> names, string wanted) { for (int i = 0; i < names.Count; i++)
         ],
       },
     },
+    ...q4A.items,
+    ...q4WR.items,
   ],
 };

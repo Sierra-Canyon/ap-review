@@ -154,7 +154,8 @@ Sign in from a private window with a student account you have, or ask one studen
 | Command | What it checks |
 |---|---|
 | `node tools/verify.mjs decks/csp-q3.js` | every review item on real .NET 10 (70 checks) |
-| `node tools/verify.mjs decks/csp-q3-mocks/mc.js` and `.../wr.js` | the three mock quizzes on real .NET 10 (18 and 21 checks) |
+| `node tools/verify.mjs decks/csp-q3-mocks/mc.js` and `.../wr.js` | the three Quiz 3 mock quizzes on real .NET 10 (18 and 21 checks) |
+| `node tools/verify.mjs decks/csp-q4/review-a.js`, `review-wr.js`, `mocks.js` | the WR4 to WR6 and Quiz 4 review items and mocks (44, 56, and 40 checks) |
 | `node tools/verify-book.mjs` | every book block on real .NET 10, and the writing rules (318 checks) |
 | `node tools/runner-diff.mjs` | the page's C# runner against those same .NET results (388 programs) |
 | `node tools/runner-vs-dotnet.mjs` | the runner against .NET on 162 extra programs, mostly student mistakes |

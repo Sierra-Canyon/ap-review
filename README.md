@@ -6,7 +6,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 
 | Course | Period | Test | Review items | Mocks |
 |---|---|---|---:|---|
-| AP Computer Science Principles | D | Quiz 3: Lists and Loops, Tue 11/3 | 52 | 3 mock quizzes |
+| AP Computer Science Principles | D | Quiz 3 (11/3), WR4 to WR6 (11/4 to 11/10), Quiz 4: Functions and Loops (11/20) | 107 | 6 mock quizzes |
 | AP Computer Science A | B | Unit 2 now; the countdown follows every assessment to the AP exam | 78 | 33 forms: practice for all 15 assessments of the year |
 | AP Cybersecurity | F | Unit 2 Test: Securing Spaces, Mon 11/2 | 215 | 3 mock tests |
 | AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 317 | 14 topic quizzes (1.1 to 1.7, 2.1 to 2.7) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
@@ -79,12 +79,20 @@ The **My misses** tab lists every question a student answered wrong the last tim
 - None of it copies the real test, Northgate, or another form. Each set was written, then checked by a second reader against the spec, the key, the guided notes, and the deck.
 - **Class tab**: the same as AP CSP, with a column per mock test and a free-response column for each part.
 
-## AP Computer Science Principles: Quiz 3
+## AP Computer Science Principles: Quiz 3, the WR drills, and Quiz 4
 
 Two parts, one sign-in:
 
 - **Learn**: a book of the fall's five topics in 21 sections, modeled on CSAwesome and Captain Coder: runnable C#, a step-through debugger, Check Your Understanding, mixed-up code, and coding exercises checked like the quests.
-- **Review** and **Mock quiz**: spaced review and mock quizzes for **Quiz 3: Lists and Loops**.
+- **Review** and **Mock quiz**: spaced review and mock quizzes for **Quiz 3: Lists and Loops** (11/3), the written-response drills **WR4, WR5, WR6** (11/4, 11/9, 11/10), and **Quiz 4: Functions and Loops** (11/20). The countdown on Home shows the next of Quiz 3, WR4 to WR8, and Quiz 4. Home has an "Only:" button for each drill and for Quiz 4.
+
+### What was added for WR4 to WR6 and Quiz 4 (11/3)
+
+- `decks/csp-q4/review-a.js`: 35 Part A review items, 7 for each of Quests 13 to 16 (totals and records, rows and columns, drawing a level, the walk) and the Milestone 2 functions.
+- `decks/csp-q4/review-wr.js`: 20 written responses on the released prompts the drills and Quiz 4 use: 2024 Set 2 2(b) (WR4), 2025 Set 1 2(c) and 2024 Set 1 2(c) checkValidity (WR5), 2026 2(a) and 2025 Set 1 2(b) (WR6), 2024 Set 2 2(c) parameters and 2025 Set 2 2(b) (Quiz 4). Prompts about the Procedure section show Procedure (i) and (ii).
+- `decks/csp-q4/mocks.js`: Quiz 4 Mock 1, 2, 3, in the quiz's shape (six multiple choice from Quests 13 to 16 and the rewrites, then the parameters question and the logic-error question).
+- None of it copies Q4, WR4, WR5, or WR6 in AP Classroom: no item uses a real quiz item's function with its twist and inputs, and the written responses avoid MyRallyCry, RemoveItem, AddMany, TotalHealth, CountItem, and the level-drawing loop the real drills use.
+- The deck keeps the id `csp-q3`, so progress and the Firestore rules carry over. Every block of code was compiled and run on .NET 10 (`node tools/verify.mjs` on each file).
 
 ## Learn
 
@@ -163,7 +171,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `backend.js` | Firebase (GitHub and email sign-in, the student records), and the demo backend (browser storage). |
 | `firebase-config.js` | The Firebase config (null until Setup step 7), the teacher's GitHub number. |
 | `firestore.rules` | Who can read and write what. Pasted into the Firebase console. |
-| `decks/csp-q3.js`, `decks/csp-q3-mocks/` | AP CSP: the review items and the three mock quizzes. |
+| `decks/csp-q3.js`, `decks/csp-q3-mocks/`, `decks/csp-q4/` | AP CSP: the deck, Quiz 3's review and mocks, and the WR4 to WR6 and Quiz 4 review and mocks. |
 | `decks/cyber-u2.js`, `decks/cyber-u2/`, `decks/cyber-u2-mocks/` | AP Cybersecurity: the deck, its review items (vocabulary, scenarios, free responses), and the three mock tests. |
 | `tools/build-cyber-vocab.mjs` | Builds the Cyber vocabulary items from the Anki deck export. |
 | `decks/csa-u2.js`, `decks/csa-u2/` | AP CSA: the deck, its review items, and the five mocks. |

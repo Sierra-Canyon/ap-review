@@ -15,7 +15,7 @@ For whoever adds the next course to sierra-canyon.github.io/ap-review, a person 
 
 ## The rules every question follows
 
-1. **Write every question new.** Never copy or reword a question, stimulus, choice, or explanation from Albert, the College Board (released exams, AP Classroom, the CED's sample questions), a textbook, or the teacher's own quizzes and tests. Model the format only. Released free-response *prompts* may be quoted word for word when the item names its source ("2024 exam, Set 2, question 2(c)"); AP CSP does this because students answer those exact prompts on the exam.
+1. **Write every question new.** Never copy or reword a question, stimulus, choice, or explanation from Albert, the College Board (released exams, AP Classroom, the CED's sample questions), a textbook, or the teacher's own quizzes and tests. Model the format and style only (see 2a for how Albert is read). Released free-response *prompts* may be quoted word for word when the item names its source ("2024 exam, Set 2, question 2(c)"); AP CSP does this because students answer those exact prompts on the exam.
 2. **Live assessments are off limits, retake and makeup forms included.** Read them so nothing on the site tests the same code, setup, numbers, or source. Same idea, different material, is what review is for.
 3. **Nothing on the site repeats itself across modes.** Mock tests and topic quizzes use questions that are not in review, so a mock shows how a student does cold.
 4. **Every key is proved, not believed.** Code is compiled and run. Math is recomputed. History sources are fetched and matched word for word. A second reader checks what a first writer wrote. See *Checking* below.
@@ -32,21 +32,46 @@ Ask, in one round (AskUserQuestion), only what the files cannot answer:
 
 ## Step 2. Map the course
 
-### 2a. Albert: the structure, never the questions
+### 2a. Albert: read every question, then write your own
 
-Albert is the map of units and topics and the model for what each section offers. Nothing is taken from its questions.
+JD's request: before writing anything, the agent reads **every question Albert has for the subject**, topic by topic, and writes up what it learned so the site's questions are modeled on Albert's: the same kinds of question, the same spread of difficulty, the same traps, explanations of the same depth. The reading is for modeling. Albert's text never reaches the site, the briefs, or the writers.
 
-1. **Use Chrome, signed in as JD.** WebFetch cannot read albert.io (its robots file blocks it). The Claude in Chrome tools in JD's browser can, and JD's Albert account is signed in there.
+**Setup**
+
+1. **Use Chrome, signed in as JD.** WebFetch cannot read albert.io (its robots file blocks it). The Claude in Chrome tools in JD's browser can, and JD's Albert teacher account is signed in there. Work in one tab of your own and close it when done.
 2. **Open the course page,** `https://www.albert.io/<course-slug>`, for example `https://www.albert.io/ap-calculus-ab-bc` or `https://www.albert.io/ap-world-history`. Its tabs are Practice, Free Response, and Assessments.
-3. **Read the unit and topic list from the Practice page with one script,** instead of clicking. Topic links follow `/learn/<course-slug>/<unit><topic>-<topic-name>` (for 1.3, `/learn/ap-calculus-ab-bc/13-estimating-limit-values-from-graphs`), and unit links follow `/learn/<course-slug>/unit-<n>-<name>`:
+3. **Get the unit and topic list from the Practice page with one script.** Topic links follow `/learn/<course-slug>/<unit><topic>-<topic-name>` (for 1.3, `/learn/ap-calculus-ab-bc/13-estimating-limit-values-from-graphs`); unit links follow `/learn/<course-slug>/unit-<n>-<name>`:
 
    ```js
    [...document.querySelectorAll('a[href*="/learn/"]')].map((a) => a.getAttribute("href") + " | " + a.textContent.trim().slice(0, 80))
    ```
 
-4. **Do not open topic links.** A topic link goes straight into that topic's first practice question. Everything needed (the numbering, the names, the order, which units are AB or BC) is on the course page.
-5. **Check the Free Response and Assessments tabs the same way,** for the kinds of free response the course has and the shape of a unit assessment (how many questions, which sections). Write the shape down in your own words.
-6. **Write it into the brief:** the units and topics with their CED numbers, which topics get a quiz, and the shape of each kind of practice. When the teacher sends Albert links for specific topics (as for AP World 1.1 to 2.7), those links name the topics to cover, nothing more.
+**Reading a topic**
+
+4. **Open the topic link.** It lands on the topic's first question. The left column lists every question in the topic with its title and difficulty (Easy, Moderate, Difficult), and the header gives the count ("10 questions"). Get every question's link with:
+
+   ```js
+   [...document.querySelectorAll('a[href*="/learn/<course-slug>/<topic-slug>/"]')].map((a) => a.getAttribute("href"))
+   ```
+
+5. **Read each question in order:** `get_page_text` for the stem and choices, then **Show solution** for the explanation. When the question has a graph, table, or image, take a screenshot as well, since the page text leaves it out.
+6. **Never press Submit Answer** or choose an answer. Answering is recorded in JD's account (the page's *My usage*). Read only.
+7. **Do the same on the Free Response and Assessments tabs:** every free-response question with its scoring, and every unit assessment's length, sections, and mix.
+8. **Read at a person's pace,** one page at a time in the browser. No scripts that pull Albert's data in bulk, no saved copies of its pages.
+
+**The write-up**
+
+9. **Write `../private/albert-notes/<course>.md`, in your own words.** Per topic:
+   - the count by difficulty, and the calculator split where the course has one;
+   - the kinds of question asked (what the student must do, what the stimulus is: a graph, a table, a code segment, a primary source, a scenario);
+   - the traps the wrong choices are built on (the misconceptions), named in general terms;
+   - how the explanations are written (one line or worked, what they name);
+   - one line per question saying **what it uses** (the function, the numbers, the source, the scenario), so writers never land on the same material.
+
+   No sentence, choice, explanation, function, data set, or source passage from Albert goes in the notes: describe, do not quote. The notes stay in `../private/`, never in this public repo.
+10. **Give the writers the notes, not Albert.** A writer who reads Albert's questions drifts toward them. Writers model the patterns the notes describe with new material.
+11. **The second reader checks each new question against the notes' "what it uses" lines.** A match in material (the same function and numbers, the same source excerpt, the same scenario) is rewritten, even when the wording differs.
+12. **When the teacher sends Albert links for specific topics** (as for AP World 1.1 to 2.7), read those topics first and cover exactly those.
 
 ### 2b. The College Board: the CED and the exam
 
@@ -77,7 +102,7 @@ A brief is the writer's only context. Start from the closest one in `../private/
 | Vocabulary and scenario courses with a running case | `cyber-unit.md`, `cyber-free-response.md`, `cyber-mock.md`, `cyber-unit3.md` |
 | A pass over live questions | `clarity-correctness-pass.md` |
 
-Every brief says: what to read first (with paths), the units and topics, the item shapes (copy them from an existing deck file), the source and vocabulary rules, the list of live assessment setups not to reuse, the writing rules, the file to write and its id prefix, the exact check command, and a report format ("the file path, counts by skill, the last line of the check, anything not settled; nothing else").
+Every brief says: what to read first (with paths, including `../private/albert-notes/<course>.md` for the course's patterns), the units and topics, the item shapes (copy them from an existing deck file), the source and vocabulary rules, the list of live assessment setups not to reuse, the writing rules, the file to write and its id prefix, the exact check command, and a report format ("the file path, counts by skill, the last line of the check, anything not settled; nothing else").
 
 The briefs refer to paths in the Claude session (`/home/claude/...`, `/mnt/user-data/uploads/...`). Stage the course files into the session, then fix the paths at the top of the copy you use.
 

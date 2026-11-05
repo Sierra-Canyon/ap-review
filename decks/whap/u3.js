@@ -46,43 +46,24 @@ export const sets = {
   },
   "u3-s3": {
     "id": "u3-s3",
-    "name": "Luther and the Council of Trent on Indulgences",
-    "intro": "Use the two sources below to answer the questions that follow.",
+    "name": "The Peace of Westphalia, 1648",
+    "intro": "Use the source below to answer the questions that follow.",
     "sources": [
       {
-        "title": "Source 1",
+        "title": "Source",
         "blocks": [
           {
-            "p": "27. They preach man who say that so soon as the penny jingles into the money-box, the soul flies out [of purgatory]."
+            "p": "XLIX. [The agreement made with Sweden] touching the Differences about Ecclesiastical Lands, and the Liberty of the Exercise of Religion ... [is confirmed] also with those call'd the Reformed, in the same manner, as if the words of the abovesaid Instrument were reported here verbatim."
           },
           {
-            "p": "28. It is certain that when the penny jingles into the money-box, gain and avarice can be increased, but the result of the intercession of the Church is in the power of God alone."
+            "p": "LXIV. And to prevent for the future any Differences arising in the Politick State, all and every one of the Electors, Princes and States of the Roman Empire, are so establish'd and confirm'd in their antient Rights, Prerogatives, Libertys, Privileges, free exercise of Territorial Right, as well Ecclesiastick, as Politick Lordships, Regales, by virtue of this present Transaction: that they never can or ought to be molested therein by any whomsoever upon any manner of pretence."
           },
           {
-            "p": "32. They will be condemned eternally, together with their teachers, who believe themselves sure of their salvation because they have letters of pardon."
+            "p": "LXV. ... Above all, it shall be free perpetually to each of the States of the Empire, to make Alliances with Strangers for their Preservation and Safety; provided, nevertheless, such Alliances be not against the Emperor, and the Empire, nor against the Publick Peace, and this Treaty ..."
           },
           {
-            "p": "36. Every truly repentant Christian has a right to full remission of penalty and guilt, even without letters of pardon."
-          },
-          {
-            "p": "86. Again:—\"Why does not the pope, whose wealth is to-day greater than the riches of the richest, build just this one church of St. Peter with his own money, rather than with the money of poor believers?\""
-          },
-          {
-            "cite": "Martin Luther, Disputation of Doctor Martin Luther on the Power and Efficacy of Indulgences (the Ninety-five Theses), 1517, translated by Adolph Spaeth, L. D. Reed, Henry Eyster Jacobs, and others, in Works of Martin Luther, vol. 1 (Philadelphia: A. J. Holman, 1915).",
-            "url": "https://www.gutenberg.org/ebooks/274.html.gen",
-            "kind": "primary"
-          }
-        ]
-      },
-      {
-        "title": "Source 2",
-        "blocks": [
-          {
-            "p": "Whereas the power of conferring Indulgences was granted by Christ to the Church; and she has, even in the most ancient times, used the said power, delivered unto her of God; the sacred holy Synod teaches, and enjoins, that the use of Indulgences, for the Christian people most salutary, and approved of by the authority of sacred Councils, is to be retained in the Church; and It condemns with anathema those who either assert, that they are useless; or who deny that there is in the Church the power of granting them. ... And being desirous that the abuses which have crept therein, and by occasion of which this honourable name of Indulgences is blasphemed by heretics, be amended and corrected, It ordains generally by this decree, that all evil gains for the obtaining thereof ... be wholly abolished."
-          },
-          {
-            "cite": "Council of Trent, Decree concerning Indulgences, Session 25 (1563), from The Canons and Decrees of the Sacred and Oecumenical Council of Trent, translated by J. Waterworth (London: Dolman, 1848).",
-            "url": "https://history.hanover.edu/texts/trent/ct25.html",
+            "cite": "Treaty of Westphalia (Peace Treaty between the Holy Roman Emperor and the King of France and their Respective Allies), signed at Münster, 24 October 1648, which ended the Thirty Years' War, Articles XLIX, LXIV and LXV, in the early eighteenth-century English translation published by the Avalon Project, Yale Law School. The Reformed: Calvinist Protestants. Roman Empire: the Holy Roman Empire. States: the princes, cities, and other territories of the empire. Strangers: foreign powers.",
+            "url": "https://avalon.law.yale.edu/17th_century/westphal.asp",
             "kind": "primary"
           }
         ]
@@ -236,6 +217,25 @@ export const sets = {
       }
     ]
   },
+  "u3-s9": {
+    "id": "u3-s9",
+    "name": "The Sikhs and the Mughal State",
+    "intro": "Use the passage below to answer the questions that follow.",
+    "sources": [
+      {
+        "title": "Source",
+        "blocks": [
+          {
+            "p": "Sikhism began in the Punjab region of northern India with Guru Nanak (1469 to 1539), who taught devotion to one formless God and rejected caste distinctions, the worship of images, and pilgrimage as paths to salvation. Many historians argue that the Sikh community took shape where Hindu and Muslim traditions met, and that its relations with the Mughal state changed with each emperor's policy. Under Akbar, who welcomed debate among religions, the community grew, and its central shrine, the Harmandir Sahib, was built at Amritsar. Later emperors were less friendly. Jahangir had the fifth guru, Arjan, executed in 1606, and Aurangzeb had the ninth guru, Tegh Bahadur, executed in 1675. In 1699 the tenth guru, Gobind Singh, founded the Khalsa, a community of initiated Sikhs pledged to defend the faith."
+          },
+          {
+            "cite": "Practice passage written for this review, summarizing an interpretation held by many historians.",
+            "kind": "practice"
+          }
+        ]
+      }
+    ]
+  },
   "u3-dbq": {
     "id": "u3-dbq",
     "name": "Religion and Royal Power, c. 1450 to c. 1750",
@@ -245,11 +245,11 @@ export const sets = {
         "title": "Document 1",
         "blocks": [
           {
-            "p": "See, now, how Christian is the decree which says that the temporal power is not above the \"spiritual estate\" and may not punish it. That is as much as to say that the hand shall lend no aid when the eye is suffering. Is it not unnatural, not to say unchristian, that one member should not help another and prevent its destruction? Verily, the more honorable the member, the more should the others help. I say then, since the temporal power is ordained of God to punish evil-doers and to protect them that do well, it should therefore be left free to perform it[s] office without hindrance through the whole body of Christendom without respect of persons, whether it affect pope, bishops, priests, monks, nuns or anybody else."
+            "p": "Albeit, the King's Majesty justly and rightfully is and oweth to be the supreme head of the Church of England, and so is recognised by the clergy of this realm in their Convocations; ... Be it enacted by authority of this present Parliament that the King our sovereign lord, his heirs and successors kings of this realm, shall be taken, accepted and reputed the only supreme head in earth of the Church of England called Anglicana Ecclesia ... And that our said sovereign lord, his heirs and successors kings of this realm, shall have full power and authority from time to time to visit, repress, redress, reform, order, correct, restrain and amend all such errors, heresies, abuses, offences, contempts and enormities, whatsoever they be ... any usage, custom, foreign laws, foreign authority, prescription or any other thing or things to the contrary hereof notwithstanding."
           },
           {
-            "cite": "Martin Luther, German monk and leader of the Protestant Reformation, An Open Letter to the Christian Nobility of the German Nation (1520), translated by C. M. Jacobs, in Works of Martin Luther, vol. 2 (Philadelphia: A. J. Holman, 1915).",
-            "url": "https://www.projectwittenberg.org/pub/resources/text/wittenberg/luther/web/nblty-03.html",
+            "cite": "Parliament of England, Act of Supremacy (1534), passed at the request of King Henry VIII, from Statutes of the Realm, vol. 3 (London, 1817), with the spelling modernized as given by TudorHistory.org. Oweth: ought. Convocations: assemblies of the clergy. Foreign authority: the authority of the pope.",
+            "url": "https://tudorhistory.org/primary/supremacy.html",
             "kind": "primary"
           }
         ]
@@ -538,18 +538,18 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Causation",
-    "question": "Luther's theses in Source 1 were written in direct response to which practice?",
+    "question": "The war that this treaty ended began mainly because of which development?",
     "choices": [
-      "The sale of indulgences to raise money, including money for rebuilding St. Peter's Basilica in Rome",
-      "The English king's decision to break with the pope and lead his own church",
-      "The Spanish Inquisition's trials of people accused of false conversion to Christianity",
-      "The Ottoman Empire's advance into central Europe"
+      "Conflict between Catholic and Protestant rulers in the Holy Roman Empire, a division that grew out of the Reformation",
+      "Ottoman campaigns against the Habsburg capital of Vienna",
+      "German peasants' demands for relief from the dues they owed to their lords",
+      "Rivalry between England and the Dutch Republic over Atlantic trade"
     ],
     "why": [
-      "Thesis 86 asks why the pope builds St. Peter's with the money of poor believers, and theses 27 and 28 mock preachers who sold indulgences for coins.",
-      "Henry VIII broke with Rome in the 1530s, after Luther wrote the theses in 1517.",
-      "The Spanish Inquisition, founded in 1478, targeted converts from Judaism and Islam; Luther does not address it.",
-      "The Ottomans did threaten central Europe in this period, but the theses are about church practices, not war."
+      "The Thirty Years' War (1618 to 1648) began when Protestant nobles in Bohemia revolted against their Catholic Habsburg king, and Article XLIX shows that the peace still had to settle religious questions such as church lands and the rights of the Reformed.",
+      "The Ottomans did besiege Vienna in 1529 and fought the Habsburgs for a long time, but the Thirty Years' War was a war among Christian states, and the treaty never mentions the Ottomans.",
+      "The German Peasants' War of 1525 came almost a century earlier, and the treaty deals with princes and states, not peasants.",
+      "The Anglo-Dutch Wars over trade began in 1652, after this treaty, and England was not a party to it."
     ],
     "answer": 0
   },
@@ -560,18 +560,18 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Continuity and Change",
-    "question": "Taken together, the two sources show that the Catholic Church responded to Protestant criticism by",
+    "question": "Compared with the Peace of Augsburg (1555), which recognized only Catholics and Lutherans, Article XLIX of the treaty shows which change?",
     "choices": [
-      "keeping indulgences as a church power while ordering an end to the profits made from them",
-      "agreeing with Luther that indulgences were useless and ending them",
-      "allowing each ruler to choose the official religion of his own lands",
-      "placing the church under the authority of the Holy Roman Emperor"
+      "Legal recognition was extended to Calvinists, called the Reformed, while religion remained a matter settled by treaty among rulers.",
+      "Catholicism became the only faith allowed anywhere in the Holy Roman Empire.",
+      "Every individual gained full freedom to choose a religion, and church and state were separated.",
+      "The pope gained the right to approve the religion of each German prince."
     ],
     "why": [
-      "The decree condemns anyone who calls indulgences useless, which continues church teaching, but it orders that evil gains from them be wholly abolished, a change aimed at the abuses Luther attacked.",
-      "The Council of Trent rejected Luther's view and declared that the church still had the power to grant indulgences.",
-      "This was the principle of the Peace of Augsburg (1555) for German princes, a political settlement, not a church decree.",
-      "The council defended the church's own authority; it did not hand control of the church to the emperor."
+      "Augsburg had left Calvinists out; Article XLIX extends the religious settlement \"also with those call'd the Reformed,\" a change, while the continuity is that rulers and treaties, not individuals, still decided religious rights.",
+      "The treaty does the opposite: it protects the exercise of Protestant religion, including that of the Reformed.",
+      "This overstates the treaty. Rulers kept wide control over the religion of their lands, and full separation of church and state came much later, in places such as the United States.",
+      "The pope protested against the Peace of Westphalia because it was made without him and confirmed Protestant rights."
     ],
     "answer": 0
   },
@@ -582,18 +582,18 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Causation",
-    "question": "Which of the following best explains why ideas like those in Source 1 spread quickly across Europe?",
+    "question": "Which of the following best explains why the German princes and states wanted the rights described in Articles LXIV and LXV?",
     "choices": [
-      "Printing presses produced cheap copies of pamphlets and of translations of the Bible.",
-      "Jesuit missionaries carried Luther's teachings to Asia and the Americas.",
-      "Silk Road caravans brought new religious ideas from Central Asia.",
-      "Monks copied religious texts by hand and shared them between monasteries."
+      "During the war the Catholic Habsburg emperor had tried to restore Catholic lands and strengthen his control over the states of the empire.",
+      "The Ottoman sultan had forced the German states to pay him tribute.",
+      "The French king wanted to unite the German states under a single government.",
+      "The Spanish crown had barred the German states from trading with its colonies in the Americas."
     ],
     "why": [
-      "The printing press, developed in Europe in the mid fifteenth century, let Luther's theses and later pamphlets be copied and spread across Germany within weeks.",
-      "The Jesuits were Catholic missionaries who worked against Protestantism and spread Catholic teaching overseas.",
-      "Silk Road trade did spread religions in earlier centuries, but it did not carry Luther's ideas across Europe.",
-      "Hand copying was the older way of making books and was far too slow to explain how fast the Reformation spread."
+      "Emperor Ferdinand II's Edict of Restitution (1629) ordered Protestants to return church lands, and his armies threatened the princes' independence, so the princes wanted their territorial rights and their freedom to make alliances written into the peace.",
+      "The Ottomans took tribute from Hungary and other lands they ruled, but not from the German states, and the treaty does not mention them.",
+      "France fought against the Habsburgs to keep the empire divided and weak, not to unite it.",
+      "Spain did limit trade with its colonies, but the articles are about political rights inside the empire, not overseas trade."
     ],
     "answer": 0
   },
@@ -604,18 +604,18 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Causation",
-    "question": "Which of the following was a political effect of the religious division that Source 1 helped to start?",
+    "question": "Which of the following was the most important long-term political effect of the settlement described in the source?",
     "choices": [
-      "German princes won the right to choose whether their lands would be Lutheran or Catholic in the Peace of Augsburg (1555).",
-      "The Holy Roman Emperor united all German lands under a single Catholic government.",
-      "The Safavid shahs made Shia Islam the official religion of Iran.",
-      "The Ottoman sultans began taking soldiers through the devshirme."
+      "The Holy Roman Empire remained a loose union of largely self-governing states, while centralized monarchies such as France grew stronger.",
+      "The German states united into a single nation under the Habsburg emperor.",
+      "Wars over religion ended permanently everywhere in Europe.",
+      "The Habsburg family lost all of its lands in central Europe."
     ],
     "why": [
-      "The Peace of Augsburg let each prince decide the religion of his territory, which shows how the Reformation increased rulers' power over religion.",
-      "The Holy Roman Empire stayed divided into many states, and the emperor failed to restore Catholic unity.",
-      "Shah Ismail I made Shia Islam the state religion after 1501, but this came from the Sunni and Shia split, not from the Reformation.",
-      "The devshirme began in the late fourteenth or early fifteenth century and had no connection to Luther."
+      "By guaranteeing each state's territorial rights and freedom to make alliances, the treaty kept the emperor weak and the empire divided, and France came out of the war as the strongest power in western Europe.",
+      "Germany was not unified until 1871, under Prussia, more than two centuries later.",
+      "This overstates the treaty's effect. Religion still played a part in later conflicts, such as Louis XIV's persecution of French Protestants after 1685.",
+      "This overstates the Habsburg losses. The Habsburgs kept Austria, Bohemia, and their other hereditary lands and remained a major power."
     ],
     "answer": 0
   },
@@ -823,19 +823,19 @@ export default [
     "type": "mcq",
     "set": "u3-s6",
     "topic": "3.2",
-    "reasoning": "Causation",
-    "question": "The Qing order that Han Chinese men wear the queue hairstyle is best understood as",
+    "reasoning": "Comparison",
+    "question": "The Qing order that Han Chinese men wear the queue hairstyle is most similar to which policy of another ruler in the period c. 1450 to c. 1750?",
     "choices": [
-      "a visible sign that conquered subjects accepted the authority of the new dynasty",
-      "a continuation of Ming customs of dress and appearance",
-      "a religious practice that the Qing borrowed from Tibetan Buddhism",
-      "a way to raise tax revenue from men who kept their old hairstyle"
+      "Peter the Great's orders that Russian nobles shave their beards and wear Western clothing",
+      "Akbar's decision to end the jizya tax on non-Muslims in the Mughal Empire",
+      "The Tokugawa rule that daimyo spend every other year at the shogun's capital of Edo",
+      "The Ottoman devshirme, which took Christian boys to train as soldiers and officials"
     ],
     "why": [
-      "Han men who refused the queue could be put to death, so wearing it became a public sign of loyalty to Manchu rule.",
-      "Ming men wore their hair long and tied up; the queue was a Manchu style forced on Han men after the conquest.",
-      "Qing emperors did support Tibetan Buddhism, but the queue was a Manchu custom, not a Buddhist one.",
-      "Peter the Great of Russia taxed men who kept their beards, but the queue order was about loyalty, and refusing it could bring death rather than a fee."
+      "Both rulers required a visible change in appearance and pressed those who refused (death for refusing the queue, a tax for keeping a beard), so that subjects' bodies showed acceptance of the ruler's new order: Manchu rule in China and Westernizing reform in Russia.",
+      "Ending the jizya removed a burden on non-Muslim subjects to win their support; it did not demand that subjects change how they looked.",
+      "Alternate attendance controlled the daimyo by keeping them near the shogun and making them spend heavily, not by changing the appearance of ordinary subjects.",
+      "The devshirme recruited a small number of boys into state service, while the queue order applied to all Han men as a sign of submission."
     ],
     "answer": 0
   },
@@ -858,6 +858,116 @@ export default [
       "Monumental architecture, such as the Mughal Taj Mahal, was another method, but the passage describes religious patronage.",
       "Tax farming was a way to collect revenue, used in the Ottoman Empire, not a way to build religious legitimacy.",
       "This describes the Ottoman devshirme, a method of building a loyal military."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "u3-m24",
+    "skill": "u3",
+    "type": "mcq",
+    "set": "u3-s5",
+    "topic": "3.1",
+    "reasoning": "Causation",
+    "question": "Which earlier development most directly made possible the campaigns that begin the table?",
+    "choices": [
+      "Ivan IV's conquest of the Khanates of Kazan (1552) and Astrakhan (1556), which gave Moscow control of the Volga River route",
+      "Peter the Great's founding of St. Petersburg as a port on the Baltic Sea",
+      "The Mongol conquest of the Rus principalities in the thirteenth century",
+      "The marriage of Ivan III to a Byzantine princess and his claim that Moscow was the heir of Byzantium"
+    ],
+    "why": [
+      "Taking Kazan and Astrakhan removed the strongest Muslim khanates on Russia's eastern edge and opened the way to the Urals, where the Stroganov merchant family then hired Yermak to attack the Khanate of Sibir.",
+      "St. Petersburg was founded in 1703, more than a century after Yermak's campaign, and it faced west, not east.",
+      "Mongol rule over the Rus is true history, but it ended in the late fifteenth century and slowed Russian growth rather than opening Siberia.",
+      "Ivan III did strengthen Moscow's claims to authority in the late fifteenth century, but this was about legitimacy, not the conquest that opened a route east of the Urals."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "u3-m25",
+    "skill": "u3",
+    "type": "mcq",
+    "set": "u3-s9",
+    "topic": "3.3",
+    "reasoning": "Contextualization",
+    "question": "Which of the following best describes the historical context in which Guru Nanak began teaching?",
+    "choices": [
+      "Hindu devotional movements and Islamic Sufi traditions were spreading side by side in northern India under Muslim rulers.",
+      "The Portuguese were setting up trading posts on India's west coast.",
+      "Buddhism was spreading from India to China along the Silk Roads.",
+      "Akbar was promoting a new court faith that combined ideas from many religions."
+    ],
+    "why": [
+      "Nanak lived under the Delhi Sultanate and the first Mughals, when bhakti devotion to a single God and Sufi mysticism both stressed personal devotion over ritual, the setting the passage describes as the meeting of Hindu and Muslim traditions.",
+      "The Portuguese did arrive in India during Nanak's lifetime, after 1498, but this is true and irrelevant: their coastal trade had little to do with religious life in the Punjab.",
+      "Buddhism spread to China many centuries earlier, in the first millennium CE.",
+      "Akbar's court faith dates from the 1580s, decades after Nanak died in 1539, so it could not have shaped his teaching."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "u3-m26",
+    "skill": "u3",
+    "type": "mcq",
+    "set": "u3-s9",
+    "topic": "3.3",
+    "reasoning": "Comparison",
+    "question": "Guru Nanak's rejection of caste, image worship, and pilgrimage as paths to salvation is most similar to which development in Europe in the same century?",
+    "choices": [
+      "Protestant reformers' rejection of church practices, such as the sale of indulgences, that they said could not bring salvation",
+      "The Council of Trent's decision to keep the Catholic sacraments and the authority of the pope",
+      "The Jesuits' founding of schools and missions to spread Catholic teaching",
+      "The Spanish Inquisition's trials of people suspected of false conversion"
+    ],
+    "why": [
+      "Both Nanak and reformers such as Luther taught that rituals and religious go-betweens did not earn salvation and that personal faith or devotion mattered most.",
+      "The Council of Trent defended existing Catholic practices, which is the opposite of rejecting established rituals.",
+      "The Jesuits were part of the Catholic Reformation, which defended the church's traditions instead of rejecting them.",
+      "The Inquisition enforced existing religious rules, so it does not match a movement that challenged them."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "u3-m27",
+    "skill": "u3",
+    "type": "mcq",
+    "set": "u3-s9",
+    "topic": "3.3",
+    "reasoning": "Continuity and Change",
+    "question": "The founding of the Khalsa in 1699 marked which change in the Sikh community?",
+    "choices": [
+      "A community centered on devotion also organized itself to defend the faith by force.",
+      "Sikhism became the official religion of the Mughal Empire.",
+      "The Sikhs accepted the caste divisions that Guru Nanak had rejected.",
+      "The Sikhs ended all contact with their Hindu and Muslim neighbors."
+    ],
+    "why": [
+      "After two gurus were executed, Gobind Singh created the Khalsa as a body of initiated Sikhs pledged to defend the faith, which added an armed role while keeping Nanak's devotion to one God.",
+      "The Mughal emperors were Muslim, and the passage describes growing conflict between the Sikhs and the Mughal state, not adoption of Sikhism.",
+      "The Khalsa kept the rejection of caste; initiated Sikhs of all backgrounds shared one community.",
+      "This overstates the change. The Sikhs remained part of Punjabi society, which included Hindus and Muslims."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "u3-m28",
+    "skill": "u3",
+    "type": "mcq",
+    "set": "u3-s9",
+    "topic": "3.1",
+    "reasoning": "Causation",
+    "question": "Aurangzeb's religious policies, including the execution described in the passage, contributed most directly to which effect?",
+    "choices": [
+      "Growing armed resistance from Sikhs, Marathas, and Rajputs that strained Mughal power by the early eighteenth century",
+      "The British East India Company's victory at Plassey in 1757, which gave it control of Bengal",
+      "The immediate collapse of the Mughal Empire upon Aurangzeb's death in 1707",
+      "Safavid victories that took the city of Delhi from the Mughals"
+    ],
+    "why": [
+      "Aurangzeb's restoration of the jizya and his treatment of non-Muslims helped turn Sikh, Maratha, and Rajput leaders against him, and these long wars drained the treasury and weakened central control.",
+      "Plassey is a plausible later event, but it came fifty years after Aurangzeb's death and resulted from Company power and Mughal weakness in Bengal, not directly from his religious policy.",
+      "This overstates the effect. The empire weakened after 1707, but a Mughal emperor kept his throne until 1857.",
+      "The Safavids fought the Mughals over Kandahar but never took Delhi; the Persian ruler Nader Shah sacked Delhi in 1739, after the Safavid dynasty had fallen."
     ],
     "answer": 0
   },
@@ -1238,7 +1348,7 @@ export default [
       }
     ],
     "docs": [
-      "Document 1 (Luther, 1520): Luther urges German rulers to use their God-given power over the clergy, showing that the Reformation gave secular rulers a religious reason to take control of the church. Sourcing: Luther needed the protection of German princes against the pope.",
+      "Document 1 (Act of Supremacy, 1534): Parliament declares the English king the only supreme head of the Church of England, with power to correct heresies and abuses, and sets aside any foreign authority, meaning the pope. Use it to show a ruler taking control of the church to strengthen royal power. Sourcing: the act was passed for Henry VIII after the pope refused to annul his first marriage, so its claim that the king was always rightfully head of the church served the king's immediate purpose.",
       "Document 2 (Busbecq, 1555): Ottoman officials rose by merit, not birth, so the sultan's power rested on a trained, loyal service class. Use it to qualify the argument: Ottoman strength did not rest on religion alone. Sourcing: Busbecq, a Habsburg diplomat, wrote for European readers and stressed Ottoman merit to contrast it with European societies where birth decided rank.",
       "Document 3 (Abu'l-Fazl, c. 1590s): Mughal kingship is a divine light given directly by God, and a good king ends sectarian strife. Use it to show religion legitimizing rule through tolerance rather than one faith. Sourcing: the author was Akbar's court historian and friend.",
       "Document 4 (James I, 1610): Kings are called gods and subjects may not question them, but just kings declare what they will do, or they incur the curse of God. Use it for divine right and for its limits. Sourcing: James spoke to a Parliament that was resisting his demands for money.",
@@ -1252,13 +1362,13 @@ export default [
       "The Ottoman millet system allowed Christian and Jewish communities to govern many of their own religious affairs.",
       "Akbar ended the jizya in 1564, and Aurangzeb restored it in 1679.",
       "The Peace of Augsburg (1555) let German princes choose Lutheranism or Catholicism for their lands.",
-      "Henry VIII's Act of Supremacy (1534) made the English king head of the Church of England.",
+      "Martin Luther's appeal to the German princes in 1520 urged them to reform the church themselves, and many princes who became Lutheran took over church lands.",
       "The Spanish Inquisition, founded in 1478, enforced Catholic belief under royal control.",
       "Peter the Great replaced the patriarch with the Holy Synod in 1721, placing the Russian Orthodox Church under the state.",
       "Qing emperors acted as patrons of Tibetan Buddhism to win the loyalty of Mongols and Tibetans.",
       "The Inca ruler claimed descent from the sun god Inti, and the Aztecs practiced human sacrifice to honor gods such as Huitzilopochtli.",
       "Louis XIV's palace of Versailles displayed royal power through monumental architecture."
     ],
-    "model": "Thesis: Rulers in Europe and Asia relied heavily on religion to legitimize their power, presenting themselves as chosen by God or as defenders of the true faith, but religion worked in different ways, uniting subjects under one faith in France while promoting tolerance in Mughal India, and it always worked alongside nonreligious tools such as merit-based officials, laws, and taxes.\n\nContext: After 1517 the Protestant Reformation split Christian Europe, and the Sunni Ottomans and Shia Safavids fought for land and religious leadership, so rulers everywhere had to decide how to handle religious difference.\n\nBody 1 (divine right): Bossuet (Doc. 6) and James I (Doc. 4) claim that kings sit on God's throne, and Abu'l-Fazl (Doc. 3) calls kingship a divine light. Sourcing: each author served or was the ruler, so each had reason to raise royal authority.\n\nBody 2 (religious unity versus tolerance): Louis XIV (Doc. 7) destroyed Protestant churches to make France Catholic, and Luther (Doc. 1) urged princes to take power over the clergy. Akbar (Doc. 3) instead won support by ending sectarian strife, and outside evidence such as the Ottoman millet system shows another tolerant model.\n\nBody 3 (beyond religion): Busbecq (Doc. 2) shows Ottoman power resting on officials chosen by merit, and the Kangxi Emperor (Doc. 5) mixed Confucian orthodoxy with orders to obey laws and pay taxes.\n\nComplexity: Religion could also limit rulers. James I admits that just kings must declare what they will do or incur God's curse, so the same beliefs that raised kings also set expectations they had to meet."
+    "model": "Thesis: Rulers in Europe and Asia relied heavily on religion to legitimize their power, presenting themselves as chosen by God or as defenders of the true faith, but religion worked in different ways, uniting subjects under one faith in France while promoting tolerance in Mughal India, and it always worked alongside nonreligious tools such as merit-based officials, laws, and taxes.\n\nContext: After 1517 the Protestant Reformation split Christian Europe, and the Sunni Ottomans and Shia Safavids fought for land and religious leadership, so rulers everywhere had to decide how to handle religious difference.\n\nBody 1 (divine right): Bossuet (Doc. 6) and James I (Doc. 4) claim that kings sit on God's throne, and Abu'l-Fazl (Doc. 3) calls kingship a divine light. Sourcing: each author served or was the ruler, so each had reason to raise royal authority.\n\nBody 2 (religious unity versus tolerance): Louis XIV (Doc. 7) destroyed Protestant churches to make France Catholic, and the English Act of Supremacy (Doc. 1) made Henry VIII head of the church in place of the pope. Akbar (Doc. 3) instead won support by ending sectarian strife, and outside evidence such as the Ottoman millet system shows another tolerant model.\n\nBody 3 (beyond religion): Busbecq (Doc. 2) shows Ottoman power resting on officials chosen by merit, and the Kangxi Emperor (Doc. 5) mixed Confucian orthodoxy with orders to obey laws and pay taxes.\n\nComplexity: Religion could also limit rulers. James I admits that just kings must follow the laws to avoid God's curse, so the same beliefs that raised kings also set expectations they had to meet."
   }
 ];

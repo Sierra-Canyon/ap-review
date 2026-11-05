@@ -2,13 +2,11 @@
 // Sources: every stimulus this quiz uses, keyed by id.
 export const sets = {
   "t26-s1": {
-    id: "t26-s1", name: "Gabriele de' Mussi on the siege of Caffa", intro: "Use the source below to answer the questions that follow.",
+    id: "t26-s1", name: "A chronicle of Prague on the plague", intro: "Use the source below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "In the year 1346, ... in eastern parts an immense number of Tartars and Saracens fell victims to a mysterious and sudden death." },
-        { p: "The Tartars followed these fugitive Italian merchants [from Tana], and, surrounding the city of Caffa, besieged it likewise. ... Suddenly 'the death,' as it was called, broke out in the Tartar host, and thousands were daily carried off by the disease... Then they turned their vengeance on the besieged, and in the hope of communicating the infection to their Christian enemies, by the aid of the engines of war, they projected the bodies of the dead over the walls into the city." },
-        { p: "... The sailors, as if accompanied by evil spirits, as soon as they approached the land, were death to those with whom they mingled." },
-        { cite: "Gabriele de' Mussi, a notary of Piacenza in northern Italy, Ystoria de morbo (History of the Disease, written c. 1348), as translated and quoted in Francis Aidan Gasquet, The Great Pestilence (A.D. 1348-9), Now Commonly Known as the Black Death (London: Simpkin Marshall, Hamilton, Kent & Co., 1893), chapter I, Project Gutenberg eBook 45815. Gasquet notes that de' Mussi did not leave Piacenza at this time, so his account of Caffa came from the reports of others. Tartars was the European name for the Mongols and the peoples they ruled; here they are the army of the Golden Horde, the Mongol khanate north of the Black Sea. Saracens was a European name for Muslims. Gasquet explains that the Tartars had driven the Italian merchants out of Tana, a trading port near the mouth of the Don River, before they besieged Caffa, a Genoese trading port in the Crimea. The last paragraph describes the sailors on the ships that left Caffa for Italy.", url: "https://gutenberg.org/cache/epub/45815/pg45815-images.html", kind: "primary" },
+        { p: "... some students, coming from Bologna into Bohemia, saw that in most of the cities and castles they passed through few remained alive, and in some all were dead. ... Priests, too, ministering the sacraments, and doctors medicines, to the sick were infected by them and died, and so many passed out of this life without confession or the sacraments of the Church, as the priests were dead. ... In many places, too, the air was more infected and more deadly than poisoned food, from the corruption of the corpses, since there was no one left to bury them. Of the foresaid students, moreover, only one returned to Bohemia, and his companions all died on the journey." },
+        { cite: "A chronicle of Prague (Chronicon Pragense), on the plague of 1348 and 1349, as translated and quoted in Francis Aidan Gasquet, The Great Pestilence (A.D. 1348-9), Now Commonly Known as the Black Death (London: Simpkin Marshall, Hamilton, Kent & Co., 1893), Project Gutenberg eBook 45815. Gasquet's note cites the edition by Loserth in Fontes rerum Austriacarum, Scriptores, vol. i, p. 395. Bologna, in northern Italy, had one of the oldest universities in Europe, and students came to it from across Latin Christendom. Bohemia is the region around Prague, in the modern Czech Republic.", url: "https://gutenberg.org/cache/epub/45815/pg45815-images.html", kind: "primary" },
       ] },
     ],
   },
@@ -46,35 +44,35 @@ export default {
   forms: [
     { id: "t26", name: "Topic 2.6 Quiz: Environmental Consequences of Connectivity", group: "Unit 2: Networks of Exchange",
       items: [
-        // ---------- Set 1: de' Mussi on Caffa ----------
+        // ---------- Set 1: a chronicle of Prague on the plague ----------
         { id: "t26-m01", skill: "u2", type: "mcq", set: "t26-s1", topic: "2.6", reasoning: "Contextualization",
-          question: "Which of the following best explains why Italian merchants were living in Black Sea ports such as Tana and Caffa in the 1340s?",
+          question: "The deaths the students saw on their journey from Bologna are best understood in the context of which development?",
           choices: [
-            "The Black Sea ports were western ends of overland trade routes across Mongol-ruled lands, where Italians could buy silk and other Asian goods.",
-            "The Ottoman capture of Constantinople had closed the eastern Mediterranean to Italian ships.",
-            "Portuguese voyages around Africa had cut Italian merchants out of the Indian Ocean spice trade.",
-            "Crusader armies had conquered the Crimea and opened it to settlers from western Europe.",
+            "The spread of the plague from Italian ports, which ships from the Black Sea reached in 1347, along the roads that linked Italy with central Europe",
+            "The Mongol invasion of central Europe in 1241 and 1242, in which Mongol armies destroyed towns in Poland and Hungary",
+            "The Hundred Years' War between England and France, which began in 1337",
+            "The Hussite wars in Bohemia, which followed the execution of the reformer Jan Hus in 1415",
           ],
           why: [
-            "Caravans from Central Asia and China ended at Black Sea ports such as Tana, so Genoese and Venetian merchants settled there to trade, and these same links carried the plague to Italian ships.",
-            "The Ottomans took Constantinople in 1453, about a century after the siege of Caffa.",
-            "The Portuguese did not reach India by sea until 1498.",
-            "The Crusades were aimed at the Holy Land; the Genoese held Caffa with the permission of the Mongol khans of the Golden Horde, not by conquest.",
+            "Merchant ships carried the plague from Black Sea ports to Italy in 1347, and from there it moved north along the roads that students, merchants, and pilgrims traveled, which is why the students met the dead in town after town.",
+            "The Mongol invasion of central Europe was real, but it took place about a century earlier, and the excerpt describes sickness, not warfare.",
+            "The Hundred Years' War was being fought at this time, but in France, and the excerpt describes people killed by sickness on the road from Italy to Bohemia.",
+            "The Hussite wars came in the 1420s and 1430s, long after the events in the excerpt.",
           ], answer: 0 },
 
         { id: "t26-m02", skill: "u2", type: "mcq", set: "t26-s1", topic: "2.6", reasoning: "Sourcing and situation",
-          question: "Which of the following would most limit the excerpt's reliability as evidence of what happened at Caffa?",
+          question: "Which of the following would most limit the excerpt's usefulness as evidence of how many people died in the places the students passed through?",
           choices: [
-            "De' Mussi stayed in Piacenza and based his account on reports from others, not on what he saw himself.",
-            "De' Mussi was a Mongol official who wanted to excuse the Golden Horde's defeat at Caffa.",
-            "De' Mussi wrote his account more than a century after the siege took place.",
-            "De' Mussi was a physician who wanted to sell a new cure for the disease.",
+            "The account rests on what one surviving student reported, and it describes the dead in general terms without counts for any town.",
+            "The chronicler blamed the deaths on corrupted air rather than on fleas and rats.",
+            "The chronicler was a Mongol official who wanted to hide the losses of the Golden Horde.",
+            "The chronicle was written two centuries after the plague.",
           ],
           why: [
-            "Gasquet notes that de' Mussi did not leave Piacenza at this time, so details such as the throwing of bodies over the walls came secondhand, probably from merchants and sailors who returned from the Black Sea.",
-            "De' Mussi was an Italian notary, and his account takes the side of the Christian defenders of Caffa.",
-            "He wrote c. 1348, only a few years after the siege.",
-            "De' Mussi was a notary, and the excerpt offers no cure.",
+            "Only one student came home, so the chronicle depends on one traveler's memory of the places he passed, and phrases such as \"few remained alive\" give no numbers a historian could compare.",
+            "The belief in corrupted air does limit what the excerpt can tell a historian about the cause of the disease, but the question asks about the number of deaths.",
+            "The chronicle comes from Prague and shows a Christian point of view; it has nothing to do with the Golden Horde.",
+            "The chronicle reports the students' journey during the plague itself, and nothing in it suggests that it was written centuries later.",
           ], answer: 0 },
 
         { id: "t26-m03", skill: "u2", type: "mcq", set: "t26-s1", topic: "2.6", reasoning: "Comparison",

@@ -2,13 +2,13 @@
 // Sources: every stimulus this form uses, keyed by id.
 export const sets = {
   "w5a-s1": {
-    id: "w5a-s1", name: "Rousseau on the social contract", intro: "Use the source below to answer the questions that follow.",
+    id: "w5a-s1", name: "Paine on the origin of government", intro: "Use the source below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Man is born free; and everywhere he is in chains. One thinks himself the master of others, and still remains a greater slave than they. How did this change come about? I do not know. What can make it legitimate? That question I think I can answer. ..." },
-        { p: "\"The problem is to find a form of association which will defend and protect with the whole common force the person and goods of each associate, and in which each, while uniting himself with all, may still obey himself alone, and remain as free as before.\" This is the fundamental problem of which the Social Contract provides the solution. ..." },
-        { p: "Each of us puts his person and all his power in common under the supreme direction of the general will, and, in our corporate capacity, we receive each member as an indivisible part of the whole." },
-        { cite: "Jean-Jacques Rousseau, The Social Contract, 1762, Book I, Chapters I and VI. Translated by G. D. H. Cole (1913); text from The Social Contract and Discourses, Everyman's Library (London: J. M. Dent and Sons, 1920), Project Gutenberg eBook #46333.", url: "https://www.gutenberg.org/cache/epub/46333/pg46333-images.html", kind: "primary" },
+        { p: "Man did not enter into society to become worse than he was before, nor to have fewer rights than he had before, but to have those rights better secured. His natural rights are the foundation of all his civil rights. ..." },
+        { p: "It has been thought a considerable advance towards establishing the principles of Freedom to say that Government is a compact between those who govern and those who are governed; but this cannot be true, because it is putting the effect before the cause; for as man must have existed before governments existed, there necessarily was a time when governments did not exist, and consequently there could originally exist no governors to form such a compact with." },
+        { p: "The fact therefore must be that the individuals themselves, each in his own personal and sovereign right, entered into a compact with each other to produce a government: and this is the only mode in which governments have a right to arise, and the only principle on which they have a right to exist." },
+        { cite: "Thomas Paine, English-born writer who had supported the American Revolution, Rights of Man, Part I, 1791. Text from The Writings of Thomas Paine, vol. 2, edited by Moncure Daniel Conway (1894 to 1896), Project Gutenberg eBook #3742.", url: "https://www.gutenberg.org/cache/epub/3742/pg3742-images.html", kind: "primary" },
       ] },
     ],
   },
@@ -65,50 +65,50 @@ export default {
   forms: [
     { id: "w5a", name: "Unit 5 Assessment", group: "Unit 5: Revolutions",
       items: [
-        // ---------- Set 1: Rousseau ----------
+        // ---------- Set 1: Paine ----------
         { id: "w5a-m01", skill: "u5", type: "mcq", set: "w5a-s1", topic: "5.1", reasoning: "Causation",
-          question: "Which of the following best explains the historical context in which Rousseau wrote the excerpt?",
+          question: "Which of the following best explains the historical context in which Paine wrote the excerpt?",
           choices: [
-            "Enlightenment thinkers were applying reason to questions about government, as Scientific Revolution thinkers had to the natural world.",
+            "French revolutionaries had overthrown absolute royal power in the name of natural rights, and British writers were debating whether to welcome or fear the revolution.",
             "Protestant reformers were challenging the authority of the pope over Christian belief and practice.",
             "Socialist writers were criticizing the factory system and calling for workers to control production.",
             "European monarchs were restoring their power after the defeat of Napoleon at the Congress of Vienna.",
           ],
           why: [
-            "Correct. Rousseau wrote in 1762, at the height of the Enlightenment, when thinkers used reason to ask what makes a government legitimate, just as earlier scientists had used reason to study nature.",
-            "The Protestant Reformation began in the sixteenth century and was about religious authority, not the political question of legitimacy the excerpt raises.",
-            "Socialist critiques of factories came in the nineteenth century, after industrialization spread; Rousseau wrote before the factory system took hold.",
-            "The Congress of Vienna met in 1814 and 1815, more than fifty years after the excerpt was written.",
+            "Correct. Paine wrote Rights of Man in 1791 to defend the French Revolution against critics such as Edmund Burke, and he built on Enlightenment ideas that rights come from human nature.",
+            "The Protestant Reformation began in the sixteenth century and was about religious authority, not the political question of how governments arise.",
+            "Socialist critiques of factories came in the nineteenth century, after industrialization spread; Paine wrote before the factory system took hold.",
+            "The Congress of Vienna met in 1814 and 1815, more than twenty years after the excerpt was written.",
           ],
           answer: 0 },
         { id: "w5a-m02", skill: "u5", type: "mcq", set: "w5a-s1", topic: "5.1", reasoning: "Causation",
-          question: "Which of the following best describes Rousseau's argument in the excerpt?",
+          question: "Which of the following best describes Paine's argument in the excerpt?",
           choices: [
-            "Political authority is legitimate when free people agree to unite under the general will.",
-            "Political authority is legitimate when God grants it to a hereditary ruler.",
-            "People should leave society and return to a state of nature without any government.",
+            "Governments are legitimate only when individuals agree among themselves to create them, in order to protect rights they already have by nature.",
+            "Governments are legitimate when God grants authority to a hereditary ruler.",
+            "People would be better off leaving society and living with no government at all.",
             "Rulers should be chosen by examinations that test their knowledge of classical texts.",
           ],
           why: [
-            "Correct. Rousseau asks what can make authority legitimate and answers with a social contract in which each person joins with all under \"the supreme direction of the general will.\"",
-            "This is the theory of divine right, which the excerpt does not use; Rousseau bases authority on an agreement among the people, not on God's choice of a king.",
-            "Rousseau looks for \"a form of association\" that protects everyone, which means a new kind of government, not the absence of government.",
+            "Correct. Paine says individuals \"entered into a compact with each other to produce a government,\" and that people joined society \"to have those rights better secured.\"",
+            "This is the theory of divine right, which the excerpt rejects; Paine bases government on an agreement among individuals, not on God's choice of a king.",
+            "Paine says people entered society to have their rights \"better secured,\" so he defends government built on a compact, not the absence of government.",
             "Selecting officials by examination describes the civil service system of imperial China, not anything in the excerpt.",
           ],
           answer: 0 },
         { id: "w5a-m03", skill: "u5", type: "mcq", set: "w5a-s1", topic: "5.2", reasoning: "Causation",
           question: "Which of the following later developments most directly reflected ideas like those in the excerpt?",
           choices: [
-            "The French National Assembly's claim in 1789 that sovereignty rests with the nation rather than with the king",
+            "Enslaved people in Saint-Domingue rose up in 1791, claimed the rights that French revolutionaries had proclaimed, and founded the independent state of Haiti in 1804",
             "The return of the Bourbon monarchy to the French throne in 1814 after Napoleon's defeat",
             "The Meiji Restoration of 1868, which returned formal power to the Japanese emperor",
             "The British Navigation Acts, which required colonial trade to be carried on English ships",
           ],
           why: [
-            "Correct. French revolutionaries drew on Rousseau's idea that legitimate power comes from the people acting together, and the Declaration of the Rights of Man located sovereignty in the nation and called law \"the expression of the general will.\"",
-            "The Bourbon restoration brought back hereditary monarchy, the opposite of the popular sovereignty the excerpt describes.",
+            "Correct. Leaders of the Haitian Revolution, such as Toussaint Louverture, used the revolutionary idea that all people hold natural rights that no government may take away to demand freedom for the enslaved and, in the end, independence.",
+            "The Bourbon restoration brought back hereditary monarchy, the opposite of government created by a compact among individuals.",
             "The Meiji Restoration based authority on the emperor rather than on an agreement among the people, so it does not reflect the excerpt's main idea.",
-            "The Navigation Acts were seventeenth-century mercantilist trade laws and had nothing to do with where political authority comes from.",
+            "The Navigation Acts were seventeenth-century mercantilist trade laws, passed before the excerpt, and had nothing to do with where political authority comes from.",
           ],
           answer: 0 },
 

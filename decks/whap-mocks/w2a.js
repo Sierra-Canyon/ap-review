@@ -2,12 +2,12 @@
 // Sources: every stimulus this form uses, keyed by id.
 export const sets = {
   "w2a-s1": {
-    id: "w2a-s1", name: "Ibn Battuta on Mogadishu and Kilwa", intro: "Use the source below to answer the questions that follow.",
+    id: "w2a-s1", name: "Ibn Battuta at Mogadishu", intro: "Use the source below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "When a vessel reaches the port [of Maqdasha, or Mogadishu], it is met by sumbuqs, which are small boats, in each of which are a number of young men... Each merchant on disembarking goes only to the house of the young man who is his host... The host then sells his goods for him and buys for him, and if anyone buys anything from him at too low a price... the sale is regarded by them as invalid." },
-        { p: "... I was told by a merchant that the town of Sufala lies a fortnight's journey [south] from Kulwa [Kilwa] and that gold dust is brought to Sufala from Yufi in the country of the Limis, which is a month's journey distant from it. ... The sultan at the time of my visit was Abu'l-Muzaffar Hasan... He used to devote the fifth part of the booty made on his expeditions to pious and charitable purposes, as is prescribed in the Koran..." },
-        { cite: "Ibn Battuta, Rihla (account of his travels, dictated c. 1355 to 1356), from Ibn Battuta, Travels in Asia and Africa 1325-1354, translated and selected by H. A. R. Gibb (London: George Routledge and Sons, 1929), pp. 110 to 113, as presented in the Internet Medieval Sourcebook, Fordham University. Ibn Battuta visited these towns c. 1331. Kulwa is Kilwa, on the coast of modern Tanzania; Sufala (Sofala) was a port farther south, in modern Mozambique.", url: "https://sourcebooks.web.fordham.edu/source/1354-ibnbattuta.asp", kind: "primary" },
+        { p: "When a vessel reaches the port [of Maqdasha, or Mogadishu], it is met by sumbuqs, which are small boats, in each of which are a number of young men... Each merchant on disembarking goes only to the house of the young man who is his host... The host then sells his goods for him and buys for him, and if anyone buys anything from him at too low a price, or sells to him in the absence of his host, the sale is regarded by them as invalid. This practice is of great advantage to them." },
+        { p: "We stayed there [in Mogadishu] three days... and on the fourth, a Friday, the qadi and one of the wazirs brought me a set of garments. We then went to the mosque and prayed behind the [sultan's] screen. When the Shaykh came out I greeted him and he bade me welcome. ... Over his head were carried four canopies of coloured silk, each surmounted by a golden bird." },
+        { cite: "Ibn Battuta, Rihla (account of his travels, dictated c. 1355 to 1356), from Ibn Battuta, Travels in Asia and Africa 1325-1354, translated and selected by H. A. R. Gibb (London: George Routledge and Sons, 1929), pp. 110 to 112, as presented in the Internet Medieval Sourcebook, Fordham University. Ibn Battuta visited Mogadishu, on the coast of modern Somalia, c. 1331. The Shaykh is the ruler of Mogadishu; a qadi is a judge of Islamic law, and a wazir is a minister.", url: "https://sourcebooks.web.fordham.edu/source/1354-ibnbattuta.asp", kind: "primary" },
       ] },
     ],
   },
@@ -64,7 +64,7 @@ export default {
   forms: [
     { id: "w2a", name: "Unit 2 Assessment A", group: "Unit 2: Networks of Exchange", date: "2026-11-04",
       items: [
-  // ---------- Set 1: Ibn Battuta on Mogadishu and Kilwa ----------
+  // ---------- Set 1: Ibn Battuta at Mogadishu ----------
   { id: "w2a-m01", skill: "u2", type: "mcq", set: "w2a-s1", topic: "2.3", reasoning: "Contextualization",
     question: "The commercial practices described in the first paragraph of the excerpt developed most directly in the context of which of the following?",
     choices: [
@@ -81,33 +81,33 @@ export default {
     ], answer: 0 },
 
   { id: "w2a-m02", skill: "u2", type: "mcq", set: "w2a-s1", topic: "2.5", reasoning: "Causation",
-    question: "The description of Sultan Abu'l-Muzaffar Hasan in the second paragraph best illustrates which of the following?",
+    question: "The second paragraph of the excerpt best illustrates which of the following?",
     choices: [
-      "The spread of Islam among the ruling elites of the Swahili coast through long contact with Muslim merchants",
+      "The spread of Islam among the rulers and officials of East African port cities through long contact with Muslim merchants",
+      "The growth of Swahili, a Bantu language with many Arabic words, as the language of trade on the East African coast",
       "The conversion of the Mongol rulers of Persia to Islam after they conquered the region",
-      "The spread of Christianity to East Africa by missionaries from western Europe",
       "The adoption of Hindu and Buddhist ideas of kingship by rulers in Southeast Asia",
     ],
     why: [
-      "The sultan follows a rule \"prescribed in the Koran,\" which shows that the rulers of Kilwa had adopted Islam, a faith that reached the Swahili coast through generations of trade with Arabia and Persia.",
+      "The ruler of Mogadishu attends Friday prayer at the mosque, and a qadi and a wazir serve him, which shows that Islam and its offices had taken root among the ruling class of a city long tied to Arabia and Persia by sea trade.",
+      "Swahili did grow as a trade language on the coast, but the second paragraph describes prayer, a judge, and a ruler's procession, not language.",
       "The Ilkhan Ghazan's conversion in 1295 took place in Persia, not in East Africa.",
-      "European missionaries were not active on the Swahili coast in this period, and the sultan in the excerpt follows the Koran.",
-      "Hindu and Buddhist ideas shaped states such as Angkor and Majapahit in Southeast Asia, not Kilwa.",
+      "Hindu and Buddhist ideas shaped states such as Angkor and Majapahit in Southeast Asia, not Mogadishu.",
     ], answer: 0 },
 
   { id: "w2a-m03", skill: "u2", type: "mcq", set: "w2a-s1", topic: "2.4", reasoning: "Comparison",
-    question: "The trade in gold described in the second paragraph was most similar to which other trade of the period c. 1200 to c. 1450?",
+    question: "The ruler's procession described in the second paragraph is most similar to which practice of West African rulers in the period c. 1200 to c. 1450?",
     choices: [
-      "The movement of gold from West Africa across the Sahara, which made states such as Mali that controlled the trade rich",
-      "The shipment of silver from the Americas to China by way of Manila",
-      "The trade in grain, timber, and furs among the towns of the Hanseatic League",
-      "The sale of porcelain made in Chinese workshops to buyers around the Indian Ocean",
+      "Mali's rulers displayed gold and other wealth from trade, as Mansa Musa did on his pilgrimage to Mecca, to show both their power and their Muslim faith.",
+      "West African rulers forced all of their subjects to convert to Islam.",
+      "West African rulers relied on the monsoon winds to bring merchants to their ports.",
+      "West African rulers paid tribute to the Ottoman sultans in return for protection.",
     ],
     why: [
-      "In both cases, gold mined in the African interior passed through African trading centers to Muslim merchants, and the states that controlled the trade, Kilwa in the east and Mali in the west, grew wealthy.",
-      "The Manila trade in American silver began in the late sixteenth century, after this period.",
-      "The Hanseatic towns traded bulk goods around the Baltic and North Seas, not gold from a distant interior.",
-      "Porcelain was a manufactured good sent out from China, not gold carried from the African interior to the coast.",
+      "The ruler of Mogadishu goes from the mosque to his palace under silk canopies topped with golden birds, and Mansa Musa traveled to Mecca with great amounts of gold; both rulers used luxury goods from trade to display power and piety.",
+      "In Mali, Islam was mainly the faith of rulers, merchants, and towns, and most farmers kept local religions.",
+      "The monsoon winds drove Indian Ocean shipping; West African trade crossed the Sahara by camel caravan.",
+      "The Ottomans never ruled West Africa, and in this period they were a young state in Anatolia and the Balkans.",
     ], answer: 0 },
 
   // ---------- Set 2: Ch'ang Ch'un's party in Samarkand ----------

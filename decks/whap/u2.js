@@ -12,12 +12,12 @@ export const sets = {
     ],
   },
   "u2-s2": {
-    id: "u2-s2", name: "Boccaccio on the plague in Florence", intro: "Use the source below to answer the questions that follow.",
+    id: "u2-s2", name: "Petrarch on the plague in Italy", intro: "Use the source below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "I say, then, that the years of the beatific incarnation of the Son of God had reached the tale of one thousand three hundred and forty-eight when in the illustrious city of Florence... there made its appearance that deadly pestilence, which, whether disseminated by the influence of the celestial bodies, or sent upon us mortals by God in His just wrath... had had its origin some years before in the East, whence, after destroying an innumerable multitude of living beings, it had propagated itself without respite from place to place, and so, calamitously, had spread into the West." },
-        { p: "In Florence, despite all that human wisdom and forethought could devise to avert it, as the cleansing of the city from many impurities by officials appointed for the purpose, the refusal of entrance to all sick folk... the doleful effects of the pestilence began to be horribly apparent..." },
-        { cite: "Giovanni Boccaccio, The Decameron (written c. 1349 to 1353), First Day, Introduction, translated by J. M. Rigg (London, first printed 1903).", url: "https://www.gutenberg.org/cache/epub/3726/pg3726.html", kind: "primary" },
+        { p: "How will posterity believe that there has been a time when without the lightnings of heaven or the fires of earth, without wars or other visible slaughter, not this or that part of the earth, but well-nigh the whole globe, has remained without inhabitants. When has any such thing been ever heard or seen; in what annals has it ever been read that houses were left vacant, cities deserted, the country neglected, the fields too small for the dead, and a fearful and universal solitude over the whole earth? Consult your historians, they are silent; question your doctors, they are dumb; seek an answer from your philosophers, they shrug their shoulders and frown, and with their fingers to their lips bid you be silent." },
+        { p: "... We have, indeed, deserved these (punishments) and even greater; but our forefathers also have deserved them, and may our posterity not also merit the same." },
+        { cite: "Francesco Petrarch, Italian poet and scholar, letter written during the plague of 1348 and 1349, which Gasquet presents as a letter to the poet's brother, a monk at Monrieux (Montrieux) in southern France, as translated and quoted in Francis Aidan Gasquet, The Great Pestilence (A.D. 1348-9), Now Commonly Known as the Black Death (London: Simpkin Marshall, Hamilton, Kent & Co., 1893), chapter II, Project Gutenberg eBook 45815. Gasquet's note cites A. Phillippe, Histoire de la Peste Noire (Paris, 1853). The word in parentheses is in Gasquet's text.", url: "https://gutenberg.org/cache/epub/45815/pg45815-images.html", kind: "primary" },
       ] },
     ],
   },
@@ -82,11 +82,39 @@ export const sets = {
     ],
   },
   "u2-s8": {
-    id: "u2-s8", name: "The Statute of Laborers, 1351", intro: "Use the source below to answer all parts of the question that follows.",
+    id: "u2-s8", name: "A Byzantine emperor on the plague", intro: "Use the source below to answer all parts of the question that follows.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Because a great part of the people... has now died in that pestilence, some, seeing the straights of the masters and the scarcity of servants, are not willing to serve unless they receive excessive wages... We, considering the grave inconveniences which might come from the lack especially of ploughmen and such labourers, ... have seen fit to ordain: that every man and woman of our kingdom of England, of whatever condition, whether bond or free, who is able bodied and below the age of sixty years, ... shall be bound to serve him who has seen fit so to seek after him; and he shall take only the wages liveries, meed or salary which... were accustomed to be paid in the twentieth year of our reign of England, or the five or six common years next preceding." },
-        { cite: "King Edward III of England, The Statute of Laborers (as titled by the source, 1351), from Statutes of the Realm, vol. 1, p. 307, translated in Ernest F. Henderson, Select Historical Documents of the Middle Ages (London: George Bell and Sons, 1896), as published by the Avalon Project, Yale Law School. This text is the royal ordinance of 1349, which Parliament confirmed and extended as the Statute of Laborers in 1351. The twentieth year of Edward III's reign was 1346 to 1347, just before the plague reached England.", url: "https://avalon.law.yale.edu/medieval/statlab.asp", kind: "primary" },
+        { p: "The epidemic which then (1347) raged in northern Scythia, ... traversed almost the entire sea-coasts, whence it was carried over the world. For it invaded not only Pontus, Thrace, and Macedonia, but Greece, Italy, the Islands, Egypt, Lybia, Judea, Syria, and almost the entire universe. ... The few who recovered had no second attack, or at least not of a serious nature." },
+        { cite: "John VI Cantacuzene (Kantakouzenos), Byzantine emperor, who saw the plague in Constantinople in 1347, account in his History, as translated and quoted in Francis Aidan Gasquet, The Great Pestilence (A.D. 1348-9), Now Commonly Known as the Black Death (London: Simpkin Marshall, Hamilton, Kent & Co., 1893), chapter I, Project Gutenberg eBook 45815. The date in parentheses is in Gasquet's text. Scythia was the old Greek name for the steppe north of the Black Sea, then ruled by the Mongol khans of the Golden Horde. Pontus is the Black Sea coast of Anatolia; Thrace and Macedonia are the lands west of Constantinople; Lybia is Libya, an old name for North Africa west of Egypt.", url: "https://gutenberg.org/cache/epub/45815/pg45815-images.html", kind: "primary" },
+      ] },
+    ],
+  },
+  "u2-s9": {
+    id: "u2-s9", name: "A papal envoy at the Yuan court", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "Moreover the chief princes of his whole empire more than thirty thousand in number, who are called Alans, and govern the whole Orient, are Christians either in fact or in name, calling themselves the Pope's slaves, and ready to die for the Franks. For so they term us, not indeed from France, but from Frank-land." },
+        { p: "But the Grand Kaam, when he beheld the great horses, and the Pope's presents, with his letter, and King Robert's too, with their golden seals, and when he saw us also, rejoiced greatly, being delighted, yea exceedingly delighted with everything, and treated us with the greatest honour. ... And so we were dismissed to one of the Imperial apartments which had been most elegantly fitted up for us; and two princes were appointed to attend to all our wants. ... And so they tended us for nearly four years, never failing to treat us with unbounded respect." },
+        { cite: "John de Marignolli, an Italian Franciscan friar sent by the pope as an envoy to the Mongol emperor of China, account of his travels of 1338 to 1353, translated by Henry Yule, Cathay and the Way Thither (London: Hakluyt Society, new edition 1913 to 1916), pp. 209 to 269, as digitized by Silk Road Seattle, University of Washington. Marignolli reached Khanbaliq (Beijing), the Yuan capital, in 1342. The Grand Kaam is the Yuan emperor; King Robert ruled Naples, in southern Italy. The Alans were a Christian people from the Caucasus whom the Mongols had conquered and who served the Yuan as soldiers and guards.", url: "https://depts.washington.edu/silkroad/texts/marignolli.html", kind: "primary" },
+      ] },
+    ],
+  },
+  "u2-s10": {
+    id: "u2-s10", name: "Islam and older traditions in Mali", intro: "Use the passage below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "Mali's rulers built their power on more than gold. After Sundiata founded the empire in the thirteenth century, later rulers kept order on the trade routes, so that merchants and their goods could travel safely. Muslim judges, called qadis, settled disputes in the trading towns, and rulers who had adopted Islam used Arabic writing, Muslim scholars, and the pilgrimage to Mecca to tie their courts to the wider Muslim world. Yet Islam in Mali grew alongside older traditions rather than replacing them. Most farmers kept local religious practices. Rulers kept older court rituals and honored griots, the singers who preserved the story of Sundiata. Some customs, such as the freedom of women to meet with men in public, surprised Muslim visitors from North Africa. Mali's Islam was real, but it was a West African Islam." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      ] },
+    ],
+  },
+  "u2-s11": {
+    id: "u2-s11", name: "Linked circuits of trade", intro: "Use the passage below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "In the late thirteenth century, no single power controlled trade across Afro-Eurasia. Instead, several overlapping circuits of exchange were linked together. One ran from western Europe through Italian ports to Egypt. Another crossed Central Asia under Mongol rule. Others followed the monsoon winds across the Arabian Sea, the Bay of Bengal, and the South China Sea. Goods often changed hands on the way: Chinese porcelain might pass from a Chinese junk to a Gujarati or Arab merchant before it reached East Africa or Cairo. Each circuit had its own central cities, such as Cairo, Calicut, and Quanzhou, and its own merchants. China, with its huge output of silk, porcelain, and iron, was the largest economy in the system, but it did not rule it. When the plague struck and the Mongol khanates broke apart in the fourteenth century, the overland circuit weakened, while the sea routes kept carrying much of the trade." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
       ] },
     ],
   },
@@ -95,18 +123,18 @@ export const sets = {
 export default [
   // ---------- Set 1: Marco Polo on Baghdad ----------
   { id: "u2-m01", skill: "u2", type: "mcq", set: "u2-s1", topic: "2.2", reasoning: "Causation",
-    question: "The events described in the second paragraph of the excerpt were part of which broader development?",
+    question: "Which of the following was a result of the conquest described in the second paragraph in the decades that followed?",
     choices: [
-      "The expansion of the Mongol Empire into Southwest Asia, which brought an end to the Abbasid Caliphate",
-      "The Crusades, in which Christian armies from western Europe tried to control the eastern Mediterranean coast",
-      "The rise of the Ottoman Empire, which captured the Byzantine capital of Constantinople",
-      "The growth of the Delhi Sultanate, which spread Muslim rule across northern India",
+      "Persia and Mesopotamia came under the Ilkhanate, a Mongol state whose rulers converted to Islam by c. 1300 and governed with Persian officials.",
+      "The Safavid dynasty made Shia Islam the official faith of Persia and Mesopotamia.",
+      "Baghdad became the capital from which the Great Khans ruled the whole Mongol Empire.",
+      "Crusader states, with the help of their Mongol allies, took control of Mesopotamia.",
     ],
     why: [
-      "Hulagu, a grandson of Chinggis Khan, led the Mongol army that took Baghdad in 1258 and ended the Abbasid Caliphate as part of the Mongol conquest of Persia and Mesopotamia.",
-      "The Crusades were aimed at Jerusalem and the Levant, and no crusading army captured Baghdad.",
-      "The Ottomans took Constantinople in 1453 and did not conquer Baghdad until the sixteenth century.",
-      "The Delhi Sultanate ruled in South Asia and fought off Mongol attacks; it did not take Baghdad.",
+      "Hulagu, the Mongol leader who took Baghdad in 1258, founded the Ilkhanate; the Ilkhan Ghazan converted to Islam in 1295, and Persian ministers such as Rashid al-Din ran much of the government.",
+      "The Safavids did make Shia Islam the official faith of Persia, but only after 1501, more than two centuries after the conquest of Baghdad.",
+      "The Great Khans ruled from Karakorum and later from Khanbaliq (Beijing), and the Ilkhans made Tabriz their capital, not Baghdad.",
+      "Some Ilkhans did seek alliances with Christian rulers against the Mamluks of Egypt, but no crusader state ever held Mesopotamia.",
     ], answer: 0 },
 
   { id: "u2-m02", skill: "u2", type: "mcq", set: "u2-s1", topic: "2.1", reasoning: "Continuity and Change",
@@ -154,54 +182,54 @@ export default [
       "The Grand Canal moved goods within China, not between the Indian Ocean and Europe.",
     ], answer: 0 },
 
-  // ---------- Set 2: Boccaccio on the plague ----------
+  // ---------- Set 2: Petrarch on the plague ----------
   { id: "u2-m05", skill: "u2", type: "mcq", set: "u2-s2", topic: "2.6", reasoning: "Causation",
-    question: "The spread of the pestilence \"from place to place\" described in the first paragraph was most directly caused by",
+    question: "The deaths Petrarch describes came from an epidemic that reached Italy in 1347 mainly by way of",
     choices: [
-      "trade and travel along routes that linked Central Asia, the Black Sea, and the Mediterranean",
-      "the return of crusading armies to Europe after their final defeat in the Holy Land",
-      "the exchange of plants and animals between the Eastern and Western Hemispheres",
-      "the movement of Bantu-speaking farmers into central and southern Africa",
+      "merchant ships from Black Sea ports, which lay at the western end of trade routes across Mongol-ruled Central Asia",
+      "Mongol armies that invaded northern Italy in the 1340s",
+      "caravans of pilgrims returning from Mecca across the Sahara",
+      "crusading armies returning to Italy after the fall of Acre",
     ],
     why: [
-      "The plague moved west from Central Asia along caravan routes during the period of Mongol rule and reached Italy in 1347 aboard ships from Black Sea ports.",
-      "The last crusader stronghold, Acre, fell in 1291, more than fifty years before the plague reached Europe.",
-      "That exchange, the Columbian Exchange, began after 1492.",
-      "Bantu migrations took place over many centuries before this period and did not reach Europe.",
+      "The plague spread west across the steppe during the period of Mongol rule, and Genoese and other merchant ships carried it from Black Sea ports such as Caffa to Mediterranean harbors in 1347.",
+      "Mongol armies reached Poland and Hungary in 1241 and 1242, but they never invaded Italy.",
+      "Trans-Saharan caravans linked West Africa and North Africa; they did not carry the plague into Italy.",
+      "Acre, the last crusader stronghold, fell in 1291, more than fifty years before the plague reached Italy.",
     ], answer: 0 },
 
-  { id: "u2-m06", skill: "u2", type: "mcq", set: "u2-s2", topic: "2.6", reasoning: "Causation",
-    question: "Boccaccio's explanation of the cause of the pestilence best reflects which of the following?",
+  { id: "u2-m06", skill: "u2", type: "mcq", set: "u2-s2", topic: "2.6", reasoning: "Sourcing and Situation",
+    question: "Petrarch's statement \"Consult your historians, they are silent; question your doctors, they are dumb\" most likely reflects",
     choices: [
-      "People in the fourteenth century did not know the biological cause of disease, so they explained epidemics through astrology or divine punishment.",
-      "Thinkers of the Scientific Revolution had begun to explain disease through experiments and careful observation.",
-      "Confucian scholars taught that natural disasters showed that a ruler had lost the Mandate of Heaven.",
-      "Protestant reformers had challenged the authority of the Catholic Church over religious teaching.",
+      "the failure of the medicine and learning of his time to explain the disease or to stop it",
+      "his rejection of Christian belief in favor of the philosophy of ancient Greece and Rome",
+      "the revival of interest in ancient Greek and Roman writers in Italy, a movement that Petrarch helped lead",
+      "a new medical discovery that fleas carried by rats spread the disease",
     ],
     why: [
-      "Boccaccio offers two causes, \"the influence of the celestial bodies\" or God's \"just wrath,\" because the role of a bacterium carried by fleas was not discovered until the 1890s.",
-      "The Scientific Revolution came in the sixteenth and seventeenth centuries, long after Boccaccio wrote.",
-      "This idea belongs to Chinese political thought, not to a writer in Florence.",
-      "The Protestant Reformation began in 1517, more than 150 years later.",
+      "Doctors and scholars of the fourteenth century did not know that a bacterium caused the plague, so Petrarch says that no historian, doctor, or philosopher could explain or cure it.",
+      "The excerpt treats the plague as a punishment that people \"deserved,\" a Christian view, so it does not show a rejection of Christianity.",
+      "Petrarch did help lead this revival, called humanism, but the statement is about the failure of experts to explain the plague, not about reading ancient writers.",
+      "The role of fleas and rats was not discovered until the 1890s.",
     ], answer: 0 },
 
   { id: "u2-m07", skill: "u2", type: "mcq", set: "u2-s2", topic: "2.6", reasoning: "Causation",
-    question: "The measures described in the second paragraph of the excerpt provide evidence that",
+    question: "Petrarch's description of \"houses left vacant, cities deserted, the country neglected\" best supports which conclusion about the epidemic?",
     choices: [
-      "city governments tried to protect public health by cleaning the city and keeping out the sick, but these efforts did not stop the disease",
-      "communities in many parts of Europe blamed Jewish residents for the plague and attacked them",
-      "Florence escaped the pestilence because its officials closed the city to all trade",
-      "the Catholic Church in Florence refused to hold prayers for relief from the epidemic",
+      "It killed so large a share of the people that towns and farmland were left without enough people to live in or work them.",
+      "It struck only the poor and left the wealthy families of the cities unharmed.",
+      "It began with a war that destroyed the cities and farms of Italy.",
+      "It drove people from the countryside into crowded factory towns.",
     ],
     why: [
-      "The excerpt lists the cleaning of the city by officials and the refusal to let the sick enter, yet says the effects of the pestilence still became \"horribly apparent.\"",
-      "Attacks on Jewish communities did happen in many European towns, but the excerpt does not mention them.",
-      "The excerpt says the pestilence struck Florence despite these measures.",
-      "The excerpt does not say the Church refused to hold prayers; in the full text, Boccaccio mentions public processions and prayers to God.",
+      "Empty houses, deserted cities, and neglected fields show deaths on a scale that left too few people to farm and work, the labor shortage that followed the plague across Europe.",
+      "The excerpt describes loss across \"the whole globe,\" and Petrarch says nothing about the plague sparing the rich.",
+      "Petrarch says the deaths came \"without wars or other visible slaughter.\"",
+      "Factory towns came with industrialization after 1750; the excerpt describes empty cities, not crowded ones.",
     ], answer: 0 },
 
   { id: "u2-m08", skill: "u2", type: "mcq", set: "u2-s2", topic: "2.6", reasoning: "Comparison",
-    question: "Which of the following was a consequence of the pestilence in both Europe and Southwest Asia in the fourteenth century?",
+    question: "Which of the following was a consequence of the epidemic described in the excerpt in both Europe and Southwest Asia in the fourteenth century?",
     choices: [
       "Sharp population losses that left fewer people to farm and work and disrupted trade",
       "The immediate and permanent end of trade between Europe and Asia",
@@ -444,6 +472,174 @@ export default [
       "Muslim, Hindu, Buddhist, Jewish, and Christian merchants all traded in the Indian Ocean.",
     ], answer: 0 },
 
+  // ---------- Set 9: Marignolli at the Yuan court ----------
+  { id: "u2-m24", skill: "u2", type: "mcq", set: "u2-s9", topic: "2.2", reasoning: "Claims and Evidence in Sources",
+    question: "The first paragraph of the excerpt best supports which claim about Mongol rule in China?",
+    choices: [
+      "Yuan rulers relied on peoples from other parts of the Mongol Empire, such as the Alans, for high posts and military service.",
+      "Yuan rulers brought back the civil service examinations, so that most officials were Chinese scholars.",
+      "Yuan rulers required their officials to convert to Tibetan Buddhism.",
+      "Yuan rulers refused to let Christians from western Europe enter China.",
+    ],
+    why: [
+      "Marignolli describes thousands of Alans, a conquered people from the Caucasus, serving as \"chief princes\" of the empire; the Yuan placed Mongols and peoples from Central and Southwest Asia above the Chinese in office.",
+      "The Yuan did restore the examinations in 1315, but they filled only a small share of posts, and the excerpt says nothing about them.",
+      "The Yuan court did support Tibetan Buddhist teachers, but it did not force officials to convert, and the excerpt describes Christian princes.",
+      "The excerpt shows a papal envoy welcomed at court, which is the opposite of a ban.",
+    ], answer: 0 },
+
+  { id: "u2-m25", skill: "u2", type: "mcq", set: "u2-s9", topic: "2.2", reasoning: "Sourcing and Situation",
+    question: "Marignolli's statement that the Alans \"govern the whole Orient\" and are \"ready to die for the Franks\" most likely reflects",
+    choices: [
+      "his purpose as a papal envoy writing for Christians in Europe, who would welcome news of powerful Christian allies in Asia",
+      "his access to Yuan government records that listed every official by religion",
+      "his fear that the Alans planned to lead a Mongol army against western Europe",
+      "his goal of persuading the pope to stop sending missions to China",
+    ],
+    why: [
+      "The Alans did serve the Yuan as soldiers and guards, but they did not govern the whole empire; a friar reporting to Christian readers had reason to make the Christian presence at the Mongol court sound larger than it was.",
+      "Nothing in the excerpt suggests he used official records, and his numbers and claims read as reports and impressions.",
+      "He calls the Alans friends of the Franks, not a threat, and the Mongol attacks on Europe had ended a century earlier.",
+      "He describes a warm welcome that would encourage more missions, not end them.",
+    ], answer: 0 },
+
+  { id: "u2-m26", skill: "u2", type: "mcq", set: "u2-s9", topic: "2.2", reasoning: "Causation",
+    question: "The emperor's treatment of the papal mission described in the second paragraph is best explained by",
+    choices: [
+      "the Mongol rulers' practice of welcoming envoys and religious leaders of many faiths, which brought them gifts, prestige, and foreign contacts",
+      "the Ming tribute system, under which foreign rulers sent gifts to the Chinese emperor in return for trade",
+      "the Yuan emperor's conversion to Roman Catholic Christianity",
+      "an alliance between the Yuan emperor and the pope against the Mamluks of Egypt",
+    ],
+    why: [
+      "Mongol rulers hosted Buddhist, Daoist, Muslim, and Christian teachers and received envoys from distant rulers; costly gifts such as the great horses added to the emperor's prestige.",
+      "The Ming tribute system began after the Ming dynasty was founded in 1368, decades after Marignolli's visit.",
+      "No Yuan emperor became a Roman Catholic; the court honored many religions without adopting Christianity.",
+      "Some Mongol rulers of Persia sought European help against the Mamluks, but the Yuan emperor in China made no such alliance.",
+    ], answer: 0 },
+
+  { id: "u2-m27", skill: "u2", type: "mcq", set: "u2-s9", topic: "2.2", reasoning: "Continuity and Change",
+    question: "Which of the following developments in the decades after Marignolli's visit most directly ended the conditions that had let missions like his reach China?",
+    choices: [
+      "Rebellions overthrew the Yuan dynasty in 1368, and the breakup of the Mongol khanates and the plague made the overland routes less safe.",
+      "Portuguese ships took control of the sea route from Europe to China.",
+      "The Ottoman capture of Constantinople closed every route between Europe and Asia.",
+      "Zheng He's voyages replaced overland trade between China and the West.",
+    ],
+    why: [
+      "Marignolli traveled across lands held by Mongol khanates to a Mongol court; once the Yuan fell to the Ming and the khanates split apart, that protected road to China was gone.",
+      "The Portuguese did not reach India until 1498 or China until 1513.",
+      "Constantinople fell in 1453, long after the change, and trade between Europe and Asia continued through other routes.",
+      "Zheng He's voyages (1405 to 1433) were state missions across the Indian Ocean; they did not replace overland trade, and they came after the change.",
+    ], answer: 0 },
+
+  // ---------- Set 10: Islam and older traditions in Mali (practice passage) ----------
+  { id: "u2-m28", skill: "u2", type: "mcq", set: "u2-s10", topic: "2.4", reasoning: "Claims and Evidence in Sources",
+    question: "The passage best supports which claim about Mali in the period c. 1200 to c. 1450?",
+    choices: [
+      "Its rulers joined control of trade with Islamic institutions, while much of the population kept older traditions.",
+      "Its rulers forced their subjects to give up older beliefs and customs and follow Islamic law.",
+      "Its wealth came mainly from Indian Ocean trade with Arabia and India.",
+      "Its rulers rejected Islam in order to protect the older traditions of the court.",
+    ],
+    why: [
+      "The passage describes safe trade routes, qadis, and Muslim scholars at court alongside farmers who kept local religion and rulers who kept older court rituals.",
+      "The passage says Islam \"grew alongside older traditions rather than replacing them.\"",
+      "Mali's wealth came from the gold and trans-Saharan trade; it was not part of the Indian Ocean network.",
+      "The passage says Mali's rulers had adopted Islam and used it to tie their courts to the Muslim world.",
+    ], answer: 0 },
+
+  { id: "u2-m29", skill: "u2", type: "mcq", set: "u2-s10", topic: "2.4", reasoning: "Causation",
+    question: "Which of the following most directly explains why Mali's rulers worked to keep merchants safe on the trade routes?",
+    choices: [
+      "Taxes on the gold, salt, and other goods that caravans carried were a main source of the state's wealth.",
+      "Mansa Musa's pilgrimage to Mecca had made Mali famous in Cairo and Arabia.",
+      "Mali depended on horses and soldiers sent from the Swahili coast.",
+      "The qadis served as the guards who rode with each caravan.",
+    ],
+    why: [
+      "Mali grew rich by taxing the trade that passed through its lands, so safe roads brought more merchants and more revenue.",
+      "The pilgrimage of 1324 did spread Mali's fame, but fame was a result of its wealth, not the reason its rulers protected trade.",
+      "The Swahili coast was in East Africa and was not a source of Mali's army.",
+      "Qadis were judges who settled disputes, not guards.",
+    ], answer: 0 },
+
+  { id: "u2-m30", skill: "u2", type: "mcq", set: "u2-s10", topic: "2.5", reasoning: "Continuity and Change",
+    question: "Which of the following later developments in West Africa most clearly continued the pattern described in the passage?",
+    choices: [
+      "The rulers of Songhai in the late fifteenth and sixteenth centuries supported Muslim scholars in Timbuktu, while most of their rural subjects kept local religious practices.",
+      "Portuguese missionaries converted the rulers of Mali to Christianity in the fifteenth century.",
+      "Arabic became the everyday language of most people in West Africa.",
+      "Ottoman armies brought Islam to West Africa for the first time.",
+    ],
+    why: [
+      "Like Mali's rulers, the Songhai ruler Askia Muhammad backed Islam, made the pilgrimage to Mecca, and supported the scholars of Timbuktu, while Islam remained mainly a faith of towns, courts, and merchants.",
+      "Mali's rulers stayed Muslim; the Portuguese traded on the coast but did not convert them.",
+      "Arabic remained a language of scholars, law, and religion; most people kept speaking local languages.",
+      "Islam had reached West Africa through merchants centuries earlier, and the Ottomans never conquered West Africa.",
+    ], answer: 0 },
+
+  // ---------- Set 11: Linked circuits of trade (practice passage) ----------
+  { id: "u2-m31", skill: "u2", type: "mcq", set: "u2-s11", topic: "2.7", reasoning: "Claims and Evidence in Sources",
+    question: "Which of the following best describes the main argument of the passage?",
+    choices: [
+      "Trade across Afro-Eurasia in this period was a set of linked regional circuits that no single power controlled.",
+      "Western European merchants controlled most trade across Afro-Eurasia by the late thirteenth century.",
+      "The Mongol Empire controlled all the major trade routes by both land and sea.",
+      "Most goods were carried the whole distance between China and Europe by the same merchants.",
+    ],
+    why: [
+      "The passage says \"no single power controlled trade\" and describes overlapping circuits, each with its own cities and merchants.",
+      "The passage names Italian ports as one circuit among several; European control of Asian sea trade came only after 1500.",
+      "The passage says the Mongols ruled the Central Asian circuit; the sea routes followed the monsoons outside their control.",
+      "The passage says goods \"changed hands on the way.\"",
+    ], answer: 0 },
+
+  { id: "u2-m32", skill: "u2", type: "mcq", set: "u2-s11", topic: "2.1", reasoning: "Claims and Evidence in Sources",
+    question: "Which of the following would best support the passage's claim that China was the largest economy in the system?",
+    choices: [
+      "Under the Song and Yuan, Chinese workshops produced iron, silk, and porcelain on a large scale for buyers at home and abroad.",
+      "In the early fifteenth century, Zheng He's fleets sailed from China as far as East Africa.",
+      "Buddhism had spread from China to Korea and Japan centuries earlier.",
+      "Chinese scholars studied the Confucian classics to prepare for the civil service examinations.",
+    ],
+    why: [
+      "Large-scale production of iron, silk, and porcelain shows the size of China's economy and why its goods were in demand across the trade circuits.",
+      "The voyages are true, but they show state power at sea after the period the passage describes, not the size of China's economy, and the passage says China did not rule the system.",
+      "The spread of Buddhism is a cultural development of an earlier time and says nothing about China's economy.",
+      "The examinations show how China chose officials, not how much it produced.",
+    ], answer: 0 },
+
+  { id: "u2-m33", skill: "u2", type: "mcq", set: "u2-s11", topic: "2.7", reasoning: "Continuity and Change",
+    question: "Which of the following developments of the early fifteenth century best continued the pattern described in the last sentence of the passage?",
+    choices: [
+      "Malacca grew into a leading port where merchants from India, China, and Southeast Asia exchanged goods.",
+      "Portuguese ships took control of the spice trade of the Indian Ocean.",
+      "The Ottoman Empire closed all sea routes between Asia and Europe.",
+      "Overland trade across Central Asia came to a complete end.",
+    ],
+    why: [
+      "Malacca, founded c. 1400, grew rich by serving ships that followed the monsoon routes between the Indian Ocean and the South China Sea, which shows sea trade continuing to thrive.",
+      "The Portuguese reached India in 1498 and took control of key ports only in the sixteenth century.",
+      "The Ottomans never closed all the sea routes, and Indian Ocean trade continued to reach Egypt and the Mediterranean.",
+      "Overland trade weakened but did not end; caravans still reached Timurid Samarkand in the early fifteenth century.",
+    ], answer: 0 },
+
+  { id: "u2-m34", skill: "u2", type: "mcq", set: "u2-s11", topic: "2.7", reasoning: "Comparison",
+    question: "Based on the passage, the sea circuits differed from the Central Asian circuit in this period mainly in that the sea circuits",
+    choices: [
+      "did not depend on the rule of a single empire, while the Central Asian circuit crossed lands ruled by Mongol khanates",
+      "carried only luxury goods, while the Central Asian circuit carried mostly bulk goods",
+      "relied on camel caravans, while the Central Asian circuit relied on ships",
+      "were closed to Muslim merchants, while the Central Asian circuit was open to them",
+    ],
+    why: [
+      "The passage says the Central Asian circuit ran \"under Mongol rule,\" while the sea circuits followed the monsoon winds and kept carrying trade after the khanates broke apart.",
+      "This reverses the pattern: ships could carry bulk goods cheaply, while overland caravans carried mostly luxuries.",
+      "This reverses the two: caravans crossed Central Asia, and ships sailed the monsoon routes.",
+      "The passage names Arab merchants in the sea trade, and Muslim merchants were active in every circuit.",
+    ], answer: 0 },
+
   // ---------- SAQ 1: practice passage on the Mongols ----------
   { id: "u2-q1a", skill: "u2", type: "fr", set: "u2-s7", part: "SAQ 1", sub: "a", topic: "2.2",
     lead: "Use the passage below to answer all parts of the question that follows.",
@@ -492,51 +688,52 @@ export default [
     example: "Because Mongol rule made long overland journeys common, caravans carried the bubonic plague from Central Asia to the Black Sea by the 1340s; from there, merchant ships brought it to Italy in 1347, and it spread across Europe as the Black Death.",
     notExample: "People got sick a lot in the Middle Ages." },
 
-  // ---------- SAQ 2: Statute of Laborers ----------
+  // ---------- SAQ 2: Cantacuzene on the plague ----------
   { id: "u2-q2a", skill: "u2", type: "fr", set: "u2-s8", part: "SAQ 2", sub: "a", topic: "2.6",
     lead: "Use the source below to answer all parts of the question that follows.",
-    prompt: "Identify ONE historical development that caused the shortage of workers described in the source.",
-    earns: "The response identifies the Black Death (the bubonic plague pandemic of the late 1340s), the \"pestilence\" the source names.",
+    prompt: "Identify ONE network of exchange that helps explain how the epidemic described in the source spread from \"northern Scythia\" to the other lands it names.",
+    earns: "The response names a specific route or network that linked the steppe north of the Black Sea with the Mediterranean world, such as Black Sea and Mediterranean sea trade or the overland Silk Roads.",
     yes: [
-      "The Black Death, a bubonic plague epidemic that reached England in 1348 and killed a large share of its people.",
-      "The plague pandemic that spread from Asia to Europe along trade routes in the 1340s.",
+      "Black Sea and Mediterranean sea trade, in which Genoese and Venetian ships sailed between ports such as Caffa, Constantinople, Alexandria, and Italian cities.",
+      "The overland Silk Roads, whose caravan routes across the lands of the Golden Horde ended at Black Sea ports.",
+      "The trade routes of the Mongol khanates, which carried merchants and goods from Central Asia to the Black Sea.",
     ],
     no: [
-      "\"A war.\" England was fighting the Hundred Years' War, but the source names the pestilence as the cause.",
-      "\"Famine.\" The source blames the pestilence, not a shortage of food.",
+      "\"Trans-Saharan trade.\" It linked West Africa and North Africa, not the steppe and the Black Sea.",
+      "\"The Columbian Exchange.\" It began after 1492.",
     ],
-    example: "The shortage was caused by the Black Death, the bubonic plague that reached England in 1348 and killed so many people that there were too few workers left.",
-    notExample: "People did not want to work anymore." },
+    example: "Black Sea and Mediterranean sea trade helps explain the spread, because Italian and Byzantine ships carried goods and people from Black Sea ports such as Caffa to Constantinople, Egypt, and Italy.",
+    notExample: "People traveled a lot." },
 
   { id: "u2-q2b", skill: "u2", type: "fr", set: "u2-s8", part: "SAQ 2", sub: "b", topic: "2.6",
     lead: "Use the source below to answer all parts of the question that follows.",
-    prompt: "Describe ONE way the statute attempted to keep the economic and social order that existed before the plague.",
-    earns: "The response describes a specific rule in the source that tied workers to employers or held wages at their earlier level.",
+    prompt: "Describe ONE way the path of the epidemic described in the source reflects the connections among regions of Afro-Eurasia in this period.",
+    earns: "The response describes how the source shows the disease moving along coasts and between regions that trade joined, such as the Black Sea, the Aegean, Italy, Egypt, and Syria.",
     yes: [
-      "It ordered workers to take only the wages that were normal before the plague, in the twentieth year of the king's reign or the years just before.",
-      "It required able-bodied men and women under sixty, bond or free, to serve anyone who sought them for work.",
-      "It aimed to stop people from refusing work in hopes of higher pay, which kept power in the hands of lords and employers.",
+      "The source says the epidemic \"traversed almost the entire sea-coasts,\" which shows that it moved from port to port along the shipping routes that tied these regions together.",
+      "The lands it names, from the Black Sea coast to Italy, Egypt, and Syria, were all linked by Mediterranean trade, so a disease that started on the steppe could reach all of them within a short time.",
     ],
     no: [
-      "\"It helped workers get better pay.\" The statute tried to stop wages from rising.",
-      "\"It ended serfdom.\" The statute applied to people \"bond or free\" and did not free anyone.",
+      "\"The plague was everywhere.\" It does not describe any connection between regions.",
+      "\"It spread to the Americas.\" The source names no place in the Americas, and the plague did not cross the Atlantic in this period.",
     ],
-    example: "The statute ordered that workers be paid only the wages that had been normal in the years before the plague, which tried to keep employers from having to compete for scarce workers.",
-    notExample: "The statute was a law made by the king." },
+    example: "The source says the disease spread along \"the entire sea-coasts\" from the steppe to Pontus, Italy, Egypt, and Syria, which shows that sea trade linked the ports of the Black Sea and the Mediterranean so closely that a disease could travel among them with the ships.",
+    notExample: "The emperor wrote about the plague." },
 
   { id: "u2-q2c", skill: "u2", type: "fr", set: "u2-s8", part: "SAQ 2", sub: "c", topic: "2.6",
     lead: "Use the source below to answer all parts of the question that follows.",
-    prompt: "Explain ONE way the conditions described in the source contributed to changes in European society in the late fourteenth century.",
-    earns: "The response explains how the labor shortage after the plague led to a specific change, such as higher wages, the decline of serfdom, or peasant revolts.",
+    prompt: "Explain ONE way the epidemic described in the source changed a society in Europe OR in Southwest Asia and North Africa in the late fourteenth century.",
+    earns: "The response explains a specific change that followed the plague's deaths, such as labor shortages, higher wages, the decline of serfdom, laws limiting wages, peasant revolts, or the economic decline of Mamluk Egypt and Syria.",
     yes: [
-      "Because workers were scarce, many lords had to pay higher wages or offer better terms despite laws like this one, which weakened serfdom in western Europe.",
-      "Anger at limits on wages and at new taxes helped cause the English Peasants' Revolt of 1381.",
+      "Because so many workers died in England, surviving laborers demanded higher wages; the king tried to hold wages down with the Statute of Laborers (1351), and anger at such limits and at new taxes helped cause the Peasants' Revolt of 1381.",
+      "In western Europe, scarce labor let peasants demand better terms or move to new lords, which weakened serfdom.",
+      "In Mamluk Egypt, the deaths of many farmers left irrigation works and fields neglected, which cut farm output and the state's tax income.",
     ],
     no: [
       "\"Things changed a lot.\" It does not explain any specific change.",
       "\"Europeans began building factories.\" Factories came with industrialization centuries later.",
     ],
-    example: "With so many workers dead, surviving peasants could demand higher pay or move to lords who offered better terms, so in the decades after the plague serfdom declined in much of western Europe even though laws like this one tried to stop it.",
+    example: "With so many workers dead, surviving peasants in western Europe could demand higher pay or move to lords who offered better terms, so serfdom declined in much of the region in the late fourteenth century even though rulers passed laws to hold wages down.",
     notExample: "The plague was very bad for Europe." },
 
   // ---------- SAQ 3: no source, comparison of networks ----------

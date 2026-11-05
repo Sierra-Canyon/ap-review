@@ -16,13 +16,12 @@ export const sets = {
   },
 
   "u8-s2": {
-    id: "u8-s2", name: "Eisenhower's farewell warning", intro: "Use the source below to answer the questions that follow.",
+    id: "u8-s2", name: "NSC 68 on a new distribution of power", intro: "Use the source below to answer the questions that follow.",
     sources: [
       { title: "Source", blocks: [
-        { p: "Until the latest of our world conflicts, the United States had no armaments industry. American makers of plowshares could, with time and as required, make swords as well. But now we can no longer risk emergency improvisation of national defense; we have been compelled to create a permanent armaments industry of vast proportions. Added to this, three and a half million men and women are directly engaged in the defense establishment. ..." },
-        { p: "This conjunction of an immense military establishment and a large arms industry is new in the American experience. ..." },
-        { p: "In the councils of government, we must guard against the acquisition of unwarranted influence, whether sought or unsought, by the military-industrial complex. The potential for the disastrous rise of misplaced power exists and will persist." },
-        { cite: "Dwight D. Eisenhower, President of the United States, Farewell Address to the Nation, January 17, 1961. Transcript, National Archives, Milestone Documents.", url: "https://www.archives.gov/milestone-documents/president-dwight-d-eisenhowers-farewell-address", kind: "primary" },
+        { p: "Within the past thirty-five years the world has experienced two global wars of tremendous violence. It has witnessed two revolutions—the Russian and the Chinese—of extreme scope and intensity. It has also seen the collapse of five empires—the Ottoman, the Austro-Hungarian, German, Italian and Japanese—and the drastic decline of two major imperial systems, the British and the French. During the span of one generation, the international distribution of power has been fundamentally altered. ..." },
+        { p: "Two complex sets of factors have now basically altered this historical distribution of power. First, the defeat of Germany and Japan and the decline of the British and French Empires have interacted with the development of the United States and the Soviet Union in such a way that power has increasingly gravitated to these two centers. Second, the Soviet Union, unlike previous aspirants to hegemony, is animated by a new fanatic faith, antithetical to our own, and seeks to impose its absolute authority over the rest of the world. Conflict has, therefore, become endemic and is waged, on the part of the Soviet Union, by violent or non-violent methods in accordance with the dictates of expediency. With the development of increasingly terrifying weapons of mass destruction, every individual faces the ever-present possibility of annihilation should the conflict enter the phase of total war." },
+        { cite: "United States National Security Council, NSC 68, \"United States Objectives and Programs for National Security,\" a secret report prepared by State and Defense Department officials at the request of President Harry S. Truman, Washington, April 14, 1950 (declassified in 1975), Section I, \"Background of the Present Crisis.\" Foreign Relations of the United States, 1950, Volume I, Document 85. Office of the Historian, United States Department of State.", url: "https://history.state.gov/historicaldocuments/frus1950v01/d85", kind: "primary" },
       ] },
     ],
   },
@@ -107,6 +106,112 @@ export const sets = {
         { p: "... (4) establish a timetable for the elimination of apartheid laws;" },
         { p: "(5) negotiate with representatives of all racial groups in South Africa the future political system in South Africa; and" },
         { cite: "United States Congress, Comprehensive Anti-Apartheid Act of 1986, Public Law 99-440, Sections 4 and 101, enacted October 2, 1986 (100 Stat. 1086). Office of the Law Revision Counsel, United States House of Representatives.", url: "https://uscode.house.gov/statutes/pl/99/440.pdf", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s9": {
+    id: "u8-s9", name: "The United Nations plan for Palestine", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "The General Assembly, ..." },
+        { p: "Considers that the present situation in Palestine is one which is likely to impair the general welfare and friendly relations among nations;" },
+        { p: "... Recommends to the United Kingdom, as the mandatory Power for Palestine, and to all other Members of the United Nations the adoption and implementation, with regard to the future Government of Palestine, of the Plan of Partition with Economic Union set out below; ..." },
+        { p: "The Mandate for Palestine shall terminate as soon as possible but in any case not later than 1 August 1948. ..." },
+        { p: "Independent Arab and Jewish States and the Special International Regime for the City of Jerusalem, set forth in Part III of this Plan, shall come into existence in Palestine two months after the evacuation of the armed forces of the mandatory Power has been completed but in any case not later than 1 October 1948. ..." },
+        { p: "No discrimination of any kind shall be made between the inhabitants on the ground of race, religion, language or sex." },
+        { cite: "United Nations General Assembly, Resolution 181 (II), Future Government of Palestine, adopted November 29, 1947 (the preamble and Part I of the Plan of Partition with Economic Union). The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/20th_century/res181.asp", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s10": {
+    id: "u8-s10", name: "Eisenhower on the Suez Crisis", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "These matters came to a crisis on July 26th of this year, when the Egyptian Government seized the Universal Suez Canal Company. For ninety years--ever since the inauguration of the Canal--that Company has operated the Canal, largely under British and French technical supervision." },
+        { p: "Now there were some among our allies who urged an immediate reaction to this event by use of force. We insistently urged otherwise, and our wish prevailed--through a long succession of conferences and negotiations for weeks--even months--with participation by the United Nations. ..." },
+        { p: "... And on Tuesday, the British and French Governments delivered a 12-hour ultimatum to Israel and Egypt--now followed up by armed attack against Egypt." },
+        { p: "The United States was not consulted in any way about any phase of these actions. Nor were we informed of them in advance." },
+        { p: "As it is the manifest right of any of these nations to take such decisions and actions, it is likewise our right--if our judgment so dictates--to dissent. We believe these actions to have been taken in error. For we do not accept the use of force as a wise or proper instrument for the settlement of international disputes." },
+        { cite: "Dwight D. Eisenhower, President of the United States, Radio and Television Report to the American People on the Developments in Eastern Europe and the Middle East, October 31, 1956. The American Presidency Project, University of California, Santa Barbara.", url: "https://www.presidency.ucsb.edu/documents/radio-and-television-report-the-american-people-the-developments-eastern-europe-and-the", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s11": {
+    id: "u8-s11", name: "The Indian Independence Act", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "An Act to make provision for the setting up in India of two independent Dominions, ..." },
+        { p: "[Section 1] (1) As from the fifteenth day of August, nineteen hundred and forty-seven, two independent Dominions shall be set up in India, to be known respectively as India and Pakistan. ..." },
+        { p: "[Section 2] (2) ... the territories of Pakistan shall be—" },
+        { p: "(a) the territories which, on the appointed day, are included in the Provinces of East Bengal and West Punjab, as constituted under the two following sections ;" },
+        { p: "(b) the territories which, at the date of the passing of this Act, are included in the Province of Sind and the Chief Commissioner's Province of British Baluchistan ; ..." },
+        { p: "[Section 3] (1) As from the appointed day— (a) the Province of Bengal, as constituted under the ... Government of India Act, 1935, shall cease to exist; and (b) there shall be constituted in lieu thereof two new Provinces, to be known respectively as East Bengal and West Bengal. ..." },
+        { p: "[Section 7] (1) As from the appointed day— ... (b) the suzerainty of His Majesty over the Indian States lapses, ..." },
+        { cite: "Parliament of the United Kingdom, Indian Independence Act 1947 (10 & 11 Geo. 6, c. 30), enacted July 18, 1947, text as originally enacted. legislation.gov.uk, The National Archives (United Kingdom). The \"Indian States\" were the princely states, such as Hyderabad and Kashmir, ruled by Indian princes under British overlordship.", url: "https://www.legislation.gov.uk/ukpga/Geo6/10-11/30/enacted", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s12": {
+    id: "u8-s12", name: "United States policy toward Africa, 1957", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "There is a growing awareness in the world that Africa is emerging as an area which will have an increasingly important influence on the course of world events and that the political alignment of the present and future independent nations of the continent will be deeply affected by the policies which Western nations, including the United States, pursue in the future." },
+        { p: "The United States is concerned that Africa South of the Sahara develop in an orderly manner towards self-government and independence in cooperation with the European powers now in control of large areas of the continent. ... Europe in turn needs the African market, as well as Africa’s minerals and agricultural products. ..." },
+        { p: "We wish to avoid in Africa a situation where thwarted nationalist and self-determinist aspirations are turned to the advantage of extremist elements, particularly Communists. ..." },
+        { p: "... we are attempting to bring our influence to bear through:" },
+        { p: "a. Welcoming and extending political support to new states, such as Ghana, as they emerge." },
+        { cite: "United States National Security Council, NSC 5719/1, \"U.S. Policy Toward Africa South of the Sahara Prior to Calendar Year 1960,\" note by the Executive Secretary to the National Security Council, Washington, August 23, 1957, paragraphs 2, 3, 4, and 10. Foreign Relations of the United States, 1955-1957, Volume XVIII, Africa, Document 24. Office of the Historian, United States Department of State.", url: "https://history.state.gov/historicaldocuments/frus1955-57v18/d24", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s13": {
+    id: "u8-s13", name: "Carter on Afghanistan and the Persian Gulf", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "But now the Soviet Union has taken a radical and an aggressive new step. It's using its great military power against a relatively defenseless nation. The implications of the Soviet invasion of Afghanistan could pose the most serious threat to the peace since the Second World War." },
+        { p: "... I've cut Soviet access to high-technology equipment and to agricultural products. ... And I have notified the Olympic Committee that with Soviet invading forces in Afghanistan, neither the American people nor I will support sending an Olympic team to Moscow." },
+        { p: "The region which is now threatened by Soviet troops in Afghanistan is of great strategic importance: It contains more than two-thirds of the world's exportable oil. ... The Soviet Union is now attempting to consolidate a strategic position, therefore, that poses a grave threat to the free movement of Middle East oil." },
+        { p: "Let our position be absolutely clear: An attempt by any outside force to gain control of the Persian Gulf region will be regarded as an assault on the vital interests of the United States of America, and such an assault will be repelled by any means necessary, including military force." },
+        { cite: "Jimmy Carter, President of the United States, The State of the Union Address Delivered Before a Joint Session of the Congress, January 23, 1980. The American Presidency Project, University of California, Santa Barbara.", url: "https://www.presidency.ucsb.edu/documents/the-state-the-union-address-delivered-before-joint-session-the-congress", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s14": {
+    id: "u8-s14", name: "The Limited Test Ban Treaty", intro: "Use the source below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "The Governments of the United States of America, the United Kingdom of Great Britain and Northern Ireland, and the Union of Soviet Socialist Republics, hereinafter referred to as the \"Original Parties\"," },
+        { p: "Proclaiming as their principal aim the speediest possible achievement of an agreement on general and complete disarmament under strict international control in accordance with the objectives of the United Nations which would put an end to the armaments race and eliminate the incentive to the production and testing of all kinds of weapons, including nuclear weapons," },
+        { p: "Seeking to achieve the discontinuance of all test explosions of nuclear weapons for all time, determined to continue negotiations to this end, and desiring to put an end to the contamination of man's environment by radioactive substances, ..." },
+        { p: "1. Each of the Parties to this Treaty undertakes to prohibit, to prevent, and not to carry out any nuclear weapon test explosion, or any other nuclear explosion, at any place under its jurisdiction or control:" },
+        { p: "(a) in the atmosphere; beyond its limits, including outer space; or under water, including territorial waters or high seas; ..." },
+        { cite: "Treaty Banning Nuclear Weapon Tests in the Atmosphere, in Outer Space and Under Water (the Limited Test Ban Treaty), signed at Moscow by the United States, the United Kingdom, and the Soviet Union, August 5, 1963, preamble and Article I. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/20th_century/usmu015.asp", kind: "primary" },
+      ] },
+    ],
+  },
+
+  "u8-s15": {
+    id: "u8-s15", name: "Land reform and revolution", intro: "Use the passage below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "In the 20th century, demands for land drove many revolutions, and communists were not the only ones who answered them. In North Vietnam, the communist government carried out a harsh land reform in the 1950s that took land from landlords and executed thousands of people labeled as class enemies. In Cuba, Fidel Castro's government passed an agrarian reform law in 1959 that broke up large estates, including those owned by American companies. In Ethiopia, military officers known as the Derg overthrew Emperor Haile Selassie in 1974, declared the country socialist, and nationalized all rural land in 1975. Rulers who opposed communism used land reform as well. The Shah of Iran began the White Revolution in 1963, buying land from large owners and selling it to peasants to win rural support and weaken the power of the great landlords. In each case, land reform strengthened the central state as much as it helped farmers." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      ] },
+    ],
+  },
+
+  "u8-s16": {
+    id: "u8-s16", name: "Military rule and armed revolt in South America", intro: "Use the passage below to answer the questions that follow.",
+    sources: [
+      { title: "Source", blocks: [
+        { p: "During the Cold War, fear of revolution led military officers in several South American countries to seize power. In Chile, the armed forces overthrew the elected socialist president Salvador Allende in 1973. General Augusto Pinochet's government created a secret police agency, DINA, that arrested, tortured, and killed opponents, and more than 3,000 people were killed or disappeared under his rule. Argentina's military government waged a \"Dirty War\" from 1976 to 1983 in which somewhere between about 10,000 and 30,000 people were killed or disappeared. These regimes worked together in Operation Condor, sharing intelligence and hunting exiles across borders, and the United States often supported them as allies against communism. Armed groups on the left also used terror. In Peru, the Maoist Shining Path began a war in 1980 that attacked peasants, local leaders, and rival leftists as well as the state, and the conflict killed about 69,000 people by 2000." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
       ] },
     ],
   },
@@ -239,71 +344,70 @@ export default [
     ],
     answer: 0 },
 
-  // ===== Multiple choice: Set 2, Eisenhower farewell =====
-  { id: "u8-m05", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.3", reasoning: "Causation",
-    question: "The \"permanent armaments industry\" described in the excerpt was most directly a result of which of the following?",
+  // ===== Multiple choice: Set 2, NSC 68 =====
+  { id: "u8-m05", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.1", reasoning: "Causation",
+    question: "According to the second paragraph of the excerpt, which of the following most directly caused power to gravitate to the United States and the Soviet Union?",
     choices: [
-      "The arms race between the United States and the Soviet Union after the Second World War",
-      "The rise of fascist governments in Germany and Italy in the 1930s",
-      "The economic collapse of the Great Depression",
-      "The independence of former colonies in Africa and Asia",
+      "The defeat of Germany and Japan and the decline of the British and French empires",
+      "The collapse of the Ottoman and Austro-Hungarian empires at the end of the First World War",
+      "The founding of the United Nations, which gave both countries a permanent veto in the Security Council",
+      "The Soviet Union's success in building a larger nuclear arsenal than the United States",
     ],
     why: [
-      "Correct. Eisenhower says the United States had no armaments industry before the Second World War, and Cold War rivalry with the Soviet Union kept military production running at a high level afterward.",
-      "Fascism led to the Second World War, but Eisenhower stresses that the arms industry became permanent after that war ended.",
-      "The Great Depression reduced industrial production and is not connected to military spending in the excerpt.",
-      "Decolonization was happening at the same time, but it did not create the American arms industry.",
+      "Correct. The authors name the defeat of Germany and Japan and the decline of Britain and France, all results of the Second World War, as the first factor that left two centers of power.",
+      "The first paragraph lists these empires among those that collapsed, but the second paragraph's explanation for the two centers of power points to the defeat of Germany and Japan and the decline of Britain and France.",
+      "Both states did hold a veto from 1945, but the excerpt never mentions the United Nations.",
+      "The Soviet Union had tested its first atomic bomb only in 1949, and its stockpile did not pass the American one until the late 1970s. The excerpt does not make this claim.",
     ],
     answer: 0 },
 
-  { id: "u8-m06", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.3", reasoning: "Causation",
-    question: "Eisenhower's main purpose in the excerpt is to",
+  { id: "u8-m06", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.2", reasoning: "Sourcing and Situation",
+    question: "The document was most likely written in order to",
     choices: [
-      "warn Americans that the size and power of the military and arms industry could threaten democratic government",
-      "persuade Congress to stop sending military aid to Western European allies",
-      "announce a treaty with the Soviet Union to end the arms race",
-      "celebrate the role of American factories in the defeat of Germany and Japan",
+      "persuade the President that the Soviet threat was permanent and worldwide, so the United States needed far greater military and economic strength",
+      "explain to the American public, through newspapers and radio, why the United States had entered the Korean War",
+      "propose that the United States and the Soviet Union place their atomic weapons under international control",
+      "argue that the United States should withdraw its forces from Europe now that Germany and Japan were defeated",
     ],
     why: [
-      "Correct. He calls the defense establishment necessary but warns against the \"unwarranted influence\" of the \"military-industrial complex.\"",
-      "The excerpt says nothing about aid to allies. It is about influence inside the United States.",
-      "No such treaty is mentioned, and Eisenhower treats the arms industry as something that \"will persist.\"",
-      "He mentions the world wars only to show that the permanent arms industry is new, not to celebrate victory.",
+      "Correct. It was a secret report written for Truman, and its picture of a \"fanatic faith\" seeking \"absolute authority\" over the world built the case for a large, lasting buildup of American strength.",
+      "The report was secret until 1975, so its audience was the President and his advisers, not the public. It was also completed in April 1950, before the Korean War began in June.",
+      "The excerpt calls conflict with the Soviet Union \"endemic,\" which argues against expecting a deal to share control of atomic weapons.",
+      "The authors stress danger from the Soviet Union, which points toward more American commitment abroad, not withdrawal.",
     ],
     answer: 0 },
 
-  { id: "u8-m07", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.3", reasoning: "Comparison",
-    question: "Which of the following developments in the Soviet Union during the Cold War was most similar to the one Eisenhower describes?",
+  { id: "u8-m07", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.3", reasoning: "Causation",
+    question: "Which of the following events of 1949 most directly shaped the authors' concern about \"increasingly terrifying weapons of mass destruction\"?",
     choices: [
-      "The Soviet government put a large share of the country's resources into weapons production and military research.",
-      "The Soviet government allowed small private businesses under the New Economic Policy.",
-      "The Soviet government sent troops to end the Hungarian uprising.",
-      "The Soviet government introduced glasnost, which allowed more open criticism of officials.",
+      "The Soviet Union tested its first atomic bomb, ending the United States' monopoly on nuclear weapons.",
+      "The United States dropped atomic bombs on Hiroshima and Nagasaki.",
+      "The Soviet Union placed nuclear missiles in Cuba.",
+      "The Soviet Union launched Sputnik, the first artificial satellite.",
     ],
     why: [
-      "Correct. Like the United States, the Soviet Union built a huge permanent military and arms industry during the Cold War, and that spending strained its economy.",
-      "The New Economic Policy of the 1920s was a retreat toward limited private trade, not a military buildup.",
-      "The invasion of Hungary in 1956 was a use of military force, not the growth of a permanent arms industry.",
-      "Glasnost in the late 1980s opened up public debate. It is not similar to a growing arms industry.",
+      "Correct. The Soviet test in August 1949 meant that both sides could now use atomic weapons, so a total war threatened \"annihilation\" on both sides.",
+      "The bombings of Hiroshima and Nagasaki took place in 1945, not 1949, and they showed American power rather than a new threat to the United States.",
+      "The missiles in Cuba led to the crisis of 1962, twelve years after this report.",
+      "Sputnik was launched in 1957, seven years after this report.",
     ],
     answer: 0 },
 
   { id: "u8-m08", skill: "u8", type: "mcq", set: "u8-s2", topic: "8.3", reasoning: "Continuity and Change",
-    question: "Which of the following developments of the 1960s most directly continued the pattern Eisenhower describes?",
+    question: "Which of the following developments of the 1950s most directly continued the view of the conflict expressed in the second paragraph of the excerpt?",
     choices: [
-      "The space race, in which the United States and the Soviet Union competed to build rockets and send people into space",
-      "The spread of nonviolent protests for civil rights in the United States",
-      "The independence of most of Britain's and France's African colonies",
-      "The founding of the Organization of the Petroleum Exporting Countries (OPEC)",
+      "United States military spending rose sharply during the Korean War and stayed high for the rest of the decade, as the country formed alliances such as SEATO.",
+      "The United States reduced its army to its prewar size and brought its troops home from Europe and Asia.",
+      "The United States and the Soviet Union signed treaties to limit nuclear weapons as part of détente.",
+      "Newly independent states such as India and Indonesia refused to join either Cold War alliance.",
     ],
     why: [
-      "Correct. The space race tied government spending, military rocket technology, and private industry together, as in the \"conjunction\" Eisenhower describes.",
-      "The civil rights movement was a major development of the 1960s, but it was a protest movement, not part of the defense establishment.",
-      "African independence was a major change of the 1960s, but it has no direct link to the American arms industry.",
-      "OPEC (1960) was formed by oil-producing states to control prices, not by the superpowers' defense industries.",
+      "Correct. Treating Soviet hostility as permanent led to a lasting military buildup, which the Korean War sped up, and to new alliances around the world.",
+      "This is the opposite of the excerpt's view. The United States kept large forces in Europe and Asia throughout the 1950s.",
+      "Arms limitation treaties of détente, such as SALT I in 1972, came in the 1970s and rested on easing the conflict, not on calling it endemic.",
+      "Non-alignment was a response of other states to the Cold War, not a continuation of the American view in the excerpt.",
     ],
     answer: 0 },
-
   // ===== Multiple choice: Set 3, practice passage on Chinese communism =====
   { id: "u8-m09", skill: "u8", type: "mcq", set: "u8-s3", topic: "8.4", reasoning: "Causation",
     question: "Which of the following best states the argument of the passage?",
@@ -561,6 +665,510 @@ export default [
       "The excerpt says nothing about withdrawing troops.",
       "Germany reunified in 1990, three years after this speech.",
       "Reagan describes a Soviet Union that is starting to reform, not one about to attack.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 9, UN Resolution 181 =====
+  { id: "u8-m25", skill: "u8", type: "mcq", set: "u8-s9", topic: "8.6", reasoning: "Contextualization",
+    question: "Which of the following best explains why the \"mandatory Power\" was preparing to leave Palestine in 1947?",
+    choices: [
+      "Britain, weakened by the Second World War and facing violence between Arabs and Jews and attacks on its own forces, handed the question of Palestine to the United Nations.",
+      "The League of Nations had ordered Britain to give up all of its mandates by 1948.",
+      "The Ottoman Empire had demanded the return of Palestine after the Second World War.",
+      "The United States had agreed to buy Palestine from Britain and govern it as a trust territory.",
+    ],
+    why: [
+      "Correct. Britain held Palestine under a mandate from 1920, and by 1947 it could not afford to keep order between Arab and Jewish communities, so it turned to the United Nations and announced its withdrawal.",
+      "The League of Nations had been dissolved in 1946, and its place was taken by the United Nations, which the excerpt names.",
+      "The Ottoman Empire ended after the First World War, and Palestine was taken from it then.",
+      "No such purchase took place. The excerpt describes independent Arab and Jewish states, not American rule.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m26", skill: "u8", type: "mcq", set: "u8-s9", topic: "8.6", reasoning: "Causation",
+    question: "The plan for a \"Jewish State\" in the excerpt most directly reflected which of the following earlier developments?",
+    choices: [
+      "The growth of Zionism, a nationalist movement that had encouraged Jewish settlement in Palestine since the late 19th century and gained wide support after the Holocaust",
+      "The rise of Pan-Arab nationalism, which called for uniting all Arabic-speaking peoples in one state",
+      "The Bolshevik Revolution, which spread the idea of states based on the working class",
+      "The Treaty of Versailles, which created a Jewish state in Central Europe after the First World War",
+    ],
+    why: [
+      "Correct. Zionists had organized immigration and land purchase in Palestine for decades, Britain's Balfour Declaration of 1917 backed a Jewish \"national home,\" and the Holocaust strengthened support for a Jewish state.",
+      "Pan-Arab nationalism opposed a Jewish state in Palestine, so it does not explain the plan for one.",
+      "The Bolshevik Revolution shaped communist states, not the plan for Arab and Jewish states in Palestine.",
+      "The Treaty of Versailles created no Jewish state. Its settlement included the mandate system under which Britain later ruled Palestine.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m27", skill: "u8", type: "mcq", set: "u8-s9", topic: "8.6", reasoning: "Causation",
+    question: "Which of the following most directly followed the resolution in the excerpt?",
+    choices: [
+      "Israel declared independence in May 1948, neighboring Arab states attacked, and the war that followed drove hundreds of thousands of Palestinian Arabs from their homes.",
+      "The Arab and Jewish states formed the economic union the plan called for and lived peacefully side by side.",
+      "Jerusalem was placed under an international government that ruled the city for the next fifty years.",
+      "Britain decided to keep its mandate over Palestine until the 1960s.",
+    ],
+    why: [
+      "Correct. Arab leaders rejected the plan, fighting broke out as Britain withdrew, and the 1948 war left Israel with more land than the plan gave it and about 700,000 Palestinian Arabs as refugees.",
+      "The plan did call for an economic union, but war, not union, followed. Using the plan's own terms as the outcome is a trap.",
+      "The international regime for Jerusalem never took effect. After 1948 the city was divided between Israel and Jordan.",
+      "Britain ended its mandate in May 1948, as the excerpt's deadline required.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m28", skill: "u8", type: "mcq", set: "u8-s9", topic: "8.6", reasoning: "Claims and Evidence in Sources",
+    question: "The final paragraph of the excerpt best supports which of the following claims about the plan?",
+    choices: [
+      "Its authors tried to protect people who would become minorities in the new states.",
+      "Its authors required every Arab inhabitant to leave the area of the Jewish State.",
+      "Its authors made Jerusalem the capital of the Jewish State.",
+      "Its authors gave the United Kingdom lasting authority over both new states.",
+    ],
+    why: [
+      "Correct. The ban on discrimination by \"race, religion, language or sex\" was meant to protect Arabs living in the Jewish State and Jews living in the Arab State.",
+      "The excerpt bans discrimination between inhabitants, which contradicts any plan to expel them.",
+      "The excerpt places Jerusalem under a \"Special International Regime,\" separate from both states.",
+      "The excerpt ends the mandate by 1 August 1948, which ends British authority.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 10, Eisenhower on Suez =====
+  { id: "u8-m29", skill: "u8", type: "mcq", set: "u8-s10", topic: "8.6", reasoning: "Causation",
+    question: "Which of the following most directly explains why the Egyptian government \"seized the Universal Suez Canal Company\" in July 1956?",
+    choices: [
+      "After the United States and Britain withdrew their offers to help fund the Aswan High Dam, Gamal Abdel Nasser nationalized the canal to use its income and end foreign control over it.",
+      "Egypt had joined the Warsaw Pact, and the Soviet Union ordered it to close the canal to Western shipping.",
+      "Israel had occupied the canal zone, and Egypt took over the company to drive Israeli forces out.",
+      "The Ottoman sultan granted Egypt the right to run the canal after the First World War.",
+    ],
+    why: [
+      "Correct. The aid offers were withdrawn on July 19, and a week later Nasser nationalized the company, an act of economic nationalism by a newly independent state.",
+      "Egypt never joined the Warsaw Pact. Nasser took arms from the Soviet bloc but stayed outside both alliances.",
+      "The excerpt shows that the Israeli attack came in October, after the seizure, not before it.",
+      "The Ottoman Empire had no authority over Egypt after the First World War, and Britain controlled the canal zone until 1956.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m30", skill: "u8", type: "mcq", set: "u8-s10", topic: "8.1", reasoning: "Causation",
+    question: "Which of the following was the most direct result of the events described in the excerpt?",
+    choices: [
+      "Under pressure from the United States, the Soviet Union, and the United Nations, Britain, France, and Israel withdrew their forces from Egypt.",
+      "Britain and France regained control of the canal and ran it until the 1970s.",
+      "Egypt joined NATO in exchange for American protection.",
+      "The United States sent troops to fight alongside Britain and France in Egypt.",
+    ],
+    why: [
+      "Correct. A United Nations force replaced the invaders, Egypt kept the canal, and the crisis showed that Britain and France could no longer act as imperial powers without American support.",
+      "Egypt kept the canal after the crisis. This choice reverses the outcome.",
+      "Egypt never joined NATO and drew closer to the Soviet Union after the crisis.",
+      "Eisenhower says the United States was \"not consulted\" and believes the attack was \"in error,\" so it did not join the fighting.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m31", skill: "u8", type: "mcq", set: "u8-s10", topic: "8.2", reasoning: "Contextualization",
+    question: "Eisenhower's statement that the United States does \"not accept the use of force\" to settle disputes carried added weight in the autumn of 1956 because",
+    choices: [
+      "in the same weeks, Soviet troops were moving against an uprising in Hungary, and American leaders wanted to condemn that use of force without excusing their own allies",
+      "the United States had just ended its own war in Vietnam and promised never to intervene abroad again",
+      "the Soviet Union had just placed nuclear missiles in Cuba",
+      "the United States had just joined the Non-Aligned Movement and promised to stay neutral",
+    ],
+    why: [
+      "Correct. As the cite's title shows, the speech covered Eastern Europe and the Middle East together. Soviet forces crushed the Hungarian uprising in early November, and backing Britain and France would have weakened American criticism of the Soviet Union.",
+      "American combat in Vietnam began in 1965 and ended in 1973, long after this speech.",
+      "The missiles in Cuba led to the crisis of 1962, six years later.",
+      "The United States never joined the Non-Aligned Movement, which was formed in 1961 by states that refused to join either bloc.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m32", skill: "u8", type: "mcq", set: "u8-s10", topic: "8.6", reasoning: "Comparison",
+    question: "Egypt's action described in the first paragraph of the excerpt was most similar to which of the following?",
+    choices: [
+      "Iran's nationalization of its oil industry, owned by a British company, in 1951",
+      "China's opening of special economic zones to foreign investment after 1978",
+      "Western Europe's acceptance of American aid under the Marshall Plan",
+      "The Soviet Union's move toward private enterprise under perestroika",
+    ],
+    why: [
+      "Correct. In both cases a government took over a key resource run by a Western company to gain its income and assert national control.",
+      "China's special economic zones invited foreign companies in, the opposite of taking a foreign company over.",
+      "The Marshall Plan was aid accepted from an ally, not a takeover of foreign property.",
+      "Perestroika loosened state control of the economy, while Egypt expanded state control.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 11, Indian Independence Act =====
+  { id: "u8-m33", skill: "u8", type: "mcq", set: "u8-s11", topic: "8.5", reasoning: "Causation",
+    question: "Which of the following most directly led Britain to set up two dominions rather than one?",
+    choices: [
+      "The Muslim League, led by Muhammad Ali Jinnah, demanded a separate state for Muslims, and talks between the League and the Indian National Congress failed.",
+      "The Indian National Congress, led by Gandhi and Nehru, asked Britain to divide India by religion.",
+      "Japan had conquered Bengal during the Second World War and refused to return it.",
+      "The United Nations voted to divide India into Hindu and Muslim states.",
+    ],
+    why: [
+      "Correct. From the Lahore Resolution of 1940, the League called for Muslim-majority areas to become independent, and when communal violence grew in 1946 Britain agreed to partition.",
+      "The Congress wanted a single united India and accepted partition only reluctantly in 1947.",
+      "Japanese forces entered northeastern India in 1944 but were driven back and never conquered Bengal.",
+      "The United Nations did vote on partition in Palestine in 1947, but India's partition was decided by Britain and Indian leaders.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m34", skill: "u8", type: "mcq", set: "u8-s11", topic: "8.6", reasoning: "Causation",
+    question: "The division of Bengal and Punjab described in the excerpt most directly led to which of the following?",
+    choices: [
+      "The migration of millions of Hindus, Sikhs, and Muslims across the new borders, along with violence that killed hundreds of thousands of people",
+      "The departure of most British officials and soldiers from South Asia",
+      "A peaceful exchange of land that both new states accepted without dispute",
+      "The union of India and Pakistan into a single federation within a few years",
+    ],
+    why: [
+      "Correct. About 15 million people crossed the new borders in Punjab and Bengal, and communal killings took place on both sides.",
+      "British officials did leave, but because independence ended British rule, not because Bengal and Punjab were split.",
+      "The partition was violent and left disputes that led to later wars.",
+      "India and Pakistan stayed separate and fought several wars.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m35", skill: "u8", type: "mcq", set: "u8-s11", topic: "8.6", reasoning: "Causation",
+    question: "The clause in Section 7 of the excerpt most directly contributed to which of the following?",
+    choices: [
+      "A war between India and Pakistan over Kashmir, whose Hindu ruler chose India although most of its people were Muslim",
+      "The breakaway of East Pakistan to form Bangladesh",
+      "The adoption of India's constitution, which banned discrimination by caste",
+      "India's decision to join the Non-Aligned Movement",
+    ],
+    why: [
+      "Correct. When British overlordship of the princely states lapsed, each ruler had to join India or Pakistan, and the Kashmir ruler's choice of India in 1947 led to war.",
+      "Bangladesh grew out of the split of Bengal and the treatment of East Pakistan, not the end of British authority over princely states.",
+      "India's constitution came from its own constituent assembly and is not connected to the princely states clause.",
+      "Non-alignment was a foreign policy choice of Nehru's government, not a result of the princely states clause.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m36", skill: "u8", type: "mcq", set: "u8-s11", topic: "8.5", reasoning: "Comparison",
+    question: "The arrangement in the excerpt was most similar to which of the following?",
+    choices: [
+      "The United Nations plan of 1947 to divide the British Mandate of Palestine into an Arab state and a Jewish state",
+      "The reunification of North and South Vietnam under communist rule in 1976",
+      "The creation of the European Economic Community in 1957",
+      "The independence of Ghana as a single state in 1957",
+    ],
+    why: [
+      "Correct. In both places, in the same year, Britain prepared to leave a territory by dividing it between religious communities.",
+      "Vietnam's reunification joined a divided country, the opposite of partition.",
+      "The European Economic Community joined existing states in a trade group. It did not divide a colony.",
+      "Ghana became independent as one state, without partition.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 12, NSC 5719/1 on Africa =====
+  { id: "u8-m37", skill: "u8", type: "mcq", set: "u8-s12", topic: "8.5", reasoning: "Contextualization",
+    question: "The reference to Ghana as one of the \"new states\" most directly reflects which of the following?",
+    choices: [
+      "The Gold Coast won independence from Britain in 1957 after Kwame Nkrumah's Convention People's Party organized strikes and boycotts and won elections.",
+      "Ghana won independence after a long war against a large population of European settlers.",
+      "Ghana had been a Belgian colony and became independent after a United Nations military intervention.",
+      "Ghana became independent at the Berlin Conference, when European powers agreed to leave West Africa.",
+    ],
+    why: [
+      "Correct. Ghana was one of the first colonies in sub-Saharan Africa to win independence, and it did so through mass politics and negotiation rather than war.",
+      "Long wars against settlers took place in Kenya and Algeria. The Gold Coast had few European settlers.",
+      "This confuses Ghana with the Belgian Congo, where a United Nations force arrived in 1960.",
+      "The Berlin Conference of 1884 to 1885 divided Africa among European powers. It did not free any colony.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m38", skill: "u8", type: "mcq", set: "u8-s12", topic: "8.5", reasoning: "Sourcing and Situation",
+    question: "The point of view of the excerpt is best explained by the fact that its authors",
+    choices: [
+      "wanted to keep the support of America's European allies while keeping new African states from turning to the Soviet Union",
+      "belonged to the Non-Aligned Movement and wanted to keep Africa out of the Cold War",
+      "represented African nationalist parties that demanded immediate independence",
+      "wanted European powers to keep their African colonies permanently",
+    ],
+    why: [
+      "Correct. As American security officials, they back independence \"in cooperation with the European powers\" and worry that frustrated nationalism would help \"Communists.\"",
+      "The authors work for the United States government, which led one of the two blocs.",
+      "The excerpt calls for an \"orderly\" path to independence in cooperation with Europe, not an immediate one.",
+      "The excerpt supports movement \"towards self-government and independence,\" so it does not call for permanent colonies.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m39", skill: "u8", type: "mcq", set: "u8-s12", topic: "8.5", reasoning: "Continuity and Change",
+    question: "Which of the following later developments most clearly went against the hope for an \"orderly\" transition expressed in the excerpt?",
+    choices: [
+      "Angola and Mozambique fought long wars against Portuguese rule before winning independence in 1975.",
+      "Most of France's colonies in West Africa won independence through negotiation in 1960.",
+      "Nigeria won independence from Britain in 1960 after a series of constitutional conferences.",
+      "Ghana kept close trade ties with Britain after independence and joined the Commonwealth.",
+    ],
+    why: [
+      "Correct. Portugal refused to give up its colonies, so independence came only after years of armed struggle, the kind of disorder the authors hoped to avoid.",
+      "Negotiated independence in French West Africa fits the orderly path the authors hoped for.",
+      "Nigeria's negotiated independence also fits the orderly path, even though civil war came later.",
+      "Ghana's ties with Britain match the authors' hope that ties between Europe and Africa would continue.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m40", skill: "u8", type: "mcq", set: "u8-s12", topic: "8.5", reasoning: "Causation",
+    question: "Which of the following best shows how many new African states responded to the concern about \"political alignment\" in the first paragraph?",
+    choices: [
+      "Many joined the Non-Aligned Movement and the Organization of African Unity, founded in 1963, to avoid depending on either bloc and to oppose remaining colonial rule.",
+      "Most joined NATO to receive American military protection.",
+      "Most joined the Warsaw Pact to receive Soviet weapons.",
+      "They merged into a single African federal state, as Pan-Africanists such as Nkrumah had urged.",
+    ],
+    why: [
+      "Correct. Leaders such as Nkrumah and Nasser tried to keep their independence from both superpowers while working together against colonialism and apartheid.",
+      "No African state joined NATO, which was a North Atlantic alliance.",
+      "No African state joined the Warsaw Pact, which was limited to the Soviet Union and Eastern Europe.",
+      "Nkrumah did call for a united Africa, but the Organization of African Unity kept the separate states and their colonial borders.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 13, Carter on Afghanistan =====
+  { id: "u8-m41", skill: "u8", type: "mcq", set: "u8-s13", topic: "8.8", reasoning: "Contextualization",
+    question: "Which of the following best describes the context of the \"Soviet invasion of Afghanistan\" mentioned in the excerpt?",
+    choices: [
+      "In December 1979 Soviet troops entered Afghanistan to prop up a communist government facing a revolt by Muslim rebels.",
+      "Soviet troops entered Afghanistan to overthrow the Taliban government after a terrorist attack.",
+      "Soviet troops entered Afghanistan to help Iran's new government fight the United States.",
+      "Soviet troops entered Afghanistan to take back territory that Britain had seized from Russia.",
+    ],
+    why: [
+      "Correct. A communist party had seized power in 1978, and when its rule began to collapse, Soviet leaders sent troops to save it.",
+      "The Taliban took power in the 1990s, and the invasion that removed them was led by the United States in 2001.",
+      "Iran's revolution in 1979 created an Islamic Republic that was hostile to both superpowers.",
+      "Britain and Russia competed for influence in Afghanistan in the 19th century, but Afghanistan was never Russian territory.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m42", skill: "u8", type: "mcq", set: "u8-s13", topic: "8.9", reasoning: "Contextualization",
+    question: "Carter's concern about \"the free movement of Middle East oil\" was most directly shaped by which of the following?",
+    choices: [
+      "The Arab oil embargo of 1973, which showed how cutting off oil from the Persian Gulf could damage Western economies",
+      "Egypt's nationalization of the Suez Canal in 1956",
+      "The discovery of oil in the North Sea in the 1960s",
+      "The Soviet Union's need to import oil from the Persian Gulf",
+    ],
+    why: [
+      "Correct. Arab members of OPEC cut oil shipments to the United States and other states after the 1973 Arab-Israeli war, prices quadrupled, and Americans waited in long lines for gasoline.",
+      "The Suez Crisis did threaten oil shipping, but it came more than two decades earlier. The embargo of 1973 was the recent, direct lesson.",
+      "North Sea oil added to Western supplies, so it would have lessened, not caused, Carter's concern.",
+      "The Soviet Union was a major oil producer and exporter, not an importer from the Persian Gulf.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m43", skill: "u8", type: "mcq", set: "u8-s13", topic: "8.9", reasoning: "Continuity and Change",
+    question: "The policy stated in the final paragraph of the excerpt most directly continued which earlier approach?",
+    choices: [
+      "Containment, as in the Truman Doctrine's pledge to support states resisting outside pressure",
+      "Détente, the easing of tensions through arms control and trade with the Soviet Union",
+      "Isolationism, the policy of avoiding commitments outside the Western Hemisphere",
+      "Non-alignment, the refusal to take sides in the Cold War",
+    ],
+    why: [
+      "Correct. Like Truman in 1947, Carter promised to resist Soviet expansion into a new region, here the Persian Gulf, with force if necessary.",
+      "The excerpt ends détente: Carter cuts trade and promises military force.",
+      "Carter commits the United States to defend a region on the other side of the world, the opposite of isolationism.",
+      "Non-alignment was the policy of states such as India, not of a superpower leading one bloc.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m44", skill: "u8", type: "mcq", set: "u8-s13", topic: "8.8", reasoning: "Causation",
+    question: "The war that began with the invasion described in the excerpt most directly contributed to the end of the Cold War because it",
+    choices: [
+      "cost the Soviet Union lives, money, and prestige for a decade until Gorbachev withdrew its troops in 1989",
+      "ended in a Soviet victory that convinced the United States to accept Soviet control of the Persian Gulf",
+      "led the United States and the Soviet Union to fight a direct war in Central Asia",
+      "caused Afghanistan to join the Warsaw Pact",
+    ],
+    why: [
+      "Correct. About 15,000 Soviet soldiers died fighting mujahideen rebels armed by the United States and others, and the costly war added to the strains that pushed Gorbachev toward reform.",
+      "The Soviet Union withdrew without winning, and it never controlled the Persian Gulf.",
+      "The United States armed the rebels but never fought Soviet forces directly.",
+      "Afghanistan never joined the Warsaw Pact.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 14, Limited Test Ban Treaty =====
+  { id: "u8-m45", skill: "u8", type: "mcq", set: "u8-s14", topic: "8.3", reasoning: "Causation",
+    question: "Which of the following most directly led the United States and the Soviet Union to sign the treaty in 1963?",
+    choices: [
+      "The Cuban Missile Crisis of 1962, which brought the two superpowers close to nuclear war",
+      "The Soviet launch of Sputnik in 1957, which began the space race",
+      "The collapse of the Soviet Union, which ended the arms race",
+      "The atomic bombing of Hiroshima and Nagasaki, which ended the Second World War",
+    ],
+    why: [
+      "Correct. After the missile crisis, both governments sought ways to lower the danger, including a telephone hotline and this treaty the next year.",
+      "Sputnik raised fears of Soviet missiles, but it came six years earlier and sped up the arms race rather than leading to limits on it.",
+      "The Soviet Union collapsed in 1991, almost thirty years after this treaty.",
+      "The atomic bombings came in 1945, eighteen years before the treaty, and the arms race grew for years after them.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m46", skill: "u8", type: "mcq", set: "u8-s14", topic: "8.3", reasoning: "Claims and Evidence in Sources",
+    question: "The terms of the treaty in the excerpt best support which of the following claims?",
+    choices: [
+      "The treaty limited where nuclear weapons could be tested but did not stop either side from building more of them.",
+      "The treaty required both superpowers to destroy all of their nuclear weapons.",
+      "The treaty set up a United Nations agency to inspect every nuclear site in both countries.",
+      "The treaty was signed by every state that had nuclear weapons in 1963.",
+    ],
+    why: [
+      "Correct. Article I bans tests in the air, in space, and under water, while the preamble shows that \"complete disarmament\" remained only an aim. Underground testing and the arms buildup went on.",
+      "Complete disarmament is called an aim, not a requirement of the treaty.",
+      "The excerpt mentions \"strict international control\" only as a goal for a future agreement, and it sets up no inspection agency.",
+      "Only three states are named as the original parties. France, which had tested nuclear weapons since 1960, did not sign.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m47", skill: "u8", type: "mcq", set: "u8-s14", topic: "8.3", reasoning: "Continuity and Change",
+    question: "Which of the following later developments most directly continued the aim stated in the second paragraph of the excerpt?",
+    choices: [
+      "The Nuclear Non-Proliferation Treaty of 1968, in which states without nuclear weapons agreed not to acquire them",
+      "The Strategic Defense Initiative of 1983, a plan for a missile defense system in space",
+      "The formation of the Warsaw Pact in 1955",
+      "The Soviet decision to place missiles in Cuba in 1962",
+    ],
+    why: [
+      "Correct. Like the test ban, the Non-Proliferation Treaty tried to slow the arms race through an international agreement.",
+      "The Strategic Defense Initiative was a new weapons program that raised tensions, not an agreement to limit arms.",
+      "The Warsaw Pact was a military alliance formed before the treaty, not a step toward disarmament.",
+      "Placing missiles in Cuba came before the treaty and expanded the arms race.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 15, practice passage on land reform =====
+  { id: "u8-m48", skill: "u8", type: "mcq", set: "u8-s15", topic: "8.4", reasoning: "Claims and Evidence in Sources",
+    question: "Which of the following best states the argument of the passage?",
+    choices: [
+      "Both communist and anticommunist governments used land reform, and it often increased the power of the state.",
+      "Only communist governments carried out land reform in the 20th century.",
+      "Land reform failed everywhere to change who owned land.",
+      "Peasants carried out land reform on their own, without help from governments.",
+    ],
+    why: [
+      "Correct. The passage gives communist examples and the Shah's White Revolution, and ends by saying land reform \"strengthened the central state.\"",
+      "The passage says \"communists were not the only ones\" and gives the Shah of Iran as an example.",
+      "The passage describes estates broken up and land nationalized, so ownership did change.",
+      "Every example in the passage is a reform carried out by a government.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m49", skill: "u8", type: "mcq", set: "u8-s15", topic: "8.4", reasoning: "Comparison",
+    question: "Iran's White Revolution differed from Ethiopia's land reform described in the passage in that Iran's reform was",
+    choices: [
+      "carried out by a monarch allied with the United States who hoped to prevent revolution, while Ethiopia's followed the overthrow of a monarch by officers who declared socialism",
+      "a nationalization of all land by the state, while Ethiopia's sold land to individual farmers",
+      "led by the Iranian Communist Party, while Ethiopia's was led by the emperor",
+      "carried out after a long war of independence, while Ethiopia's came after colonial rule ended peacefully",
+    ],
+    why: [
+      "Correct. The Shah used reform to win rural support for his own rule, while the Derg came to power by overthrowing Haile Selassie.",
+      "This reverses the two cases: the Derg nationalized land, and the Shah sold land to peasants.",
+      "The Shah opposed communism, and the passage says the Derg overthrew the emperor.",
+      "Neither land reform followed a war of independence. Iran was never a colony, and Ethiopia was occupied by Italy only from 1936 to 1941.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m50", skill: "u8", type: "mcq", set: "u8-s15", topic: "8.4", reasoning: "Causation",
+    question: "The Derg's decision to declare Ethiopia socialist most directly led to which of the following?",
+    choices: [
+      "The Soviet Union and Cuba sent weapons, advisers, and Cuban troops to support Ethiopia's government, especially in its war with Somalia in 1977 and 1978.",
+      "The United States sent troops to restore Haile Selassie to the throne.",
+      "Italy reconquered Ethiopia and made it a colony again.",
+      "Ethiopia joined NATO in exchange for economic aid.",
+    ],
+    why: [
+      "Correct. Ethiopia became a Soviet ally, and Cuban troops helped it defeat Somalia's invasion of the Ogaden region, a Cold War conflict in Africa.",
+      "The United States did not send troops, and Haile Selassie died in 1975.",
+      "Italy occupied Ethiopia from 1936 to 1941, decades before the Derg.",
+      "Ethiopia under the Derg was allied with the Soviet Union, and NATO had no African members.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m51", skill: "u8", type: "mcq", set: "u8-s15", topic: "8.4", reasoning: "Continuity and Change",
+    question: "Which of the following later developments best shows a limit of the Shah's reforms described in the passage?",
+    choices: [
+      "The Iranian Revolution of 1979 overthrew the Shah and brought to power religious leaders who had opposed his reforms.",
+      "Iran nationalized its oil industry in 1951.",
+      "Iran joined the Warsaw Pact in the 1970s.",
+      "Iran became a communist state after 1979.",
+    ],
+    why: [
+      "Correct. The White Revolution did not win lasting support, and clerics such as Ruhollah Khomeini, who had denounced it in 1963, led the revolution that ended the monarchy.",
+      "The oil nationalization came twelve years before the White Revolution, so it cannot show the reform's results.",
+      "Iran under the Shah was an ally of the United States and never joined the Warsaw Pact.",
+      "The 1979 revolution created an Islamic Republic, which suppressed Iran's communists.",
+    ],
+    answer: 0 },
+
+  // ===== Multiple choice: Set 16, practice passage on South America =====
+  { id: "u8-m52", skill: "u8", type: "mcq", set: "u8-s16", topic: "8.7", reasoning: "Claims and Evidence in Sources",
+    question: "The passage best supports which of the following claims?",
+    choices: [
+      "Cold War fears led both military governments and revolutionary groups to use violence against civilians.",
+      "Military governments in South America came to power mainly through free elections.",
+      "The Shining Path attacked only the Peruvian army and avoided harming civilians.",
+      "The United States opposed the military governments of Chile and Argentina throughout the Cold War.",
+    ],
+    why: [
+      "Correct. The passage describes torture and disappearances by the Chilean and Argentine regimes and attacks on peasants and local leaders by the Shining Path.",
+      "The passage says officers \"seize[d] power,\" and in Chile they overthrew an elected president.",
+      "The passage says the Shining Path attacked peasants, local leaders, and rival leftists.",
+      "The passage says the United States \"often supported them as allies against communism.\"",
+    ],
+    answer: 0 },
+
+  { id: "u8-m53", skill: "u8", type: "mcq", set: "u8-s16", topic: "8.7", reasoning: "Causation",
+    question: "Which of the following most directly increased the \"fear of revolution\" that the passage describes?",
+    choices: [
+      "The Cuban Revolution of 1959, after which Fidel Castro allied with the Soviet Union and supported revolutionary movements elsewhere in Latin America",
+      "The Mexican Revolution of 1910, which overthrew the dictator Porfirio Díaz",
+      "The Sandinista Revolution in Nicaragua in 1979",
+      "The breakup of the Soviet Union in 1991",
+    ],
+    why: [
+      "Correct. Cuba showed that a revolution could create a communist state in the Americas, which alarmed military officers and the United States in the 1960s and 1970s.",
+      "The Mexican Revolution came half a century earlier and was not a communist revolution.",
+      "The Sandinista victory came after the coups in Chile (1973) and Argentina (1976), so it could not have caused them.",
+      "The Soviet breakup came after the events in the passage and ended the Cold War.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m54", skill: "u8", type: "mcq", set: "u8-s16", topic: "8.7", reasoning: "Comparison",
+    question: "The actions of the Chilean and Argentine governments described in the passage were most similar to which of the following?",
+    choices: [
+      "The South African government's banning of opposition groups and jailing of leaders such as Nelson Mandela",
+      "Gandhi's Salt March against British taxes in India",
+      "Solidarity's strikes against the communist government of Poland",
+      "India's holding of regular elections after independence",
+    ],
+    why: [
+      "Correct. Like the South American regimes, South Africa's government used police power, bans, and imprisonment to crush opposition to its rule.",
+      "The Salt March was a protest against a government, not a government's repression of opponents.",
+      "Solidarity was a movement resisting a government, not a government crushing its critics.",
+      "Regular elections are the opposite of rule by a military government.",
+    ],
+    answer: 0 },
+
+  { id: "u8-m55", skill: "u8", type: "mcq", set: "u8-s16", topic: "8.7", reasoning: "Continuity and Change",
+    question: "Which of the following later developments marked the greatest change from the situation described in the passage?",
+    choices: [
+      "Argentina in 1983 and Chile in 1990 returned to elected civilian governments, which set up commissions to investigate the abuses of military rule.",
+      "Military officers seized power in more South American countries in the 1990s.",
+      "The Shining Path took control of Peru's government in 1990.",
+      "Pinochet ruled Chile as president until his death in 2006.",
+    ],
+    why: [
+      "Correct. The return to civilian rule ended the military regimes, and truth commissions such as Chile's in 1990 documented the killings and disappearances.",
+      "South America moved away from military rule in the 1980s and 1990s.",
+      "The Shining Path never took power, and its leader, Abimael Guzmán, was captured in 1992.",
+      "Pinochet gave up the presidency in 1990 after losing a 1988 vote on his rule.",
     ],
     answer: 0 },
 

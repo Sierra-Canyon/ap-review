@@ -16,6 +16,8 @@ const m01 = deck.forms.find((f) => f.id === "w2a").items.find((x) => x.id === "w
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1200, height: 900 } });
+// Written for the week before the Unit 2 Test (11/4), so the page's clock is set to then.
+await ctx.clock.install({ time: new Date("2026-11-02T08:00:00") });
 const page = await ctx.newPage();
 page.on("console", (m) => { if (m.type() === "error" && !/fonts\.g|ERR_TUNNEL/.test(m.text())) errors.push("console: " + m.text()); });
 page.on("pageerror", (e) => errors.push("pageerror: " + e.message));

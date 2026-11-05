@@ -14,6 +14,8 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
 
+
+To add a course, or to bring one up to date for its next quizzes, read `HANDOFF.md`.
 ## Accounts
 
 One record per student (`students/` in Firestore), keyed by the school email, however the student signs in: **GitHub** (the computer science courses) or **school email and password** (courses marked `passwords: true` in `courses.js`, such as AP World History). A record holds the name the student goes by in class (the only name the site shows), the school email, the GitHub account if any, and the courses. Progress is one document per student (`progress/`).

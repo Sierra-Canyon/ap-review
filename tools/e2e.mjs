@@ -16,6 +16,8 @@ const assert = (c, m) => { if (!c) { errors.push(m); console.log("  FAIL:", m); 
 const browser = await chromium.launch();
 async function newPage(opts = {}) {
   const ctx = await browser.newContext({ viewport: { width: 1200, height: 900 }, ...opts });
+  // The checks below are written for the days before Quiz 3 (11/3), so the page's clock is set to then.
+  await ctx.clock.install({ time: new Date("2026-11-02T08:00:00") });
   const page = await ctx.newPage();
   page.on("console", (m) => { if (m.type() === "error" && !/fonts\.g|ERR_TUNNEL/.test(m.text())) errors.push("console: " + m.text()); });
   page.on("pageerror", (e) => errors.push("pageerror: " + e.message));

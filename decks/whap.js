@@ -16,6 +16,10 @@ import * as u8 from "./whap/u8.js";
 import * as u9 from "./whap/u9.js";
 // Maps and charts for Units 1 to 3 (decks/whap/visual.js): maps drawn by tools/build-maps.mjs, charts of cited data.
 import * as visual from "./whap/visual.js";
+// More review for Units 1 to 3 (11/6), to bring each topic closer to the coverage of Albert's practice by topic.
+import * as u1x from "./whap/u1x.js";
+import * as u2x from "./whap/u2x.js";
+import * as u3x from "./whap/u3x.js";
 
 // Unit assessments (decks/whap-mocks/): one form per unit, two for Unit 2, written only for the mocks. No item or source in them is in review.
 // Each is the AP exam in miniature: 15 source-based multiple choice, two short-answer questions (6 parts), and one long essay, 27 points.
@@ -51,7 +55,7 @@ import * as t32 from "./whap-topic/t32.js";
 import * as t33 from "./whap-topic/t33.js";
 import * as t34 from "./whap-topic/t34.js";
 
-const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9, visual];
+const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9, visual, u1x, u2x, u3x];
 const mocks = [w1a, w2a, w2b, w3a, w3b, w4a, w5a, w6a, w7a, w8a, w9a];
 const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
 const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27, t31, t32, t33, t34];

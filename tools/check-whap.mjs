@@ -1,6 +1,6 @@
 // Structural checks for AP World History files (review bank, topic quizzes, unit assessments).
 // Usage: node tools/check-whap.mjs decks/whap/u3.js [more files]
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 
 const files = process.argv.slice(2);
@@ -24,11 +24,32 @@ function checkSets(sets, isMock) {
       if (!cite) { if (!s.sources.some((x) => (x.blocks || []).some((b) => b.cite))) bad(id, "set has no cite block"); }
       else {
         if (cite.kind === "practice" && cite.cite !== PRACTICE) bad(id, "practice passage must carry the exact practice label");
-        if (cite.kind !== "practice" && !cite.url) bad(id, `${cite.kind || "source"} has no url`);
-        if (!["primary", "practice", "data"].includes(cite.kind)) bad(id, "cite kind must be primary, practice, or data");
+        if (!["practice", "map"].includes(cite.kind) && !cite.url) bad(id, `${cite.kind || "source"} has no url`);
+        if (!["primary", "practice", "data", "map"].includes(cite.kind)) bad(id, "cite kind must be primary, practice, data, or map");
+        // A map the site draws names the references its places, dates, and routes were checked against (HANDOFF.md, 2e).
+        if (cite.kind === "map" && !/checked against .+ and .+/.test(cite.cite)) bad(id, "a drawn map's cite must name the two references it was checked against");
+        if (cite.kind === "map") prose(id + " map cite", cite.cite);
         if (cite.kind === "practice") for (const b of src.blocks) if (b.p) prose(id + " practice passage", b.p);
       }
-      if (!(src.blocks || []).some((b) => b.p || b.table)) bad(id, "source has no text or table");
+      if (!(src.blocks || []).some((b) => b.p || b.table || "svg" in b || b.img)) bad(id, "source has no text, table, graphic, or picture");
+      for (const b of src.blocks || []) {
+        // drawn maps and charts: real markup with alt text and a caption
+        if ("svg" in b) {
+          if (typeof b.svg !== "string" || !b.svg.startsWith("<svg")) bad(id, "svg block is empty (is the map in decks/whap/maps.js? run node tools/build-maps.mjs)");
+          else if (!/aria-label="[^"]{20,}"/.test(b.svg)) bad(id, "svg needs alt text (aria-label)");
+          if (!b.caption) bad(id, "svg block needs a caption");
+          prose(id + " caption", b.caption);
+        }
+        // pictures: a file in images/, with alt, caption, credit, license, and source url
+        if (b.img) {
+          const f = resolve(b.img);
+          if (!/^images\/[a-z0-9-]+\/[a-z0-9-]+\.(jpg|png|webp)$/.test(b.img)) bad(id, "img path should be images/<course>/<plain-name>.jpg");
+          else if (!existsSync(f)) bad(id, "img file is missing: " + b.img + " (run node tools/fetch-images.mjs)");
+          else if (statSync(f).size > 400 * 1024) bad(id, `img file is over 400 KB: ${b.img}`);
+          for (const k of ["alt", "caption", "credit", "license", "url"]) if (!b[k]) bad(id, `img block needs ${k}`);
+          prose(id + " caption", b.caption);
+        }
+      }
     }
   }
 }
@@ -41,6 +62,8 @@ function checkItems(items, sets, where) {
     ids.add(w);
     if (it.set && !sets[it.set]) bad(w, "set not found: " + it.set);
     if (!it.topic) bad(w, "no topic");
+    // the Class tab and the teacher's "whole unit" assessments group topics by unit, so a topic stays in its item's unit
+    else if (/^u\d$/.test(it.skill || "") && it.topic.split(".")[0] !== it.skill.slice(1)) bad(w, `topic ${it.topic} is not in unit ${it.skill}`);
     if (it.type === "mcq") {
       if (!it.set) bad(w, "mcq without a set (every AP World MC is stimulus based)");
       if (it.choices?.length !== 4 || it.why?.length !== 4 || it.answer !== 0) bad(w, "mcq needs 4 choices, 4 explanations, answer: 0");

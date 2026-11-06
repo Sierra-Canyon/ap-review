@@ -1,0 +1,181 @@
+// Map specs for AP World History (drawn by tools/build-maps.mjs). Coordinates are [longitude, latitude].
+// Every place, date, and route here is a claim the site makes: each map lists the references it was checked against.
+// Routes are drawn as approximate lines between places, and the captions say so.
+
+const silk = {
+  id: "silk-tarim",
+  caption: "Overland Silk Roads through Central Asia, c. 1300 (routes approximate)",
+  alt: "Map of overland routes from Dadu and Xi'an in China west to Constantinople and Baghdad, c. 1300. East of Kashgar the route splits in two, one branch passing north of the Taklamakan Desert through Turpan and Kucha and one passing south of it through Khotan, and the branches meet again at Dunhuang. West of Kashgar the route crosses the Pamir Mountains to Samarkand, Bukhara, and Merv, then runs through Persia to Tabriz and on to Constantinople, with a branch to Baghdad. The names Yuan dynasty, Chagatai Khanate, Ilkhanate, and Golden Horde are written over the regions they ruled.",
+  bbox: [26, 26, 120, 50], width: 680, height: 400,
+  regions: [
+    { name: "Taklamakan Desert", at: [86.0, 38.9], size: 11 }, { name: "Gobi Desert", at: [104.5, 43.2] },
+    { name: "Caspian Sea", at: [50.6, 41.6], size: 11 },
+    { name: "Black Sea", at: [35.0, 42.9], size: 10 },
+    { name: "YUAN DYNASTY", at: [111.5, 28.5] }, { name: "CHAGATAI KHANATE", at: [70.5, 44.6] },
+    { name: "ILKHANATE", at: [55.5, 31.0] }, { name: "GOLDEN HORDE", at: [46, 47.6] },
+  ],
+  routes: [
+    { through: [[116.4, 39.9], [112.5, 37.9], [108.9, 34.3], [103.8, 36.1], [100.4, 38.9], [97.5, 39.8], [94.7, 40.1]] },
+    { through: [[94.7, 40.1], [89.2, 42.95], [86.1, 41.75], [82.96, 41.7], [79.2, 41.2], [76.0, 39.47]] },
+    { through: [[94.7, 40.1], [90.2, 39.0], [85.5, 38.1], [82.7, 37.0], [79.92, 37.11], [77.3, 38.4], [76.0, 39.47]] },
+    { through: [[76.0, 39.47], [73.3, 40.0], [71.8, 40.4], [69.2, 40.0], [66.97, 39.65], [64.42, 39.77], [61.83, 37.66], [58.8, 36.2], [51.4, 35.6], [48.5, 37.4], [46.3, 38.08], [41.3, 39.9], [36.0, 40.0], [32.9, 39.9], [28.98, 41.01]] },
+    { through: [[51.4, 35.6], [48.5, 34.8], [46.0, 34.2], [44.37, 33.31]] },
+  ],
+  places: [
+    { name: "Dadu (Khanbaliq)", at: [116.4, 39.9], kind: "major", label: "above" },
+    { name: "Xi'an", at: [108.9, 34.3], label: "right" },
+    { name: "Dunhuang", at: [94.7, 40.1], label: "above" },
+    { name: "Turpan", at: [89.2, 42.95], label: "above" },
+    { name: "Kucha", at: [82.96, 41.7], label: "above" },
+    { name: "Khotan", at: [79.92, 37.11], label: "below" },
+    { name: "Kashgar", at: [76.0, 39.47], label: [-4, 16] },
+    { name: "Samarkand", at: [66.97, 39.65], label: [4, -9] },
+    { name: "Bukhara", at: [64.42, 39.77], label: [-7, -6] },
+    { name: "Merv", at: [61.83, 37.66], label: "below" },
+    { name: "Tabriz", at: [46.3, 38.08], kind: "major", label: "above" },
+    { name: "Baghdad", at: [44.37, 33.31], label: "below" },
+    { name: "Constantinople", at: [28.98, 41.01], kind: "major", label: "below" },
+  ],
+  legend: [{ kind: "route", text: "Caravan routes (approximate)" }, { kind: "major", text: "Capital city" }, { kind: "city", text: "Oasis or trade city" }],
+  legendAt: "bottom-left",
+  checked: ["UNESCO Silk Roads Programme, routes and cities of the Silk Roads (en.unesco.org/silkroad)", "Encyclopaedia Britannica, \"Silk Road\" and the entries for each city (coordinates from each city's entry)"],
+};
+
+const plague = {
+  id: "black-death",
+  caption: "The spread of the Black Death, 1346 to 1353: the year the plague reached each city",
+  alt: "Map of Europe, North Africa, and Southwest Asia showing the year the plague reached each city. Kaffa on the Black Sea, 1346. Constantinople, Alexandria, Messina in Sicily, and Marseille, 1347. Venice, Florence, Paris, London, Tunis, Cairo, and Damascus, 1348. Bergen in Norway, 1349. Moscow, 1353. A line marks the sea route from Kaffa through Constantinople and across the Mediterranean to Messina and Marseille, with a branch to Alexandria.",
+  bbox: [-11, 28, 50, 61], width: 640, height: 470,
+  regions: [
+    { name: "Mediterranean Sea", at: [18, 35.2], size: 12 }, { name: "Black Sea", at: [34.5, 43.3], size: 11 },
+    { name: "Atlantic Ocean", at: [-8, 46], size: 11 }, { name: "Caspian Sea", at: [50.5, 41.6], size: 10 },
+  ],
+  routes: [
+    { kind: "sea", through: [[35.38, 45.03], [32.0, 43.6], [29.1, 41.3], [28.98, 41.01], [27.6, 40.7], [26.3, 40.1], [25.4, 38.4], [24.0, 36.6], [22.3, 36.0], [18.5, 37.0], [15.6, 38.2]] },
+    { kind: "sea", through: [[15.6, 38.2], [12.5, 39.5], [9.6, 41.0], [7.5, 42.6], [5.37, 43.3]] },
+    { kind: "sea", through: [[26.3, 36.6], [29.92, 31.2]] },
+  ],
+  places: [
+    { name: "Kaffa 1346", at: [35.38, 45.03], kind: "major", label: "right" },
+    { name: "Constantinople 1347", at: [28.98, 41.01], label: "right" },
+    { name: "Alexandria 1347", at: [29.92, 31.2], label: "left" },
+    { name: "Messina 1347", at: [15.55, 38.19], label: "below" },
+    { name: "Marseille 1347", at: [5.37, 43.3], label: "left" },
+    { name: "Venice 1348", at: [12.33, 45.44], label: "right" },
+    { name: "Florence 1348", at: [11.25, 43.77], label: "right" },
+    { name: "Paris 1348", at: [2.35, 48.86], label: "right" },
+    { name: "London 1348", at: [-0.13, 51.5], label: "left" },
+    { name: "Tunis 1348", at: [10.18, 36.8], label: "below" },
+    { name: "Cairo 1348", at: [31.24, 30.04], label: "right" },
+    { name: "Damascus 1348", at: [36.3, 33.51], label: "right" },
+    { name: "Bergen 1349", at: [5.32, 60.39], label: "right" },
+    { name: "Moscow 1353", at: [37.62, 55.75], label: "right" },
+  ],
+  legend: [{ kind: "major", text: "Siege of Kaffa, 1346" }, { kind: "city", text: "City, with the year the plague arrived" }, { kind: "sea", text: "Sea trade route (approximate)" }],
+  legendAt: "bottom-left", legendWidth: 255,
+  checked: ["Ole J. Benedictow, The Black Death 1346 to 1353: The Complete History (2004), chapters on each region", "Encyclopaedia Britannica, \"Black Death\"; Ibn Khaldun's own account of the plague in Tunis, 1348 to 1349"],
+};
+
+const zhenghe = {
+  id: "zheng-he",
+  caption: "Ports visited by the Ming treasure fleets of Zheng He, 1405 to 1433 (routes approximate)",
+  alt: "Map of the Indian Ocean and South China Sea showing the routes of Zheng He's fleets. The main route runs from Nanjing down the Chinese coast to Changle, south to Champa, through Palembang and Malacca, past Semudera on Sumatra, to Ceylon, Calicut on the southwest coast of India, and Hormuz at the mouth of the Persian Gulf. Detachments of the fleet sailed from Calicut to Aden and Jeddah on the Red Sea, and from Ceylon to Mogadishu and Malindi on the east coast of Africa.",
+  bbox: [36, -9, 124, 34], width: 680, height: 430,
+  regions: [
+    { name: "MING CHINA", at: [111.5, 29.5] }, { name: "Indian Ocean", at: [70, -3], size: 13 },
+    { name: "Arabian Sea", at: [63, 15.5], size: 11 }, { name: "Bay of Bengal", at: [88, 15], size: 11 },
+    { name: "South China Sea", at: [114, 15], size: 11 }, { name: "INDIA", at: [78.5, 21] }, { name: "ARABIA", at: [46, 22.5], size: 11 },
+    { name: "AFRICA", at: [39.5, 7], size: 11 },
+  ],
+  routes: [
+    { through: [[118.8, 32.06], [121.0, 31.6], [122.2, 30.8], [122.4, 28.0], [120.3, 26.0], [119.6, 25.95]] },
+    { through: [[119.6, 25.95], [117.5, 22.6], [113.5, 18.0], [109.6, 13.8], [107.8, 8.0], [105.6, 2.8], [105.8, -1.0], [104.75, -2.98]] },
+    { through: [[104.75, -2.98], [105.2, -1.0], [104.3, 1.2], [102.25, 2.19], [99.5, 4.2], [97.1, 5.15], [95.0, 6.2], [86.0, 5.6], [80.2, 6.03], [77.5, 7.6], [75.78, 11.25], [72.0, 16.0], [65.0, 22.0], [59.5, 24.6], [56.46, 27.1]] },
+    { kind: "route2", through: [[75.78, 11.25], [66.0, 13.0], [52.0, 12.6], [45.03, 12.8], [43.4, 12.7], [41.5, 15.5], [39.17, 21.5]] },
+    { kind: "route2", through: [[80.2, 6.03], [73.5, 3.5], [60.0, 2.0], [50.0, 1.8], [45.34, 2.05], [42.8, -0.8], [40.12, -3.22]] },
+  ],
+  places: [
+    { name: "Nanjing", at: [118.8, 32.06], kind: "major", label: "left" },
+    { name: "Changle", at: [119.6, 25.95], label: "left" },
+    { name: "Champa", at: [109.2, 13.77], label: "left" },
+    { name: "Palembang", at: [104.75, -2.98], label: "below" },
+    { name: "Malacca", at: [102.25, 2.19], label: [-7, 13] },
+    { name: "Semudera", at: [97.1, 5.15], label: "above" },
+    { name: "Ceylon", at: [80.2, 6.03], label: "below" },
+    { name: "Calicut", at: [75.78, 11.25], label: "right" },
+    { name: "Hormuz", at: [56.46, 27.1], label: "above" },
+    { name: "Aden", at: [45.03, 12.8], label: "below" },
+    { name: "Jeddah", at: [39.17, 21.5], label: "left" },
+    { name: "Mogadishu", at: [45.34, 2.05], label: "right" },
+    { name: "Malindi", at: [40.12, -3.22], label: "right" },
+  ],
+  legend: [{ kind: "route", text: "Main route of the fleets" }, { kind: "route2", text: "Detachments of the fleet" }, { kind: "major", text: "Ming capital" }],
+  legendAt: "bottom-right", legendWidth: 200,
+  checked: ["Edward L. Dreyer, Zheng He: China and the Oceans in the Early Ming Dynasty, 1405 to 1433 (2007), the voyage itineraries", "Encyclopaedia Britannica, \"Zheng He\"; the Changle (Liujiagang and Changle) inscriptions of 1431 as summarized in Dreyer"],
+};
+
+const iberia = {
+  id: "iberia",
+  caption: "Christian conquests in Iberia: the year each city was taken from Muslim rule",
+  alt: "Map of the Iberian Peninsula with the year Christian kingdoms took each city from Muslim rulers: Toledo 1085, Zaragoza 1118, Lisbon 1147, Córdoba 1236, Valencia 1238, Seville 1248, and Granada 1492. An X marks the battle of Las Navas de Tolosa, 1212. The earlier dates are in the north and center, and the later dates are in the south.",
+  bbox: [-10.2, 35.6, 4.4, 44.2], width: 560, height: 430,
+  regions: [{ name: "Atlantic Ocean", at: [-9.0, 41.4], size: 11 }, { name: "Mediterranean Sea", at: [1.6, 37.6], size: 11 }, { name: "NORTH AFRICA", at: [-4.6, 35.75], size: 10 }],
+  places: [
+    { name: "Toledo 1085", at: [-4.02, 39.86], label: "right" },
+    { name: "Zaragoza 1118", at: [-0.88, 41.65], label: "right" },
+    { name: "Lisbon 1147", at: [-9.14, 38.72], label: "right" },
+    { name: "Las Navas de Tolosa 1212", at: [-3.58, 38.28], kind: "battle", label: "right" },
+    { name: "Córdoba 1236", at: [-4.78, 37.88], label: "left" },
+    { name: "Valencia 1238", at: [-0.38, 39.47], label: "left" },
+    { name: "Seville 1248", at: [-5.98, 37.39], label: "left" },
+    { name: "Granada 1492", at: [-3.6, 37.18], kind: "major", label: "below" },
+  ],
+  legend: [{ kind: "city", text: "City, with the year it was taken" }, { kind: "battle", text: "Battle" }, { kind: "major", text: "Last Muslim kingdom in Iberia" }],
+  legendAt: "top-right", legendWidth: 230,
+  checked: ["Joseph F. O'Callaghan, Reconquest and Crusade in Medieval Spain (2003), chronology", "Encyclopaedia Britannica, \"Reconquista\" and the entries for each city"],
+};
+
+const americas = {
+  id: "americas",
+  caption: "Cities and states of the Americas, c. 1200 to c. 1450",
+  alt: "Map of North and South America marking six places. Cahokia, near the Mississippi River, largest c. 1050 to 1200 and abandoned by c. 1350. The Mesa Verde cliff dwellings in the Southwest, built c. 1190 to 1260 and left by c. 1300. Tenochtitlan, the Mexica capital, founded 1325. Mayapán in the Yucatán, a Maya capital c. 1220 to c. 1450. Chan Chan, capital of the Chimú state on the coast of Peru. Cusco, capital of the Inca, whose empire grew from c. 1438.",
+  bbox: [-118, -20, -66, 44], width: 520, height: 520,
+  regions: [{ name: "Gulf of Mexico", at: [-90.5, 25.0], size: 10 }, { name: "Pacific Ocean", at: [-100, 2], size: 12 }, { name: "Atlantic Ocean", at: [-70, 30], size: 11 }, { name: "Andes Mountains", at: [-71.2, -7.5], size: 10 }],
+  places: [
+    { name: "Cahokia\n(largest c. 1050 to 1200;\nempty by c. 1350)", at: [-90.06, 38.66], label: "right" },
+    { name: "Mesa Verde\n(c. 1190 to 1300)", at: [-108.47, 37.17], label: "left" },
+    { name: "Tenochtitlan\n(founded 1325)", at: [-99.13, 19.43], kind: "major", label: "left" },
+    { name: "Mayapán\n(c. 1220 to c. 1450)", at: [-89.46, 20.63], label: "right" },
+    { name: "Chan Chan\n(Chimú capital)", at: [-79.07, -8.11], label: "left" },
+    { name: "Cusco\n(Inca capital;\nempire from c. 1438)", at: [-71.97, -13.53], kind: "major", label: "left" },
+  ],
+  legend: [{ kind: "major", text: "Capital of a growing empire, 1450" }, { kind: "city", text: "Other city or state center" }],
+  legendAt: "bottom-left", legendWidth: 230,
+  checked: ["National Park Service, Mesa Verde National Park, \"Cliff Palace\"; UNESCO World Heritage List entries for Cahokia Mounds, Chan Chan, and the City of Cuzco", "Encyclopaedia Britannica, \"Cahokia\", \"Mayapán\", \"Tenochtitlán\", and \"Inca\""],
+};
+
+const gunpowder = {
+  id: "gunpowder",
+  caption: "Battles and sieges of the land-based empires, 1453 to 1556",
+  alt: "Map from Central Europe to northern India marking battles and sieges with an X. Constantinople, 1453, taken by the Ottomans. Chaldiran, 1514, Ottoman victory over the Safavids. Marj Dabiq, 1516, Ottoman victory over the Mamluks. Mohács, 1526, Ottoman victory over Hungary. Vienna, 1529, a failed Ottoman siege. Panipat, 1526, Babur's victory that began Mughal rule in India. Kazan, 1552, and Astrakhan, 1556, taken by Muscovy. Capitals marked with a dot are Moscow, Tabriz, and Agra.",
+  bbox: [12, 22, 82, 58], width: 680, height: 440,
+  regions: [{ name: "Black Sea", at: [34.5, 43.4], size: 11 }, { name: "Caspian Sea", at: [50.6, 42.2], size: 10 }, { name: "Mediterranean Sea", at: [21.5, 34.6], size: 11 }, { name: "Arabian Sea", at: [64, 21], size: 11 }],
+  places: [
+    { name: "Constantinople 1453", at: [28.98, 41.01], kind: "battle", label: "below" },
+    { name: "Chaldiran 1514", at: [44.32, 39.09], kind: "battle", label: "right" },
+    { name: "Marj Dabiq 1516", at: [37.27, 36.53], kind: "battle", label: "below" },
+    { name: "Mohács 1526", at: [18.68, 45.99], kind: "battle", label: "right" },
+    { name: "Vienna 1529", at: [16.37, 48.21], kind: "battle", label: "above" },
+    { name: "Panipat 1526", at: [76.97, 29.39], kind: "battle", label: "above" },
+    { name: "Kazan 1552", at: [49.11, 55.79], kind: "battle", label: "right" },
+    { name: "Astrakhan 1556", at: [48.03, 46.35], kind: "battle", label: "right" },
+    { name: "Moscow", at: [37.62, 55.75], label: "left" },
+    { name: "Tabriz", at: [46.3, 38.08], label: "right" },
+    { name: "Agra", at: [78.01, 27.18], label: "below" },
+  ],
+  legend: [{ kind: "battle", text: "Battle or siege, with its year" }, { kind: "city", text: "Capital city" }],
+  legendAt: "bottom-left", legendWidth: 210,
+  checked: ["Douglas E. Streusand, Islamic Gunpowder Empires: Ottomans, Safavids, and Mughals (2011), chronologies", "Encyclopaedia Britannica entries for each battle and siege, and \"Russia: The rise of Moscow\" for Kazan and Astrakhan"],
+};
+
+export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder];

@@ -8,12 +8,17 @@
     "build:firebase": "node tools/build-firebase.mjs",
     "build:katex": "node tools/build-katex.mjs",
     "build:preview": "node tools/build-preview.mjs",
-    "first-passwords": "node tools/set-first-passwords.mjs"
+    "first-passwords": "node tools/set-first-passwords.mjs",
+    "build:maps": "node tools/build-maps.mjs",
+    "fetch:images": "node tools/fetch-images.mjs"
   },
   "devDependencies": {
+    "d3-geo": "^3.1.1",
     "esbuild": "^0.28.2",
     "firebase": "^13.1.0",
     "firebase-admin": "^13.0.0",
-    "katex": "^0.16.22"
+    "katex": "^0.16.22",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
   }
 }

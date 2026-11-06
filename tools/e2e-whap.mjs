@@ -158,6 +158,21 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
     if (await page.$("text=Set done")) break;
   }
 
+  // Maps and charts in review: every card has its map, chart, or picture, with alt text
+  await page.click("text=Home");
+  await page.click("button[data-focus='maps']");
+  for (let k = 0; k < 10; k++) {
+    await page.waitForSelector("#card");
+    const it = byId[await page.getAttribute("#card", "data-item")];
+    assert(/^u[123]-v\d/.test(it.id), "Maps and charts focus gave " + it.id);
+    const fig = await page.$eval("#card", (c) => { const g = c.querySelector("svg.map, svg.chart, figure.imgwrap img"); return g ? (g.getAttribute("aria-label") || g.getAttribute("alt") || "").length : -1; });
+    assert(fig > 20, `${it.id}: the card shows its map, chart, or picture with alt text`);
+    if (k === 0) await page.screenshot({ path: `${out}/w07c-map.png`, fullPage: true });
+    await page.click(`#card .opt[data-k="${it.answer}"]`);
+    await page.click("#next");
+    if (await page.$("text=Set done")) break;
+  }
+
   // The class view has a column for Unit 2
   await page.click("nav a[href='#teacher']");
   await page.waitForSelector("text=Items, hardest first");

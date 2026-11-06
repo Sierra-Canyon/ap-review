@@ -9,7 +9,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | AP Computer Science Principles | D | Quiz 3 (11/3), WR4 to WR6 (11/4 to 11/10), Quiz 4: Functions and Loops (11/20) | 107 | 6 mock quizzes |
 | AP Computer Science A | B | Unit 2 now (Quiz 5 11/6, Progress Check 11/13, Unit 2 Test 11/17); the countdown follows every assessment to the AP exam | 109 | 34 forms: practice for all 15 assessments of the year |
 | AP Cybersecurity | F | Unit 3 now: the daily quizzes (Quiz 23, 11/3, to Quiz 43, 1/8), the midterm 12/16, the Unit 3 Test 1/12 | 354 (opening by meeting) | 3 Unit 2 mock tests |
-| AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 467 | 14 topic quizzes (1.1 to 1.7, 2.1 to 2.7) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
+| AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 467 | 18 topic quizzes (1.1 to 3.4) and 10 unit assessments (2 for the Unit 2 Test, 11/4) |
 | AP Calculus AB | (another teacher) | all eight AB units | 344 | 81 topic quizzes and 8 unit tests |
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
@@ -42,7 +42,7 @@ The bank in `decks/whap/` (one file per unit), modeled on the AP exam's format, 
 
 **Checked against Albert (11/5).** A reader went through all 1,119 of Albert's AP World practice questions, topic by topic, and wrote pattern notes (counts, stimuli, tasks, content, distractor traps), kept in `../private/albert-notes/` with the per-unit comparison reports in `../private/albert-check/`. Each unit was then compared with the notes: 150 review questions were added on content Albert and the CED test that the site was missing, and every site source that was the same document as one of Albert's was replaced with a different public-domain source and its questions rewritten (ids kept). See `HANDOFF.md`, section 2a.
 
-**Topic quizzes** (`decks/whap-topic/`), one for each CED topic in Units 1 and 2 (1.1 to 1.7, 2.1 to 2.7), like Albert's practice by topic: 8 source-based multiple choice on two to four sources and one short-answer question (3 parts), 11 points. Like the assessments, every source and question is new and used nowhere else on the site. Each unit lists its topic quizzes, then its assessments; the Class tab has a quiz column and a test column for each unit.
+**Topic quizzes** (`decks/whap-topic/`), one for each CED topic in Units 1 to 3 (1.1 to 1.7, 2.1 to 2.7, 3.1 to 3.4; Unit 3's were added 11/6, modeled on the Albert notes), like Albert's practice by topic: 8 source-based multiple choice on two to four sources and one short-answer question (3 parts), 11 points. Like the assessments, every source and question is new and used nowhere else on the site. Each unit lists its topic quizzes, then its assessments, with Unit 1 and any unit whose test date has passed under **Earlier this year** (a form or deck can mark a unit `past: true` when it has no date); the Class tab has a quiz column and a test column for each unit.
 
 ## My misses (every course)
 

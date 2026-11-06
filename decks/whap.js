@@ -27,7 +27,7 @@ import * as w6a from "./whap-mocks/w6a.js";
 import * as w7a from "./whap-mocks/w7a.js";
 import * as w8a from "./whap-mocks/w8a.js";
 import * as w9a from "./whap-mocks/w9a.js";
-// Topic quizzes (decks/whap-topic/): one for each CED topic in Units 1 and 2, 8 source-based multiple choice and one
+// Topic quizzes (decks/whap-topic/): one for each CED topic in Units 1 to 3, 8 source-based multiple choice and one
 // short-answer question (3 parts), 11 points. Written only for the quizzes: no item or source in them is in review or a unit assessment.
 import * as t11 from "./whap-topic/t11.js";
 import * as t12 from "./whap-topic/t12.js";
@@ -43,11 +43,15 @@ import * as t24 from "./whap-topic/t24.js";
 import * as t25 from "./whap-topic/t25.js";
 import * as t26 from "./whap-topic/t26.js";
 import * as t27 from "./whap-topic/t27.js";
+import * as t31 from "./whap-topic/t31.js";
+import * as t32 from "./whap-topic/t32.js";
+import * as t33 from "./whap-topic/t33.js";
+import * as t34 from "./whap-topic/t34.js";
 
 const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9];
 const mocks = [w1a, w2a, w2b, w3a, w4a, w5a, w6a, w7a, w8a, w9a];
 const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
-const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27];
+const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27, t31, t32, t33, t34];
 const total = (f) => f.items.reduce((t, it) => t + (it.type === "essay" ? rowsMax(it) : 1), 0);
 // On the page each unit lists its topic quizzes, then its assessments. The Class tab gives the quizzes their own column.
 const assessments = mocks.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: { w2a: "U2A", w2b: "U2B" }[f.id] || "U" + f.id[1], total: total(f) }));
@@ -55,7 +59,8 @@ const quizzes = topics.flatMap((m) => m.default.forms).map((f) => ({ ...f, short
 const forms = [1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((n) => {
   const unit = [...quizzes, ...assessments].filter((f) => f.id[1] === String(n));
   const date = unit.find((f) => f.date)?.date;
-  return unit.map((f) => (date ? { ...f, date } : f));
+  // Unit 1 was tested before the site had dates: it goes under "Earlier this year" on the quizzes and tests page.
+  return unit.map((f) => ({ ...f, ...(date ? { date } : {}), ...(n === 1 ? { past: true } : {}) }));
 });
 
 export default {

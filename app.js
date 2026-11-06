@@ -859,7 +859,7 @@ function renderReviewDone() {
 function formsHTML(cfg) {
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const groups = [];
-  for (const f of deck.forms) { let g = groups.find((x) => x.name === (f.group || cfg.title)); if (!g) groups.push(g = { name: f.group || cfg.title, date: f.date, forms: [] }); g.forms.push(f); }
+  for (const f of deck.forms) { let g = groups.find((x) => x.name === (f.group || cfg.title)); if (!g) groups.push(g = { name: f.group || cfg.title, date: f.date, past: f.past, forms: [] }); g.forms.push(f); }
   const when = (d) => { if (!d) return null; const [y, m, dd] = d.split("-").map(Number); return new Date(y, m - 1, dd); };
   const label = (d) => when(d).toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric" });
   const row = (f) => {
@@ -870,9 +870,11 @@ function formsHTML(cfg) {
       <button class="btn ${taken.length ? "" : "primary"}" data-form="${f.id}">${taken.length ? "Take it again" : "Start"}</button></div>`;
   };
   const block = (g) => `<div class="fgroup"><h3>${esc(g.name)}${g.date ? ` <span class="small muted">· ${label(g.date)}</span>` : ""}</h3><div class="forms">${g.forms.map(row).join("")}</div></div>`;
-  const dated = groups.some((g) => g.date);
-  const next = dated ? [...groups.filter((g) => g.date && when(g.date) >= today), ...groups.filter((g) => !g.date)] : groups;
-  const past = dated ? groups.filter((g) => g.date && when(g.date) < today).reverse() : [];
+  // A group is past when its date has gone by, or when the deck marks it past (a unit tested before the site had dates).
+  const isPast = (g) => g.past || (g.date && when(g.date) < today);
+  const dated = groups.some((g) => g.date || g.past);
+  const next = dated ? [...groups.filter((g) => g.date && !isPast(g)), ...groups.filter((g) => !g.date && !isPast(g))] : groups;
+  const past = dated ? [...groups.filter((g) => g.date && isPast(g)).reverse(), ...groups.filter((g) => !g.date && g.past)] : [];
   return `${next.length ? `${dated && past.length ? "<h2>Coming up</h2>" : ""}${next.map(block).join("")}` : ""}
     ${past.length ? `<details class="pastforms"${next.length ? "" : " open"}><summary><b>Earlier this year</b> <span class="small muted">(${past.length} assessments, for review before the midterm and the AP exam)</span></summary>${past.map(block).join("")}</details>` : ""}
     <p class="small muted">A second try at the same form shows what you remember, not what you can do cold. Take the ones you have not taken first.</p>`;

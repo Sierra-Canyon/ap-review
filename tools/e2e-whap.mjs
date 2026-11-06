@@ -20,7 +20,7 @@ for (const it of all) { assert(!ids.has(it.id), "duplicate id " + it.id); ids.ad
 for (const it of all) if (it.set) assert(deck.sets[it.set], "missing set " + it.set);
 for (const it of all) if (it.type === "mcq") assert(it.choices.length === 4 && it.why.length === 4 && it.answer === 0, "mcq shape " + it.id);
 for (const it of all) if (it.type === "essay") assert(it.rows.every((r) => r.levels.length === r.max + 1) && it.model, "essay shape " + it.id);
-assert(deck.forms.length === 24, "ten unit assessments and fourteen topic quizzes, got " + deck.forms.length);
+assert(deck.forms.length === 28, "ten unit assessments and eighteen topic quizzes, got " + deck.forms.length);
 for (const f of deck.forms) {
   const n = (t) => f.items.filter((x) => x.type === t).length;
   if (f.id.startsWith("t")) {
@@ -62,7 +62,7 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   await page.waitForSelector("#coursepick");
   await page.selectOption("#coursepick", "whap");
   await page.waitForSelector("text=Take a quiz or test");
-  assert(/24\s*quizzes and tests/.test(await page.textContent(".panel.mode:has-text('Quizzes and tests')")), "the home page counts the quizzes and tests");
+  assert(/28\s*quizzes and tests/.test(await page.textContent(".panel.mode:has-text('Quizzes and tests')")), "the home page counts the quizzes and tests");
   assert(/Unit 2 Test/.test(await page.textContent(".hero")), "the countdown names the Unit 2 Test");
   await page.screenshot({ path: `${out}/w01-home.png`, fullPage: true });
 
@@ -72,7 +72,11 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   log("first assessment listed:", first.trim());
   assert(/^Unit 2: Networks of Exchange/.test(first.trim()), "Unit 2 is listed first");
   assert((await page.$$(".fgroup")).length === 9, "nine units on the page");
-  const firstForms = await page.$$eval(".fgroup:first-of-type .formrow b", (b) => b.map((x) => x.textContent));
+  const firstForms = await page.$eval(".fgroup", (g) => [...g.querySelectorAll(".formrow b")].map((x) => x.textContent));
+  const earlier = await page.$$eval(".pastforms .fgroup h3", (h) => h.map((x) => x.textContent.trim()));
+  assert(earlier.length === 1 && /^Unit 1: The Global Tapestry/.test(earlier[0]), "Unit 1 is under Earlier this year: " + earlier.join(" | "));
+  const unit3 = await page.$$eval(".fgroup", (gs) => { const g = gs.find((x) => /^Unit 3/.test(x.querySelector("h3").textContent)); return g ? [...g.querySelectorAll(".formrow b")].map((x) => x.textContent) : []; });
+  assert(unit3.length === 5 && /^Topic 3\.1 Quiz/.test(unit3[0]) && /^Unit 3 Assessment/.test(unit3[4]), "Unit 3 lists its four topic quizzes, then its assessment: " + unit3.join(" | "));
   assert(firstForms.length === 9 && /^Topic 2\.1 Quiz/.test(firstForms[0]) && /^Unit 2 Assessment B/.test(firstForms[8]), "Unit 2 lists its seven topic quizzes, then its two assessments: " + firstForms.join(" | "));
   await page.screenshot({ path: `${out}/w02-mock-list.png`, fullPage: true });
 

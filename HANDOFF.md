@@ -89,6 +89,53 @@ From the course folder, read: the unit plan (what was taught each day and its mi
 - **Data tables:** real, cited data only.
 - **Code courses:** the class's own walkthrough programs and project (the dungeon crawler) set the style and the settings students recognize.
 
+### 2e. Maps, images, and charts
+
+Albert uses many map and image questions (in AP World Unit 1 alone, 25 questions have an image or map as their only stimulus, and the notes in `../private/albert-notes/` list them topic by topic). The site can carry the same kinds, in three ways. The AP World briefs written so far say "no images"; a brief for this work replaces that rule with the steps below.
+
+**What the site can show today and what still has to be built**
+
+| Block in a source | Status |
+|---|---|
+| `{ svg, caption }`, drawn graphics | Works now. Calc's graphs come from `plot.js` this way, with alt text required. |
+| `{ table }`, data tables | Works now. |
+| `{ img, alt, caption, credit, license }`, a picture file | To build: a block type in `sourcesHTML` (app.js) that shows the picture with its caption and credit, loads it lazily, and fits phone width; pictures stored in `images/<course>/` in the repo. |
+| A map builder | To build: a script (`tools/build-maps.mjs`) that draws a map as SVG from Natural Earth's public-domain outlines, with the question's borders, routes, and labels on top. |
+
+**1. Maps the site draws itself (start here)**
+
+- Draw each map from Natural Earth (public domain), with only what the question needs: the empires, routes, or regions, labeled in plain words. Examples: the Silk Roads and Indian Ocean routes, the Mongol khanates, the gunpowder empires, the Columbian Exchange, the 1914 alliances, decolonization by decade.
+- The site owns these: no copyright question, sharp at any size, readable in light and dark mode.
+- Every map has `alt` text that says what it shows in a sentence, the way `plot.js` requires, and a `caption` naming the map ("The Mongol khanates, c. 1300").
+- Check every border, route, and date against two reliable references before writing questions on it. A map the site draws is a claim the site makes.
+- Questions to write: what development the map shows, what explains the pattern, what changed between two maps, which region or route a source describes.
+
+**2. Historical maps and art as primary sources**
+
+- Only public-domain or openly licensed pictures: Wikimedia Commons (check each file's license line, not the page's general one), the Library of Congress, the Metropolitan Museum's Open Access, the Smithsonian's open collection. Works published before 1930 are public domain in the United States, but a modern photograph of a building or object can carry its own license.
+- Examples: the Catalan Atlas (1375), Mughal miniatures, Edo woodblock prints, World War I posters, political cartoons published before 1930.
+- Download each file into the session, look at it with the Read tool before writing anything about it, resize it (about 1200 pixels wide, under 300 KB), and save it in `images/<course>/` with a plain name.
+- Record for each picture: the title, the maker, the date, the source URL, the license, and the credit line to show. A picture whose license cannot be confirmed is not used.
+- Questions to write: point of view, purpose, audience, and context of the image, as the AP exam asks them.
+
+**3. Charts**
+
+- Data already in a table can also be drawn as a line or bar chart (SVG, the same way as `plot.js`), the way the AP exam shows population or trade figures. Real, cited data only, with the table kept in `alt` or below the chart so screen readers get the numbers.
+
+**Never**
+
+- Albert's images or maps, textbook maps, or any picture whose license is unknown.
+- A map or picture that is the same one Albert uses for the same idea. The notes' "what each question uses" lines name Albert's images; check them as for text sources.
+- An image question that can be answered without looking at the image, unless the AP exam would ask it that way (a context question about a famous source).
+
+**Checks to add with the build**
+
+- Every `img` block: the file exists in `images/`, and `alt`, `credit`, and `license` are filled in.
+- Every drawn map: `alt` text, and a note in the writer's report naming the two references its borders and routes were checked against.
+- The writer's report lists every picture with its license and URL, and says the writer looked at it.
+
+The same approach works for other courses: Calc already draws its graphs, and AP Cybersecurity could use drawn network diagrams.
+
 ## Step 3. Write the briefs
 
 A brief is the writer's only context. Start from the closest one in `../private/briefs/`:

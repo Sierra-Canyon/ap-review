@@ -15,6 +15,55 @@ const PC02_B = pc02("for (int i = 0; i < row.length(); i++)");
 const PC02_C = pc02("for (int i = 0; i <= row.length() - 2; i++)");
 const PC02_D = pc02("for (int i = 0; i < row.length() - 3; i++)");
 
+const PC07 = `String row = "M.M..@";
+int hero = row.indexOf("@");
+int seen = -1;
+int i = hero - 1;
+while (i >= 0 && seen == -1)
+{
+    if (row.substring(i, i + 1).equals("M"))
+    {
+        seen = i;
+    }
+    i--;
+}
+System.out.println((hero - seen) + " " + i);`;
+
+const PC10 = `String row = "MM.MMM";
+int pairs = 0;
+for (int i = 0; i < row.length() - 1; i++)
+{
+    if (/* missing condition */)
+    {
+        pairs++;
+    }
+}
+System.out.println(pairs);`;
+const PC10_KEY = "row.substring(i, i + 2).equals(\"MM\")";
+const PC10_B = "row.substring(i, i + 2) == \"MM\"";
+const PC10_C = "row.substring(i, i + 1).equals(\"M\")";
+const PC10_D = "row.indexOf(\"MM\") >= 0";
+
+const PC11 = `String row = "#..$#.M..#.";
+int run = 0;
+int best = 0;
+for (int i = 0; i < row.length(); i++)
+{
+    if (!row.substring(i, i + 1).equals("#"))
+    {
+        run++;
+        if (run > best)
+        {
+            best = run;
+        }
+    }
+    else
+    {
+        run = 0;
+    }
+}
+System.out.println(best);`;
+
 const q5c = [
   { id: "q5pc-01", skill: "string", type: "mcq", topic: "2.10",
     stem: "A hero's moves are stored as one String of compass letters. Consider the following code segment.",
@@ -159,6 +208,146 @@ System.out.println(column);`,
     ],
     answer: 0,
     verify: { out: "M$@" } },
+
+  { id: "q5pc-07", skill: "string", type: "mcq", topic: "2.10",
+    stem: "The hero looks left along one row for the nearest monster. Consider the following code segment.",
+    code: PC07,
+    question: "What is printed?",
+    choices: ["3 1", "5 -1", "3 2", "2 1"], mono: true,
+    why: [
+      "i starts just left of the hero, at 4, and goes down. The first M it meets is at index 2, 3 tiles away. `i--` still runs in that pass, so i is 1, and then `seen == -1` is false.",
+      "This keeps looking to the end of the row, so the far M at index 0 replaces the near one. `seen == -1` in the condition stops the loop at the first M found.",
+      "`i--` comes after the `if` in the same pass, so i goes down once more after the M is found.",
+      "This counts the empty tiles between the hero and the M. `hero - seen` is the number of steps, and the step onto the M counts.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: PC07, out: "3 1" },
+      { run: PC07.replace(" && seen == -1", ""), out: "5 -1" },
+    ] } },
+
+  { id: "q5pc-08", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A spell name is checked for doubled letters. Consider the following code segment.",
+    code: `String spell = "frostbitten";
+int pairs = 0;
+boolean twin = false;
+for (int i = 1; i < spell.length(); i++)
+{
+    if (spell.substring(i - 1, i).equals(spell.substring(i, i + 1)))
+    {
+        twin = true;
+        pairs++;
+    }
+    else
+    {
+        twin = false;
+    }
+}
+System.out.println(pairs + " " + twin);`,
+    question: "What is printed?",
+    choices: [
+      "1 false",
+      "1 true",
+      "2 false",
+      "Nothing is printed. A StringIndexOutOfBoundsException is thrown.",
+    ], mono: true,
+    why: [
+      "Only the tt in `bitten` is a doubled pair, so `pairs` is 1. `twin` is set again on every pass, and the last pass compares e with n, so it ends `false`.",
+      "`twin` does not stay true. The `else` sets it back to `false` on every pass that finds no pair, the last pass included.",
+      "This counts both letters of the pair. `pairs` goes up once for each place where a letter equals the one before it.",
+      "i starts at 1, so `i - 1` is never negative, and on the last pass `i + 1` is exactly `spell.length()`, which `substring` allows.",
+    ],
+    answer: 0,
+    verify: { out: "1 false" } },
+
+  { id: "q5pc-09", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A fireball turns every monster `M` in a row into floor `.`. Consider the following code segment.",
+    code: `String row = "#M.MM$";
+int kills = 0;
+for (int i = 0; i < row.length(); i++)
+{
+    if (row.substring(i, i + 1).equals("M"))
+    {
+        row = row.substring(0, i) + "." + row.substring(i + 1);
+        kills++;
+    }
+}
+System.out.println(row + " " + kills);`,
+    question: "What is printed?",
+    choices: ["#....$ 3", "#M.MM$ 3", "#.$ 3", "#...M$ 2"], mono: true,
+    why: [
+      "Each M is found and `row` is set to a new String with `.` in its place. The new String has the same length, so the loop goes on to the next index as before. Three M tiles become floor.",
+      "Strings cannot be changed, but `row = ...` makes `row` refer to the new String, so each change is kept.",
+      "This drops the M tiles. `substring(0, i) + \".\" + substring(i + 1)` puts a `.` in place of each one, so `row` keeps its length.",
+      "This skips the M right after one that was replaced. Nothing is removed, so every tile stays at the same index, and the M at index 4 is checked.",
+    ],
+    answer: 0,
+    verify: { out: "#....$ 3" } },
+
+  { id: "q5pc-10", skill: "string", type: "mcq", topic: "2.10",
+    stem: "The following code segment is intended to count the places where two monsters stand side by side. For `\"MM.MMM\"` it should print `3`.",
+    code: PC10,
+    question: "Which of the following can replace `/* missing condition */` so that the code segment works as intended?",
+    choices: [PC10_KEY, PC10_B, PC10_C, PC10_D], mono: true,
+    why: [
+      "`row.substring(i, i + 2)` is the two tiles starting at i, and `equals` compares them with `\"MM\"`. The three M tiles at the end make two overlapping pairs.",
+      "`==` compares references. A new String from `substring` is never the same object as the literal `\"MM\"`, so nothing is counted and 0 is printed.",
+      "This counts single M tiles, not pairs. It prints 4: the M at index 5 is never checked, because i stops at `row.length() - 2`.",
+      "`row.indexOf(\"MM\")` searches the whole row and does not depend on i, so it is true on every pass and 5 is printed.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: fill(PC10, "/* missing condition */", PC10_KEY), out: "3" },
+      { run: fill(PC10, "/* missing condition */", PC10_KEY).replace("\"MM.MMM\"", "\"M.M\""), out: "0" },
+      { run: fill(PC10, "/* missing condition */", PC10_B), out: "0" },
+      { run: fill(PC10, "/* missing condition */", PC10_C), out: "4" },
+      { run: fill(PC10, "/* missing condition */", PC10_D), out: "5" },
+    ] } },
+
+  { id: "q5pc-11", skill: "string", type: "mcq", topic: "2.10",
+    stem: "Walls `#` split a row into stretches. Consider the following code segment, which finds the longest stretch the hero can walk without meeting a wall.",
+    code: PC11,
+    question: "What is printed?",
+    choices: ["4", "2", "8", "1"], mono: true,
+    why: [
+      "Every tile that is not `#` adds 1 to run, so gold and monsters count as well as floor. A wall sets run back to 0. The stretch `.M..` is the longest, 4 tiles.",
+      "This counts only the `.` tiles. The test is true for every tile that is not `#`, so `$` and `M` count too.",
+      "Without setting run back to 0, it counts every tile that is not a wall. The `else` starts a new stretch at each `#`.",
+      "That is only the last stretch. best keeps the longest stretch seen so far, and a wall does not set it back.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: PC11, out: "4" },
+      { run: PC11.replace("!row.substring(i, i + 1).equals(\"#\")", "row.substring(i, i + 1).equals(\".\")"), out: "2" },
+      { run: PC11.replace("    else\n    {\n        run = 0;\n    }\n", ""), out: "8" },
+    ] } },
+
+  { id: "q5pc-12", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A spell's echo repeats every letter. Consider the following code segment.",
+    code: `String spell = "zap";
+String echo = "";
+while (spell.length() > 0)
+{
+    String ch = spell.substring(0, 1);
+    echo = echo + ch + ch;
+    spell = spell.substring(1);
+}
+System.out.println(echo + " " + spell.length());`,
+    question: "What is printed?",
+    choices: [
+      "zzaapp 0",
+      "zzaapp 3",
+      "zapzap 0",
+      "Nothing is printed. A StringIndexOutOfBoundsException is thrown.",
+    ], mono: true,
+    why: [
+      "Each pass takes the first letter, adds it twice, and then cuts it off with `substring(1)`. After 3 passes `spell` is the empty String, its length is 0, and the loop stops.",
+      "`spell = spell.substring(1)` makes `spell` one letter shorter each pass, so it does not keep its 3 letters.",
+      "That is the whole word added twice. Each pass adds only `ch`, one letter, twice.",
+      "`substring(1)` on a 1-letter String is the empty String `\"\"`, not an error, and the test `spell.length() > 0` stops the loop before `substring(0, 1)` is called on it.",
+    ],
+    answer: 0,
+    verify: { out: "zzaapp 0" } },
 ];
 
 export default {

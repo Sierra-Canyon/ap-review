@@ -60,7 +60,7 @@ The **My misses** tab lists every question a student answered wrong the last tim
   | Quiz 1, Quiz 2 | 9/14, 9/25 | A, B | 6 MCQ |
   | Unit 1 Test | 10/6 | A, B | 20 MCQ + 7-row FRQ |
   | Quiz 3, Quiz 4 | 10/16, 10/29 | A, B | 6 MCQ |
-  | Quiz 5 | 11/6 | A, B | 6 MCQ (2.10) |
+  | Quiz 5 | 11/6 | A, B, C | 12 MCQ (2.10) |
   | Unit 2 Test | 11/17 | 1, 2, 3 | 20 MCQ + 7-row FRQ |
   | AP Practice Section | 12/8 | A, B | 20 MCQ + 7-row FRQ (covers 1.9 to 1.14, which PS left out) |
   | Midterm | 12/14 | A, B | 30 MCQ + two 7-row FRQs |

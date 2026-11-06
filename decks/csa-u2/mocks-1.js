@@ -17,6 +17,31 @@ const PA02_B = pa02("for (int i = 0; i <= times.length(); i += 4)");
 const PA02_C = pa02("for (int i = 0; i < times.length() - 4; i += 4)");
 const PA02_D = pa02("for (int i = 0; i < times.length() / 4; i++)");
 
+const PA07 = `String board = "OOLOLO";
+int firstLate = 0;
+int i = 0;
+while (firstLate == 0 && i < board.length())
+{
+    i++;
+    if (board.substring(i - 1, i).equals("L"))
+    {
+        firstLate = i;
+    }
+}
+System.out.println(firstLate + " " + i);`;
+
+const PA12 = `String treat = "jam";
+String sign = "";
+for (int i = 0; i < treat.length(); i++)
+{
+    sign += /* missing code */;
+}
+System.out.println(sign);`;
+const PA12_KEY = "treat.substring(i, i + 1) + treat.substring(i, i + 1)";
+const PA12_B = "treat.substring(i, i + 2)";
+const PA12_C = "treat.substring(i) + treat.substring(i)";
+const PA12_D = "treat.substring(i, i + 1) + 2";
+
 const q5a = [
   { id: "q5pa-01", skill: "string", type: "mcq", topic: "2.10",
     stem: "Consider the following code segment.",
@@ -165,6 +190,166 @@ System.out.println(out);`,
     ],
     answer: 0,
     verify: { out: "cia" } },
+
+  { id: "q5pa-07", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A departure board stores one letter for each train, in order: `O` for on time and `L` for late. Trains are numbered starting at 1. Consider the following code segment.",
+    code: PA07,
+    question: "What is printed, and how many times does the body of the loop run?",
+    choices: [
+      "3 3, and the body runs 3 times",
+      "5 6, and the body runs 6 times",
+      "3 4, and the body runs 3 times",
+      "2 3, and the body runs 3 times",
+    ],
+    why: [
+      "`i++` comes first in each pass, so `substring(i - 1, i)` is the letter of train i. The first L is train 3. After that pass `firstLate == 0` is false, so the loop stops with i still 3.",
+      "This keeps looking to the end of the board, so the later L, train 5, replaces the first one. `firstLate == 0` in the condition stops the loop at the first L.",
+      "Here `i++` runs at the top of the pass, before the `if`, so nothing changes i after the match is found.",
+      "2 is the index of the first L. The code stores i, the train number, and after `i++` that is one more than the index.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: PA07, out: "3 3" },
+      { run: PA07.replace("firstLate == 0 && ", ""), out: "5 6" },
+    ] } },
+
+  { id: "q5pa-08", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A bike shop's serial numbers sometimes repeat a character. Consider the following code segment.",
+    code: `String part = "XX7770";
+String out = "";
+for (int i = 0; i < part.length() - 1; i++)
+{
+    String a = part.substring(i, i + 1);
+    if (a.equals(part.substring(i + 1, i + 2)))
+    {
+        out += a;
+    }
+}
+System.out.println(out);`,
+    question: "What is printed?",
+    choices: [
+      "X77",
+      "X7",
+      "XX7777",
+      "Nothing is printed. A StringIndexOutOfBoundsException is thrown.",
+    ], mono: true,
+    why: [
+      "Each pass compares a character with the one after it and adds it once when they match. The three 7s hold two matching pairs, starting at indexes 2 and 3, so 7 is added twice.",
+      "This counts the three 7s as one pair. Pairs may overlap: index 2 matches index 3, and index 3 matches index 4.",
+      "This adds both characters of every pair. The code adds only `a`, the first one.",
+      "The loop stops at `part.length() - 2`, so `substring(i + 1, i + 2)` never runs past the end.",
+    ],
+    answer: 0,
+    verify: { out: "X77" } },
+
+  { id: "q5pa-09", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A bakery prints a label for each item. Consider the following code segment.",
+    code: `String item = "baklava";
+String label = "";
+for (int i = 0; i < item.length(); i++)
+{
+    String ch = item.substring(i, i + 1);
+    if (ch.equals("a"))
+    {
+        ch = "@";
+    }
+    label += ch;
+}
+System.out.println(label + " " + item);`,
+    question: "What is printed?",
+    choices: [
+      "b@kl@v@ baklava",
+      "b@kl@v@ b@kl@v@",
+      "b@akl@av@a baklava",
+      "baklava baklava",
+    ], mono: true,
+    why: [
+      "When `ch` is an a, it is set to `\"@\"` before it is added, so every a in `label` becomes @. Nothing assigns a new String to `item`, so it still holds `\"baklava\"`.",
+      "Changing `ch` does not change `item`. `ch` holds a new String from `substring`, and `item` is never assigned.",
+      "This adds the a as well as the @. `ch` is replaced before `label += ch`, so only the @ is added.",
+      "Assigning `\"@\"` to `ch` does change what `label += ch` adds on that pass. Only `item` stays the same.",
+    ],
+    answer: 0,
+    verify: { out: "b@kl@v@ baklava" } },
+
+  { id: "q5pa-10", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A train is stored as one String with one letter for each car: `P` for a passenger car and `F` for a freight car. Consider the following code segment, which counts the places where two passenger cars are coupled together.",
+    code: `String cars = "PPPFPP";
+int n = 0;
+for (int i = 1; i < cars.length(); i++)
+{
+    if (cars.substring(i - 1, i + 1).equals("PP"))
+    {
+        n++;
+    }
+}
+System.out.println(n);`,
+    question: "What is printed?",
+    choices: [
+      "3",
+      "2",
+      "5",
+      "Nothing is printed. A StringIndexOutOfBoundsException is thrown.",
+    ], mono: true,
+    why: [
+      "`substring(i - 1, i + 1)` is the car before i and car i. With i from 1 up to `cars.length() - 1`, every neighboring pair is checked once. The three P cars at the front make two overlapping pairs, and the last two cars make one more.",
+      "This counts the three P cars at the front as one pair. Pairs may overlap: cars 0 and 1 are a pair, and so are cars 1 and 2.",
+      "This counts the P cars. n goes up once for each pair of neighboring P cars, not once for each car.",
+      "On the last pass i is `cars.length() - 1`, so `i + 1` is exactly `cars.length()`, which `substring` allows. i starts at 1, so `i - 1` is never negative.",
+    ],
+    answer: 0,
+    verify: { out: "3" } },
+
+  { id: "q5pa-11", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A row of a garden is stored as one String: `r` for a rose and `.` for an empty spot. Consider the following code segment.",
+    code: `String bed = "rr.rrr.rrrr";
+int run = 0;
+int best = 0;
+for (int i = 0; i < bed.length(); i++)
+{
+    if (bed.substring(i, i + 1).equals("r"))
+    {
+        run++;
+    }
+    else
+    {
+        if (run > best)
+        {
+            best = run;
+        }
+        run = 0;
+    }
+}
+System.out.println(best + " " + run);`,
+    question: "What is printed?",
+    choices: ["3 4", "4 4", "4 0", "3 0"], mono: true,
+    why: [
+      "best is updated only in the `else`, when a stretch ends at an empty spot. The last stretch, 4 roses, runs to the end of the String with no empty spot after it, so it is never compared with best. run still holds 4 when the loop ends.",
+      "This compares the last stretch too. The comparison is inside the `else`, and no `.` comes after the last four roses, so that `else` never runs for them.",
+      "This compares the last stretch and then sets run back to 0. Both happen only in the `else`, which never runs after the last rose.",
+      "run is set back to 0 only when an empty spot is reached. The String ends with roses, so run is still 4.",
+    ],
+    answer: 0,
+    verify: { out: "3 4" } },
+
+  { id: "q5pa-12", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A bakery sign stretches a word by writing every letter twice. The following code segment is intended to print `jjaamm`.",
+    code: PA12,
+    question: "Which of the following can replace `/* missing code */` so that the code segment works as intended?",
+    choices: [PA12_KEY, PA12_B, PA12_C, PA12_D], mono: true,
+    why: [
+      "`treat.substring(i, i + 1)` is the one letter at index i, and joining it to itself gives that letter twice.",
+      "`substring(i, i + 2)` is two neighboring letters, not one letter twice. On the last pass `i + 2` is past the end, and a StringIndexOutOfBoundsException is thrown.",
+      "`substring(i)` is everything from index i to the end, not one letter, so the sign gets far too long.",
+      "Adding 2 to a String joins the digit 2 to it. `\"j\" + 2` is `\"j2\"`, not the letter twice.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: fill(PA12, "/* missing code */", PA12_KEY), out: "jjaamm" },
+      { run: fill(PA12, "/* missing code */", PA12_B), throws: "StringIndexOutOfBoundsException" },
+      { run: fill(PA12, "/* missing code */", PA12_C), out: "jamjamamammm" },
+      { run: fill(PA12, "/* missing code */", PA12_D), out: "j2a2m2" },
+    ] } },
 ];
 
 // ---------- Quiz 5 Practice B ----------
@@ -185,6 +370,44 @@ const PB02_KEY = "word.substring(word.length() - 1 - i, word.length() - i)";
 const PB02_B = "word.substring(word.length() - i, word.length() - i + 1)";
 const PB02_C = "word.substring(word.length() - 1 - i)";
 const PB02_D = "word.substring(i + 1, i + 2)";
+
+const PB07 = `String delays = "1102530";
+int train = 0;
+boolean found = false;
+for (int i = 1; i < delays.length() && !found; i++)
+{
+    if (delays.substring(i, i + 1).compareTo(delays.substring(i - 1, i)) > 0)
+    {
+        train = i + 1;
+        found = true;
+    }
+}
+System.out.println(train);`;
+
+const PB08 = `String treat = "toffee cookies";
+int n = 0;
+for (int i = 1; i < treat.length(); i++)
+{
+    String cur = treat.substring(i, i + 1);
+    String prev = treat.substring(i - 1, i);
+    if (cur.equals(prev) && "aeiou".indexOf(cur) >= 0)
+    {
+        n++;
+    }
+}
+System.out.println(n);`;
+
+const PB10 = `String row = "tcctcttc";
+int mixed = 0;
+for (int i = 0; i < row.length() - 1; i++)
+{
+    String pair = row.substring(i, i + 2);
+    if (pair.equals("tc") || pair.equals("ct"))
+    {
+        mixed++;
+    }
+}
+System.out.println(mixed);`;
 
 const q5b = [
   { id: "q5pb-01", skill: "string", type: "mcq", topic: "2.10",
@@ -342,6 +565,136 @@ System.out.println(out);`,
     ],
     answer: 0,
     verify: { out: "solf" } },
+
+  { id: "q5pb-07", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A station records each train's delay in minutes as one digit, in order, and numbers its trains from 1. Consider the following code segment, which looks for the first train that is later than the train before it.",
+    code: PB07,
+    question: "What is printed?",
+    choices: ["4", "3", "5", "2"], mono: true,
+    why: [
+      "The first rise is the 2 at index 3, after the 0 at index 2. That is the fourth train, so `train` is 4, and `!found` ends the loop on the next test.",
+      "3 is the index of the rise. The code stores `i + 1`, the train's number.",
+      "That is the last rise, the 5 at index 4. Without `!found` in the condition, the loop keeps going and a later rise replaces the first.",
+      "That counts the second train, whose delay equals the first. `compareTo` gives 0 for equal Strings, and the test is `> 0`, not `>= 0`.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: PB07, out: "4" },
+      { run: PB07.replace(" && !found", ""), out: "5" },
+      { run: PB07.replace(") > 0)", ") >= 0)"), out: "2" },
+    ] } },
+
+  { id: "q5pb-08", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A bakery is counting the doubled vowels on its menu. Consider the following code segment.",
+    code: PB08,
+    question: "What is printed?",
+    choices: ["2", "3", "4", "7"], mono: true,
+    why: [
+      "Each pass compares a letter with the one before it. The doubled letters are ff, ee, and oo, and `&&` keeps only the pairs whose letter is also a vowel: ee and oo.",
+      "This counts ff too. `&&` needs both parts to be true, and f is not in `\"aeiou\"`.",
+      "This counts the letters in the doubled vowels, not the pairs. n goes up once for each pair.",
+      "This counts every vowel. A vowel is counted only when it matches the letter before it.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: PB08, out: "2" },
+      { run: PB08.replace(" && \"aeiou\".indexOf(cur) >= 0", ""), out: "3" },
+      { run: PB08.replace("cur.equals(prev) && ", ""), out: "7" },
+    ] } },
+
+  { id: "q5pb-09", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A train station is changing the text on a sign. Consider the following code segment.",
+    code: `String sign = "express train";
+int at = sign.indexOf("e");
+while (at >= 0)
+{
+    sign = sign.substring(0, at) + "E" + sign.substring(at + 1);
+    at = sign.indexOf("e");
+}
+System.out.println(sign);`,
+    question: "What is printed?",
+    choices: ["ExprEss train", "eExpreEss train", "Express train", "express train"], mono: true,
+    why: [
+      "Each pass puts `\"E\"` in place of the first lowercase e that is left. `indexOf` tells E and e apart, so the next search skips the E and finds the next e. When none is left, it returns -1 and the loop ends.",
+      "`substring(0, at)` stops BEFORE index `at`, so the old e is not kept in front of the E.",
+      "This replaces only the first e. `at` is found again at the end of each pass, so the loop keeps going until no lowercase e is left.",
+      "Strings cannot be changed, but `sign = ...` makes `sign` refer to a new String, so each change is kept.",
+    ],
+    answer: 0,
+    verify: { out: "ExprEss train" } },
+
+  { id: "q5pb-10", skill: "string", type: "mcq", topic: "2.10",
+    stem: "A garden row is stored as one String: `t` for tomatoes and `c` for carrots. Consider the following code segment, which counts the places where a tomato and a carrot are planted side by side.",
+    code: PB10,
+    question: "What is printed?",
+    choices: ["5", "3", "7", "0"], mono: true,
+    why: [
+      "Each pass takes the two letters starting at i, and the last pair starts at `row.length() - 2`. Five of the seven pairs have one of each plant, in either order.",
+      "This counts only `\"tc\"`. With `||`, a `\"ct\"` pair is counted too.",
+      "There are 7 pairs, but `cc` and `tt` are not counted. The `if` is true only for a mixed pair.",
+      "That is what `&&` gives: one pair cannot equal both `\"tc\"` and `\"ct\"`. With `||`, either one is enough.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: PB10, out: "5" },
+      { run: PB10.replace(" || pair.equals(\"ct\")", ""), out: "3" },
+      { run: PB10.replace("||", "&&"), out: "0" },
+    ] } },
+
+  { id: "q5pb-11", skill: "string", type: "mcq", topic: "2.10",
+    stem: "In a sports league, a season is stored as a String with one letter for each game: W for a win and L for a loss. Consider the following code segment.",
+    code: `String season = "WWLWWWLW";
+int run = 0;
+int best = 0;
+int start = -1;
+for (int i = 0; i < season.length(); i++)
+{
+    if (season.substring(i, i + 1).equals("W"))
+    {
+        run++;
+        if (run > best)
+        {
+            best = run;
+            start = i - run + 1;
+        }
+    }
+    else
+    {
+        run = 0;
+    }
+}
+System.out.println(best + " " + start);`,
+    question: "What is printed?",
+    choices: ["3 3", "3 5", "2 0", "3 2"], mono: true,
+    why: [
+      "best takes run each time a streak becomes the longest so far, and start is set to where that streak began. The streak of 3 ends at index 5, so it began at `5 - 3 + 1`, index 3.",
+      "5 is the index where the streak ENDS. start moves back from i to the first game of the streak: `i - run + 1`.",
+      "That is only the first streak. best keeps being compared with every later streak, and the streak of 3 is longer.",
+      "This leaves out the `+ 1`. A streak of 3 that ends at index 5 covers indexes 3, 4, and 5.",
+    ],
+    answer: 0,
+    verify: { out: "3 3" } },
+
+  { id: "q5pb-12", skill: "string", type: "mcq", topic: "2.10",
+    stem: "Consider the following code segment.",
+    code: `String word = "roll";
+String big = "";
+for (int i = 0; i < word.length(); i++)
+{
+    String ch = word.substring(i, i + 1);
+    big += ch + ch;
+}
+System.out.println(big + " " + big.length());`,
+    question: "What is printed?",
+    choices: ["rroollll 8", "rroollll 4", "rrooll 6", "rollroll 8"], mono: true,
+    why: [
+      "Each pass adds one letter twice, so each of the 4 letters becomes 2, and `big` has 8 letters. The two l's are separate letters, and each one is doubled.",
+      "4 is `word.length()`. The code prints `big.length()`, and `big` has two letters for each letter of `word`.",
+      "This treats the two l's as one letter. The loop visits index 2 and index 3, and each l is added twice.",
+      "That is the whole word added twice. Each pass adds only `ch`, one letter, twice, before it moves to the next letter.",
+    ],
+    answer: 0,
+    verify: { out: "rroollll 8" } },
 ];
 
 // ---------- Unit 2 Test Practice 1 ----------

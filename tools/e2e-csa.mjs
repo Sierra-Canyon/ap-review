@@ -20,9 +20,9 @@ for (const it of all) { assert(!ids.has(it.id), "duplicate id " + it.id); ids.ad
 for (const it of all) if (it.type === "mcq") assert(it.choices.length === 4 && it.why.length === 4 && it.answer === 0, "mcq shape " + it.id);
 for (const it of all) if (it.type === "code") assert(it.rows.length >= 4 && it.solution && it.verify, "free response shape " + it.id);
 // Each form has the shape of its real assessment.
-const shape = { q: [6, []], u1: [20, [7]], u2p: [20, [7]], ps: [20, [7]], mt: [30, [7, 7]], u3: [18, [7]], c4: [15, null], u4: [22, [5, 6]], ap: [42, [7, 7, 5, 6]] };
+const shape = { q5: [12, []], q: [6, []], u1: [20, [7]], u2p: [20, [7]], ps: [20, [7]], mt: [30, [7, 7]], u3: [18, [7]], c4: [15, null], u4: [22, [5, 6]], ap: [42, [7, 7, 5, 6]] };
 for (const f of deck.forms) {
-  const key = f.id.startsWith("q") ? "q" : Object.keys(shape).find((k) => k !== "q" && f.id.startsWith(k));
+  const key = f.id.startsWith("q5") ? "q5" : f.id.startsWith("q") ? "q" : Object.keys(shape).find((k) => k !== "q" && f.id.startsWith(k));
   const [nm, rows] = shape[key];
   const mcq = f.items.filter((x) => x.type === "mcq").length, code = f.items.filter((x) => x.type === "code");
   assert(mcq === nm, `${f.name}: ${nm} multiple choice, got ${mcq}`);
@@ -124,7 +124,7 @@ async function answer(page, right) {
   assert(await page.$("text=A full-credit solution"), "the solution shows after scoring");
   await page.screenshot({ path: `${out}/a04-code-scored.png`, fullPage: true });
 
-  // Quiz 5 Practice A: all right, 6 / 6, and no Part B
+  // Quiz 5 Practice A: all right, 12 / 12, and no Part B
   await page.click("a[href='#mock']");
   await page.waitForSelector(".fgroup");
   const groups = await page.$$eval(".fgroup h3", (h) => h.length);
@@ -132,15 +132,15 @@ async function answer(page, right) {
   assert(groups === 16, "16 assessments on the mock page, got " + groups);
   await page.screenshot({ path: `${out}/a04b-mock-list.png`, fullPage: true });
   await page.click("[data-form=q5a]");
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 12; i++) {
     const x = byId[await page.getAttribute("#card", "data-item")];
     await page.click(`#card .opt[data-k="${x.answer}"]`);
-    await page.click(i < 5 ? "#next" : "#finish");
+    await page.click(i < 11 ? "#next" : "#finish");
   }
   await page.waitForSelector(".scorebig");
   const q5 = (await page.textContent(".scorebig")).trim();
   log("quiz 5 practice:", q5);
-  assert(q5 === "6 / 6", "Quiz 5 Practice A should be 6 / 6, got " + q5);
+  assert(q5 === "12 / 12", "Quiz 5 Practice A should be 12 / 12, got " + q5);
 
   // Unit 2 Test Practice 1: Part A all right (20), free response 5 of 7: 25 / 27
   await page.click("#again");

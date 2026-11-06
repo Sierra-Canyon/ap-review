@@ -99,7 +99,7 @@ export default {
     clock: null,
     blurb: "Practice forms for every quiz and test this year, from Quiz 1 to the AP Practice Exam, each the same shape as the real one. None of their questions are in review.",
     intro: [
-      ["", "Each quiz and test this year has practice forms in the same shape as the real one: quizzes are six multiple choice, tests add free responses, and the AP Practice Exam is the full exam (42 multiple choice and four free responses). Multiple choice is 1 point each; a free response is 1 point per rubric row."],
+      ["", "Each quiz and test this year has practice forms in the same shape as the real one: quizzes are six multiple choice (Quiz 5 is twelve), tests add free responses, and the AP Practice Exam is the full exam (42 multiple choice and four free responses). Multiple choice is 1 point each; a free response is 1 point per rubric row."],
       ["", "No IDE and no compiler, as on the real assessments. No feedback until the end. You score free responses yourself, row by row. None of these questions are in review, so each form shows how you do on code you have not practiced."],
     ],
     partA: { points: 1, slots: [] },

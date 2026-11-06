@@ -387,7 +387,9 @@ function sourcesHTML(set, open = true) {
     if (b.ul) return `<div class="sblock">${lead ? `<p>${lead}</p>` : ""}<ul>${b.ul.map((x) => `<li>${tx(x)}</li>`).join("")}</ul></div>`;
     // A graph drawn by plot.js from the deck file (trusted markup, never student text).
     if (b.svg) return `<figure class="graphwrap">${b.svg}${b.caption ? `<figcaption class="small muted">${tx(b.caption)}</figcaption>` : ""}</figure>`;
-    if (b.cite !== undefined) return `<p class="cite small muted">${b.kind === "practice" ? esc(b.cite) : `Source: ${esc(b.cite)}${b.url ? ` <a href="${esc(b.url)}" target="_blank" rel="noopener">(text)</a>` : ""}`}</p>`;
+    // A picture file in images/<course>/ (a public-domain or openly licensed work), with its caption, credit, and license.
+    if (b.img) return `<figure class="imgwrap"><img src="${esc(b.img)}" alt="${esc(b.alt || "")}" loading="lazy" decoding="async"${b.w && b.h ? ` width="${b.w}" height="${b.h}"` : ""}>${b.caption ? `<figcaption class="small">${tx(b.caption)}</figcaption>` : ""}<p class="credit small muted">${esc(b.credit || "")}${b.license ? ` (${esc(b.license)})` : ""}${b.url ? ` <a href="${esc(b.url)}" target="_blank" rel="noopener">(source)</a>` : ""}</p></figure>`;
+    if (b.cite !== undefined) return `<p class="cite small muted">${b.kind === "practice" || b.kind === "map" ? esc(b.cite) : `Source: ${esc(b.cite)}${b.url ? ` <a href="${esc(b.url)}" target="_blank" rel="noopener">(text)</a>` : ""}`}</p>`;
     if (b.table) return `<div class="tablewrap"><table class="srctable"><thead><tr>${b.table.head.map((h) => `<th>${tx(h)}</th>`).join("")}</tr></thead><tbody>${b.table.rows.map((r) => `<tr>${r.map((v) => `<td>${tx(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     return `<p>${lead}${tx(b.p)}</p>`;
   };

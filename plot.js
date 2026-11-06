@@ -82,3 +82,30 @@ export function graph(o) {
 ${out.join("\n").replace(/url\(#g-arrow\)/g, `url(#${id}a)`)}
 <g clip-path="url(#${id}c)">${curves.join("")}</g>${dots.join("")}</svg>`;
 }
+
+// A bar chart of real, cited data (history and social science stimuli). The numbers also go in the source's table or alt text,
+// so a screen reader gets them.
+// bars({ labels: ["1290", ...], values: [4.75, ...], y: [0, 5], step: 1, yname: "Millions of people", alt: "...", width: 520, height: 300, fmt: (v) => v.toFixed(2) })
+export function bars(o) {
+  const width = o.width || 520, height = o.height || 300, L = 48, R = 12, T = 26, B = 34;
+  const [y0, y1] = o.y, step = o.step || 1, n = o.values.length;
+  const sy = (v) => height - B - ((v - y0) / (y1 - y0)) * (height - T - B);
+  const bw = (width - L - R) / n;
+  const p = (v) => +v.toFixed(1);
+  const out = [];
+  for (let v = y0; v <= y1 + 1e-9; v += step) {
+    out.push(`<line class="g-grid" x1="${L}" y1="${p(sy(v))}" x2="${width - R}" y2="${p(sy(v))}"/>`);
+    out.push(`<text class="g-tick" x="${L - 6}" y="${p(sy(v) + 4)}" text-anchor="end">${fmt(v)}</text>`);
+  }
+  o.values.forEach((v, i) => {
+    const x = L + i * bw + bw * 0.16, w = bw * 0.68;
+    out.push(`<rect class="g-bar" x="${p(x)}" y="${p(sy(v))}" width="${p(w)}" height="${p(sy(y0) - sy(v))}"/>`);
+    out.push(`<text class="g-val" x="${p(x + w / 2)}" y="${p(sy(v) - 5)}" text-anchor="middle">${escx(o.fmt ? o.fmt(v) : String(v))}</text>`);
+    out.push(`<text class="g-tick" x="${p(x + w / 2)}" y="${height - B + 16}" text-anchor="middle">${escx(o.labels[i])}</text>`);
+  });
+  out.push(`<line class="g-axis" x1="${L}" y1="${p(sy(y0))}" x2="${width - R}" y2="${p(sy(y0))}"/>`);
+  if (o.yname) out.push(`<text class="g-name" x="${L - 40}" y="${T - 10}">${escx(o.yname)}</text>`);
+  if (o.xname) out.push(`<text class="g-name" x="${width - R}" y="${height - 4}" text-anchor="end">${escx(o.xname)}</text>`);
+  if (!o.alt) throw new Error("bars() needs alt text");
+  return `<svg class="graph chart" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="${escx(o.alt)}" xmlns="http://www.w3.org/2000/svg">${out.join("")}</svg>`;
+}

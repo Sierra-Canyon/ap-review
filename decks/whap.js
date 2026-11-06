@@ -21,6 +21,7 @@ import * as w1a from "./whap-mocks/w1a.js";
 import * as w2a from "./whap-mocks/w2a.js";
 import * as w2b from "./whap-mocks/w2b.js";
 import * as w3a from "./whap-mocks/w3a.js";
+import * as w3b from "./whap-mocks/w3b.js";
 import * as w4a from "./whap-mocks/w4a.js";
 import * as w5a from "./whap-mocks/w5a.js";
 import * as w6a from "./whap-mocks/w6a.js";
@@ -49,12 +50,12 @@ import * as t33 from "./whap-topic/t33.js";
 import * as t34 from "./whap-topic/t34.js";
 
 const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9];
-const mocks = [w1a, w2a, w2b, w3a, w4a, w5a, w6a, w7a, w8a, w9a];
+const mocks = [w1a, w2a, w2b, w3a, w3b, w4a, w5a, w6a, w7a, w8a, w9a];
 const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
 const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27, t31, t32, t33, t34];
 const total = (f) => f.items.reduce((t, it) => t + (it.type === "essay" ? rowsMax(it) : 1), 0);
 // On the page each unit lists its topic quizzes, then its assessments. The Class tab gives the quizzes their own column.
-const assessments = mocks.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: { w2a: "U2A", w2b: "U2B" }[f.id] || "U" + f.id[1], total: total(f) }));
+const assessments = mocks.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: { w2a: "U2A", w2b: "U2B", w3a: "U3A", w3b: "U3B" }[f.id] || "U" + f.id[1], total: total(f) }));
 const quizzes = topics.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: f.id[1] + "." + f.id[2], col: `Unit ${f.id[1]} topic quizzes`, total: total(f) }));
 const forms = [1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((n) => {
   const unit = [...quizzes, ...assessments].filter((f) => f.id[1] === String(n));

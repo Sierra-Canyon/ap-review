@@ -76,8 +76,10 @@ for (const f of files) {
     const topics = new Set(mcq.map((x) => x.topic));
     for (const k of TOPICS[want] || []) if (mcq.filter((x) => x.topic === `${unit}.${k}`).length < 2) bad(f, `topic ${unit}.${k} has fewer than 2 multiple-choice questions`);
     const frqSets = new Set(items.filter((x) => x.type === "frq").map((x) => x.set));
-    if (frqSets.size < 3) bad(f, "review needs at least 3 free-response questions");
-    if (!mcq.some((x) => x.calc)) bad(f, "review has no calculator multiple choice");
+    // decks/calc/u1x.js and the like add multiple choice to a unit's review; the unit's main file holds its free response.
+    const extra = /u[1-8]x\.js$/.test(f);
+    if (!extra && frqSets.size < 3) bad(f, "review needs at least 3 free-response questions");
+    if (!extra && !mcq.some((x) => x.calc)) bad(f, "review has no calculator multiple choice");
     console.log(`${f}: ${mcq.length} multiple choice on ${topics.size} topics, ${frqSets.size} free-response questions (${items.length - mcq.length} parts)`);
   } else {
     for (const form of m.default.forms) {

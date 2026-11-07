@@ -4,3 +4,4 @@ tools/.shots/
 preview.html
 .DS_Store
 Claude outputs/
+__pycache__/

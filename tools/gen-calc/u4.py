@@ -17,10 +17,10 @@ def t41_meaning(r):
     word = "increasing" if k > 0 else "decreasing"
     q = rf"Let ${F}({v})$ be {what}, where ${v}$ is measured in {tu}. Which statement best explains ${F}'({a}) = {k}$?"
     at = f"${v} = {a}$" if v == "t" else f"{a} chairs"
-    return item("4.1", q, (text_choice(f"When {at}, the quantity is {word} at a rate of {abs(k)} {ru}."), rf"The derivative is a rate of change, measured in {ru}; its sign tells the direction."),
-        [(text_choice(f"When {at}, the quantity is {abs(k)} {yu}."), r"That would be a value of the function, not of its derivative."),
-         (text_choice(f"Over the first {a} {tu}, the quantity changes by a total of {k} {yu}."), r"A derivative is an instantaneous rate at one input, not a total change over an interval."),
-         (text_choice(f"When {at}, the quantity is {'decreasing' if k > 0 else 'increasing'} at a rate of {abs(k)} {ru}."), r"The sign of the derivative is reversed here.")])
+    return item("4.1", q, (text_choice(f"When {at}, ${F}$ is {word} at a rate of {abs(k)} {ru}."), rf"The derivative is a rate of change, measured in {ru}; its sign tells the direction."),
+        [(text_choice(f"When {at}, ${F}$ is {abs(k)} {yu}."), r"That would be a value of the function, not of its derivative."),
+         (text_choice(f"Over the first {a} {tu}, ${F}$ changes by a total of {k} {yu}."), r"A derivative is an instantaneous rate at one input, not a total change over an interval."),
+         (text_choice(f"When {at}, ${F}$ is {'decreasing' if k > 0 else 'increasing'} at a rate of {abs(k)} {ru}."), r"The sign of the derivative is reversed here.")])
 
 SING = {"gallons": "gallon", "people": "person", "degrees Fahrenheit": "degree Fahrenheit", "dollars": "dollar", "centimeters": "centimeter"}
 
@@ -50,10 +50,10 @@ def t41_estimate(r):
 def t41_second(r):
     F, v, what, tu, yu, ru = r.choice(CTX[:3] + CTX[4:])
     q = rf"Let ${F}({v})$ be {what}, where ${v}$ is measured in {tu}. At ${v} = 4$, ${F}'(4) > 0$ and ${F}''(4) < 0$. Which statement is true at ${v} = 4$?"
-    return item("4.1", q, (text_choice("The quantity is increasing, and its rate of increase is decreasing."), r"$F' > 0$ means increasing; $F'' < 0$ means the rate $F'$ is decreasing."),
-        [(text_choice("The quantity is increasing, and its rate of increase is increasing."), r"$F'' < 0$ means the rate is going down."),
-         (text_choice("The quantity is decreasing, and its rate of change is decreasing."), r"$F' > 0$ means the quantity is going up."),
-         (text_choice("The quantity is decreasing, and its rate of change is increasing."), r"Both signs are read backward here.")])
+    return item("4.1", q, (text_choice(f"${F}$ is increasing, and its rate of increase is decreasing."), rf"${F}' > 0$ means ${F}$ is increasing; ${F}'' < 0$ means the rate ${F}'$ is decreasing."),
+        [(text_choice(f"${F}$ is increasing, and its rate of increase is increasing."), rf"${F}'' < 0$ means the rate ${F}'$ is going down."),
+         (text_choice(f"${F}$ is decreasing, and its rate of change is decreasing."), rf"${F}' > 0$ means ${F}$ is going up."),
+         (text_choice(f"${F}$ is decreasing, and its rate of change is increasing."), r"Both signs are read backward here.")])
 t41_second.max = 1
 
 # ---------------------------------------------------------------- 4.2 straight-line motion
@@ -204,18 +204,18 @@ def t46_sqrt(r):
     val = sqrt(a) + d / (2 * sqrt(a))
     q = rf"Using the line tangent to $f(x) = \sqrt{{x}}$ at $x = {a}$, what is the approximation of $\sqrt{{{float(a + d)}}}$?" 
     return item("4.6", q, (num(val, 3) if val.q > 100 else num(val, 3), rf"$L(x) = {int(sqrt(a))} + \dfrac{{1}}{{{2 * int(sqrt(a))}}}(x - {a})$; at $x = {float(a + d)}$ this is about {float(val):.3f}."),
-        [(num(sqrt(a) + d, 3), r"The slope of the tangent line is $\dfrac{1}{2\sqrt{a}}$, not $1$."),
+        [(num(sqrt(a) + d, 3), rf"The slope of the tangent line is $\dfrac{{1}}{{2\sqrt{{{a}}}}} = \dfrac{{1}}{{{2 * int(sqrt(a))}}}$, not $1$."),
          (num(sqrt(a) + d / sqrt(a), 3), r"The derivative of $\sqrt{x}$ has a $2$ in its denominator."),
-         (num(sqrt(a) - d / (2 * sqrt(a)), 3), r"The sign of $x - a$ is reversed.")])
+         (num(sqrt(a) - d / (2 * sqrt(a)), 3), rf"The sign of $x - {a}$ is reversed: it is ${float(d)}$ here.")])
 
 def t46_table(r):
     a = r.choice([2, 3]); fa = r.choice([5, -1, 7]); fpa = r.choice([3, -2, 4]); d = r.choice([Rational(1, 10), Rational(-1, 5), Rational(1, 5)])
     val = fa + fpa * d
     q = rf"A differentiable function $f$ has $f({a}) = {fa}$ and $f'({a}) = {fpa}$. Using the tangent line at $x = {a}$, what is the approximation of $f({float(a + d)})$?"
     return item("4.6", q, (num(val, 1), rf"$f({float(a + d)}) \approx f({a}) + f'({a})({float(d)}) = {fa} + ({fpa})({float(d)}) = {float(val)}$."),
-        [(num(fpa + fa * d, 1), r"The roles of $f(a)$ and $f'(a)$ are swapped."),
-         (num(fa - fpa * d, 1), r"The sign of $x - a$ is reversed."),
-         (num(fa + fpa * (a + d), 1), r"This multiplies the slope by $x$ instead of by $x - a$.")])
+        [(num(fpa + fa * d, 1), rf"The roles of $f({a}) = {fa}$ and $f'({a}) = {fpa}$ are swapped."),
+         (num(fa - fpa * d, 1), rf"The sign of $x - {a}$ is reversed: it is ${float(d)}$ here."),
+         (num(fa + fpa * (a + d), 1), rf"This multiplies the slope by $x = {float(a + d)}$ instead of by $x - {a} = {float(d)}$.")])
 
 # ---------------------------------------------------------------- 4.7 L'Hospital
 DER = {"sin": r"\cos", "tan": r"\sec^{2}"}

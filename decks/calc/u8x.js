@@ -390,7 +390,7 @@ export default [
     choices: [String.raw`$\frac{1}{2}$`, String.raw`$0$`, String.raw`$\frac{1}{4}$`, String.raw`$1$`],
     why: [
       String.raw`They meet at $x = -1, 0, 1$. The curves switch at $0$, so add $\displaystyle\int_{-1}^{0} (x^{3} - x)\,dx$ and $\displaystyle\int_0^{1} (x - x^{3})\,dx$: $\frac{1}{2}$.`,
-      String.raw`The two pieces cancel only if signs are ignored; area counts both as positive.`,
+      String.raw`That is the signed integral over the whole interval, where the two pieces cancel. Area counts both pieces as positive.`,
       String.raw`That is only one of the two pieces.`,
       String.raw`Each piece is counted twice.`,
     ], answer: 0 },
@@ -417,7 +417,7 @@ export default [
     choices: [String.raw`$8$`, String.raw`$0$`, String.raw`$4$`, String.raw`$16$`],
     why: [
       String.raw`They meet at $x = -2, 0, 2$. The curves switch at $0$, so add $\displaystyle\int_{-2}^{0} (x^{3} - 4x)\,dx$ and $\displaystyle\int_0^{2} (4x - x^{3})\,dx$: $8$.`,
-      String.raw`The two pieces cancel only if signs are ignored; area counts both as positive.`,
+      String.raw`That is the signed integral over the whole interval, where the two pieces cancel. Area counts both pieces as positive.`,
       String.raw`That is only one of the two pieces.`,
       String.raw`Each piece is counted twice.`,
     ], answer: 0 },
@@ -553,7 +553,7 @@ export default [
     why: [
       String.raw`Washers: outer radius $1$, inner radius $x^{2}$, from $x = -1$ to $1$: $\pi\displaystyle\int_{-1}^{1} \left(1 - x^{4}\right)dx = \frac{8 \pi}{5}$.`,
       String.raw`Square each radius, then subtract; do not square the difference.`,
-      String.raw`The region runs from $x = -\sqrt{c}$ to $\sqrt{c}$.`,
+      String.raw`The region runs from $x = -1$ to $1$, not just from $0$.`,
       String.raw`The radii must be squared.`,
     ], answer: 0 },
   { id: "c8x-062", type: "mcq", skill: "u8", topic: "8.11", calc: false,
@@ -562,7 +562,7 @@ export default [
     why: [
       String.raw`Washers: outer radius $4$, inner radius $x^{2}$, from $x = -2$ to $2$: $\pi\displaystyle\int_{-2}^{2} \left(16 - x^{4}\right)dx = \frac{256 \pi}{5}$.`,
       String.raw`Square each radius, then subtract; do not square the difference.`,
-      String.raw`The region runs from $x = -\sqrt{c}$ to $\sqrt{c}$.`,
+      String.raw`The region runs from $x = -2$ to $2$, not just from $0$.`,
       String.raw`The radii must be squared.`,
     ], answer: 0 },
   { id: "c8x-063", type: "mcq", skill: "u8", topic: "8.12", calc: false,

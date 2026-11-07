@@ -53,6 +53,13 @@ def tidy(s):
     s = re.sub(r"([a-z]) - \((\d+)\)", r"\1 - \2", s)
     s = re.sub(r"([a-z]) - \(-(\d+)\)", r"\1 + \2", s)
     s = re.sub(r"\+ -(\d)", r"- \1", s)
+    # a number in parentheses after + or -: 4 - (1) to 4 - 1, 4 - (-3) to 4 + 3, x^{2} + (2)x to x^{2} + 2x
+    for _ in range(2):
+        s = re.sub(r"(?<=[\w})]) - \(-(\d+)\)", r" + \1", s)
+        s = re.sub(r"(?<=[\w})]) \+ \(-(\d+)\)", r" - \1", s)
+        s = re.sub(r"(?<=[\w})]) ([+-]) \((\d+)\)", r" \1 \2", s)
+    s = re.sub(r"(?<=[a-zA-Z])\(x - 0\)", " x", s)
+    s = s.replace("(x - 0)", "x")
     return s
 
 def item(topic, question, right, wrongs, calc=False, set_id=None):

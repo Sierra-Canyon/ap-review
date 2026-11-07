@@ -13,14 +13,17 @@ def distinct(*v):
 # ---------------------------------------------------------------- 7.1 modeling
 def t71_prop(r):
     kind = r.choice([
-        ("The rate of change of a population $P$ with respect to time $t$ is proportional to $P$.", r"\frac{dP}{dt} = kP", [r"\frac{dP}{dt} = kt", r"P = kt", r"\frac{dP}{dt} = k"]),
-        ("The rate at which the temperature $T$ of an object changes is proportional to the difference between $T$ and the room temperature, $70$ degrees.", r"\frac{dT}{dt} = k(T - 70)", [r"\frac{dT}{dt} = kT - 70", r"T = k(t - 70)", r"\frac{dT}{dt} = k(t - 70)"]),
-        ("The rate of change of $y$ with respect to $x$ is proportional to the square root of $y$.", r"\frac{dy}{dx} = k\sqrt{y}", [r"\frac{dy}{dx} = \sqrt{ky}", r"\frac{dy}{dx} = k\sqrt{x}", r"y = k\sqrt{x}"]),
-        ("The rate at which a rumor spreads is proportional to the product of the number of people $N$ who have heard it and the number $1000 - N$ who have not.", r"\frac{dN}{dt} = kN(1000 - N)", [r"\frac{dN}{dt} = k(1000 - N)", r"N = kt(1000 - t)", r"\frac{dN}{dt} = kN + (1000 - N)"]),
+        ("The rate of change of a population $P$ with respect to time $t$ is proportional to $P$.", r"\frac{dP}{dt} = kP",
+         [(r"\frac{dP}{dt} = kt", r"That rate is proportional to time, not to $P$."), (r"P = kt", r"That is not a rate; the left side must be $\dfrac{dP}{dt}$."), (r"\frac{dP}{dt} = k", r"That is a constant rate, not one proportional to $P$.")]),
+        ("The rate at which the temperature $T$ of an object changes is proportional to the difference between $T$ and the room temperature, $70$ degrees.", r"\frac{dT}{dt} = k(T - 70)",
+         [(r"\frac{dT}{dt} = kT - 70", r"This multiplies only $T$ by $k$; the whole difference $T - 70$ must be multiplied."), (r"T = k(t - 70)", r"That is not a rate, and it uses time $t$ instead of temperature $T$."), (r"\frac{dT}{dt} = k(t - 70)", r"This uses time $t$ instead of the temperature $T$.")]),
+        ("The rate of change of $y$ with respect to $x$ is proportional to the square root of $y$.", r"\frac{dy}{dx} = k\sqrt{y}",
+         [(r"\frac{dy}{dx} = \sqrt{ky}", r"The constant multiplies $\sqrt{y}$; it does not go inside the root."), (r"\frac{dy}{dx} = k\sqrt{x}", r"The rate depends on $y$, not $x$."), (r"y = k\sqrt{x}", r"That is not a rate, and it uses $x$ instead of $y$.")]),
+        ("The rate at which a rumor spreads is proportional to the product of the number of people $N$ who have heard it and the number $1000 - N$ who have not.", r"\frac{dN}{dt} = kN(1000 - N)",
+         [(r"\frac{dN}{dt} = k(1000 - N)", r"The product needs both factors, $N$ and $1000 - N$."), (r"N = kt(1000 - t)", r"That is not a rate, and it uses time instead of $N$."), (r"\frac{dN}{dt} = kN + (1000 - N)", r"The two numbers are multiplied, not added.")]),
     ])
     q = rf"{kind[0]} Which differential equation models this, where $k$ is a constant?"
-    return item("7.1", q, (kind[1], r"A rate is a derivative, and proportional to a quantity means equal to a constant times that quantity."),
-        [(w, r"Check that the left side is a rate and the right side is a constant times exactly the named quantity.") for w in kind[2]])
+    return item("7.1", q, (kind[1], r"A rate is a derivative, and proportional to a quantity means equal to a constant times that quantity."), kind[2])
 t71_prop.max = 3
 
 # ---------------------------------------------------------------- 7.2 verifying solutions
@@ -46,7 +49,7 @@ def t73_zero(r):
     a = r.choice([1, 2, 3])
     q = rf"For the slope field of $\dfrac{{dy}}{{dx}} = {a if a > 1 else ''}x - y$, where are the slopes equal to $0$?"
     return item("7.3", q, (text_choice(rf"Along the line $y = {a if a > 1 else ''}x$"), rf"$\dfrac{{dy}}{{dx}} = 0$ when ${a if a > 1 else ''}x - y = 0$."),
-        [(text_choice(r"Along the $x$-axis"), r"On the $x$-axis $y = 0$, so the slope is $ax$, not $0$ in general."),
+        [(text_choice(r"Along the $x$-axis"), rf"On the $x$-axis $y = 0$, so the slope is ${a if a > 1 else ''}x$, not $0$ in general."),
          (text_choice(r"Along the $y$-axis"), r"On the $y$-axis the slope is $-y$."),
          (text_choice(rf"Along the line $y = -{a if a > 1 else ''}x$"), r"The sign is reversed.")])
 
@@ -107,10 +110,10 @@ def t76_xy2(r):
 def t76_ky(r):
     k = r.choice([2, -3, 4, Rational(1, 2), -1]); ek = '-' if k == -1 else L(k)
     q = rf"Which is the general solution of $\dfrac{{dy}}{{dt}} = {L(k)}y$?" if k not in (1, -1) else r"Which is the general solution of $\dfrac{dy}{dt} = -y$?"
-    return item("7.6", q, (rf"y = Ce^{{{ek}t}}", r"Separate and integrate: $\ln|y| = kt + C_1$."),
+    return item("7.6", q, (rf"y = Ce^{{{ek}t}}", rf"Separate and integrate: $\ln|y| = {ek}t + C_1$, so $y = Ce^{{{ek}t}}$."),
         [(rf"y = e^{{{ek}t}} + C", r"The constant multiplies; it does not add."),
-         (rf"y = {L(k)}t + C" if k != -1 else r"y = -t + C", r"That solves $\dfrac{dy}{dt} = k$, not $ky$."),
-         (rf"y = Ce^{{{L(Rational(1, 1) / k)}t}}" if k != -1 else r"y = Ce^{t}", r"The coefficient in the exponent is $k$.")])
+         (rf"y = {L(k)}t + C" if k != -1 else r"y = -t + C", rf"That solves $\dfrac{{dy}}{{dt}} = {L(k)}$, a constant rate, not one proportional to $y$."),
+         (rf"y = Ce^{{{L(Rational(1, 1) / k)}t}}" if k != -1 else r"y = Ce^{t}", rf"The coefficient in the exponent is ${L(k)}$.")])
 
 def t76_ysq(r):
     q = r"Which is a general solution of $\dfrac{dy}{dx} = x y^{2}$?"
@@ -126,7 +129,7 @@ def t77_exp(r):
     val = y0 * exp(k * X); ek = "-" if k == -1 else L(k)
     q = rf"If $\dfrac{{dy}}{{dx}} = {L(k) if k != -1 else '-'}y$ and $y(0) = {y0}$, what is $y({X})$?"
     return item("7.7", q, (L(val), rf"$y = {y0}e^{{{ek}x}}$, so $y({X}) = {L(val)}$."),
-        [(L(exp(k * X) + y0 - 1), r"The constant multiplies the exponential."),
+        [(L(exp(k * X) + y0 - 1), rf"This uses $y = e^{{{ek}x}} + C$ with $C = {y0 - 1}$; the constant multiplies the exponential: $y = {y0}e^{{{ek}x}}$."),
          (L(y0 * exp(X)), rf"The exponent is ${ek}x$."),
          (L(y0 + k * X), r"That uses a constant slope; the slope here changes with $y$.")])
 
@@ -138,7 +141,7 @@ def t77_xy(r):
     return item("7.7", q, (L(val), rf"$y\,dy = x\,dx$ gives $y^{{2}} = x^{{2}} + C$; $f(0) = {y0}$ gives $C = {y0**2}$, so $f({X}) = \sqrt{{{X**2 + y0**2}}}$ (positive, since $f(0) > 0$)."),
         [(L(X**2 + y0**2), r"This is $y^{2}$; take the square root."),
          (L(-val), r"The solution through a positive point stays positive."),
-         (L(X + y0), r"$\sqrt{a^{2} + b^{2}}$ is not $a + b$.")])
+         (L(X + y0), rf"$\sqrt{{{X**2} + {y0**2}}}$ is not ${X} + {y0}$.")])
 
 def t77_xy2(r):
     k = r.choice([2, 4, 6]); y0 = r.choice([1, 2, 3])

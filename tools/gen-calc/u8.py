@@ -228,7 +228,7 @@ def t86(r):
     area = 2 * I(g - f, 0, a)
     q = rf"What is the total area enclosed by $y = x^{{3}}$ and $y = {a**2 if a > 1 else ''}x$?"
     return item("8.6", q, (num(area), rf"They meet at $x = -{a}, 0, {a}$. The curves switch at $0$, so add $\displaystyle\int_{{-{a}}}^{{0}} (x^{{3}} - {a**2 if a > 1 else ''}x)\,dx$ and $\displaystyle\int_0^{{{a}}} ({a**2 if a > 1 else ''}x - x^{{3}})\,dx$: ${L(area)}$."),
-        [("0", r"The two pieces cancel only if signs are ignored; area counts both as positive."),
+        [("0", r"That is the signed integral over the whole interval, where the two pieces cancel. Area counts both pieces as positive."),
          (num(area / 2), r"That is only one of the two pieces."),
          (num(2 * area), r"Each piece is counted twice.")])
 
@@ -331,7 +331,7 @@ def t811b(r):
     q = rf"The region between $y = x^{{2}}$ and $y = {c}$ is revolved about the $x$-axis. What is the volume?"
     return item("8.11", q, (L(V), rf"Washers: outer radius ${c}$, inner radius $x^{{2}}$, from $x = -{s_}$ to ${s_}$: $\pi\displaystyle\int_{{-{s_}}}^{{{s_}}} \left({c**2} - x^{{4}}\right)dx = {L(V)}$."),
         [(L(pi * I((c - x**2)**2, -s_, s_)), r"Square each radius, then subtract; do not square the difference."),
-         (L(pi * I(c**2 - x**4, 0, s_)), r"The region runs from $x = -\sqrt{c}$ to $\sqrt{c}$."),
+         (L(pi * I(c**2 - x**4, 0, s_)), rf"The region runs from $x = -{s_}$ to ${s_}$, not just from $0$."),
          (L(pi * I(c - x**2, -s_, s_)), r"The radii must be squared.")])
 
 def t812(r):

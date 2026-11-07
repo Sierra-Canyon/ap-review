@@ -59,7 +59,7 @@ def t22_which(r):
     return item("2.2", q, (right, rf"$f'({a}) = \displaystyle \lim_{{x \to {a}}} \frac{{f(x) - f({a})}}{{x - {a}}}$, and $f({a}) = {a**n}$."),
         [(rf"\lim_{{x \to {a}}} \frac{{x^{{{n}}} - {a**n}}}{{x}}", rf"The denominator must be $x - {a}$, the change in $x$."),
          (rf"\frac{{({a} + h)^{{{n}}} - {a**n}}}{{h}}", r"Without the limit as $h \to 0$, this is an average rate of change."),
-         (rf"\lim_{{h \to 0}} \frac{{({a} + h)^{{{n}}} - {a}^{{{n}}}}}{{{a}}}", r"The difference quotient divides by $h$, not by the point $a$.")])
+         (rf"\lim_{{h \to 0}} \frac{{({a} + h)^{{{n}}} - {a}^{{{n}}}}}{{{a}}}", rf"The difference quotient divides by $h$, not by ${a}$.")])
 
 def t22_value(r):
     a = r.choice([1, 2, 3, -1]); p = r.choice([2, 3]); c = r.choice([1, -4, 5])
@@ -96,8 +96,8 @@ def t24_match(r):
     q = rf"Let ${fdef}$. For which values of the constants $m$ and $n$ is $f$ differentiable at $x = {a}$?"
     return item("2.4", q, (text_choice(rf"$m = {m}$ and $n = {L(n)}$"), rf"The slopes must match: $2x = m$ at $x = {a}$, so $m = {m}$. Continuity then needs ${a**2 + c} = {m}({a}) + n$, so $n = {L(n)}$."),
         [(text_choice(rf"$m = {m}$ and $n = {L(a**2 + c)}$"), rf"$n$ must make the pieces meet at $x = {a}$: $m({a}) + n = {a**2 + c}$."),
-         (text_choice(rf"$m = {L(a**2 + c)}$ and $n = 0$"), r"This makes the pieces meet, but the slopes $2x$ and $m$ must also agree."),
-         (text_choice(rf"$m = {a}$ and $n = {L(a**2 + c - a * a)}$"), rf"The slope of $x^{{2}} + {c}$ at $x = {a}$ is $2({a}) = {2 * a}$, not ${a}$.")])
+         (text_choice(rf"$m = {L(a**2 + c)}$ and $n = 0$"), rf"With $m = {m}$ the pieces meet at $x = {a}$ only if $n = {L(n)}$." if a**2 + c == m else rf"This sets $m$ equal to $f({a}) = {a**2 + c}$. But $m$ is a slope, so it must equal $2({a}) = {m}$, and then $n$ makes the pieces meet."),
+         (text_choice(rf"$m = {a}$ and $n = {L(a**2 + c - a * a)}$"), rf"The slope of $x^{{2}} {pm(c)}$ at $x = {a}$ is $2({a}) = {2 * a}$, not ${a}$.")])
 
 def t24_abs(r):
     a = r.choice([1, 2, 3, -2]); b = r.choice([0, 4, -1])
@@ -133,7 +133,7 @@ def t24_corner(r):
     q = rf"Let $f(x) = {piece(e1, e2, a)}$. The function $f$ is continuous at $x = {a}$. What is $\displaystyle \lim_{{h \to 0^{{{'-' if side == 'left' else '+'}}}}} \frac{{f({a} + h) - f({a})}}{{h}}$?"
     return item("2.4", q, (num(want), rf"For $h$ {'< 0' if side == 'left' else '> 0'}, $f({a} + h)$ uses the piece ${L(e1 if side == 'left' else e2)}$, whose slope is ${want}$."),
         [(num(rr if side == "left" else p), r"This is the slope of the piece on the other side."),
-         (text_choice("The limit does not exist."), r"The two-sided limit, $f'(a)$, does not exist, but each one-sided limit does."),
+         (text_choice("The limit does not exist."), rf"The two-sided limit, $f'({a})$, does not exist, but each one-sided limit does."),
          (num(Rational(p + rr, 2)), r"This averages the two slopes. A one-sided limit uses only one piece.")])
 
 def t24_must(r):
@@ -168,14 +168,14 @@ def t25_power(r):
     p = r.choice([2, 3, 6]); n = r.choice([2, 3]); q0 = r.choice([4, 6, 9]); a = r.choice([1, 4])
     f = p / x**n + q0 * sqrt(x)
     val = diff(f, x).subs(x, a)
-    wrong1 = (n * p / x**(n - 1) + q0 / (2 * sqrt(x))).subs(x, a)
+    wrong1 = (n * p * x**(n - 1) + q0 / (2 * sqrt(x))).subs(x, a)
     wrong2 = (-n * p / x**(n + 1) + q0 * sqrt(x) / 2).subs(x, a)
     wrong3 = (-n * p / x**(n - 1) + q0 / (2 * sqrt(x))).subs(x, a)
     q = rf"If $f(x) = \dfrac{{{p}}}{{x^{{{n}}}}} + {q0}\sqrt{{x}}$, what is $f'({a})$?"
     return item("2.5", q, (num(val), rf"Write $f(x) = {p}x^{{-{n}}} + {q0}x^{{1/2}}$. Then $f'(x) = -{n * p}x^{{-{n + 1}}} + {L(Rational(q0, 2))}x^{{-1/2}}$, and $f'({a}) = {L(val)}$."),
-        [(num(wrong1), r"This treats $\dfrac{1}{x^{n}}$ as $x^{n}$, losing the negative exponent."),
+        [(num(wrong1), rf"This treats $\dfrac{{{p}}}{{x^{{{n}}}}}$ as ${p}x^{{{n}}}$, losing the negative exponent."),
          (num(wrong2), r"This lowers the power of $\sqrt{x}$ incorrectly; $x^{1/2}$ becomes $\dfrac{1}{2}x^{-1/2}$."),
-         (num(wrong3), r"Subtract $1$ from the exponent $-n$ to get $-n - 1$, not $-n + 1$.")])
+         (num(wrong3), rf"Subtract $1$ from the exponent $-{n}$ to get $-{n + 1}$, not $-{n - 1}$.")])
 
 def t25_tangent(r):
     n = r.choice([3, 4]); a = r.choice([1, 2, -1]); c = r.choice([1, 2])
@@ -185,7 +185,7 @@ def t25_tangent(r):
     return item("2.5", q, (rf"y = {L(expand(line))}", rf"$y' = {L(diff(f, x))}$, so the slope at $x = {a}$ is ${slope}$, and the point is $({a}, {y0})$. Then $y - {y0} = {slope}(x - ({a}))$."),
         [(rf"y = {L(expand(slope * x))}", r"The tangent line must pass through the point on the curve; this line goes through the origin."),
          (rf"y = {L(expand(y0 * (x - a) + slope))}", r"This swaps the slope and the $y$-coordinate of the point."),
-         (rf"y = {L(expand(n * c * a**(n - 2) * (x - a) + y0))}" if n * c * a**(n - 2) != slope else rf"y = {L(expand((slope + 1) * (x - a) + y0))}", r"The slope uses the wrong power of $a$ in $f'(a)$.")])
+         (rf"y = {L(expand(n * c * a**(n - 2) * (x - a) + y0))}" if n * c * a**(n - 2) != slope else rf"y = {L(expand((slope + 1) * (x - a) + y0))}", r"The slope is not the value of the derivative at the point; recompute $y'$ there.")])
 
 # ---------------------------------------------------------------- 2.6
 def t26_poly(r):
@@ -205,7 +205,7 @@ def t26_horizontal(r):
     q = rf"At which values of $x$ does the graph of $f(x) = {L(f)}$ have a horizontal tangent line?"
     return item("2.6", q, (text_choice(rf"$x = {min(p, q0)}$ and $x = {max(p, q0)}$"), rf"$f'(x) = {L(factor(diff(f, x)))}$, which is $0$ at $x = {p}$ and $x = {q0}$."),
         [(text_choice(rf"$x = 0$ only"), r"$f(0) = 0$, but a horizontal tangent needs $f'(x) = 0$."),
-         (text_choice(rf"$x = {-p}$ and $x = {-q0}$"), r"Solving $(x - p)(x - q) = 0$ gives $x = p$ and $x = q$, not their opposites."),
+         (text_choice(rf"$x = {-p}$ and $x = {-q0}$"), r"These are the opposites of the zeros of $f'$; check the signs in the factors."),
          (text_choice(rf"$x = {L(Rational(p + q0, 2))}$ only"), r"This is where $f''(x) = 0$, not where $f'(x) = 0$.")])
 
 def t26_slope(r):
@@ -284,7 +284,7 @@ def t28_formula(r):
     val = diff(f, x).subs(x, a)
     q = rf"If $f(x) = x^{{{p}}}e^{{x}}$, what is $f'({a})$?"
     if val == 0: raise Skip("zero")
-    return item("2.8", q, (L(val), rf"$f'(x) = {p}x^{{{p - 1}}}e^{{x}} + x^{{{p}}}e^{{x}}$, so $f'({a}) = {L(val)}$."),
+    return item("2.8", q, (L(val), rf"$f'(x) = {p}{'x' if p == 2 else 'x^{' + str(p - 1) + '}'}e^{{x}} + x^{{{p}}}e^{{x}}$, so $f'({a}) = {L(val)}$."),
         [(L((p * x**(p - 1) * exp(x)).subs(x, a)), r"This differentiates only the first factor."),
          (L(f.subs(x, a)), r"This is $f$ at the point, not $f'$."),
          (L((x**p * exp(x) - p * x**(p - 1) * exp(x)).subs(x, a)), r"The product rule adds the two terms.")])
@@ -297,7 +297,7 @@ def t29_table(r):
     return item("2.9", q, (num(val), rf"$h'({a}) = \dfrac{{f'({a})g({a}) - f({a})g'({a})}}{{(g({a}))^{{2}}}} = \dfrac{{({v['fp']})({v['g']}) - ({v['f']})({v['gp']})}}{{{v['g']**2}}} = {L(val)}$."),
         [(num(Rational(v["f"] * v["gp"] - v["fp"] * v["g"], v["g"]**2)), r"The numerator is in the wrong order: it is $f'g - fg'$, not $fg' - f'g$."),
          (num(Rational(v["fp"], v["gp"])) if v["gp"] else "0", r"The derivative of a quotient is not the quotient of the derivatives."),
-         (num(Rational(v["fp"] * v["g"] - v["f"] * v["gp"], v["g"])), r"The denominator is $(g(a))^{2}$, not $g(a)$.")])
+         (num(Rational(v["fp"] * v["g"] - v["f"] * v["gp"], v["g"])), rf"The denominator is $(g({a}))^{{2}}$, not $g({a})$.")])
 
 def t29_formula(r):
     p = r.choice([1, 2, 3]); q0 = r.choice([1, 4]); a = r.choice([0, 1, 2])

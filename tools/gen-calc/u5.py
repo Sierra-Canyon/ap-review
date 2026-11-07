@@ -19,7 +19,7 @@ def t51_c_quad(r):
     distinct(c, avg, b, Rational(b, 2) if Rational(b, 2) != c else b + 1)
     w3 = Rational(b, 2) if Rational(b, 2) != c else Rational(a + b + 1, 2)
     q = rf"Let $f(x) = {L(f)}$. What value of $c$ satisfies the conclusion of the Mean Value Theorem for $f$ on ${ivl(a, b)}$?"
-    return item("5.1", q, (num(c), rf"The average rate is $\dfrac{{f({b}) - f({a})}}{{{b} - ({a})}} = {L(avg)}$. Solving $f'(c) = {L(diff(f, x))} = {L(avg)}$ gives $c = {L(c)}$."),
+    return item("5.1", q, (num(c), rf"The average rate is $\dfrac{{f({b}) - f({a})}}{{{b} - ({a})}} = {L(avg)}$. Since $f'(x) = {L(diff(f, x))}$, setting $f'(c) = {L(avg)}$ gives $c = {L(c)}$."),
         [(num(avg), r"This is the average rate of change, the slope $f'(c)$ must equal, not $c$."),
          (num(b), r"The value of $c$ must be strictly between the endpoints."),
          (num(w3), r"Set $f'(c)$ equal to the average rate of change and solve for $c$.")])
@@ -81,7 +81,7 @@ def t51_rolle(r):
     return item("5.1", q, (num(c), rf"$f'(x) = 2x - {a + b}$, which is $0$ at $x = {L(c)}$."),
         [(num(a), r"This is an endpoint, where $f = 0$, not where $f' = 0$."),
          (num(f.subs(x, c)), r"This is the value of $f$ at $c$, not $c$."),
-         (num(a + b), r"$f'(c) = 0$ means $2c = a + b$; divide by $2$.")])
+         (num(a + b), rf"$f'(c) = 0$ means $2c = {a + b}$; divide by $2$.")])
 
 def t51_velocity(r):
     T = r.choice([4, 5, 8]); d = r.choice([100, 120, 200, 240])
@@ -162,7 +162,7 @@ def t53_exp(r):
     c = Rational(1, k)
     return item("5.3", q, (text_choice(rf"$\left(-\infty, {L(c)}\right)$"), rf"$f'(x) = e^{{-{k}x}}(1 - {k}x)$ and $e^{{-{k}x}} > 0$, so $f' > 0$ when $x < {L(c)}$." if k > 1 else r"$f'(x) = e^{-x}(1 - x)$, which is positive when $x < 1$."),
         [(text_choice(rf"$\left({L(c)}, \infty\right)$"), r"There $f' < 0$."),
-         (text_choice(r"$\left(-\infty, 0\right)$"), r"The sign of $f'$ depends on $1 - kx$, not on $x$ alone."),
+         (text_choice(r"$\left(-\infty, 0\right)$"), rf"The sign of $f'$ depends on $1 - {k if k > 1 else ''}x$, not on $x$ alone."),
          (text_choice(r"$\left(-\infty, \infty\right)$"), r"$f'$ changes sign, so $f$ does not increase everywhere.")])
 t53_exp.max = 2
 
@@ -306,14 +306,17 @@ def t58_from_f(r):
 
 def t58_fp_graph(r):
     stmt = r.choice([
-        ("The graph of $f'$ is above the $x$-axis and falling on $(a, b)$.", "$f$ is increasing and concave down on $(a, b)$.", ["$f$ is decreasing and concave down on $(a, b)$.", "$f$ is increasing and concave up on $(a, b)$.", "$f$ is decreasing and concave up on $(a, b)$."]),
-        ("The graph of $f'$ is below the $x$-axis and rising on $(a, b)$.", "$f$ is decreasing and concave up on $(a, b)$.", ["$f$ is increasing and concave up on $(a, b)$.", "$f$ is decreasing and concave down on $(a, b)$.", "$f$ is increasing and concave down on $(a, b)$."]),
-        ("The graph of $f'$ crosses the $x$-axis from above to below at $x = a$.", "$f$ has a relative maximum at $x = a$.", ["$f$ has a relative minimum at $x = a$.", "$f$ has a point of inflection at $x = a$.", "$f$ crosses the $x$-axis at $x = a$."]),
-        ("The graph of $f'$ has a relative minimum at $x = a$.", "The graph of $f$ has a point of inflection at $x = a$.", ["$f$ has a relative minimum at $x = a$.", "$f$ has a relative maximum at $x = a$.", "$f'(a) = 0$."]),
+        ("The graph of $f'$ is above the $x$-axis and falling on $(a, b)$.", ("$f$ is increasing and concave down on $(a, b)$.", r"$f' > 0$, so $f$ increases; $f'$ is falling, so $f'' < 0$ and $f$ is concave down."),
+         [("$f$ is decreasing and concave down on $(a, b)$.", r"$f' > 0$, so $f$ is increasing."), ("$f$ is increasing and concave up on $(a, b)$.", r"$f'$ is falling, so $f'' < 0$: concave down."), ("$f$ is decreasing and concave up on $(a, b)$.", r"Both are reversed: $f' > 0$ and $f'$ is falling.")]),
+        ("The graph of $f'$ is below the $x$-axis and rising on $(a, b)$.", ("$f$ is decreasing and concave up on $(a, b)$.", r"$f' < 0$, so $f$ decreases; $f'$ is rising, so $f'' > 0$ and $f$ is concave up."),
+         [("$f$ is increasing and concave up on $(a, b)$.", r"$f' < 0$, so $f$ is decreasing."), ("$f$ is decreasing and concave down on $(a, b)$.", r"$f'$ is rising, so $f'' > 0$: concave up."), ("$f$ is increasing and concave down on $(a, b)$.", r"Both are reversed: $f' < 0$ and $f'$ is rising.")]),
+        ("The graph of $f'$ crosses the $x$-axis from above to below at $x = a$.", ("$f$ has a relative maximum at $x = a$.", r"$f'$ changes from positive to negative, so $f$ goes from increasing to decreasing."),
+         [("$f$ has a relative minimum at $x = a$.", r"A minimum needs $f'$ to change from negative to positive."), ("$f$ has a point of inflection at $x = a$.", r"Inflection comes from a turning point of $f'$, not a zero of $f'$."), ("$f$ crosses the $x$-axis at $x = a$.", r"A zero of $f'$ says nothing about where $f$ itself is $0$.")]),
+        ("The graph of $f'$ has a relative minimum at $x = a$.", ("The graph of $f$ has a point of inflection at $x = a$.", r"$f'$ changes from falling to rising, so $f''$ changes sign and the concavity of $f$ changes."),
+         [("$f$ has a relative minimum at $x = a$.", r"An extremum of $f$ needs $f'$ to change sign, not to turn around."), ("$f$ has a relative maximum at $x = a$.", r"An extremum of $f$ needs $f'$ to change sign, not to turn around."), ("$f'(a) = 0$.", r"At a relative minimum of $f'$ it is $f''$ that is $0$; $f'$ itself can have any value.")]),
     ])
     q = rf"{stmt[0]} Which statement about $f$ must be true?"
-    return item("5.9", q, (text_choice(stmt[1]), r"Where $f' > 0$, $f$ rises; where $f'$ falls, $f'' < 0$; a sign change of $f'$ is an extremum of $f$; an extremum of $f'$ is a change of concavity of $f$."),
-        [(text_choice(w), r"Read $f$'s direction from the sign of $f'$, and $f$'s concavity from whether $f'$ rises or falls.") for w in stmt[2]])
+    return item("5.9", q, (text_choice(stmt[1][0]), stmt[1][1]), [(text_choice(w), y) for w, y in stmt[2]])
 t58_fp_graph.max = 4
 
 def t59_table(r):
@@ -376,7 +379,7 @@ def t59_g_of_f(r):
     q = rf"Let $g(x) = {k}f(x) + x^{{2}}$. If $f'({a}) = {fpa}$ and $f''({a}) = {fppa}$, what is $g''({a})$?"
     return item("5.9", q, (num(gpp + 2), rf"$g''(x) = {k}f''(x) + 2$, so $g''({a}) = {k}({fppa}) + 2 = {gpp + 2}$."),
         [(num(gpp), r"The second derivative of $x^{2}$ is $2$, not $0$."),
-         (num(k * fpa + 2 * a), r"This is $g'(a)$."),
+         (num(k * fpa + 2 * a), rf"This is $g'({a})$, not $g''({a})$."),
          (num(fppa + 2), rf"The constant factor ${k}$ stays in front of $f''$.")])
 
 # ---------------------------------------------------------------- 5.10 and 5.11 optimization
@@ -387,7 +390,7 @@ def t510_fence(r):
     return item("5.10", q, (num(s**2), rf"With sides $x$ and ${L(Rational(P, 2))} - x$, $A = x\left({L(Rational(P, 2))} - x\right)$, and $A' = 0$ at $x = {L(s)}$. The area is ${L(s**2)}$."),
         [(num(s), r"This is the best side length, not the area."),
          (num(Rational(P, 2)**2), r"This uses half the perimeter as a side."),
-         (num(2 * s**2), r"The square of side $\dfrac{P}{4}$ has area $\left(\dfrac{P}{4}\right)^{2}$.")])
+         (num(2 * s**2), rf"This doubles the area. The best rectangle is a ${L(s)}$ by ${L(s)}$ square, with area ${L(s**2)}$.")])
 
 def t510_river(r):
     F = r.choice([100, 200, 240, 400])
@@ -404,7 +407,7 @@ def t510_box(r):
     q = rf"A square sheet of metal ${s}$ inches on a side has equal squares cut from each corner, and the sides are folded up to make an open box. What side length of the cut squares gives the largest volume?"
     return item("5.11", q, (text_choice(f"${L(c)}$ inches"), rf"$V = x({s} - 2x)^{{2}}$. $V' = ({s} - 2x)({s} - 6x) = 0$ gives $x = {L(c)}$ (the other root gives zero volume)."),
         [(text_choice(f"${L(Rational(s, 2))}$ inches"), r"That cut leaves no base, so the volume is $0$."),
-         (text_choice(f"${L(Rational(s, 4))}$ inches"), r"Set $V'(x) = 0$; the product rule gives $(s - 2x)(s - 6x)$."),
+         (text_choice(f"${L(Rational(s, 4))}$ inches"), rf"Set $V'(x) = 0$; the product rule gives $({s} - 2x)({s} - 6x)$, whose zeros are ${L(c)}$ and ${L(Rational(s, 2))}$."),
          (text_choice(f"${L(V)}$ inches"), r"That is the largest volume, in cubic inches, not the cut length.")])
 
 def t510_sum(r):
@@ -413,7 +416,7 @@ def t510_sum(r):
     return item("5.10", q, (num(Rational(S, 2)**2), rf"$P = x({S} - x)$, $P' = {S} - 2x = 0$ at $x = {L(Rational(S, 2))}$, so $P = {L(Rational(S, 2)**2)}$."),
         [(num(Rational(S, 2)), r"This is the number, not the product."),
          (num(S**2), r"This squares the sum."),
-         (num(S - 1), r"$1 \cdot (S - 1)$ is not the largest product.")])
+         (num(S - 1), rf"$1 \cdot {S - 1}$ is not the largest product; ${L(Rational(S, 2))} \cdot {L(Rational(S, 2))}$ is larger.")])
 
 def t511_cost(r):
     V = r.choice([4, 32, 108, 256])
@@ -432,8 +435,8 @@ def t511_dist(r):
     xc = a - Rational(1, 2)
     q = rf"What is the $x$-coordinate of the point on the graph of $y = \sqrt{{x}}$ closest to the point $({a}, 0)$?"
     return item("5.11", q, (num(xc), rf"Minimize $D = (x - {a})^{{2}} + x$. $D' = 2(x - {a}) + 1 = 0$ gives $x = {L(xc)}$."),
-        [(num(a), r"The closest point is not straight above $({a}, 0)$, because the curve slants."),
-         (num(a + Rational(1, 2)), r"The sign in $D' = 2(x - a) + 1$ is mixed up."),
+        [(num(a), rf"The closest point is not straight above $({a}, 0)$, because the curve slants."),
+         (num(a + Rational(1, 2)), rf"The sign in $D' = 2(x - {a}) + 1$ is mixed up."),
          (num(Rational(a, 2)), r"Minimize the square of the distance and set its derivative to $0$.")])
 
 def t511_interpret(r):

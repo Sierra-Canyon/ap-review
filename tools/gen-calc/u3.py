@@ -54,7 +54,7 @@ def t31_ln(r):
     w1 = Rational(1, c**2 + k); w2 = Rational(1, 2 * c); w3 = 2 * c * log(c**2 + k)
     distinct(val, w1, w2, w3)
     q = rf"If $f(x) = \ln\left(x^{{2}} + {k}\right)$, what is $f'({c})$?"
-    return item("3.1", q, (num(val), rf"$f'(x) = \dfrac{{2x}}{{x^{{2}} + {k}}}$; at $x = {c}$ this is $\dfrac{{{2 * c}}}{{{c**2 + k}}} = {L(val)}$."),
+    return item("3.1", q, (num(val), rf"$f'(x) = \dfrac{{2x}}{{x^{{2}} + {k}}}$; at $x = {c}$ this is $\dfrac{{{2 * c}}}{{{c**2 + k}}}{'' if Rational(2 * c, c**2 + k) == Rational(2 * c, c**2 + k).p and False else (' = ' + L(val) if Rational(2 * c, c**2 + k).q != c**2 + k else '')}$."),
         [(num(w1), r"This is $\dfrac{1}{u}$ without the factor $u' = 2x$."),
          (num(w2), r"This divides by the derivative of the inside instead of by the inside."),
          (L(w3), r"The derivative of $\ln u$ is $\dfrac{u'}{u}$, not $u'\ln u$.")])
@@ -97,8 +97,8 @@ def t31_cube_table(r):
     q = rf"For a differentiable function $f$, $f({a}) = {fa}$ and $f'({a}) = {fpa}$. If $h(x) = \left(f(x)\right)^{{{n}}}$, what is $h'({a})$?"
     return item("3.1", q, (num(val), rf"$h'(x) = {n}\left(f(x)\right)^{{{n - 1}}} f'(x)$, so $h'({a}) = {n}({fa})^{{{n - 1}}}({fpa}) = {val}$."),
         [(num(w1), r"This raises the derivative to a power instead of the function."),
-         (num(w2), r"This leaves out the factor $f'(a)$."),
-         (num(w3), r"The power should drop by one, to $n - 1$.")])
+         (num(w2), rf"This leaves out the factor $f'({a}) = {fpa}$."),
+         (num(w3), rf"The power should drop by one, to ${n - 1}$.")])
 
 def t31_tan(r):
     k = r.choice([2, 3, 4])
@@ -173,7 +173,7 @@ def t33_formula(r):
     val = Rational(1, fp)
     q = rf"Let $f(x) = {L(f)}$, and let $g$ be the inverse function of $f$. What is $g'({b})$?"
     return item("3.3", q, (num(val), rf"$f({a}) = {b}$, so $g({b}) = {a}$. Then $g'({b}) = \dfrac{{1}}{{f'({a})}}$, and $f'({a}) = {fp}$."),
-        [(num(fp), r"This is $f'(a)$; the inverse's derivative is its reciprocal."),
+        [(num(fp), rf"This is $f'({a})$; the inverse's derivative is its reciprocal."),
          (num(Rational(1, diff(f, x).subs(x, b))) if diff(f, x).subs(x, b) != fp else "0", rf"This evaluates $f'$ at ${b}$; it must be evaluated at $g({b}) = {a}$."),
          (num(-val), r"The reciprocal is not the negative reciprocal.")])
 
@@ -182,8 +182,8 @@ def t33_table(r):
     val = Rational(1, fpa)
     q = rf"The function $f$ is differentiable and one-to-one, with $f({a}) = {fa}$ and $f'({a}) = {fpa}$. If $g$ is the inverse of $f$, what is $g'({fa})$?"
     return item("3.3", q, (num(val), rf"$g({fa}) = {a}$ because $f({a}) = {fa}$, so $g'({fa}) = \dfrac{{1}}{{f'({a})}} = {L(val)}$."),
-        [(num(fpa), r"This is $f'(a)$, not its reciprocal."),
-         (num(Rational(1, fa)), r"This is $\dfrac{1}{f(a)}$; the derivative of the inverse uses $f'(a)$."),
+        [(num(fpa), rf"This is $f'({a})$, not its reciprocal."),
+         (num(Rational(1, fa)), rf"This is $\dfrac{{1}}{{f({a})}}$; the derivative of the inverse uses $f'({a})$."),
          (num(Rational(a, fa)), r"This is a ratio of coordinates, not a derivative.")])
 
 # ---------------------------------------------------------------- 3.4 inverse trig
@@ -227,7 +227,7 @@ def t36_poly(r):
     distinct(val, w1, w2, w3)
     q = rf"If $f(x) = {L(f)}$, what is $f''({a})$?"
     return item("3.6", q, (num(val), rf"$f'(x) = {L(diff(f, x))}$ and $f''(x) = {L(diff(f, x, 2))}$, so $f''({a}) = {L(val)}$."),
-        [(num(w1), r"This is $f'(a)$, the first derivative."),
+        [(num(w1), rf"This is $f'({a})$, the first derivative."),
          (num(w2), r"The second derivative of $cx^{3}$ is $6cx$, not $3cx$."),
          (num(w3), r"This is the third derivative.")])
 
@@ -238,8 +238,8 @@ def t36_trig(r):
     opts = [sin(x), cos(x), -sin(x), -cos(x)]
     wr = [o for o in opts if o != right]
     q = rf"What is $\dfrac{{d^{{{n}}}}}{{dx^{{{n}}}}}\left[\{fn} x\right]$?"
-    return item("3.6", q, (L(right), rf"The derivatives of $\{fn} x$ repeat every $4$. Since ${n} = 4({n // 4}) + {n % 4}$, the ${n}$th derivative equals derivative number ${n % 4}$, which is ${L(right)}$."),
-        [(L(wr[0]), r"Count the remainder when $n$ is divided by $4$."), (L(wr[1]), r"Count the remainder when $n$ is divided by $4$."), (L(wr[2]), r"Count the remainder when $n$ is divided by $4$.")])
+    return item("3.6", q, (L(right), (rf"The derivatives of $\{fn} x$ repeat every $4$. Since ${n} = 4({n // 4}) + {n % 4}$, derivative number ${n}$ is the same as derivative number ${n % 4}$, which is ${L(right)}$." if n >= 4 else rf"Differentiating ${n}$ times: " + ", then ".join(f"${L(diff(f, x, i))}$" for i in range(1, n + 1)) + ".")),
+        [(L(w), rf"${L(w)}$ is derivative number ${[i for i in range(4) if diff(f, x, i) == w][0]}$ in the cycle, but ${n}$ leaves remainder ${n % 4}$ when divided by $4$." if n >= 4 else (rf"${L(w)}$ is the function itself, before any derivative." if w == f else rf"${L(w)}$ comes after {['', 'one derivative', 'two derivatives', 'three derivatives'][[i for i in range(4) if diff(f, x, i) == w][0]]}, not {['', 'one', 'two', 'three'][n]}.")) for w in wr])
 
 def t36_accel(r):
     a = r.choice([1, 2, 3]); p = r.choice([1, 2]); q0 = r.choice([-6, 9, -3])
@@ -261,7 +261,7 @@ def t36_exp(r):
     q = rf"If $f(x) = e^{{{k}x}}$, what is $f''({c})$?"
     return item("3.6", q, (L(val), rf"Each derivative brings a factor of ${k}$: $f''(x) = {L(k**2)}e^{{{k}x}}$, which is ${L(val)}$ at $x = {c}$."),
         [(L(w1), r"This is the first derivative."),
-         (L(w2), r"Two derivatives multiply by $k$ twice, giving $k^{2}$, not $2k$."),
+         (L(w2), rf"Two derivatives multiply by ${k}$ twice, giving ${k**2}$, not ${2 * k}$."),
          (L(w3), r"This is $f$ itself.")])
 
 def t36_implicit(r):
@@ -270,7 +270,7 @@ def t36_implicit(r):
     val = Rational(-R2, y0**3)
     q = rf"For the curve $x^{{2}} + y^{{2}} = {R2}$, $\dfrac{{dy}}{{dx}} = -\dfrac{{x}}{{y}}$. What is $\dfrac{{d^{{2}}y}}{{dx^{{2}}}}$ at the point $({x0}, {y0})$?"
     return item("3.6", q, (num(val), rf"$\dfrac{{d^{{2}}y}}{{dx^{{2}}}} = -\dfrac{{y - x\frac{{dy}}{{dx}}}}{{y^{{2}}}} = -\dfrac{{x^{{2}} + y^{{2}}}}{{y^{{3}}}} = -\dfrac{{{R2}}}{{{y0**3}}}$ at this point."),
-        [(num(Rational(-x0, y0)) if x0 else num(Rational(-1, y0)), r"This is the first derivative, or the quotient rule applied only to the top." if x0 else r"This differentiates $-\dfrac{x}{y}$ treating $y$ as a constant."),
+        [(num(Rational(-x0, y0)) if x0 else num(Rational(-1, y0)), r"This is the first derivative." if x0 else r"This differentiates $-\dfrac{x}{y}$ treating $y$ as a constant."),
          (num(Rational(-1, y0)) if x0 else num(Rational(R2, y0**3)), r"This differentiates $-\dfrac{x}{y}$ as if $y$ were a constant." if x0 else r"The sign is lost."),
          (num(Rational(R2, y0**3)) if x0 else num(Rational(-R2, y0**2)), r"The sign is lost." if x0 else r"The denominator is $y^{3}$.")])
 t36_implicit.max = 2

@@ -67,7 +67,7 @@ def t12_param(r):
     q = rf"Let ${fdef}$, where $k$ is a constant. For what value of $k$ does $\displaystyle \lim_{{x \to {a}}} f(x)$ exist?"
     return item("1.2", q, (num(k), rf"The limit exists when the one-sided limits agree: ${a}k + {b1} = {a**2 + c}$, so $k = {L(k)}$."),
         [(num(a**2 + c - b1), rf"${a**2 + c - b1}$ is ${a}k$, not $k$. Divide by ${a}$."),
-         (num(Rational(a**2 + c + b1, a)), rf"This comes from adding ${b1}$ instead of subtracting it when solving ${a}k + {b1} = {a**2 + c}$."),
+         (num(Rational(a**2 + c + b1, a)), rf"This moves ${b1}$ to the other side of ${a}k {pm(b1)} = {a**2 + c}$ without changing its sign."),
          (text_choice("No value of $k$ makes the limit exist."), rf"Choosing $k$ so the left-hand limit ${a}k + {b1}$ equals the right-hand limit ${a**2 + c}$ makes the limit exist, even though $f({a})$ is undefined.")])
 
 # ---------------------------------------------------------------- 1.3 graphs
@@ -120,7 +120,7 @@ def t14_sin(r):
     return item("1.4", q, (num(lim) if lim.is_integer else num(lim, 1), rf"From both sides the values close in on ${float(lim):g}$ as $x$ gets close to $0$."),
         [("0", r"$0$ is the input $x$ approaches, not the value the outputs approach."),
          (text_choice("The limit does not exist, because $f(0)$ is undefined."), r"A limit can exist where the function is undefined. The table shows the outputs approaching one number from both sides."),
-         (f"{vals[-1]:.2f}" if abs(vals[-1] - float(lim)) > 0.05 else f"{float(lim) / 2:g}", r"This is a value far from $x = 0$ in the table, not the value the outputs approach.")], calc=False)
+         (f"{vals[-1]:.2f}" if abs(vals[-1] - float(lim)) > 0.05 else f"{float(lim) / 2:g}", r"This is a value far from $x = 0$ in the table, not the value the outputs approach." if abs(vals[-1] - float(lim)) > 0.05 else r"This is half of the value the outputs approach.")], calc=False)
 
 def t14_jump(r):
     a = r.choice([1, 2, 4]); A = r.choice([3, 5, -2]); B = r.choice([1, -1, 6])
@@ -219,8 +219,8 @@ def t16_cube(r):
     a = r.choice([1, 2, 3, -2])
     val = 3 * a**2
     q = rf"What is $\displaystyle \lim_{{x \to {a}}} \frac{{x^{{3}} - {L(a**3)}}}{{x - ({a})}}$?" if a < 0 else rf"What is $\displaystyle \lim_{{x \to {a}}} \frac{{x^{{3}} - {a**3}}}{{x - {a}}}$?"
-    return item("1.6", q, (num(val), rf"$x^{{3}} - ({a})^{{3}} = (x - ({a}))(x^{{2}} + ({a})x + {a**2})$. After canceling, substituting gives ${a**2} + {a**2} + {a**2} = {val}$."),
-        [(num(a**2), rf"${a**2}$ is only one of the three terms of $x^{{2}} + ({a})x + {a**2}$ at $x = {a}$."),
+    return item("1.6", q, (num(val), rf"$x^{{3}} - {a**3} = (x - {a})(x^{{2}} + {a}x + {a**2})$. After canceling, substituting gives ${a**2} + {a**2} + {a**2} = {val}$."),
+        [(num(a**2), rf"${a**2}$ is only one of the three terms of $x^{{2}} + {a}x + {a**2}$ at $x = {a}$."),
          (num(3 * a), r"The factor is $x^{2} + ax + a^{2}$; at $x = a$ it is $3a^{2}$, not $3a$."),
          (text_choice("The limit does not exist."), r"$\dfrac{0}{0}$ is indeterminate. Factoring the difference of cubes removes the zero factor.")])
 
@@ -232,7 +232,7 @@ def t17_direct(r):
     q = r"Which limit can be found by substituting the value of $x$ directly into the expression?"
     return item("1.7", q, (good, rf"At $x = {a}$ the denominator is ${2 * a}$, not $0$, and the function is continuous there, so substituting gives $\dfrac{{0}}{{{2 * a}}} = 0$, the limit."),
         [(bads[0], r"Substituting gives $\dfrac{0}{0}$, an indeterminate form, so the expression must be factored first."),
-         (bads[1], r"Substituting gives $\dfrac{0}{0}$; multiplying by the conjugate or factoring $x - a^{2}$ as a difference of squares is needed."),
+         (bads[1], rf"Substituting gives $\dfrac{{0}}{{0}}$; multiplying by the conjugate, or factoring $x - {a**2}$ as $(\sqrt{{x}} - {a})(\sqrt{{x}} + {a})$, is needed first."),
          (bads[2], r"Substituting gives $\dfrac{0}{0}$; this limit, $1$, comes from the squeeze theorem, not from substitution.")])
 
 def t17_pick(r):
@@ -276,7 +276,7 @@ def t19_rep(r):
     fdef = rf"f(x) = \begin{{cases}} {L(x**2 + p)}, & x < {a} \\ {L(q0 * x + r0)}, & x \ge {a} \end{{cases}}"
     qq = rf"Let ${fdef}$. Selected values of a function $g$ are {tab}, and the values of $g$ near ${a}$ follow this pattern. What is $\displaystyle \lim_{{x \to {a}}} f(x)\,g(x)$?"
     return item("1.9", qq, (num(Fv * G), rf"From both sides $f(x) \to {Fv}$ (${a**2} + {p} = {q0}({a}) {rtex}$), and the table shows $g(x) \to {G}$. The limit of the product is ${Fv}({G}) = {Fv * G}$."),
-        [(num(Fv * ga), rf"${ga}$ is $g({a})$. The limit uses the values $g$ approaches, which is ${G}$."),
+        [(num(Fv * ga), rf"This uses $g({a}) = {ga}$ in place of the limit of $g$, which is ${G}$. A limit depends on values near ${a}$, not at it."),
          (num(Fv + G), r"This adds the limits. The expression is a product."),
          (text_choice(r"The limit does not exist, because $f$ is defined by different formulas on each side."), rf"Both formulas give ${Fv}$ at $x = {a}$, so $\displaystyle \lim_{{x \to {a}}} f(x)$ exists.")])
 
@@ -377,7 +377,7 @@ def t114_side(r):
     ans = r"\infty" if side == "+" else r"-\infty"
     q = rf"What is $\displaystyle \lim_{{x \to {a}^{side}}} \frac{{x + {p}}}{{x - {a}}}$?"
     return item("1.14", q, (ans, rf"The numerator approaches ${a + p} > 0$, and the denominator approaches $0$ through {'positive' if side == '+' else 'negative'} values, so the quotient {'grows' if side == '+' else 'decreases'} without bound."),
-        [(r"-\infty" if side == "+" else r"\infty", r"Check the sign of $x - a$ on this side."),
+        [(r"-\infty" if side == "+" else r"\infty", rf"Check the sign of $x - {a}$ on this side: it is {'positive' if side == '+' else 'negative'}."),
          (num(a + p), rf"${a + p}$ is the limit of the numerator only."),
          ("0", r"A denominator approaching $0$ with a nonzero numerator makes the quotient large, not $0$.")])
 
@@ -418,7 +418,7 @@ def t115_higher(r):
     ans = r"\infty" if sign > 0 else r"-\infty"
     q = rf"What is $\displaystyle \lim_{{x \to {side}}} \frac{{{L(p * x**3 + 1)}}}{{{L(s * x**2 + 4)}}}$?"
     return item("1.15", q, (ans, rf"For large $|x|$ the quotient behaves like $\dfrac{{{p}x^{{3}}}}{{{s}x^{{2}}}} = {L(Rational(p, s))}x$, which goes to ${ans}$ as $x \to {side}$."),
-        [(r"-\infty" if ans == r"\infty" else r"\infty", r"Check the sign of the leading behavior $\dfrac{p}{s}x$ in this direction."),
+        [(r"-\infty" if ans == r"\infty" else r"\infty", rf"Check the sign of ${L(Rational(p, s))}x$ as $x \to {side}$."),
          (num(Rational(p, s)), r"The ratio of leading coefficients is the limit only when the degrees are equal."),
          ("0", r"The numerator has the higher degree, so the quotient grows without bound.")])
 
@@ -467,7 +467,7 @@ def t115_trig(r):
     q = rf"What is $\displaystyle \lim_{{x \to \infty}} \frac{{\{fn}({k}x)}}{{x^{{{n}}}}}$?" if n > 1 else rf"What is $\displaystyle \lim_{{x \to \infty}} \frac{{\{fn}({k}x)}}{{x}}$?"
     return item("1.15", q, ("0", r"The numerator stays between $-1$ and $1$ while the denominator grows without bound, so by the squeeze theorem the quotient approaches $0$."),
         [("1", r"$\dfrac{\sin u}{u} \to 1$ applies as $u \to 0$, not as $x \to \infty$."),
-         (text_choice("The limit does not exist, because the numerator oscillates."), r"The oscillation is squeezed: the quotient lies between $-\dfrac{1}{x^{n}}$ and $\dfrac{1}{x^{n}}$, which both approach $0$."),
+         (text_choice("The limit does not exist, because the numerator oscillates."), rf"The oscillation is squeezed: the quotient lies between $-\dfrac{{1}}{{{'x' if n == 1 else 'x^{' + str(n) + '}'}}}$ and $\dfrac{{1}}{{{'x' if n == 1 else 'x^{' + str(n) + '}'}}}$, which both approach $0$."),
          (num(k), rf"${k}$ comes from treating the expression like $\dfrac{{\sin({k}x)}}{{x}}$ near $0$, which does not apply at infinity.")])
 
 # ---------------------------------------------------------------- 1.16

@@ -103,8 +103,8 @@ def t63_limit(r):
     q = rf"Which definite integral equals $\displaystyle\lim_{{n \to \infty}} \sum_{{k=1}}^{{n}} \left({a} + \frac{{{w}k}}{{n}}\right)^{{{p}}} \frac{{{w}}}{{n}}$?" if a else rf"Which definite integral equals $\displaystyle\lim_{{n \to \infty}} \sum_{{k=1}}^{{n}} \left(\frac{{{w}k}}{{n}}\right)^{{{p}}} \frac{{{w}}}{{n}}$?"
     return item("6.3", q, (text_choice(rf"$\displaystyle\int_{{{a}}}^{{{a + w}}} x^{{{p}}}\,dx$"), rf"The width is $\dfrac{{{w}}}{{n}}$, so the interval has length ${w}$, starting at ${a}$."),
         [(text_choice(rf"$\displaystyle\int_{{0}}^{{{w}}} x^{{{p}}}\,dx$" if a else rf"$\displaystyle\int_{{0}}^{{1}} x^{{{p}}}\,dx$"), r"The left end of the interval is the constant term in the input." if a else r"The length of the interval is the numerator of $\Delta x$."),
-         (text_choice(rf"$\displaystyle\int_{{{a}}}^{{{w}}} x^{{{p}}}\,dx$" if a else rf"$\displaystyle\int_{{0}}^{{{w}}} {w}x^{{{p}}}\,dx$"), r"The upper limit is the left end plus the length." if a else r"The factor $\dfrac{w}{n}$ is $\Delta x$, not part of the function."),
-         (text_choice(rf"$\displaystyle\int_{{{a}}}^{{{a + w}}} x^{{{p}}}\,dx \cdot {w}$" if a else rf"$\displaystyle\int_{{{w}}}^{{{2 * w}}} x^{{{p}}}\,dx$"), r"$\dfrac{w}{n}$ becomes $dx$; it is not an extra factor." if a else r"The input starts at $0$ when $k = 0$.")])
+         (text_choice(rf"$\displaystyle\int_{{{a}}}^{{{w}}} x^{{{p}}}\,dx$" if a else rf"$\displaystyle\int_{{0}}^{{{w}}} {w}x^{{{p}}}\,dx$"), r"The upper limit is the left end plus the length." if a else rf"The factor $\dfrac{{{w}}}{{n}}$ is $\Delta x$, not part of the function."),
+         (text_choice(rf"$\displaystyle\int_{{{a}}}^{{{a + w}}} x^{{{p}}}\,dx \cdot {w}$" if a else rf"$\displaystyle\int_{{{w}}}^{{{2 * w}}} x^{{{p}}}\,dx$"), rf"$\dfrac{{{w}}}{{n}}$ becomes $dx$; it is not an extra factor." if a else rf"The input $\dfrac{{{w}k}}{{n}}$ starts near $0$, so the interval is $[0, {w}]$, not $[{w}, {2 * w}]$.")])
 
 def t63_func(r):
     fn, tex = r.choice([(sqrt(x), r"\sqrt{x}"), (sin(x), r"\sin x"), (exp(x), "e^{x}"), (1 / x, r"\frac{1}{x}")])
@@ -147,8 +147,8 @@ def t64_zero(r):
     a = r.choice([1, 2, -1])
     q = rf"Let $g(x) = \displaystyle\int_{{{a}}}^{{x}} f(t)\,dt$ for a continuous function $f$. What is $g({a})$?"
     return item("6.4", q, ("0", r"An integral from a number to itself is $0$."),
-        [(text_choice(rf"$f({a})$"), r"That is $g'(a)$."),
-         (text_choice(rf"$f'({a})$"), r"That is $g''(a)$."),
+        [(text_choice(rf"$f({a})$"), rf"That is $g'({a})$."),
+         (text_choice(rf"$f'({a})$"), rf"That is $g''({a})$."),
          (text_choice(r"It cannot be found without a formula for $f$."), r"The interval has length $0$, so no formula is needed.")])
 t64_zero.max = 1
 
@@ -293,12 +293,13 @@ def t67_poly(r):
     fn = c2 * x**2 + c1 * x + 1
     val = I(fn, a, b); F = integrate(fn, x)
     w1 = fn.subs(x, b) - fn.subs(x, a); w2 = F.subs(x, b); w3 = diff(fn, x).subs(x, b) - diff(fn, x).subs(x, a)
-    if a == 0: w2 = F.subs(x, b) + F.subs(x, -1) if False else val + 2
+    G = c2 * x**3 + c1 * x**2 + x  # powers raised, not divided
+    if a == 0: w2 = G.subs(x, b) - G.subs(x, a)
     distinct(val, w1, w2, w3)
     q = rf"What is $\displaystyle\int_{{{a}}}^{{{b}}} \left({L(fn)}\right)dx$?"
     return item("6.7", q, (num(val), rf"An antiderivative is $F(x) = {L(F)}$, and $F({b}) - F({a}) = {L(val)}$."),
         [(num(w1), r"This subtracts values of the integrand, not of an antiderivative."),
-         (num(w2), r"This uses only $F(b)$; the value $F(a)$ must be subtracted." if a != 0 else r"Recheck the antiderivative: the power goes up by one and you divide by the new power."),
+         (num(w2), rf"This uses only $F({b})$; the value $F({a})$ must be subtracted." if a != 0 else r"This raises each power by one but does not divide by the new power."),
          (num(w3), r"This differentiates instead of finding an antiderivative.")])
 
 def t67_trig(r):
@@ -326,7 +327,7 @@ def t67_exp(r):
         q = rf"What is $\displaystyle\int_0^{{{b}}} \frac{{1}}{{x + 1}}\,dx$?"
         val = log(b + 1)
         return item("6.7", q, (L(val), rf"An antiderivative is $\ln|x + 1|$, so the value is $\ln {b + 1} - \ln 1 = \ln {b + 1}$."),
-            [(L(Rational(b, b + 1) if False else 1 - Rational(1, (b + 1)**2)), r"This uses the power rule on $(x + 1)^{-1}$, which does not apply for $n = -1$."),
+            [(L(Rational(b, b + 1) if False else 1 - Rational(1, (b + 1)**2)), r"This uses $-\dfrac{1}{(x + 1)^{2}}$, the derivative of the integrand, as if it were an antiderivative."),
              (L(Rational(1, b + 1) - 1), r"This evaluates the integrand instead of an antiderivative."),
              (L(log(b + 1) + 1), r"$\ln 1 = 0$.")])
     q = rf"What is $\displaystyle\int_0^{{{b}}} e^{{{k}x}}\,dx$?"
@@ -359,7 +360,7 @@ def t68_power(r):
     return item("6.8", q, (L(F) + " + C", rf"Raise the power by one and divide by the new power: ${L(F)} + C$."),
         [(L(w1) + " + C", r"Divide by the new exponent."),
          (L(w2) + " + C", r"This is the derivative, not an antiderivative."),
-         (L(w3) + " + C", r"Divide by the new exponent, $n + 1$, not the old one.")])
+         (L(w3) + " + C", rf"Divide by the new exponent, ${L(n + 1)}$, not the old one, ${L(n)}$.")])
 
 def t68_trig(r):
     k = r.choice([1, 2, 3, 4]); fn = r.choice(["sin", "cos"])
@@ -368,21 +369,21 @@ def t68_trig(r):
         right = rf"-\frac{{1}}{{{k}}}\cos({kx}) + C" if k > 1 else r"-\cos x + C"
         wr = [(rf"\frac{{1}}{{{k}}}\cos({kx}) + C" if k > 1 else r"\cos x + C", r"The antiderivative of $\sin$ is $-\cos$."),
               (rf"-{k}\cos({kx}) + C" if k > 1 else r"-\sin x + C", r"Divide by the inside's coefficient instead of multiplying." if k > 1 else r"This mixes up $\sin$ and $\cos$."),
-              (rf"-\cos({kx}) + C" if k > 1 else r"\sin x + C", r"The factor $\dfrac{1}{k}$ is needed." if k > 1 else r"This is the integrand, not an antiderivative.")]
+              (rf"-\cos({kx}) + C" if k > 1 else r"\sin x + C", rf"The factor $\dfrac{{1}}{{{k}}}$ is needed." if k > 1 else r"This is the integrand, not an antiderivative.")]
     else:
         right = rf"\frac{{1}}{{{k}}}\sin({kx}) + C" if k > 1 else r"\sin x + C"
         wr = [(rf"-\frac{{1}}{{{k}}}\sin({kx}) + C" if k > 1 else r"-\sin x + C", r"The antiderivative of $\cos$ is $\sin$, with no negative."),
               (rf"{k}\sin({kx}) + C" if k > 1 else r"-\cos x + C", r"Divide by the inside's coefficient instead of multiplying." if k > 1 else r"This mixes up $\sin$ and $\cos$."),
-              (rf"\sin({kx}) + C" if k > 1 else r"\cos x + C", r"The factor $\dfrac{1}{k}$ is needed." if k > 1 else r"This is the integrand.")]
+              (rf"\sin({kx}) + C" if k > 1 else r"\cos x + C", rf"The factor $\dfrac{{1}}{{{k}}}$ is needed." if k > 1 else r"This is the integrand.")]
     q = rf"What is $\displaystyle\int \{fn}({kx})\,dx$?" if k > 1 else rf"What is $\displaystyle\int \{fn} x\,dx$?"
-    return item("6.8", q, (right, r"Check by differentiating: the derivative of the answer must be the integrand."), wr)
+    return item("6.8", q, (right, (rf"The derivative of $\sin({kx})$ is ${k}\cos({kx})$, so divide by ${k}$; differentiating the answer gives back the integrand." if fn == "cos" else rf"The derivative of $-\cos({kx})$ is ${k}\sin({kx})$, so divide by ${k}$; differentiating the answer gives back the integrand.") if k > 1 else r"Differentiating the answer gives back the integrand."), wr)
 
 def t68_recip(r):
     k = r.choice([1, 2, 3, 5])
     q = rf"What is $\displaystyle\int \frac{{{k}}}{{x}}\,dx$?" if k > 1 else r"What is $\displaystyle\int \frac{1}{x}\,dx$?"
     kk = str(k) if k > 1 else ""
     return item("6.8", q, (rf"{kk}\ln|x| + C", r"The antiderivative of $\dfrac{1}{x}$ is $\ln|x|$."),
-        [(rf"-\frac{{{k}}}{{x^{{2}}}} + C", r"This is the derivative of $\dfrac{k}{x}$."),
+        [(rf"-\frac{{{k}}}{{x^{{2}}}} + C", rf"This is the derivative of $\dfrac{{{k}}}{{x}}$, not an antiderivative."),
          (rf"\frac{{{k}x^{{0}}}}{{0}} + C", r"The power rule fails for $x^{-1}$; it would divide by $0$."),
          (rf"{kk}e^{{x}} + C" if k > 1 else r"\ln x^{2} + C", r"The antiderivative of $\dfrac{1}{x}$ is a logarithm." if k > 1 else r"The antiderivative is $\ln|x|$.")])
 t68_recip.max = 2
@@ -395,8 +396,8 @@ def t68_ivp(r):
     q = rf"If $f'(x) = {L(fp)}$ and $f({x0}) = {y0}$, what is $f({X})$?"
     return item("6.8", q, (num(val), rf"$f(x) = {L(F)} + C$, and $f({x0}) = {y0}$ gives $C = {L(C)}$. Then $f({X}) = {L(val)}$."),
         [(num(F.subs(x, X)), r"The constant $C$ is left out."),
-         (num(F.subs(x, X) + y0) if C != y0 else num(val + 1), r"$C$ comes from solving $f(x_0) = y_0$, not from adding $y_0$ directly." if C != y0 else r"Recheck the antiderivative."),
-         (num(fp.subs(x, X)), r"This is $f'(X)$.")])
+         (num(F.subs(x, X) + y0) if C != y0 else num(val + 1), rf"$C$ comes from solving $f({x0}) = {y0}$, not from adding ${y0}$ to the antiderivative." if C != y0 else r"Recheck the antiderivative."),
+         (num(fp.subs(x, X)), rf"This is $f'({X})$, not $f({X})$.")])
 
 def t68_exp(r):
     k = r.choice([2, 3, -1, 4])
@@ -404,8 +405,8 @@ def t68_exp(r):
     ek = f"e^{{{k}x}}" if k != -1 else "e^{-x}"
     right = rf"\frac{{1}}{{{k}}}{ek} + C" if k > 0 else r"-e^{-x} + C"
     return item("6.8", q, (right, rf"Divide by the coefficient of $x$ in the exponent, ${k}$."),
-        [(rf"{ek} + C", r"The factor $\dfrac{1}{k}$ is missing."),
-         (rf"{k}{ek} + C" if k > 0 else r"-e^{x} + C", r"Multiplying by $k$ is the derivative's rule." if k > 0 else r"The exponent stays $-x$."),
+        [(rf"{ek} + C", rf"The factor $\dfrac{{1}}{{{k}}}$ is missing." if k > 0 else r"The factor $\dfrac{1}{-1} = -1$ is missing."),
+         (rf"{k}{ek} + C" if k > 0 else r"-e^{x} + C", rf"Multiplying by ${k}$ is the derivative's rule." if k > 0 else r"The exponent stays $-x$."),
          (rf"\frac{{{ek.replace('{' + str(k) + 'x}', '{' + str(k) + 'x + 1}')}}}{{{k}x + 1}} + C" if k > 0 else r"\frac{e^{-x + 1}}{-x + 1} + C", r"The power rule does not apply to exponential functions.")])
 
 def t68_sum(r):
@@ -436,7 +437,7 @@ def t69_poly(r):
     q = rf"What is $\displaystyle\int {2 * a if a > 0 else ''}x\left({L(inner)}\right)^{{{n}}}\,dx$?"
     right = rf"\frac{{{a}}}{{{n + 1}}}\left({L(inner)}\right)^{{{n + 1}}} + C" if a != n + 1 else rf"\left({L(inner)}\right)^{{{n + 1}}} + C"
     right = L(Rational(a, n + 1)) + rf"\left({L(inner)}\right)^{{{n + 1}}} + C" if a != n + 1 else rf"\left({L(inner)}\right)^{{{n + 1}}} + C"
-    return item("6.9", q, (right, rf"Let $u = {L(inner)}$, $du = 2x\,dx$. The integral becomes ${a}\displaystyle\int u^{{{n}}}\,du = \dfrac{{{a}}}{{{n + 1}}}u^{{{n + 1}}} + C$."),
+    return item("6.9", q, (right, rf"Let $u = {L(inner)}$, $du = 2x\,dx$. The integral becomes ${a if a != 1 else ''}\displaystyle\int u^{{{n}}}\,du = \dfrac{{{a}}}{{{n + 1}}}u^{{{n + 1}}} + C$."),
         [(L(Rational(2 * a, n + 1)) + rf"\left({L(inner)}\right)^{{{n + 1}}} + C", r"$du = 2x\,dx$ absorbs the factor $2$."),
          (L(Rational(a, n + 1) * 2 * 1) + rf"x^{{2}}\left({L(inner)}\right)^{{{n + 1}}} + C" if False else L(Rational(2 * a, n + 1)) + rf"x\left({L(inner)}\right)^{{{n + 1}}} + C", r"After substituting, no $x$ should remain."),
          (L(Rational(a, n)) + rf"\left({L(inner)}\right)^{{{n - 1}}} + C" if a * n != n else rf"\left({L(inner)}\right)^{{{n - 1}}} + C", r"Integration raises the power; it does not lower it.")])
@@ -530,6 +531,9 @@ TECH_WRONG = ["Substitution with $u = x^{2} + 5$", "Long division first", r"Comp
 def t614_tech(r):
     i = r.randrange(len(TECH)); integ, right, why = TECH[i]
     wr = [w for w in TECH_WRONG if w != right]
+    # Dividing each term by x and long division are the same move when the bottom is x; never offer one as wrong for the other.
+    same = {"Long division first", "Divide each term by $x$, then integrate term by term"}
+    if right in same: wr = [w for w in wr if w not in same]
     r.shuffle(wr)
     q = rf"Which method is the best first step for ${integ}$?"
     return item("6.14", q, (text_choice(right + "."), why), [(text_choice(w + "."), r"That method does not fit the form of this integrand.") for w in wr[:3]])

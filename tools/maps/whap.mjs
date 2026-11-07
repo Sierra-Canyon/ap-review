@@ -379,4 +379,37 @@ const resistance = {
   checked: ["Bruce Vandervort, Wars of Imperial Conquest in Africa, 1830 to 1914 (1998), and C. A. Bayly, The Birth of the Modern World, 1780 to 1914 (2004)", "Encyclopaedia Britannica entries for each battle and uprising"],
 };
 
-export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts, greatWar, africa1350, battuta, siberia, resistance];
+const africaIndependence = {
+  id: "africa-independence",
+  caption: "Independence in Africa, 1951 to 1990: capitals with the year each country became independent",
+  alt: "Map of Africa marking capital cities with the year each country became independent. North Africa: Tripoli, Libya, 1951; Rabat, Morocco, Tunis, Tunisia, and Khartoum, Sudan, 1956; Algiers, Algeria, 1962, after a long war against France. West Africa: Accra, Ghana, 1957; Conakry, Guinea, 1958; Dakar, Senegal, and Lagos, Nigeria, 1960; Bissau, Guinea-Bissau, 1974, after an armed struggle against Portugal. Central and East Africa: Léopoldville (now Kinshasa), Congo, and Mogadishu, Somalia, 1960; Dar es Salaam, Tanganyika, 1961; Kampala, Uganda, 1962; Nairobi, Kenya, 1963. Southern Africa: Lusaka, Zambia, 1964; Luanda, Angola, and Lourenço Marques (now Maputo), Mozambique, 1975, after armed struggles against Portugal; Salisbury (now Harare), Zimbabwe, 1980, after a guerrilla war; Windhoek, Namibia, 1990, after a war against South African rule. Most countries north of the equator became independent between 1956 and 1962, and the last colonies to win independence were in the south.",
+  bbox: [-20, -36, 55, 38], width: 560, height: 560,
+  regions: [{ name: "Atlantic Ocean", at: [-14, -8], size: 11 }, { name: "Indian Ocean", at: [47, -32], size: 11 }, { name: "SAHARA", at: [10, 22], size: 11 }],
+  places: [
+    { name: "Rabat 1956", at: [-6.84, 34.02], label: "below" },
+    { name: "Algiers 1962", at: [3.06, 36.75], kind: "major", label: "left" },
+    { name: "Tunis 1956", at: [10.18, 36.81], label: "right" },
+    { name: "Tripoli 1951", at: [13.19, 32.89], label: "below" },
+    { name: "Khartoum 1956", at: [32.53, 15.5], label: "right" },
+    { name: "Dakar 1960", at: [-17.45, 14.69], label: "above" },
+    { name: "Bissau 1974", at: [-15.6, 11.86], kind: "major", label: "right" },
+    { name: "Conakry 1958", at: [-13.58, 9.64], label: "below" },
+    { name: "Accra 1957", at: [-0.19, 5.6], label: "below" },
+    { name: "Lagos 1960", at: [3.38, 6.52], label: "right" },
+    { name: "Mogadishu 1960", at: [45.34, 2.05], label: "above" },
+    { name: "Kampala 1962", at: [32.58, 0.35], label: "left" },
+    { name: "Nairobi 1963", at: [36.82, -1.29], label: "right" },
+    { name: "Léopoldville 1960", at: [15.27, -4.33], label: "left" },
+    { name: "Dar es Salaam 1961", at: [39.28, -6.79], label: "right" },
+    { name: "Luanda 1975", at: [13.23, -8.84], kind: "major", label: "left" },
+    { name: "Lusaka 1964", at: [28.32, -15.39], label: "left" },
+    { name: "Salisbury 1980", at: [31.05, -17.83], kind: "major", label: "right" },
+    { name: "Lourenço Marques 1975", at: [32.57, -25.97], kind: "major", label: "right" },
+    { name: "Windhoek 1990", at: [17.08, -22.56], kind: "major", label: "left" },
+  ],
+  legend: [{ kind: "city", text: "Capital, with year of independence" }, { kind: "major", text: "Independence after a long armed struggle" }],
+  legendAt: "bottom-left", legendWidth: 250,
+  checked: ["Frederick Cooper, Africa since 1940: The Past of the Present (2nd ed., 2019), the chronology of independence", "Encyclopaedia Britannica entries for each country's history and for \"decolonization\""],
+};
+
+export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts, greatWar, africa1350, battuta, siberia, resistance, africaIndependence];

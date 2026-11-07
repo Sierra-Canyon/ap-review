@@ -11,6 +11,8 @@ export const pictures = [
   { file: "images/whap/shah-jahan.jpg", met: 451270, title: "Chitarman, \"Shah Jahan on a Terrace, Holding a Pendant Set With His Portrait\", 1627 to 1628" },
   { file: "images/whap/nanban-screen.jpg", met: 65417, title: "\"Arrival of the Europeans\", pair of six-panel folding screens, Japan, first quarter of the 17th century" },
   { file: "images/whap/americans-yokohama.jpg", met: 73542, title: "Ippōsai Yoshifuji, \"Americans on an Outing\", 1861" },
+  { file: "images/whap/takanawa-railway.jpg", met: 73551, title: "Tsukioka Yoshitoshi, \"Illustration of Steam Locomotive Tracks at Takanawa\", 1872" },
+  { file: "images/whap/progress-of-the-century.jpg", met: 659890, title: "Currier & Ives, \"The Progress of the Century\", 1876" },
 ];
 
 const force = process.argv.includes("--force");

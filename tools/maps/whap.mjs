@@ -279,4 +279,104 @@ const greatWar = {
   checked: ["Hew Strachan, The First World War (2003), and John Keegan, The First World War (1998), chronologies", "Encyclopaedia Britannica entries for each battle"],
 };
 
-export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts, greatWar];
+const africa1350 = {
+  id: "africa-1350",
+  caption: "Cities and states of Africa, c. 1350",
+  alt: "Map of Africa marking cities around 1350. In West Africa along the Niger River and the edge of the Sahara: Walata, Timbuktu, Djenné, and Gao in the Mali Empire, with the salt mines of Taghaza far to the north in the desert. Farther south near the forest: Ile-Ife and Benin City. In the northeast: Cairo, capital of the Mamluk sultanate, and Lalibela in Christian Ethiopia. On the east coast facing the Indian Ocean: Mogadishu, Kilwa, and Sofala. Inland in southern Africa: Great Zimbabwe.",
+  bbox: [-20, -36, 55, 38], width: 560, height: 560,
+  regions: [{ name: "SAHARA", at: [10, 24], size: 11 }, { name: "Indian Ocean", at: [50, -18], size: 11 }, { name: "Atlantic Ocean", at: [-14, -4], size: 11 }, { name: "MALI", at: [-10.5, 12.2], size: 10 }],
+  places: [
+    { name: "Taghaza (salt)", at: [-5.0, 23.6], label: "right" },
+    { name: "Walata", at: [-7.0, 17.3], label: "left" },
+    { name: "Timbuktu", at: [-3.0, 16.77], kind: "major", label: "above" },
+    { name: "Gao", at: [-0.04, 16.27], label: "right" },
+    { name: "Djenné", at: [-4.56, 13.9], label: "below" },
+    { name: "Ile-Ife", at: [4.56, 7.48], label: "left" },
+    { name: "Benin City", at: [5.62, 6.34], label: "below" },
+    { name: "Cairo", at: [31.24, 30.04], kind: "major", label: "left" },
+    { name: "Lalibela", at: [39.04, 12.03], label: "right" },
+    { name: "Mogadishu", at: [45.34, 2.05], label: "right" },
+    { name: "Kilwa", at: [39.51, -8.96], kind: "major", label: "right" },
+    { name: "Sofala", at: [34.85, -20.15], label: "right" },
+    { name: "Great Zimbabwe", at: [30.93, -20.27], label: "left" },
+  ],
+  legend: [{ kind: "major", text: "Major trading city" }, { kind: "city", text: "Other city or capital" }],
+  legendAt: "bottom-left", legendWidth: 190,
+  checked: ["François-Xavier Fauvelle, The Golden Rhinoceros: Histories of the African Middle Ages (2018)", "Encyclopaedia Britannica entries for each city and for \"Mali\" and \"Great Zimbabwe\""],
+};
+
+const battuta = {
+  id: "ibn-battuta",
+  caption: "Some of the places Ibn Battuta visited, 1325 to 1354, with the year of his first visit (routes approximate)",
+  alt: "Map from West Africa to China tracing Ibn Battuta's travels. He left Tangier in 1325 and reached Cairo and then Mecca in 1326. From Arabia he sailed down the East African coast to Kilwa in 1331. He reached Delhi in 1334 and served the sultan there, sailed from Calicut on the Malabar Coast in 1342, and reached Quanzhou in China in about 1345. After returning home, he crossed the Sahara to Timbuktu and the Mali Empire in 1352 to 1353.",
+  bbox: [-20, -14, 124, 44], width: 760, height: 360,
+  regions: [{ name: "Indian Ocean", at: [72, -6], size: 12 }, { name: "SAHARA", at: [5, 24], size: 10 }, { name: "ARABIA", at: [50, 25], size: 10 }, { name: "CHINA", at: [108, 33], size: 10 }],
+  routes: [
+    { through: [[-5.81, 35.77], [3.0, 36.7], [10.2, 36.8], [20.0, 32.0], [31.24, 30.04], [35.2, 31.8], [36.3, 33.5], [39.6, 24.5], [39.83, 21.42]] },
+    { through: [[39.83, 21.42], [42.0, 14.0], [45.03, 12.8], [48.0, 10.0], [45.34, 2.05], [40.12, -3.22], [39.51, -8.96]] },
+    { through: [[39.83, 21.42], [44.4, 33.3], [51.4, 32.7], [59.6, 36.3], [69.2, 34.5], [71.5, 33.0], [77.21, 28.61]] },
+    { through: [[77.21, 28.61], [75.0, 20.0], [75.78, 11.25]] },
+    { through: [[75.78, 11.25], [80.0, 6.0], [92.0, 6.5], [97.1, 5.15], [104.0, 1.5], [108.0, 10.0], [113.0, 19.0], [118.59, 24.91]] },
+    { through: [[-5.81, 35.77], [-4.3, 31.3], [-5.0, 23.6], [-7.0, 17.3], [-3.0, 16.77]] },
+  ],
+  places: [
+    { name: "Tangier 1325", at: [-5.81, 35.77], kind: "major", label: "left" },
+    { name: "Cairo 1326", at: [31.24, 30.04], label: "above" },
+    { name: "Mecca 1326", at: [39.83, 21.42], label: "right" },
+    { name: "Kilwa 1331", at: [39.51, -8.96], label: "right" },
+    { name: "Delhi 1334", at: [77.21, 28.61], label: "right" },
+    { name: "Calicut 1342", at: [75.78, 11.25], label: "left" },
+    { name: "Quanzhou c. 1345", at: [118.59, 24.91], label: "left" },
+    { name: "Timbuktu 1353", at: [-3.0, 16.77], label: "below" },
+  ],
+  legend: [{ kind: "route", text: "Ibn Battuta's routes (approximate)" }, { kind: "major", text: "His hometown" }],
+  legendAt: "bottom-left", legendWidth: 230,
+  checked: ["Ross E. Dunn, The Adventures of Ibn Battuta: A Muslim Traveler of the Fourteenth Century (1986), chronology", "Encyclopaedia Britannica, \"Ibn Battuta\", and the Gibb translation of the Travels"],
+};
+
+const siberia = {
+  id: "siberia",
+  caption: "Russian forts across Siberia, with the year each was founded, 1587 to 1689",
+  alt: "Map of northern Asia from Moscow to the Pacific marking Russian forts and the year each was founded: Kazan, taken in 1552; Tobolsk 1587; Tomsk 1604; Yeniseysk 1619; Yakutsk 1632; Okhotsk on the Pacific coast 1647; and Irkutsk 1661. Nerchinsk, near the border with Qing China, is marked with the Treaty of Nerchinsk of 1689. Beijing is marked for reference. The forts run eastward along the great rivers of Siberia.",
+  bbox: [30, 36, 150, 68], width: 760, height: 360,
+  regions: [{ name: "SIBERIA", at: [100, 64], size: 12 }, { name: "QING CHINA", at: [112, 41.5], size: 10 }, { name: "Pacific Ocean", at: [146, 45], size: 10 }],
+  places: [
+    { name: "Moscow", at: [37.62, 55.75], kind: "major", label: "below" },
+    { name: "Kazan 1552", at: [49.11, 55.79], label: "below" },
+    { name: "Tobolsk 1587", at: [68.25, 58.2], label: "above" },
+    { name: "Tomsk 1604", at: [84.97, 56.48], label: "below" },
+    { name: "Yeniseysk 1619", at: [92.17, 58.45], label: "above" },
+    { name: "Irkutsk 1661", at: [104.28, 52.29], label: "below" },
+    { name: "Yakutsk 1632", at: [129.73, 62.03], label: "left" },
+    { name: "Okhotsk 1647", at: [143.3, 59.36], label: "below" },
+    { name: "Nerchinsk (treaty 1689)", at: [116.52, 51.98], kind: "battle", label: "right" },
+    { name: "Beijing", at: [116.4, 39.9], label: "right" },
+  ],
+  legend: [{ kind: "city", text: "Russian fort, with the year founded" }, { kind: "battle", text: "Treaty with Qing China" }, { kind: "major", text: "Russian capital" }],
+  legendAt: "bottom-left", legendWidth: 230,
+  checked: ["W. Bruce Lincoln, The Conquest of a Continent: Siberia and the Russians (1994), chronology", "Encyclopaedia Britannica, \"Siberia\" and \"Treaty of Nerchinsk\", and the entries for each city"],
+};
+
+const resistance = {
+  id: "resistance",
+  caption: "Armed resistance to imperial expansion, 1857 to 1900, with the year of a major battle or uprising",
+  alt: "World map marking uprisings and battles against expanding empires: Meerut, India, 1857; Taranaki, New Zealand, 1860; Little Bighorn, United States, 1876; Isandlwana, South Africa, 1879; Khartoum, Sudan, 1885; Adwa, Ethiopia, 1896; Manila, Philippines, 1899; Beijing, China, 1900; and Kumasi, in the Asante kingdom of West Africa, 1900. The places are spread across Asia, Africa, the Americas, and the Pacific.",
+  bbox: [-120, -45, 180, 58], width: 760, height: 380,
+  regions: [{ name: "AFRICA", at: [20, 2], size: 10 }, { name: "Pacific Ocean", at: [-105, -15], size: 10 }, { name: "Indian Ocean", at: [80, -25], size: 10 }],
+  places: [
+    { name: "Little Bighorn 1876", at: [-107.43, 45.57], kind: "battle", label: "below" },
+    { name: "Kumasi 1900", at: [-1.62, 6.69], kind: "battle", label: "left" },
+    { name: "Khartoum 1885", at: [32.53, 15.5], kind: "battle", label: "left" },
+    { name: "Adwa 1896", at: [38.9, 14.16], kind: "battle", label: "right" },
+    { name: "Isandlwana 1879", at: [30.65, -28.36], kind: "battle", label: "left" },
+    { name: "Meerut 1857", at: [77.7, 28.98], kind: "battle", label: "left" },
+    { name: "Beijing 1900", at: [116.4, 39.9], kind: "battle", label: "left" },
+    { name: "Manila 1899", at: [120.98, 14.6], kind: "battle", label: "right" },
+    { name: "Taranaki 1860", at: [174.07, -39.06], kind: "battle", label: "left" },
+  ],
+  legend: [{ kind: "battle", text: "Battle or uprising, with its year" }],
+  legendAt: "bottom-left", legendWidth: 210,
+  checked: ["Bruce Vandervort, Wars of Imperial Conquest in Africa, 1830 to 1914 (1998), and C. A. Bayly, The Birth of the Modern World, 1780 to 1914 (2004)", "Encyclopaedia Britannica entries for each battle and uprising"],
+};
+
+export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts, greatWar, africa1350, battuta, siberia, resistance];

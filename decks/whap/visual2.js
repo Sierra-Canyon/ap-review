@@ -39,8 +39,8 @@ export const sets = {
   "u4-vs2": {
     id: "u4-vs2", name: "A Japanese screen of the Portuguese arrival", intro: "Use the image below to answer the questions that follow.", label: "Image",
     sources: [{ title: "Image", blocks: [
-      { img: "images/whap/nanban-screen.jpg", alt: "A wide Japanese folding screen painted on gold. On the left, a procession of foreign traders in baggy trousers and tall hats walks through a Japanese port town, with servants carrying goods and a parasol held over the captain. On the right, men in long black robes and others in brown robes wait to greet them beside a building with a cross on its roof.",
-        caption: "The right-hand screen of a pair of Japanese folding screens, painted in the first quarter of the 1600s, showing the arrival of a Portuguese ship's captain and his crew in a Japanese port. Jesuit priests in black, and perhaps Franciscan friars in brown, wait to greet them near a Christian church. Japanese artists called such screens nanban (\"southern barbarian\") screens, after the name they used for the Portuguese.",
+      { img: "images/whap/nanban-screen.jpg", alt: "A wide Japanese folding screen of six panels, painted on paper with gold clouds. Foreign traders in patterned robes, baggy trousers, and tall black hats walk in a group through a Japanese port town, with a boat at the water's edge on the lower left. Japanese townspeople watch from houses and shops. At the upper right, men in long black robes stand on the terrace of a large building.",
+        caption: "One of a pair of Japanese folding screens, painted in the first quarter of the 1600s, showing Portuguese traders in a Japanese port town. The men in black robes at the upper right are Jesuit priests. Japanese artists called such screens nanban (\"southern barbarian\") screens, after the name they used for the Portuguese.",
         credit: "The Metropolitan Museum of Art, Mary Griggs Burke Collection, Gift of the Mary and Jackson Burke Foundation, 2015 (2015.300.109.1, .2)", license: "public domain, Met Open Access (CC0)", url: "https://www.metmuseum.org/art/collection/search/65417" },
       { cite: "\"Arrival of the Europeans,\" one of a pair of six-panel folding screens, Japan, Edo period, first quarter of the 17th century. Ink, color, gold, and gold leaf on paper. The Metropolitan Museum of Art.", url: "https://www.metmuseum.org/art/collection/search/65417", kind: "primary" },
     ] }],
@@ -132,9 +132,9 @@ export default [
     ["how Japanese artists viewed the Portuguese traders and missionaries who arrived in the 1500s", "how the Portuguese crown planned its voyages to Asia", "the daily lives of Portuguese sailors at sea", "how Spanish officials governed Manila"],
     ["Correct. Japanese artists painted the screen for Japanese viewers, so it shows how they saw the new arrivals.",
       "The screen does not show Portuguese royal planning.",
-      "It shows the arrival in port, not life at sea.",
+      "It shows traders in a port town, not life at sea.",
       "It shows a Japanese port, not Manila."]),
-  mcq("u4-v06", "u4-vs2", "4.4", "Making connections", "The priests and church shown on the screen are best understood as evidence of",
+  mcq("u4-v06", "u4-vs2", "4.4", "Making connections", "The priests in black robes shown on the screen are best understood as evidence of",
     ["Catholic missionary work that came with Portuguese trade in Asia", "the spread of Protestant churches in Japan", "a Japanese ban on Christianity in the 1500s", "the conversion of the Japanese shogun"],
     ["Correct. Jesuits traveled with Portuguese traders and won many converts in Japan before the Tokugawa bans.",
       "The Jesuits and Franciscans were Catholic orders.",

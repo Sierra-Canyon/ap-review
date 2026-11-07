@@ -25,6 +25,7 @@ import * as visual2 from "./whap/visual2.js";
 import * as u4x from "./whap/u4x.js";
 import * as u5x from "./whap/u5x.js";
 import * as u6x from "./whap/u6x.js";
+import * as u7x from "./whap/u7x.js";
 
 // Unit assessments (decks/whap-mocks/): one form per unit, two for Unit 2, written only for the mocks. No item or source in them is in review.
 // Each is the AP exam in miniature: 15 source-based multiple choice, two short-answer questions (6 parts), and one long essay, 27 points.
@@ -60,7 +61,7 @@ import * as t32 from "./whap-topic/t32.js";
 import * as t33 from "./whap-topic/t33.js";
 import * as t34 from "./whap-topic/t34.js";
 
-const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9, visual, u1x, u2x, u3x, visual2, u4x, u5x, u6x];
+const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9, visual, u1x, u2x, u3x, visual2, u4x, u5x, u6x, u7x];
 const mocks = [w1a, w2a, w2b, w3a, w3b, w4a, w5a, w6a, w7a, w8a, w9a];
 const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
 const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27, t31, t32, t33, t34];

@@ -258,4 +258,25 @@ const treatyPorts = {
   checked: ["John K. Fairbank, Trade and Diplomacy on the China Coast: The Opening of the Treaty Ports, 1842 to 1854 (1953)", "Encyclopaedia Britannica, \"Opium Wars\", \"Treaty of Nanjing\", and \"Treaty of Tianjin\""],
 };
 
-export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts];
+const greatWar = {
+  id: "great-war",
+  caption: "Battles of the First World War in Europe, the Middle East, Africa, and East Asia, 1914 to 1918",
+  alt: "Map from western Europe to East Asia marking battles of the First World War with an X and the year. The Western Front in France and Belgium, 1914 to 1918, with the battles of Ypres, the Somme, and Verdun. On the Eastern Front: Tannenberg 1914. On the Italian front: Caporetto 1917. In the Ottoman Empire and the Middle East: Gallipoli 1915, Kut 1916, and Megiddo 1918. In East Africa: Tanga 1914. In China: Qingdao 1914, a German-leased port taken by Japan. The battles stretch across three continents.",
+  bbox: [-26, -12, 126, 60], width: 760, height: 400,
+  regions: [{ name: "EUROPE", at: [10, 56.5], size: 10 }, { name: "AFRICA", at: [22, 8], size: 11 }, { name: "Indian Ocean", at: [68, -4], size: 12 }, { name: "CHINA", at: [104, 34], size: 10 }, { name: "Mediterranean Sea", at: [18, 34.5], size: 9 }],
+  places: [
+    { name: "Western Front\n(Ypres, the Somme,\nVerdun) 1914 to 1918", at: [3.6, 49.9], kind: "battle", label: "left" },
+    { name: "Tannenberg 1914", at: [20.09, 53.5], kind: "battle", label: "right" },
+    { name: "Caporetto 1917", at: [13.55, 46.25], kind: "battle", label: "right" },
+    { name: "Gallipoli 1915", at: [26.4, 40.2], kind: "battle", label: "right" },
+    { name: "Megiddo 1918", at: [35.18, 32.58], kind: "battle", label: "left" },
+    { name: "Kut 1916", at: [45.83, 32.5], kind: "battle", label: "right" },
+    { name: "Tanga 1914", at: [39.1, -5.07], kind: "battle", label: "right" },
+    { name: "Qingdao 1914", at: [120.38, 36.07], kind: "battle", label: "left" },
+  ],
+  legend: [{ kind: "battle", text: "Battle or campaign, with its year" }],
+  legendAt: "bottom-right", legendWidth: 230,
+  checked: ["Hew Strachan, The First World War (2003), and John Keegan, The First World War (1998), chronologies", "Encyclopaedia Britannica entries for each battle"],
+};
+
+export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts, greatWar];

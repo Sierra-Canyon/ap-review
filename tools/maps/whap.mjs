@@ -178,4 +178,84 @@ const gunpowder = {
   checked: ["Douglas E. Streusand, Islamic Gunpowder Empires: Ottomans, Safavids, and Mughals (2011), chronologies", "Encyclopaedia Britannica entries for each battle and siege, and \"Russia: The rise of Moscow\" for Kazan and Astrakhan"],
 };
 
-export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder];
+const tradingPosts = {
+  id: "trading-posts",
+  caption: "European forts and trading posts from West Africa to Japan, c. 1660",
+  alt: "Map from West Africa to Japan marking European forts and trading posts around 1660. Dutch posts, marked with larger dots: Elmina on the Gold Coast (taken from Portugal 1637 by the Dutch West India Company), Cape Town (1652), Colombo on Ceylon (taken 1656), Malacca (taken 1641), Batavia on Java (1619), and Dejima at Nagasaki (1641). Portuguese posts: Luanda, Mozambique Island, Goa (1510), and Macau (1557). English posts: Surat (1613, where the Dutch also traded from 1616) and Madras (1639). The Spanish held Manila (1571). Almost every post is on a coast or island; the large inland empires are labeled Mughal Empire, Qing China, and Tokugawa Japan.",
+  bbox: [-20, -36, 152, 42], width: 760, height: 370,
+  regions: [
+    { name: "AFRICA", at: [22, -2], size: 11 }, { name: "Indian Ocean", at: [78, -24], size: 13 }, { name: "Atlantic Ocean", at: [-12, -14], size: 11 },
+    { name: "MUGHAL EMPIRE", at: [78, 25], size: 10 }, { name: "QING CHINA", at: [104, 32], size: 10 }, { name: "TOKUGAWA JAPAN", at: [140, 40.5], size: 9 },
+  ],
+  places: [
+    { name: "Elmina (Dutch, 1637)", at: [-1.35, 5.08], kind: "major", label: "above" },
+    { name: "Luanda (Portuguese)", at: [13.23, -8.84], label: "left" },
+    { name: "Cape Town (Dutch, 1652)", at: [18.42, -33.92], kind: "major", label: "right" },
+    { name: "Mozambique Island (Portuguese)", at: [40.74, -15.03], label: "right" },
+    { name: "Surat (English 1613, Dutch 1616)", at: [72.83, 21.17], label: "left" },
+    { name: "Goa (Portuguese, 1510)", at: [73.83, 15.5], label: "left" },
+    { name: "Madras (English, 1639)", at: [80.27, 13.08], label: "right" },
+    { name: "Colombo (Dutch, 1656)", at: [79.86, 6.93], kind: "major", label: "left" },
+    { name: "Malacca (Dutch, 1641)", at: [102.25, 2.19], kind: "major", label: "left" },
+    { name: "Batavia (Dutch, 1619)", at: [106.81, -6.13], kind: "major", label: "below" },
+    { name: "Manila (Spanish, 1571)", at: [120.98, 14.6], label: "right" },
+    { name: "Macau (Portuguese, 1557)", at: [113.54, 22.2], label: "below" },
+    { name: "Dejima (Dutch, 1641)", at: [129.87, 32.74], kind: "major", label: "below" },
+  ],
+  legend: [{ kind: "major", text: "Dutch post" }, { kind: "city", text: "Portuguese, English, or Spanish post" }],
+  legendAt: "bottom-right", legendWidth: 290,
+  checked: ["C. R. Boxer, The Dutch Seaborne Empire, 1600 to 1800 (1965), and The Portuguese Seaborne Empire, 1415 to 1825 (1969), chronologies", "Encyclopaedia Britannica entries for each city and for \"Dutch East India Company\" and \"East India Company\""],
+};
+
+const atlanticRev = {
+  id: "atlantic-revolutions",
+  caption: "Revolutions in the Atlantic world, 1776 to 1822: where each began or was won. Revolutionary France abolished slavery in its colonies in 1794; Napoleon restored it in 1802.",
+  alt: "Map of the Atlantic world from North America and Europe to South America marking revolutions with their years. Philadelphia 1776, the Declaration of Independence. Paris 1789, the French Revolution. Cap-Français in Saint-Domingue 1791, the slave uprising that led to the independence of Haiti in 1804. Dolores 1810, the start of Mexico's war of independence, won in 1821. Caracas 1811 and Buenos Aires 1810. Santiago 1818, Bogotá 1819, and Lima 1821. São Paulo 1822, where Brazil's independence from Portugal was declared.",
+  bbox: [-112, -42, 12, 54], width: 600, height: 560,
+  regions: [{ name: "Atlantic Ocean", at: [-35, 22], size: 13 }, { name: "Pacific Ocean", at: [-100, -10], size: 12 }, { name: "EUROPE", at: [2, 51], size: 10 }, { name: "AFRICA", at: [5, 12], size: 10 }],
+  places: [
+    { name: "Philadelphia 1776", at: [-75.16, 39.95], label: "left" },
+    { name: "Paris 1789", at: [2.35, 48.86], kind: "major", label: "below" },
+    { name: "Saint-Domingue 1791\n(Haiti 1804)", at: [-72.2, 19.76], kind: "major", label: "right" },
+    { name: "Dolores 1810\n(Mexico 1821)", at: [-100.93, 21.16], label: "below" },
+    { name: "Caracas 1811", at: [-66.9, 10.48], label: "right" },
+    { name: "Bogotá 1819", at: [-74.07, 4.71], label: "left" },
+    { name: "Lima 1821", at: [-77.04, -12.05], label: "left" },
+    { name: "Santiago 1818", at: [-70.67, -33.45], label: "left" },
+    { name: "Buenos Aires 1810", at: [-58.38, -34.6], label: "right" },
+    { name: "São Paulo 1822\n(Brazil)", at: [-46.63, -23.55], label: "right" },
+  ],
+  legend: [{ kind: "major", text: "Revolution that abolished slavery" }, { kind: "city", text: "Revolution or independence" }],
+  legendAt: "top-left", legendWidth: 240,
+  checked: ["Lester D. Langley, The Americas in the Age of Revolution, 1750 to 1850 (1996), chronology", "Encyclopaedia Britannica, \"Haitian Revolution\", \"Latin American wars of independence\", and the entries for each city"],
+};
+
+const treatyPorts = {
+  id: "treaty-ports",
+  caption: "Chinese ports opened to foreign trade by the treaties of 1842 and 1858 to 1860",
+  alt: "Map of eastern China. Large dots mark Hong Kong, ceded to Britain, and the five ports opened by the Treaty of Nanjing in 1842, all on the southern and central coast: Guangzhou, Xiamen, Fuzhou, Ningbo, and Shanghai. Smaller dots mark ports opened by the treaties of 1858 to 1860: Tianjin and Yantai in the north, Shantou on the south coast, Tainan and Danshui on Taiwan, and Zhenjiang, Jiujiang, and Hankou far up the Yangzi River, which let foreign ships trade deep inside China.",
+  bbox: [108, 19.5, 125, 41], width: 500, height: 600,
+  regions: [{ name: "QING CHINA", at: [111.5, 35], size: 11 }, { name: "Yellow Sea", at: [123, 35.5], size: 10 }, { name: "East China Sea", at: [124, 28], size: 10 }, { name: "South China Sea", at: [116, 20.5], size: 10 }, { name: "Yangzi River", at: [113.5, 29.4], size: 9 }],
+  routes: [{ kind: "route2", through: [[121.47, 31.23], [120.3, 31.9], [119.45, 32.2], [118.78, 32.06], [117.6, 31.0], [116.0, 29.7], [115.0, 29.9], [114.27, 30.59]] }],
+  places: [
+    { name: "Guangzhou", at: [113.26, 23.13], kind: "major", label: "left" },
+    { name: "Hong Kong", at: [114.17, 22.28], kind: "major", label: "below" },
+    { name: "Xiamen", at: [118.09, 24.48], kind: "major", label: "left" },
+    { name: "Fuzhou", at: [119.3, 26.08], kind: "major", label: "left" },
+    { name: "Ningbo", at: [121.55, 29.87], kind: "major", label: "right" },
+    { name: "Shanghai", at: [121.47, 31.23], kind: "major", label: "right" },
+    { name: "Tianjin", at: [117.2, 39.13], label: "left" },
+    { name: "Yantai", at: [121.39, 37.54], label: "right" },
+    { name: "Zhenjiang", at: [119.45, 32.2], label: "above" },
+    { name: "Jiujiang", at: [116.0, 29.7], label: "below" },
+    { name: "Hankou", at: [114.27, 30.59], label: "left" },
+    { name: "Shantou", at: [116.68, 23.35], label: "below" },
+    { name: "Tainan", at: [120.21, 22.99], label: "right" },
+    { name: "Danshui", at: [121.44, 25.17], label: "right" },
+  ],
+  legend: [{ kind: "major", text: "Opened 1842, or ceded" }, { kind: "city", text: "Opened 1858 to 1860" }, { kind: "route2", text: "Up the Yangzi" }],
+  legendAt: "top-right", legendWidth: 200,
+  checked: ["John K. Fairbank, Trade and Diplomacy on the China Coast: The Opening of the Treaty Ports, 1842 to 1854 (1953)", "Encyclopaedia Britannica, \"Opium Wars\", \"Treaty of Nanjing\", and \"Treaty of Tianjin\""],
+};
+
+export const maps = [silk, plague, zhenghe, iberia, americas, gunpowder, tradingPosts, atlanticRev, treatyPorts];

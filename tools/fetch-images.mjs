@@ -9,6 +9,8 @@ export const pictures = [
   { file: "images/whap/paiza.jpg", met: 39624, title: "Safe Conduct Pass (Paiza) with Inscription in Phakpa Script, Yuan dynasty, late 13th century" },
   { file: "images/whap/elephant-clock.jpg", met: 451402, title: "\"The Elephant Clock\", folio from a Book of the Knowledge of Ingenious Mechanical Devices by al-Jazari, 1315" },
   { file: "images/whap/shah-jahan.jpg", met: 451270, title: "Chitarman, \"Shah Jahan on a Terrace, Holding a Pendant Set With His Portrait\", 1627 to 1628" },
+  { file: "images/whap/nanban-screen.jpg", met: 65417, title: "\"Arrival of the Europeans\", pair of six-panel folding screens, Japan, first quarter of the 17th century" },
+  { file: "images/whap/americans-yokohama.jpg", met: 73542, title: "Ippōsai Yoshifuji, \"Americans on an Outing\", 1861" },
 ];
 
 const force = process.argv.includes("--force");

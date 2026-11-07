@@ -29,6 +29,9 @@ await page.click("[data-as=student]");
 await page.waitForSelector("#coursepick");
 await page.selectOption("#coursepick", { label: "AP CSA" });
 await page.click("nav a[href='#mock']");
+// Once Quiz 5's date has passed, the app files it under the collapsed "Earlier this year" section; open that first.
+await page.waitForSelector("[data-form=q5a]", { state: "attached" });
+if (!(await page.isVisible("[data-form=q5a]"))) await page.click("details:has([data-form=q5a]) > summary");
 await page.click("[data-form=q5a]");
 const q = csa.forms.find((f) => f.id === "q5a");
 let wrongId = null;

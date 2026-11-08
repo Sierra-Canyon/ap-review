@@ -20,6 +20,8 @@ For whoever adds the next course to sierra-canyon.github.io/ap-review, a person 
 3. **Nothing on the site repeats itself across modes.** Mock tests and topic quizzes use questions that are not in review, so a mock shows how a student does cold.
 4. **Every key is proved, not believed.** Code is compiled and run. Math is recomputed. History sources are fetched and matched word for word. A second reader checks what a first writer wrote. See *Checking* below.
 5. **JD's writing rules** (the `my-writing-style` skill): no dashes as punctuation, never "we," "us," "our," or "your teacher," American spelling, plain words, explanations that state the reason and stop.
+6. **No answer is a safe guess.** The key is not the longest choice most of the time: across a file, the key is the longest choice in at most 30% of multiple-choice questions and the shortest in at least 15%, and on average no more than 1.1 times the wrong choices' length. The four choices share one form (four short phrases, or four full clauses) and one level of detail. Writers tend to make the key longest because they qualify it until it is airtight; AP World started at 90% before the 11/8 pass. `node tools/measure-mcq.mjs decks/<deck>.js` measures it. The key letter is the site's job: review shuffles, and quizzes and tests spread keys evenly across A to D (`keyOrders` in `app.js`), so keep the key first with `answer: 0` and never reorder choices by hand.
+7. **Every multiple-choice item has a `difficulty`** (`"easy"`, `"moderate"`, or `"difficult"`), judged honestly, and each unit's spread is within 5 points of Albert's for that unit (the notes in 2a give it).
 
 ## Step 1. Settle the course with JD
 
@@ -148,7 +150,10 @@ A brief is the writer's only context. Start from the closest one in `../private/
 | Code (Java) | `csa-unit.md`, `csa-year-mocks.md`, `csa-crawler.md` |
 | Code (C#) with AP written response | `csp-quiz.md` |
 | Vocabulary and scenario courses with a running case | `cyber-unit.md`, `cyber-free-response.md`, `cyber-mock.md`, `cyber-unit3.md` |
-| A pass over live questions | `clarity-correctness-pass.md` |
+| A pass over live questions | `clarity-correctness-pass.md` (clarity and keys only), `quality-pass.md` (also answer length, difficulty, visual share; see *Reviewing a course*) |
+| Reading Albert for one unit; comparing a unit with the notes | `albert-scan.md`, `albert-check.md` |
+| Maps, charts, or pictures in existing quizzes and tests | `visual-forms.md` |
+| A second assessment for a unit (B form) | `second-assessment.md` |
 
 Every brief says: what to read first (with paths, including `../private/albert-notes/<course>.md` for the course's patterns), the units and topics, the item shapes (copy them from an existing deck file), the source and vocabulary rules, the list of live assessment setups not to reuse, the writing rules, the file to write and its id prefix, the exact check command, and a report format ("the file path, counts by skill, the last line of the check, anything not settled; nothing else").
 
@@ -159,6 +164,7 @@ The briefs refer to paths in the Claude session (`/home/claude/...`, `/mnt/user-
 - **One writer per file, in parallel,** each with its own id prefix, file, and scratch folder (`VERIFY_DIR=/tmp/verify-<name>` for the code checkers), so writers never collide. Give each writer the other writers' subjects to avoid.
 - **Then a second reader** who solves every item from the stem alone before reading the key (`calc-second-reader.md`), and **a clarity pass** (`clarity-correctness-pass.md`) before students see it.
 - **Never change an item's `id`** after it is live: progress, teacher edits, and the Class tab are keyed to it.
+- **Every brief carries rules 6 and 7** (answer length and difficulty) and the measuring command, so a new file meets them on the way in instead of needing a pass later.
 
 ## Step 5. Wire the course in
 
@@ -191,6 +197,7 @@ The briefs refer to paths in the Claude session (`/home/claude/...`, `/mnt/user-
 | Java | `node tools/verify-java.mjs <file>` (Java 21) |
 | Math | `node tools/check-calc.mjs review\|test\|quiz <files>` (shapes, LaTeX, point totals, writing rules), plus sympy for the math |
 | Anything | a node script that loads the file and checks four choices, four explanations, `answer: 0`, every `set` exists, no duplicate ids; and `grep -nP '[\x{2013}\x{2014}]\| - \|\bwe\b\|\bour\b\|\bus\b\|your teacher'` on the prose |
+| Any deck with multiple choice | `node tools/measure-mcq.mjs decks/<deck>.js` (rules 6 and 7: key length, difficulty spread, visual share, key letters on forms) |
 
 Then serve the site (`python3 -m http.server 8765`) and run **every** end-to-end test, not only the new course's: `tools/e2e*.mjs`. Write one for the new course by copying the closest (`e2e-whap.mjs`, `e2e-calc.mjs`, `e2e-csa.mjs`, `e2e-cyber.mjs`): a review set, a mock, the Class tab, phone width. Open the course in the demo (`index.html?demo`) and look at a few items in a screenshot.
 
@@ -200,6 +207,64 @@ Then serve the site (`python3 -m http.server 8765`) and run **every** end-to-end
 2. Copy the changed files into JD's repo on his computer, never overwriting his `firebase-config.js`, and commit as JD. JD pushes.
 3. JD's steps, listed in the reply and in `SETUP.md`: publish the rules, add the teacher (Class tab, **Teachers > Add a teacher**, with their sections checked), paste each section's roster on the Class tab, and run any one-time script.
 
+## Reviewing a course (the quality pass)
+
+When JD asks to go through a course "for clarity and correctness," "Albert alignment," or anything about how the questions feel (too easy, the answer is always the long one, not enough maps), run this pass. It was built on AP World on 11/8: 1,530 multiple-choice questions, 18 agents, about half a day. Brief: `../private/briefs/quality-pass.md`.
+
+**1. Measure first, in numbers.** Before writing a brief, run `node tools/measure-mcq.mjs decks/<deck>.js` and get Albert's numbers for each unit from the notes (difficulty spread; share of questions on a map, image, chart, or table). The table of before numbers goes in the brief and in the report to JD. A complaint ("the answer is usually the longest") becomes a target ("longest at most 30%, ratio at most 1.1").
+
+**2. Split the work so writers never share a file.**
+
+- One agent per unit for the **review bank** (`decks/<course>/u<N>.js`, `u<N>x.js`, and the visual sets for that unit), and one per unit (or two units) for the **forms** (topic quizzes and unit assessments). Review and forms are different jobs: review may gain new sets; forms keep every id, count, and topic.
+- A file used by several units (`visual.js`) goes to one agent, named in the others' assignments as off limits.
+- Each agent writing maps gets its own spec file, `tools/maps/<course>-<tag>.mjs` (`u4r` for Unit 4 review, `u4f` for Unit 4 forms), with ids starting with the tag. `build-maps.mjs` reads them all and fails on a duplicate id.
+- Run at most about eight agents at once. Each one's assignment names its files, its tag, and its unit's Albert targets.
+
+**3. What each agent does, in order** (all in the brief):
+
+1. *Clarity and correctness:* one best answer, true facts and dates, every `why` true, a source question answerable from the source plus course knowledge, rubric guidance that matches its prompt.
+2. *Answer length (rule 6):* trim the key (qualifiers, second clauses, restating the stem) and give the wrong choices the same specificity (a real place, date, cause, or term that is wrong for this question). Never make the key vaguer than it must be, never make a wrong choice defensible, and rewrite each `why` to match.
+3. *Difficulty (rule 7):* tag every item, then move toward Albert's spread by sharpening distractors the way Albert's hard items are hard (a true statement that does not answer the question, a plausible anachronism, a two-part choice with one half wrong, a reversed cause and effect), never by making the stem obscure.
+4. *Visual share:* bring the unit within 5 points of Albert's. Best first: turn a practice passage into a map or chart set on the same content (keep its set id, item ids, and topics; rewrite the questions so they need the visual); then, in review only, add a new map or chart set. Follow 2e, render each map to a PNG and look at it before writing questions, and grep `decks/<course>*` and `tools/maps/` so no map, chart, or source repeats one on the site.
+
+**4. Check every agent's work before merging.** For each changed file: it loads with node; every mcq has four choices, four `why`, `answer: 0`, and a `difficulty`; every set exists; ids unchanged; form item counts unchanged; the course's check script passes; the dash and we/us/our grep is clean (verbatim primary sources excepted). Then rebuild the maps, render every map at once (a contact sheet of PNGs) and look for routes crossing land, clipped or colliding labels, and wrong places. Then run `measure-mcq.mjs` again and all the end-to-end tests.
+
+**5. Report to JD:** before and after numbers per group (key longest, key shortest, ratio, difficulty spread, visual share against Albert's), how many items had a key or a fact corrected (each change to a key or fact one per line in the agents' reports, kept in private), and what is not settled: targets a form cannot reach without changing its sets, references that rest on one encyclopedia, any set whose subject changed, near matches with Albert. JD decides those.
+
+**What went wrong on AP World, so it does not again**
+
+- Agents measured with their own scripts and reported different numbers. Use `measure-mcq.mjs` for everything.
+- A converted table set turned out to repeat a map already on the site; it went back to a practice passage. Grep before converting.
+- A route drawn as a straight line crossed land; add waypoints through the real passage (the Channel, the Strait of Malacca) and look at the render.
+- `maps.js` grew past 2 MB with 69 maps; `build-maps.mjs` now writes relative, rounded paths and drops tiny islands (TOL and MIN_AREA at its top). Watch its size in the build's last line.
+- A form cannot lose a visual set to match a lower Albert share. Report it instead.
+
+## Building out a course
+
+How a course grows after its first build: new units, topic quizzes, unit tests, second forms, and maps. AP World went from a review bank to nine units of review, 71 topic quizzes, and 11 unit assessments this way between 11/5 and 11/8. Every step follows the rules at the top and Steps 3 to 7.
+
+**Order for each unit**
+
+1. **Albert scan** (`albert-scan.md`): one reader per unit writes `../private/albert-notes/u<N>.md` as in 2a, including each topic's difficulty counts, task mix, which questions use a map, image, chart, or table, and one "what it uses" line per question.
+2. **Albert check** (`albert-check.md`): compare the unit's review with the notes; add review questions in `decks/<course>/u<N>x.js` where the site has fewer than 60% as many multiple-choice questions as Albert for a topic, and replace any source that is the same document as Albert's (from 11/7, JD allows the same document as Albert with a different excerpt where possible, never Albert's questions or images).
+3. **Topic quizzes** (`whap-topic-quiz.md`): one per CED topic, in `decks/<course>-topic/t<unit><topic>.js`, modeled on Albert's practice for that topic.
+4. **Unit assessments** (`whap-unit-assessment.md`, and `second-assessment.md` for a B form): `decks/<course>-mocks/w<N>a.js`, `w<N>b.js`, the AP exam in miniature.
+5. **Visuals** (`visual-forms.md` for forms, the quality brief for review): at least one map, chart, or picture set per assessment and in the two topic quizzes where a visual fits best.
+6. **The quality pass** above, then the second reader, then ship.
+
+**Nothing repeated, checked by grep.** Before a writer starts, list the sources already used anywhere in `decks/<course>*` (author, title, URL) and every map subject in `tools/maps/`; give the list to the writer and grep their output against it. Forms use nothing that is in review, and a B form uses nothing from the A form.
+
+**Dates, past units, and items that open later**
+
+- A form's `group` puts it under its unit; a unit whose test date has passed, or that has `past: true`, goes under **Earlier this year**. Mark old units `past: true` when they have no date.
+- Put upcoming quiz and test dates in the deck's `dates` (the countdown) and on each form (`date`).
+- `opens: "YYYY-MM-DD"` on an item keeps it out of review until that day.
+- The end-to-end tests fix the clock (`ctx.clock.install({ time: new Date("2026-11-02T08:00:00") })`) so date-dependent screens do not break as the calendar moves. A new e2e test does the same.
+
+**Pictures.** Only The Met's Open Access (CC0) works whose object page and image the writer has looked at (Claude in Chrome, its own tab), at most one per unit. The writer reports `{ file, met, title }`; JD adds the line to `tools/fetch-images.mjs` and runs `npm run fetch:images` on his Mac (it needs the network and `sips`, which the session does not have). Until then `check-<course>.mjs` lists the picture as missing; that is expected in the session.
+
+**Working with JD's copy.** JD edits and commits too (pictures, small fixes). Before any work, copy his repo from his computer into the session fresh and compare checksums; after the work, copy back only the files changed (never `firebase-config.js`), check `git status` on his computer, and commit as JD. A stale session copy is how a merge conflict happened on 11/7.
+
 ## Keeping a course current
 
 When JD says "look at the upcoming quizzes for <course> and update the site," the routine is:
@@ -207,4 +272,4 @@ When JD says "look at the upcoming quizzes for <course> and update the site," th
 1. Find what is next in the course folder: the release or quiz schedule, the Blackbaud import (titles, due dates, descriptions), the daily run sheets, and the unit plan.
 2. Read the real upcoming quizzes and tests, to know their topics and shape and to avoid them.
 3. Add the dates to `dates`, a focus button for each upcoming assessment, review items for what is new since the last build, and mocks in the real assessment's shape.
-4. Check, test, and ship as above.
+4. Check, test, and ship as above, and run `node tools/measure-mcq.mjs` on the deck so the new items keep rules 6 and 7.

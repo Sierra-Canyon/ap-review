@@ -211,6 +211,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `tools/e2e-student.mjs` | Runs a student's page in Chromium: last-name order, a quiz attempt with each answer, review answers, adding a GitHub username. |
 | `tools/e2e-assess.mjs` | Runs teacher-made assessments in Chromium: add one for two sections and two topics, the countdown, the review set, a matching quiz, edit, delete. |
 | `tools/e2e-questions.mjs` | Runs the Questions tab in Chromium: read, edit, change the right answer, hide, restore, and the edits reaching a test. |
+| `tools/measure-mcq.mjs` | Measures a deck's multiple choice: how often the key is the longest or shortest choice, its length against the wrong choices, the difficulty spread, the share on a map, chart, picture, or table, by unit, for review and for the forms. See `HANDOFF.md`, *Reviewing a course*. |
 | `tools/e2e-whap.mjs` | Runs an AP World unit assessment in Chromium: section labels, scoring short answers and the essay, the score by section, Unit 2 review, the Maps and charts review (each card shows its map, chart, picture, or table, with alt text for a map, chart, or picture), phone width. |
 | `tools/e2e-csa.mjs` | Runs the AP CSA course in Chromium: a review set, a Quiz 5 set, a free response, both mock shapes, phone width, the Class tab. |
 | `tools/e2e-cyber.mjs` | Runs the AP Cyber course in Chromium: a review set, a free-response set, a mock test, phone width, the Class tab, a two-course roster entry. |

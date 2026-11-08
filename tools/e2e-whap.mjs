@@ -20,12 +20,13 @@ for (const it of all) { assert(!ids.has(it.id), "duplicate id " + it.id); ids.ad
 for (const it of all) if (it.set) assert(deck.sets[it.set], "missing set " + it.set);
 for (const it of all) if (it.type === "mcq") assert(it.choices.length === 4 && it.why.length === 4 && it.answer === 0, "mcq shape " + it.id);
 for (const it of all) if (it.type === "essay") assert(it.rows.every((r) => r.levels.length === r.max + 1) && it.model, "essay shape " + it.id);
-assert(deck.forms.length === 29, "eleven unit assessments and eighteen topic quizzes, got " + deck.forms.length);
+const nTopic = deck.forms.filter((f) => f.id.startsWith("t")).length;
+assert(deck.forms.length === 11 + nTopic && nTopic >= 26, "eleven unit assessments and the topic quizzes, got " + deck.forms.length);
 for (const f of deck.forms) {
   const n = (t) => f.items.filter((x) => x.type === t).length;
   if (f.id.startsWith("t")) {
     assert(n("mcq") === 8 && n("fr") === 3 && f.total === 11, `${f.name}: 8 multiple choice, 3 short-answer parts, 11 points`);
-    assert(f.items.every((x) => x.topic === `${f.id[1]}.${f.id[2]}`), `${f.name}: every item on its topic`);
+    assert(f.items.every((x) => x.topic === `${f.id[1]}.${f.id.slice(2)}`), `${f.name}: every item on its topic`);
   } else {
     assert(n("mcq") === 15 && n("fr") === 6 && n("essay") === 1, `${f.name}: 15 multiple choice, 6 short-answer parts, 1 essay`);
     assert(f.total === 27, `${f.name}: 27 points, got ${f.total}`);
@@ -62,7 +63,7 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   await page.waitForSelector("#coursepick");
   await page.selectOption("#coursepick", "whap");
   await page.waitForSelector("text=Take a quiz or test");
-  assert(/29\s*quizzes and tests/.test(await page.textContent(".panel.mode:has-text('Quizzes and tests')")), "the home page counts the quizzes and tests");
+  assert(new RegExp(deck.forms.length + "\\s*quizzes and tests").test(await page.textContent(".panel.mode:has-text('Quizzes and tests')")), "the home page counts the quizzes and tests");
   assert(/Unit 2 Test/.test(await page.textContent(".hero")), "the countdown names the Unit 2 Test");
   await page.screenshot({ path: `${out}/w01-home.png`, fullPage: true });
 
@@ -77,6 +78,8 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   assert(earlier.length === 1 && /^Unit 1: The Global Tapestry/.test(earlier[0]), "Unit 1 is under Earlier this year: " + earlier.join(" | "));
   const unit3 = await page.$$eval(".fgroup", (gs) => { const g = gs.find((x) => /^Unit 3/.test(x.querySelector("h3").textContent)); return g ? [...g.querySelectorAll(".formrow b")].map((x) => x.textContent) : []; });
   assert(unit3.length === 6 && /^Topic 3\.1 Quiz/.test(unit3[0]) && /^Unit 3 Assessment A/.test(unit3[4]) && /^Unit 3 Assessment B/.test(unit3[5]), "Unit 3 lists its four topic quizzes, then its two assessments: " + unit3.join(" | "));
+  const unit4 = await page.$$eval(".fgroup", (gs) => { const g = gs.find((x) => /^Unit 4/.test(x.querySelector("h3").textContent)); return g ? [...g.querySelectorAll(".formrow b")].map((x) => x.textContent) : []; });
+  assert(unit4.length === 9 && /^Topic 4\.1 Quiz/.test(unit4[0]) && /^Topic 4\.8 Quiz/.test(unit4[7]) && /^Unit 4 Assessment/.test(unit4[8]), "Unit 4 lists its eight topic quizzes, then its assessment: " + unit4.join(" | "));
   assert(firstForms.length === 9 && /^Topic 2\.1 Quiz/.test(firstForms[0]) && /^Unit 2 Assessment B/.test(firstForms[8]), "Unit 2 lists its seven topic quizzes, then its two assessments: " + firstForms.join(" | "));
   await page.screenshot({ path: `${out}/w02-mock-list.png`, fullPage: true });
 

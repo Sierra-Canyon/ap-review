@@ -1,4 +1,10 @@
 // Topic 1.1 Quiz: Developments in East Asia from c. 1200 to c. 1450
+import { maps } from "../whap/maps.js";
+
+// A map the site draws (tools/maps/whap-u1f.mjs, built by tools/build-maps.mjs), with the references it was checked against.
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 // Sources: every stimulus this quiz uses, keyed by id.
 export const sets = {
   "t11-s1": {
@@ -13,13 +19,8 @@ export const sets = {
     ],
   },
   "t11-s2": {
-    id: "t11-s2", name: "China's neighbors: borrowing and independence", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "Between c. 1200 and c. 1450, Korea, Vietnam, and Japan borrowed heavily from China while keeping their own political traditions. Korean rulers used Chinese characters, Confucian learning, and civil service examinations, and after 1392 the new Joseon dynasty made neo-Confucianism its official philosophy and cut back the wealth of Buddhist monasteries. In Vietnam, the rulers of Dai Viet also chose officials through examinations on the Confucian classics. Yet they fought hard to stay independent of China, turning back Mongol invasions in the thirteenth century and driving out an occupying Ming army in the 1420s. Japan adopted Chinese writing and Buddhism, including Zen, which Japanese monks brought home from Song China. Japan, however, never made examinations the main way to choose officials. Power there rested with the shogun and hereditary warrior families, not with scholar officials." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "t11-s2", name: "China's neighbors: borrowing and independence", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u1f-east-asia-neighbors", "China's neighbors, c. 1200 to c. 1450: capitals, civil service examinations, and who held power (sea route approximate)", "Columbia University, Asia for Educators, \"1000 to 1450: Intensified Hemispheric Interactions\" (Korea and Japan pages), and Wikipedia, \"Gwageo\", \"Joseon\", \"Ly dynasty\", \"Fourth Era of Northern Domination\", \"Ashikaga shogunate\", \"Eisai\", and \"Tiantong Temple\"") }],
   },
   "t11-s3": {
     id: "t11-s3", name: "A story of filial duty", intro: "Use the source below to answer the questions that follow.",
@@ -47,13 +48,13 @@ export default {
     { id: "t11", name: "Topic 1.1 Quiz: Developments in East Asia", group: "Unit 1: The Global Tapestry",
       items: [
         // ===== Set 1: the Hongwu emperor's manifesto =====
-        { id: "t11-m01", skill: "u1", type: "mcq", set: "t11-s1", topic: "1.1", reasoning: "Contextualization",
+        { id: "t11-m01", skill: "u1", type: "mcq", set: "t11-s1", topic: "1.1", reasoning: "Contextualization", difficulty: "moderate",
           question: "The \"state of disorder for eighteen years\" described in the first paragraph best reflects which development in China in the middle of the fourteenth century?",
           choices: [
-            "Famines, floods along the Yellow River, and heavy demands from Yuan officials set off rebellions, such as the Red Turban uprisings, that weakened Mongol rule.",
+            "Famine, Yellow River floods, and Yuan misrule set off revolts such as the Red Turban uprisings.",
             "Jurchen armies from the northeast conquered northern China and forced the Song court to flee south.",
-            "Japanese armies invaded China after defeating the Mongol fleets sent against Japan.",
-            "European merchants seized control of Chinese ports and refused to pay customs duties.",
+            "Japanese armies invaded the Chinese coast in revenge after defeating the Mongol fleets of 1274 and 1281.",
+            "Portuguese merchants seized the port of Guangzhou and refused to pay Chinese customs duties.",
           ],
           why: [
             "Correct. From the 1340s, natural disasters and Yuan misrule led to widespread revolts, and Zhu Yuanzhang rose to power as a leader of rebel forces before founding the Ming in 1368.",
@@ -62,27 +63,27 @@ export default {
             "Europeans did not gain a foothold on the Chinese coast until the Portuguese arrived in the sixteenth century.",
           ],
           answer: 0 },
-        { id: "t11-m02", skill: "u1", type: "mcq", set: "t11-s1", topic: "1.1", reasoning: "Claims and Evidence",
+        { id: "t11-m02", skill: "u1", type: "mcq", set: "t11-s1", topic: "1.1", reasoning: "Claims and Evidence", difficulty: "easy",
           question: "The emperor's claim that Heaven, \"wearied of their misgovernment,\" turned the Yuan dynasty's \"fate to ruin\" draws most directly on which idea?",
           choices: [
-            "The Mandate of Heaven, which held that Heaven withdraws its support from rulers who govern badly and grants it to a new dynasty",
-            "Filial piety, which held that children must obey and honor their parents",
-            "The Buddhist belief that each person's deeds shape his or her rebirth",
-            "The Mongol belief that the sky god had given the world to the family of Chinggis Khan",
+            "The Mandate of Heaven, which held that Heaven withdraws its support from unjust rulers",
+            "Filial piety, which held that children must obey and honor their parents above all",
+            "The Buddhist belief that each person's deeds in this life shape his or her rebirth",
+            "The Mongol belief that the sky god Tengri had given the world to Chinggis Khan's family",
           ],
           why: [
-            "Correct. Chinese dynasties since ancient times had explained their rise this way, and Zhu Yuanzhang used the idea to show that the Ming replaced the Yuan by right.",
+            "Correct. Chinese dynasties since ancient times had explained their rise this way: Heaven took its mandate from a dynasty that ruled badly and gave it to a new one. Zhu Yuanzhang used the idea to show that the Ming replaced the Yuan by right.",
             "Filial piety was central to Confucian ethics, but it concerns family duty, not why one dynasty falls and another rises.",
             "Rebirth is a Buddhist teaching about individuals, and the manifesto speaks of Heaven judging a whole dynasty.",
             "The Mongols did claim a mandate from the sky god Tengri, but the manifesto uses the Chinese idea to argue against Mongol rule.",
           ],
           answer: 0 },
-        { id: "t11-m03", skill: "u1", type: "mcq", set: "t11-s1", topic: "1.1", reasoning: "Continuity and Change",
+        { id: "t11-m03", skill: "u1", type: "mcq", set: "t11-s1", topic: "1.1", reasoning: "Continuity and Change", difficulty: "difficult",
           question: "Which of the following later Ming policies most clearly continued the aim of the manifesto's final paragraph?",
           choices: [
-            "Sending Zheng He's fleets across the Indian Ocean in the early fifteenth century to display Ming power and collect tribute",
-            "Rebuilding and extending the Great Wall to keep out steppe peoples from the north",
-            "Moving the capital from Nanjing to Beijing in the early fifteenth century",
+            "Sending Zheng He's fleets to foreign kingdoms to display Ming power and collect tribute",
+            "Rebuilding and extending the Great Wall to keep out Mongol and other steppe peoples",
+            "Moving the capital from Nanjing to Beijing, closer to the northern frontier, in 1421",
             "Restoring the civil service examinations to recruit Confucian scholars as officials",
           ],
           why: [
@@ -93,60 +94,60 @@ export default {
           ],
           answer: 0 },
 
-        // ===== Set 2: practice passage on Korea, Vietnam, and Japan =====
-        { id: "t11-m04", skill: "u1", type: "mcq", set: "t11-s2", topic: "1.1", reasoning: "Claims and Evidence",
-          question: "Which of the following best states the main argument of the passage?",
+        // ===== Set 2: map, China's neighbors =====
+        { id: "t11-m04", skill: "u1", type: "mcq", set: "t11-s2", topic: "1.1", reasoning: "Claims and Evidence", difficulty: "easy",
+          question: "Which of the following conclusions about China's neighbors is best supported by the map?",
           choices: [
-            "China's neighbors adopted Chinese ideas and institutions selectively, adapting them to their own political traditions.",
-            "China ruled Korea, Vietnam, and Japan directly through officials chosen by examination.",
-            "Korea, Vietnam, and Japan rejected Chinese culture in order to protect their independence.",
-            "Buddhism united Korea, Vietnam, and Japan into a single religious community led from China.",
+            "They adopted some Chinese institutions, such as examinations, but not all of them.",
+            "China ruled Korea, Dai Viet, and Japan directly through officials chosen by examination.",
+            "Korea, Dai Viet, and Japan all rejected Chinese learning to protect their independence.",
+            "All three states chose their officials through Confucian examinations by the 1300s.",
           ],
           why: [
-            "Correct. The passage shows each state borrowing from China, such as writing, examinations, or Buddhism, while keeping its own rulers and system of power.",
-            "The passage describes these states as having their own rulers, and Vietnam fought to drive out Chinese armies.",
-            "The passage stresses heavy borrowing from China, so it does not argue that these states rejected Chinese culture.",
-            "Buddhism spread to all three, but the passage says Joseon Korea cut back the monasteries, and no single Buddhist authority led the region.",
+            "Correct. The map shows Korea and Dai Viet holding examinations like China's, and Japanese monks traveling to study Chan (Zen) in China, while Japan, ruled by shoguns and warrior families, had no examination system.",
+            "The map marks each neighbor's own capital and rulers, and it shows Chinese rule only in Dai Viet during the Ming occupation of 1407 to 1427.",
+            "The map shows Korea and Dai Viet holding Chinese-style examinations and Japanese monks going to China to study, so these states borrowed Chinese learning.",
+            "The map says Japan had no examination system, so this is true of Korea and Dai Viet only.",
           ],
           answer: 0 },
-        { id: "t11-m05", skill: "u1", type: "mcq", set: "t11-s2", topic: "1.1", reasoning: "Causation",
-          question: "Which of the following best explains why Japan, unlike Korea and Vietnam, did not rely on examinations to choose officials?",
+        { id: "t11-m05", skill: "u1", type: "mcq", set: "t11-s2", topic: "1.1", reasoning: "Causation", difficulty: "difficult",
+          question: "Which of the following best explains why Japan, unlike Korea and Dai Viet, had no examination system, as the map notes?",
           choices: [
-            "Landholding warrior families who served the shogun held real power, so offices passed through family ties and personal loyalty.",
-            "Japan had no contact with China in this period, so it never learned about the examination system.",
-            "The Mongols conquered Japan and replaced Chinese practices with steppe customs.",
-            "Japanese emperors banned Confucian learning in order to protect Buddhism.",
+            "Warrior families serving the shogun held power, and offices passed through family and loyalty.",
+            "Japan had no contact with China in this period, so it never learned about the examinations.",
+            "The Mongols conquered Japan in 1281 and replaced Chinese practices with steppe customs.",
+            "Zen monks who came back from China persuaded the court in Kyoto to ban Confucian learning.",
           ],
           why: [
-            "Correct. In Kamakura and Ashikaga Japan, military power and land gave warrior families control of government, leaving little room for officials chosen by tests.",
-            "Japan did have contact with China, as the passage notes that Japanese monks brought Zen home from Song China.",
+            "Correct. Under the Kamakura and Ashikaga shoguns, military power and land gave warrior families control of government, so offices went to vassals and kin rather than to men who passed tests.",
+            "The map shows Japanese monks sailing to Ningbo to study Chan (Zen), so Japan was in contact with China.",
             "The Mongol invasions of Japan in 1274 and 1281 failed, so the Mongols never ruled Japan.",
-            "Japanese rulers did not ban Confucian learning, and many Zen monks studied Confucian texts.",
+            "Zen monks did bring Chinese learning home, but they studied Confucian texts as well, and no Japanese ruler banned Confucian learning.",
           ],
           answer: 0 },
-        { id: "t11-m06", skill: "u1", type: "mcq", set: "t11-s2", topic: "1.1", reasoning: "Comparison",
-          question: "Dai Viet in the thirteenth century was most similar to Japan in the same century in which way?",
+        { id: "t11-m06", skill: "u1", type: "mcq", set: "t11-s2", topic: "1.1", reasoning: "Comparison", difficulty: "moderate",
+          question: "Based on the map, Dai Viet in the period c. 1200 to c. 1450 was most similar to Korea in which way?",
           choices: [
-            "Both turned back invasions launched by the Mongol rulers of China.",
-            "Both chose most of their officials through Confucian examinations.",
+            "Both held examinations to choose officials, as China did.",
+            "Both were ruled by shoguns and warrior families from Kamakura.",
             "Both were occupied by Ming armies for about twenty years.",
-            "Both made neo-Confucianism the official philosophy of the state and closed Buddhist monasteries.",
+            "Both made neo-Confucianism the official state philosophy in 1392.",
           ],
           why: [
-            "Correct. Dai Viet defeated Mongol attacks in 1258, 1285, and 1288, and Japan defeated the Mongol fleets of 1274 and 1281.",
-            "Dai Viet used examinations, but the passage says Japan never made examinations the main way to choose officials.",
-            "Only Dai Viet was occupied by the Ming, and that occupation took place in the fifteenth century.",
-            "This describes Joseon Korea after 1392, not Dai Viet or Japan in the thirteenth century.",
+            "Correct. The map notes examinations in Korea from 958 and in Dai Viet from 1075, both modeled on China's examinations on the Confucian classics.",
+            "The map places the shoguns and warrior families in Japan, not in Dai Viet or Korea.",
+            "The map shows a Ming occupation of Dai Viet from 1407 to 1427, but none of Korea.",
+            "The map dates the neo-Confucian state of 1392 to Joseon Korea, not to Dai Viet.",
           ],
           answer: 0 },
 
         // ===== Set 3: The Twenty-four Examples of Filial Duty =====
-        { id: "t11-m07", skill: "u1", type: "mcq", set: "t11-s3", topic: "1.1", reasoning: "Developments and Processes",
+        { id: "t11-m07", skill: "u1", type: "mcq", set: "t11-s3", topic: "1.1", reasoning: "Developments and Processes", difficulty: "moderate",
           question: "The detail that Chu's mother left the family \"because she was hated by his father’s wife\" best reflects which feature of elite families in Song China?",
           choices: [
-            "Wealthy men could take secondary wives, who held a weaker place in the household than the principal wife.",
+            "Wealthy men could take secondary wives, who ranked below the principal wife.",
             "Women from elite families had their feet bound, which limited their ability to travel.",
-            "Daughters inherited most of the family's land, which caused conflict among wives.",
+            "Daughters inherited most of the family's land, which caused conflict among the wives.",
             "Mothers held the highest authority in the family and could force their husbands from the home.",
           ],
           why: [
@@ -156,19 +157,19 @@ export default {
             "Song families were patriarchal, with authority held by fathers and husbands, and the excerpt shows a mother who lacked the power to stay.",
           ],
           answer: 0 },
-        { id: "t11-m08", skill: "u1", type: "mcq", set: "t11-s3", topic: "1.1", reasoning: "Sourcing and Situation",
+        { id: "t11-m08", skill: "u1", type: "mcq", set: "t11-s3", topic: "1.1", reasoning: "Sourcing and Situation", difficulty: "easy",
           question: "Collections of stories like this one were most likely compiled in order to",
           choices: [
-            "teach children and adults that duty to parents should come before wealth and official rank, a central value of neo-Confucianism",
+            "teach that duty to parents should come before wealth and official rank",
             "encourage young men to leave their families and become Buddhist monks",
-            "criticize the Song emperors for forcing officials to work far from home",
-            "persuade Mongol rulers to adopt the civil service examination",
+            "criticize the Song emperors for forcing officials to serve far from home",
+            "persuade the Yuan emperors to restore the civil service examinations",
           ],
           why: [
-            "Correct. The story praises an official who gave up his post to find his mother, and the closing comment says \"honours and riches\" could not weaken his devotion, a lesson in Confucian filial piety.",
+            "Correct. The story praises an official who gave up his post to find his mother, and the closing comment says \"honours and riches\" could not weaken his devotion, a lesson in the Confucian value of filial piety that neo-Confucian teachers stressed.",
             "Buddhist monks left their families, but the story praises a son who returns to his mother, the opposite of monastic life.",
             "The story does not blame the emperor for anything, and Chu resigned his office by his own choice.",
-            "The story is about family duty, not about how to choose officials, and it does not address Mongol rulers.",
+            "The story is about family duty, not about how to choose officials, and it does not address Yuan rulers.",
           ],
           answer: 0 },
 

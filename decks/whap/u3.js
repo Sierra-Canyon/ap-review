@@ -91,69 +91,18 @@ export const sets = {
   },
   "u3-s5": {
     "id": "u3-s5",
-    "name": "Russian Expansion Across Siberia",
-    "intro": "Use the table below to answer the questions that follow.",
+    "name": "Qing Expansion into Inner Asia",
+    "intro": "Use the passage below to answer the questions that follow.",
     "sources": [
       {
-        "title": "Selected Events in Russian Expansion Across Siberia, 1581 to 1689",
+        "title": "Source",
         "blocks": [
           {
-            "table": {
-              "head": [
-                "Year",
-                "Event"
-              ],
-              "rows": [
-                [
-                  "1581",
-                  "Yermak, a Cossack leader, begins a campaign east of the Ural Mountains"
-                ],
-                [
-                  "1582",
-                  "Yermak enters Qashliq, capital of the Khanate of Sibir"
-                ],
-                [
-                  "1587",
-                  "Fort of Tobolsk founded"
-                ],
-                [
-                  "1604",
-                  "Fort of Tomsk founded"
-                ],
-                [
-                  "1619",
-                  "Fort of Yeniseysk founded"
-                ],
-                [
-                  "1632",
-                  "Fort of Yakutsk founded"
-                ],
-                [
-                  "1639",
-                  "Russian explorers reach the Pacific Ocean"
-                ],
-                [
-                  "1647",
-                  "Okhotsk founded on the Pacific coast"
-                ],
-                [
-                  "1661",
-                  "Irkutsk founded near Lake Baikal"
-                ],
-                [
-                  "1689",
-                  "Treaty of Nerchinsk sets a border between Russia and Qing China"
-                ]
-              ]
-            }
+            "p": "The Qing dynasty roughly doubled the territory it took over from the Ming. Many historians argue that this growth owed as much to the rulers' Inner Asian roots as to Chinese tradition. Before conquering China in 1644, the Manchus had brought many eastern Mongol tribes into their banner armies through alliance and marriage. After 1644 their chief rival was the Zunghars, a western Mongol state that competed with the Qing for power on the steppe and in Tibet. The Kangxi Emperor first settled the border with Russia in the Treaty of Nerchinsk (1689) and then led armies onto the steppe himself. Qing forces took Lhasa, the Tibetan capital, in 1720, and under the Qianlong Emperor they destroyed the Zunghar state in the 1750s and took its lands, later called Xinjiang, the \"new frontier.\" A special office in Beijing ruled these lands through local princes and lamas rather than through the Confucian bureaucracy."
           },
           {
-            "p": "Note: The forts served as bases from which Russian officials and Cossacks subdued local peoples and collected yasak, a tribute paid in furs."
-          },
-          {
-            "cite": "Data compiled from the dates given in the Wikipedia article \"Russian conquest of Siberia\" (accessed 2026), which draws on published histories of Siberia.",
-            "url": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia",
-            "kind": "data"
+            "cite": "Practice passage written for this review, summarizing an interpretation held by many historians.",
+            "kind": "practice"
           }
         ]
       }
@@ -362,12 +311,13 @@ export default [
     "set": "u3-s1",
     "topic": "3.1",
     "reasoning": "Causation",
+    "difficulty": "easy",
     "question": "Which of the following best describes the historical context in which Busbecq wrote the passage?",
     "choices": [
-      "The Ottoman Empire under Suleiman I had conquered much of Hungary and threatened the Habsburg lands of central Europe.",
-      "The Ottoman Empire had just captured Constantinople and ended the Byzantine Empire.",
-      "Russian forces were moving east across Siberia to collect furs.",
-      "Spanish conquistadors were defeating the Aztec Empire in Mexico."
+      "Suleiman I's armies had taken much of Hungary and besieged Vienna.",
+      "Mehmed II's armies had just taken Constantinople and ended the Byzantine Empire.",
+      "Cossack bands were pushing east across Siberia to collect tribute in furs.",
+      "Spanish conquistadors and Tlaxcalan allies were defeating the Aztecs in Mexico."
     ],
     "why": [
       "Busbecq served as the Habsburg ambassador to Suleiman in the 1550s, after the Ottoman victory at Mohács (1526) and the siege of Vienna (1529) had carried Ottoman armies into central Europe.",
@@ -384,12 +334,13 @@ export default [
     "set": "u3-s1",
     "topic": "3.2",
     "reasoning": "Causation",
+    "difficulty": "easy",
     "question": "The \"veteran soldiery\" and discipline that Busbecq praises were most directly the result of which Ottoman practice?",
     "choices": [
-      "Taking Christian boys through the devshirme and training them as Janissary infantry loyal to the sultan",
-      "Allowing religious communities to govern their own affairs under the millet system",
-      "Choosing officials through civil service examinations based on Confucian texts",
-      "Relying on armored knights who owed service to their own lords, as in medieval Europe"
+      "Training Christian boys taken through the devshirme as Janissaries loyal to the sultan",
+      "Letting religious communities run their own courts and schools under the millet system",
+      "Choosing officials and officers through written examinations on Confucian classics",
+      "Relying on armored knights who owed service to their own lords, as in Europe"
     ],
     "why": [
       "The devshirme took boys from Christian families in the Balkans, converted them to Islam, and trained the best as Janissaries, a professional infantry armed with firearms and loyal only to the sultan.",
@@ -406,12 +357,13 @@ export default [
     "set": "u3-s1",
     "topic": "3.1",
     "reasoning": "Comparison",
+    "difficulty": "easy",
     "question": "Which of the following best describes Busbecq's purpose in the passage?",
     "choices": [
-      "To warn European readers that their disunity and poor discipline left them open to Ottoman conquest",
-      "To persuade the sultan that a peace treaty would benefit the Ottoman Empire",
-      "To encourage European merchants to open new trade routes through Ottoman lands",
-      "To argue that Christian missionaries should be sent to convert the Ottoman army"
+      "To warn Europeans that their disunity and poor discipline left them open to conquest",
+      "To persuade Suleiman that a peace treaty with the Habsburgs would serve the Ottomans",
+      "To urge Habsburg merchants to open new trade routes through the sultan's lands",
+      "To argue that Christian missionaries should be sent to convert the Janissaries"
     ],
     "why": [
       "Busbecq lists Ottoman strengths and European weaknesses side by side and then asks whether anyone can doubt the result, a warning aimed at his fellow Europeans.",
@@ -428,12 +380,13 @@ export default [
     "set": "u3-s1",
     "topic": "3.3",
     "reasoning": "Causation",
+    "difficulty": "moderate",
     "question": "Busbecq's remark that Persia was the only obstacle to Ottoman conquest is best explained by which development?",
     "choices": [
-      "The rivalry between the Sunni Ottoman Empire and the Shia Safavid Empire, which fought wars over territory and religion",
-      "The founding of the Mughal Empire in northern India after the Battle of Panipat in 1526",
-      "The Portuguese capture of trading ports in the Indian Ocean and the Persian Gulf",
-      "The Russian conquest of the Khanate of Kazan on the Volga River"
+      "The Sunni Ottomans' wars with the Shia Safavid Empire over land and faith",
+      "Babur's founding of the Mughal Empire after the Battle of Panipat in 1526",
+      "The Portuguese seizure of Hormuz and other ports in the Persian Gulf",
+      "The Russian conquest of the Khanate of Kazan on the Volga River in 1552"
     ],
     "why": [
       "The Safavids made Shia Islam the state religion of Iran after 1501, and the Sunni Ottomans fought them many times, including at Chaldiran in 1514, so sultans had to guard their eastern frontier.",
@@ -450,12 +403,13 @@ export default [
     "set": "u3-s2",
     "topic": "3.2",
     "reasoning": "Causation",
+    "difficulty": "moderate",
     "question": "The \"Timariots, Governors, and Revenue contractors\" that Bernier describes are best understood as evidence of which Mughal practice?",
     "choices": [
-      "Paying military officials with the right to collect land revenue from assigned territories",
-      "Requiring villages to send workers for rotating labor service to the state, as in the mit'a",
-      "Training enslaved Christian boys to serve as soldiers and administrators",
-      "Choosing local officials through written examinations"
+      "Paying officials with the right to collect revenue from assigned lands",
+      "Requiring villages to send men for rotating labor service, as in the mit'a",
+      "Training enslaved Christian boys from the Balkans as soldiers and officials",
+      "Choosing local officials through written examinations on classical texts"
     ],
     "why": [
       "Mughal mansabdars were often paid with jagirs, which were assignments of land revenue, and they relied on zamindars and revenue collectors to take taxes from peasants, the system Bernier blames.",
@@ -472,12 +426,13 @@ export default [
     "set": "u3-s2",
     "topic": "3.2",
     "reasoning": "Causation",
+    "difficulty": "moderate",
     "question": "Bernier's purpose in writing to Colbert, a minister of the French king, most likely affects the reliability of the passage in which way?",
     "choices": [
-      "Bernier wanted to show French leaders the harm of royal ownership of land, so he may have stressed the worst suffering in India.",
-      "Because Bernier lived in India for about twelve years, his account must be completely accurate.",
-      "Because Bernier wrote to a finance minister, he probably understated Mughal wealth to discourage French trade.",
-      "Because Bernier wrote for a European audience, he likely described Indian peasants as living better than French peasants."
+      "He hoped to warn France against royal land ownership, so he may have stressed the worst suffering.",
+      "He lived in India for about twelve years, so his account must be completely accurate.",
+      "He wrote to a finance minister, so he probably understated Mughal wealth to discourage French trade.",
+      "He wrote for Europeans, so he likely showed Indian peasants living better than French peasants."
     ],
     "why": [
       "Bernier's letter argues that the lack of private property ruins a kingdom, a lesson aimed at the French court, so he had a reason to stress the harshest cases.",
@@ -494,11 +449,12 @@ export default [
     "set": "u3-s2",
     "topic": "3.4",
     "reasoning": "Comparison",
+    "difficulty": "moderate",
     "question": "Bernier's use of the word \"Timariots\" suggests that he saw a similarity between Mughal revenue officials and which Ottoman group?",
     "choices": [
-      "Cavalrymen who received the revenue of land grants in return for military service",
-      "Janissaries who were paid salaries from the central treasury",
-      "Religious leaders of the Christian and Jewish millets",
+      "Cavalrymen who held the revenue of land grants in return for military service",
+      "Janissaries who were paid salaries in cash from the sultan's central treasury",
+      "Religious leaders who ran the Christian and Jewish millets for the sultan",
       "European merchants who traded under special privileges granted by the sultan"
     ],
     "why": [
@@ -516,18 +472,19 @@ export default [
     "set": "u3-s2",
     "topic": "3.2",
     "reasoning": "Continuity and Change",
+    "difficulty": "difficult",
     "question": "Which later development is most consistent with Bernier's claim that the monarch could not control provinces far from the capital?",
     "choices": [
-      "After the death of Aurangzeb in 1707, provincial governors in regions such as Bengal and Hyderabad acted as nearly independent rulers.",
-      "Akbar added Gujarat and Bengal to the Mughal Empire in the late sixteenth century.",
-      "Shah Jahan ordered the building of the Taj Mahal as a tomb for his wife.",
-      "Guru Nanak founded Sikhism in the Punjab, drawing on ideas from both Hinduism and Islam."
+      "After 1707, governors in Bengal and Hyderabad ruled as nearly independent princes.",
+      "In the late 1500s, Akbar added Gujarat and Bengal to the Mughal Empire.",
+      "In 1632, Shah Jahan began building the Taj Mahal as a tomb for his wife.",
+      "In the 1680s, Aurangzeb conquered the Deccan sultanates of Bijapur and Golconda."
     ],
     "why": [
       "In the eighteenth century, Mughal governors in regions such as Bengal and Hyderabad kept revenue for themselves and ruled almost on their own, showing the weak central control Bernier described.",
       "Akbar's conquests came before Bernier wrote and show the empire growing, not losing control.",
       "The Taj Mahal shows Mughal wealth and the use of architecture, not provincial independence.",
-      "Sikhism began around 1500, before Bernier wrote, and it was a religious movement, not a sign of weak control over governors."
+      "Aurangzeb's conquests of Bijapur (1686) and Golconda (1687) came after Bernier wrote, but they show the emperor extending his reach into distant lands, not losing control of them."
     ],
     "answer": 0
   },
@@ -538,16 +495,17 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Causation",
+    "difficulty": "easy",
     "question": "The war that this treaty ended began mainly because of which development?",
     "choices": [
-      "Conflict between Catholic and Protestant rulers in the Holy Roman Empire, a division that grew out of the Reformation",
-      "Ottoman campaigns against the Habsburg capital of Vienna",
-      "German peasants' demands for relief from the dues they owed to their lords",
+      "Conflict between Catholic and Protestant rulers in the Holy Roman Empire",
+      "Ottoman campaigns against the Habsburgs in Hungary and at the gates of Vienna",
+      "German peasants' demands for relief from the dues they owed their lords",
       "Rivalry between England and the Dutch Republic over Atlantic trade"
     ],
     "why": [
-      "The Thirty Years' War (1618 to 1648) began when Protestant nobles in Bohemia revolted against their Catholic Habsburg king, and Article XLIX shows that the peace still had to settle religious questions such as church lands and the rights of the Reformed.",
-      "The Ottomans did besiege Vienna in 1529 and fought the Habsburgs for a long time, but the Thirty Years' War was a war among Christian states, and the treaty never mentions the Ottomans.",
+      "The Thirty Years' War (1618 to 1648) began when Protestant nobles in Bohemia revolted against their Catholic Habsburg king, a division that grew out of the Reformation, and Article XLIX shows that the peace still had to settle religious questions such as church lands and the rights of the Reformed.",
+      "The Ottomans did fight the Habsburgs and besieged Vienna in 1529, but the Thirty Years' War was a war among Christian states, and the treaty never mentions the Ottomans.",
       "The German Peasants' War of 1525 came almost a century earlier, and the treaty deals with princes and states, not peasants.",
       "The Anglo-Dutch Wars over trade began in 1652, after this treaty, and England was not a party to it."
     ],
@@ -560,18 +518,19 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Continuity and Change",
+    "difficulty": "difficult",
     "question": "Compared with the Peace of Augsburg (1555), which recognized only Catholics and Lutherans, Article XLIX of the treaty shows which change?",
     "choices": [
-      "Legal recognition was extended to Calvinists, called the Reformed, while religion remained a matter settled by treaty among rulers.",
+      "Calvinists gained legal recognition, but rulers and treaties still settled religion.",
       "Catholicism became the only faith allowed anywhere in the Holy Roman Empire.",
-      "Every individual gained full freedom to choose a religion, and church and state were separated.",
-      "The pope gained the right to approve the religion of each German prince."
+      "Every individual gained freedom of worship, and church and state were separated.",
+      "Lutherans lost the legal standing they had won, and only Calvinists kept rights."
     ],
     "why": [
       "Augsburg had left Calvinists out; Article XLIX extends the religious settlement \"also with those call'd the Reformed,\" a change, while the continuity is that rulers and treaties, not individuals, still decided religious rights.",
       "The treaty does the opposite: it protects the exercise of Protestant religion, including that of the Reformed.",
       "This overstates the treaty. Rulers kept wide control over the religion of their lands, and full separation of church and state came much later, in places such as the United States.",
-      "The pope protested against the Peace of Westphalia because it was made without him and confirmed Protestant rights."
+      "Half right: the Reformed did gain recognition, but the treaty kept the Lutheran rights granted at Augsburg and added the Reformed beside them."
     ],
     "answer": 0
   },
@@ -582,11 +541,12 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Causation",
+    "difficulty": "moderate",
     "question": "Which of the following best explains why the German princes and states wanted the rights described in Articles LXIV and LXV?",
     "choices": [
-      "During the war the Catholic Habsburg emperor had tried to restore Catholic lands and strengthen his control over the states of the empire.",
-      "The Ottoman sultan had forced the German states to pay him tribute.",
-      "The French king wanted to unite the German states under a single government.",
+      "The Habsburg emperor had tried to reclaim church lands and rule the states more tightly.",
+      "The Ottoman sultan had forced the German states to pay him a yearly tribute.",
+      "The French king had planned to unite the German states under one government.",
       "The Spanish crown had barred the German states from trading with its colonies in the Americas."
     ],
     "why": [
@@ -604,18 +564,19 @@ export default [
     "set": "u3-s3",
     "topic": "3.3",
     "reasoning": "Causation",
+    "difficulty": "difficult",
     "question": "Which of the following was the most important long-term political effect of the settlement described in the source?",
     "choices": [
-      "The Holy Roman Empire remained a loose union of largely self-governing states, while centralized monarchies such as France grew stronger.",
+      "The Holy Roman Empire stayed a loose union of self-governing states, and France grew stronger.",
       "The German states united into a single nation under the Habsburg emperor.",
-      "Wars over religion ended permanently everywhere in Europe.",
-      "The Habsburg family lost all of its lands in central Europe."
+      "Wars over religion ended permanently in every part of Europe after 1648.",
+      "The empire stayed divided, and Spain replaced France as the leading power in Europe."
     ],
     "why": [
       "By guaranteeing each state's territorial rights and freedom to make alliances, the treaty kept the emperor weak and the empire divided, and France came out of the war as the strongest power in western Europe.",
       "Germany was not unified until 1871, under Prussia, more than two centuries later.",
       "This overstates the treaty's effect. Religion still played a part in later conflicts, such as Louis XIV's persecution of French Protestants after 1685.",
-      "This overstates the Habsburg losses. The Habsburgs kept Austria, Bohemia, and their other hereditary lands and remained a major power."
+      "The first half is right, but Spain came out of the war weakened, and France, not Spain, became the leading power in western Europe."
     ],
     "answer": 0
   },
@@ -626,11 +587,12 @@ export default [
     "set": "u3-s4",
     "topic": "3.1",
     "reasoning": "Causation",
+    "difficulty": "difficult",
     "question": "Which of the following would best support the passage's argument that gunpowder alone does not explain the success of these empires?",
     "choices": [
-      "The Mughal mansabdar system ranked officials by the number of troops they had to supply and paid them with land revenue.",
-      "Ottoman cannon broke the walls of Constantinople in 1453.",
-      "Gunpowder was first developed in China centuries before 1450.",
+      "Mughal mansabdars were ranked by the troops they supplied and paid with land revenue.",
+      "Ottoman cannon broke the land walls of Constantinople during the siege of 1453.",
+      "Gunpowder was first made in China, centuries before these three empires rose to power.",
       "Portuguese ships carried cannon into the Indian Ocean in the sixteenth century."
     ],
     "why": [
@@ -648,15 +610,16 @@ export default [
     "set": "u3-s4",
     "topic": "3.1",
     "reasoning": "Causation",
+    "difficulty": "easy",
     "question": "Which of the following battles best illustrates the passage's point that firearms helped these empires win wars?",
     "choices": [
-      "The Battle of Chaldiran (1514), where Ottoman artillery and Janissary muskets defeated Safavid cavalry",
-      "The Battle of Lepanto (1571), where a Spanish and Venetian fleet defeated the Ottoman navy",
+      "The Battle of Chaldiran (1514), where Ottoman guns defeated Safavid cavalry",
+      "The Battle of Lepanto (1571), where a Christian fleet defeated the Ottoman navy",
       "The Battle of Talas (751), where Abbasid forces defeated a Tang Chinese army",
-      "The siege of Vienna (1683), where Habsburg and Polish forces turned back an Ottoman army"
+      "The siege of Vienna (1683), where Habsburg and Polish forces turned back the Ottomans"
     ],
     "why": [
-      "At Chaldiran the Ottomans used cannon and firearms against Safavid horsemen and won, a clear case of gunpowder weapons deciding a battle between two of these empires.",
+      "At Chaldiran the Ottomans used cannon and Janissary muskets against Safavid horsemen and won, a clear case of gunpowder weapons deciding a battle between two of these empires.",
       "Lepanto was an Ottoman defeat at sea, so it does not show firearms helping the Ottomans win.",
       "Talas took place centuries before the empires in the passage existed.",
       "The 1683 siege ended in an Ottoman defeat, so it shows the limits of Ottoman power, not its success."
@@ -670,17 +633,18 @@ export default [
     "set": "u3-s4",
     "topic": "3.4",
     "reasoning": "Comparison",
+    "difficulty": "difficult",
     "question": "Which of the following was most similar to the expansion of the empires described in the passage?",
     "choices": [
-      "Russian forces armed with muskets built forts across Siberia and forced local peoples to pay tribute.",
-      "The Mali Empire grew rich by controlling the trans-Saharan gold trade.",
-      "The Aztec Empire conquered neighboring city-states and demanded tribute without using gunpowder weapons.",
-      "The Portuguese built a trading-post empire of fortified ports along the coasts of the Indian Ocean."
+      "Russian musketeers built forts across Siberia and took tribute from local peoples.",
+      "Mali's rulers grew rich by taxing the gold and salt trade across the Sahara.",
+      "The Aztecs conquered nearby city-states and took tribute without gunpowder.",
+      "The Portuguese built fortified trading posts along the coasts of the Indian Ocean."
     ],
     "why": [
       "Russia used firearms to expand over land and built forts and a tribute system to hold new territory, like the land empires in the passage.",
       "Mali's power rested on trade in an earlier period, c. 1200 to c. 1450, not on gunpowder conquest.",
-      "The Aztecs did build a tribute empire, but they did it without firearms, so it lacks a key feature of the empires in the passage.",
+      "The Aztecs did build a tribute empire over land, but they did it without firearms, so it lacks the key feature of the empires in the passage.",
       "The Portuguese used cannon, but they built a sea-based network of ports, not a large land empire."
     ],
     "answer": 0
@@ -692,12 +656,13 @@ export default [
     "set": "u3-s4",
     "topic": "3.1",
     "reasoning": "Continuity and Change",
+    "difficulty": "moderate",
     "question": "Which of the following later developments would most strengthen the passage's claim that strong institutions mattered as much as weapons?",
     "choices": [
-      "The Safavid Empire collapsed after Afghan forces captured its capital, Isfahan, in 1722, even though its army had firearms.",
-      "Babur's victory at Panipat in 1526 allowed him to found the Mughal Empire.",
-      "Mehmed II's conquest of Constantinople in 1453 gave the Ottomans a new capital.",
-      "The Qing dynasty replaced the Ming dynasty in China in 1644."
+      "Afghans took the Safavid capital, Isfahan, in 1722, though its army had firearms.",
+      "Babur's guns won the Battle of Panipat in 1526, and he founded the Mughal Empire.",
+      "Mehmed II's conquest of Constantinople in 1453 gave the Ottomans a new imperial capital.",
+      "Manchu armies took Beijing in 1644, and the Qing replaced the Ming dynasty."
     ],
     "why": [
       "By the early 1700s the Safavid state was weakened by poor leadership and money problems, and firearms did not save it, which supports the passage's point about institutions.",
@@ -714,18 +679,19 @@ export default [
     "set": "u3-s5",
     "topic": "3.1",
     "reasoning": "Causation",
-    "question": "The pattern shown in the table most directly reflects which motive for Russian expansion?",
+    "difficulty": "moderate",
+    "question": "According to the passage, which development most directly drew the Qing into the steppe and Tibet?",
     "choices": [
-      "Gaining furs collected as tribute from Indigenous Siberian peoples",
-      "Gaining warm-water ports on the Black Sea",
-      "Finding a sea route around Africa to the spice markets of Asia",
-      "Securing silver mines to pay for trade with China"
+      "Rivalry with the Zunghar Mongols for power on the steppe and in Tibet",
+      "The demand for new farmland to feed China's fast-growing Han population",
+      "The search for furs paid as tribute by the forest peoples of Siberia",
+      "The need for silver to pay for trade with European merchants at Canton"
     ],
     "why": [
-      "The forts in the table served as bases for collecting yasak, a tribute paid in furs, which sold for high prices in Russian and European markets.",
-      "Russian rulers such as Peter the Great did seek ports on the Black Sea and the Baltic, but those lay far to the west of Siberia.",
-      "This was the goal of Portuguese sailors such as Vasco da Gama, not of Russian Cossacks.",
-      "Silver mining drove Spanish activity at Potosí in the Andes; the Siberian forts were built for the fur trade."
+      "The passage names the Zunghars, a western Mongol state competing with the Qing on the steppe and in Tibet, as the Qing's chief rival, and the campaigns it lists, from Kangxi's to Qianlong's, were aimed at them.",
+      "China's population did grow fast in the 1700s, but the passage ties the campaigns to the Zunghar rivalry, not to a search for farmland.",
+      "Fur tribute drove Russian expansion across Siberia, not Qing campaigns against the Zunghars.",
+      "The Canton system began in 1757, and silver reached China through sea trade, not through conquests in Inner Asia."
     ],
     "answer": 0
   },
@@ -736,18 +702,19 @@ export default [
     "set": "u3-s5",
     "topic": "3.1",
     "reasoning": "Continuity and Change",
-    "question": "The final entry in the table best shows which of the following?",
+    "difficulty": "difficult",
+    "question": "Compared with the Ming dynasty, the Qing approach to the northern steppe shows which change?",
     "choices": [
-      "Russian expansion eastward met the expanding Qing Empire, and the two states agreed on a border.",
-      "Russian explorers crossed the Bering Strait and claimed Alaska.",
-      "Qing armies defeated the Zunghar Mongols and brought Xinjiang under their rule.",
-      "Peter the Great built St. Petersburg as a port on the Baltic Sea."
+      "The Qing conquered and ruled steppe peoples instead of walling them out.",
+      "The Qing rebuilt the Great Wall in stone to keep Mongol raiders out of China.",
+      "The Qing paid yearly tribute to Mongol khans to buy peace on the border.",
+      "The Qing closed the northern border and cut off all trade with the steppe."
     ],
     "why": [
-      "The Treaty of Nerchinsk (1689) set a border between Russia and Qing China in the Amur River region, showing two growing land empires meeting and negotiating.",
-      "Russian expansion into Alaska did happen, but in the eighteenth century; the 1689 treaty concerns the border with China.",
-      "The Qing did conquer the Zunghars, but in the 1750s; the treaty in the table was a border agreement with Russia.",
-      "St. Petersburg was founded in 1703 on the Baltic, far west of the Siberian frontier shown in the table."
+      "The Ming rebuilt the Great Wall to defend against Mongol raids; the Qing, with Mongol allies in their banners, destroyed the Zunghars and ruled Mongolia, Tibet, and Xinjiang.",
+      "The Ming, not the Qing, rebuilt the Great Wall in brick and stone in the 1500s; the Qing extended their rule far beyond it.",
+      "Paying tribute to steppe rulers was a Song dynasty practice; the Qing defeated the Zunghars and made Mongol princes their subjects.",
+      "The passage describes conquest and rule through local princes and lamas, not a closed border."
     ],
     "answer": 0
   },
@@ -758,18 +725,19 @@ export default [
     "set": "u3-s5",
     "topic": "3.4",
     "reasoning": "Comparison",
-    "question": "Russian expansion as shown in the table was most similar to which development in the same period?",
+    "difficulty": "easy",
+    "question": "The Qing expansion described in the passage was most similar to which development in the same period?",
     "choices": [
-      "The Qing expansion into Mongolia and Central Asia, which brought many non-Chinese peoples under Manchu rule",
-      "The Mali Empire's control of the gold and salt trade across the Sahara",
-      "The Portuguese seizure of ports such as Goa and Malacca",
-      "The Ottoman use of the millet system to govern religious minorities"
+      "Russia's conquest of Siberia and its many non-Russian peoples",
+      "Portugal's seizure of Goa and Malacca as fortified ports for the spice trade",
+      "The Ottoman capture of Constantinople, which became the new imperial capital",
+      "The Tokugawa shogunate's limits on Japanese contact with foreign traders"
     ],
     "why": [
-      "Like Russia in Siberia, the Qing expanded over land into Inner Asia and ruled peoples very different from the core population of the empire.",
-      "Mali's trade empire flourished in an earlier period and rested on commerce rather than conquest across a continent.",
-      "The Portuguese took coastal ports by sea in 1510 and 1511; they did not push across a continent.",
-      "The millet system was a way of governing subjects already in the empire, not a pattern of expansion."
+      "Like the Qing in Inner Asia, Russia expanded over land into a vast frontier and ruled peoples very different from the empire's core population, often through local leaders and tribute.",
+      "The Portuguese took coastal ports by sea in 1510 and 1511; they did not conquer a continental frontier.",
+      "Taking Constantinople in 1453 gave the Ottomans an old imperial city, not a frontier of steppe peoples ruled through local princes.",
+      "The Tokugawa limited contact with the outside world; they did not expand into new lands."
     ],
     "answer": 0
   },
@@ -780,12 +748,13 @@ export default [
     "set": "u3-s6",
     "topic": "3.2",
     "reasoning": "Continuity and Change",
+    "difficulty": "easy",
     "question": "Which of the following provides the best evidence for the passage's claim that the Qing kept Chinese traditions of government?",
     "choices": [
-      "The Qing continued the civil service examinations that the Ming had used to choose officials.",
-      "The Ming emperor sent Zheng He on voyages across the Indian Ocean.",
+      "The Qing kept the Ming civil service examinations for choosing officials.",
+      "The Ming emperor sent Zheng He's fleets on voyages across the Indian Ocean.",
       "The Qing limited European merchants to trading at the port of Canton.",
-      "Manchu banner troops were stationed in garrisons in major cities."
+      "Manchu banner troops were stationed in garrisons in major Chinese cities."
     ],
     "why": [
       "Keeping the examinations meant that Confucian scholars continued to staff the government, a clear continuity from Ming rule.",
@@ -802,11 +771,12 @@ export default [
     "set": "u3-s6",
     "topic": "3.4",
     "reasoning": "Comparison",
+    "difficulty": "moderate",
     "question": "The Qing approach described in the passage is most similar to which policy of another land-based empire?",
     "choices": [
-      "The Mughal emperor Akbar's appointment of Hindu Rajput nobles to high military and government posts",
-      "The Safavid shahs' order that their subjects follow Shia Islam",
-      "Peter the Great's order that Russian nobles shave their beards and wear Western clothing",
+      "Akbar's appointment of Hindu Rajput nobles to high military and government posts",
+      "The Safavid shahs' order that their mostly Sunni subjects accept Shia Islam",
+      "Peter the Great's order that Russian nobles shave their beards and dress like Europeans",
       "The Spanish crown's use of the encomienda to force Indigenous people to work"
     ],
     "why": [
@@ -824,17 +794,18 @@ export default [
     "set": "u3-s6",
     "topic": "3.2",
     "reasoning": "Comparison",
+    "difficulty": "easy",
     "question": "The Qing order that Han Chinese men wear the queue hairstyle is most similar to which policy of another ruler in the period c. 1450 to c. 1750?",
     "choices": [
-      "Peter the Great's orders that Russian nobles shave their beards and wear Western clothing",
+      "Peter the Great's orders that Russian nobles shave their beards",
       "Akbar's decision to end the jizya tax on non-Muslims in the Mughal Empire",
-      "The Tokugawa rule that daimyo spend every other year at the shogun's capital of Edo",
+      "The Tokugawa rule that daimyo spend every other year at the shogun's capital",
       "The Ottoman devshirme, which took Christian boys to train as soldiers and officials"
     ],
     "why": [
       "Both rulers required a visible change in appearance and pressed those who refused (death for refusing the queue, a tax for keeping a beard), so that subjects' bodies showed acceptance of the ruler's new order: Manchu rule in China and Westernizing reform in Russia.",
       "Ending the jizya removed a burden on non-Muslim subjects to win their support; it did not demand that subjects change how they looked.",
-      "Alternate attendance controlled the daimyo by keeping them near the shogun and making them spend heavily, not by changing the appearance of ordinary subjects.",
+      "Alternate attendance controlled the daimyo by keeping them near the shogun in Edo and making them spend heavily, not by changing the appearance of ordinary subjects.",
       "The devshirme recruited a small number of boys into state service, while the queue order applied to all Han men as a sign of submission."
     ],
     "answer": 0
@@ -846,12 +817,13 @@ export default [
     "set": "u3-s6",
     "topic": "3.2",
     "reasoning": "Comparison",
+    "difficulty": "easy",
     "question": "Qing emperors' support for Tibetan Buddhism among Mongols and Tibetans best illustrates which method that rulers used to legitimize their power?",
     "choices": [
-      "Using religious ideas and patronage to win the loyalty of different groups of subjects",
-      "Building monumental tombs to display the wealth of the dynasty",
-      "Selling the right to collect taxes to private contractors",
-      "Recruiting enslaved boys to form a loyal army"
+      "Using religious patronage to win the loyalty of different groups of subjects",
+      "Building monumental tombs and palaces to display the wealth and power of the dynasty",
+      "Selling private contractors the right to collect taxes in a district",
+      "Recruiting enslaved boys to form an army loyal only to the ruler"
     ],
     "why": [
       "By acting as patrons of Tibetan Buddhism, Qing emperors presented themselves in terms that Mongols and Tibetans respected, a religious form of legitimacy.",
@@ -868,18 +840,19 @@ export default [
     "set": "u3-s5",
     "topic": "3.1",
     "reasoning": "Causation",
-    "question": "Which earlier development most directly made possible the campaigns that begin the table?",
+    "difficulty": "difficult",
+    "question": "The passage suggests that the Qing were better prepared than the Ming to fight on the steppe mainly because the Manchus",
     "choices": [
-      "Ivan IV's conquest of the Khanates of Kazan (1552) and Astrakhan (1556), which gave Moscow control of the Volga River route",
-      "Peter the Great's founding of St. Petersburg as a port on the Baltic Sea",
-      "The Mongol conquest of the Rus principalities in the thirteenth century",
-      "The marriage of Ivan III to a Byzantine princess and his claim that Moscow was the heir of Byzantium"
+      "had brought Mongol horsemen into their own banner armies before 1644",
+      "had bought European cannon that the Zunghars could not match",
+      "had signed the Treaty of Nerchinsk, which ended all fighting on the steppe",
+      "had kept the Ming examinations, which trained the empire's generals"
     ],
     "why": [
-      "Taking Kazan and Astrakhan removed the strongest Muslim khanates on Russia's eastern edge and opened the way to the Urals, where the Stroganov merchant family then hired Yermak to attack the Khanate of Sibir.",
-      "St. Petersburg was founded in 1703, more than a century after Yermak's campaign, and it faced west, not east.",
-      "Mongol rule over the Rus is true history, but it ended in the late fifteenth century and slowed Russian growth rather than opening Siberia.",
-      "Ivan III did strengthen Moscow's claims to authority in the late fifteenth century, but this was about legitimacy, not the conquest that opened a route east of the Urals."
+      "The passage says that before 1644 the Manchus had brought eastern Mongol tribes into their banners through alliance and marriage, so the Qing fought the Zunghars with steppe cavalry and allies of their own.",
+      "The passage does not mention cannon, and the Zunghars had firearms of their own.",
+      "Nerchinsk settled the border with Russia so that Kangxi could turn on the Zunghars; the fighting on the steppe went on for decades afterward.",
+      "The examinations chose civil officials trained in the Confucian classics, not military commanders, and the passage does not link them to the steppe wars."
     ],
     "answer": 0
   },
@@ -890,16 +863,17 @@ export default [
     "set": "u3-s9",
     "topic": "3.3",
     "reasoning": "Contextualization",
+    "difficulty": "moderate",
     "question": "Which of the following best describes the historical context in which Guru Nanak began teaching?",
     "choices": [
-      "Hindu devotional movements and Islamic Sufi traditions were spreading side by side in northern India under Muslim rulers.",
+      "Bhakti and Sufi movements were spreading side by side under Muslim rulers.",
       "The Portuguese were setting up trading posts on India's west coast.",
-      "Buddhism was spreading from India to China along the Silk Roads.",
-      "Akbar was promoting a new court faith that combined ideas from many religions."
+      "Buddhist monks were carrying their faith from India to China along the Silk Roads.",
+      "Akbar was promoting a new court faith that combined many religions."
     ],
     "why": [
       "Nanak lived under the Delhi Sultanate and the first Mughals, when bhakti devotion to a single God and Sufi mysticism both stressed personal devotion over ritual, the setting the passage describes as the meeting of Hindu and Muslim traditions.",
-      "The Portuguese did arrive in India during Nanak's lifetime, after 1498, but this is true and irrelevant: their coastal trade had little to do with religious life in the Punjab.",
+      "The Portuguese did arrive in India during Nanak's lifetime, after 1498, but their coastal trade had little to do with religious life in the Punjab.",
       "Buddhism spread to China many centuries earlier, in the first millennium CE.",
       "Akbar's court faith dates from the 1580s, decades after Nanak died in 1539, so it could not have shaped his teaching."
     ],
@@ -912,12 +886,13 @@ export default [
     "set": "u3-s9",
     "topic": "3.3",
     "reasoning": "Comparison",
+    "difficulty": "easy",
     "question": "Guru Nanak's rejection of caste, image worship, and pilgrimage as paths to salvation is most similar to which development in Europe in the same century?",
     "choices": [
-      "Protestant reformers' rejection of church practices, such as the sale of indulgences, that they said could not bring salvation",
-      "The Council of Trent's decision to keep the Catholic sacraments and the authority of the pope",
-      "The Jesuits' founding of schools and missions to spread Catholic teaching",
-      "The Spanish Inquisition's trials of people suspected of false conversion"
+      "Protestant reformers' rejection of indulgences and rituals as paths to salvation",
+      "The Council of Trent's decision to keep the sacraments and the authority of the pope",
+      "The Jesuits' founding of schools and missions to spread Catholic teaching abroad",
+      "The Spanish Inquisition's trials of converts suspected of keeping their old faith"
     ],
     "why": [
       "Both Nanak and reformers such as Luther taught that rituals and religious go-betweens did not earn salvation and that personal faith or devotion mattered most.",
@@ -934,12 +909,13 @@ export default [
     "set": "u3-s9",
     "topic": "3.3",
     "reasoning": "Continuity and Change",
+    "difficulty": "easy",
     "question": "The founding of the Khalsa in 1699 marked which change in the Sikh community?",
     "choices": [
-      "A community centered on devotion also organized itself to defend the faith by force.",
-      "Sikhism became the official religion of the Mughal Empire.",
-      "The Sikhs accepted the caste divisions that Guru Nanak had rejected.",
-      "The Sikhs ended all contact with their Hindu and Muslim neighbors."
+      "A community centered on devotion also organized to defend the faith by arms.",
+      "Sikhism became the official religion of the Mughal Empire under Aurangzeb.",
+      "Sikhs restored the caste divisions that Guru Nanak had taught them to reject.",
+      "The Sikhs cut off all contact with their Hindu and Muslim neighbors in the Punjab."
     ],
     "why": [
       "After two gurus were executed, Gobind Singh created the Khalsa as a body of initiated Sikhs pledged to defend the faith, which added an armed role while keeping Nanak's devotion to one God.",
@@ -956,18 +932,19 @@ export default [
     "set": "u3-s9",
     "topic": "3.1",
     "reasoning": "Causation",
+    "difficulty": "difficult",
     "question": "Aurangzeb's religious policies, including the execution described in the passage, contributed most directly to which effect?",
     "choices": [
-      "Growing armed resistance from Sikhs, Marathas, and Rajputs that strained Mughal power by the early eighteenth century",
-      "The British East India Company's victory at Plassey in 1757, which gave it control of Bengal",
+      "Armed resistance by Sikhs, Marathas, and Rajputs that strained Mughal power",
+      "The East India Company's victory at Plassey in 1757, which gave it control of Bengal",
       "The immediate collapse of the Mughal Empire upon Aurangzeb's death in 1707",
-      "Safavid victories that took the city of Delhi from the Mughals"
+      "Persian armies under the Safavid shahs that captured and sacked Delhi"
     ],
     "why": [
-      "Aurangzeb's restoration of the jizya and his treatment of non-Muslims helped turn Sikh, Maratha, and Rajput leaders against him, and these long wars drained the treasury and weakened central control.",
-      "Plassey is a plausible later event, but it came fifty years after Aurangzeb's death and resulted from Company power and Mughal weakness in Bengal, not directly from his religious policy.",
+      "Aurangzeb's restoration of the jizya and his treatment of non-Muslims helped turn Sikh, Maratha, and Rajput leaders against him, and these long wars drained the treasury and weakened central control by the early eighteenth century.",
+      "Plassey came fifty years after Aurangzeb's death and resulted from Company power and Mughal weakness in Bengal, not directly from his religious policy.",
       "This overstates the effect. The empire weakened after 1707, but a Mughal emperor kept his throne until 1857.",
-      "The Safavids fought the Mughals over Kandahar but never took Delhi; the Persian ruler Nader Shah sacked Delhi in 1739, after the Safavid dynasty had fallen."
+      "Delhi was sacked in 1739 by Nader Shah, who ruled Persia after the Safavid dynasty had fallen; the Safavids fought the Mughals over Kandahar but never took Delhi."
     ],
     "answer": 0
   },
@@ -1369,6 +1346,6 @@ export default [
       "The Inca ruler claimed descent from the sun god Inti, and the Aztecs practiced human sacrifice to honor gods such as Huitzilopochtli.",
       "Louis XIV's palace of Versailles displayed royal power through monumental architecture."
     ],
-    "model": "Thesis: Rulers in Europe and Asia relied heavily on religion to legitimize their power, presenting themselves as chosen by God or as defenders of the true faith, but religion worked in different ways, uniting subjects under one faith in France while promoting tolerance in Mughal India, and it always worked alongside nonreligious tools such as merit-based officials, laws, and taxes.\n\nContext: After 1517 the Protestant Reformation split Christian Europe, and the Sunni Ottomans and Shia Safavids fought for land and religious leadership, so rulers everywhere had to decide how to handle religious difference.\n\nBody 1 (divine right): Bossuet (Doc. 6) and James I (Doc. 4) claim that kings sit on God's throne, and Abu'l-Fazl (Doc. 3) calls kingship a divine light. Sourcing: each author served or was the ruler, so each had reason to raise royal authority.\n\nBody 2 (religious unity versus tolerance): Louis XIV (Doc. 7) destroyed Protestant churches to make France Catholic, and the English Act of Supremacy (Doc. 1) made Henry VIII head of the church in place of the pope. Akbar (Doc. 3) instead won support by ending sectarian strife, and outside evidence such as the Ottoman millet system shows another tolerant model.\n\nBody 3 (beyond religion): Busbecq (Doc. 2) shows Ottoman power resting on officials chosen by merit, and the Kangxi Emperor (Doc. 5) mixed Confucian orthodoxy with orders to obey laws and pay taxes.\n\nComplexity: Religion could also limit rulers. James I admits that just kings must follow the laws to avoid God's curse, so the same beliefs that raised kings also set expectations they had to meet."
+    "model": "Thesis: Rulers in Europe and Asia relied heavily on religion to legitimize their power, presenting themselves as chosen by God or as defenders of the true faith, but religion worked in different ways, uniting subjects under one faith in France while promoting tolerance in Mughal India, and it always worked alongside nonreligious tools such as merit-based officials, laws, and taxes.\n\nContext: After 1517 the Protestant Reformation split Christian Europe, and the Sunni Ottomans and Shia Safavids fought for land and religious leadership, so rulers everywhere had to decide how to handle religious difference.\n\nBody 1 (divine right): Bossuet (Doc. 6) and James I (Doc. 4) claim that kings sit on God's throne, and Abu'l-Fazl (Doc. 3) calls kingship a divine light. Sourcing: each author served or was the ruler, so each had reason to raise royal authority.\n\nBody 2 (religious unity versus tolerance): Louis XIV (Doc. 7) destroyed Protestant churches to make France Catholic, and the English Act of Supremacy (Doc. 1) made Henry VIII head of the church in place of the pope. Akbar (Doc. 3) instead won support by ending sectarian strife, and outside evidence such as the Ottoman millet system shows another tolerant model.\n\nBody 3 (beyond religion): Busbecq (Doc. 2) shows Ottoman power resting on officials chosen by merit, and the Kangxi Emperor (Doc. 5) mixed Confucian orthodoxy with orders to obey laws and pay taxes.\n\nComplexity: Religion could also limit rulers. James I admits that just kings must declare what they will do, or they incur God's curse, so the same beliefs that raised kings also set expectations they had to meet."
   }
 ];

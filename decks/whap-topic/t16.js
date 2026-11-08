@@ -1,4 +1,10 @@
 // Topic 1.6 Quiz: Developments in Europe from c. 1200 to c. 1450
+import { maps } from "../whap/maps.js";
+
+// A map the site draws (tools/maps/whap-u1f.mjs, built by tools/build-maps.mjs), with the references it was checked against.
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 // Sources: every stimulus (multiple-choice sets), keyed by id. The SAQ has no source.
 export const sets = {
   "t16-s1": {
@@ -21,13 +27,8 @@ export const sets = {
     ],
   },
   "t16-s3": {
-    id: "t16-s3", name: "The Church in a divided Europe", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "In a Europe divided among many kings, nobles, and city governments, the Roman Catholic Church was the one institution that reached almost everyone. Parish priests baptized, married, and buried people in nearly every village, and peasants paid the Church a tithe, one tenth of their harvest. Latin was the shared language of worship, law, and learning, and the new universities trained clergy and royal officials from many kingdoms. The Church also used its power to enforce religious unity. In 1209 the pope launched a crusade against the Cathars of southern France, whom the Church called heretics, and in 1215 a Church council ordered Jews and Muslims in Christian lands to wear clothing that set them apart. In the fourteenth century, however, the popes' move to Avignon and a later split between rival popes weakened the Church's authority." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "t16-s3", name: "The Church in a divided Europe", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u1f-latin-church", "The Church in Latin Europe, 1209 to 1378: seats of the popes, a crusade against Christians the Church called heretics, and three great pilgrimage shrines", "the Internet Medieval Sourcebook, Fordham University, \"Twelfth Ecumenical Council: Lateran IV 1215\" (canon 68), and Wikipedia, \"Albigensian Crusade\", \"Avignon Papacy\", and \"Camino de Santiago\"") }],
   },
 };
 
@@ -36,7 +37,7 @@ export default {
     { id: "t16", name: "Topic 1.6 Quiz: Developments in Europe", group: "Unit 1: The Global Tapestry",
       items: [
         // ===== Set 1: A villein's obligations at Alwalton, 1279 =====
-        { id: "t16-m01", skill: "u1", type: "mcq", set: "t16-s1", topic: "1.6", reasoning: "Developments and processes",
+        { id: "t16-m01", skill: "u1", type: "mcq", set: "t16-s1", topic: "1.6", reasoning: "Developments and processes", difficulty: "easy",
           question: "Hugh Miller's obligations in the excerpt best illustrate which feature of European society in the period c. 1200 to c. 1450?",
           choices: [
             "Under manorialism, serfs held land from a lord in return for labor, goods, and fees.",
@@ -51,10 +52,10 @@ export default {
             "Serfs like Hugh were bound to the land and owed services, but they were not owned and sold as property the way enslaved people were.",
           ],
           answer: 0 },
-        { id: "t16-m02", skill: "u1", type: "mcq", set: "t16-s1", topic: "1.6", reasoning: "Sourcing and situation",
+        { id: "t16-m02", skill: "u1", type: "mcq", set: "t16-s1", topic: "1.6", reasoning: "Sourcing and situation", difficulty: "moderate",
           question: "The excerpt comes from a survey ordered by the king of England. Which of the following best describes the purpose of recording details like those in the excerpt?",
           choices: [
-            "To record who held land and what rents and services were owed, so that rights and income could be known and enforced",
+            "To record who held land and what rents and services each holder owed",
             "To list the villeins who had earned their freedom so that they could move to towns",
             "To set the wages that lords had to pay farm workers after a fall in population",
             "To count the members of each parish so that the pope could collect a new tax",
@@ -66,11 +67,11 @@ export default {
             "The survey was ordered by the king, not the pope, and it records one tenant's obligations to his lord rather than a count of people.",
           ],
           answer: 0 },
-        { id: "t16-m03", skill: "u1", type: "mcq", set: "t16-s1", topic: "1.6", reasoning: "Claims and evidence in sources",
+        { id: "t16-m03", skill: "u1", type: "mcq", set: "t16-s1", topic: "1.6", reasoning: "Claims and evidence in sources", difficulty: "easy",
           question: "The fact that Hugh Miller owes his services to an abbot best supports which of the following conclusions?",
           choices: [
             "The Church was a major landholder that drew wealth from the labor of peasants.",
-            "Monasteries had stopped owning land after the Church was reformed.",
+            "Monasteries had stopped owning land after the Church reforms of the eleventh century.",
             "Abbots were royal officials appointed to collect the king's taxes.",
             "Peasants who worked for the Church were free from the obligations of serfdom.",
           ],
@@ -83,10 +84,10 @@ export default {
           answer: 0 },
 
         // ===== Set 2: The Confirmation of the Charters, 1297 =====
-        { id: "t16-m04", skill: "u1", type: "mcq", set: "t16-s2", topic: "1.6", reasoning: "Contextualization",
+        { id: "t16-m04", skill: "u1", type: "mcq", set: "t16-s2", topic: "1.6", reasoning: "Contextualization", difficulty: "difficult",
           question: "Which of the following most directly led to the promises in the excerpt?",
           choices: [
-            "Resentment of the heavy taxes the king collected to pay for wars with France and Scotland",
+            "Anger at the heavy taxes the king raised to pay for wars with France and Scotland",
             "The labor shortage caused by the Black Death, which led peasants to demand higher wages",
             "The defeat of English armies by Joan of Arc at the end of the Hundred Years' War",
             "A papal order that freed the clergy of England from all royal authority",
@@ -98,13 +99,13 @@ export default {
             "Pope Boniface VIII did forbid kings to tax the clergy without his consent in 1296, but he never freed the clergy from all royal authority, and the excerpt answers complaints from barons and the whole community, not only the clergy.",
           ],
           answer: 0 },
-        { id: "t16-m05", skill: "u1", type: "mcq", set: "t16-s2", topic: "1.6", reasoning: "Claims and evidence in sources",
+        { id: "t16-m05", skill: "u1", type: "mcq", set: "t16-s2", topic: "1.6", reasoning: "Claims and evidence in sources", difficulty: "moderate",
           question: "In the excerpt, the king promises to",
           choices: [
-            "take no new grants of money or goods without the common assent of the realm",
+            "take no new aids or tolls without the common assent of the realm",
             "give up all customary taxes and aids that earlier kings had collected",
-            "let the barons choose the next king of England",
-            "end the payments that villeins owed to their lords",
+            "let the barons and bishops choose the next king of England",
+            "end the labor services and payments that villeins owed to their lords",
           ],
           why: [
             "Correct. The king promises to take aids, mises, and prises only \"by the common assent of all the realm\" and to take no toll like the maletote without common assent.",
@@ -113,12 +114,12 @@ export default {
             "The excerpt deals with what the king takes from the realm, not with what peasants owe their lords.",
           ],
           answer: 0 },
-        { id: "t16-m06", skill: "u1", type: "mcq", set: "t16-s2", topic: "1.6", reasoning: "Continuity and change",
+        { id: "t16-m06", skill: "u1", type: "mcq", set: "t16-s2", topic: "1.6", reasoning: "Continuity and change", difficulty: "easy",
           question: "The excerpt best reflects which of the following developments in western Europe in the period c. 1200 to c. 1450?",
           choices: [
-            "Monarchs needed the consent of nobles, clergy, and other groups to raise money, which gave assemblies such as Parliament a growing role.",
+            "Kings needed their subjects' consent to raise taxes, which gave Parliament a growing role.",
             "Monarchs gained absolute power and no longer needed the support of nobles or the Church.",
-            "The Church lost its lands and wealth to monarchs who closed the monasteries.",
+            "The Church lost its lands and wealth to monarchs who closed the monasteries and sold them.",
             "Feudal obligations disappeared as towns and merchants took control of royal governments.",
           ],
           why: [
@@ -130,34 +131,34 @@ export default {
           answer: 0 },
 
         // ===== Set 3: The Church in a divided Europe =====
-        { id: "t16-m07", skill: "u1", type: "mcq", set: "t16-s3", topic: "1.6", reasoning: "Claims and evidence in sources",
-          question: "Which of the following, not mentioned in the passage, would best support the argument that the Church helped hold together a politically divided Europe?",
+        { id: "t16-m07", skill: "u1", type: "mcq", set: "t16-s3", topic: "1.6", reasoning: "Claims and evidence in sources", difficulty: "moderate",
+          question: "Which of the following claims is best supported by the map?",
           choices: [
-            "Pilgrims from many kingdoms traveled to the same shrines, such as Santiago de Compostela in Spain and Canterbury in England.",
-            "The Hanseatic League linked merchant cities around the Baltic and North Seas.",
-            "The kings of England and France fought the Hundred Years' War from 1337 to 1453.",
-            "The Golden Bull of 1356 gave seven princes the right to choose the Holy Roman emperor.",
+            "Church shrines and institutions drew Christians across the borders of many kingdoms.",
+            "The popes governed England, France, and Castile directly as lands of the Church.",
+            "The popes stayed in Rome for the whole period, out of reach of the French crown.",
+            "The Church protected Christians it called heretics as long as they paid a special tax.",
           ],
           why: [
-            "Correct. Shared shrines drew Christians across political borders, which shows the Church creating ties that kingdoms did not.",
-            "The Hanseatic League did link many cities, but through trade, not through the Church.",
-            "The Hundred Years' War shows division between kingdoms, which works against the argument.",
-            "The Golden Bull concerns the politics of the Holy Roman Empire and confirmed the power of the princes, not the unifying role of the Church.",
+            "Correct. The map shows shrines in Castile, England, and the Holy Roman Empire that drew pilgrims from many kingdoms, and popes whose councils made rules for all Christian lands.",
+            "The map names separate kingdoms of England, France, and Castile and marks the popes' seats only at Rome and Avignon; kings, not popes, governed those kingdoms.",
+            "The map shows the popes living at Avignon, in southern France, from 1309 to 1376.",
+            "The map marks a crusade against the Cathars at Beziers in 1209; a protected status in return for a tax describes Christians and Jews under Muslim rulers.",
           ],
           answer: 0 },
-        { id: "t16-m08", skill: "u1", type: "mcq", set: "t16-s3", topic: "1.6", reasoning: "Causation",
-          question: "The actions against the Cathars, Jews, and Muslims described in the passage best support which of the following conclusions?",
+        { id: "t16-m08", skill: "u1", type: "mcq", set: "t16-s3", topic: "1.6", reasoning: "Causation", difficulty: "easy",
+          question: "The events marked at Beziers in 1209 and at Rome in 1215 best support which of the following conclusions?",
           choices: [
-            "Church leaders used their authority to enforce religious conformity, which led to the persecution of religious minorities.",
-            "The Church protected religious minorities as long as they paid a special tax, as Muslim rulers did with Christians and Jews.",
-            "Kings used charges of heresy to break the power of the popes over their kingdoms.",
-            "Church councils worked to expand trade between Christian and Muslim merchants in the Mediterranean.",
+            "Church leaders used their authority to enforce religious conformity.",
+            "Kings used charges of heresy to break the power of the popes in their kingdoms.",
+            "The Church worked to expand trade between Christian and Muslim merchants.",
+            "The popes moved to Avignon to escape the crusade against the Cathars.",
           ],
           why: [
-            "Correct. A crusade against people the Church called heretics and rules marking Jews and Muslims as outsiders show the Church using its power to enforce one faith.",
-            "Muslim states did let Christians and Jews practice their faiths in return for the jizya tax, but the passage describes the Church acting against minorities, not protecting them.",
-            "The passage says the pope launched the crusade against the Cathars; it does not describe kings using heresy charges against popes.",
-            "Italian merchants did trade with Muslim ports, but the actions in the passage set religious groups apart rather than expanding trade.",
+            "Correct. A crusade against Christians the Church called heretics and a council's order that Jews and Muslims wear distinctive dress show the Church using its power to enforce one faith and to set minorities apart.",
+            "The map describes a crusade sent against the Cathars, not kings turning heresy charges against the popes.",
+            "The rule of 1215 marked Jews and Muslims off from Christians, which set religious groups apart rather than encouraging trade.",
+            "The map dates the popes' move to Avignon to 1309, a century after the crusade against the Cathars began.",
           ],
           answer: 0 },
 

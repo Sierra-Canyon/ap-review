@@ -80,13 +80,13 @@ export default {
     { id: "w2b", name: "Unit 2 Assessment B", group: "Unit 2: Networks of Exchange", date: "2026-11-04",
       items: [
         // ---------- Set 1: Ibn al-Athir on the Tatars ----------
-        { id: "w2b-m01", skill: "u2", type: "mcq", set: "w2b-s1", topic: "2.2", reasoning: "Contextualization",
+        { id: "w2b-m01", skill: "u2", type: "mcq", difficulty: "moderate", set: "w2b-s1", topic: "2.2", reasoning: "Contextualization",
           question: "The events described in the excerpt took place in which broader historical context?",
           choices: [
-            "Chinggis Khan's campaigns against the Khwarazmian Empire in Central Asia and Persia, c. 1219 to 1221",
-            "Hulagu's conquest of Baghdad in 1258, which ended the Abbasid Caliphate",
+            "Chinggis Khan's war on the Khwarazmian Empire in Central Asia, c. 1219 to 1221",
+            "Hulagu's conquest of Baghdad in 1258, which ended the rule of the Abbasid caliphs",
             "Timur's campaigns from Samarkand against Persia, India, and Syria, c. 1380 to 1405",
-            "The Seljuk Turks' conquest of Persia and their arrival in Baghdad in 1055",
+            "The Seljuk Turks' conquest of Persia and their entry into Baghdad as rulers in 1055",
           ],
           why: [
             "The excerpt names Samarqand, Bukhara, and the defeat of Muhammad Khwarazmshah, which places it in the Mongol war on the Khwarazmian Empire that began after a Khwarazmian governor killed a caravan of merchants sent by Chinggis Khan.",
@@ -95,28 +95,28 @@ export default {
             "The Seljuks were Muslim Turks who reached Baghdad in the eleventh century; the excerpt describes non-Muslim invaders \"from the confines of China.\"",
           ], answer: 0 },
 
-        { id: "w2b-m02", skill: "u2", type: "mcq", set: "w2b-s1", topic: "2.2", reasoning: "Sourcing and situation",
+        { id: "w2b-m02", skill: "u2", type: "mcq", difficulty: "easy", set: "w2b-s1", topic: "2.2", reasoning: "Sourcing and situation",
           question: "Ibn al-Athir's point of view in the excerpt was most likely shaped by his position as",
           choices: [
-            "a Muslim historian in Mosul who saw Mongol armies destroy cities across the eastern Islamic world",
-            "a Mongol official who recorded the Great Khan's victories for the court",
+            "a Muslim historian in Mosul writing as Mongol armies ravaged the eastern Islamic world",
+            "a Mongol official who recorded the Great Khan's victories for the court at Karakorum",
             "a Christian monk in Syria who hoped the Mongols would become allies against Muslim states",
-            "a merchant who profited from the safe roads that Mongol rule later created",
+            "a Persian merchant who profited from the safe roads that Mongol rule later created",
           ],
           why: [
-            "He writes that the disaster struck \"the Muslims in particular\" and judges the invaders' religion by Islamic standards, which fits a Muslim scholar watching the conquest of Muslim lands.",
+            "Correct. Ibn al-Athir wrote in Mosul from reports of the invasion. He says the disaster struck \"the Muslims in particular\" and judges the invaders' religion by Islamic standards, which fits a Muslim scholar writing as Muslim lands were conquered.",
             "A Mongol official would have praised the conquests, not called them \"the greatest catastrophe.\"",
             "Some Christians in Southwest Asia did later hope for a Mongol alliance, but nothing in the excerpt reflects a Christian view; it laments harm to Muslims.",
             "The protected trade of the Mongol peace came decades after these invasions, and the excerpt shows no interest in trade.",
           ], answer: 0 },
 
-        { id: "w2b-m03", skill: "u2", type: "mcq", set: "w2b-s1", topic: "2.2", reasoning: "Continuity and Change",
+        { id: "w2b-m03", skill: "u2", type: "mcq", difficulty: "moderate", set: "w2b-s1", topic: "2.2", reasoning: "Continuity and Change",
           question: "Which later development most complicates Ibn al-Athir's picture of the Tatars as a force that only destroyed?",
           choices: [
-            "Later Mongol rulers protected long-distance trade, and the Mongol ruler of Persia, Ghazan, converted to Islam in 1295.",
-            "The Mamluks of Egypt defeated a Mongol army at the Battle of Ain Jalut in 1260.",
-            "Mongol armies sacked Baghdad in 1258 and killed the last Abbasid caliph.",
-            "Mongol fleets failed to conquer Japan in 1274 and 1281.",
+            "Later Mongol rulers protected trade, and the Ilkhan Ghazan converted to Islam in 1295.",
+            "The Mamluks of Egypt defeated a Mongol army at Ain Jalut in 1260 and stopped its advance.",
+            "Mongol armies sacked Baghdad in 1258 and killed the last Abbasid caliph and many scholars.",
+            "Mongol fleets failed to conquer Japan in 1274 and 1281 when storms wrecked their ships.",
           ],
           why: [
             "Mongol protection of merchants and the conversion of the Ilkhans to Islam show that Mongol rule also built connections and adopted the faith of the people it ruled, which goes beyond the excerpt's picture of pure destruction.",
@@ -126,12 +126,12 @@ export default {
           ], answer: 0 },
 
         // ---------- Set 2: A Central Asian silk of the Mongol period (image) ----------
-        { id: "w2b-m04", skill: "u2", type: "mcq", set: "w2b-s2", topic: "2.1", reasoning: "Claims and evidence in sources",
+        { id: "w2b-m04", skill: "u2", type: "mcq", difficulty: "easy", set: "w2b-s2", topic: "2.1", reasoning: "Claims and evidence in sources",
           question: "The textile best illustrates which of the following developments in the period c. 1200 to c. 1450?",
           choices: [
-            "Mongol rule over much of Eurasia helped luxury goods and artistic designs move between China, Central Asia, and Europe.",
-            "China kept the only workshops in Eurasia that could weave fine silk.",
-            "Trade along the Silk Roads declined after the Mongol conquests.",
+            "Mongol rule helped luxury goods and designs move between China, Central Asia, and Europe.",
+            "China kept the only workshops in Eurasia that could weave fine silk with gold thread.",
+            "Trade along the Silk Roads declined sharply after the Mongol conquests of Central Asia.",
             "Muslim rulers in Central Asia banned all images of animals in the goods made in their lands.",
           ],
           why: [
@@ -141,12 +141,12 @@ export default {
             "The silk is covered with birds and a winged animal, and figures of animals were common in the art of Central Asia and the Islamic world.",
           ], answer: 0 },
 
-        { id: "w2b-m05", skill: "u2", type: "mcq", set: "w2b-s2", topic: "2.5", reasoning: "Contextualization",
+        { id: "w2b-m05", skill: "u2", type: "mcq", difficulty: "easy", set: "w2b-s2", topic: "2.5", reasoning: "Contextualization",
           question: "The influence of silks like this one on Italian weavers of the 1300s and 1400s is best described as an example of",
           choices: [
-            "cultural diffusion, in which artistic styles spread along trade routes and were adapted by artisans in new places",
-            "religious conversion, in which European rulers adopted the faith of the Mongols",
-            "an environmental effect of trade, like the spread of plague along the same routes",
+            "cultural diffusion, in which styles moved along trade routes and were adapted elsewhere",
+            "religious conversion, in which European rulers adopted the faith of the Mongol khans",
+            "an environmental effect of trade, like the spread of plague and crops along the same routes",
             "a policy of the Mongol khans that required European weavers to copy Mongol designs",
           ],
           why: [
@@ -156,13 +156,13 @@ export default {
             "The Mongols did not rule Italy, and Italian weavers chose the designs because buyers wanted them.",
           ], answer: 0 },
 
-        { id: "w2b-m06", skill: "u2", type: "mcq", set: "w2b-s2", topic: "2.2", reasoning: "Causation",
+        { id: "w2b-m06", skill: "u2", type: "mcq", difficulty: "easy", set: "w2b-s2", topic: "2.2", reasoning: "Causation",
           question: "The Chinese designs on a silk woven in Central Asia are best explained by which Mongol practice?",
           choices: [
-            "Moving skilled weavers and other artisans from conquered cities to workshops in other parts of the empire",
-            "Requiring all conquered peoples to follow Confucian customs",
-            "Forbidding the sale of silk outside the Mongol homeland",
-            "Closing the overland routes between China and Central Asia",
+            "Moving artisans from conquered cities to workshops elsewhere in the empire",
+            "Requiring all conquered peoples to follow Confucian customs and Chinese law codes",
+            "Forbidding the sale of fine silk to buyers anywhere outside the Mongol homeland",
+            "Closing the overland routes between China and Central Asia to private merchants",
           ],
           why: [
             "The Mongols gathered artisans from China, Central Asia, and Persia and sent them to work wherever the khans needed them, so Chinese designs and Central Asian weaving came together in cloths like this one.",
@@ -172,27 +172,27 @@ export default {
           ], answer: 0 },
 
         // ---------- Set 3: John of Montecorvino ----------
-        { id: "w2b-m07", skill: "u2", type: "mcq", set: "w2b-s3", topic: "2.3", reasoning: "Causation",
+        { id: "w2b-m07", skill: "u2", type: "mcq", difficulty: "easy", set: "w2b-s3", topic: "2.3", reasoning: "Causation",
           question: "The \"other route\" that Montecorvino describes, \"involving two sea-voyages,\" most likely depended on",
           choices: [
-            "the monsoon winds, which carried ships between the Persian Gulf, India, and the ports of southern China",
-            "camel caravans that crossed the Sahara to reach the Mediterranean Sea",
+            "the monsoon winds, which carried ships between Persia, India, and southern China",
+            "the trade winds of the Atlantic, which carried ships south along the coast of Africa",
             "the Grand Canal, which carried ships from the Persian Gulf to the Yuan capital",
-            "Portuguese ships that sailed around the southern tip of Africa",
+            "Portuguese ships that sailed around the southern tip of Africa to reach India",
           ],
           why: [
             "Montecorvino went from Tabriz to India and then on to China, a journey that crossed the Indian Ocean by ship, and sailors timed their voyages to the seasonal monsoon winds.",
-            "Trans-Saharan caravans linked West and North Africa, not Persia, India, and China.",
+            "The Atlantic winds served sailors off West Africa, while Montecorvino sailed from Persia to India and on to China.",
             "The Grand Canal linked southern and northern China; it did not reach the Persian Gulf.",
             "The Portuguese did not sail around Africa until 1488 and did not reach India until 1498.",
           ], answer: 0 },
 
-        { id: "w2b-m08", skill: "u2", type: "mcq", set: "w2b-s3", topic: "2.7", reasoning: "Comparison",
+        { id: "w2b-m08", skill: "u2", type: "mcq", difficulty: "moderate", set: "w2b-s3", topic: "2.7", reasoning: "Comparison",
           question: "Montecorvino's comparison of the two routes in the third paragraph best supports which conclusion?",
           choices: [
-            "Travelers' choice between land and sea routes across Eurasia depended in part on political conditions along each route.",
-            "By 1305, sea travel had become faster and safer than land travel for all travelers.",
-            "Mongol rulers had banned Europeans from using the overland route to China.",
+            "Travelers chose land or sea routes partly by the political conditions along each one.",
+            "By 1305, sea travel had become faster and safer than the land routes for every traveler.",
+            "The Mongol khans had banned European travelers from using the overland route to China.",
             "Sea routes in the Indian Ocean were closed to Christians and used only by Muslim merchants.",
           ],
           why: [
@@ -202,29 +202,29 @@ export default {
             "Montecorvino, a Christian, traveled the sea route himself, and merchants of many faiths sailed the Indian Ocean.",
           ], answer: 0 },
 
-        { id: "w2b-m09", skill: "u2", type: "mcq", set: "w2b-s3", topic: "2.5", reasoning: "Contextualization",
+        { id: "w2b-m09", skill: "u2", type: "mcq", difficulty: "difficult", set: "w2b-s3", topic: "2.5", reasoning: "Contextualization",
           question: "Montecorvino's ability to build a church in the Yuan capital most directly reflects",
           choices: [
-            "the Mongol rulers' tolerance of many religions in the lands they governed",
-            "the conversion of the Yuan emperors to Catholic Christianity",
-            "the arrival of Portuguese missionaries in China by sea",
-            "the Ming dynasty's support for foreign religious teachers",
+            "the Mongol rulers' tolerance of many religions in their lands",
+            "the conversion of the Yuan emperors to Catholic Christianity in the 1290s",
+            "the long presence of Nestorian Christians in Central Asia and China",
+            "the Ming dynasty's support for foreign religious teachers at court",
           ],
           why: [
             "Mongol rulers generally allowed Buddhists, Muslims, Christians, and others to practice and teach, which let a Catholic friar build a church in Khanbaliq even though the emperor did not convert.",
             "The excerpt says only that the emperor was kind to Christians, and the Yuan emperors never became Catholic.",
-            "Portuguese missionaries reached China only in the sixteenth century.",
+            "Nestorian Christians had lived in Central Asia and China for centuries, but they belonged to a different church and opposed Montecorvino's work. His freedom to build came from the khan's policy toward religions.",
             "The Ming dynasty did not begin until 1368, decades after this letter.",
           ], answer: 0 },
 
         // ---------- Set 4: Cadamosto on salt and gold ----------
-        { id: "w2b-m10", skill: "u2", type: "mcq", set: "w2b-s4", topic: "2.4", reasoning: "Causation",
+        { id: "w2b-m10", skill: "u2", type: "mcq", difficulty: "easy", set: "w2b-s4", topic: "2.4", reasoning: "Causation",
           question: "The exchange of salt for gold described in the excerpt took place mainly because",
           choices: [
-            "the Sahara had rich salt deposits, while the lands to the south produced gold but had little salt",
-            "Portuguese traders controlled the salt mines and sold salt to the rulers of Mali",
-            "the rulers of Mali banned gold mining within their own lands",
-            "Chinese merchants shipped salt across the Indian Ocean to West Africa",
+            "the Sahara had rich salt deposits, while the lands to the south had gold but little salt",
+            "Portuguese traders controlled the Saharan salt mines and sold the salt to the rulers of Mali",
+            "the rulers of Mali had banned gold mining in their lands to keep the price of gold high",
+            "Chinese merchants shipped sea salt across the Indian Ocean to the ports of West Africa",
           ],
           why: [
             "Each region had what the other lacked: desert mines such as Taghaza produced salt, which people in the hot lands to the south needed, while West Africa had gold fields.",
@@ -233,59 +233,59 @@ export default {
             "Chinese merchants traded in the Indian Ocean, and the excerpt shows salt crossing the desert by camel.",
           ], answer: 0 },
 
-        { id: "w2b-m11", skill: "u2", type: "mcq", set: "w2b-s4", topic: "2.4", reasoning: "Causation",
+        { id: "w2b-m11", skill: "u2", type: "mcq", difficulty: "difficult", set: "w2b-s4", topic: "2.4", reasoning: "Causation",
           question: "Which of the following most directly made possible the trade described in the excerpt?",
           choices: [
-            "The use of camels and camel saddles, which let caravans carry heavy loads across the desert",
-            "The lateen sail and the astrolabe, which helped sailors cross open water",
-            "Mongol relay stations that linked North Africa to Central Asia",
-            "The Grand Canal, which moved goods between regions of a single empire",
+            "Camels and camel saddles, which let caravans carry heavy loads across the desert",
+            "The lateen sail and the astrolabe, which helped Portuguese sailors reach West Africa",
+            "Mongol relay stations that linked the cities of North Africa to Central Asia",
+            "Mali's paper money, which let caravans trade without carrying heavy coin",
           ],
           why: [
             "The excerpt describes \"great trains of camels\"; camels survive long stretches without water, and saddles let them carry heavy loads such as slabs of salt.",
-            "The lateen sail and astrolabe were tools of sea travel in the Indian Ocean and Mediterranean, not of desert caravans.",
+            "Lateen-rigged ships and the astrolabe carried Cadamosto to West Africa, but the trade he describes moved across the desert by camel.",
             "Mongol relay stations served the Mongol Empire in Asia; the Mongols never ruled North Africa.",
-            "The Grand Canal was in China and had no role in trans-Saharan trade.",
+            "Mali had no paper money. Caravans traded salt, brass, silver, and other goods directly for gold.",
           ], answer: 0 },
 
-        { id: "w2b-m12", skill: "u2", type: "mcq", set: "w2b-s4", topic: "2.4", reasoning: "Sourcing and situation",
+        { id: "w2b-m12", skill: "u2", type: "mcq", difficulty: "moderate", set: "w2b-s4", topic: "2.4", reasoning: "Sourcing and situation",
           question: "Cadamosto's account of his voyages in the 1450s, written for European readers, best reflects which development of that time?",
           choices: [
-            "Portuguese efforts to trade with West Africa by sea and reach its gold without going through North African merchants",
-            "The Mongol conquest of North Africa and the Saharan trade routes",
-            "The spread of Christianity across the Sahara by Arab caravans",
-            "The end of trans-Saharan trade after the Black Death",
+            "Portugal's search for a sea route to the gold that crossed the Sahara",
+            "The Ottoman conquest of North Africa and the Saharan caravan routes in the 1450s",
+            "The spread of Christianity across the Sahara by the Arab caravans of Hoden",
+            "The end of the trans-Saharan caravan trade in the century after the Black Death",
           ],
           why: [
             "Cadamosto sailed for Prince Henry of Portugal, whose captains explored the Atlantic coast of Africa partly to reach the gold that had long crossed the Sahara through Muslim middlemen.",
-            "The Mongols never conquered North Africa; the Mamluks of Egypt defeated them at Ain Jalut in 1260.",
+            "The Ottomans took Constantinople in 1453, but they did not conquer North Africa until the sixteenth century, and the excerpt describes Arab caravans, not Ottoman rule.",
             "The caravans in the excerpt are run by Arab merchants; Islam, not Christianity, spread along the Saharan routes.",
             "The excerpt shows caravans still carrying salt and gold across the desert in the 1450s, a century after the plague.",
           ], answer: 0 },
 
         // ---------- Set 5: Population estimates ----------
-        { id: "w2b-m13", skill: "u2", type: "mcq", set: "w2b-s5", topic: "2.6", reasoning: "Causation",
+        { id: "w2b-m13", skill: "u2", type: "mcq", difficulty: "moderate", set: "w2b-s5", topic: "2.6", reasoning: "Causation",
           question: "The change in the estimated populations of Italy, France, and the United Kingdom between 1300 and 1400 was most directly caused by",
           choices: [
-            "the bubonic plague, which spread west along trade routes and reached Europe in 1347",
-            "Mongol armies that conquered western Europe in the thirteenth century",
-            "the loss of soldiers in the Crusades to the eastern Mediterranean",
-            "large-scale migration from Europe to the Americas",
+            "the bubonic plague, which reached Europe along trade routes in 1347",
+            "Mongol armies that invaded Europe in the 1240s and destroyed many towns",
+            "the loss of soldiers and pilgrims in the Crusades to the eastern Mediterranean",
+            "large-scale migration from Europe to the Americas and Atlantic islands",
           ],
           why: [
             "The Black Death traveled from Central Asia to the Black Sea and then by ship to Mediterranean ports in 1347, and it killed a large share of Europe's people, which matches the sharp drop between 1300 and 1400.",
-            "Mongol armies raided Poland and Hungary in 1241 but never reached Italy, France, or Britain.",
+            "Mongol armies reached Poland and Hungary in 1241 and 1242, before 1300, and they never reached Italy, France, or Britain.",
             "The last crusader strongholds fell in 1291, and the Crusades did not cause population losses on this scale.",
             "European migration to the Americas began only after 1492.",
           ], answer: 0 },
 
-        { id: "w2b-m14", skill: "u2", type: "mcq", set: "w2b-s5", topic: "2.2", reasoning: "Causation",
+        { id: "w2b-m14", skill: "u2", type: "mcq", difficulty: "difficult", set: "w2b-s5", topic: "2.2", reasoning: "Causation",
           question: "The estimated decline in the populations of China and Iran between 1200 and 1300 is best explained by",
           choices: [
-            "the Mongol conquests, which killed many people and damaged cities, farms, and irrigation systems",
-            "the Black Death, which spread from Central Asia in the fourteenth century",
-            "the Ming dynasty's limits on trade and contact with foreigners",
-            "the movement of millions of Chinese and Persian merchants to the Swahili coast",
+            "the Mongol conquests, which killed many and wrecked cities, farms, and irrigation",
+            "the Black Death, which spread west from Central Asia along the caravan routes",
+            "the Ming dynasty's limits on overseas trade and contact with foreigners",
+            "the movement of millions of Chinese and Persian merchants to the ports of the Swahili coast",
           ],
           why: [
             "Mongol armies conquered Central Asia, Iran, and northern China between the 1210s and the 1250s and southern China by 1279, and these wars caused heavy loss of life and damaged farming.",
@@ -294,18 +294,18 @@ export default {
             "Some merchants settled abroad, but their numbers were far too small to explain declines of this size.",
           ], answer: 0 },
 
-        { id: "w2b-m15", skill: "u2", type: "mcq", set: "w2b-s5", topic: "2.6", reasoning: "Claims and evidence in sources",
+        { id: "w2b-m15", skill: "u2", type: "mcq", difficulty: "difficult", set: "w2b-s5", topic: "2.6", reasoning: "Claims and evidence in sources",
           question: "Which of the following is the most important limitation of the table for a historian studying the Black Death?",
           choices: [
-            "It gives estimates only once every hundred years, so it cannot show when or how quickly each population fell.",
-            "It includes no countries in Asia or Africa.",
-            "It shows that no population recovered after 1400.",
-            "It counts only people who lived in large cities.",
+            "It gives one figure per century, so it cannot show when or how fast each fell.",
+            "It includes no countries in Asia or Africa, where the plague also spread.",
+            "It uses present-day borders, so it cannot show which states ruled each region.",
+            "It counts only people who lived in large cities, not in the countryside.",
           ],
           why: [
             "The plague struck Europe and Southwest Asia between 1346 and 1353, so century-long gaps hide the timing of the losses and cannot separate the plague from other causes such as famine and war.",
             "The table includes China, Iran, and Egypt.",
-            "Most populations in the table grew again between 1400 and 1500, and this is a claim about the data, not a limitation of it.",
+            "The table does use present-day borders, but that matters less for studying the plague than the hundred-year gaps, which hide when and how fast populations fell.",
             "The table gives estimates for whole countries, not only cities.",
           ], answer: 0 },
 

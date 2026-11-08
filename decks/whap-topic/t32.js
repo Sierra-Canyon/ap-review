@@ -37,10 +37,10 @@ export default {
     { id: "t32", name: "Topic 3.2 Quiz: Empires: Administration", group: "Unit 3: Land-Based Empires",
       items: [
         // ===== Set 1: Jahangir's first orders (Mughal Empire) =====
-        { id: "t32-m01", skill: "u3", type: "mcq", set: "t32-s1", topic: "3.2", reasoning: "Claims and evidence in sources",
+        { id: "t32-m01", skill: "u3", type: "mcq", set: "t32-s1", topic: "3.2", reasoning: "Claims and evidence in sources", difficulty: "easy",
           question: "Jahangir's description of the Chain of Justice in the first paragraph was most likely intended to",
           choices: [
-            "present the emperor as a ruler who personally protected ordinary subjects from unjust officials",
+            "present the emperor as a ruler who protected ordinary subjects from unjust officials",
             "show that Mughal courts would now judge cases by Hindu law instead of Islamic law",
             "announce that non-Muslim subjects would once again pay the jizya, a tax on non-Muslims",
             "warn European merchants that their disputes would be settled only by the emperor",
@@ -52,13 +52,13 @@ export default {
             "Europeans are not mentioned. The chain was open to anyone seeking justice, and its purpose was to check the emperor's own officials.",
           ],
           answer: 0 },
-        { id: "t32-m02", skill: "u3", type: "mcq", set: "t32-s1", topic: "3.2", reasoning: "Contextualization",
+        { id: "t32-m02", skill: "u3", type: "mcq", set: "t32-s1", topic: "3.2", reasoning: "Contextualization", difficulty: "moderate",
           question: "Orders (1) and (8) in the excerpt are best understood in the context of which challenge of governing the Mughal Empire?",
           choices: [
-            "Officers paid with the right to collect revenue from assigned lands could abuse peasants and traders for their own gain.",
-            "Maratha armies had taken control of much of the Deccan and were collecting taxes in the emperor's place.",
+            "Officers paid with revenue from assigned lands could abuse peasants for their own gain.",
+            "Maratha armies had taken much of the Deccan and were collecting taxes in the emperor's place.",
             "The British East India Company had taken over the collection of land revenue in Bengal.",
-            "Provincial governors had stopped sending any revenue to the capital, which left the empire bankrupt.",
+            "Provincial governors had stopped sending any revenue to Agra, leaving the empire bankrupt.",
           ],
           why: [
             "Correct. The Mughals paid their officers with jagirs, the right to collect revenue from an assigned area. Orders (1) and (8) forbid jagirdars to add their own taxes and to seize peasants' land, which shows the emperor trying to keep these officers from abusing the system.",
@@ -67,13 +67,13 @@ export default {
             "This overstates the problem. The excerpt shows officials taking too much from subjects, not an empire that had lost all of its revenue.",
           ],
           answer: 0 },
-        { id: "t32-m03", skill: "u3", type: "mcq", set: "t32-s1", topic: "3.2", reasoning: "Sourcing and situation",
+        { id: "t32-m03", skill: "u3", type: "mcq", set: "t32-s1", topic: "3.2", reasoning: "Sourcing and situation", difficulty: "easy",
           question: "Which of the following is the most important limitation of the excerpt as evidence of how well Mughal government worked under Jahangir?",
           choices: [
-            "It is the emperor's own account of his orders, so it shows how he wanted his rule to be seen but not whether officials obeyed.",
+            "It is the emperor's own account, so it shows his aims but not whether officials obeyed.",
             "It was written by a European visitor who did not understand how the Mughal court worked.",
             "It was written long after Jahangir's death by historians who had never seen his court.",
-            "It reflects the views of the jagirdars, who wanted to keep the right to tax peasants as they pleased.",
+            "It reflects the views of the jagirdars, who wanted to keep taxing peasants as they pleased.",
           ],
           why: [
             "Correct. The excerpt comes from Jahangir's memoirs. A ruler describing his own orders had every reason to present himself as just and in control, and an order to stop an abuse shows only that the emperor wanted it stopped, not that it stopped.",
@@ -84,7 +84,7 @@ export default {
           answer: 0 },
 
         // ===== Set 2: Peter the Great's reforms (practice passage) =====
-        { id: "t32-m04", skill: "u3", type: "mcq", set: "t32-s2", topic: "3.2", reasoning: "Causation",
+        { id: "t32-m04", skill: "u3", type: "mcq", set: "t32-s2", topic: "3.2", reasoning: "Causation", difficulty: "easy",
           question: "According to the passage, which of the following was the main reason for Peter the Great's changes to the Russian government?",
           choices: [
             "The demands of long wars, which required more money, soldiers, and officials",
@@ -99,10 +99,10 @@ export default {
             "Russia did not lose Siberia. It kept expanding across Siberia in this period, and furs from there remained an important source of wealth.",
           ],
           answer: 0 },
-        { id: "t32-m05", skill: "u3", type: "mcq", set: "t32-s2", topic: "3.2", reasoning: "Continuity and change",
+        { id: "t32-m05", skill: "u3", type: "mcq", set: "t32-s2", topic: "3.2", reasoning: "Continuity and change", difficulty: "moderate",
           question: "Which of the following best describes how the reforms in the passage changed the position of the Russian nobility?",
           choices: [
-            "A noble's standing came to depend more on the rank he earned through service to the state.",
+            "A noble's standing came to depend more on rank in state service.",
             "Nobles gained the right to choose each new tsar through the Senate.",
             "Nobles were freed from any duty to serve in the army or the government.",
             "Nobles lost their serfs, who became peasants owing taxes only to the state.",
@@ -114,16 +114,16 @@ export default {
             "The passage says landlords collected the poll tax \"from their serfs,\" so nobles kept their serfs. Serfdom in Russia lasted until 1861.",
           ],
           answer: 0 },
-        { id: "t32-m06", skill: "u3", type: "mcq", set: "t32-s2", topic: "3.2", reasoning: "Comparison",
+        { id: "t32-m06", skill: "u3", type: "mcq", set: "t32-s2", topic: "3.2", reasoning: "Comparison", difficulty: "moderate",
           question: "The Table of Ranks described in the passage was most similar to which of the following practices in another land-based empire?",
           choices: [
-            "The Mughal mansab system, which gave nobles numbered ranks that set their pay and the troops they owed the emperor",
-            "The Safavid shahs' order that their subjects follow Shi'a Islam",
-            "The Inca mit'a, which required communities to send workers in turn to labor for the state",
-            "The Ottoman sale of the right to collect taxes to the highest bidder",
+            "The Mughal mansab system of numbered ranks for nobles in the emperor's service",
+            "The Safavid shahs' order that all their subjects follow Twelver Shi'a Islam",
+            "The Inca mit'a, which required communities to send workers to labor for the state",
+            "The Ottoman sale of the right to collect provincial taxes to the highest bidder",
           ],
           why: [
-            "Correct. Both systems placed nobles and officers in ranks that the ruler granted and could change, so a man's standing depended on serving the ruler. Both helped a ruler bind a powerful elite to the central state.",
+            "Correct. Mansabdars held numbered ranks that the emperor granted and could change, and each rank set a noble's pay and the troops he owed. Like the Table of Ranks, the system made a man's standing depend on serving the ruler and bound a powerful elite to the central state.",
             "This was a way to use religion to unify subjects and legitimize the dynasty, not a system of ranks for nobles and officials.",
             "The mit'a was a labor obligation owed by ordinary communities, not a set of ranks for an elite. The Inca Empire also fell to the Spanish in the 1530s, long before Peter's reign.",
             "Tax farming was a way to raise revenue by selling collection rights. It did not set the rank or status of nobles in the ruler's service.",
@@ -131,13 +131,13 @@ export default {
           answer: 0 },
 
         // ===== Set 3: Caron on the lords of Japan (Tokugawa Japan) =====
-        { id: "t32-m07", skill: "u3", type: "mcq", set: "t32-s3", topic: "3.2", reasoning: "Causation",
+        { id: "t32-m07", skill: "u3", type: "mcq", set: "t32-s3", topic: "3.2", reasoning: "Causation", difficulty: "easy",
           question: "The practices described in the excerpt most directly helped the Tokugawa shoguns to",
           choices: [
-            "reduce the daimyo's ability to challenge the shogun by draining their wealth and keeping watch on them",
-            "expand Japan's overseas trade by giving the daimyo control over the Dutch trading post",
-            "spread Christianity among the daimyo and their followers",
-            "replace the daimyo with officials chosen through examinations on the Confucian classics",
+            "weaken the daimyo by draining their wealth and keeping watch on them",
+            "expand overseas trade by giving the daimyo control of the Dutch trading post",
+            "spread Christianity among the daimyo and their samurai followers",
+            "replace the daimyo with officials chosen by Confucian examinations",
           ],
           why: [
             "Correct. The lords' revenues were great, but spending half of every year at court in Edo cost so much that they had \"enough to do with their moneys,\" and the chancellor sent by the shogun was \"an open Spie\" on each lord. Both practices made it harder for a lord to build the wealth and secrecy needed to rebel.",
@@ -146,13 +146,13 @@ export default {
             "The lords kept their domains; the excerpt describes ways to watch and weaken them. Examinations for officials were a Chinese practice, not a Tokugawa one.",
           ],
           answer: 0 },
-        { id: "t32-m08", skill: "u3", type: "mcq", set: "t32-s3", topic: "3.2", reasoning: "Comparison",
+        { id: "t32-m08", skill: "u3", type: "mcq", set: "t32-s3", topic: "3.2", reasoning: "Comparison", difficulty: "moderate",
           question: "The Tokugawa methods described in the excerpt were most similar to which of the following?",
           choices: [
-            "Louis XIV's practice of drawing the great nobles of France to live at his court at Versailles",
+            "Louis XIV's practice of keeping the great nobles of France at his court at Versailles",
             "The Ottoman devshirme, which took boys from Christian families to train as soldiers and officials",
             "The Mughal emperor Akbar's decision to end the jizya, a tax on non-Muslims",
-            "The Mughal practice of paying officers with jagirs, the right to collect revenue from an assigned area",
+            "The Mughal practice of paying officers with jagirs, revenue from assigned lands",
           ],
           why: [
             "Correct. Like the shoguns, Louis XIV kept powerful nobles near him, where life at court was costly and their actions could be watched. In both cases a ruler weakened a landed nobility that had fought the central government in earlier civil wars.",

@@ -25,7 +25,7 @@ const land = feature(JSON.parse(readFileSync(require.resolve("world-atlas/land-5
 // Antarctica wraps the pole, and a conic projection clipped to a small window turns it into a ring around the whole frame
 // that cancels the other land; no map here reaches it, so it is left out.
 land.features[0].geometry.coordinates = land.features[0].geometry.coordinates.filter((poly) => poly[0].some(([, lat]) => lat > -60));
-const TOL = 0.6, MIN_AREA = 3;
+const TOL = 0.9, MIN_AREA = 4;
 
 // Douglas-Peucker on one ring of screen points
 function dp(pts, tol) {
@@ -55,7 +55,10 @@ function simplePath(proj, geo) {
     let area = 0; for (let i = 0; i < r.length; i++) { const [x1, y1] = r[i], [x2, y2] = r[(i + 1) % r.length]; area += x1 * y2 - x2 * y1; }
     if (r.closed && Math.abs(area / 2) < MIN_AREA) continue;
     const s = dp(r, TOL);
-    d += "M" + s.map(([x, y]) => `${+x.toFixed(1)},${+y.toFixed(1)}`).join("L") + (r.closed ? "Z" : "");
+    // Relative moves after the first point, rounded to a tenth of a pixel: about 40% smaller than absolute coordinates.
+    const q = s.map(([x, y]) => [Math.round(x * 10), Math.round(y * 10)]);
+    const t = (n) => String(n / 10).replace(/^(-?)0\./, "$1.");
+    d += "M" + t(q[0][0]) + "," + t(q[0][1]) + "l" + q.slice(1).map(([x, y], i) => { const dx = x - q[i][0], dy = y - q[i][1]; return t(dx) + (dy < 0 ? "" : ",") + t(dy); }).join(" ") + (r.closed ? "Z" : "");
   }
   return d;
 }

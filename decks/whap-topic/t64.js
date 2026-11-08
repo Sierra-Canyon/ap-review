@@ -1,10 +1,14 @@
 // Topic 6.4 Quiz: Global Economic Development
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { bars } from "../../plot.js";
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
-const M = (n, set, reasoning, question, choices, why) => ({ id: "t64-m0" + n, skill: "u6", type: "mcq", set, topic: "6.4", reasoning, question, choices, why, answer: 0 });
+const M = (n, set, reasoning, question, choices, why, difficulty) => ({ id: "t64-m0" + n, skill: "u6", type: "mcq", set, topic: "6.4", reasoning, question, choices, why, difficulty, answer: 0 });
 const Q = (sub, prompt, earns, yes, no, example, notExample) => ({ id: "t64-q1" + sub, skill: "u6", type: "fr", set: "t64-s3", part: "SAQ 1", sub, topic: "6.4", lead: SAQ, prompt, earns, yes, no, example, notExample });
+
+// Chief exports of the Gold Coast colony in 1911, by value in pounds sterling, from the Statesman's Year-Book 1913 (see the cite below).
+const GC = { names: ["Cocoa", "Gold", "Rubber", "Palm kernels", "Lumber", "Palm oil"], pounds: [1613468, 1057692, 219447, 175891, 138821, 128916] };
 
 export const sets = {
   "t64-s1": {
@@ -17,10 +21,13 @@ export const sets = {
     ] }],
   },
   "t64-s2": {
-    id: "t64-s2", name: "Palm oil and cocoa in West Africa", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that West Africa's place in the world economy changed in the 1800s from supplying enslaved people to supplying raw materials for industry. After Britain abolished its slave trade in 1807, British merchants bought more palm oil from the Niger Delta and other coastal regions, where African traders and rulers controlled its production. Factories in Britain used palm oil to make soap and candles and to grease machinery. Later in the century, cocoa became a major export. Farmers in the British Gold Coast colony began planting cocoa trees in the 1880s, and within about thirty years the colony was the world's largest cocoa producer. Most of the cocoa was grown by African farmers on their own land, and some grew rich, but prices were set in distant markets, and the colony's economy came to depend on one crop." },
-      PRACTICE,
+    id: "t64-s2", name: "Gold Coast exports, 1911", intro: "Use the chart and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: bars({ labels: GC.names, values: GC.pounds.map((v) => v / 1000), y: [0, 1800], step: 300, yname: "Thousands of pounds", fmt: (v) => Math.round(v).toLocaleString("en-US"), width: 600, height: 300,
+        alt: "Bar chart of the value of the Gold Coast colony's chief exports in 1911, in thousands of pounds sterling: " + GC.names.map((n, i) => `${n}, ${Math.round(GC.pounds[i] / 1000).toLocaleString("en-US")}`).join("; ") + ". Cocoa is the largest, gold is second, and palm oil is the smallest." }),
+        caption: "Value of the Gold Coast colony's chief exports in 1911, in thousands of pounds sterling" },
+      { table: { head: ["Export", "Value in 1911 (pounds)"], rows: GC.names.map((n, i) => [n, GC.pounds[i].toLocaleString("en-US")]) } },
+      { cite: "The Statesman's Year-Book 1913 (London: Macmillan, 1913), p. 285, \"Chief exports (1911)\" for the Gold Coast, as transcribed on Wikisource (copy fetched from a Kiwix mirror of Wikisource, 2022). The Gold Coast was a British colony in West Africa, today part of Ghana.", url: "https://kwx.liehendr.com/content/wikisource_en_all_maxi_2022-09/A/Page%3AStatesman's_Year-Book_1913.djvu/357", kind: "data" },
     ] }],
   },
   "t64-s3": {
@@ -38,54 +45,62 @@ export default {
       items: [
         // ===== Set 1: Robert Fortune =====
         M(1, "t64-s1", "Sourcing and situation", "The main purpose of Fortune's mission, as he describes it, was to",
-          ["obtain tea plants, skilled workers, and tools from China for the East India Company's plantations in India", "open Chinese ports to British trade by treaty", "study Chinese religion", "sell British cloth in China"],
-          ["Correct. He says the Company sent him to obtain \"the finest varieties of the Tea-plant, as well as native manufacturers and implements.\"",
-            "Treaties are not part of his mission.",
-            "His purpose is plants and tea-making.",
-            "He does not mention selling cloth."]),
+          ["bring tea plants, tea makers, and tools to India", "open more Chinese ports to British trade by treaty", "buy Chinese tea for the London market directly", "sell Indian opium to merchants in Hong Kong"],
+          ["Correct. He says the Company sent him to obtain \"the finest varieties of the Tea-plant, as well as native manufacturers and implements\" for its plantations in the Himalayas.",
+            "The treaty ports had opened in 1842; his mission was to collect plants and workers, not to negotiate.",
+            "He was sent to grow tea outside China, not to buy it.",
+            "Opium paid for much of Britain's tea, but Fortune does not mention it."],
+          "easy"),
         M(2, "t64-s1", "Causation", "Fortune's mission most directly contributed to which development?",
-          ["The growth of tea plantations in British India, which reduced Britain's dependence on Chinese tea", "The end of tea drinking in Britain", "China's conquest of the Himalayas", "The collapse of the East India Company's plantations in 1852"],
+          ["Tea plantations in British India that cut Britain's need for Chinese tea", "A Chinese ban on all tea exports to Britain from the 1850s on", "Tea plantations in the Dutch East Indies worked under the cultivation system", "The decline of tea drinking in Britain in the late 1800s"],
           ["Correct. By the late 1800s, India and Ceylon supplied most of the tea drunk in Britain.",
-            "Tea drinking grew.",
-            "The plantations were in British India.",
-            "He reports the mission's success."]),
+            "China kept exporting tea; it simply lost its near monopoly.",
+            "The Dutch did grow crops in Java under forced cultivation, but Fortune worked for the British East India Company in India.",
+            "Tea drinking in Britain grew as Indian tea became cheaper."],
+          "moderate"),
         M(3, "t64-s1", "Developments and processes", "The source best illustrates which feature of the global economy in the 1800s?",
-          ["Imperial powers moved plants and expertise around the world to grow profitable crops in their colonies", "Asian states controlled the trade in all cash crops", "Plantations disappeared after the end of slavery", "Industrial countries stopped importing raw materials"],
+          ["Imperial powers moved crops and experts to grow cash crops in colonies.", "Asian states kept control of the trade in the most valuable cash crops.", "Plantation farming disappeared once slavery was abolished in the empire.", "Industrial countries depended less on imported raw materials over time."],
           ["Correct. Similar transfers moved rubber from Brazil to Southeast Asia and cinchona, the source of quinine, from South America to India and Java.",
-            "Britain sought to grow tea outside China's control.",
-            "Plantations spread, using new forms of labor.",
-            "Imports of raw materials grew."]),
+            "Britain's aim was to grow tea outside China's control.",
+            "Plantations spread after abolition, using indentured and wage labor.",
+            "Imports of raw materials grew as industry grew."],
+          "easy"),
         M(4, "t64-s1", "Sourcing and situation", "Fortune's description of the Chinese tea makers as \"poor fellows\" who were given \"nice cottages\" most likely reflects",
-          ["his sympathy for them, along with his view of the mission as kind and successful", "the tea makers' own account of their lives", "a government report on wages in India", "his criticism of the East India Company"],
-          ["Correct. Fortune presents his own role favorably; the tea makers' own views are not recorded here.",
-            "The account is Fortune's, not theirs.",
+          ["his wish to present his mission as kind and successful", "the tea makers' own account of their lives in India", "a Company report on wages paid on its plantations", "his criticism of how the Company treated its workers"],
+          ["Correct. Fortune writes as the mission's leader and presents his own role favorably; the tea makers' own views are not recorded here.",
+            "The account is Fortune's; the tea makers' letters were addressed to relatives and are not quoted.",
             "This is a travel book, not a wage report.",
-            "He praises the plantations."]),
-        // ===== Set 2: Palm oil and cocoa =====
-        M(5, "t64-s2", "Continuity and change", "According to the passage, the main change in West Africa's role in the world economy in the 1800s was",
-          ["a shift from exporting enslaved people to exporting raw materials for industry", "a shift from farming to industrial manufacturing", "the end of all trade with Europe", "a shift from exporting cocoa to exporting palm oil"],
-          ["Correct. After 1807, palm oil and later cocoa became major exports.",
-            "The passage describes exports of raw materials, not factories.",
-            "Trade with Europe grew.",
-            "Palm oil came first and cocoa later."]),
-        M(6, "t64-s2", "Causation", "British demand for palm oil grew mainly because",
-          ["British factories used it for soap, candles, and lubricating machines", "Britain banned the use of palm oil at home", "Africans stopped growing food", "palm oil was used to make cotton cloth"],
-          ["Correct. The passage connects demand to industrial uses.",
-            "The passage describes rising use in Britain.",
-            "This is not in the passage.",
-            "The passage names soap, candles, and grease."]),
-        M(7, "t64-s2", "Claims and evidence in sources", "Which evidence from the passage best supports the claim that Africans kept some control over their economies?",
-          ["Most cocoa was grown by African farmers on their own land.", "The Gold Coast became the world's largest cocoa producer.", "Prices were set in distant markets.", "British factories used palm oil to grease machinery."],
-          ["Correct. Unlike plantation colonies, the cocoa economy rested on African-owned farms.",
-            "This shows growth, not who controlled it.",
-            "This shows a limit on African control.",
-            "This shows British demand."]),
-        M(8, "t64-s2", "Comparison", "The Gold Coast's dependence on cocoa is most similar to which other development of the period?",
-          ["Egypt's dependence on cotton exports", "Britain's industrial economy based on many manufactures", "Japan's industrialization under the Meiji government", "Germany's chemical industry"],
-          ["Correct. Both economies came to depend on one export crop whose price was set abroad.",
-            "Britain's economy was diversified and industrial.",
-            "Japan built industry.",
-            "Germany's chemical industry was industrial."]),
+            "He praises the care the workers received."],
+          "difficult"),
+        // ===== Set 2: Chart of Gold Coast exports =====
+        M(5, "t64-s2", "Claims and evidence in sources", "Which conclusion is best supported by the chart and table?",
+          ["Cocoa was the colony's most valuable export in 1911.", "Palm oil earned more than cocoa and gold together.", "Gold earned more than all the farm and forest goods.", "Rubber was the colony's second most valuable export."],
+          ["Correct. Cocoa earned about 1.6 million pounds, more than any other export.",
+            "Palm oil earned the least of the six, about 129,000 pounds.",
+            "Gold earned about 1.06 million pounds, while cocoa alone earned more than that.",
+            "Gold was second; rubber earned about 219,000 pounds."],
+          "easy"),
+        M(6, "t64-s2", "Continuity and change", "The small value of palm oil exports in 1911 best reflects which change in West Africa's trade since the mid-1800s?",
+          ["Cocoa had overtaken the older palm oil trade.", "Britain had banned palm oil imports after 1900.", "Africans had gone back to exporting enslaved people.", "British soap makers had closed their factories."],
+          ["Correct. After 1807, palm oil had been the coast's chief export to British factories, but by 1911 cocoa earned more than ten times as much.",
+            "Britain did not ban palm oil; its factories kept using it.",
+            "The Atlantic slave trade had ended decades earlier.",
+            "British soap making kept growing in this period."],
+          "moderate"),
+        M(7, "t64-s2", "Causation", "Which development most directly explains the value of the colony's cocoa exports in 1911?",
+          ["African farmers planting cocoa on their own land from the 1880s", "European firms starting cocoa estates worked by indentured Indians", "A British forced-cultivation system that made villages grow cocoa", "Steamship lines first reaching the West African coast after 1900"],
+          ["Correct. Cocoa in the Gold Coast was grown mostly on small African-owned farms, which spread quickly from the 1880s.",
+            "Indentured Indians worked plantations in places such as Natal and Trinidad, not the Gold Coast's cocoa farms.",
+            "Forced cultivation describes the Dutch system in Java, not British rule in the Gold Coast.",
+            "Steamships had served West Africa since the 1850s."],
+          "difficult"),
+        M(8, "t64-s2", "Comparison", "The pattern of exports in the chart is most similar to that of which other economy around 1900?",
+          ["Egypt, which mainly exported raw cotton", "Britain, which mainly exported textiles and machines", "Germany, which mainly exported steel and chemicals", "Switzerland, which mainly exported watches and cloth"],
+          ["Correct. Like the Gold Coast, Egypt depended on exporting one raw material whose price was set in distant markets.",
+            "Britain exported manufactured goods, not raw materials.",
+            "Germany exported industrial goods.",
+            "Switzerland exported manufactured goods such as watches, machines, and textiles."],
+          "moderate"),
         // ===== SAQ: Diamonds and gold =====
         Q("a", "Identify ONE way, described in the passage, that mining changed southern Africa.",
           "The response names one change from the passage.",

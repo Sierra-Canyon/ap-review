@@ -53,10 +53,10 @@ export default {
     { id: "t12", name: "Topic 1.2 Quiz: Developments in Dar al-Islam", group: "Unit 1: The Global Tapestry",
       items: [
         // ===== Set 1: map, Turkic and Mongol rulers in Dar al-Islam =====
-        { id: "t12-m01", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Developments and Processes",
+        { id: "t12-m01", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Developments and Processes", difficulty: "easy",
           question: "The map best shows which development in Dar al-Islam between 1206 and 1336?",
           choices: [
-            "Political power was divided among several states, many of them founded by Turkic military rulers rather than by the Abbasid caliphs.",
+            "Power was divided among several states, many founded by Turkic military rulers.",
             "A single caliph in Baghdad governed all Muslim lands from Egypt to India.",
             "Mongol armies conquered Egypt and northern India and ruled them as one khanate.",
             "Arab dynasties from the Arabian Peninsula took control of Anatolia and northern India.",
@@ -68,13 +68,13 @@ export default {
             "The rulers on the map at Konya, Cairo, Delhi, and Bursa were Turks, not Arabs from Arabia.",
           ],
           answer: 0 },
-        { id: "t12-m02", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Causation",
+        { id: "t12-m02", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Causation", difficulty: "difficult",
           question: "The events at Baghdad in 1258 and Ain Jalut in 1260, shown on the map, best help explain which development?",
           choices: [
-            "Cairo replaced Baghdad as the leading political and cultural center of the Arabic-speaking Muslim world.",
-            "Turkic slave soldiers founded the Delhi Sultanate in northern India.",
+            "Cairo replaced Baghdad as the leading center of the Arabic-speaking Muslim world.",
+            "Turkic slave soldiers founded the Delhi Sultanate and ruled northern India.",
             "The Seljuk sultans made Konya the capital of their state in Anatolia.",
-            "The Ottomans captured Bursa and made it their capital.",
+            "The Ottomans captured Bursa from the Byzantines and made it their capital.",
           ],
           why: [
             "Correct. After the Mongols took Baghdad, the Mamluks stopped the Mongol advance at Ain Jalut, so Cairo survived as the Mamluk capital, sheltered a line of Abbasid caliphs, and became the center of Arab Muslim learning and trade.",
@@ -83,12 +83,12 @@ export default {
             "The Ottomans took Bursa from the Byzantine Empire in 1326, far from Egypt and Syria, and the events of 1258 and 1260 did not decide it.",
           ],
           answer: 0 },
-        { id: "t12-m03", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Continuity and Change",
+        { id: "t12-m03", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Continuity and Change", difficulty: "moderate",
           question: "The label at Tabriz on the map best shows which continuity in the history of Dar al-Islam?",
           choices: [
-            "Conquerors from the steppes of Central Asia, as the Seljuk Turks had done earlier, adopted Islam and ruled over Muslim societies.",
-            "Muslim rulers forced the peoples they conquered to give up Islam and adopt the faith of the Mongols.",
-            "The Abbasid caliphs kept ruling Iran from Baghdad after the Mongol conquest.",
+            "Steppe conquerors, like the Seljuks before them, adopted Islam and ruled Muslim societies.",
+            "The Mongol conquerors forced the Muslims of Iran to give up Islam and adopt Mongol beliefs.",
+            "The Abbasid caliphs kept governing Iran from Baghdad after the Mongol conquest of 1258.",
             "Mongol rulers refused to govern settled peoples and returned to the steppe after each conquest.",
           ],
           why: [
@@ -100,12 +100,12 @@ export default {
           answer: 0 },
 
         // ===== Set 2: practice passage on learning =====
-        { id: "t12-m04", skill: "u1", type: "mcq", set: "t12-s2", topic: "1.2", reasoning: "Claims and Evidence",
+        { id: "t12-m04", skill: "u1", type: "mcq", set: "t12-s2", topic: "1.2", reasoning: "Claims and Evidence", difficulty: "easy",
           question: "Which of the following best states the main claim of the passage?",
           choices: [
-            "Intellectual work continued and spread in Dar al-Islam despite political division and conquest.",
-            "The Mongol conquest ended scientific learning in the Muslim world.",
-            "Muslim scholars refused to study the works of non-Muslim thinkers.",
+            "Learning continued and spread in Dar al-Islam despite political division.",
+            "The Mongol conquest of Baghdad ended scientific learning in the Muslim world.",
+            "Muslim scholars refused to study the works of Greek and other non-Muslim thinkers.",
             "European universities taught Muslim scholars the philosophy of Aristotle.",
           ],
           why: [
@@ -115,11 +115,11 @@ export default {
             "This reverses the passage, which describes Arabic works on Aristotle being translated into Latin for European scholars.",
           ],
           answer: 0 },
-        { id: "t12-m05", skill: "u1", type: "mcq", set: "t12-s2", topic: "1.2", reasoning: "Causation",
+        { id: "t12-m05", skill: "u1", type: "mcq", set: "t12-s2", topic: "1.2", reasoning: "Causation", difficulty: "moderate",
           question: "Which of the following best explains why European scholars wanted Latin translations of Arabic works such as those of Ibn Rushd?",
           choices: [
-            "Scholars in Dar al-Islam had preserved and commented on Greek philosophy and science, much of which was little known in Latin Europe.",
-            "The Mongol rulers of Iran required Europeans to study Arabic before they could trade in their lands.",
+            "Muslim scholars had preserved and explained Greek works little known in Latin Europe.",
+            "The Mongol rulers of Iran required Europeans to read Arabic before trading in their lands.",
             "The printing press had made Arabic books cheap and easy to buy in European cities.",
             "The popes ordered European universities to replace Christian teaching with Islamic law.",
           ],
@@ -130,13 +130,13 @@ export default {
             "European universities were Christian institutions, and the Church did not ask them to teach Islamic law.",
           ],
           answer: 0 },
-        { id: "t12-m06", skill: "u1", type: "mcq", set: "t12-s2", topic: "1.2", reasoning: "Comparison",
+        { id: "t12-m06", skill: "u1", type: "mcq", set: "t12-s2", topic: "1.2", reasoning: "Comparison", difficulty: "moderate",
           question: "Hulegu's support for the observatory at Maragha is most similar to which other development of the thirteenth century?",
           choices: [
-            "Khubilai Khan, the Mongol ruler of China, employed Muslim astronomers and other foreign experts at his court.",
-            "The Mongol rulers of China kept the civil service examinations exactly as the Song had run them.",
+            "Khubilai Khan employed Muslim astronomers and other foreign experts in China.",
+            "The Yuan emperors kept the civil service examinations exactly as the Song had run them.",
             "The Delhi sultans banned the study of science and closed the schools of northern India.",
-            "The Mamluks of Egypt converted to Buddhism under Mongol influence.",
+            "The Mamluks of Egypt converted to Buddhism under the influence of the Mongols.",
           ],
           why: [
             "Correct. Like Hulegu, his brother Khubilai used scholars and experts from across the Mongol Empire, including Muslim astronomers who helped run an astronomy bureau in China.",
@@ -147,7 +147,7 @@ export default {
           answer: 0 },
 
         // ===== Set 3: Rumi, the Masnavi =====
-        { id: "t12-m07", skill: "u1", type: "mcq", set: "t12-s3", topic: "1.2", reasoning: "Developments and Processes",
+        { id: "t12-m07", skill: "u1", type: "mcq", set: "t12-s3", topic: "1.2", reasoning: "Developments and Processes", difficulty: "easy",
           question: "Rumi's statement that \"The only true mosque is that in the hearts of saints\" best reflects which tradition within Islam?",
           choices: [
             "Sufism, which stressed a direct, personal experience of God over outward forms of worship",
@@ -162,13 +162,13 @@ export default {
             "Philosophers like Ibn Rushd stressed reason, while the poem stresses love and inner faith.",
           ],
           answer: 0 },
-        { id: "t12-m08", skill: "u1", type: "mcq", set: "t12-s3", topic: "1.2", reasoning: "Contextualization",
+        { id: "t12-m08", skill: "u1", type: "mcq", set: "t12-s3", topic: "1.2", reasoning: "Contextualization", difficulty: "moderate",
           question: "Rumi lived and taught in Konya, in Anatolia, in the middle of the thirteenth century. Which of the following best describes Konya's situation at that time?",
           choices: [
-            "Konya was the capital of the Seljuk Sultanate of Rum, a Turkic Muslim state where Persian was a leading language of the court and of literature.",
+            "Konya was the capital of the Seljuk Sultanate of Rum, a Turkic state with a Persian-speaking court.",
             "Konya was a Byzantine city where Christian emperors ruled a mostly Greek population.",
-            "Konya was a province of the Ottoman Empire, governed from Constantinople.",
-            "Konya was ruled by the Mamluk sultans of Egypt, who had conquered all of Anatolia.",
+            "Konya was an Ottoman provincial city governed by a sultan in Constantinople.",
+            "Konya was ruled by the Mamluk sultans of Egypt, who had taken all of Anatolia from the Mongols.",
           ],
           why: [
             "Correct. The Seljuks of Rum, a Turkic dynasty, ruled from Konya and supported Persian culture, which is why Rumi wrote the Masnavi in Persian there.",

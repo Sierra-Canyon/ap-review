@@ -55,13 +55,13 @@ export default {
     { id: "w3b", name: "Unit 3 Assessment B", group: "Unit 3: Land-Based Empires",
       items: [
         // ---------- Set 1: Rycaut on the sultan's pages ----------
-        { id: "w3b-m01", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.2", reasoning: "Claims and evidence in sources",
+        { id: "w3b-m01", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.2", reasoning: "Claims and evidence in sources", difficulty: "easy",
           question: "According to Rycaut, Ottoman rulers trained youths born to Christian parents for the great offices of the empire mainly because these youths",
           choices: [
-            "had no family or local ties of their own, so they depended on the sultan alone and stayed loyal to him",
-            "already spoke European languages, which made them useful as diplomats in Christian courts",
-            "came from noble families that could bring wealth and soldiers to the sultan's service",
-            "would return to their home villages and lead their families to convert to Islam",
+            "had no family or local ties, so they depended on the sultan alone",
+            "already spoke European languages, which made them useful as diplomats",
+            "came from noble families that could bring wealth and soldiers to the sultan",
+            "would return home and lead their families to convert to Islam",
           ],
           why: [
             "Rycaut says the youths are cut off from their parents or come from far away, so they \"find no Relations, or Dependencies\" except their \"great Master,\" and \"necessity compels them to be faithful.\"",
@@ -70,13 +70,13 @@ export default {
             "Rycaut says the youths learn to \"hate their Parents,\" not to convert them, and he describes them moving from palace schools into government, not back home.",
           ], answer: 0 },
 
-        { id: "w3b-m02", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.2", reasoning: "Claims and evidence in sources",
+        { id: "w3b-m02", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.2", reasoning: "Claims and evidence in sources", difficulty: "easy",
           question: "Rycaut's statement that the sultan is served by men \"whom he can raise without envy, and destroy without danger\" best supports which conclusion about Ottoman government?",
           choices: [
-            "High officials owed their rank entirely to the sultan, who could promote or remove them without opposition from powerful families.",
-            "The sultan shared power with an assembly of hereditary nobles who approved his choice of ministers.",
+            "Officials owed their rank to the sultan, who could remove them without family opposition.",
+            "The sultan shared power with an assembly of hereditary nobles who approved his ministers.",
             "High officials held their offices for life and passed them on to their sons.",
-            "Religious scholars chose the sultan's ministers in order to limit his power.",
+            "Religious scholars of the ulama chose the sultan's ministers in order to limit his power.",
           ],
           why: [
             "Because these officials had no noble kin, raising one did not anger a rival family, and removing or even executing one did not risk a revolt by his relatives. Grand viziers of slave origin could rise to the top and fall just as fast.",
@@ -85,13 +85,13 @@ export default {
             "The passage says the sultan himself chooses and educates his officers; religious scholars are not mentioned.",
           ], answer: 0 },
 
-        { id: "w3b-m03", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.4", reasoning: "Comparison",
+        { id: "w3b-m03", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.4", reasoning: "Comparison", difficulty: "difficult",
           question: "The method of choosing high officials that Rycaut describes differed most from which of the following?",
           choices: [
-            "The Qing practice of appointing scholar-officials who had passed examinations on the Confucian classics",
-            "The Safavid practice of making converted Georgian and Circassian slaves into governors and commanders",
-            "The rule of the Mamluk sultans of Egypt, who were raised from purchased slave boys, before the Ottoman conquest of 1517",
-            "The Ottoman janissary corps, whose soldiers were also raised from boys taken from Christian families",
+            "The Qing practice of appointing scholar-officials who passed exams on the Confucian classics",
+            "The Safavid practice of making converted Georgian and Circassian slaves into governors",
+            "The rule of the Mamluk sultans of Egypt, who were raised from purchased slave boys",
+            "The Ottoman janissary corps, whose soldiers were also raised from boys of Christian families",
           ],
           why: [
             "Qing officials were free subjects, most from gentry families, who won office by passing exams on the Confucian classics and kept their family ties. Rycaut's officials were slaves of the sultan, chosen because they had no families to serve.",
@@ -100,10 +100,10 @@ export default {
             "The janissaries came from the same practice of taking Christian boys and training them for the sultan's service, so this is part of the same system, not a contrast.",
           ], answer: 0 },
 
-        { id: "w3b-m04", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.2", reasoning: "Sourcing and situation",
+        { id: "w3b-m04", skill: "u3", type: "mcq", set: "w3b-s1", topic: "3.2", reasoning: "Sourcing and situation", difficulty: "easy",
           question: "Rycaut's comment that \"the Policy herein is very obvious\" best reflects which purpose of his book?",
           choices: [
-            "To explain to English readers the principles by which the Ottoman state was governed",
+            "To explain to English readers how the Ottoman state was governed",
             "To persuade the sultan to free the Christian captives held in his palace",
             "To call on Christian rulers to unite in a crusade to retake Constantinople",
             "To describe his own training as a page in the sultan's palace",
@@ -116,13 +116,13 @@ export default {
           ], answer: 0 },
 
         // ---------- Set 2: The rise and fall of Songhai ----------
-        { id: "w3b-m05", skill: "u3", type: "mcq", set: "w3b-s2", topic: "3.1", reasoning: "Contextualization",
+        { id: "w3b-m05", skill: "u3", type: "mcq", set: "w3b-s2", topic: "3.1", reasoning: "Contextualization", difficulty: "moderate",
           question: "The Battle of Tondibi described in the passage best illustrates which broader development of the period c. 1450 to c. 1750?",
           choices: [
-            "Armies with gunpowder weapons gaining an advantage over states that relied on cavalry and older weapons",
+            "Gunpowder armies gaining an edge over states that relied on cavalry",
             "The spread of Islam into West Africa through military conquest",
-            "European colonial conquest of the interior of Africa",
-            "The end of trans-Saharan trade after European ships reached the West African coast",
+            "European colonial conquest of the interior of West Africa",
+            "The end of trans-Saharan trade after European ships reached West Africa",
           ],
           why: [
             "The Moroccan force was small, but its firearms broke the Songhai army, much as Ottoman and Mughal guns helped those empires defeat foes who fought mainly with cavalry and bows.",
@@ -131,12 +131,12 @@ export default {
             "Atlantic trade did draw some gold away from the Sahara routes, but caravans kept crossing the desert, and the passage describes a military defeat, not the end of a trade route.",
           ], answer: 0 },
 
-        { id: "w3b-m06", skill: "u3", type: "mcq", set: "w3b-s2", topic: "3.2", reasoning: "Developments and processes",
+        { id: "w3b-m06", skill: "u3", type: "mcq", set: "w3b-s2", topic: "3.2", reasoning: "Developments and processes", difficulty: "moderate",
           question: "Askia Muhammad's use of appointed governors and Muslim scholars, as described in the passage, was most likely intended to",
           choices: [
-            "strengthen central control over a large empire and win the support of the Muslim merchants and scholars of its trading cities",
+            "strengthen central control and win over Muslim townspeople",
             "convert the farming and fishing majority of the empire to Islam",
-            "end the empire's dependence on the trade in gold and salt",
+            "end the empire's dependence on the trans-Saharan gold and salt trade",
             "share power equally with the hereditary rulers of each province",
           ],
           why: [
@@ -146,11 +146,11 @@ export default {
             "This reverses the passage. Appointing governors placed provinces under the ruler's own men instead of sharing power with local rulers.",
           ], answer: 0 },
 
-        { id: "w3b-m07", skill: "u3", type: "mcq", set: "w3b-s2", topic: "3.4", reasoning: "Comparison",
+        { id: "w3b-m07", skill: "u3", type: "mcq", set: "w3b-s2", topic: "3.4", reasoning: "Comparison", difficulty: "difficult",
           question: "Which of the following best compares Songhai with the Ottoman Empire in the period c. 1450 to c. 1750?",
           choices: [
-            "Songhai relied on cavalry and river fleets and fell to an army with firearms, while the Ottomans built up infantry armed with firearms and expanded.",
-            "Songhai built up infantry armed with firearms and expanded, while the Ottomans relied on cavalry and fell to an army with firearms.",
+            "Songhai relied on cavalry and fell to firearms, while the Ottomans built infantry with guns.",
+            "Songhai built infantry with guns, while the Ottomans relied on cavalry and fell to firearms.",
             "Both empires were conquered by armies sent from Morocco in the sixteenth century.",
             "Both empires relied mainly on sea power in the Atlantic Ocean to control their trade.",
           ],
@@ -162,13 +162,13 @@ export default {
           ], answer: 0 },
 
         // ---------- Set 3: Mughal conquests in India (map) ----------
-        { id: "w3b-m08", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.1", reasoning: "Developments and processes",
+        { id: "w3b-m08", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.1", reasoning: "Developments and processes", difficulty: "easy",
           question: "The map best supports which conclusion about Mughal expansion between 1568 and 1687?",
           choices: [
-            "The empire spread from its base in northern India into Gujarat and Bengal, and then, over the next century, south into the Deccan.",
-            "The empire grew mainly by taking ports along the coasts of India.",
-            "The Mughals conquered southern India first and then moved north.",
-            "Mughal expansion ended when Akbar died in 1605.",
+            "It spread from northern India into Gujarat and Bengal, then south into the Deccan.",
+            "The empire grew mainly by seizing ports along India's western and eastern coasts.",
+            "The Mughals conquered southern India first and then moved north toward Delhi.",
+            "Mughal expansion ended when Akbar died in 1605, and later rulers only held on.",
           ],
           why: [
             "The early dates (Chittor 1568, Ahmedabad 1573, Rajmahal 1576) are in the north, and the later ones (Ahmadnagar 1636, Bijapur 1686, Golconda 1687) are farther and farther south.",
@@ -176,13 +176,13 @@ export default {
             "This reverses the map: the northern places were taken first and the southern ones last.",
             "The map shows conquests in 1636, 1686, and 1687, long after Akbar's death.",
           ], answer: 0 },
-        { id: "w3b-m09", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Developments and processes",
+        { id: "w3b-m09", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Developments and processes", difficulty: "easy",
           question: "Governing the lands shown on the map, many of them far from the capitals at Agra and Delhi, depended most on which Mughal practice?",
           choices: [
-            "Giving nobles ranks (mansabs) that required them to supply troops, paid with the right to collect land revenue from assigned lands",
+            "Ranking nobles as mansabdars and paying them with revenue from assigned lands",
             "Choosing officials by examinations on the Confucian classics",
-            "Requiring regional lords to live every other year at the capital",
-            "Taking Christian boys from the provinces through the devshirme and training them as governors",
+            "Requiring regional lords to live every other year at the Mughal capital",
+            "Training Christian boys taken through the devshirme as provincial governors",
           ],
           why: [
             "Mansabdars held ranks that set how many soldiers they kept, and they were paid from the revenue of assigned lands, which bound conquered regions to the emperor's service.",
@@ -190,24 +190,24 @@ export default {
             "Alternate attendance was a Tokugawa policy in Japan.",
             "The devshirme was an Ottoman practice.",
           ], answer: 0 },
-        { id: "w3b-m10", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Causation",
+        { id: "w3b-m10", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Causation", difficulty: "moderate",
           question: "In the 1680s, Aurangzeb moved his court from northern India to Aurangabad, marked on the map. Based on the map, which of the following best explains this move?",
           choices: [
-            "Aurangabad lay close to the Deccan sultanates of Bijapur and Golconda and to the Marathas, whom he was fighting.",
-            "Safavid armies were attacking Agra and Delhi at the time.",
+            "It lay close to Bijapur, Golconda, and the Marathas, whom he was fighting.",
+            "Safavid armies were threatening Agra and Delhi from Kandahar in the northwest.",
             "Aurangzeb wanted a port where he could trade directly with European companies.",
             "The Rajput fortress of Chittor, near Aurangabad, had rebelled against Mughal rule.",
           ],
           why: [
             "Aurangabad sits in the Deccan, near Ahmadnagar, Bijapur, Golconda, and the Maratha capital at Raigad. Aurangzeb led the campaigns that took Bijapur in 1686 and Golconda in 1687.",
-            "The Safavids did not attack the Mughal capitals. Delhi was sacked by a Persian ruler, Nader Shah, only in 1739, after the Safavids had fallen.",
+            "The Safavids fought the Mughals over Kandahar, far to the northwest, but never threatened Agra or Delhi. Delhi was sacked by a Persian ruler, Nader Shah, only in 1739, after the Safavids had fallen.",
             "The map shows Aurangabad far inland, not on the coast.",
             "Chittor is far to the north of Aurangabad and was taken by Akbar in 1568.",
           ], answer: 0 },
-        { id: "w3b-m11", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Contextualization",
+        { id: "w3b-m11", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Contextualization", difficulty: "easy",
           question: "The Maratha capital marked on the map is best understood in the context of which challenge to Mughal rule in the late 1600s?",
           choices: [
-            "Regional powers, such as the Marathas, resisted Mughal rule in the very region the Mughals were trying to conquer, at great cost in lives and money.",
+            "Regional powers such as the Marathas resisted Mughal rule in the Deccan.",
             "Sikh resistance in the Punjab cut the Mughal capitals off from the Deccan.",
             "The British East India Company conquered Bengal and took over its revenue.",
             "Safavid armies invaded the Deccan to support their fellow Shi'a rulers there.",
@@ -220,26 +220,26 @@ export default {
           ], answer: 0 },
 
         // ---------- Set 4: The sack of Magdeburg ----------
-        { id: "w3b-m12", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Developments and processes",
+        { id: "w3b-m12", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Developments and processes", difficulty: "moderate",
           question: "The \"adherents of the Augsburg Confession\" that the author mentions were",
           choices: [
-            "Lutherans, who followed the statement of faith presented to Emperor Charles V in 1530",
-            "Catholics who remained loyal to the pope",
+            "Lutherans, who followed a statement of faith written in 1530",
+            "Catholics who remained loyal to the pope and the Holy Roman emperor",
             "Calvinists, who followed the teachings of the church in Geneva",
             "Anglicans, who accepted the English monarch as head of the church",
           ],
           why: [
-            "The Augsburg Confession was the Lutheran statement of faith, and Magdeburg was a Lutheran city. The Catholic troops of the emperor and the Catholic League hated its people for their faith.",
+            "The Augsburg Confession, presented to Emperor Charles V in 1530, was the Lutheran statement of faith, and Magdeburg was a Lutheran city. The Catholic troops of the emperor and the Catholic League hated its people for their faith.",
             "The Catholic League was among the attackers; the people they hated for their faith were Protestants.",
             "Calvinists were another Protestant group, and the Peace of Augsburg (1555) left them out; the Augsburg Confession was Lutheran.",
             "The Church of England had its own statements of faith, and the Thirty Years' War in Germany did not center on Anglicans.",
           ], answer: 0 },
 
-        { id: "w3b-m13", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Claims and evidence in sources",
+        { id: "w3b-m13", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Claims and evidence in sources", difficulty: "moderate",
           question: "The author's list of Hungarians, Croats, Poles, Walloons, Italians, Spaniards, French, and Germans in the attacking army best supports which claim about the Thirty Years' War?",
           choices: [
-            "The war drew soldiers from across Europe into armies that fought for the Catholic Habsburg emperor and his allies.",
-            "The war was fought mainly between the kingdoms of France and Spain.",
+            "The war drew soldiers from across Europe into the armies of the Catholic side.",
+            "The war was fought mainly between the Catholic kingdoms of France and Spain.",
             "Every Catholic state in Europe fought on the same side because of its faith.",
             "The armies were made up mostly of townspeople drafted from the cities they attacked.",
           ],
@@ -250,10 +250,10 @@ export default {
             "The author describes outside troops attacking Magdeburg, not soldiers drafted from the city.",
           ], answer: 0 },
 
-        { id: "w3b-m14", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Sourcing and situation",
+        { id: "w3b-m14", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Sourcing and situation", difficulty: "easy",
           question: "The author's account of the sack of the city is most likely shaped by his point of view as",
           choices: [
-            "a Lutheran official of Magdeburg who survived the attack on his own city",
+            "a Lutheran official of Magdeburg who survived the attack",
             "an imperial officer who led the assault on the city",
             "a Swedish diplomat seeking allies among the German princes",
             "a Catholic priest who supported the emperor's cause",
@@ -265,17 +265,17 @@ export default {
             "A supporter of the emperor's cause would not blame the attack on Catholic hatred of Lutherans.",
           ], answer: 0 },
 
-        { id: "w3b-m15", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Causation",
+        { id: "w3b-m15", skill: "u3", type: "mcq", set: "w3b-s4", topic: "3.3", reasoning: "Causation", difficulty: "difficult",
           question: "The destruction of Magdeburg in 1631 most directly contributed to which development?",
           choices: [
-            "Protestant German princes, such as the elector of Saxony, joining the Lutheran king Gustavus Adolphus of Sweden against the emperor",
-            "The Peace of Augsburg, which allowed each German prince to choose Lutheranism or Catholicism for his lands",
-            "The Council of Trent's reforms of the training and conduct of Catholic clergy",
-            "The end of the war in the Peace of Westphalia later that year",
+            "Saxony and Brandenburg joining Sweden's Gustavus Adolphus against the emperor",
+            "The Edict of Restitution, which ordered Protestants to return former church lands",
+            "The Council of Trent's reforms of the training and conduct of the Catholic clergy",
+            "The end of the Thirty Years' War in the Peace of Westphalia later that same year",
           ],
           why: [
             "The sack shocked Protestants across Europe and helped push Saxony and Brandenburg into alliance with Sweden; months later, Swedish and Saxon troops defeated the imperial army at Breitenfeld in September 1631.",
-            "The Peace of Augsburg came in 1555, more than seventy years before the sack.",
+            "The emperor issued the Edict of Restitution in 1629, two years before the sack, so it was a cause of Protestant anger, not a result of the sack.",
             "The Council of Trent met from 1545 to 1563, long before 1631.",
             "The Peace of Westphalia ended the war in 1648, seventeen years after the sack.",
           ], answer: 0 },

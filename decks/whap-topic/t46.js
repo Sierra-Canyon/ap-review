@@ -1,9 +1,13 @@
 // Topic 4.6 Quiz: Internal and External Challenges to State Power
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
-const M = (n, set, reasoning, question, choices, why) => ({ id: "t46-m0" + n, skill: "u4", type: "mcq", set, topic: "4.6", reasoning, question, choices, why, answer: 0 });
+const M = (n, set, reasoning, question, choices, why, difficulty) => ({ id: "t46-m0" + n, skill: "u4", type: "mcq", set, topic: "4.6", reasoning, difficulty, question, choices, why, answer: 0 });
 const Q = (sub, prompt, earns, yes, no, example, notExample) => ({ id: "t46-q1" + sub, skill: "u4", type: "fr", set: "t46-s3", part: "SAQ 1", sub, topic: "4.6", lead: SAQ, prompt, earns, yes, no, example, notExample });
 
 export const sets = {
@@ -20,11 +24,8 @@ export const sets = {
     ] }],
   },
   "t46-s2": {
-    id: "t46-s2", name: "The Pueblo Revolt of 1680", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that the Pueblo Revolt of 1680 was the most successful Indigenous uprising against Spanish rule in North America. In the Spanish colony of New Mexico, the Pueblo peoples owed tribute and labor to Spanish settlers, and Franciscan friars tried to stamp out Pueblo religion, burning sacred objects and punishing ceremonies. Drought, famine, and raids by Apache peoples in the 1670s made life even harder. In 1675, the governor arrested forty-seven Pueblo religious leaders and had several hanged. One of the men he released, Popé, later organized a rising across dozens of towns that spoke different languages, using runners who carried knotted cords to count down the days. In August 1680, the Pueblos killed about four hundred colonists, including twenty-one friars, and drove the survivors south to El Paso. The Spanish did not return until 1692, and when they did, they no longer demanded labor through the encomienda and were less harsh toward Pueblo religion." },
-      PRACTICE,
-    ] }],
+    id: "t46-s2", name: "The Pueblo Revolt of 1680", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u4f-pueblo", "The Pueblo Revolt in Spanish New Mexico, August 1680 (route approximate)", "Encyclopaedia Britannica, \"Pueblo Rebellion,\" and Wikipedia, \"Pueblo Revolt,\" with Richard Flint and Shirley Cushing Flint's biographical sketch of Antonio de Otermín for the New Mexico Office of the State Historian") }],
   },
   "t46-s3": {
     id: "t46-s3", name: "Shivaji and the Marathas", intro: SAQ,
@@ -41,54 +42,54 @@ export default {
       items: [
         // ===== Set 1: The treaty with the Maroons =====
         M(1, "t46-s1", "Claims and evidence in sources", "The treaty best supports which claim about the Maroons of Jamaica?",
-          ["Their resistance was strong enough that the British colonial government recognized their freedom and their land.", "They were defeated and returned to slavery.", "They ruled all of Jamaica after the treaty.", "They were Indigenous people who had lived in Jamaica before Columbus."],
+          ["Their resistance forced the colony to recognize their freedom and land.", "They were defeated in battle and returned to their former owners.", "They won control of the whole island and its sugar plantations.", "They were Taíno people who had lived in Jamaica before Columbus."],
           ["Correct. After years of war, the colony promised them \"a perfect state of freedom and liberty\" and fifteen hundred acres.",
-            "The treaty grants them freedom.",
-            "The treaty limits them to land near Trelawney Town and keeps the colony under the king.",
-            "The source note says they were people who had escaped slavery, mostly of African origin."]),
+            "The treaty grants them freedom and ends the war on equal terms; it does not return them to slavery.",
+            "The treaty limits them to land between Trelawney Town and the Cockpits and keeps the colony under the king.",
+            "The source note says they were people who had escaped slavery, mostly of African origin, not the island's Indigenous Taíno."], "easy"),
         M(2, "t46-s1", "Sourcing and situation", "The sixth and ninth articles were most likely included because the British colonial government wanted to",
-          ["use the Maroons to put down future slave revolts and return runaways, protecting the plantation system", "free all enslaved people in Jamaica", "make the Maroons the rulers of the island's parishes", "end the sugar trade"],
-          ["Correct. The colony made peace with the Maroons but turned them into allies against other rebels and runaways.",
-            "The treaty keeps slavery in place and requires runaways to be sent back.",
-            "The treaty limits the Maroons to their own lands.",
-            "Nothing in the treaty concerns ending the sugar trade."]),
+          ["use the Maroons against future rebels and runaways", "free the enslaved people who had joined the Maroons' camps", "make the Maroon captains the judges of each parish", "move the Maroons off the island to another British colony"],
+          ["Correct. The colony made peace with the Maroons but turned them into allies against other rebels and runaways, protecting the plantation system.",
+            "Article nine requires runaways to be sent back to their masters, so the treaty keeps slavery in place.",
+            "The ninth article sends runaways to \"the chief magistrate,\" a colonial official; the Maroons get no power over the parishes.",
+            "Article three gives the Maroons land in Jamaica \"for ever\"; it does not move them. (Britain did deport the Maroons of Trelawney Town after another war in 1795 to 1796, but not under this treaty.)"], "moderate"),
         M(3, "t46-s1", "Comparison", "The Maroon communities of Jamaica were most similar to which other community of the period?",
-          ["Palmares in Brazil, a large settlement of people who escaped slavery and defended themselves for most of the 1600s", "The Spanish city of Manila", "The Mughal port of Surat", "The Cossack forts built by Russia in Siberia"],
-          ["Correct. Like the Jamaican Maroons, Palmares was founded by people who fled plantations and fought colonial armies for decades.",
-            "Manila was a Spanish colonial capital.",
-            "Surat was a Mughal trading port.",
-            "Cossacks served the Russian state as they expanded it, though some had fled serfdom."]),
+          ["Palmares, a settlement of escaped slaves in Brazil", "The Cossack forts built for the tsars across Siberia", "The Chinese merchant quarter outside Manila's walls", "The English trading post at the Mughal port of Surat"],
+          ["Correct. Like the Jamaican Maroons, Palmares was founded by people who fled plantations, and it fought colonial armies for most of the 1600s.",
+            "Some Cossacks had fled serfdom, but their forts in Siberia served the Russian state as it expanded, not a community resisting it.",
+            "Manila's Chinese merchants lived under Spanish rule and served the colony's trade; they had not escaped slavery.",
+            "Surat was a Mughal port where the English traded with the emperor's permission."], "moderate"),
         M(4, "t46-s1", "Developments and processes", "The treaty best illustrates which challenge to state power in the period 1450 to 1750?",
-          ["Resistance by enslaved and formerly enslaved people to colonial rule in the Americas", "Rivalry among European states over trade in Asia", "Peasant revolts against high taxes in Europe", "Religious wars between Catholics and Protestants"],
+          ["Resistance by enslaved people to colonial rule in the Americas", "Rivalry among European states over trade in the Caribbean", "Peasant revolts against high taxes in Europe and Russia", "Religious wars between Catholic and Protestant states"],
           ["Correct. Maroon wars, revolts, and running away were ways enslaved Africans challenged colonial states.",
-            "The treaty concerns Jamaica, not Asia.",
-            "The Maroons were not European peasants.",
-            "The treaty has nothing to do with Catholic and Protestant wars."]),
-        // ===== Set 2: The Pueblo Revolt =====
-        M(5, "t46-s2", "Causation", "According to the passage, which of the following was a cause of the Pueblo Revolt?",
-          ["Spanish attacks on Pueblo religion, along with tribute, forced labor, drought, and raids", "A Spanish plan to give all land to the Pueblos", "The arrival of English settlers in New Mexico", "A Pueblo alliance with the Ottoman Empire"],
-          ["Correct. The passage lists friars burning sacred objects, the hanging of religious leaders, labor and tribute, drought, famine, and raids.",
-            "The passage describes Spanish settlers demanding tribute and labor.",
-            "No English settlers are mentioned; New Mexico was a Spanish colony.",
-            "The Pueblos had no contact with the Ottoman Empire."]),
-        M(6, "t46-s2", "Claims and evidence in sources", "Which evidence from the passage best shows that the revolt was well organized?",
-          ["Runners carried knotted cords to count down the days to a rising across dozens of towns with different languages.", "The governor arrested forty-seven religious leaders in 1675.", "The Spanish returned in 1692.", "Apache peoples raided Pueblo towns in the 1670s."],
-          ["Correct. Coordinating many towns that spoke different languages took planning, which the knotted cords show.",
-            "This was a cause of anger, not evidence of organization.",
-            "This describes the reconquest, not the revolt's organization.",
-            "This describes hardship before the revolt."]),
-        M(7, "t46-s2", "Continuity and change", "The passage best supports which claim about the results of the Pueblo Revolt?",
-          ["Although Spain regained New Mexico, it changed its policies and was less harsh toward the Pueblos afterward.", "Spain never returned to New Mexico.", "The revolt led the Pueblos to convert to Christianity right away.", "The revolt ended Spanish rule throughout the Americas."],
-          ["Correct. The passage says the Spanish no longer demanded labor through the encomienda and were less harsh toward Pueblo religion after 1692.",
-            "The passage says the Spanish returned in 1692.",
-            "The revolt was partly a defense of Pueblo religion against the friars.",
-            "The revolt affected only New Mexico."]),
-        M(8, "t46-s2", "Comparison", "The Pueblo Revolt is most similar to which other challenge to state power in the period 1450 to 1750?",
-          ["Metacom's War of 1675 to 1676, in which Native peoples of New England fought English colonists who took their land", "The Fronde, a revolt of French nobles against the king's power", "The Protestant Reformation in Germany", "The Maratha wars against the Mughal Empire"],
-          ["Correct. Both were armed uprisings by Indigenous peoples against colonizers who had taken land, labor, or religious freedom.",
-            "The Fronde was a revolt by elites within France against their own king, not by colonized peoples.",
-            "The Reformation was a religious movement within Europe.",
-            "The Marathas rose against a land-based empire in India, not against European colonizers."]),
+            "European states did fight over the Caribbean, but this treaty settles a war between the colony and people who escaped slavery.",
+            "The Maroons were people who escaped slavery in Jamaica, not European or Russian peasants.",
+            "The treaty has nothing to do with Catholic and Protestant wars."], "easy"),
+        // ===== Set 2: The Pueblo Revolt (map) =====
+        M(5, "t46-s2", "Claims and evidence in sources", "The places marked on the map best support which claim about the Pueblo Revolt?",
+          ["It was coordinated among towns spread over hundreds of miles.", "It began among Apache peoples south of the Rio Grande towns.", "Every Pueblo town joined it, including those nearest Santa Fe.", "It drove the Spanish north from Santa Fe toward Taos."],
+          ["Correct. The map marks events from Taos in the north to the Hopi villages far to the west, all in August 1680. A rising that wide had to be planned, and Popé's runners carried knotted cords to set the day.",
+            "The map places the planning at Taos and San Juan, Pueblo towns. Apache peoples lived nearby, but the map does not show the revolt starting with them.",
+            "The map marks Isleta as a pueblo that did not join the revolt.",
+            "The dashed line shows the Spanish retreating south, toward El Paso del Norte, not north."], "easy"),
+        M(6, "t46-s2", "Contextualization", "The burned churches and killed friars marked at the Hopi villages are best understood in the context of",
+          ["Franciscan efforts to suppress Pueblo religious practices", "competition between English and Spanish missionaries", "Apache raids that had destroyed the missions before 1680", "Pueblo anger at the Catholic Church's sale of indulgences"],
+          ["Correct. Friars in New Mexico burned sacred objects, banned ceremonies, and in 1675 the governor had Pueblo religious leaders arrested and several hanged. Attacks on churches and friars rejected that pressure.",
+            "There were no English missionaries in New Mexico. The friars there were Spanish Franciscans.",
+            "Apache raids did strike New Mexico in the 1670s, but the map marks the burning as part of the 1680 revolt by the Hopi themselves.",
+            "The sale of indulgences angered Protestant reformers in Europe in the early 1500s; it had nothing to do with the Pueblos."], "moderate"),
+        M(7, "t46-s2", "Causation", "The route from Santa Fe to El Paso del Norte and on toward Mexico City helps explain why the revolt held New Mexico for twelve years. Which explanation does it support?",
+          ["The colony lay far from the centers of Spanish power, so help came slowly.", "The Rio Grande was too wide for Spanish soldiers or their horses to cross.", "Pueblo fleets blocked the coast that the Spanish used to supply the colony.", "English colonists on the Camino Real cut the road between Santa Fe and Mexico City."],
+          ["Correct. Santa Fe sat at the far end of a long overland road from Mexico City. The Spanish needed years to gather a force at El Paso strong enough to retake the colony, which they did in 1692.",
+            "The map shows the Spanish retreating along the Rio Grande, not stopped by it.",
+            "New Mexico is far inland; the map shows no coast near the Pueblo towns.",
+            "There were no English colonists near New Mexico; the nearest English colonies were on the Atlantic coast."], "difficult"),
+        M(8, "t46-s2", "Continuity and change", "Which of the following best describes Spanish rule in New Mexico after the years shown at El Paso del Norte on the map?",
+          ["Spain retook the colony and held it into the 1800s.", "Spain retook the colony and restored encomienda labor in every pueblo.", "France took New Mexico from Spain and joined it to Louisiana.", "Spain kept its capital at El Paso and never returned north."],
+          ["Correct. Spanish forces returned in 1692, put down further risings, and ruled New Mexico until Mexico won independence in 1821, though they pressed Pueblo religion less harshly than before.",
+            "Spain did retake the colony in 1692, but it did not bring back the old encomienda labor system, and it eased its attacks on Pueblo religion.",
+            "France claimed Louisiana, to the east, but never ruled New Mexico.",
+            "The map shows El Paso as a base in exile only until 1692, when the Spanish returned to Santa Fe."], "difficult"),
         // ===== SAQ: Shivaji and the Marathas =====
         Q("a", "Identify ONE method, described in the passage, that Shivaji used to build a Maratha state.",
           "The response names one method from the passage.",

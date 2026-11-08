@@ -53,7 +53,7 @@ export default {
     { id: "t15", name: "Topic 1.5 Quiz: State Building in Africa", group: "Unit 1: The Global Tapestry",
       items: [
         // ===== Set 1: Barbosa on the king of Benamatapa =====
-        { id: "t15-m01", skill: "u1", type: "mcq", set: "t15-s1", topic: "1.5", reasoning: "Sourcing and situation",
+        { id: "t15-m01", skill: "u1", type: "mcq", set: "t15-s1", topic: "1.5", reasoning: "Sourcing and situation", difficulty: "difficult",
           question: "Barbosa's interest in the topics of the first paragraph was most likely shaped by which of the following?",
           choices: [
             "Portugal's effort to control the gold trade that reached the East African coast at Sofala",
@@ -68,10 +68,10 @@ export default {
             "Mali controlled gold fields in West Africa, on the other side of the continent; the gold in the excerpt came from the interior of southeastern Africa.",
           ],
           answer: 0 },
-        { id: "t15-m02", skill: "u1", type: "mcq", set: "t15-s1", topic: "1.5", reasoning: "Claims and evidence in sources",
+        { id: "t15-m02", skill: "u1", type: "mcq", set: "t15-s1", topic: "1.5", reasoning: "Claims and evidence in sources", difficulty: "easy",
           question: "The practice described in the second paragraph was most likely intended to",
           choices: [
-            "make each community show in public that it accepted the king's authority",
+            "make each community show in public that it accepted the king's rule",
             "spread the Islamic faith of the coastal merchants into the interior",
             "choose new local rulers through a vote of the inhabitants of each town",
             "collect a fixed tax in gold from each town to pay Portuguese traders",
@@ -83,11 +83,11 @@ export default {
             "The excerpt says the merchants sold gold to the Moors of the coast, not that towns paid gold to the Portuguese, and the ritual involves fire, not payment.",
           ],
           answer: 0 },
-        { id: "t15-m03", skill: "u1", type: "mcq", set: "t15-s1", topic: "1.5", reasoning: "Comparison",
+        { id: "t15-m03", skill: "u1", type: "mcq", set: "t15-s1", topic: "1.5", reasoning: "Comparison", difficulty: "moderate",
           question: "The relationship between the king of Benamatapa and the \"many other kings\" who were \"his subjects\" was most similar to the relationship between",
           choices: [
-            "Mexica rulers and the conquered city-states that kept their own rulers but sent tribute to Tenochtitlan",
-            "Song emperors and the officials they chose through civil service examinations",
+            "Mexica rulers and conquered city-states that kept their own rulers but paid tribute",
+            "Song emperors and the officials they chose through the civil service examinations",
             "the councils of merchants who governed Venice and the citizens of the city",
             "the sultans of Kilwa and the Portuguese captains who took over the town's trade",
           ],
@@ -100,12 +100,12 @@ export default {
           answer: 0 },
 
         // ===== Set 2: Islam and older traditions in West African states =====
-        { id: "t15-m04", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Causation",
+        { id: "t15-m04", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Causation", difficulty: "easy",
           question: "Which of the following best explains why many of the rulers described in the passage adopted Islam?",
           choices: [
-            "Islam linked them to the Muslim merchants and scholars of the trade routes across the Sahara.",
+            "Islam linked them to the Muslim merchants and scholars of the trans-Saharan trade.",
             "Mongol armies required the peoples they conquered in Africa to accept Islam.",
-            "Portuguese traders refused to buy gold from rulers who were not Muslims.",
+            "Portuguese traders refused to buy gold from West African rulers who were not Muslims.",
             "The Ottoman sultans made conversion a condition for protecting West African trading cities.",
           ],
           why: [
@@ -115,27 +115,27 @@ export default {
             "The Ottomans did not rule or protect West African cities in this period; their empire was centered in Anatolia and southeastern Europe.",
           ],
           answer: 0 },
-        { id: "t15-m05", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Claims and evidence in sources",
+        { id: "t15-m05", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Claims and evidence in sources", difficulty: "difficult",
           question: "Which of the following, not mentioned in the passage, would best support the argument that West African rulers joined Islam to older sources of authority?",
           choices: [
-            "Griots, the court storytellers of Mali, kept reciting oral histories that praised Sundiata's ancestors and special powers.",
+            "Mali's griots kept reciting oral histories that praised Sundiata's special powers.",
             "Scholars in Timbuktu copied and traded Arabic manuscripts on law and religion.",
             "Mansa Musa spent and gave away so much gold in Cairo that its value there fell.",
             "Camel caravans carried slabs of salt from mines in the Sahara to markets in the south.",
           ],
           why: [
-            "Correct. The griots' praise of the ruler's family and powers drew on traditions older than Islam, which shows Muslim rulers still relying on older sources of authority.",
+            "Correct. Griots, the court storytellers of Mali, praised the ruler's family and powers in traditions older than Islam, which shows Muslim rulers still relying on older sources of authority.",
             "Arabic scholarship in Timbuktu shows the growth of Islamic learning, but it says nothing about older traditions.",
             "Mansa Musa's spending in Cairo shows Mali's wealth, not how rulers combined Islam with older beliefs.",
             "The salt caravans show the trade that rulers taxed, not the religious basis of their authority.",
           ],
           answer: 0 },
-        { id: "t15-m06", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Comparison",
+        { id: "t15-m06", skill: "u1", type: "mcq", set: "t15-s2", topic: "1.5", reasoning: "Comparison", difficulty: "easy",
           question: "According to the passage, the Hausa states differed from the Mali Empire in that the Hausa states",
           choices: [
-            "remained separate cities rather than uniting under a single ruler",
-            "rejected Islam and kept only their older religions",
-            "took no part in the trade that crossed the Sahara",
+            "never united under a single ruler",
+            "rejected Islam and kept only their older local religions",
+            "took no part in the caravan trade that crossed the Sahara",
             "were ruled by kings who claimed descent from King Solomon",
           ],
           why: [
@@ -147,10 +147,10 @@ export default {
           answer: 0 },
 
         // ===== Set 3: Four African sites (data table) =====
-        { id: "t15-m07", skill: "u1", type: "mcq", set: "t15-s3", topic: "1.5", reasoning: "Claims and evidence in sources",
+        { id: "t15-m07", skill: "u1", type: "mcq", set: "t15-s3", topic: "1.5", reasoning: "Claims and evidence in sources", difficulty: "easy",
           question: "Which of the following conclusions is best supported by the table?",
           choices: [
-            "In several regions of Africa, rulers and communities built large royal or religious structures that displayed their wealth and beliefs.",
+            "In several regions, rulers and communities built large royal or religious structures.",
             "Islam was the main religion of every African state that built large structures in this period.",
             "Long-distance trade reached the cities of the African coast but not the states of the interior.",
             "Most of the structures in the table were built after Portuguese ships reached the coasts of Africa.",
@@ -162,7 +162,7 @@ export default {
             "Portuguese ships reached East Africa in 1498, and every date in the table is earlier than that.",
           ],
           answer: 0 },
-        { id: "t15-m08", skill: "u1", type: "mcq", set: "t15-s3", topic: "1.5", reasoning: "Causation",
+        { id: "t15-m08", skill: "u1", type: "mcq", set: "t15-s3", topic: "1.5", reasoning: "Causation", difficulty: "moderate",
           question: "Which of the following best explains why porcelain from China was found at both Great Zimbabwe and Kilwa?",
           choices: [
             "Swahili coastal cities traded gold from the interior for goods carried across the Indian Ocean.",

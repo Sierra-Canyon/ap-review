@@ -133,6 +133,10 @@ const forms = [1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((n) => {
   return unit.map((f) => ({ ...f, ...(date ? { date } : {}), ...(n === 1 ? { past: true } : {}) }));
 });
 
+const SETS = Object.assign({}, ...units.map((u) => u.sets), ...mocks.map((m) => m.sets), ...topics.map((m) => m.sets));
+// A question on a map, chart, picture, or table: its set has a source with an svg, img, or table block.
+const isVisual = (it) => !!SETS[it.set]?.sources?.some((src) => (src.blocks || []).some((b) => b.svg || b.img || b.table));
+
 export default {
   id: "whap",
   course: "AP World History: Modern",
@@ -146,10 +150,10 @@ export default {
     { id: "saq", name: "Short answer", types: ["fr"], size: 6 },
     { id: "essay", name: "Essays", types: ["essay"], size: 2 },
     { id: "u2", name: "Unit 2 only", skills: ["u2"] },
-    { id: "maps", name: "Maps and charts", filter: (it) => /^u\d-v\d/.test(it.id) },
+    { id: "maps", name: "Maps and charts", filter: isVisual },
   ],
   // Ordinary review sets carry at least two map, chart, or picture questions while any are left to see.
-  mix: { filter: (it) => /^u\d-v\d/.test(it.id), per: 2 },
+  mix: { filter: isVisual, per: 2 },
   skills: [
     { id: "u1", name: "Unit 1: The Global Tapestry", from: "c. 1200 to c. 1450", short: "U1" },
     { id: "u2", name: "Unit 2: Networks of Exchange", from: "c. 1200 to c. 1450", short: "U2" },
@@ -161,7 +165,7 @@ export default {
     { id: "u8", name: "Unit 8: Cold War and Decolonization", from: "c. 1900 to the present", short: "U8" },
     { id: "u9", name: "Unit 9: Globalization", from: "c. 1900 to the present", short: "U9" },
   ],
-  sets: Object.assign({}, ...units.map((u) => u.sets), ...mocks.map((m) => m.sets), ...topics.map((m) => m.sets)),
+  sets: SETS,
   forms,
   mock: {
     name: "Quizzes and tests",

@@ -887,9 +887,36 @@ const formOf = (id) => deck.forms?.find((f) => f.id === id);
 // "Part A" and "Part B", or the deck's own names for its sections (AP World: Section I, Part A and so on).
 const partName = (it, inB) => deck.mock.sections?.[it.type + (it.calc ? "-calc" : "")] || deck.mock.sections?.[it.type] || (inB ? "Part B" : "Part A");
 const ptsLabel = (n) => `${n} point${n === 1 ? "" : "s"}`;
+// A quiz or test places its keys evenly across the letters (with 4 choices, each of A to D about a quarter of the
+// time, never three in a row), in the same order for every student, so no letter is a safe guess.
+function keyOrders(formId, items) {
+  let h = 2166136261;
+  for (const c of formId) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+  const rnd = () => { h = Math.imul(h ^ (h >>> 15), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; };
+  const mix = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const out = {};
+  const byN = {};
+  for (const it of items) if (isChoice(it) && it.choices.length > 1) (byN[it.choices.length] ||= []).push(it);
+  for (const [n, list] of Object.entries(byN)) {
+    let slots;
+    for (let t = 0; t < 50; t++) {
+      slots = [];
+      while (slots.length < list.length) slots.push(...mix([...Array(+n).keys()]));
+      slots = mix(slots.slice(0, list.length));
+      if (!slots.some((x, i) => i > 1 && x === slots[i - 1] && x === slots[i - 2])) break;
+    }
+    list.forEach((it, i) => {
+      const rest = mix(it.choices.map((_, k) => k).filter((k) => k !== it.answer));
+      rest.splice(slots[i], 0, it.answer);
+      out[it.id] = { order: rest };
+    });
+  }
+  return out;
+}
 function startMock(formId) {
   const m = buildMock(deck, deckState().cards, Math.random, formId);
-  app.mock = { deck: deck.id, form: formId || null, items: [...m.partA, ...m.partB], partA: m.partA.length, i: 0, answers: {}, start: Date.now(), phase: "take" };
+  const items = [...m.partA, ...m.partB];
+  app.mock = { deck: deck.id, form: formId || null, items, partA: m.partA.length, i: 0, answers: formId ? keyOrders(formId, items) : {}, start: Date.now(), phase: "take" };
   renderMock();
 }
 function renderMock() {

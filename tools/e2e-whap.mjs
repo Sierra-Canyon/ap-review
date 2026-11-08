@@ -84,6 +84,8 @@ const overflow = (page) => page.evaluate(() => document.documentElement.scrollWi
   assert(unit5.length === 11 && /^Topic 5\.1 Quiz/.test(unit5[0]) && /^Topic 5\.10 Quiz/.test(unit5[9]) && /^Unit 5 Assessment/.test(unit5[10]), "Unit 5 lists its ten topic quizzes in order, then its assessment: " + unit5.join(" | "));
   const unit6 = await page.$$eval(".fgroup", (gs) => { const g = gs.find((x) => /^Unit 6/.test(x.querySelector("h3").textContent)); return g ? [...g.querySelectorAll(".formrow b")].map((x) => x.textContent) : []; });
   assert(unit6.length === 9 && /^Topic 6\.1 Quiz/.test(unit6[0]) && /^Topic 6\.8 Quiz/.test(unit6[7]) && /^Unit 6 Assessment/.test(unit6[8]), "Unit 6 lists its eight topic quizzes, then its assessment: " + unit6.join(" | "));
+  const unit7 = await page.$$eval(".fgroup", (gs) => { const g = gs.find((x) => /^Unit 7/.test(x.querySelector("h3").textContent)); return g ? [...g.querySelectorAll(".formrow b")].map((x) => x.textContent) : []; });
+  assert(unit7.length === 10 && /^Topic 7\.1 Quiz/.test(unit7[0]) && /^Topic 7\.9 Quiz/.test(unit7[8]) && /^Unit 7 Assessment/.test(unit7[9]), "Unit 7 lists its nine topic quizzes, then its assessment: " + unit7.join(" | "));
   assert(firstForms.length === 9 && /^Topic 2\.1 Quiz/.test(firstForms[0]) && /^Unit 2 Assessment B/.test(firstForms[8]), "Unit 2 lists its seven topic quizzes, then its two assessments: " + firstForms.join(" | "));
   await page.screenshot({ path: `${out}/w02-mock-list.png`, fullPage: true });
 

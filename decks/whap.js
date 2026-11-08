@@ -44,7 +44,7 @@ import * as w6a from "./whap-mocks/w6a.js";
 import * as w7a from "./whap-mocks/w7a.js";
 import * as w8a from "./whap-mocks/w8a.js";
 import * as w9a from "./whap-mocks/w9a.js";
-// Topic quizzes (decks/whap-topic/): one for each CED topic in Units 1 to 6, 8 source-based multiple choice and one
+// Topic quizzes (decks/whap-topic/): one for each CED topic in Units 1 to 7, 8 source-based multiple choice and one
 // short-answer question (3 parts), 11 points. Written only for the quizzes: no item or source in them is in review or a unit assessment.
 import * as t11 from "./whap-topic/t11.js";
 import * as t12 from "./whap-topic/t12.js";
@@ -90,11 +90,20 @@ import * as t65 from "./whap-topic/t65.js";
 import * as t66 from "./whap-topic/t66.js";
 import * as t67 from "./whap-topic/t67.js";
 import * as t68 from "./whap-topic/t68.js";
+import * as t71 from "./whap-topic/t71.js";
+import * as t72 from "./whap-topic/t72.js";
+import * as t73 from "./whap-topic/t73.js";
+import * as t74 from "./whap-topic/t74.js";
+import * as t75 from "./whap-topic/t75.js";
+import * as t76 from "./whap-topic/t76.js";
+import * as t77 from "./whap-topic/t77.js";
+import * as t78 from "./whap-topic/t78.js";
+import * as t79 from "./whap-topic/t79.js";
 
 const units = [u1, u2, u3, u4, u5, u6, u7, u8, u9, visual, u1x, u2x, u3x, visual2, u4x, u5x, u6x, u7x, visual3, u8x, u9x];
 const mocks = [w1a, w2a, w2b, w3a, w3b, w4a, w5a, w6a, w7a, w8a, w9a];
 const rowsMax = (it) => (it.rows || []).reduce((t, r) => t + (r.max ?? (r.levels ? r.levels.length - 1 : 1)), 0);
-const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27, t31, t32, t33, t34, t41, t42, t43, t44, t45, t46, t47, t48, t51, t52, t53, t54, t55, t56, t57, t58, t59, t510, t61, t62, t63, t64, t65, t66, t67, t68];
+const topics = [t11, t12, t13, t14, t15, t16, t17, t21, t22, t23, t24, t25, t26, t27, t31, t32, t33, t34, t41, t42, t43, t44, t45, t46, t47, t48, t51, t52, t53, t54, t55, t56, t57, t58, t59, t510, t61, t62, t63, t64, t65, t66, t67, t68, t71, t72, t73, t74, t75, t76, t77, t78, t79];
 const total = (f) => f.items.reduce((t, it) => t + (it.type === "essay" ? rowsMax(it) : 1), 0);
 // On the page each unit lists its topic quizzes, then its assessments. The Class tab gives the quizzes their own column.
 const assessments = mocks.flatMap((m) => m.default.forms).map((f) => ({ ...f, short: { w2a: "U2A", w2b: "U2B", w3a: "U3A", w3b: "U3B" }[f.id] || "U" + f.id[1], total: total(f) }));

@@ -50,7 +50,7 @@ export default {
             "This concerned peasants in Russia, not Jews.",
             "He refers to persecution in Europe, not colonial conquest.",
             "Italian unification is a separate nationalist movement."]),
-        M(3, "t52-s1", "Comparison", "Herzl's claim \"We are a people—one people\" is most similar to the arguments of which other movement of the 1800s?",
+        M(3, "t52-s1", "Comparison", "Herzl's claim that the Jews are \"one people\" is most similar to the arguments of which other movement of the 1800s?",
           ["Italian and German nationalists who argued that people sharing a culture should have their own state", "Laissez-faire economists who opposed tariffs", "Socialists who argued that workers of all nations shared common interests", "Missionaries who sought to spread Christianity"],
           ["Correct. Like Mazzini or German nationalists, Herzl argued that a people with a shared identity deserved a state.",
             "Economic arguments about tariffs are unrelated to his claim.",

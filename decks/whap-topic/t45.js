@@ -44,7 +44,7 @@ export default {
             "The charter says no English subject could go to India without the Company's license.",
             "The charter grants and encourages trade with Asia."]),
         M(2, "t45-s1", "Claims and evidence in sources", "Which part of the charter best supports the claim that the Company held a monopoly?",
-          ["\"None of the Queen's Subjects, but the Company ... shall resort to India— without being licenced by the Company\"", "\"The Company may send yearly to the East Indies Six good Ships\"", "\"The Company may export ... Thirty thousand Pounds in foreign Coin or Bullion\"", "\"for Fifteen Years from Christmas last\""],
+          ["\"None of the Queen's Subjects, but the Company ... shall resort to India ... without being licenced by the Company\"", "\"The Company may send yearly to the East Indies Six good Ships\"", "\"The Company may export ... Thirty thousand Pounds in foreign Coin or Bullion\"", "\"for Fifteen Years from Christmas last\""],
           ["Correct. This clause keeps all other English traders out unless the Company allows them.",
             "This sets a limit on ships but does not keep others out.",
             "This permits exporting silver, not exclusive rights.",

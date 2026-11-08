@@ -1,5 +1,7 @@
 // Topic 9.3 Quiz: Debates About the Environment
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against ";
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -18,10 +20,10 @@ export const sets = {
     ] }],
   },
   "t93-s2": {
-    id: "t93-s2", name: "The shrinking Aral Sea", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that the Aral Sea shows how state plans for development could destroy an environment. In 1960, the Aral Sea, on the border of the Soviet republics of Kazakhstan and Uzbekistan, was the fourth-largest lake in the world. To grow cotton in the desert, Soviet planners diverted the two rivers that fed it into vast irrigation canals. Cotton harvests rose, but by the 2000s the sea had shrunk to about a tenth of its former volume and split into separate lakes. The fishing industry collapsed, former ports were left many miles from the water, and winds carried salt and pesticide dust from the dry seabed across the region, contributing to health problems. Since 2005, a dam built with World Bank help has partly restored the northern part of the sea." },
-      PRACTICE,
+    id: "t93-s2", name: "Environmental disasters in Europe and Asia", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u9-disasters"], caption: "Environmental and industrial disasters in Europe and Asia, 1956 to 2011" },
+      { cite: MAP + "Encyclopaedia Britannica, \"Minamata disease,\" \"Bhopal disaster,\" and \"Chernobyl disaster,\" and Wikipedia, \"Aral Sea\" and \"Fukushima nuclear accident.\"", kind: "map" },
     ] }],
   },
   "t93-s3": {
@@ -62,31 +64,31 @@ export default {
             "She calls for equitable development.",
             "She focuses on rural women's needs.",
             "She opposed forest clearing."]),
-        // ===== Set 2: Aral Sea =====
-        M(5, "t93-s2", "Causation", "According to the passage, the Aral Sea shrank mainly because",
-          ["Soviet planners diverted the rivers that fed it to irrigate cotton", "the climate turned colder", "a dam was built in 2005", "fishing removed the water"],
-          ["Correct. Irrigation canals took the rivers' water.",
-            "The passage does not say this.",
-            "The dam partly restored the sea.",
-            "Fishing does not remove water."]),
-        M(6, "t93-s2", "Developments and processes", "The Aral Sea disaster best illustrates which development after 1900?",
-          ["Human efforts to increase production caused large-scale environmental damage", "Environmental damage occurred only in capitalist economies", "Technology always protected the environment", "Lakes grew larger because of irrigation"],
-          ["Correct. A plan to grow more cotton destroyed a sea and its economy.",
-            "The Soviet Union had a planned economy.",
-            "Technology caused the damage here.",
-            "The sea shrank."]),
-        M(7, "t93-s2", "Claims and evidence in sources", "Which evidence from the passage best shows that environmental damage harmed human health?",
-          ["Winds carried salt and pesticide dust from the dry seabed across the region.", "Cotton harvests rose.", "The sea split into separate lakes.", "Former ports were left far from the water."],
-          ["Correct. The dust contributed to health problems.",
-            "This was a benefit for the plan.",
-            "This describes the sea.",
-            "This describes the economy."]),
-        M(8, "t93-s2", "Comparison", "The Aral Sea disaster is most similar to which other environmental change?",
-          ["Deforestation in the Amazon to clear land for cattle ranching and farming", "The founding of national parks in the United States", "The Montreal Protocol", "The restoration of wetlands"],
-          ["Correct. Both destroyed ecosystems to expand agriculture.",
-            "Parks protected land.",
-            "That protected the ozone layer.",
-            "That restores ecosystems."]),
+        // ===== Set 2: Environmental disasters (map) =====
+        M(5, "t93-s2", "Developments and processes", "Taken together, the events on the map best illustrate which development after 1900?",
+          ["Technologies that raised farm, factory, and energy output also caused severe environmental and health damage.", "Environmental damage was limited to the oldest industrial nations of Western Europe.", "Environmental disasters grew rarer after the 1950s as technology improved.", "Most environmental disasters were caused by natural forces rather than human activity."],
+          ["Correct. A chemical factory, irrigation for cotton, a pesticide plant, and two nuclear power plants all caused the harm shown.",
+            "None of the events on the map is in Western Europe.",
+            "The map's events run from 1956 to 2011.",
+            "Each event came from a factory, a farm plan, or a power plant."]),
+        M(6, "t93-s2", "Comparison", "The two events in the Soviet Union shown on the map best support which claim?",
+          ["Communist planned economies, not only capitalist ones, caused major environmental damage.", "The Soviet Union avoided the environmental costs of industry.", "Environmental damage in the Soviet Union came only from nuclear weapons tests.", "Soviet planners protected rivers and lakes from overuse."],
+          ["Correct. The Aral Sea and Chernobyl were both the results of Soviet state projects, while Minamata and Bhopal came from private companies in Japan and India.",
+            "The map shows two disasters in the Soviet Union.",
+            "The Aral Sea shrank because of irrigation, and Chernobyl was a power plant.",
+            "Soviet irrigation drained the rivers that fed the Aral Sea."]),
+        M(7, "t93-s2", "Causation", "The two events marked with an X on the map most directly fueled which debate?",
+          ["Whether the benefits of nuclear power outweighed its dangers", "Whether chemical pesticides should be used on farms", "Whether rivers should be diverted for irrigation", "Whether factories should be allowed to dump mercury into the sea"],
+          ["Correct. After Chernobyl and Fukushima, several countries slowed or ended nuclear power; Germany decided in 2011 to close all its reactors.",
+            "That debate fits Bhopal, which is marked with a dot.",
+            "That debate fits the Aral Sea, which is marked with a dot.",
+            "That debate fits Minamata, which is marked with a dot."]),
+        M(8, "t93-s2", "Continuity and change", "The dates on the map, from 1956 to 2011, best support which conclusion?",
+          ["The dangers of modern industry and energy continued throughout the period despite growing environmental movements.", "Environmental disasters ended with the end of the Cold War.", "Environmental disasters took place only in poor countries.", "Environmental damage stopped once the United Nations was founded."],
+          ["Correct. New disasters kept happening for more than fifty years, even as environmental groups and laws grew.",
+            "Fukushima came in 2011, twenty years after the Soviet Union ended.",
+            "Japan, a wealthy country, had two of the events on the map.",
+            "The UN was founded in 1945, before every event on the map."]),
         // ===== SAQ: Ozone =====
         Q("a", "Identify ONE feature of the Montreal Protocol described in the passage.",
           "The response names one feature from the passage.",

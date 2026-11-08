@@ -1,0 +1,72 @@
+// Unit 5 maps for the topic quizzes (t55, t59). Spec format: tools/build-maps.mjs. HANDOFF.md, section 2e.
+
+const cables = {
+  id: "u5-cables",
+  caption: "Submarine telegraph cables from Britain to India, Southeast Asia, China, and Australia, with the year each place was linked to London by telegraph (routes approximate)",
+  alt: "Map from Britain to Australia. A cable line runs from Porthcurno in Cornwall past Lisbon to Gibraltar and Malta, then to Alexandria in Egypt. A land line crosses Egypt to Suez. From Suez a cable runs down the Red Sea to Aden and across the Arabian Sea to Bombay, opened in 1870. A land line crosses India from Bombay to Madras. From Madras a cable runs to Penang and Singapore, 1870, and from Singapore to Batavia on Java, 1870, and on to Port Darwin in northern Australia, 1871. A land line runs from Port Darwin across Australia to Adelaide, 1872. Another cable runs from Singapore north to Hong Kong, 1871.",
+  bbox: [-12, -38, 146, 56], width: 760, height: 440,
+  regions: [
+    { name: "BRITAIN", at: [-1.5, 54.5], size: 10 }, { name: "EGYPT", at: [29, 26], size: 9 }, { name: "INDIA", at: [78.5, 21.5], size: 10 },
+    { name: "CHINA", at: [108, 32], size: 10 }, { name: "AUSTRALIA", at: [134, -25], size: 10 }, { name: "Indian Ocean", at: [78, -12], size: 12 },
+    { name: "Atlantic Ocean", at: [-17, 40], size: 10 },
+  ],
+  routes: [
+    { kind: "sea", through: [[-5.66, 50.04], [-9.5, 45], [-9.6, 38.6], [-9.32, 38.68], [-9.6, 37.5], [-8, 36.2], [-5.35, 36.14], [0, 37.3], [9, 37.7], [12, 36.5], [14.51, 35.9], [22, 34.3], [29.92, 31.2]] },
+    { kind: "route2", through: [[29.92, 31.2], [31.25, 30.05], [32.55, 29.97]] },
+    { kind: "sea", through: [[32.55, 29.97], [33.7, 27.5], [37, 22], [40.5, 16], [43.3, 12.7], [45.03, 12.78], [50, 13.5], [60, 17], [67, 19], [72.83, 18.93]] },
+    { kind: "route2", through: [[72.83, 18.93], [75.9, 17.7], [78.5, 15.0], [80.27, 13.08]] },
+    { kind: "sea", through: [[80.27, 13.08], [86, 9], [95, 6.5], [100.33, 5.41], [101.5, 3.5], [103.82, 1.29]] },
+    { kind: "sea", through: [[103.82, 1.29], [105.5, -2], [106.83, -6.1]] },
+    { kind: "sea", through: [[106.83, -6.1], [112, -5.6], [114.37, -8.2], [117, -9.8], [125, -11.2], [130.84, -12.46]] },
+    { kind: "route2", through: [[130.84, -12.46], [133.1, -18], [133.88, -23.7], [135.5, -29.5], [138.6, -34.93]] },
+    { kind: "sea", through: [[103.82, 1.29], [105, 5], [107.5, 9.5], [110, 13], [111.5, 18], [114.17, 22.28]] },
+  ],
+  places: [
+    { name: "Porthcurno", at: [-5.66, 50.04], label: "right" },
+    { name: "Lisbon", at: [-9.14, 38.72], label: "left" },
+    { name: "Gibraltar", at: [-5.35, 36.14], label: [-4, 16] },
+    { name: "Malta", at: [14.51, 35.9], label: "above" },
+    { name: "Alexandria", at: [29.92, 31.2], label: "above" },
+    { name: "Suez", at: [32.55, 29.97], label: "right" },
+    { name: "Aden 1870", at: [45.03, 12.78], label: "below" },
+    { name: "Bombay 1870", at: [72.83, 18.93], kind: "major", label: "left" },
+    { name: "Madras", at: [80.27, 13.08], label: "right" },
+    { name: "Penang", at: [100.33, 5.41], label: "left" },
+    { name: "Singapore 1870", at: [103.82, 1.29], kind: "major", label: "left" },
+    { name: "Batavia (Java) 1870", at: [106.83, -6.1], label: [-8, 16] },
+    { name: "Port Darwin 1871", at: [130.84, -12.46], kind: "major", label: "right" },
+    { name: "Adelaide 1872", at: [138.6, -34.93], label: "right" },
+    { name: "Hong Kong 1871", at: [114.17, 22.28], kind: "major", label: "right" },
+  ],
+  legend: [{ kind: "sea", text: "Undersea cable" }, { kind: "route2", text: "Telegraph line over land" }],
+  legendAt: "bottom-left", legendWidth: 210,
+  checked: ["\"The Silver Jubilee of the Eastern Telegraph Company\" (1894), and the British-Indian Submarine Telegraph cable history, on atlantic-cable.com (Bill Burns, History of the Atlantic Cable and Undersea Communications)", "Encyclopaedia Britannica and Wikipedia, \"All Red Line\", and the Porthcurno Telegraph Museum (PK Porthcurno), \"Porthcurno to Port Darwin\""],
+};
+
+const cities = {
+  id: "u5-largest-cities",
+  caption: "The world's eight largest cities in 1800 and in 1900, by estimated population. A city's years show when it was among the eight largest.",
+  alt: "World map from North America to Japan. The eight largest cities in 1800 were Beijing, Guangzhou, and Hangzhou in China, Edo (later Tokyo) in Japan, Istanbul, London, Paris, and Naples. The eight largest cities in 1900 were London, Paris, Berlin, Vienna, and St. Petersburg in Europe, New York and Chicago in the United States, and Tokyo in Japan. London, Paris, and Edo or Tokyo appear in both years. Four of the eight largest cities of 1800 were in China and Japan; in 1900 Tokyo was the only one in East Asia, and seven of the eight were in Europe or the United States.",
+  bbox: [-96, 12, 146, 64], width: 760, height: 400,
+  regions: [{ name: "Atlantic Ocean", at: [-42, 42], size: 11 }, { name: "Indian Ocean", at: [75, 14], size: 10 }],
+  places: [
+    { name: "Beijing 1800", at: [116.4, 39.9], label: "left" },
+    { name: "Guangzhou 1800", at: [113.26, 23.13], label: "left" },
+    { name: "Hangzhou 1800", at: [120.16, 30.27], label: "below" },
+    { name: "Istanbul 1800", at: [28.98, 41.01], label: "right" },
+    { name: "Naples 1800", at: [14.27, 40.85], label: "left" },
+    { name: "London 1800, 1900", at: [-0.13, 51.51], kind: "major", label: "left" },
+    { name: "Paris 1800, 1900", at: [2.35, 48.86], kind: "major", label: [-8, 14] },
+    { name: "Edo (Tokyo)\n1800, 1900", at: [139.69, 35.69], kind: "major", label: "right" },
+    { name: "Berlin 1900", at: [13.4, 52.52], kind: "major", label: [6, -6] },
+    { name: "Vienna 1900", at: [16.37, 48.21], kind: "major", label: "right" },
+    { name: "St. Petersburg 1900", at: [30.32, 59.94], kind: "major", label: "right" },
+    { name: "New York 1900", at: [-74.0, 40.71], kind: "major", label: "right" },
+    { name: "Chicago 1900", at: [-87.63, 41.88], kind: "major", label: "above" },
+  ],
+  legend: [{ kind: "major", text: "Among the eight largest in 1900" }, { kind: "city", text: "Among the eight largest in 1800 only" }],
+  legendAt: "bottom-left", legendWidth: 250,
+  checked: ["James A. Henretta and others, America's History, 8th edition (Bedford/St. Martin's), table of the world's ten largest cities in 1800 and 1900", "Matt Rosenberg, \"Largest Cities Throughout History\" (ThoughtCo), and Wikipedia, \"List of largest cities throughout history\" and \"Historical urban community sizes\", which follow Tertius Chandler, Four Thousand Years of Urban Growth (1987)"],
+};
+
+export const maps = [cables, cities];

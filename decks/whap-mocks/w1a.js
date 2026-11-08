@@ -1,14 +1,15 @@
 // Unit 1 Assessment (mock form w1a): The Global Tapestry, c. 1200 to c. 1450, topics 1.1 to 1.7.
+import { maps } from "../whap/maps.js";
+
+// A map the site draws (tools/maps/whap-u1.mjs, built by tools/build-maps.mjs), with the references it was checked against.
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 // Sources: every stimulus this form uses, keyed by id.
 export const sets = {
   "w1a-s1": {
-    id: "w1a-s1", name: "The Song commercial economy", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "Between the tenth and thirteenth centuries, China under the Song dynasty developed the most commercial economy in the world. Fast-ripening rice and new irrigation works raised harvests and supported a population that grew to more than 100 million. Peasants increasingly grew crops for sale, and a dense network of market towns linked the countryside to great cities such as Kaifeng and Hangzhou. The Grand Canal carried rice and other goods from the south to the north. The Song state printed paper money and earned much of its income from taxes on trade and from state monopolies on salt and other goods, not only from taxes on land. Iron production rose sharply, and Chinese porcelain and silk were sold in ports across the Indian Ocean. Many historians call these changes a commercial revolution." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "w1a-s1", name: "China under the Song and the Jin", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u1-song-jin", "China under the Southern Song and the Jin, c. 1160 (canal and border approximate)", "Encyclopaedia Britannica, \"Hangzhou\" and \"Old Bian Canal\", and Wikipedia, \"Treaty of Shaoxing\", \"Lin'an Prefecture\", \"Grand Canal (China)\", and \"Champa rice\"") }],
   },
   "w1a-s2": {
     id: "w1a-s2", name: "Sa'di, a dervish and a king", intro: "Use the source below to answer the questions that follow.",
@@ -75,50 +76,50 @@ export default {
   forms: [
     { id: "w1a", name: "Unit 1 Assessment", group: "Unit 1: The Global Tapestry",
       items: [
-        // ===== Set 1: the Song commercial economy (1.1, 1.7) =====
+        // ===== Set 1: map, China under the Song and the Jin (1.1, 1.7) =====
         { id: "w1a-m01", skill: "u1", type: "mcq", set: "w1a-s1", topic: "1.1", reasoning: "Claims and Evidence",
-          question: "Which of the following, not mentioned in the passage, would best support the passage's claim that Song peasants \"increasingly grew crops for sale\"?",
+          question: "Which of the following conclusions is best supported by the map?",
           choices: [
-            "Rural households in southern China sold tea, silk, and sugar cane in local markets and used the money to buy rice and tools.",
-            "Song emperors chose officials through examinations on the Confucian classics.",
-            "Neo-Confucian scholars taught that children owed obedience to their parents.",
-            "Buddhist monasteries in China lost much of their land when a Tang emperor attacked Buddhism in the ninth century.",
+            "After the Jin took northern China, including Kaifeng, the Song state survived in the south and ruled from Hangzhou.",
+            "The Song conquered the lands of the Jurchen and moved their capital north to Zhongdu.",
+            "The Southern Song built the Grand Canal to link Hangzhou with the port of Quanzhou.",
+            "The Song kept their capital at Kaifeng for the whole period of the dynasty.",
           ],
           why: [
-            "Correct. Families that grew cash crops and bought the goods they did not make were producing for the market, which is the change the passage describes.",
-            "The examination system shaped Song government, but it says nothing about what peasants grew or sold.",
-            "Filial piety was central to neo-Confucian thought, but it describes family values, not farming for markets.",
-            "The Tang attack on Buddhism in 845 happened long before the Song and concerns religion, not peasant trade.",
+            "Correct. The map marks Kaifeng as the Song capital only until 1127, places it north of the border of 1142 in Jin lands, and marks Hangzhou, south of that border, as the Southern Song capital.",
+            "The map labels Zhongdu as the Jin capital from 1153, so the Jurchen ruled the north, not the Song.",
+            "The canal on the map runs north from Hangzhou toward Kaifeng, not south to Quanzhou, and it was first built under the Sui dynasty, long before the Song.",
+            "The map gives Kaifeng's years as capital as 960 to 1127 and shows a new Southern Song capital at Hangzhou.",
           ],
           answer: 0 },
         { id: "w1a-m02", skill: "u1", type: "mcq", set: "w1a-s1", topic: "1.1", reasoning: "Causation",
-          question: "The Song state's ability to print paper money, mentioned in the passage, depended most directly on which earlier Chinese development?",
+          question: "The rice from Champa labeled on the map contributed most directly to which development in Song China?",
           choices: [
-            "The invention of paper and of woodblock printing under earlier dynasties",
-            "The arrival of large amounts of silver from the Americas",
-            "The Mongol creation of a single trade network across Eurasia",
-            "The conversion of many merchants in Chinese ports to Islam",
+            "Rapid population growth, especially in the rice-growing lands of southern China",
+            "The Jurchen conquest of northern China",
+            "The end of the civil service examinations",
+            "The arrival of Buddhism in China",
           ],
           why: [
-            "Correct. Paper was invented under the Han, and woodblock printing was in use by the Tang period, so the Song could print money in large amounts.",
-            "American silver did not reach China until the sixteenth century, long after the Song printed paper money.",
-            "The Mongol network formed in the thirteenth century, after the Song had already used paper money for about two hundred years.",
-            "Muslim merchants did live in ports such as Quanzhou, but their faith had nothing to do with the state's printing of money.",
+            "Correct. Champa rice ripened quickly and resisted drought, so farmers could harvest two crops a year, and the larger food supply supported a population that grew past 100 million, much of it in the south.",
+            "The Jurchen conquest of the north in 1127 was a military event caused by the Jin's strength and the Song's weak defenses, not by a new crop.",
+            "The Song expanded the examinations, and the larger, richer population helped more families pay for study.",
+            "Buddhism reached China from India by the first century CE, about a thousand years before the Song.",
           ],
           answer: 0 },
         { id: "w1a-m03", skill: "u1", type: "mcq", set: "w1a-s1", topic: "1.7", reasoning: "Comparison",
-          question: "Compared with western Europe in the same period, the Song economy described in the passage was different in which way?",
+          question: "The route of the Grand Canal shown on the map best supports which comparison with another state of the period c. 1200 to c. 1450?",
           choices: [
-            "China had far larger cities and a state-issued paper currency, while western Europe was more rural and its rulers did not issue paper money.",
-            "China relied on serfs bound to manors, while western Europe relied mostly on free workers in large cities.",
-            "European states collected more taxes from trade than the Song state did.",
-            "China had little long-distance trade, while European merchants controlled trade across the Indian Ocean.",
+            "Like the Inca road network, the canal tied a capital to distant regions so that the state could move food, goods, and officials.",
+            "Like the trans-Saharan caravan routes, the canal lay outside the control of any state.",
+            "Like the stone walls of Great Zimbabwe, the canal was built mainly to defend the capital from invaders.",
+            "Like the chinampas of Tenochtitlan, the canal was used mainly as farmland for growing crops.",
           ],
           why: [
-            "Correct. Cities such as Hangzhou were far larger than any city in western Europe, and European rulers used coins rather than paper money.",
-            "This reverses the pattern. Manorial serfdom was a feature of western Europe, while the passage describes Chinese peasants selling crops in markets.",
-            "The passage stresses the Song state's large income from trade, and European kings of the period depended heavily on land and on their nobles.",
-            "The passage says Chinese porcelain and silk sold across the Indian Ocean, and European merchants did not control that trade in this period.",
+            "Correct. The map shows the canal linking Kaifeng with Yangzhou, Suzhou, and the Yangzi delta, where grain was shipped north to the capital, much as Inca roads carried goods, soldiers, and officials to and from Cusco.",
+            "The Song state built, repaired, and used the canal to ship tax grain, while the caravan routes crossed the desert through many lands and were run by merchants.",
+            "The canal on the map runs south from Kaifeng to the rice lands of the Yangzi, which shows it was built to move goods, not to defend a city.",
+            "Chinampas were raised fields built in a lake for farming, while the canal on the map is a waterway linking distant cities.",
           ],
           answer: 0 },
 

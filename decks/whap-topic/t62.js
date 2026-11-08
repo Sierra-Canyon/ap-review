@@ -1,5 +1,7 @@
 // Topic 6.2 Quiz: State Expansion
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against ";
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -17,10 +19,10 @@ export const sets = {
     ] }],
   },
   "t62-s2": {
-    id: "t62-s2", name: "Russia in Central Asia", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that Russia's conquest of Central Asia in the 1860s and 1870s was as much a part of the new imperialism as Europe's conquests overseas. Russian armies with modern rifles and artillery took the city of Tashkent in 1865 and Samarkand in 1868, made the emirate of Bukhara and the khanate of Khiva protectorates, and annexed the khanate of Kokand in 1876. Officials argued that the steppe frontier had to be secured and that Russia was bringing order to unstable states. Russia also wanted cotton: when the American Civil War cut supplies, Russian mills looked to Central Asia, and the colonial government encouraged farmers to plant cotton for export to Russia. Britain feared Russian armies were moving toward India, and the two empires competed for influence in Afghanistan and Persia in a rivalry the British called the Great Game." },
-      PRACTICE,
+    id: "t62-s2", name: "Russia's advance into Central Asia", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u6-central-asia"], caption: "Russia's advance into Central Asia, 1853 to 1884: the year Russian forces took or founded each place" },
+      { cite: MAP + "Encyclopaedia Britannica (\"Konstantin Petrovich Kaufmann,\" \"Uzbekistan,\" \"Turkmenistan,\" and the entries for each city) and Wikipedia, \"Russian conquest of Central Asia\".", kind: "map" },
     ] }],
   },
   "t62-s3": {
@@ -61,31 +63,31 @@ export default {
             "Māori lost most of their land.",
             "Settlement grew rapidly.",
             "New Zealand remained British."]),
-        // ===== Set 2: Russia in Central Asia =====
-        M(5, "t62-s2", "Causation", "According to the passage, one economic reason for Russian expansion into Central Asia was",
-          ["the desire for cotton for Russian mills", "the search for spices", "the need for slaves for Russian plantations", "the hope of finding a sea route to India"],
-          ["Correct. The passage says Russian mills looked to Central Asia for cotton when the American Civil War cut supplies.",
-            "Spices are not mentioned.",
-            "The passage does not mention slaves.",
-            "Central Asia has no sea route to India."]),
-        M(6, "t62-s2", "Comparison", "Russia's conquest of Central Asia was most similar to European overseas imperialism in that both",
-          ["used industrial weapons to conquer other peoples and turned colonies toward producing raw materials", "were carried out entirely by sea", "ended the conquering states' industrial growth", "were opposed by every European power equally"],
-          ["Correct. Modern rifles and artillery gave Russia the advantage, and Central Asia became a source of cotton.",
-            "Russia expanded overland.",
-            "Russian industry grew.",
-            "Britain opposed Russian expansion, but the passage does not say every power did."]),
-        M(7, "t62-s2", "Contextualization", "The Great Game described in the passage is best understood in the context of",
-          ["rivalry among industrial powers for territory and influence in Asia", "the Mongol conquests", "the Cold War between the United States and the Soviet Union", "the wars of the French Revolution"],
-          ["Correct. Britain and Russia competed for influence in Afghanistan and Persia as both empires expanded.",
-            "The Mongols lived centuries earlier.",
-            "The Cold War came in the 1900s.",
-            "Those wars ended in 1815."]),
-        M(8, "t62-s2", "Claims and evidence in sources", "Which evidence from the passage best supports the claim that Russia used both conquest and indirect rule?",
-          ["Russia annexed Kokand but made Bukhara and Khiva protectorates.", "Russian armies had modern rifles.", "Britain feared Russian armies were moving toward India.", "Officials argued the frontier had to be secured."],
-          ["Correct. Annexation is direct rule, while protectorates left local rulers in place under Russian control.",
-            "This shows military advantage, not types of rule.",
-            "This shows British concern.",
-            "This shows a justification."]),
+        // ===== Set 2: Map of Russia in Central Asia =====
+        M(5, "t62-s2", "Developments and processes", "Which of the following best describes the pattern shown on the map?",
+          ["Russia expanded over land, moving south from the Kazakh steppe toward Persia and Afghanistan over about thirty years.", "Russia expanded by sea, taking ports on the coast of the Indian Ocean.", "Russia lost cities in Central Asia to the Qing Empire after 1865.", "Russia conquered the whole region in a single campaign in the 1850s."],
+          ["Correct. The years run from Perovsk in 1853, on the steppe, to Tashkent and Samarkand in the 1860s and Merv in 1884, near the borders of Persia and Afghanistan.",
+            "Every place on the map is inland except Krasnovodsk, a port on the Caspian Sea, which is a lake with no outlet to any ocean.",
+            "The map shows only Russian gains, and none of the places marked belonged to the Qing.",
+            "The years on the map stretch from 1853 to 1884, so the conquest took about thirty years."]),
+        M(6, "t62-s2", "Comparison", "The expansion shown on the map was most similar to which other development of the nineteenth century?",
+          ["The United States' expansion across North America onto lands held by Native American nations and Mexico", "Britain's taking of Hong Kong as a trading port after the First Opium War", "The independence of most of Spain's colonies in the Americas by the 1820s", "Japan's opening of its ports to Western trade after 1854"],
+          ["Correct. Like Russia, the United States was a land-based state that pushed its borders outward over land into neighboring territory, conquering or displacing the peoples who lived there.",
+            "Hong Kong was a single island port gained by a sea power, not a steady advance over land like the one on the map.",
+            "Latin American independence shrank an empire, while the map shows one growing.",
+            "Japan opening its ports was a change in trade policy forced on Japan, not the conquest of territory."]),
+        M(7, "t62-s2", "Contextualization", "The location of Russia's latest gains on the map, such as Merv in 1884, best helps explain which development of the 1880s?",
+          ["Rising tension between Russia and Britain, which treated Afghanistan as a buffer protecting British India", "Britain's occupation of Egypt to protect the Suez Canal", "The Qing Empire's loss of Hong Kong to Britain", "A Persian conquest of Afghanistan that blocked Russia's advance"],
+          ["Correct. By the 1880s Russia's gains reached the edge of Afghanistan, and British leaders, fearing an attack on India, competed with Russia for influence there in the rivalry called the Great Game. Russia and Britain later agreed on Afghanistan's borders.",
+            "Britain did occupy Egypt in 1882, but that was about the route to India by sea, not Russia's advance shown on the map.",
+            "Britain gained Hong Kong in 1842, long before the gains on the map, and far from Central Asia.",
+            "Persia did not conquer Afghanistan. Afghanistan stayed independent as a buffer between the Russian and British empires."]),
+        M(8, "t62-s2", "Claims and evidence in sources", "Which conclusion about Russian rule in Central Asia is best supported by the map?",
+          ["Russia did not rule all its gains the same way: Bukhara and Khiva kept their own rulers as protectorates.", "Russia ruled every state in the region directly from the start.", "Russia's advance began near Persia and moved north toward the steppe.", "Russia finished its conquests in the region before the American Civil War began in 1861."],
+          ["Correct. The map labels Bukhara and Khiva as protectorates, states that kept their own rulers under Russian control, while places such as Tashkent and Kokand were taken outright.",
+            "The map marks Bukhara and Khiva as protectorates, not lands under direct rule.",
+            "This reverses the map. The earliest year, 1853, is on the steppe in the north, and the latest, 1884, is in the south.",
+            "Most of the years on the map, from Tashkent in 1865 to Merv in 1884, come after 1861."]),
         // ===== SAQ: The Philippines =====
         Q("a", "Identify ONE reason, described in the passage, that the United States kept the Philippines after 1898.",
           "The response names one reason from the passage.",

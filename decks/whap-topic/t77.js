@@ -1,5 +1,8 @@
 // Topic 7.7 Quiz: Conducting World War II
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -19,11 +22,8 @@ export const sets = {
     ] }],
   },
   "t77-s2": {
-    id: "t77-s2", name: "Science and secrets in the war", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that science and intelligence shaped the outcome of the Second World War as much as the size of armies. British radar stations along the coast warned of German air raids during the Battle of Britain in 1940, letting a smaller air force meet the attackers. At Bletchley Park, British code-breakers, building on work by Polish mathematicians, read many messages sent with the German Enigma machine, which helped the Allies route convoys away from German submarines in the Atlantic. American code-breakers who had broken Japanese naval codes learned of Japan's plan to attack Midway in 1942, and the U.S. Navy sank four Japanese aircraft carriers there. Both sides raced to build new weapons, from jet aircraft and rockets in Germany to the atomic bomb in the United States." },
-      PRACTICE,
-    ] }],
+    id: "t77-s2", name: "The war in Asia and the Pacific", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u7-pacific", "Battles of the war in Asia and the Pacific, 1941 to 1945, with the year of each", "Encyclopaedia Britannica, \"Pacific War\", \"Battle of Midway\", and \"World War II\", and the Royal Australian Navy's Sea Power Centre, \"The Battles of the Coral Sea and Midway\"") }],
   },
   "t77-s3": {
     id: "t77-s3", name: "Japanese American incarceration", intro: SAQ,
@@ -63,31 +63,31 @@ export default {
             "Mass armies and civilians took part.",
             "Industrial output was decisive.",
             "Factories employed millions."]),
-        // ===== Set 2: Science and secrets =====
-        M(5, "t77-s2", "Claims and evidence in sources", "Which evidence from the passage best supports the claim that intelligence shaped the war's outcome?",
-          ["American code-breakers learned of Japan's plan to attack Midway, and the U.S. Navy sank four Japanese carriers there.", "Germany built jet aircraft and rockets.", "Polish mathematicians studied codes.", "Both sides raced to build weapons."],
-          ["Correct. Breaking the codes directly enabled a major victory.",
-            "This concerns weapons, not intelligence.",
-            "This is background, not an outcome.",
-            "This concerns weapons."]),
-        M(6, "t77-s2", "Causation", "According to the passage, radar helped Britain in 1940 mainly by",
-          ["warning of German air raids so that a smaller air force could meet them", "breaking the Enigma code", "sinking Japanese carriers", "building the atomic bomb"],
-          ["Correct. Radar stations along the coast gave early warning.",
-            "That was done by code-breakers.",
-            "That happened at Midway.",
-            "That was done in the United States."]),
-        M(7, "t77-s2", "Comparison", "Compared with the First World War, the Second World War was more strongly marked by",
-          ["the decisive use of aircraft, aircraft carriers, and new technologies such as radar", "trench warfare along a fixed front in France", "the absence of new weapons", "fighting only in Europe"],
-          ["Correct. Air power and fast-moving warfare replaced the stalemate of the trenches.",
-            "Trench warfare marked the First World War.",
-            "Both wars produced new weapons.",
-            "The Second World War was fought across the globe."]),
-        M(8, "t77-s2", "Developments and processes", "The race to build new weapons described in the passage most directly led to which development after 1945?",
-          ["A nuclear arms race between the United States and the Soviet Union", "The end of all military research", "The disbanding of the world's armies", "A ban on aircraft"],
-          ["Correct. The Soviet Union tested an atomic bomb in 1949, and both powers built large arsenals.",
-            "Research grew during the Cold War.",
-            "Armies remained large.",
-            "No such ban occurred."]),
+        // ===== Set 2: map of the war in the Pacific =====
+        M(5, "t77-s2", "Continuity and change", "Which of the following best describes the pattern of battles shown on the map?",
+          ["Battles of 1941 and 1942 were spread from Hawaii to Southeast Asia and the South Pacific, while those of 1944 and 1945 came closer and closer to Japan.", "The fighting moved steadily away from Japan between 1941 and 1945.", "Most of the battles took place on the Asian mainland.", "The war in the Pacific began with Allied attacks on the Japanese home islands."],
+          ["Correct. Japan struck across a huge area in 1941 and 1942. After that, the United States and its allies captured one island group after another on the way to Japan, a strategy often called island hopping, and the battles of 1945 were fought within a few hundred miles of the home islands.",
+            "This reverses the pattern. The battles of 1944 and 1945, at Leyte Gulf, Iwo Jima, and Okinawa, are much closer to Japan than those of 1942.",
+            "Nearly every battle on the map was fought at sea or on an island. Japan's long war in China is not shown on this map.",
+            "The earliest battle on the map is Japan's attack on Pearl Harbor in 1941. Allied forces reached the islands near Japan only in 1945."]),
+        M(6, "t77-s2", "Causation", "Japan's attacks on Pearl Harbor and Singapore, shown on the map, are best explained by Japan's aim to",
+          ["seize the oil and raw materials of Southeast Asia, such as those of the Dutch East Indies, while keeping the U.S. fleet from stopping it", "free Hawaii and Singapore from Western rule so that they could become independent states", "help Germany defeat the Soviet Union", "strike back for the American bombing of Japanese cities"],
+          ["Correct. After the United States cut off oil exports to Japan in 1941, Japan planned to take the oil fields of the Dutch East Indies. The strike on the fleet at Pearl Harbor in December 1941 was meant to keep the United States from interfering, and the capture of Singapore in February 1942 removed Britain's main base in the region.",
+            "Japan's propaganda spoke of freeing Asia from the West, but Japan ruled the lands it conquered as part of its own empire. Hawaii was not occupied.",
+            "Japan signed a neutrality pact with the Soviet Union in April 1941 and did not fight it until August 1945. Pearl Harbor and Singapore are thousands of miles from the Soviet front.",
+            "The large American bombing raids on Japan began in 1944 and 1945, years after the attacks of 1941 and 1942."]),
+        M(7, "t77-s2", "Developments and processes", "Based on the map, the battles of the Coral Sea and Midway in 1942 are best described as",
+          ["the limits of Japan's advance, after which the fighting moved toward Japan", "Japan's last battles before it surrendered", "battles fought along the coast of China", "the first attacks of the war in the Pacific"],
+          ["Correct. At the Coral Sea in May 1942, Allied ships turned back a Japanese force sent to take Port Moresby in New Guinea, and at Midway in June 1942, American carrier planes sank four Japanese aircraft carriers. Japan never again advanced so far, and every later battle on the map is closer to Japan.",
+            "The map shows battles in 1944 and 1945 after these two, and Japan surrendered in August 1945.",
+            "Both battles were fought far out in the Pacific, Midway northwest of Hawaii and the Coral Sea off northeastern Australia.",
+            "The map dates Pearl Harbor to 1941, before either of these battles."]),
+        M(8, "t77-s2", "Causation", "The United States fought for Iwo Jima and Okinawa in 1945 mainly in order to",
+          ["take islands close enough to Japan to serve as bases for bombing and for a planned invasion of the home islands", "win back the oil fields of the Dutch East Indies", "defend Hawaii from a Japanese invasion", "free Korea and Manchuria from Japanese rule"],
+          ["Correct. Iwo Jima lies about halfway between the Mariana Islands, where American bombers were based, and Japan, and its airfields let fighter planes protect the bombers. Okinawa, about 350 miles from Kyushu, was to be the last stepping-stone for an invasion of Japan.",
+            "The map places the Dutch East Indies far to the southwest of both islands. The United States bypassed them as it moved toward Japan.",
+            "Japan's threat to Hawaii ended with its defeat at Midway in 1942, and both islands are near Japan, thousands of miles from Hawaii.",
+            "Korea and Manchuria are on the Asian mainland. Soviet troops invaded Manchuria in August 1945, and American troops did not land there."]),
         // ===== SAQ: Japanese American incarceration =====
         Q("a", "Identify ONE effect of Executive Order 9066 on Japanese Americans described in the passage.",
           "The response names one effect from the passage.",

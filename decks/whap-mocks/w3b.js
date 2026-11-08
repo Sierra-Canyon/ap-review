@@ -1,5 +1,10 @@
 // AP World History: Modern, Unit 3 Assessment B (form w3b), Unit 3: Land-Based Empires, c. 1450 to c. 1750, topics 3.1 to 3.4.
 // Sources: every stimulus this form uses, keyed by id.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 export const sets = {
   "w3b-s1": {
     id: "w3b-s1", name: "Rycaut on the Sultan's Pages", intro: "Use the source below to answer the questions that follow.",
@@ -21,14 +26,8 @@ export const sets = {
     ],
   },
   "w3b-s3": {
-    id: "w3b-s3", name: "Khafi Khan on Aurangzeb's Tax Orders", intro: "Use the source below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "The movements of large armies through the country, especially in the eastern and northern parts, during the two years past, and scarcity of rain in some parts, had combined to make grain dear. To comfort the people and alleviate their distress, the Emperor gave orders for the remission of the ráhdárí (toll) which was collected on every highway (guzar), frontier and ferry, and brought in a large sum to the revenue. ..." },
-        { p: "But although his gracious and beneficent Majesty remitted these taxes, and issued strict orders prohibiting their collection, the avaricious propensities of men prevailed, ... the royal prohibition had no effect, and faujdárs and jágírdárs in remote places did not withhold their hands from these exactions. ... When reports reached the government of infractions of these orders, (the offenders) were punished with a diminution of mansab, and the delegation of mace-bearers to their districts. ... After a while, the offenders, through their patrons or the management of their agents, got their mansab restored to its original amount." },
-        { cite: "Muhammad Hashim Khafi Khan, Mughal official and historian, Muntakhab al-Lubab, a history of the Mughal emperors completed c. 1731, from the section \"Remission of Taxes\" under the second year of Aurangzeb's reign (1659), translated in H. M. Elliot and John Dowson, eds., The History of India, as Told by Its Own Historians, vol. 7 (London: Trübner, 1877). Faujdar: military commander of a district. Jagirdar: holder of a jagir, an assignment of land revenue. Mansab: rank in the Mughal service.", url: "https://persian.packhum.org/text/080201017/3", kind: "primary" },
-      ] },
-    ],
+    id: "w3b-s3", name: "Mughal Conquests in India", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u3-mughal", "Mughal conquests in India, 1568 to 1687, with the year each place was taken", "Encyclopaedia Britannica, \"Mughal dynasty,\" New World Encyclopedia, \"Deccan sultanates,\" and Wikipedia's articles on Akbar, Aurangzeb, and Raigad Fort") }],
   },
   "w3b-s4": {
     id: "w3b-s4", name: "The Sack of Magdeburg, 1631", intro: "Use the source below to answer the questions that follow.",
@@ -162,65 +161,62 @@ export default {
             "Songhai was an inland empire built on the Niger River and the Saharan caravan routes, and Ottoman naval power was in the Mediterranean and Red Sea, not the Atlantic.",
           ], answer: 0 },
 
-        // ---------- Set 3: Khafi Khan on Aurangzeb's tax orders ----------
-        { id: "w3b-m08", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.1", reasoning: "Contextualization",
-          question: "The \"movements of large armies\" during \"the two years past\" that the author mentions most likely refers to",
+        // ---------- Set 3: Mughal conquests in India (map) ----------
+        { id: "w3b-m08", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.1", reasoning: "Developments and processes",
+          question: "The map best supports which conclusion about Mughal expansion between 1568 and 1687?",
           choices: [
-            "the war of succession among the sons of Shah Jahan, which Aurangzeb won between 1657 and 1659",
-            "Babur's invasion of northern India and his victory at Panipat in 1526",
-            "Nadir Shah's invasion of India and his sack of Delhi in 1739",
-            "the British East India Company's conquest of Bengal after the Battle of Plassey in 1757",
+            "The empire spread from its base in northern India into Gujarat and Bengal, and then, over the next century, south into the Deccan.",
+            "The empire grew mainly by taking ports along the coasts of India.",
+            "The Mughals conquered southern India first and then moved north.",
+            "Mughal expansion ended when Akbar died in 1605.",
           ],
           why: [
-            "The section falls under the second year of Aurangzeb's reign (1659). When Shah Jahan fell ill in 1657, his sons fought for the throne, and Aurangzeb defeated his brothers, including Dara Shikoh, and imprisoned his father.",
-            "Babur's invasion came more than a century before Aurangzeb's reign, so it could not be \"the two years past.\"",
-            "Nadir Shah's sack of Delhi came eighty years after the events described, and after the author finished his history.",
-            "Plassey took place in 1757, nearly a century after the events described.",
+            "The early dates (Chittor 1568, Ahmedabad 1573, Rajmahal 1576) are in the north, and the later ones (Ahmadnagar 1636, Bijapur 1686, Golconda 1687) are farther and farther south.",
+            "Most of the places taken, such as Chittor, Ahmadnagar, Bijapur, and Golconda, are far inland.",
+            "This reverses the map: the northern places were taken first and the southern ones last.",
+            "The map shows conquests in 1636, 1686, and 1687, long after Akbar's death.",
           ], answer: 0 },
-
         { id: "w3b-m09", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Developments and processes",
-          question: "The jágírdárs in the passage are best described as",
+          question: "Governing the lands shown on the map, many of them far from the capitals at Agra and Delhi, depended most on which Mughal practice?",
           choices: [
-            "Mughal officers with a mansab (rank) who were paid with the right to collect the land revenue of assigned districts instead of a cash salary",
-            "hereditary local landholders who collected revenue from villages their families had controlled since before the Mughal conquest",
-            "Hindu priests who managed the lands and fairs belonging to temples",
-            "European merchants who rented customs posts on Indian roads and rivers",
+            "Giving nobles ranks (mansabs) that required them to supply troops, paid with the right to collect land revenue from assigned lands",
+            "Choosing officials by examinations on the Confucian classics",
+            "Requiring regional lords to live every other year at the capital",
+            "Taking Christian boys from the provinces through the devshirme and training them as governors",
           ],
           why: [
-            "Under the system Akbar built, holders of a mansab were often paid with a jagir, the revenue of a set area, recorded against their salary; the passage shows them losing \"mansab\" as punishment and keeping cesses entered in their salary papers.",
-            "This describes zamindars, the hereditary local landholders who also collected revenue, not jagirdars, whose assignments came from the emperor and were often moved from place to place.",
-            "The passage mentions fairs near temples as one source of taxes, but jagirdars were imperial officers, not priests.",
-            "European companies held trading posts in India, but jagirdars were officers of the Mughal state who held ranks (mansabs) from the emperor.",
+            "Mansabdars held ranks that set how many soldiers they kept, and they were paid from the revenue of assigned lands, which bound conquered regions to the emperor's service.",
+            "Examinations on the Confucian classics were how China chose officials, not the Mughal Empire.",
+            "Alternate attendance was a Tokugawa policy in Japan.",
+            "The devshirme was an Ottoman practice.",
           ], answer: 0 },
-
-        { id: "w3b-m10", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Claims and evidence in sources",
-          question: "The passage best supports which claim about the Mughal state under Aurangzeb?",
+        { id: "w3b-m10", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Causation",
+          question: "In the 1680s, Aurangzeb moved his court from northern India to Aurangabad, marked on the map. Based on the map, which of the following best explains this move?",
           choices: [
-            "The emperor's orders were limited by officials who collected revenue far from the court and who could use patrons at court to escape lasting punishment.",
-            "The emperor had no power at all to punish officials who disobeyed him.",
-            "Aurangzeb reimposed the jizya, a tax on non-Muslims, to pay for his wars.",
-            "Mughal officials were chosen through examinations and watched closely by censors.",
+            "Aurangabad lay close to the Deccan sultanates of Bijapur and Golconda and to the Marathas, whom he was fighting.",
+            "Safavid armies were attacking Agra and Delhi at the time.",
+            "Aurangzeb wanted a port where he could trade directly with European companies.",
+            "The Rajput fortress of Chittor, near Aurangabad, had rebelled against Mughal rule.",
           ],
           why: [
-            "The orders failed \"in remote places,\" and offenders who lost rank \"through their patrons\" soon had it restored, which shows how much the emperor depended on his officers to carry out policy.",
-            "This overstates the passage. Offenders did lose part of their mansab, so the emperor could punish; the punishment simply did not last.",
-            "Aurangzeb did reimpose the jizya, but in 1679, twenty years after these events, and the passage is about removing taxes, not adding one.",
-            "Examinations and censors belonged to the Chinese system of government, not to the Mughal system of ranks granted by the emperor.",
+            "Aurangabad sits in the Deccan, near Ahmadnagar, Bijapur, Golconda, and the Maratha capital at Raigad. Aurangzeb led the campaigns that took Bijapur in 1686 and Golconda in 1687.",
+            "The Safavids did not attack the Mughal capitals. Delhi was sacked by a Persian ruler, Nader Shah, only in 1739, after the Safavids had fallen.",
+            "The map shows Aurangabad far inland, not on the coast.",
+            "Chittor is far to the north of Aurangabad and was taken by Akbar in 1568.",
           ], answer: 0 },
-
-        { id: "w3b-m11", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Sourcing and situation",
-          question: "Which of the following most likely shaped the author's view that the emperor's orders \"had no effect\" in remote places?",
+        { id: "w3b-m11", skill: "u3", type: "mcq", set: "w3b-s3", topic: "3.2", reasoning: "Contextualization",
+          question: "The Maratha capital marked on the map is best understood in the context of which challenge to Mughal rule in the late 1600s?",
           choices: [
-            "He finished his history around 1731, after Aurangzeb's death, when Mughal emperors had lost control of many provinces to their governors and rivals.",
-            "He was a Maratha leader who wanted to show that the Mughals were too weak to rule India.",
-            "He was a European visitor who did not understand how Mughal taxes worked.",
-            "He was one of the jágírdárs punished for collecting the tolls.",
+            "Regional powers, such as the Marathas, resisted Mughal rule in the very region the Mughals were trying to conquer, at great cost in lives and money.",
+            "Sikh resistance in the Punjab cut the Mughal capitals off from the Deccan.",
+            "The British East India Company conquered Bengal and took over its revenue.",
+            "Safavid armies invaded the Deccan to support their fellow Shi'a rulers there.",
           ],
           why: [
-            "Khafi Khan wrote decades after the events, when governors such as the one in Hyderabad ruled almost on their own and the Marathas raided widely, so he was likely to look back for early signs that the emperor's authority did not reach the provinces.",
-            "Khafi Khan was a Mughal official and historian, not a Maratha leader, and he praises the emperor's intentions as \"gracious and beneficent.\"",
-            "He was a Mughal official writing in Persian, and his detailed use of terms such as tankhwah and mansab shows close knowledge of the system.",
-            "Nothing in the passage or the source line suggests that the author was one of the officers who were punished.",
+            "Raigad, where Shivaji was crowned in 1674, lies in the western Deccan beside the lands Aurangzeb was conquering. Maratha hit-and-run warfare made his long Deccan wars costly and weakened the empire.",
+            "Sikh resistance grew in the Punjab, far to the north of Raigad, and it did not cut the empire in two.",
+            "The East India Company took control of Bengal after the Battle of Plassey in 1757, long after this period.",
+            "The Safavids never sent armies into the Deccan.",
           ], answer: 0 },
 
         // ---------- Set 4: The sack of Magdeburg ----------

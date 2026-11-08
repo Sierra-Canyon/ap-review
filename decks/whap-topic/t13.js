@@ -1,4 +1,10 @@
 // Topic 1.3 Quiz: Developments in South and Southeast Asia from c. 1200 to c. 1450
+import { maps } from "../whap/maps.js";
+
+// A map the site draws (tools/maps/whap-u1.mjs, built by tools/build-maps.mjs), with the references it was checked against.
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 // Sources: every stimulus this quiz uses, keyed by id.
 export const sets = {
   "t13-s1": {
@@ -13,13 +19,8 @@ export const sets = {
     ],
   },
   "t13-s2": {
-    id: "t13-s2", name: "Religion and kingship in Southeast Asia and Sri Lanka", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "Many historians argue that rulers in Southeast Asia and Sri Lanka did not simply copy Indian religions but used them to build their authority. In the Khmer Empire, kings linked themselves with the Hindu gods Shiva and Vishnu and paid for temples at Angkor with rice taxes and the labor of their subjects. Around 1200, King Jayavarman VII turned to Mahayana Buddhism and built the Bayon temple. In the thirteenth and fourteenth centuries, Theravada Buddhism, carried by monks trained in Sri Lanka, grew stronger in Burma and spread to the Thai kingdom of Sukhothai and to Cambodia. Kings won the support of these monks by giving land and gifts to monasteries. In Sri Lanka, Sinhala kings presented themselves as protectors of the Buddhist faith and guarded the Tooth Relic of the Buddha as a sign of their right to rule." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "t13-s2", name: "Muslim, Hindu, and Buddhist rulers in South and Southeast Asia", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u1-islam-indian-ocean", "Muslim, Hindu, and Buddhist rulers in South and Southeast Asia, c. 1200 to c. 1450 (route approximate)", "Encyclopaedia Britannica, \"Indonesia: Islamic influence in Indonesia\" and \"India: The Vijayanagar empire, 1336 to 1646\", and Wikipedia, \"Majapahit\" and \"Alauddin Khalji's conquest of Gujarat\"") }],
   },
   "t13-s3": {
     id: "t13-s3", name: "Barani on the copper money of Muhammad bin Tughluq", intro: "Use the source below to answer all parts of the question that follows.",
@@ -99,65 +100,65 @@ export default {
           ],
           answer: 0 },
 
-        // ===== Set 2: practice passage, religion and kingship in Southeast Asia and Sri Lanka (1.3) =====
+        // ===== Set 2: map, Muslim, Hindu, and Buddhist rulers in South and Southeast Asia (1.3) =====
         { id: "t13-m05", skill: "u1", type: "mcq", set: "t13-s2", topic: "1.3", reasoning: "Claims and Evidence",
-          question: "Which of the following, not mentioned in the passage, would best support the argument that rulers in Southeast Asia used religions from India to build their own authority?",
+          question: "Which of the following claims about the spread of Islam in Southeast Asia is best supported by the map?",
           choices: [
-            "In Java, kings of Majapahit were honored after death in temples that showed them as Hindu gods.",
-            "Arab and Indian merchants settled in the port cities of Sumatra and built mosques.",
-            "Tamil poets in southern India wrote devotional hymns to Shiva.",
-            "Chinese emperors chose officials through examinations on the Confucian classics.",
+            "Islam first took hold in Southeast Asia in port cities along the sea trade route.",
+            "Islam reached Southeast Asia mainly through the conquests of the Delhi Sultanate.",
+            "By c. 1450, Islam had replaced Hinduism and Buddhism across Southeast Asia.",
+            "Islam reached Southeast Asia before it reached northern India.",
           ],
           why: [
-            "Correct. Temples that presented dead kings as Hindu gods show Southeast Asian rulers using an Indian religion to give themselves sacred authority, which is the passage's argument.",
-            "This shows merchants bringing Islam to Southeast Asia, not rulers using Hindu or Buddhist ideas to support their rule.",
-            "These hymns are part of Hindu devotion in India itself, so they say nothing about rulers in Southeast Asia.",
-            "The examination system shows how Chinese rulers used Confucian learning, not how Southeast Asian kings used religions from India.",
+            "Correct. The only places in Southeast Asia with Muslim rulers on the map, Samudera Pasai and Malacca, are ports on the sea route that also links them with Cambay and Calicut in India.",
+            "Delhi's rule on the map reaches the coast only at Cambay in India, and no Delhi armies are shown in Southeast Asia.",
+            "The map still shows Hindu or Buddhist rulers at Angkor and Majapahit, so Islam had not replaced the older faiths.",
+            "The map dates Muslim rule at Delhi to 1206, nearly a century before the Muslim ruler's tomb at Samudera Pasai, dated 1297.",
           ],
           answer: 0 },
         { id: "t13-m06", skill: "u1", type: "mcq", set: "t13-s2", topic: "1.3", reasoning: "Continuity and Change",
-          question: "Based on the passage, which of the following best describes a change in mainland Southeast Asia between c. 1200 and c. 1450?",
+          question: "Which of the following best describes both a change and a continuity shown on the map?",
           choices: [
-            "Theravada Buddhism became the leading faith in kingdoms where Hindu and Mahayana Buddhist traditions had been strong.",
-            "Islam replaced Buddhism as the main religion of the Thai and Burmese kingdoms.",
-            "Christian missionaries from Portugal converted the rulers of Cambodia.",
-            "Kings stopped giving land and gifts to religious institutions.",
+            "New Muslim states arose in northern India and in Southeast Asian ports, while Hindu and Buddhist kingdoms continued in southern India, mainland Southeast Asia, and Java.",
+            "Buddhist kings replaced Hindu rulers in southern India, while Delhi kept a Hindu ruler.",
+            "Hindu kingdoms spread from Southeast Asia into northern India, while Delhi remained the capital of a Buddhist state.",
+            "All the states on the map became Muslim, while the sea trade route between India and China came to an end.",
           ],
           why: [
-            "Correct. The passage describes Khmer kings honoring Hindu gods and then Mahayana Buddhism under Jayavarman VII, followed by the spread of Theravada Buddhism to Sukhothai and Cambodia.",
-            "Islam spread mainly in the islands and ports of maritime Southeast Asia, such as Sumatra and Malacca. The Thai and Burmese kingdoms remained Buddhist.",
-            "The Portuguese did not reach Southeast Asia until 1509, and the kings of Cambodia remained Buddhist.",
-            "The passage says the opposite. Kings gave land and gifts to monasteries to win the support of monks.",
+            "Correct. The map shows Muslim rule beginning at Delhi, Cambay, Samudera Pasai, and Malacca, while Vijayanagara, Angkor, and Majapahit kept Hindu or Buddhist rulers.",
+            "The map labels Vijayanagara in southern India a Hindu kingdom from 1336 and Delhi a Muslim sultanate from 1206.",
+            "The map labels Delhi as a Muslim sultanate from 1206 and shows no Hindu kingdoms moving from Southeast Asia into India.",
+            "The map shows several Hindu and Buddhist rulers and a sea route still running from India toward China.",
           ],
           answer: 0 },
         { id: "t13-m07", skill: "u1", type: "mcq", set: "t13-s2", topic: "1.3", reasoning: "Causation",
-          question: "The spread of Theravada Buddhism described in the passage was most directly the result of",
+          question: "Which of the following best explains why the ruler of Malacca, shown on the map, became Muslim soon after the city was founded?",
           choices: [
-            "contacts between monks trained in Sri Lanka and the rulers of mainland kingdoms, who supported those monks",
-            "the conquest of mainland Southeast Asia by Yuan armies, which brought Buddhist teachers from China",
-            "the voyages of Zheng He, which carried Buddhist texts from China to the region",
-            "the migration of Brahman priests from the Delhi Sultanate",
+            "Becoming Muslim helped the ruler attract Muslim merchants who sailed the trade route through the strait between Sumatra and the Malay Peninsula.",
+            "The armies of the Delhi Sultanate conquered Malacca and required its ruler to convert.",
+            "Portuguese traders brought Islam to Malacca to strengthen their alliance with the city.",
+            "The Majapahit kingdom on Java ordered all the rulers it controlled to adopt Islam.",
           ],
           why: [
-            "Correct. The passage says monks trained in Sri Lanka carried Theravada teachings to the mainland, where kings gave their monasteries land and gifts.",
-            "Yuan armies attacked Burma and Vietnam in the thirteenth century but did not conquer the region, and the passage traces Theravada Buddhism to Sri Lanka, not China.",
-            "Zheng He's voyages took place from 1405 to 1433, after Theravada Buddhism had already spread, and they were meant to display Ming power.",
-            "Brahmans were Hindu priests, not Buddhist monks, so their migration would not explain the spread of Theravada Buddhism.",
+            "Correct. Malacca sits on the strait where the sea route on the map turns toward Java and China, and its rulers accepted Islam in part to draw Muslim traders from India, Sumatra, and Java to their port.",
+            "The map shows Delhi's rule reaching only Cambay, and Delhi's armies never reached Southeast Asia.",
+            "The Portuguese were Christians who reached Malacca in 1509 and conquered it in 1511, long after its ruler became Muslim.",
+            "The map labels Majapahit a Hindu and Buddhist kingdom, so it did not spread Islam.",
           ],
           answer: 0 },
         { id: "t13-m08", skill: "u1", type: "mcq", set: "t13-s2", topic: "1.3", reasoning: "Comparison",
-          question: "Based on the passage, Khmer kings and Sinhala kings were similar in that both",
+          question: "Based on the map, which of the following best compares the way Islam came to Delhi with the way it came to Samudera Pasai?",
           choices: [
-            "used religious buildings or sacred objects to show that they had the right to rule",
-            "adopted Islam to strengthen their ties with Muslim merchants",
-            "drew most of their wealth from control of the Strait of Malacca",
-            "forced all of their subjects to give up Hinduism",
+            "Islam came to Delhi with Turkic conquerors from the northwest, while it came to Samudera Pasai through contact with Muslim merchants on the sea route.",
+            "Islam came to both places with Turkic armies that crossed the mountains from Central Asia.",
+            "Islam came to Delhi through Muslim merchants from Malacca, while it came to Samudera Pasai with armies from Delhi.",
+            "Islam came to both places at the same time, through missionaries sent by the Abbasid caliph.",
           ],
           why: [
-            "Correct. Khmer kings built temples at Angkor and linked themselves with gods, and Sinhala kings guarded the Tooth Relic, so both used religion to support their power.",
-            "The passage describes Hindu and Buddhist rulers. Islam reached Southeast Asian ports such as Samudra Pasai and Malacca by the fifteenth century, but not the Khmer or Sinhala courts.",
-            "Control of the Strait of Malacca made Srivijaya rich, but the passage says Khmer kings relied on rice taxes and the labor of their subjects.",
-            "The passage describes no forced conversion, and Hindu traditions continued in both regions alongside Buddhism.",
+            "Correct. The Delhi Sultanate was founded in 1206 by Turkic generals who had invaded from Afghanistan, while Samudera Pasai is a port on the sea route, where a local ruler adopted the faith of the Muslim traders who called there.",
+            "Samudera Pasai lies on the sea route far from any land route from Central Asia, and no army reached it from the northwest.",
+            "The map dates Malacca's founding to c. 1400, almost two hundred years after Muslim rule began at Delhi in 1206, and Delhi's armies never reached Sumatra.",
+            "The map dates Muslim rule at Delhi to 1206 and at Samudera Pasai to 1297, and Islam did not spread there through missionaries sent by a caliph.",
           ],
           answer: 0 },
 

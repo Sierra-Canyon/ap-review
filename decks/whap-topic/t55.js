@@ -1,5 +1,8 @@
 // Topic 5.5 Quiz: Technology of the Industrial Age
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -17,11 +20,8 @@ export const sets = {
     ] }],
   },
   "t55-s2": {
-    id: "t55-s2", name: "Steel, electricity, and chemicals", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians describe a second industrial revolution after about 1870, built on steel, electricity, and chemicals rather than on cotton and iron. New methods, first the Bessemer process of 1856 and then the open-hearth furnace, made steel cheap enough to use for rails, ships, bridges, and the frames of tall buildings. Inventors such as Thomas Edison in the United States and engineers at the Siemens company in Germany built generators, light bulbs, and power stations; Edison's first central power station opened in New York in 1882. German companies such as BASF and Bayer, working closely with university chemists, led the world in making synthetic dyes, fertilizers, and medicines. These industries needed large investments and trained scientists, and the United States and Germany, rather than Britain, became their leaders." },
-      PRACTICE,
-    ] }],
+    id: "t55-s2", name: "Telegraph cables to India, Asia, and Australia", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u5-cables", "Undersea telegraph cables from Britain to India, Southeast Asia, Hong Kong, and Australia, 1870 to 1872, with the year each place was linked to London (routes approximate)", "\"The Silver Jubilee of the Eastern Telegraph Company\" (1894) and the British-Indian Submarine Telegraph history on atlantic-cable.com, and the PK Porthcurno museum, \"Porthcurno to Port Darwin\"") }],
   },
   "t55-s3": {
     id: "t55-s3", name: "Railways in British India", intro: SAQ,
@@ -61,31 +61,31 @@ export default {
             "Kemble rode on the railway herself.",
             "She wrote in 1830, as railways began.",
             "It is a personal letter, not a report."]),
-        // ===== Set 2: Steel, electricity, and chemicals =====
-        M(5, "t55-s2", "Claims and evidence in sources", "The passage best supports which claim about the second industrial revolution?",
-          ["It was based on new industries that depended on science and large investment, led by Germany and the United States.", "It was led by Britain's cotton mills.", "It reduced the importance of steel.", "It took place before 1800."],
-          ["Correct. The passage names steel, electricity, and chemicals and says Germany and the United States led them.",
-            "The passage says it was built on steel, electricity, and chemicals rather than cotton.",
-            "It says steel became cheap and widely used.",
-            "It says it began after about 1870."]),
-        M(6, "t55-s2", "Causation", "Cheap steel made possible by the Bessemer process most directly led to",
-          ["more railways, larger ships, and taller buildings", "the end of coal mining", "the invention of the spinning jenny", "a decline in world trade"],
-          ["Correct. The passage lists rails, ships, bridges, and building frames.",
-            "Steelmaking used large amounts of coal.",
-            "The spinning jenny was invented in the 1760s.",
-            "Steel ships and rails helped trade grow."]),
-        M(7, "t55-s2", "Comparison", "How did the industries in the passage differ from those of the first industrial revolution?",
-          ["They relied more on scientific research and trained experts than the early textile and iron industries did", "They used no machines", "They were mostly located in India", "They depended entirely on water power"],
-          ["Correct. Chemical and electrical firms worked with university scientists and research laboratories.",
-            "They used new machines such as generators.",
-            "The passage names Germany and the United States.",
-            "They used coal, steam, and electricity."]),
-        M(8, "t55-s2", "Continuity and change", "Which development best shows a continuity between the first and second industrial revolutions?",
-          ["Both depended on coal as a main source of energy", "Both were led by China", "Both ended the use of steam engines", "Both began before 1750"],
-          ["Correct. Coal fueled steam engines in the first and steelmaking and many power stations in the second.",
-            "Neither was led by China.",
-            "Steam engines remained in wide use, and power stations used steam turbines.",
-            "Both began after 1750."]),
+        // ===== Set 2: Telegraph cables (map) =====
+        M(5, "t55-s2", "Developments and processes", "The map best illustrates which development of the industrial age?",
+          ["A new communication technology that linked Britain with its colonies and trading ports across Asia and Australia", "The spread of railways across Africa to carry raw materials to the coast", "Trade routes that sailing ships followed using the monsoon winds", "The overland routes of the Silk Roads between China and Europe"],
+          ["Correct. The map traces telegraph cables from Porthcurno in Britain to Bombay, Singapore, Hong Kong, and Australia, opened between 1870 and 1872, which let messages cross in hours what ships took weeks to carry.",
+            "The lines on the map are telegraph cables and land lines, mostly under the sea, and none crosses Africa.",
+            "The map shows wires laid on the sea floor, not sailing routes; ships' sea lanes did not depend on these cables.",
+            "The map's lines run by sea from Britain around Europe and across the Indian Ocean, not overland through Central Asia."]),
+        M(6, "t55-s2", "Contextualization", "The route of the cable from Suez down the Red Sea to Aden and Bombay followed the same path as which other development of 1869?",
+          ["The opening of the Suez Canal, which gave ships a much shorter route between Britain and India", "The completion of the first railway across the United States", "The Meiji Restoration, which brought new leaders to power in Japan", "The founding of the Indian National Congress"],
+          ["Correct. The canal opened in 1869, the year before this cable; both made the Red Sea route through Egypt the main link between Britain and India.",
+            "The American transcontinental railway was also finished in 1869, but it is far from the route on the map.",
+            "The Meiji Restoration took place in 1868 and is not connected to the cable route through Egypt.",
+            "The Indian National Congress was founded in 1885, and it was not a route between Britain and India."]),
+        M(7, "t55-s2", "Claims and evidence in sources", "Many of the places where the cable came ashore between Britain and Bombay, such as Gibraltar, Malta, and Aden, had which feature in common?",
+          ["They were ports under British control along the sea route to India.", "They were the capitals of independent kingdoms that sold the right to land cables.", "They were the main cotton-growing regions of the British Empire.", "They were inland cities reached only by railway."],
+          ["Correct. Britain held Gibraltar from 1713, Malta from 1800, and Aden from 1839, so its cables could touch land in British hands on the way to India.",
+            "Gibraltar, Malta, and Aden were British possessions, not independent kingdoms.",
+            "These were small naval and coaling ports; cotton for British mills came mainly from the United States, India, and Egypt.",
+            "The map shows each of them on the coast, where cables came ashore."]),
+        M(8, "t55-s2", "Continuity and change", "Compared with the period before 1870, the links shown on the map most likely changed the British Empire in which way?",
+          ["Officials and merchants in London could send orders and learn prices in Bombay or Singapore within hours instead of weeks.", "Goods could be carried from Britain to India by wire instead of by ship.", "Britain no longer needed a navy to protect its sea routes to Asia.", "Colonial governments in India and Australia gained the right to make their own foreign policy."],
+          ["Correct. Before the cables, a letter to India went by ship and took weeks; the telegraph let governments direct colonial officials and let traders follow markets almost at once.",
+            "The telegraph carried messages, not goods; cargo still went by ship.",
+            "Britain kept and expanded its navy, which protected both shipping and the cable stations.",
+            "Faster messages tightened London's control; they did not give these colonies their own foreign policy."]),
         // ===== SAQ: Railways in British India =====
         Q("a", "Identify ONE way, described in the passage, that railways in India served British imperial interests.",
           "The response names one way from the passage.",

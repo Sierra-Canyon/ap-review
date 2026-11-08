@@ -1,5 +1,10 @@
 // Topic 3.3 Quiz: Empires: Belief Systems
 // Sources: every stimulus this quiz uses, keyed by id.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 export const sets = {
   "t33-s1": {
     id: "t33-s1", name: "De Thou on the St. Bartholomew's Day Massacre", intro: "Use the source below to answer the questions that follow.",
@@ -21,13 +26,8 @@ export const sets = {
     ],
   },
   "t33-s3": {
-    id: "t33-s3", name: "Making Safavid Iran Shi'a", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "Many historians argue that Shi'ism became the faith of most Iranians because the Safavid state worked for two centuries to make it so. When Shah Ismail I declared Twelver Shi'ism the religion of his new state in 1501, most of his subjects were Sunni, and few Shi'a scholars lived in Iran. Ismail and his successors invited Shi'a scholars from Arab lands, especially Jabal Amil in what is now Lebanon, and gave them posts, salaries, and schools. Preachers were ordered to curse the first three caliphs, whom Sunnis honor. Public mourning for Husayn, the grandson of the Prophet killed at Karbala in 680, became a yearly state ritual. Shah Abbas I walked from Isfahan to the shrine of the Imam Reza at Mashhad in 1601 and richly endowed it. By the early eighteenth century most Iranians were Shi'a." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "t33-s3", name: "Holy cities of the Ottoman and Safavid empires", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u3-shrines", "Capitals and holy cities of the Ottoman and Safavid empires, 1501 to 1639. Iraq, with Baghdad, Najaf, and Karbala, was Ottoman from 1534, except from 1624 to 1638, when the Safavids held Baghdad; the Treaty of Zuhab (1639) left it Ottoman.", "Wikipedia's articles on Safavid Iran and the Ottoman-Safavid War of 1623 to 1639, and \"Shii piety and dynastic legitimacy: Mashhad under the early Safavid Shahs\" (American University of Beirut)") }],
   },
   "t33-s4": {
     id: "t33-s4", name: "Calvin on predestination", intro: "Use the passage below to answer all parts of the question that follows.",
@@ -139,35 +139,35 @@ export default {
           ],
           answer: 0 },
 
-        // ===== Set 3: Making Safavid Iran Shi'a (practice passage) =====
+        // ===== Set 3: Holy cities of the Ottoman and Safavid empires (map) =====
         { id: "t33-m07", skill: "u3", type: "mcq", set: "t33-s3", topic: "3.3", reasoning: "Causation",
-          question: "Which of the following best explains why the Safavid shahs worked to spread Shi'ism among their subjects, as described in the passage?",
+          question: "Based on the map, which of the following best explains why the Safavid shahs built up the shrine of the Imam Reza at Mashhad as a great center of pilgrimage?",
           choices: [
-            "A shared Shi'a faith set Safavid subjects apart from the Sunni Ottoman Empire, the Safavids' main rival, and tied them to the dynasty.",
-            "Most Iranians were already Shi'a when Ismail I came to power, so the shahs were following their subjects' wishes.",
-            "The Safavids needed Shi'a allies in Europe against the Habsburgs.",
-            "The Safavids had gained control of Mecca and Medina and wished to make them Shi'a centers.",
+            "The holiest Shi'a shrines, at Najaf and Karbala, lay in Iraq, which the Ottomans held for most of the period, so a great shrine inside Iran tied Shi'a devotion to the Safavid dynasty.",
+            "Mashhad was the Safavid capital for most of the period, so the shahs wanted their capital to be a holy city as well.",
+            "The Safavids ruled Mecca and Medina and needed a Shi'a center to balance those Sunni holy cities.",
+            "Mashhad lay on the Ottoman border, so a famous shrine there helped defend the frontier against Ottoman attack.",
           ],
           why: [
-            "Correct. The Sunni Ottomans fought the Safavids for most of the sixteenth century, beginning at Chaldiran in 1514. A state faith that the Ottomans rejected gave Safavid subjects a separate identity and made loyalty to Shi'ism a form of loyalty to the shah.",
-            "The passage says most of Ismail's subjects were Sunni in 1501. The shahs had to bring in scholars from outside Iran because Shi'ism was weak there.",
-            "There were no Shi'a powers in Europe. The Safavids did contact the Habsburgs as fellow enemies of the Ottomans, but that was a military choice, not a religious one.",
-            "The Ottomans, not the Safavids, controlled Mecca and Medina after 1517.",
+            "Correct. The map places Najaf and Karbala next to Baghdad in Ottoman Iraq. Shahs such as Tahmasp and Abbas I enlarged the shrine at Mashhad, inside their own lands, and linked the dynasty to Twelver Shi'a piety.",
+            "The map marks Tabriz (1501) and Isfahan (from 1598) as Safavid capitals. Mashhad was a shrine city, not the capital.",
+            "The map shows Mecca and Medina under Ottoman rule from 1517.",
+            "Mashhad is in the far east of Iran, about as far from the Ottoman Empire as any place on the map. Its enemies on that side were the Uzbeks.",
           ],
           answer: 0 },
         { id: "t33-m08", skill: "u3", type: "mcq", set: "t33-s3", topic: "3.3", reasoning: "Comparison",
-          question: "The Safavid policy described in the passage is most similar to which of the following policies in the period c. 1450 to c. 1750?",
+          question: "Based on the map, Ottoman and Safavid rulers were most similar in that both",
           choices: [
-            "Ferdinand and Isabella of Spain ordered the Jews of their kingdoms in 1492 to become Christian or leave.",
-            "The Ottoman sultans let Christian and Jewish communities, organized as millets, follow their own religious laws.",
-            "The Mughal emperor Akbar promoted sulh-i kull, peace among all religions, at his court.",
-            "King Henry IV of France granted Protestants the right to worship in the Edict of Nantes.",
+            "claimed religious leadership through holy places, the Ottomans by ruling Mecca and Medina and the Safavids by building up Shi'a shrines in Iran",
+            "made Twelver Shi'ism the official faith of their empires",
+            "kept the same capital city for the whole period shown on the map",
+            "gave up their claims to Iraq in the Treaty of Zuhab",
           ],
           why: [
-            "Correct. Both the Safavid shahs and the Spanish monarchs used the power of the state to make their subjects follow one official faith, Shi'a Islam in Iran and Catholic Christianity in Spain.",
-            "The millet system let religious minorities keep their own faiths. The passage describes a state pushing one faith on all its subjects.",
-            "Akbar's policy of peace among religions is the opposite of a state requiring one faith.",
-            "The Edict of Nantes allowed two faiths to exist side by side in France, while the Safavids worked to make all subjects Shi'a.",
+            "Correct. The Ottomans took Mecca and Medina in 1517 and presented the sultan as protector of the holy cities of all Muslims. The Safavids, who lacked those cities and the shrines of Iraq for most of the period, honored Shi'a shrines inside Iran instead.",
+            "Only the Safavids made Twelver Shi'ism the state faith, in 1501. The Ottomans were Sunni.",
+            "The map shows the Safavid capital moving from Tabriz to Isfahan, which became the capital in 1598.",
+            "The caption says the Treaty of Zuhab left Iraq in Ottoman hands, so only the Safavids gave up their claim.",
           ],
           answer: 0 },
 

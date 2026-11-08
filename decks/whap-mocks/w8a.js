@@ -1,5 +1,9 @@
 // Unit 8 Assessment (mock): Cold War and Decolonization, c. 1900 to the present
 // Sources: every stimulus this form uses, keyed by id.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 export const sets = {
   "w8a-s1": {
     id: "w8a-s1", name: "Byrnes on the future of Germany", intro: "Use the source below to answer the questions that follow.",
@@ -28,13 +32,8 @@ export const sets = {
   },
 
   "w8a-s3": {
-    id: "w8a-s3", name: "Revolution and intervention in Latin America", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "In Latin America, the Cold War became tied to older struggles over land and foreign economic power. In Guatemala, an elected government began giving unused land from large estates, including land held by the American-owned United Fruit Company, to peasants. In 1954 the United States backed a coup that overthrew it. In Cuba, Fidel Castro's revolution took power in 1959 promising land reform and an end to American control of the island's economy. As relations with the United States broke down, Castro turned to the Soviet Union for aid and trade. The United States answered with a trade embargo and the failed Bay of Pigs invasion of April 1961, and Castro declared the revolution socialist. Across the region, American leaders often treated reform movements as communist threats, and many reformers came to see communism as the path to national independence." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "w8a-s3", name: "Revolutions, coups, and interventions in Latin America", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u8-latin-america", "Revolutions, coups, and United States interventions in Latin America, 1954 to 1983", "the Office of the Historian, U.S. Department of State (Milestones: the Bay of Pigs; Allende and Chile), and Encyclopaedia Britannica's entries for each event") }],
   },
 
   "w8a-s4": {
@@ -194,52 +193,52 @@ export default {
           ],
           answer: 0 },
 
-        // ===== Set 3: Practice passage on Latin America =====
+        // ===== Set 3: Map of Cold War Latin America =====
         { id: "w8a-m07", skill: "u8", type: "mcq", set: "w8a-s3", topic: "8.4", reasoning: "Claims and evidence",
-          question: "The passage best supports which of the following claims about the spread of communism in Latin America?",
+          question: "The map best supports which of the following claims about the spread of communism and other leftist movements in Latin America from 1954 to 1983?",
           choices: [
-            "Communism appealed to some reformers because it became linked to land reform and to resisting foreign economic control.",
-            "Communist parties in Latin America came to power mainly by winning elections in large industrial cities.",
-            "Soviet troops invaded Latin American states in order to install communist governments.",
-            "Latin American revolutionaries refused aid from the Soviet Union in order to remain neutral in the Cold War.",
+            "Leftist movements took power by revolution in a few states, but elected left-leaning governments in other states were overthrown by military coups.",
+            "Communist parties won control of most of the largest states of South America by 1983.",
+            "Leftist revolutions took place mainly in South America, far from the United States.",
+            "After the Cuban Revolution of 1959, no other leftist movement in Latin America came to power.",
           ],
           why: [
-            "Correct. The passage ties the Cuban Revolution to land reform and ending American control, and says reformers came to see communism as the path to independence.",
-            "The passage describes a revolution in Cuba, not election victories in industrial cities.",
-            "The passage describes Castro turning to the Soviet Union for aid, not Soviet troops invading.",
-            "The passage says Castro turned to the Soviet Union for aid and trade.",
+            "Correct. The map shows revolutions bringing leftist governments to power in Cuba (1959) and Nicaragua (1979), and coups ousting elected left-leaning governments in Guatemala (1954), Brazil (1964), and Chile (1973).",
+            "The map marks Brazil, the largest state in South America, and Chile as places where left-leaning governments were overthrown, not where communists took power.",
+            "Both revolutions on the map, in Cuba and Nicaragua, took place in the Caribbean and Central America, close to the United States.",
+            "The map shows a second leftist revolution in Managua, Nicaragua, in 1979.",
           ],
           answer: 0 },
 
         { id: "w8a-m08", skill: "u8", type: "mcq", set: "w8a-s3", topic: "8.3", reasoning: "Comparison",
-          question: "The 1954 coup in Guatemala described in the passage is most similar to which of the following?",
+          question: "The United States actions marked with an X on the map are most similar to which of the following?",
           choices: [
-            "The United States-backed overthrow of Iran's prime minister, Mohammad Mosaddegh, in 1953 after he nationalized the country's oil industry",
-            "The Iranian Revolution of 1979, which overthrew a shah who was allied with the United States",
-            "The British transfer of power to the governments of India and Pakistan in 1947",
-            "The victory of Mao Zedong's Communist Party in the Chinese Civil War in 1949",
+            "The Soviet invasions of Hungary in 1956 and Czechoslovakia in 1968, which ended governments the Soviet Union saw as a threat in its own sphere",
+            "The British and French attack on Egypt in 1956, which aimed to take back control of the Suez Canal",
+            "The Berlin airlift of 1948 and 1949, which supplied a blockaded city without fighting",
+            "The Marshall Plan, which gave economic aid to rebuild western Europe after the Second World War",
           ],
           why: [
-            "Correct. In both cases the United States backed the removal of a government that had taken over property owned by Western companies, fearing it would open the door to communism.",
-            "The Iranian Revolution overthrew a United States ally, the opposite of a United States-backed coup.",
-            "The British transfer of power was a negotiated end to colonial rule, not a coup.",
-            "The Communist victory in China came from a long civil war, not a coup backed by an outside power.",
+            "Correct. The map's X marks show the United States using or backing armed force in the Caribbean, its own sphere of influence, against governments it saw as communist, as the Soviet Union did in eastern Europe.",
+            "Suez was an attempt by former colonial powers to regain a canal from a newly independent state, and the United States pressed them to withdraw; it was not a superpower acting in its own sphere against a communist threat.",
+            "The airlift avoided the use of force, while the map marks invasions and armed landings.",
+            "The Marshall Plan was economic aid, while the map marks invasions and armed landings.",
           ],
           answer: 0 },
 
         { id: "w8a-m09", skill: "u8", type: "mcq", set: "w8a-s3", topic: "8.4", reasoning: "Continuity and change",
-          question: "Which of the following later developments best continued the pattern described in the final sentence of the passage?",
+          question: "Which of the following best describes a continuity shown on the map from 1954 to 1983?",
           choices: [
-            "In the 1980s the United States armed the Contra rebels fighting the leftist Sandinista government of Nicaragua.",
-            "In 1994 the United States, Canada, and Mexico formed the North American Free Trade Agreement.",
-            "In the 1970s Cuba sent troops to support the government of Angola in its civil war.",
-            "In the 1980s and 1990s many Latin American states replaced military rule with elected civilian governments.",
+            "The United States repeatedly sent or backed armed forces in the Caribbean to stop or remove governments it feared were communist.",
+            "Military coups against left-leaning governments took place only in Central America.",
+            "The United States stopped using armed force in the region after the Cuban Missile Crisis of 1962.",
+            "Leftist revolutions spread steadily south from Cuba until they reached Chile.",
           ],
           why: [
-            "Correct. The United States again treated a reform government as a communist threat and backed armed opposition to it.",
-            "NAFTA was a trade agreement made after the Cold War, not a response to a reform movement.",
-            "Cuban troops in Angola show Cuba's role in the Cold War, but not American treatment of reform movements in Latin America.",
-            "The return to elected government ended many of the military regimes that had treated reformers as communist threats, so it was a break from the pattern, not a continuation of it.",
+            "Correct. The map marks armed actions at the Bay of Pigs in 1961, in Santo Domingo in 1965, and in Grenada in 1983, so the pattern lasted more than two decades.",
+            "The map marks coups in Brazil (1964) and Chile (1973), in South America.",
+            "The map marks United States landings in Santo Domingo in 1965 and Grenada in 1983, after the Missile Crisis.",
+            "Chile is marked for a coup that ousted a left-leaning government in 1973, not for a leftist revolution.",
           ],
           answer: 0 },
 

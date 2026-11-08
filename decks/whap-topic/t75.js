@@ -1,5 +1,8 @@
 // Topic 7.5 Quiz: Unresolved Tensions After World War I
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -17,11 +20,8 @@ export const sets = {
     ] }],
   },
   "t75-s2": {
-    id: "t75-s2", name: "From Sèvres to Lausanne", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that the peace imposed on the Ottoman Empire showed how resistance could overturn a treaty written by the victors. The Treaty of Sèvres, signed by the sultan's government in 1920, gave the empire's Arab lands to Britain and France as mandates, placed Izmir and its region under Greek administration, provided for an Armenian state and possible Kurdish self-rule in the east, and put the Straits under international control. Many Turks saw the treaty as a death sentence for their nation. Mustafa Kemal, an Ottoman general, organized a nationalist government in Ankara, defeated Armenian forces in the east, and drove the Greek army out of Anatolia by 1922. In 1923, the Treaty of Lausanne replaced Sèvres, recognized the borders of a new Republic of Turkey, and arranged an exchange of populations in which more than a million Orthodox Christians left Turkey and about 400,000 Muslims left Greece." },
-      PRACTICE,
-    ] }],
+    id: "t75-s2", name: "New states after the First World War", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u7-new-states", "New states in Europe and the Middle East after the First World War: each point marks the capital, with the year the state declared independence or was proclaimed. The italic names in the Middle East are lands taken from the Ottoman Empire and ruled as League of Nations mandates from 1920. Lithuania's point is at Kaunas, its capital while Poland held Vilnius.", "Encyclopaedia Britannica, \"Baltic states\" and its entries for each state, and the U.S. Department of State, Office of the Historian, A Guide to the United States' History of Recognition, Diplomatic, and Consular Relations, by Country") }],
   },
   "t75-s3": {
     id: "t75-s3", name: "Hungary and the Treaty of Trianon", intro: SAQ,
@@ -61,31 +61,31 @@ export default {
             "This is unrelated to his argument.",
             "This is not a historical argument.",
             "No historian argues this."]),
-        // ===== Set 2: Sèvres and Lausanne =====
-        M(5, "t75-s2", "Causation", "According to the passage, the Treaty of Sèvres was replaced mainly because",
-          ["Turkish nationalists led by Mustafa Kemal defeated the forces trying to carry it out", "Britain and France decided to give up their mandates", "the sultan's government won the war", "Greece asked for a new treaty"],
-          ["Correct. Kemal's victories by 1922 forced a new treaty at Lausanne.",
-            "The mandates remained.",
-            "The nationalists in Ankara, not the sultan, won.",
-            "Greece was defeated."]),
-        M(6, "t75-s2", "Developments and processes", "The mandates over the Arab lands described in the passage best illustrate which development after the First World War?",
-          ["The victorious powers expanded their control in the Middle East under the oversight of the League of Nations", "Arab states gained full independence", "The Ottoman Empire regained its Arab provinces", "Germany took over the Middle East"],
-          ["Correct. Britain and France ruled the former Ottoman lands as mandates.",
-            "The mandates were ruled by Britain and France.",
-            "The Ottoman Empire lost them.",
-            "Germany lost its colonies."]),
-        M(7, "t75-s2", "Continuity and change", "The population exchange of 1923 best illustrates which development of the early 1900s?",
-          ["Nation-states sought populations that matched a single national or religious identity", "Empires welcomed many peoples", "Greece and Turkey merged into one state", "Religion no longer mattered in politics"],
-          ["Correct. People were moved by religion to make each state more uniform.",
-            "This describes the older imperial model the exchange replaced.",
-            "They remained separate.",
-            "The exchange was based on religion."]),
-        M(8, "t75-s2", "Comparison", "The success of the Turkish nationalists is most different from the experience of Germany after 1919 in that",
-          ["Turkey overturned its peace treaty by force within a few years, while Germany was bound by its treaty until the 1930s", "Turkey lost all its territory", "Germany gained new colonies", "Turkey accepted every term of Sèvres"],
-          ["Correct. Kemal won a new treaty in 1923; Germany began defying Versailles only under Hitler.",
-            "Turkey kept Anatolia.",
-            "Germany lost its colonies.",
-            "Turkey rejected Sèvres."]),
+        // ===== Set 2: map of new states =====
+        M(5, "t75-s2", "Causation", "The pattern of new states shown on the map most directly resulted from which of the following?",
+          ["The collapse of the Russian, Austro-Hungarian, and Ottoman empires at the end of the First World War", "The spread of communist governments across Eastern Europe", "The movements for German and Italian unification", "The decolonization of Africa and Asia"],
+          ["Correct. Every state marked on the map was formed from lands that Russia, Austria-Hungary, or the Ottoman Empire had ruled, with Poland also taking land from Germany. These empires broke apart in 1917 and 1918, and peoples such as the Poles, Czechs, and Finns formed states of their own.",
+            "Communist governments came to Eastern Europe after 1945, under Soviet occupation. Most of the states on the map were founded in opposition to Bolshevik Russia.",
+            "Germany and Italy were unified by 1871. Unification joined small states into large ones, while the map shows large empires breaking into smaller states.",
+            "Most colonies in Africa and Asia won independence after 1945. The states on the map are in Europe and Anatolia, and the Arab lands shown became mandates, not independent states."]),
+        M(6, "t75-s2", "Causation", "The four states along the Baltic Sea shown on the map were able to declare independence in 1917 and 1918 mainly because",
+          ["revolution in Russia and Russia's exit from the war ended Russian control of its western borderlands", "the Treaty of Versailles created them in 1919", "Germany won the war on the Western Front in 1918", "the League of Nations voted to give them self-rule"],
+          ["Correct. Finland declared independence in December 1917, soon after the Bolsheviks took power, and in the Treaty of Brest-Litovsk in March 1918 Russia gave up its claims to the Baltic lands. When Germany lost the war that November, the peoples of the region were left to form their own states.",
+            "The years on the map are 1917 and 1918, before the Treaty of Versailles was signed in June 1919. These states declared independence on their own.",
+            "Germany lost the war on the Western Front and signed the armistice in November 1918.",
+            "The League of Nations began work in 1920, after these states had declared independence."]),
+        M(7, "t75-s2", "Comparison", "Which of the following best explains the difference the map shows between former imperial lands in Europe and those in the Middle East?",
+          ["The victors applied self-determination to many European peoples but placed the Ottoman Arab lands under British and French rule, claiming they were not ready to govern themselves.", "The Arab provinces remained part of the Republic of Turkey.", "Arab leaders turned down the independence they were offered at the Paris Peace Conference.", "The Soviet Union took control of the former Ottoman lands."],
+          ["Correct. Article 22 of the League of Nations Covenant described the peoples of the mandates as not yet able to stand by themselves and gave their \"tutelage\" to \"advanced nations.\" In practice, Britain and France took the lands that their wartime agreements had already divided between them.",
+            "The map shows Turkey as a separate state with its capital at Ankara. In the Treaty of Lausanne of 1923, Turkey gave up its claims to the Arab lands.",
+            "This reverses what happened. Arab leaders such as Faisal asked for independence at Paris and were refused.",
+            "The map labels the Arab lands as British and French mandates. The Soviet Union gained no territory in the Middle East after the war."]),
+        M(8, "t75-s2", "Continuity and change", "Which development of 1938 to 1940 most directly reversed the pattern shown on the map?",
+          ["Germany annexed Austria and broke up Czechoslovakia, and the Soviet Union annexed Estonia, Latvia, and Lithuania.", "The breakup of the Soviet Union restored the independence of the Baltic states.", "The Treaty of Lausanne recognized the Republic of Turkey.", "Britain and France gave up their mandates in the Middle East."],
+          ["Correct. Germany annexed Austria in March 1938, took the Sudetenland after the Munich Agreement that September, and occupied the rest of the Czech lands in March 1939. Germany and the Soviet Union divided Poland in 1939, and the Soviet Union annexed the three Baltic states in 1940, so six of the ten new states on the map lost their independence.",
+            "The Soviet Union broke up in 1991, and the Baltic states regained their independence then. That restored the pattern instead of reversing it, and it came about fifty years too late.",
+            "The Treaty of Lausanne was signed in 1923, and it confirmed the new Turkish state rather than reversing the pattern.",
+            "Britain and France still held their mandates from 1938 to 1940. Syria, Lebanon, and Jordan became independent during or after the Second World War."]),
         // ===== SAQ: Trianon =====
         Q("a", "Identify ONE effect of the Treaty of Trianon on Hungary described in the passage.",
           "The response names one effect from the passage.",

@@ -1,5 +1,7 @@
 // Unit 2 Assessment A (mock): Networks of Exchange, c. 1200 to c. 1450
 // Sources: every stimulus this form uses, keyed by id.
+import { maps } from "../whap/maps.js";
+
 export const sets = {
   "w2a-s1": {
     id: "w2a-s1", name: "Ibn Battuta at Mogadishu", intro: "Use the source below to answer the questions that follow.",
@@ -21,11 +23,11 @@ export const sets = {
     ],
   },
   "w2a-s3": {
-    id: "w2a-s3", name: "China and the Silk Roads economy", intro: "Use the passage below to answer the questions that follow.",
+    id: "w2a-s3", name: "Italian trading posts, c. 1340", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [
-      { title: "Source", blocks: [
-        { p: "Many historians argue that China's economy drove much of the long-distance trade of Afro-Eurasia between c. 1200 and c. 1450. Chinese workshops produced silk, porcelain, and iron goods in great quantities, and buyers from Persia to the Mediterranean wanted them. Chinese governments and merchants also used paper money and printed certificates of credit, which made large payments easier than carrying heavy strings of coins. On the Silk Roads, travel by camel and pack animal was slow and costly, so merchants carried mainly light, valuable luxury goods, while heavier goods such as porcelain more often went by sea. Caravanserais, roadside inns spaced about a day's journey apart, sheltered traders and their animals. Cities along the routes, such as Kashgar and Samarkand, grew wealthy by serving and taxing this trade." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      { title: "Map", blocks: [
+        { svg: maps["u2-italian-posts"], caption: "Venetian and Genoese trading posts from the Mediterranean to Tabriz, c. 1340 (routes approximate)" },
+        { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against Virgil Ciocîltan, The Mongols and the Black Sea Trade in the Thirteenth and Fourteenth Centuries (2012), and the Wikipedia article \"Genoese Gazaria\".", kind: "map" },
       ] },
     ],
   },
@@ -156,50 +158,50 @@ export default {
       "Samarkand is in Central Asia, far from any sea.",
     ], answer: 0 },
 
-  // ---------- Set 3: China and the Silk Roads economy (practice passage) ----------
+  // ---------- Set 3: Italian trading posts, c. 1340 (map) ----------
   { id: "w2a-m07", skill: "u2", type: "mcq", set: "w2a-s3", topic: "2.1", reasoning: "Claims and Evidence in Sources",
-    question: "Which of the following would best support the passage's argument that China's economy drove long-distance trade?",
+    question: "Which of the following conclusions is best supported by the map?",
     choices: [
-      "Pieces of Chinese porcelain from this period have been found at sites in Persia, Egypt, and the Swahili coast of East Africa.",
-      "Venetian merchants bought pepper grown in India from traders in Alexandria.",
-      "The rulers of Mali taxed gold and salt carried by caravans across the Sahara.",
-      "Mongol armies destroyed the city of Baghdad in 1258.",
+      "Merchants from Venice and Genoa set up trading posts where routes from Asia reached the Black Sea and the eastern Mediterranean, so that they could buy goods brought from Asia.",
+      "Venice and Genoa ruled large territories in the interior of Asia.",
+      "Italian merchants traded only in lands ruled by Christian kings.",
+      "Italian ships sailed from the Black Sea directly to China.",
     ],
     why: [
-      "Chinese goods turning up far from China, in Southwest Asia and Africa, show that demand for Chinese products reached across Afro-Eurasia, as the passage claims.",
-      "This shows trade in Indian goods through Egypt, not demand for Chinese products.",
-      "This describes trade between West Africa and North Africa that did not depend on Chinese goods.",
-      "The destruction of Baghdad disrupted trade; it does not show that Chinese production drove trade.",
+      "The Italian posts sit at Tana, Kaffa, Trebizond, and Alexandria, where goods from Asia reached the sea, and at Tabriz, where Italian merchants lived on the route from Persia and India.",
+      "Every Italian post on the map is a port or a merchant quarter, and the lands around them belonged to the Golden Horde, the Ilkhanate, and the Mamluk Sultanate.",
+      "Tana and Kaffa lay in the lands of the Golden Horde, Tabriz in the Ilkhanate, and Alexandria in the Mamluk Sultanate, none of them ruled by Christians.",
+      "The Black Sea is closed to the east, and the map shows goods reaching Tana by caravan routes from Central Asia and China.",
     ], answer: 0 },
 
-  { id: "w2a-m08", skill: "u2", type: "mcq", set: "w2a-s3", topic: "2.1", reasoning: "Comparison",
-    question: "The financial tools described in the passage were most similar to which practice elsewhere in Afro-Eurasia in this period?",
+  { id: "w2a-m08", skill: "u2", type: "mcq", set: "w2a-s3", topic: "2.1", reasoning: "Causation",
+    question: "Which of the following best explains why the Italian posts at Tana and Kaffa could prosper in the early fourteenth century?",
     choices: [
-      "Bills of exchange and banking houses that let merchants in the Islamic world and Europe move money without carrying coins",
-      "The use of cowrie shells as money in local markets in West Africa",
-      "The exchange of salt for gold by direct barter in the trans-Saharan trade",
-      "The sending of tribute gifts by foreign rulers to the court of the Ming emperor",
+      "The Mongol Golden Horde ruled the steppe north of the Black Sea and kept the caravan routes toward Central Asia and China open to merchants.",
+      "The Ottoman Empire controlled the straits at Constantinople and protected Italian ships.",
+      "The monsoon winds let Italian ships cross the Black Sea twice a year.",
+      "The Mamluk Sultanate had closed Egypt and the Red Sea to Italian merchants.",
     ],
     why: [
-      "Like Chinese paper money and certificates of credit, bills of exchange and banking houses let merchants make large payments over long distances without moving heavy metal coins.",
-      "Cowrie shells were a real currency in West Africa, but they were a form of money, not a paper or credit tool for large payments.",
-      "Barter is a direct swap of goods, the opposite of paying with paper or credit.",
-      "Tribute was a diplomatic exchange between rulers, not a tool merchants used to make payments.",
+      "Kaffa was granted to the Genoese by the Golden Horde, and under Mongol rule caravans crossed the steppe from Tana through Sarai toward Central Asia and China, the route the map labels on the Golden Horde's lands.",
+      "The Ottomans did not take Constantinople until 1453; the map shows Pera, beside the city, as a Genoese post.",
+      "The monsoon winds blow across the Indian Ocean, not the Black Sea.",
+      "The map marks Venetian and Genoese merchants at Alexandria in Mamluk Egypt, so that route stayed open as well.",
     ], answer: 0 },
 
   { id: "w2a-m09", skill: "u2", type: "mcq", set: "w2a-s3", topic: "2.7", reasoning: "Comparison",
-    question: "Which of the following describes a similarity between the Silk Roads described in the passage and the trans-Saharan trade network in the same period?",
+    question: "The Italian trading posts shown on the map were most similar to which of the following in the Indian Ocean network in the same period?",
     choices: [
-      "Both relied on camel caravans and helped cities along their routes grow rich by serving and taxing trade.",
-      "Both were protected along their whole length by the Mongol Empire.",
-      "Both depended on seasonal monsoon winds to time their journeys.",
-      "Both moved mainly bulk goods such as grain and timber.",
+      "Communities of Arab, Persian, and Gujarati merchants who settled in port cities such as Kilwa and Calicut",
+      "The tribute missions that rulers in Southeast Asia sent to the Chinese emperor",
+      "The fleets of Zheng He, which carried soldiers and envoys on voyages paid for by the Ming state",
+      "The camel caravans that Berber guides led across the Sahara",
     ],
     why: [
-      "Camel caravans crossed both the deserts of Central Asia and the Sahara, and cities such as Samarkand on the Silk Roads and Timbuktu on the trans-Saharan routes grew wealthy from trade.",
-      "The Mongols controlled much of the Silk Roads in the thirteenth and fourteenth centuries, but they never ruled any part of the Sahara.",
-      "Monsoon winds shaped sea trade in the Indian Ocean, not travel across deserts.",
-      "The passage says the Silk Roads carried mainly luxury goods, and trans-Saharan caravans carried gold, salt, cloth, and enslaved people rather than grain and timber.",
+      "Like the Venetians and Genoese at Tana, Trebizond, and Alexandria, these merchants lived as foreign communities in ports ruled by others and linked their home regions to distant markets.",
+      "Tribute missions were diplomacy between rulers, not merchants settling in foreign ports.",
+      "Zheng He's voyages were state expeditions that returned to China, not settled merchant communities, and they began only in 1405.",
+      "Caravans crossing the Sahara belong to the trans-Saharan network, not the Indian Ocean, and they were journeys rather than settled communities.",
     ], answer: 0 },
 
   // ---------- Set 4: Ibn Battuta on the plague in Damascus ----------

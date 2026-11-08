@@ -13,6 +13,10 @@ export const pictures = [
   { file: "images/whap/americans-yokohama.jpg", met: 73542, title: "Ippōsai Yoshifuji, \"Americans on an Outing\", 1861" },
   { file: "images/whap/takanawa-railway.jpg", met: 73551, title: "Tsukioka Yoshitoshi, \"Illustration of Steam Locomotive Tracks at Takanawa\", 1872" },
   { file: "images/whap/progress-of-the-century.jpg", met: 659890, title: "Currier & Ives, \"The Progress of the Century\", 1876" },
+  // Added 11/8 for the quizzes and tests (decks/whap-mocks/w2b.js, w3a.js, w6a.js).
+  { file: "images/whap/phoenix-silk.jpg", met: 39729, title: "Textile with Phoenix, Winged Animal and Flowers, Central Asia, 13th to early 14th century" },
+  { file: "images/whap/suleiman-tughra.jpg", met: 449533, title: "Tughra (Insignia) of Sultan Süleiman the Magnificent (r. 1520 to 1566), ca. 1555 to 1560" },
+  { file: "images/whap/peace-talks-1895.jpg", met: 55546, title: "Fuenken Tsuneshige, \"Negotiations after the Sino-Japanese War\", March 1895" },
 ];
 
 const force = process.argv.includes("--force");

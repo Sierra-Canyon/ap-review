@@ -59,7 +59,12 @@ function simplePath(proj, geo) {
   }
   return d;
 }
-const { maps: specs } = await import("./maps/whap.mjs");
+// The specs: tools/maps/whap.mjs, plus any tools/maps/whap-*.mjs (one per batch of writers, so two writers never edit one file).
+import { readdirSync } from "node:fs";
+const specFiles = ["whap.mjs", ...readdirSync(new URL("./maps/", import.meta.url)).filter((f) => /^whap-.+\.mjs$/.test(f)).sort()];
+const specs = (await Promise.all(specFiles.map((f) => import("./maps/" + f)))).flatMap((m) => m.maps);
+const dupIds = specs.map((s) => s.id).filter((id, i, a) => a.indexOf(id) !== i);
+if (dupIds.length) throw new Error("two map specs share an id: " + dupIds.join(", "));
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const r1 = (n) => +n.toFixed(1);

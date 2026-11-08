@@ -100,7 +100,7 @@ Albert uses many map and image questions (in AP World Unit 1 alone, 25 questions
 | `{ svg, caption }`, drawn graphics | Works now. Calc's graphs come from `plot.js` this way, with alt text required. |
 | `{ table }`, data tables | Works now. |
 | `{ img, alt, caption, credit, license, url }`, a picture file | Works now (11/6). `sourcesHTML` shows the picture lazily with its caption, credit, and license, at most 70% of the screen tall. Files live in `images/<course>/`; `tools/fetch-images.mjs` downloads and resizes them, and `check-whap.mjs` fails if one is missing or over 400 KB. |
-| A map builder | Works now (11/6). `tools/build-maps.mjs` draws each spec in `tools/maps/<course>.mjs` as SVG from Natural Earth's 1:50m land (the `world-atlas` package), simplified on screen to about 10 to 30 KB a map, with places, routes, battles, region names, and a legend, styled for light and dark mode. It draws no borders. |
+| A map builder | Works now (11/6). `tools/build-maps.mjs` draws each spec in `tools/maps/<course>.mjs` and any `tools/maps/<course>-*.mjs` (one file per writer, so parallel writers never edit one file) as SVG from Natural Earth's 1:50m land (the `world-atlas` package), simplified on screen to about 10 to 30 KB a map, with places, routes, battles, region names, and a legend, styled for light and dark mode. It draws no borders. |
 | `bars()` in `plot.js`, a chart | Works now (11/6). A bar chart of cited data; put the numbers in a `table` block too. |
 
 **1. Maps the site draws itself (start here)**

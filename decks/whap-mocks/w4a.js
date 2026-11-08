@@ -1,5 +1,10 @@
 // Unit 4 Assessment (mock form w4a): Transoceanic Interconnections, c. 1450 to c. 1750
 // Sources: every stimulus this form uses, keyed by id.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 export const sets = {
   "w4a-s1": {
     id: "w4a-s1", name: "An Ottoman admiral fights a Portuguese fleet", intro: "Use the source below to answer the questions that follow.",
@@ -21,14 +26,8 @@ export const sets = {
     ],
   },
   "w4a-s3": {
-    id: "w4a-s3", name: "Will Adams before the ruler of Japan", intro: "Use the source below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "A two days after, the emperor called me again, demanding the reason of our coming so far. I answered: We are a people that sought all friendship with all nations, and to have trade in all countries, bringing such merchandise as our country did afford into strange lands in the way of traffic. ..." },
-        { p: "In which long time of imprisonment, the Jesuits and the Portuguese gave many evidences against me and the rest to the emperor that we were thieves and robbers of all nations, and, were we suffered to live, it should be against the profit of His Highness and the land; for no nation should come there without robbing ... In the end, the emperor gave them answer that we as yet had not done to him nor to none of his land any harm or damage; therefore against reason and justice to put us to death." },
-        { cite: "William Adams, English pilot of the Dutch ship Liefde, which reached Japan in 1600, letter written in Japan in 1611 describing his questioning by the ruler he calls \"the emperor,\" Tokugawa Ieyasu. From Eva March Tappan, ed., The World's Story, vol. 1 (Boston: Houghton Mifflin, 1914), pp. 325 to 331, with spelling modernized by Jerome S. Arkenberg, as reproduced in the Internet Modern History Sourcebook (\"Will Adams: My Coming to Japan, 1611\").", url: "https://sourcebooks.web.fordham.edu/mod/1611adams-japan.asp", kind: "primary" },
-      ] },
-    ],
+    id: "w4a-s3", name: "Japan's four gates under the Tokugawa", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u4-japan-gates", "Japan's four gates for foreign trade and relations under the Tokugawa shoguns, after 1641", "Arano Yasunori, \"Foreign Relations in Early Modern Japan: Exploding the Myth of National Seclusion,\" Nippon.com (2013), Renata Cabral Bernabé, \"The Chinese in Nagasaki and Japanese Systems of Trade Control,\" CAPASIA (2025), and Encyclopaedia Britannica, \"sakoku\"") }],
   },
   "w4a-s4": {
     id: "w4a-s4", name: "Two Virginia slave laws", intro: "Use the two sources below to answer the questions that follow.",
@@ -164,50 +163,50 @@ export default {
           ],
           answer: 0 },
 
-        // Set 3: Will Adams
+        // Set 3: Japan's four gates (map)
         { id: "w4a-m07", skill: "u4", type: "mcq", set: "w4a-s3", topic: "4.5", reasoning: "Contextualization",
-          question: "The accusations that the Jesuits and the Portuguese made against Adams are best understood in the context of",
+          question: "The map shows the Dutch as the only Europeans trading in Japan, confined to Dejima at Nagasaki from 1641. This arrangement is best understood in the context of",
           choices: [
-            "rivalry between Catholic Portugal and Spain and the Protestant English and Dutch for trade and influence in Asia",
-            "the Treaty of Tordesillas, which divided newly found lands between Spain and Portugal",
-            "the Spanish conquest of the Philippines and the founding of Manila",
-            "the Ming dynasty's long ban on private overseas trade by Chinese merchants",
+            "the Tokugawa shoguns' ban on Christianity and their expulsion of the Portuguese, whose missionaries they saw as a threat to their rule",
+            "a Dutch military conquest of the island of Kyushu",
+            "the Qing dynasty's conquest of Japan after it took over China in 1644",
+            "a Japanese decision to allow free trade with every European kingdom",
           ],
           why: [
-            "Correct. Portuguese merchants and Jesuit missionaries were already active in Japan, and they saw Adams's Dutch ship as the arrival of Protestant commercial rivals.",
-            "The treaty divided lands between Spain and Portugal in 1494, but it does not explain why Portuguese merchants and Jesuits wanted an English pilot executed in Japan.",
-            "Spain did conquer the Philippines, but that conquest does not explain the Portuguese and Jesuit hostility toward Adams in Japan.",
-            "The Ming did restrict private overseas trade for long periods, but that policy concerned Chinese merchants, not European rivalry in Japan.",
+            "Correct. The shoguns banned Christianity, expelled the Portuguese in 1639, and two years later moved the Dutch, who traded without preaching, to the small island of Dejima, where officials could watch them.",
+            "The Dutch never conquered any part of Japan. The map shows them confined to one small island by the shogunate.",
+            "The Qing ruled China but never conquered Japan. The map shows Chinese ships trading at Nagasaki under Japanese control.",
+            "The map shows the opposite: one European company at one site, with all other Europeans kept out.",
           ],
           answer: 0 },
         { id: "w4a-m08", skill: "u4", type: "mcq", set: "w4a-s3", topic: "4.5", reasoning: "Claims and evidence in sources",
-          question: "The emperor's response to the accusations best supports which claim about relations between Asian states and Europeans in this period?",
+          question: "The map best supports which claim about Japan's foreign relations under the Tokugawa shoguns?",
           choices: [
-            "Asian rulers decided for themselves the terms on which European traders could operate in their lands.",
-            "Europeans used military force to take control of Japan's ports and coastal cities.",
-            "Japanese rulers relied on Jesuit advisers to make decisions about foreign visitors.",
-            "European merchants were allowed to trade only if they converted local people to Christianity.",
+            "Japan kept trading and exchanging embassies with its neighbors, but only through a few gates that the shogunate controlled.",
+            "Japan cut off all contact with other countries after 1641.",
+            "European merchants could trade at any port in Japan.",
+            "Korea and the Ryukyu Kingdom ruled parts of southern Japan.",
           ],
           why: [
-            "Correct. The ruler heard both sides and then rejected the Jesuit and Portuguese demand, showing that a powerful Asian state, not the Europeans, set the rules.",
-            "Europeans never conquered Japan's ports; Adams arrives as a prisoner whose life depends on the ruler's judgment.",
-            "The ruler rejected the advice of the Jesuits, so the excerpt shows the opposite of reliance on them.",
-            "Adams describes his people's purpose as trade, not conversion, and the ruler spares him without any mention of religion.",
+            "Correct. The map shows four gates on Japan's edges handling the Dutch and Chinese, Korea, the Ryukyu Kingdom, and the Ainu. Contact went on, but each channel was assigned to a trusted domain or to Nagasaki and watched by the shogunate.",
+            "The map shows four channels of contact still open after 1641, so Japan was not cut off from the world.",
+            "The map shows Europeans only at Dejima in Nagasaki, and only the Dutch.",
+            "Power ran the other way: Satsuma, a Japanese domain, invaded the Ryukyu Kingdom in 1609, and Korea dealt with Japan through Tsushima.",
           ],
           answer: 0 },
         { id: "w4a-m09", skill: "u4", type: "mcq", set: "w4a-s3", topic: "4.8", reasoning: "Continuity and change",
-          question: "Which later policy of Japan's Tokugawa shogunate most directly continued the concern with controlling foreign contact shown in the excerpt?",
+          question: "In the late 1500s, Portuguese merchants and Jesuit missionaries traded and preached in many parts of Japan. Compared with that period, the map shows which change and which continuity?",
           choices: [
-            "Banning Christianity, expelling the Portuguese, and allowing only the Dutch among Europeans to trade at Nagasaki",
-            "Opening Japanese ports to American and European trade after the arrival of United States warships in the 1850s",
-            "Invading Korea in the 1590s in an attempt to conquer the Ming dynasty",
-            "Exporting large amounts of Japanese silver that eventually reached China",
+            "Contact with Europeans shrank to one trading company at one closely watched site, while trade with Asian neighbors continued.",
+            "Japan began trading with Europeans for the first time, while its trade with China ended.",
+            "The shogun gave control of foreign affairs to the emperor, while European missionaries kept preaching.",
+            "Japan conquered Korea, while the Portuguese kept trading at Nagasaki.",
           ],
           why: [
-            "Correct. The Tokugawa rulers banned Christianity, expelled the Portuguese by 1639, and limited European trade to the Dutch at Nagasaki, keeping tight control over foreign contact.",
-            "The opening of Japan in the 1850s came after this period and reversed the policy of limiting foreign contact rather than continuing it.",
-            "The invasions of Korea were led by Toyotomi Hideyoshi before the Tokugawa took power, and they were about conquest, not controlling foreign visitors.",
-            "Japan did export much silver, but silver exports were a trade pattern, not a policy for controlling contact with Europeans.",
+            "Correct. By 1641 the only Europeans left were the Dutch at Dejima, a sharp change from the open Portuguese trade and missions of the 1500s. Trade with China at Nagasaki, with Korea through Tsushima, and with the Ryukyus through Satsuma went on.",
+            "Japan had traded with the Portuguese since the 1540s, and the map shows Chinese ships still trading at Nagasaki.",
+            "The map shows the shogun's capital at Edo and gates run by domains for the shogunate, and Christianity was banned, so missionaries could not preach.",
+            "Japan's invasions of Korea in the 1590s failed, and Korea traded with Japan through Tsushima. The Portuguese were expelled in 1639.",
           ],
           answer: 0 },
 

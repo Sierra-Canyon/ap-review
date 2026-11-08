@@ -1,5 +1,7 @@
 // Topic 9.4 Quiz: Economics in the Global Age
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against ";
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -18,10 +20,10 @@ export const sets = {
     ] }],
   },
   "t94-s2": {
-    id: "t94-s2", name: "South Korea's export economy", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that South Korea's rise shows how a state could guide a poor country into the global economy. In 1960, after Japanese colonial rule and the Korean War, South Korea was one of the poorest countries in the world. Under the military ruler Park Chung-hee, who took power in 1961, the government directed cheap credit to large family-owned business groups, the chaebol, such as Samsung and Hyundai, and rewarded them for meeting export targets. South Korea moved from exporting wigs and textiles in the 1960s to steel and ships in the 1970s and cars and electronics in the 1980s. Labor unions were tightly controlled and political opponents were jailed. By the 1990s, South Korea had become a wealthy industrial democracy. Taiwan, Singapore, and Hong Kong followed similar export-led paths." },
-      PRACTICE,
+    id: "t94-s2", name: "China opens its coast, 1979 to 1988", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u9-sez"], caption: "China opens its coast: special economic zones, 1979 to 1988, and the fourteen coastal cities opened in 1984" },
+      { cite: MAP + "Encyclopaedia Britannica, \"Shenzhen\"; Wikipedia, \"Special economic zones of China\"; and the Legislative Council of Hong Kong, Research Office, \"Free economic and trade zones in the Mainland\" (2015).", kind: "map" },
     ] }],
   },
   "t94-s3": {
@@ -62,31 +64,31 @@ export default {
             "She did not reverse industrialization.",
             "This is unrelated.",
             "This is unrelated."]),
-        // ===== Set 2: South Korea =====
-        M(5, "t94-s2", "Developments and processes", "South Korea's path described in the passage is best described as",
-          ["state-guided, export-led industrialization", "a free market with no government role", "a self-reliant economy closed to trade", "a Soviet-style planned economy"],
-          ["Correct. The state directed credit to firms that met export targets.",
-            "The government played a large role.",
-            "It depended on exports.",
-            "Private firms owned industry."]),
-        M(6, "t94-s2", "Claims and evidence in sources", "Which evidence from the passage best supports the claim that South Korea's growth came at a political cost?",
-          ["Labor unions were tightly controlled and political opponents were jailed.", "South Korea exported wigs in the 1960s.", "Samsung and Hyundai grew.", "Taiwan followed a similar path."],
-          ["Correct. Growth under Park came with repression.",
-            "This describes exports.",
-            "This describes firms.",
-            "This describes another country."]),
-        M(7, "t94-s2", "Comparison", "South Korea's development differed from Tanzania's under the Arusha Declaration mainly in that South Korea",
-          ["sought growth through exports to world markets rather than self-reliance", "relied mainly on village agriculture", "rejected foreign trade", "nationalized all private firms"],
-          ["Correct. South Korea tied its growth to exports, while Tanzania stressed self-reliance.",
-            "It industrialized.",
-            "It depended on trade.",
-            "Private chaebol led industry."]),
-        M(8, "t94-s2", "Continuity and change", "South Korea's shift from wigs and textiles to cars and electronics best shows",
-          ["movement into more advanced and valuable industries over time", "a decline in industry", "a return to farming", "an end to exports"],
-          ["Correct. It climbed from simple goods to complex manufacturing.",
-            "Industry grew.",
-            "It industrialized.",
-            "Exports grew."]),
+        // ===== Set 2: China's coastal opening (map) =====
+        M(5, "t94-s2", "Developments and processes", "The map best illustrates which economic policy?",
+          ["China's opening to foreign investment and trade under Deng Xiaoping, which began in a few coastal zones", "Mao Zedong's Great Leap Forward, which organized peasants into communes to speed up industry", "The Qing dynasty's opening of ports to foreign trade after its defeats in the Opium Wars", "A policy of self-reliance that closed China's ports to foreign companies"],
+          ["Correct. After 1978, Deng's government let foreign firms invest in special economic zones, then opened more coastal cities.",
+            "The Great Leap Forward (1958 to 1962) was a push for communes and backyard steel, not for foreign investment, and the map's dates are 1979 to 1988.",
+            "The treaty ports were forced on the Qing in the 1840s to 1860s; the map shows zones opened in 1979 to 1988.",
+            "The map shows ports being opened to foreign business, the opposite of closing them."]),
+        M(6, "t94-s2", "Causation", "The location of the first special economic zones shown on the map is best explained by",
+          ["their nearness to Hong Kong and Taiwan, sources of capital and trade links with the world economy", "their distance from the sea, which protected them from foreign influence", "their position next to the oil fields of northern China", "their nearness to the capital, which let the government watch them closely"],
+          ["Correct. Shenzhen borders Hong Kong and Xiamen faces Taiwan, so investors and goods could move in easily.",
+            "All four zones are on the southern coast.",
+            "The first zones are in the far south, not the north.",
+            "The first zones are on the southern coast, far from Beijing."]),
+        M(7, "t94-s2", "Continuity and change", "Which change between 1980 and 1984 is shown on the map?",
+          ["Opening to foreign investment spread from a few southern zones to port cities along the whole coast.", "The special economic zones were closed and replaced by state farms.", "Foreign investment moved from the coast to cities in the interior.", "Hong Kong was returned to China and became a special economic zone."],
+          ["Correct. The fourteen cities of 1984 run from Dalian and Tianjin in the north to Beihai in the south.",
+            "The zones stayed open, and Hainan was added in 1988.",
+            "The cities opened in 1984 are all on the coast.",
+            "Hong Kong stayed British until 1997, as the map notes."]),
+        M(8, "t94-s2", "Comparison", "The ports on the map differed from the treaty ports of the 1800s mainly in that the later ports were",
+          ["opened by China's own government on terms it chose", "opened only to trade with the Soviet Union", "governed by foreign powers under extraterritoriality", "closed to all foreign goods"],
+          ["Correct. Britain and other powers forced the treaty ports on the Qing, while Deng's government chose which places to open.",
+            "The zones sought investment from Hong Kong, Taiwan, Japan, and the West.",
+            "This describes the treaty ports, where foreigners lived under their own laws.",
+            "The zones were set up to bring in foreign trade and investment."]),
         // ===== SAQ: India =====
         Q("a", "Identify ONE economic reform India adopted in 1991, as described in the passage.",
           "The response names one reform from the passage.",

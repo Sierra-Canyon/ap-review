@@ -1,5 +1,10 @@
 // Topic 3.1 Quiz: Empires Expand
 // Sources: every stimulus this quiz uses, keyed by id.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 export const sets = {
   "t31-s1": {
     id: "t31-s1", name: "Babur at Panipat", intro: "Use the source below to answer the questions that follow.",
@@ -13,13 +18,8 @@ export const sets = {
     ],
   },
   "t31-s2": {
-    id: "t31-s2", name: "The Qing push into Central Asia", intro: "Use the passage below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "Many historians argue that the Qing dynasty, founded by the Manchus, became one of the largest empires of its age because its rulers saw the steppe frontier as the greatest danger to their power. In the 1690s, the Kangxi Emperor led armies in person against Galdan, the leader of the Zunghar Mongols, who was building a rival state in Central Asia. In the 1750s, the Qianlong Emperor's armies destroyed the Zunghar state, and the Qing came to rule Mongolia and the lands later called Xinjiang and to hold Tibet under their protection. The Qing won these wars with cannon and muskets, with Mongol allies who fought in the banner armies, and with grain carried over long supply lines across the deserts. The result was an empire far larger than the Ming state it had replaced." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
-      ] },
-    ],
+    id: "t31-s2", name: "Qing expansion, 1625 to 1759", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u3-qing", "Qing expansion, 1625 to 1759: the year the Qing took or won control of each place", "Wikipedia's articles on the Qing dynasty in Inner Asia, the Dzungar-Qing Wars, and the Battle of Jao Modo, and John P. McKay and others, Understanding World Societies, 2nd ed., chapter 21, \"Imperial Expansion\"") }],
   },
   "t31-s3": {
     id: "t31-s3", name: "Why the Ottomans grew", intro: "Use the passage below to answer all parts of the question that follows.",
@@ -98,65 +98,65 @@ export default {
           ],
           answer: 0 },
 
-        // ===== Set 2: The Qing push into Central Asia =====
-        { id: "t31-m05", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Causation",
-          question: "According to the passage, the main reason the Qing expanded into Central Asia was to",
+        // ===== Set 2: Qing expansion (map) =====
+        { id: "t31-m05", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Developments and processes",
+          question: "The map best supports which conclusion about Qing expansion between 1625 and 1759?",
           choices: [
-            "defeat a rival steppe power that threatened Qing rule",
-            "gain control of New World silver that reached China through Central Asian trade routes",
-            "spread Tibetan Buddhism among the Mongol peoples of the steppe",
-            "escape pressure from European navies along the coast of China",
+            "After taking Beijing and Taiwan, the Qing spent the next century pushing north and west into Mongolia, Tibet, and Central Asia.",
+            "The Qing grew mainly by sea, taking islands and ports across the Pacific Ocean.",
+            "The Qing lost control of Mongolia and Tibet in the early 1700s.",
+            "Qing expansion ended once the dynasty took Beijing in 1644.",
           ],
           why: [
-            "Correct. The passage says Qing rulers saw \"the steppe frontier as the greatest danger to their power\" and fought the Zunghar Mongols, who were \"building a rival state in Central Asia.\"",
-            "New World silver reached China mainly by sea, through Manila and European traders in Chinese ports, and the passage does not mention silver.",
-            "Qing emperors did support Tibetan Buddhism to win the loyalty of Mongols and Tibetans, but the passage presents security, not religion, as the reason for expansion.",
-            "European naval pressure on China came in the nineteenth century, with the Opium Wars. In the period of this passage, the Qing faced no serious threat from the sea.",
+            "Correct. The years on the map start in the northeast (Shenyang 1625, Beijing 1644), reach Taiwan in 1683, and then move into Mongolia (1691, 1696), Tibet (1720), and Central Asia (1755, 1759).",
+            "Taiwan is the only island on the map. Every other place the Qing took is far inland.",
+            "The map shows the reverse: the Qing won control in Mongolia in the 1690s and in Tibet in 1720.",
+            "Five of the places on the map were taken after 1644, the last of them in 1759.",
           ],
           answer: 0 },
-        { id: "t31-m06", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Comparison",
-          question: "The Qing expansion described in the passage is most similar to which other development in the period c. 1450 to c. 1750?",
+        { id: "t31-m06", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Causation",
+          question: "Which of the following best explains why most of the places the Qing took after 1690, as shown on the map, lie in Mongolia, Tibet, and Central Asia?",
           choices: [
-            "Russia's expansion across Siberia, where the tsars used firearms and forts to bring many peoples under their rule",
-            "Portugal's capture of ports such as Goa and Malacca to control trade in the Indian Ocean",
-            "The voyages of the Ming admiral Zheng He to ports around the Indian Ocean",
-            "The Tokugawa shogunate's policy of limiting contact between Japan and foreigners",
+            "The Qing fought a long series of wars against the Zunghar Mongols, a rival steppe state whose power reached from Mongolia into Tibet and Central Asia.",
+            "The Qing were looking for new sea routes to trade directly with Europe.",
+            "Qing emperors wanted to spread Islam among the peoples of Central Asia.",
+            "Russian armies drove the Qing out of Manchuria, so the dynasty had to move west.",
           ],
           why: [
-            "Correct. Like the Qing, Russia was a land-based empire that used gunpowder weapons, forts, and long supply lines to take control of huge inland territories. The two empires even met on their frontier and set a border in the Treaty of Nerchinsk in 1689.",
-            "Portugal built a maritime trading-post empire of a few fortified ports, not a land empire that ruled vast inland regions.",
-            "Zheng He's voyages took place in the early 1400s, before this period, and they were sea voyages to show Ming power, not conquests of land.",
-            "The Tokugawa shoguns turned inward and limited foreign contact, the opposite of the expansion described in the passage.",
+            "Correct. Jao Modo (1696), Lhasa (1720), and Ili (1755) were all won from the Zunghars. The Qing followed this steppe enemy deep into Inner Asia until they destroyed its state in the 1750s.",
+            "These places are deep inside Asia, far from any sea route, and the Qing were content to trade with Europeans at their own ports.",
+            "The Qing emperors were not Muslims. Kashgar's Muslim people came under Qing rule by conquest, not as part of a plan to spread Islam.",
+            "The Qing kept Manchuria, their homeland, and the Treaty of Nerchinsk (1689) settled the border with Russia in the Qing's favor.",
           ],
           answer: 0 },
-        { id: "t31-m07", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Claims and evidence in sources",
-          question: "Which of the following pieces of evidence would best support the passage's claim that Qing rulers saw the steppe frontier as the greatest danger to their power?",
+        { id: "t31-m07", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Comparison",
+          question: "Which of the following best describes a difference between the Qing expansion shown on the map and Portuguese expansion in the Indian Ocean in the same period?",
           choices: [
-            "In 1689, the Qing agreed to a border treaty with Russia, partly to keep Russia from helping the Zunghars.",
-            "The Qing kept the civil service examinations to recruit Han Chinese officials.",
-            "The Qing used cannon cast with Jesuit help in the wars that completed their conquest of China in the 1670s and 1680s.",
-            "After 1757, the Qing allowed European merchants to trade only at the port of Canton.",
+            "The Qing conquered and ruled huge inland regions, while Portugal held a small number of fortified ports along the coasts to control trade.",
+            "The Qing used gunpowder weapons, while the Portuguese did not.",
+            "The Qing took only lands where Chinese was spoken, while Portugal ruled many different peoples.",
+            "The Qing expansion took place mostly before 1500, while Portugal's took place after 1500.",
           ],
           why: [
-            "Correct. The Qing settled their northern border with Russia at Nerchinsk so that Russia would not join with the Zunghars. Making peace with one rival in order to focus on the steppe enemy shows how seriously the Qing took that threat.",
-            "This is true, but it shows how the Qing governed China proper, not what they saw as the main danger on their frontiers.",
-            "This is true, and it shows the Qing used gunpowder weapons, but these wars were against rebels inside China, not against the steppe frontier the passage describes.",
-            "This is true, but it is about controlling trade with Europeans at sea. It says nothing about the steppe frontier.",
+            "Correct. Nearly every place on the map is far from the sea, from Mongolia to Kashgar. Portugal's empire was a chain of trading posts such as Goa and Malacca, with little land around them.",
+            "Both used gunpowder. Portuguese ships carried cannon, and Qing armies used cannon and muskets against the Zunghars.",
+            "The map shows the Qing taking Mongolia, Tibet, and Central Asia, lands of Mongols, Tibetans, and Turkic Muslims, not Chinese speakers.",
+            "Every date on the map falls between 1625 and 1759, after Portugal's empire had already been built.",
           ],
           answer: 0 },
         { id: "t31-m08", skill: "u3", type: "mcq", set: "t31-s2", topic: "3.1", reasoning: "Causation",
-          question: "The expansion described in the passage contributed most directly to which effect?",
+          question: "The conquests shown on the map after 1690 contributed most directly to which of the following?",
           choices: [
-            "The Qing came to rule a more diverse empire that included Mongols, Tibetans, and Muslim Turkic peoples.",
-            "The Qing lost control of China's coast to European trading companies.",
-            "The Qing replaced the Confucian system of government with Mongol law.",
-            "Russia stopped expanding into Asia for the rest of the period.",
+            "The Qing ruled a more diverse empire of Mongols, Tibetans, and Turkic Muslims, and Qing emperors presented themselves to each group in a different way.",
+            "The Qing replaced Confucian government in China with Tibetan Buddhist rule.",
+            "China's population fell sharply as Han Chinese farmers left for the steppe.",
+            "The Qing ended the civil service examinations to make room for Mongol officials.",
           ],
           why: [
-            "Correct. By taking Mongolia and Xinjiang and protecting Tibet, the Qing ruled many peoples with different languages and religions. Qing emperors presented themselves in different ways to each group, as Confucian rulers to the Han Chinese and as patrons of Buddhism to Mongols and Tibetans.",
-            "European companies did not take control of China's coast in this period. The Qing set the terms of foreign trade until the Opium Wars of the nineteenth century.",
-            "The Qing kept Confucian government and the examination system in China. Taking in Mongol peoples did not replace them.",
-            "This is an overstatement. Russia kept expanding in Asia after 1689, east to Kamchatka and later into Alaska and Central Asia.",
+            "Correct. The lands won in Mongolia, Tibet, and Central Asia brought in peoples with their own languages and faiths. Qing emperors acted as Confucian rulers to the Han Chinese and as patrons of Tibetan Buddhism to Mongols and Tibetans.",
+            "The Qing supported Tibetan Buddhism, but they kept Confucian government in China.",
+            "China's population grew quickly in the eighteenth century; it did not fall.",
+            "The Qing kept the examinations throughout this period; they were abolished only in 1905.",
           ],
           answer: 0 },
 

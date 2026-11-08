@@ -1,5 +1,9 @@
 // Topic 4.1 Quiz: Technological Innovations
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -16,11 +20,8 @@ export const sets = {
     ] }],
   },
   "t41-s2": {
-    id: "t41-s2", name: "Finding the way back across the Pacific", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that knowledge of winds and currents mattered as much as new ships in linking the oceans. Spanish fleets could sail west from Mexico across the Pacific with the trade winds, but for more than forty years after Magellan's crossing in 1521, no ship found a way back. In 1565, the navigator Andrés de Urdaneta, a friar who had sailed in the Pacific before, steered a ship from the Philippines far to the north, to nearly 40 degrees north latitude, where westerly winds and the Kuroshio current carried it east to the coast of California and then south to Acapulco. The voyage took about four months. Urdaneta's route made regular round trips possible, and from 1571 the Spanish city of Manila became the western end of an annual voyage. For about 250 years, galleons carried American silver to Manila and returned with Chinese silk and porcelain, following the path Urdaneta had found." },
-      PRACTICE,
-    ] }],
+    id: "t41-s2", name: "The Manila galleon routes", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u4-galleons", "The Manila galleon routes across the Pacific, 1565 to 1815 (routes approximate)", "Encyclopaedia Britannica, \"Manila galleon,\" and Guampedia (University of Guam), \"Navigation and Cargo of the Manila Galleons\"") }],
   },
   "t41-s3": {
     id: "t41-s3", name: "Cannon at sea", intro: SAQ,
@@ -60,31 +61,31 @@ export default {
             "Neo-Confucianism stressed proper relationships and tradition, while Bacon praises new inventions.",
             "The Counter-Reformation defended Church tradition, while Bacon praises discoveries \"unknown to the ancients.\"",
             "Social Darwinism came in the late 1800s and applied ideas about evolution to race and empire. Bacon's main point is about inventions."]),
-        // ===== Set 2: Finding the way back across the Pacific =====
-        M(5, "t41-s2", "Causation", "According to the passage, Urdaneta's voyage of 1565 succeeded mainly because he",
-          ["sailed far north to find westerly winds and a current that carried ships east", "used steam power to sail against the wind", "followed the coast of Asia north to Russia", "copied a route used for centuries by Chinese fleets to reach Mexico"],
-          ["Correct. The passage says he steered to nearly 40 degrees north, where westerly winds and the Kuroshio current carried the ship to California.",
-            "Steam power did not exist until the 1800s.",
-            "The passage describes crossing the open Pacific, not following the Asian coast.",
-            "No Chinese fleet had sailed to Mexico. The passage says no ship had found the route back before Urdaneta."]),
-        M(6, "t41-s2", "Causation", "The route described in the passage most directly made possible which development?",
-          ["The Manila galleon trade, which carried American silver to Asia and Chinese goods to the Americas", "The Portuguese discovery of a sea route to India", "The end of Spanish rule in the Philippines", "The first European voyages across the Atlantic"],
-          ["Correct. The passage says that from 1571 Manila became the western end of an annual voyage carrying silver west and silk and porcelain east.",
-            "Vasco da Gama reached India by sailing around Africa in 1498, long before 1565.",
-            "Spain used the route to hold the Philippines until 1898.",
-            "Columbus crossed the Atlantic in 1492, more than seventy years earlier."]),
-        M(7, "t41-s2", "Claims and evidence in sources", "Which of the following claims is best supported by the passage?",
-          ["Understanding regional winds and currents was necessary for regular trade across the oceans.", "Spanish ships were faster than any ships in Asia.", "Magellan's voyage set up regular trade between Asia and the Americas.", "Chinese demand for silver fell after 1571."],
-          ["Correct. Ships could cross the Pacific westward for decades, but regular round trips began only after the return route was found.",
-            "The passage does not compare the speed of Spanish and Asian ships.",
-            "The passage says no ship found a way back for more than forty years after Magellan's crossing.",
-            "The passage says galleons kept carrying silver to Manila for about 250 years."]),
-        M(8, "t41-s2", "Comparison", "The knowledge of winds described in the passage is most similar to which earlier development?",
-          ["Merchants in the Indian Ocean timing their voyages to the seasonal monsoon winds", "Mongol rulers setting up relay stations for messengers", "Merchants crossing the Sahara by camel caravan", "The Inca building roads through the Andes"],
-          ["Correct. For centuries, Indian Ocean sailors used the monsoons, which blow one way in summer and the other in winter, to plan trips out and back.",
-            "Relay stations carried messages over land, not ships over the sea.",
-            "Caravans crossed deserts, and the passage is about ocean winds and currents.",
-            "Roads moved people on land. The passage is about sailing with the winds."]),
+        // ===== Set 2: The Manila galleon routes (map) =====
+        M(5, "t41-s2", "Causation", "On the map, the galleons' route from Manila to Acapulco runs far to the north of their route from Acapulco to Manila. This difference is best explained by the fact that",
+          ["sailing ships followed different wind belts: the trade winds blew west in the south, while the westerlies and the Kuroshio Current carried ships east in the north", "the galleons stopped at Japanese ports to buy silver on the way to New Spain", "Portuguese warships blocked the southern route to ships sailing east", "galleons could sail straight into the wind once they reached the open Pacific"],
+          ["Correct. The map labels the trade winds along the westward route and the westerlies and the Kuroshio Current along the eastward route. Ships went where the winds would carry them, so the way out and the way back were different.",
+            "The map shows no stop in Japan on the eastward route. The galleons crossed the open Pacific from the Philippines to California.",
+            "The Portuguese did not patrol the open Pacific. The map gives a natural reason for the northern route: the winds labeled there blow east.",
+            "Sailing ships could not sail straight into the wind. That is why the eastward galleons had to go far north to find winds that blew east."]),
+        M(6, "t41-s2", "Claims and evidence in sources", "Which claim about ocean travel in this period is best supported by the map?",
+          ["Regular round trips across an ocean depended on knowing which winds and currents moved where, not only on building strong ships.", "Sailing ships of this period could travel between any two ports by the shortest route.", "Crossing the Pacific took less time than crossing the Atlantic.", "Chinese fleets controlled the sea routes between Asia and the Americas."],
+          ["Correct. The galleons used two separate routes, each placed in a belt of favorable wind, and the voyage against the trade winds still took about twice as long. Knowledge of the winds made the yearly round trip possible.",
+            "The routes on the map curve far from a direct line because ships had to follow the winds.",
+            "The map gives Pacific crossing times of about 3 and 6 months, but it gives no Atlantic times to compare.",
+            "The map shows Spanish ports at both ends of the route. Chinese merchants traded at Manila, but they did not sail the galleons to New Spain."]),
+        M(7, "t41-s2", "Causation", "The cargoes shown in the map's legend most directly reflect which development?",
+          ["Chinese demand for silver, which drew American silver across the Pacific to pay for Chinese silk and porcelain", "The spread of smallpox from the Americas to Asia", "The shipment of enslaved Africans to plantations in New Spain", "The sale of cotton cloth from British factories to Asian markets"],
+          ["Correct. Silver from Spanish American mines sailed west to Manila, where Chinese merchants exchanged silk and porcelain for it. Ming China's need for silver, which it used to pay taxes, made the trade very profitable.",
+            "Smallpox spread from Europe and Africa to the Americas, not from the Americas to Asia, and the legend lists goods, not diseases.",
+            "Enslaved Africans crossed the Atlantic. The legend shows silver, silk, and porcelain crossing the Pacific.",
+            "British factory cloth belongs to the Industrial Revolution, after 1750. The legend shows silk and porcelain moving from Asia to the Americas."]),
+        M(8, "t41-s2", "Comparison", "The galleons' use of winds shown on the map is most similar to which earlier practice?",
+          ["Indian Ocean merchants timing their voyages to the seasonal monsoon winds", "Mongol rulers setting up relay stations for messengers", "Camel caravans crossing the Sahara between oases", "The Inca building roads and bridges through the Andes"],
+          ["Correct. For centuries before 1450, sailors in the Indian Ocean sailed with the monsoons, which blow one way in summer and the other way in winter. Like the galleon pilots, they planned routes around the winds.",
+            "Relay stations carried messages over land. The map shows ships using ocean winds.",
+            "Caravans crossed deserts on land, and the map is about sailing with winds and currents.",
+            "Roads and bridges moved people on land, not ships at sea."]),
         // ===== SAQ: Cannon at sea =====
         Q("a", "Identify ONE piece of historical evidence, not mentioned in the passage, that supports the passage's claim that ships armed with cannon helped Europeans gain power at sea between 1450 and 1750.",
           "The response names a specific use of armed ships by a European state or company in the period that the passage does not already give.",

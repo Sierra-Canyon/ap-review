@@ -148,6 +148,8 @@ export default {
     { id: "u2", name: "Unit 2 only", skills: ["u2"] },
     { id: "maps", name: "Maps and charts", filter: (it) => /^u\d-v\d/.test(it.id) },
   ],
+  // Ordinary review sets carry at least two map, chart, or picture questions while any are left to see.
+  mix: { filter: (it) => /^u\d-v\d/.test(it.id), per: 2 },
   skills: [
     { id: "u1", name: "Unit 1: The Global Tapestry", from: "c. 1200 to c. 1450", short: "U1" },
     { id: "u2", name: "Unit 2: Networks of Exchange", from: "c. 1200 to c. 1450", short: "U2" },

@@ -1,5 +1,15 @@
 // AP World History: Modern, Unit 5 Assessment (form w5a), Unit 5: Revolutions, c. 1750 to c. 1900
 // Sources: every stimulus this form uses, keyed by id.
+import { bars } from "../../plot.js";
+
+// Bairoch's estimates of each country's share of world manufacturing output (percent), for the chart in set 3
+const mfg = {
+  years: ["1750", "1800", "1860", "1880", "1900"],
+  places: ["China", "South Asia", "Britain", "France", "Germany", "Russia", "United States", "Japan"],
+  shares: [[32.8, 33.3, 19.7, 12.5, 6.2], [24.5, 19.7, 8.6, 2.8, 1.7], [1.9, 4.3, 19.9, 22.9, 18.5], [4.0, 4.2, 7.9, 7.8, 6.8],
+    [2.9, 3.5, 4.9, 8.5, 13.2], [5.0, 5.6, 7.0, 7.6, 8.8], [0.1, 0.8, 7.2, 14.7, 23.6], [3.8, 3.5, 2.6, 2.4, 2.4]],
+};
+
 export const sets = {
   "w5a-s1": {
     id: "w5a-s1", name: "Paine on the origin of government", intro: "Use the source below to answer the questions that follow.",
@@ -22,11 +32,17 @@ export const sets = {
     ],
   },
   "w5a-s3": {
-    id: "w5a-s3", name: "Asia's place in world manufacturing", intro: "Use the passage below to answer the questions that follow.",
+    id: "w5a-s3", name: "Shares of world manufacturing, 1750 to 1900", intro: "Use the charts and table below to answer the questions that follow.", label: "Chart",
     sources: [
-      { title: "Source", blocks: [
-        { p: "Before 1800, the largest share of the world's manufactured goods came from Asia. Weavers in India made cotton cloth that buyers in Africa, Europe, and the Americas prized for its quality and low price. This changed in the century after 1780. In Britain, water frames, spinning mules, and later steam-powered mills let a few workers make huge amounts of cheap thread and cloth. British governments first protected their own textile makers with bans and high tariffs on Indian cloth, and after 1813 British machine-made cloth flowed into India. Many Indian hand spinners and weavers lost their livelihoods, and India increasingly exported raw cotton and other raw materials instead. By 1900, western Europe and the United States produced most of the world's manufactured goods, while Asia's share had fallen sharply." },
-        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      { title: "Chart", blocks: [
+        { svg: bars({ labels: mfg.places, values: mfg.shares.map((r) => r[0]), y: [0, 35], step: 5, yname: "Percent of world output", fmt: (v) => v.toFixed(1), width: 600, height: 300,
+          alt: "Bar chart of estimated shares of world manufacturing output in 1750, in percent: " + mfg.places.map((c, i) => `${c}, ${mfg.shares[i][0].toFixed(1)}`).join("; ") + "." }),
+          caption: "Estimated share of the world's manufacturing output, 1750 (percent)" },
+        { svg: bars({ labels: mfg.places, values: mfg.shares.map((r) => r[4]), y: [0, 35], step: 5, yname: "Percent of world output", fmt: (v) => v.toFixed(1), width: 600, height: 300,
+          alt: "Bar chart of estimated shares of world manufacturing output in 1900, in percent: " + mfg.places.map((c, i) => `${c}, ${mfg.shares[i][4].toFixed(1)}`).join("; ") + "." }),
+          caption: "Estimated share of the world's manufacturing output, 1900 (percent)" },
+        { table: { head: ["Country or region", ...mfg.years], rows: mfg.places.map((c, i) => [c, ...mfg.shares[i].map((v) => v.toFixed(1))]) } },
+        { cite: "Paul Bairoch, \"International Industrialization Levels from 1750 to 1980,\" Journal of European Economic History 11 (1982), as reprinted in Paul Kennedy, The Rise and Fall of the Great Powers (1987), table 6, and in Robert W. Strayer, Ways of the World, \"Snapshot: The Industrial Revolution and the Global Divide.\" Estimates; Britain is the United Kingdom, and South Asia is present-day India, Pakistan, and Bangladesh.", url: "https://digfir-published.macmillanusa.com/strayersources3ehs/asset/snapshot/snapshot_the_industrial_revolution_and_the_global_divide.html", kind: "data" },
       ] },
     ],
   },
@@ -159,50 +175,50 @@ export default {
           ],
           answer: 0 },
 
-        // ---------- Set 3: Asia and world manufacturing (practice passage) ----------
+        // ---------- Set 3: Shares of world manufacturing (chart) ----------
         { id: "w5a-m07", skill: "u5", type: "mcq", set: "w5a-s3", topic: "5.3", reasoning: "Continuity and change",
-          question: "Which of the following best describes the change in British cloth production that the passage describes?",
+          question: "Which of the following best describes the change shown in the charts and table from 1750 to 1900?",
           choices: [
-            "Production shifted from hand work in homes and small workshops to machines in large mills.",
-            "Production shifted from mills owned by the state to workshops run by craft guilds.",
-            "Production came to rely mainly on enslaved workers in British factories.",
-            "Production moved from Britain to India, where labor cost less.",
+            "The center of world manufacturing shifted from China and South Asia to western Europe and the United States.",
+            "China and South Asia increased their share of world manufacturing as their populations grew.",
+            "Britain held the largest share of world manufacturing in every year shown.",
+            "Each country's share of world manufacturing stayed about the same across the period.",
           ],
           why: [
-            "Correct. The passage describes water frames, spinning mules, and steam-powered mills that let \"a few workers\" make huge amounts of thread and cloth, which replaced spinning and weaving by hand in homes and workshops.",
-            "This reverses the real change; British mills were privately owned, and the factory system replaced older forms of craft production.",
-            "British mill workers were paid wage laborers; slavery in the Americas supplied the raw cotton, not the factory labor in Britain.",
-            "The passage describes the opposite movement: British machine-made cloth flowed into India and replaced Indian hand production.",
+            "Correct. China and South Asia together made 57.3 percent of the world's manufactured goods in 1750 but only 7.9 percent in 1900, while Britain, Germany, and the United States together rose from 4.9 percent to 55.3 percent.",
+            "The table shows the reverse: China fell from 32.8 to 6.2 percent and South Asia from 24.5 to 1.7 percent, even though both regions' populations grew.",
+            "China had the largest share in 1750 and 1800, and the United States passed Britain by 1900 (23.6 percent to 18.5 percent).",
+            "Some shares changed greatly; the United States rose from 0.1 to 23.6 percent, and South Asia fell from 24.5 to 1.7 percent.",
           ],
           answer: 0 },
         { id: "w5a-m08", skill: "u5", type: "mcq", set: "w5a-s3", topic: "5.5", reasoning: "Causation",
-          question: "Which of the following technologies most directly helped British machine-made cloth reach buyers in India and other distant markets by the late nineteenth century?",
+          question: "Which of the following most directly explains the rise in Britain's share of world manufacturing between 1750 and 1860 shown in the table?",
           choices: [
-            "Steamships and railroads",
-            "The cotton gin",
-            "The internal combustion engine",
-            "The printing press",
+            "Machines driven by water and then by coal-fired steam engines, which multiplied what each worker in a factory could produce",
+            "The Bessemer process and electric power stations, which made Britain the leader in steel and electricity",
+            "The arrival of large numbers of skilled weavers from India, who brought hand-loom methods to Britain",
+            "Laws that kept Britain's factories from selling their goods outside the British Isles",
           ],
           why: [
-            "Correct. Steamships cut the time and cost of ocean shipping, and railroads, which the British began building in India in the 1850s, carried goods from ports to inland markets.",
-            "The cotton gin (1793) separated seeds from raw cotton and raised cotton growing in the United States, but it did not move finished cloth to markets.",
-            "The internal combustion engine was developed late in the nineteenth century, and trucks powered by it did not carry much trade until the twentieth century.",
-            "The printing press spread information from the fifteenth century on, but it did not transport goods.",
+            "Correct. Britain's share rose from 1.9 to 19.9 percent as spinning machines, power looms, and steam engines let a few workers in a mill make far more cloth and iron than hand workers could.",
+            "The Bessemer process dates from 1856 and power stations from the 1880s, too late to explain a rise that the table shows was already under way by 1800 and large by 1860; Germany and the United States led much of the steel and electrical industries.",
+            "Britain's mills replaced hand weaving with machines; they did not depend on hand-loom weavers from India, whose own share of output fell.",
+            "British factories sold huge amounts of cloth abroad, including in India, which helps explain South Asia's falling share in the table.",
           ],
           answer: 0 },
         { id: "w5a-m09", skill: "u5", type: "mcq", set: "w5a-s3", topic: "5.4", reasoning: "Comparison",
-          question: "The change in India's role in the world economy described in the passage was most similar to which other nineteenth-century development?",
+          question: "Which of the following comparisons of the period 1880 to 1900 is best supported by the table?",
           choices: [
-            "Egypt's growing dependence on exporting raw cotton to European textile mills",
-            "Japan's building of its own textile mills, which later sold cloth and thread across Asia",
-            "Britain's repeal of the Corn Laws so that it could import cheaper grain",
-            "The use of tariffs in the United States to protect its factories from British competition",
+            "Germany and the United States raised their shares while Britain's fell, as industrialization spread beyond Britain.",
+            "Japan's share grew faster than any other country's as its government built state-run factories.",
+            "Russia's share fell as the government stopped building railways.",
+            "France and Britain both raised their shares faster than the United States did.",
           ],
           why: [
-            "Correct. Like India, Egypt became a supplier of raw cotton to industrial Europe, especially after the American Civil War cut off cotton from the southern United States in the 1860s.",
-            "Japan followed the opposite path, building its own mechanized industry rather than becoming mainly an exporter of raw materials.",
-            "Britain was the leading industrial power, and repealing the Corn Laws in 1846 helped feed its factory workers; it did not turn Britain into a raw material exporter.",
-            "Protective tariffs helped the United States build its own industry, the reverse of what happened to India's manufacturing.",
+            "Correct. Germany rose from 8.5 to 13.2 percent and the United States from 14.7 to 23.6 percent, while Britain fell from 22.9 to 18.5 percent; Britain still grew, but other countries grew faster.",
+            "Japan's share stayed at 2.4 percent; its Meiji factories were only beginning to show in world totals by 1900.",
+            "Russia's share rose from 7.6 to 8.8 percent, and the government pushed railway building in the 1890s, including the Trans-Siberian Railway.",
+            "France's share fell from 7.8 to 6.8 percent and Britain's from 22.9 to 18.5 percent, while the United States' share rose.",
           ],
           answer: 0 },
 

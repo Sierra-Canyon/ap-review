@@ -809,7 +809,7 @@ function startReview() {
   const st = deckState();
   const a = app.focus?.startsWith("a:") ? assessments.find((x) => x.id === app.focus.slice(2)) : null;
   const f = a ? { name: "Review for " + a.name, filter: covers(a) } : deck.focus?.find((x) => x.id === app.focus);
-  const s = buildSession(deck, st.cards, f ? { types: f.types, skills: f.skills, filter: f.filter, size: f.size || 10, longCap: f.size || 2 } : {});
+  const s = buildSession(deck, st.cards, f ? { types: f.types, skills: f.skills, filter: f.filter, size: f.size || 10, longCap: f.size || 2 } : { mix: deck.mix || null });
   app.session = { queue: s.items.map((it) => ({ it, again: false })), i: 0, marks: [], extra: s.extra, requeued: {}, focus: f?.name || "" };
   renderReview();
 }

@@ -1,5 +1,8 @@
 // Topic 5.9 Quiz: Society and the Industrial Age
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -16,11 +19,8 @@ export const sets = {
     ] }],
   },
   "t59-s2": {
-    id: "t59-s2", name: "Living by the clock", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that industrialization changed not only where people worked but how they experienced time. On farms and in workshops at home, the pace of work had followed daylight, the seasons, and the tasks at hand, with busy weeks followed by slower ones. Factories, by contrast, ran their machines for set hours, often twelve or more a day, and workers had to arrive and leave by the clock or the factory bell. Employers fined or dismissed workers for lateness and for talking or resting on the job, and some locked the gates at starting time. Railways spread a single standard time across Britain in the 1840s, because trains could not run safely on dozens of local times. Schools and churches taught punctuality as a virtue, and cheap pocket watches and clocks became common in working-class homes later in the century." },
-      PRACTICE,
-    ] }],
+    id: "t59-s2", name: "The world's largest cities, 1800 and 1900", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u5-largest-cities", "The world's eight largest cities in 1800 and in 1900, by estimated population. The years next to each city show when it was among the eight largest.", "James A. Henretta and others, America's History (Bedford/St. Martin's), and Matt Rosenberg, \"Largest Cities Throughout History\" (ThoughtCo), which follow the estimates of Tertius Chandler, Four Thousand Years of Urban Growth (1987)") }],
   },
   "t59-s3": {
     id: "t59-s3", name: "Cholera and the sanitary city", intro: SAQ,
@@ -60,31 +60,31 @@ export default {
             "That was a period of decline in the 1300s.",
             "That was a capital built by an emperor, not an industrial city.",
             "Silk Road cities grew from trade, not factories."]),
-        // ===== Set 2: Living by the clock =====
-        M(5, "t59-s2", "Comparison", "According to the passage, work in factories differed from work on farms mainly in that factory work",
-          ["followed fixed hours set by the clock and the machines", "followed the seasons and daylight", "had no rules about lateness", "was done mostly at home"],
-          ["Correct. The passage says factories ran for set hours and workers had to arrive and leave by the clock or bell.",
-            "That describes farm work.",
-            "The passage says employers fined or dismissed late workers.",
-            "Factory work took place in factories."]),
-        M(6, "t59-s2", "Causation", "According to the passage, Britain adopted a single standard time mainly because",
-          ["trains could not run safely on many different local times", "factory owners passed a law requiring it", "churches demanded it", "pocket watches were invented"],
-          ["Correct. Railways spread standard time in the 1840s for safe, reliable schedules.",
-            "The passage credits the railways.",
-            "Churches taught punctuality but did not set standard time.",
-            "Cheap watches became common later."]),
-        M(7, "t59-s2", "Developments and processes", "The passage best illustrates which effect of industrialization on daily life?",
-          ["Employers and institutions taught new habits of punctuality and discipline", "Workers gained control over their own working hours", "The working day became shorter than on farms", "People stopped using clocks"],
-          ["Correct. Fines, locked gates, schools, and churches all reinforced timekeeping.",
-            "Factories set workers' hours.",
-            "Factory days were often twelve or more hours.",
-            "Clocks became more common."]),
-        M(8, "t59-s2", "Continuity and change", "Which later development continued the trend described in the passage?",
-          ["Workers' movements for an eight-hour day, which accepted clock time but sought fewer hours", "A return to seasonal farm work for most Europeans by 1900", "The abolition of factory bells by law in 1850", "The end of railway timetables"],
-          ["Correct. Labor movements fought over how many hours the clock would rule, as in the eight-hour campaigns of the 1880s.",
-            "Most Western Europeans increasingly worked in industry and services.",
-            "No such law existed.",
-            "Railway timetables expanded."]),
+        // ===== Set 2: The world's largest cities (map) =====
+        M(5, "t59-s2", "Continuity and change", "Which of the following changes between 1800 and 1900 does the map show?",
+          ["Half of the largest cities had been in East Asia, and by 1900 nearly all were in Europe and the United States.", "Most of the largest cities had been in Europe, and by 1900 most were in East Asia.", "The world's largest cities moved from coasts to the interior of Africa.", "The same eight cities were the largest in both years."],
+          ["Correct. Four of the eight largest cities in 1800 were in China and Japan (Beijing, Guangzhou, Hangzhou, and Edo), while in 1900 Tokyo was the only one in East Asia and the other seven were in Europe or the United States.",
+            "This reverses the map: East Asian cities made up half of the 1800 list, and European and American cities made up nearly all of the 1900 list.",
+            "No city on the map is in Africa.",
+            "Only London, Paris, and Edo (Tokyo) appear in both years; the other cities changed."]),
+        M(6, "t59-s2", "Causation", "Which of the following best explains why cities such as Berlin, New York, and Chicago joined the list of the largest cities by 1900?",
+          ["Factories, railways, and ports created jobs that drew migrants from the countryside and immigrants from abroad.", "Governments moved most farmers into cities by force to end food shortages.", "Better medicine made cities healthier than the countryside by 1850, so people moved there to live longer.", "The decline of world trade made people leave port cities for inland capitals."],
+          ["Correct. Industrial jobs pulled rural people into cities, and millions of European immigrants settled in New York and Chicago in the late 1800s.",
+            "Rural people chose to move for work; no government forced most farmers into cities.",
+            "Crowded industrial cities had higher death rates than the countryside for much of the century; cholera and other diseases spread quickly in them.",
+            "World trade grew in the 1800s, and New York, a port, became the second largest city in the world."]),
+        M(7, "t59-s2", "Developments and processes", "Chicago, in the interior of North America, grew from a small town in the 1830s into one of the largest cities in the world by 1900. Its rapid growth is best explained by its role as",
+          ["a railway hub linking the farms and forests of the American interior with factories and markets in the East", "the capital of the United States", "the main port for immigrants arriving from Asia across the Pacific", "a center of silver mining in the Rocky Mountains"],
+          ["Correct. Railways and the Great Lakes made Chicago the place where grain, livestock, and lumber from the interior were processed and shipped east, which drew huge numbers of workers.",
+            "The capital of the United States is Washington, D.C.",
+            "Most Asian immigrants arrived on the Pacific coast, at San Francisco, far from Chicago.",
+            "Chicago is on the Great Lakes, far from the Rocky Mountains and their mines."]),
+        M(8, "t59-s2", "Comparison", "Beijing, Guangzhou, and Hangzhou were among the largest cities in 1800 but not in 1900. Which of the following best explains this difference from the European cities on the map?",
+          ["Qing China did not industrialize in the 1800s and was weakened by rebellion, while industrial cities in Europe grew much faster.", "China's government moved its whole population to the countryside after the Opium Wars.", "The Chinese cities were destroyed by the First World War.", "Chinese cities stopped trading with the outside world after 1842."],
+          ["Correct. Without factories and railways, China's cities did not grow like London or Berlin, and the Taiping Rebellion (1850 to 1864) killed millions and devastated cities such as Hangzhou.",
+            "No such movement took place; the Opium Wars opened Chinese ports to foreign trade.",
+            "The First World War began in 1914, after 1900, and was not fought in these cities.",
+            "After 1842, treaties forced China to open more ports, including Guangzhou, to foreign trade."]),
         // ===== SAQ: Cholera and the sanitary city =====
         Q("a", "Identify ONE reform described in the passage that cities made in response to epidemics.",
           "The response names one reform from the passage.",

@@ -1,15 +1,15 @@
 // Topic 1.2 Quiz: Developments in Dar al-Islam from c. 1200 to c. 1450
+import { maps } from "../whap/maps.js";
+
+// A map the site draws (tools/maps/whap-u1.mjs, built by tools/build-maps.mjs), with the references it was checked against.
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
+
 // Sources: every stimulus this quiz uses, keyed by id.
 export const sets = {
   "t12-s1": {
-    id: "t12-s1", name: "Al-Maqrizi on the Mamluk seizure of power", intro: "Use the source below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "The sultana, in alarm, implored the protection of the Mamelukes, representing to them the services she had done the state in very difficult times, and the ingratitude of Touran-Chah, who was indebted to her for the crown he wore. These slaves, already irritated against Touran-Chah, did not hesitate to take the part of the sultana, and resolved to assassinate the prince. ..." },
-        { p: "With this prince was extinguished the dynasty of the Ayyubids, who had governed Egypt eighty years, under eight different kings. After the massacre of Touran-Chah, the sultana Chegeret-Eddur was declared sovereign of Egypt; she was the first slave who had reigned over this country. ... The emir Azeddin-Aibegh, of the Turcoman nation, was appointed general of the army; and the name of the sultana was imprinted on the coin." },
-        { cite: "Al-Maqrizi (Taqi al-Din al-Maqrizi, 1364 to 1442, a historian of Cairo), Kitab al-Suluk, a history of the rulers of Egypt (titled on the page \"Essulouk li Mariset il Muluk\"), account of the events of 1250, from Chronicles of the Crusades, edited by H. G. B. (London: Henry G. Bohn, 1848), pp. 535 to 556, as published in the Internet Medieval Sourcebook, Fordham University. The page does not name the translator. Hyphenated names are printed here with ordinary hyphens. The prince is Touran-Chah (Turanshah), the last Ayyubid sultan of Egypt, who came to the throne in 1249 after the death of his father, the sultan Najm al-Din. The Mamluks had just led the defeat of the French crusading army of King Louis IX in Egypt in 1250. The sultana Chegeret-Eddur is Shajar al-Durr, a former slave who had been Najm al-Din's wife. Mamelukes (Mamluks) were soldiers bought as slaves, most of them Turks from the steppes north of the Black Sea, and trained for war; Turcoman refers to a Turkic people of the steppes.", url: "https://sourcebooks.web.fordham.edu/source/makrisi.asp", kind: "primary" },
-      ] },
-    ],
+    id: "t12-s1", name: "Turkic and Mongol rulers in Dar al-Islam", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u1-turkic-states", "Turkic and Mongol rulers in Dar al-Islam, 1206 to 1336", "the Metropolitan Museum of Art's Heilbrunn Timeline of Art History (\"The Art of the Mamluk Period\" and \"The Art of the Ilkhanid Period\"), and Encyclopaedia Britannica, \"India: The early Turkish sultans\"") }],
   },
   "t12-s2": {
     id: "t12-s2", name: "Learning in a divided Dar al-Islam", intro: "Use the passage below to answer the questions that follow.",
@@ -52,50 +52,50 @@ export default {
   forms: [
     { id: "t12", name: "Topic 1.2 Quiz: Developments in Dar al-Islam", group: "Unit 1: The Global Tapestry",
       items: [
-        // ===== Set 1: al-Maqrizi on the Mamluks =====
-        { id: "t12-m01", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Causation",
-          question: "The Mamluks' ability to seize power in Egypt in 1250 is best explained by which practice of many Muslim states in this period?",
+        // ===== Set 1: map, Turkic and Mongol rulers in Dar al-Islam =====
+        { id: "t12-m01", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Developments and Processes",
+          question: "The map best shows which development in Dar al-Islam between 1206 and 1336?",
           choices: [
-            "Rulers bought Turkic slaves and trained them as soldiers, so these soldiers came to control the army on which the ruler depended.",
-            "Rulers chose their officials through examinations on religious law, so trained scholars ran the government.",
-            "Rulers relied on European crusaders as hired soldiers, who could turn against them.",
-            "Rulers let the Abbasid caliph in Baghdad appoint and remove the sultans of Egypt.",
+            "Political power was divided among several states, many of them founded by Turkic military rulers rather than by the Abbasid caliphs.",
+            "A single caliph in Baghdad governed all Muslim lands from Egypt to India.",
+            "Mongol armies conquered Egypt and northern India and ruled them as one khanate.",
+            "Arab dynasties from the Arabian Peninsula took control of Anatolia and northern India.",
           ],
           why: [
-            "Correct. Since the Abbasid period, Muslim rulers had built armies of slave soldiers, many of them Turks, and in 1250 the Mamluks used their military strength to kill the sultan and take over.",
-            "Examinations to choose officials were a Chinese practice, and the excerpt shows soldiers, not scholars, taking power.",
-            "The crusaders were the enemy the Mamluks had just defeated, not soldiers in the sultan's service.",
-            "By 1250 the caliph had little real power, and the excerpt shows the Mamluks, not the caliph, deciding who ruled Egypt.",
+            "Correct. The map marks separate capitals at Konya, Cairo, Delhi, and Bursa, each the seat of a state founded by Turkic rulers, while the caliphs' city, Baghdad, fell to the Mongols in 1258.",
+            "The map shows several capitals with their own rulers, and it marks Baghdad as taken by the Mongols in 1258.",
+            "The map shows the Mamluks defeating the Mongols at Ain Jalut in 1260 and marks Cairo and Delhi as capitals of their own sultanates.",
+            "The rulers on the map at Konya, Cairo, Delhi, and Bursa were Turks, not Arabs from Arabia.",
           ],
           answer: 0 },
-        { id: "t12-m02", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Sourcing and Situation",
-          question: "A historian using this excerpt as evidence about the events of 1250 should take into account that al-Maqrizi",
+        { id: "t12-m02", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Causation",
+          question: "The events at Baghdad in 1258 and Ain Jalut in 1260, shown on the map, best help explain which development?",
           choices: [
-            "wrote in Cairo nearly two centuries after the events, under later Mamluk sultans, and relied on earlier accounts",
-            "was a French crusader who saw the events while held prisoner in Egypt",
-            "was an official of the Ayyubid court who wanted to defend Touran-Chah's reign",
-            "wrote in Baghdad, which the Mongols had already destroyed",
+            "Cairo replaced Baghdad as the leading political and cultural center of the Arabic-speaking Muslim world.",
+            "Turkic slave soldiers founded the Delhi Sultanate in northern India.",
+            "The Seljuk sultans made Konya the capital of their state in Anatolia.",
+            "The Ottomans captured Bursa and made it their capital.",
           ],
           why: [
-            "Correct. Al-Maqrizi lived from 1364 to 1442, so he was not an eyewitness, and he wrote while the Mamluk state that began with these events still ruled Egypt.",
-            "Al-Maqrizi was a Muslim scholar of Cairo, not a crusader, and he was born more than a century after the events.",
-            "Al-Maqrizi lived long after the Ayyubids fell, and the excerpt calls Touran-Chah ungrateful rather than defending him.",
-            "Al-Maqrizi wrote in Cairo, and the Mongols destroyed Baghdad in 1258, after the events described.",
+            "Correct. After the Mongols took Baghdad, the Mamluks stopped the Mongol advance at Ain Jalut, so Cairo survived as the Mamluk capital, sheltered a line of Abbasid caliphs, and became the center of Arab Muslim learning and trade.",
+            "The map dates the Delhi Sultanate to 1206, more than fifty years before these events, so they cannot explain it.",
+            "The Seljuks of Rum ruled from Konya long before 1258, and Mongol armies had already defeated them in 1243.",
+            "The Ottomans took Bursa from the Byzantine Empire in 1326, far from Egypt and Syria, and the events of 1258 and 1260 did not decide it.",
           ],
           answer: 0 },
         { id: "t12-m03", skill: "u1", type: "mcq", set: "t12-s1", topic: "1.2", reasoning: "Continuity and Change",
-          question: "Which of the following was a development of the decade after the events in the excerpt?",
+          question: "The label at Tabriz on the map best shows which continuity in the history of Dar al-Islam?",
           choices: [
-            "Mamluk armies defeated the Mongols at Ain Jalut in 1260 and stopped the Mongol advance toward Egypt.",
-            "The Mamluks captured Constantinople and ended the Byzantine Empire.",
-            "Turkic slave soldiers founded the Delhi Sultanate in northern India.",
-            "The Mamluks destroyed Baghdad and killed the last Abbasid caliph who ruled there.",
+            "Conquerors from the steppes of Central Asia, as the Seljuk Turks had done earlier, adopted Islam and ruled over Muslim societies.",
+            "Muslim rulers forced the peoples they conquered to give up Islam and adopt the faith of the Mongols.",
+            "The Abbasid caliphs kept ruling Iran from Baghdad after the Mongol conquest.",
+            "Mongol rulers refused to govern settled peoples and returned to the steppe after each conquest.",
           ],
           why: [
-            "Correct. Ten years after taking power, the Mamluk Sultanate defeated a Mongol army in Syria and went on to rule Egypt and Syria until 1517.",
-            "Constantinople fell in 1453 to the Ottomans, another Turkic Muslim state, not to the Mamluks.",
-            "The Delhi Sultanate was founded by Turkic slave soldiers, but that happened in 1206, before the events in the excerpt.",
-            "Baghdad was destroyed in 1258 by the Mongols, not the Mamluks, and the Mamluks later sheltered surviving members of the Abbasid family in Cairo.",
+            "Correct. The map says the Mongol rulers of the Ilkhanate became Muslim in 1295, much as the Seljuk Turks, shown at Konya, had become Muslims before they built states in Southwest Asia and Anatolia.",
+            "This reverses the label, which shows the Mongol conquerors adopting Islam, the faith of the people they ruled.",
+            "The map marks Baghdad as taken by the Mongols in 1258, and Tabriz, not Baghdad, as the capital of the Ilkhanate in Iran.",
+            "The map marks Tabriz as the capital of a Mongol state in Iran, which shows the Mongols stayed to govern settled lands.",
           ],
           answer: 0 },
 

@@ -1,5 +1,8 @@
 // AP World History: Modern, Unit 7 Assessment (form w7a), Unit 7: Global Conflict, c. 1900 to the present
 // Sources: every stimulus this form uses, keyed by id.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 export const sets = {
   "w7a-s1": {
     id: "w7a-s1", name: "Battle deaths in the First World War", intro: "Use the table below to answer the questions that follow.",
@@ -70,14 +73,8 @@ export const sets = {
     ],
   },
   "w7a-s5": {
-    id: "w7a-s5", name: "Opening the Nuremberg trial, 1945", intro: "Use the source below to answer the questions that follow.",
-    sources: [
-      { title: "Source", blocks: [
-        { p: "The privilege of opening the first trial in history for crimes against the peace of the world imposes a grave responsibility. The wrongs which we seek to condemn and punish have been so calculated, so malignant, and so devastating, that civilization cannot tolerate their being ignored, because it cannot survive their being repeated. That four great nations, flushed with victory and stung with injury stay the hand of vengeance and voluntarily submit their captive enemies to the judgment of the law is one of the most significant tributes that Power has ever paid to reason. ..." },
-        { p: "Of the 9,600,000 Jews who lived in Nazi-dominated Europe, 60 percent are authoritatively estimated to have perished. Five million seven hundred thousand Jews are missing from the countries in which they formerly lived, and over 4,500,000 cannot be accounted for by the normal death rate nor by immigration; nor are they included among displaced persons. History does not record a crime ever perpetrated against so many victims or one ever carried out with such calculated cruelty." },
-        { cite: "Robert H. Jackson, Chief of Counsel for the United States, opening statement for the prosecution before the International Military Tribunal, Nuremberg, Germany, November 21, 1945, printed in Trial of the Major War Criminals before the International Military Tribunal, Volume 2 (Nuremberg, 1947).", url: "https://avalon.law.yale.edu/imt/11-21-45.asp", kind: "primary" },
-      ] },
-    ],
+    id: "w7a-s5", name: "Nazi camps and killing centers", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u7-camps", "Nazi concentration camps in Germany and killing centers in German-occupied Poland, with the year each camp opened or, for a killing center, the year mass killing by gas began", "the United States Holocaust Memorial Museum, Holocaust Encyclopedia, \"Killing Centers: In Depth\" and \"Concentration Camps, 1933 to 1939,\" and Encyclopaedia Britannica, \"extermination camp,\" \"Dachau,\" \"Buchenwald,\" and \"Sachsenhausen\"") }],
   },
   "w7a-s6": {
     id: "w7a-s6", name: "Empires and the world wars", intro: "Use the passage below to answer all parts of the question that follows.",
@@ -283,50 +280,50 @@ export default {
           ],
           answer: 0 },
 
-        // ---------- Set 5: Jackson at Nuremberg ----------
+        // ---------- Set 5: map of Nazi camps and killing centers ----------
         { id: "w7a-m13", skill: "u7", type: "mcq", set: "w7a-s5", topic: "7.8", reasoning: "Causation",
-          question: "The deaths described in the second paragraph resulted most directly from",
+          question: "Which of the following most directly explains why all five killing centers on the map were in German-occupied Poland rather than in Germany?",
           choices: [
-            "a Nazi policy of genocide carried out through mass shootings, ghettos, and death camps in German-occupied Europe",
-            "a famine caused by the forced collectivization of farms in Soviet Ukraine",
-            "deportations ordered by the Ottoman government during the First World War",
-            "Allied bombing raids on German cities near the end of the war",
+            "Poland had the largest Jewish population in Europe, and it came under German rule when Germany conquered Poland in 1939.",
+            "The Polish government built the camps before the war and later handed them over to Germany.",
+            "Poland was Germany's ally and asked Germany to build the camps on its territory.",
+            "German law did not allow the Nazi regime to build camps inside Germany.",
           ],
           why: [
-            "Correct. During the Second World War, the Nazi regime murdered about six million Jews, using mobile killing units in the east and death camps such as Auschwitz-Birkenau.",
-            "The famine of 1932 and 1933 in Ukraine resulted from Soviet policies under Stalin, not Nazi rule.",
-            "The Ottoman deportations of 1915 targeted Armenians, decades before the events Jackson describes.",
-            "Allied bombing killed many German civilians, but it does not explain the disappearance of most of Europe's Jews.",
+            "Correct. About 3.3 million Jews lived in Poland in 1939, and the conquest of Poland put them under Nazi rule. The killing centers were built in rural places near rail lines, so Jews from Poland's ghettos and from across occupied Europe could be brought to them.",
+            "Germany invaded Poland in September 1939 and ruled it by force. The Polish government fled abroad, and the SS built the killing centers in 1941 and 1942.",
+            "Poland was Germany's first victim in the Second World War, not its ally.",
+            "The map shows concentration camps inside Germany from 1933, so the regime faced no such limit.",
           ],
           answer: 0 },
         { id: "w7a-m14", skill: "u7", type: "mcq", set: "w7a-s5", topic: "7.7", reasoning: "Causation",
-          question: "The \"captive enemies\" mentioned in the first paragraph were in Allied hands in 1945 most directly because",
+          question: "The years given on the map for the killing centers, 1941 and 1942, came soon after which development of the Second World War?",
           choices: [
-            "Allied armies had invaded Germany from the east and the west, and Germany had surrendered unconditionally in May 1945",
-            "Germany had signed an armistice in November 1918",
-            "Japan's surrender after the atomic bombings had ended the war in Europe",
-            "the League of Nations had ordered the arrest of Nazi leaders",
+            "Germany's invasion of the Soviet Union in June 1941, which brought millions more Jews under German control",
+            "The Allied landings in Normandy",
+            "The Munich Agreement",
+            "The surrender of Germany",
           ],
           why: [
-            "Correct. Soviet forces captured Berlin while American, British, and other Allied armies crossed the Rhine, and Germany's unconditional surrender in May 1945 left its surviving leaders in Allied custody.",
-            "The armistice of 1918 ended the First World War, not the Second.",
-            "The war in Europe ended in May 1945, three months before Japan surrendered in August.",
-            "The League of Nations had failed to stop aggression in the 1930s and took no part in arresting German leaders.",
+            "Correct. As the German army advanced into the Soviet Union in 1941, mobile killing units shot hundreds of thousands of Jews, and the regime moved toward murdering all of Europe's Jews. The first gassings at Chelmno began in December 1941, and the other killing centers followed in 1942.",
+            "The Allies landed in Normandy in June 1944, two years after most of the killing centers on the map began operating.",
+            "The Munich Agreement of 1938 gave Germany the Sudetenland. It came three years before the first killing center and did not bring large Jewish populations under German rule.",
+            "Germany surrendered in May 1945. By then Soviet troops had already reached Auschwitz-Birkenau, in January 1945.",
           ],
           answer: 0 },
         { id: "w7a-m15", skill: "u7", type: "mcq", set: "w7a-s5", topic: "7.9", reasoning: "Comparison",
-          question: "The approach to the defeated enemy described in the first paragraph differed from the peace settlement after the First World War in that the Allies in 1945",
+          question: "Which of the following best describes a difference between the camps inside Germany and the killing centers shown on the map?",
           choices: [
-            "held individual leaders legally responsible before an international court, while the 1919 settlement placed the main responsibility on Germany as a state",
-            "refused to occupy any part of the defeated country and left its existing government in charge",
-            "allowed Germany to keep the territory it had conquered during the war in exchange for reparations",
-            "negotiated the terms of peace as equals with a new German government chosen by the German people",
+            "The camps in Germany opened in the 1930s, soon after the Nazis took power, to imprison their political opponents and others, while the killing centers were built during the war to murder Jews in large numbers.",
+            "The camps in Germany were built after the killing centers, to hold the people who survived them.",
+            "The camps in Germany were run by the Allies to hold German prisoners of war.",
+            "The killing centers were inside Germany, while the concentration camps were in occupied Poland.",
           ],
           why: [
-            "Correct. The Treaty of Versailles blamed Germany and its allies and demanded reparations, and the planned trials of German leaders after 1919 mostly did not happen; at Nuremberg, leading Nazis were tried for crimes against peace, war crimes, and crimes against humanity.",
-            "The Allies divided Germany into four occupation zones after 1945.",
-            "Germany lost all the land it had conquered, and more, after 1945.",
-            "Germany surrendered unconditionally in 1945, and the Allies governed it directly instead of negotiating with a German government.",
+            "Correct. Dachau opened in 1933, a few weeks after Hitler became chancellor, and its first prisoners were political opponents such as Communists and Social Democrats. The killing centers opened in 1941 and 1942, during the war, and were built to kill people with poison gas, most of them Jews.",
+            "The map gives 1933 to 1937 for the camps in Germany and 1941 and 1942 for the killing centers, so the camps in Germany came first.",
+            "The Nazi regime ran the camps in Germany. Allied troops reached them only in 1945, when they freed the surviving prisoners.",
+            "This reverses the map, which places the three concentration camps in Germany and the five killing centers in occupied Poland.",
           ],
           answer: 0 },
 

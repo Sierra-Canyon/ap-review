@@ -1,5 +1,8 @@
 // Topic 8.6 Quiz: Newly Independent States
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -18,11 +21,8 @@ export const sets = {
     ] }],
   },
   "t86-s2": {
-    id: "t86-s2", name: "Nigeria's civil war", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that Nigeria's civil war showed the dangers that colonial borders posed to new states. British rule had joined more than 250 ethnic groups into one colony, with the Hausa and Fulani largely in the north, the Yoruba in the southwest, and the Igbo in the southeast. After independence in 1960, politics divided along these regional lines. Two military coups in 1966 were followed by the killing of thousands of Igbo living in the north, and more than a million fled to the southeast. In 1967, the southeastern region declared itself the independent Republic of Biafra. The Nigerian government, which wanted to keep the region and its oil fields, blockaded Biafra, and as many as a million or more people, many of them children, died, mostly from starvation, before Biafra surrendered in 1970." },
-      PRACTICE,
-    ] }],
+    id: "t86-s2", name: "Nigeria's civil war", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u8-biafra", "The Nigerian Civil War, 1967 to 1970: Biafra declared independence on May 30, 1967, and surrendered in January 1970 (relief route approximate)", "Encyclopaedia Britannica, \"Nigerian Civil War\" and \"Biafra,\" and Foreign Relations of the United States, 1969 to 1976, volume E-5, part 1, on the Uli relief flights") }],
   },
   "t86-s3": {
     id: "t86-s3", name: "From the colonies to Britain", intro: SAQ,
@@ -62,31 +62,31 @@ export default {
             "Privatization came more often in the 1980s and 1990s.",
             "They sought to reduce foreign control.",
             "This is false."]),
-        // ===== Set 2: Nigeria =====
-        M(5, "t86-s2", "Causation", "According to the passage, a long-term cause of the Nigerian civil war was",
-          ["British rule that joined many ethnic groups into one colony", "a war between Nigeria and Britain", "the discovery of gold in the north", "Nigeria's alliance with the Soviet Union"],
-          ["Correct. Colonial borders united groups that later divided along regional lines.",
-            "No such war occurred.",
-            "Gold is not mentioned; oil is.",
-            "This is not mentioned."]),
-        M(6, "t86-s2", "Developments and processes", "The Nigerian government's determination to keep Biafra was influenced by",
-          ["the region's oil fields, an important source of national income", "Biafra's lack of resources", "British demands that Biafra become independent", "a treaty with Biafra signed in 1960"],
-          ["Correct. The passage says the government wanted to keep the region and its oil.",
-            "The region had oil.",
-            "Britain supported Nigeria's unity.",
-            "No such treaty existed."]),
-        M(7, "t86-s2", "Comparison", "The war in Nigeria is most similar to which other conflict in a new state?",
-          ["The violence that followed the partition of British India in 1947", "The Meiji Restoration", "The unification of Germany", "The Berlin airlift"],
-          ["Correct. In both, divisions among peoples inside former colonial borders led to mass violence after independence.",
-            "That was a reform movement in Japan in 1868.",
-            "That created a nation-state in Europe in 1871.",
-            "That was a Cold War standoff."]),
-        M(8, "t86-s2", "Claims and evidence in sources", "Which evidence from the passage best supports the claim that civilians suffered most in the war?",
-          ["As many as a million or more people, many of them children, died mostly from starvation.", "Two military coups took place in 1966.", "Biafra declared independence in 1967.", "Nigeria became independent in 1960."],
-          ["Correct. The blockade caused mass starvation among civilians.",
-            "This describes politics.",
-            "This describes politics.",
-            "This describes independence."]),
+        // ===== Set 2: Nigerian Civil War map =====
+        M(5, "t86-s2", "Developments and processes", "Based on the dates on the map, which of the following best describes how the Nigerian government defeated Biafra?",
+          ["It took Biafra's capital and its coastal oil centers first, cutting Biafra off from the sea, and took the last inland towns only in 1970.", "It won the war in a few weeks by capturing every Biafran city in the summer of 1967.", "It attacked from the sea at São Tomé and moved north toward Uli.", "It defended Lagos at Ore but never entered the mostly Igbo southeast."],
+          ["Correct. The map shows Enugu taken in October 1967 and Port Harcourt in May 1968, while Owerri, inland, was taken in January 1970, near the end of the war.",
+            "The map's dates run from 1967 to 1970, so the fighting lasted more than two years.",
+            "São Tomé is an island far out in the Gulf of Guinea; the dashed line from it marks relief flights, not an attack.",
+            "Ore is where the Biafran advance was stopped, but the map also shows federal forces taking Enugu, Port Harcourt, and Owerri in the southeast."]),
+        M(6, "t86-s2", "Causation", "The places marked on the coast of the southeast help explain why the Nigerian government fought to keep Biafra. Which of the following best states that reason?",
+          ["The oil refinery and export terminal at Port Harcourt and Bonny lay in the land Biafra claimed, and oil was a growing source of Nigeria's income.", "Biafra held Lagos, the federal capital, so the government had to retake it to survive.", "The north of Nigeria held the country's oil, and its people needed the southeast's ports to ship it.", "Britain had promised Biafra independence and Nigeria wanted to stop British plans."],
+          ["Correct. The map places Nigeria's oil refinery and export terminal inside the region that seceded, so losing Biafra meant losing much of the country's oil wealth.",
+            "The map shows Lagos in the southwest, far from Biafra, and it stayed in federal hands.",
+            "The map marks oil sites in the southeast, not in the north.",
+            "Britain backed Nigeria's unity and sold arms to the federal government."]),
+        M(7, "t86-s2", "Causation", "The labels for the three largest ethnic groups on the map best reflect which long-term cause of the war?",
+          ["British colonial rule joined regions with different majority peoples into one state, and politics after independence divided along those regional lines.", "The Cold War split Nigeria into a communist north and a capitalist south.", "The partition of British India spread religious violence to West Africa.", "The United Nations drew Nigeria's borders when the country became independent in 1960."],
+          ["Correct. The map shows a mostly Hausa and Fulani north, a mostly Yoruba southwest, and a mostly Igbo southeast inside one country; after the killings of Igbo in the north in 1966, the mostly Igbo east declared itself Biafra.",
+            "Both the Soviet Union and Britain supplied the federal government, so the war did not follow Cold War lines.",
+            "The war grew from divisions inside Nigeria, not from events in South Asia.",
+            "Nigeria's borders were drawn by Britain during colonial rule, not by the United Nations."]),
+        M(8, "t86-s2", "Developments and processes", "The night relief flights shown on the map are best understood as evidence of which development?",
+          ["Humanitarian groups working across borders to bring food to civilians starving under a wartime blockade", "A Soviet airlift of weapons to Biafra to spread communism in West Africa", "A United Nations peacekeeping force sent to separate the two armies", "Biafra's export of oil by air after it lost its seaports"],
+          ["Correct. With its seaports lost, Biafra could be reached only by air, and church groups and the Red Cross flew food into Uli at night as starvation killed many civilians.",
+            "The Soviet Union armed the federal government, not Biafra.",
+            "No United Nations force was sent to Nigeria during the war.",
+            "The flights carried food and medicine in, and the map shows the oil centers already in federal hands by 1968."]),
         // ===== SAQ: Migration =====
         Q("a", "Identify ONE region from which people migrated to Britain after 1948, as described in the passage.",
           "The response names one region from the passage.",

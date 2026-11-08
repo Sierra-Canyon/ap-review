@@ -1,5 +1,7 @@
 // Topic 6.6 Quiz: Causes of Migration in an Interconnected World
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against ";
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -17,10 +19,10 @@ export const sets = {
     ] }],
   },
   "t66-s2": {
-    id: "t66-s2", name: "Leaving southern China", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that both troubles at home and opportunities abroad drove millions of people to leave southern China in the 1800s. The provinces of Guangdong and Fujian were crowded, and the Taiping Rebellion of 1850 to 1864 and local wars between ethnic groups brought death and ruin to many districts. At the same time, news of gold strikes in California in 1848 and in Australia in 1851 spread through the port of Hong Kong. Many emigrants paid for their passage on credit and worked off the debt abroad, while others signed contracts as laborers. Between 1847 and 1874, more than 100,000 Chinese contract laborers were shipped to Cuba to work on sugar plantations, and many others went to Peru, often in harsh conditions. Most emigrants were young men who planned to send money home and someday return to their families' villages." },
-      PRACTICE,
+    id: "t66-s2", name: "Gold rushes, 1848 to 1896", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u6-gold-rushes"], caption: "Major gold rushes, 1848 to 1896, with the year each began" },
+      { cite: MAP + "Encyclopaedia Britannica (\"Gold rush,\" \"Otago,\" and \"Kalgoorlie-Boulder\") and Wikipedia, \"Gold rush\".", kind: "map" },
     ] }],
   },
   "t66-s3": {
@@ -61,31 +63,31 @@ export default {
             "Irish emigrants went mainly to English-speaking lands.",
             "The passage describes depopulation, not English settlement.",
             "Emigration went the other way."]),
-        // ===== Set 2: Southern China =====
-        M(5, "t66-s2", "Causation", "Which of the following was a pull factor for Chinese emigration, according to the passage?",
-          ["Gold strikes in California and Australia", "The Taiping Rebellion", "Crowding in Guangdong and Fujian", "Local wars between ethnic groups"],
-          ["Correct. A pull factor attracts migrants to a destination; news of gold drew people abroad.",
-            "This was a push factor at home.",
-            "This was a push factor at home.",
-            "This was a push factor at home."]),
-        M(6, "t66-s2", "Developments and processes", "The contract labor described in the passage best illustrates which development of the 1800s?",
-          ["The use of contract or indentured workers from Asia on plantations after the decline of slavery", "The expansion of the Atlantic slave trade to China", "The end of plantation agriculture in the Americas", "Chinese government control of the sugar trade"],
-          ["Correct. Cuba and Peru recruited Chinese workers as slavery declined, often under harsh conditions.",
-            "Chinese workers were contracted, not enslaved in the legal sense, though conditions were often brutal.",
-            "Plantations continued.",
-            "The passage says nothing about Chinese government control."]),
-        M(7, "t66-s2", "Comparison", "Chinese emigration as described in the passage is most similar to Italian emigration of the late 1800s in that both",
-          ["involved many young men who sent money home and often planned to return", "were caused mainly by gold strikes in Italy", "went mostly to Africa", "were organized by the Chinese and Italian armies"],
-          ["Correct. Many Italian and Chinese migrants worked abroad, sent remittances, and returned home.",
-            "Italy had no gold strikes driving emigration.",
-            "Both groups went mainly to the Americas and, for Chinese, Southeast Asia.",
-            "Neither was organized by armies."]),
-        M(8, "t66-s2", "Contextualization", "The Taiping Rebellion mentioned in the passage is best understood as",
-          ["a massive civil war in China that killed millions and weakened the Qing dynasty", "a British attack on Hong Kong", "a gold rush in southern China", "a Japanese invasion of China"],
-          ["Correct. The rebellion, led by Hong Xiuquan, devastated much of southern and central China.",
-            "It was a Chinese rebellion.",
-            "It was a civil war.",
-            "Japan did not invade China in this period."]),
+        // ===== Set 2: Map of gold rushes =====
+        M(5, "t66-s2", "Developments and processes", "The map best illustrates which development of the period c. 1848 to c. 1900?",
+          ["Discoveries of gold drew migrants to settler colonies and former colonies around the Pacific and in southern Africa.", "Gold discoveries drew European migrants mainly to China and India.", "Gold rushes took place mostly in Europe and drew migrants from the Americas.", "Gold rushes ended after the California rush of 1848."],
+          ["Correct. Every rush on the map is in western North America, Australia, New Zealand, or South Africa, lands that settlers from Europe had taken or were taking, and each one drew people from far away in search of gold.",
+            "The map marks no rushes in China or India. China, in fact, sent many migrants to the gold fields.",
+            "This reverses the map. No rush is marked in Europe; Europe was a region that sent gold seekers, not one that received them.",
+            "The map shows rushes beginning as late as 1886, 1893, and 1896."]),
+        M(6, "t66-s2", "Continuity and change", "Which conclusion is best supported by the years on the map?",
+          ["For about fifty years, new rushes kept drawing waves of migrants to one region after another.", "All the rushes began within the same decade.", "The rushes in Australia began before any rush in North America.", "The last rush shown on the map took place in southern Africa."],
+          ["Correct. The years run from California in 1848 to the Klondike in 1896, and a new rush began somewhere every few years or decades.",
+            "The years on the map range from 1848 to 1896, almost half a century.",
+            "The California rush of 1848 came before the first Australian rush, in Victoria in 1851.",
+            "The latest year on the map is the Klondike, in northwestern Canada, in 1896. The Witwatersrand rush began in 1886."]),
+        M(7, "t66-s2", "Causation", "Which group of migrants was most directly drawn by the rush that the map dates to 1851?",
+          ["British, Irish, and Chinese gold seekers who sailed to southeastern Australia", "Chinese gold seekers who sailed to South Africa", "Americans who traveled north to the Yukon in Canada", "Italian farmworkers who sailed to Argentina for the harvest"],
+          ["Correct. The map dates the Victoria rush, in southeastern Australia, to 1851. Diggers came from Britain and Ireland, from other parts of Australia, and from southern China; by the end of the 1850s tens of thousands of Chinese miners lived in Victoria.",
+            "The map dates the South African rush, on the Witwatersrand, to 1886, not 1851.",
+            "The Klondike rush in the Yukon began in 1896, according to the map.",
+            "Italian seasonal workers in Argentina harvested wheat, not gold, and the map marks no rush in South America."]),
+        M(8, "t66-s2", "Comparison", "The rush that the map dates to 1886 differed from the earlier rushes shown in that",
+          ["large companies with heavy machinery soon took over the gold fields, hiring many African migrant workers", "it drew no migrants from outside the region", "most of the miners were independent prospectors who panned for gold in streams", "it took place in a land with no European settlers"],
+          ["Correct. The Witwatersrand's gold lay deep underground in low-grade ore, so mining companies backed by European investors soon replaced independent diggers. They hired large numbers of Black African men who migrated from across southern Africa on short labor contracts.",
+            "The Witwatersrand drew prospectors and investors from Europe and workers from across southern Africa.",
+            "Independent prospectors panning in streams were typical of earlier rushes such as California's. On the Witwatersrand the ore had to be crushed by machines.",
+            "The Witwatersrand lay in the Transvaal, a republic founded by Boer settlers of European descent."]),
         // ===== SAQ: Japanese emigration =====
         Q("a", "Identify ONE cause of Japanese emigration described in the passage.",
           "The response names one cause from the passage.",

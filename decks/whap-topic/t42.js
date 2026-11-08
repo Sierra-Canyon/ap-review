@@ -1,5 +1,9 @@
 // Topic 4.2 Quiz: Exploration: Causes and Events
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -19,11 +23,8 @@ export const sets = {
     ] }],
   },
   "t42-s2": {
-    id: "t42-s2", name: "The Canary Islands before Columbus", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that the conquest of the Canary Islands, off the Atlantic coast of Africa, was a rehearsal for the conquest of the Americas. Norman adventurers working for the crown of Castile began the conquest in 1402, and in 1479 Portugal recognized Castile's claim to the islands in return for Castile's recognition of Portuguese rights along the African coast. The Indigenous people of the islands, often called Guanches, fought back with stone and wooden weapons, and the last large island, Tenerife, did not fall until 1496. Many islanders were killed, enslaved, or died of diseases brought by the newcomers. Settlers from Castile and Portugal then planted sugar cane and built mills worked by enslaved Africans and islanders. In 1492, Christopher Columbus stopped at the Canaries to take on water and supplies before sailing west, and the islands' trade winds carried his ships across the Atlantic." },
-      PRACTICE,
-    ] }],
+    id: "t42-s2", name: "Three voyages from Portugal and Castile", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u4-iberian-voyages", "Three voyages from Portugal and Castile, 1487 to 1498 (routes approximate)", "Encyclopaedia Britannica (\"Vasco da Gama,\" \"Bartolomeu Dias,\" and \"Christopher Columbus: The first voyage\"), World History Encyclopedia, \"Vasco da Gama,\" and South African History Online, \"Bartolomeu Dias\"") }],
   },
   "t42-s3": {
     id: "t42-s3", name: "Magellan's voyage", intro: SAQ,
@@ -63,31 +64,31 @@ export default {
             "Spain, not Portugal, conquered the Mexica (Aztec) Empire, in 1521.",
             "European trade with Africa grew, including the Atlantic slave trade.",
             "Zheng He's voyages took place from 1405 to 1433 and were not caused by Portuguese voyages."]),
-        // ===== Set 2: The Canary Islands =====
-        M(5, "t42-s2", "Comparison", "The conquest of the Canary Islands described in the passage is most similar to the Spanish conquest of the Caribbean in which way?",
-          ["In both, Indigenous people were killed, enslaved, or died of disease, and settlers built plantations with enslaved labor.", "In both, Indigenous people defeated the Europeans and kept their independence.", "In both, the conquest took place after 1600.", "In both, the Portuguese crown led the conquest."],
-          ["Correct. The passage describes conquest, enslavement, disease, and sugar plantations, the same pattern Spain followed on Hispaniola and other islands after 1492.",
-            "The passage says Tenerife, the last large island, fell in 1496.",
-            "The passage dates the conquest from 1402 to 1496.",
-            "The passage says Castile, a Spanish kingdom, led the conquest, and Portugal recognized its claim."]),
-        M(6, "t42-s2", "Causation", "According to the passage, the Canary Islands helped make Columbus's voyage possible because",
-          ["they gave his ships a place to take on supplies and put them in the path of trade winds blowing west", "their people gave Columbus maps of the Americas", "they were the home of the sailors who had already reached America", "Portugal paid for his voyage from there"],
-          ["Correct. The passage says he took on water and supplies there and that the islands' trade winds carried his ships across.",
-            "Nothing in the passage suggests the islanders knew of the Americas.",
-            "The passage does not say anyone had reached America from the Canaries before Columbus.",
-            "Columbus sailed for Castile. Portugal had turned him down."]),
-        M(7, "t42-s2", "Developments and processes", "The agreement of 1479 described in the passage is most similar to which later agreement?",
-          ["The Treaty of Tordesillas of 1494, in which Spain and Portugal divided newly found lands between them", "The Peace of Westphalia of 1648, which ended the Thirty Years' War", "The Treaty of Nerchinsk of 1689 between Russia and Qing China", "The Treaty of Nanjing of 1842, which ended the First Opium War"],
-          ["Correct. Like the 1479 agreement, Tordesillas settled Castilian and Portuguese claims to lands overseas by dividing them.",
-            "Westphalia ended a European war over religion and power, not overseas claims.",
-            "Nerchinsk set a land border between two land-based empires in Asia.",
-            "Nanjing came centuries later and forced China to open ports to Britain."]),
-        M(8, "t42-s2", "Causation", "The sugar mills described in the passage most directly foreshadowed which later development?",
-          ["Plantations in Brazil and the Caribbean that depended on enslaved Africans", "The Industrial Revolution in Britain", "The decline of sugar as a trade good after 1500", "Sugar growing in China for export to Europe"],
-          ["Correct. The Atlantic islands, first Madeira and the Canaries, then São Tomé, were testing grounds for the sugar plantation system that spread across the Atlantic.",
-            "The Industrial Revolution began in the late 1700s with textiles and steam power.",
-            "Sugar became one of the most valuable trade goods of the period.",
-            "Europe's sugar came from the Atlantic world, not from China."]),
+        // ===== Set 2: Three voyages (map) =====
+        M(5, "t42-s2", "Comparison", "Which difference between the Portuguese and Castilian voyages is shown on the map?",
+          ["The Portuguese sailed south around Africa toward India, while Columbus sailed west across the Atlantic.", "Only the Castilian voyage reached a port in Asia.", "The Portuguese ships stayed in sight of the coast the whole way, while Columbus left the coast.", "Columbus sailed first, and the Portuguese then followed his route."],
+          ["Correct. The map shows Dias and da Gama going south and around the tip of Africa, with da Gama reaching Calicut in India, while Columbus sailed west from the Canary Islands to the Caribbean.",
+            "Columbus reached San Salvador and Hispaniola in the Caribbean, not Asia. Da Gama, sailing for Portugal, reached Calicut.",
+            "Da Gama's route swings far out into the open South Atlantic, away from the African coast.",
+            "Dias sailed in 1487 to 1488, before Columbus's voyage of 1492, and Columbus sailed west, not around Africa."]),
+        M(6, "t42-s2", "Causation", "Da Gama's destination, shown on the map, best reflects which motive for Portuguese voyages?",
+          ["Buying pepper and other spices directly in India rather than through Venetian and Muslim middlemen", "Finding land in the Caribbean for sugar plantations", "Spreading Protestant Christianity to the peoples of Asia", "Joining Columbus in the islands he had reached"],
+          ["Correct. Calicut, on India's Malabar Coast, was a major market for pepper and other spices. Reaching it by sea let Portugal buy spices at the source and cut out the merchants who had carried them overland and through the Mediterranean.",
+            "Da Gama sailed to India. The Caribbean islands on the map were reached by Columbus for Castile.",
+            "Portugal was a Catholic kingdom, and the Protestant Reformation began in 1517, after this voyage.",
+            "The map shows da Gama sailing to India, away from the islands Columbus reached."]),
+        M(7, "t42-s2", "Continuity and change", "Comparing Dias's route with da Gama's route on the map shows which change in Portuguese sailing?",
+          ["Da Gama left the African coast and sailed a wide arc through the open South Atlantic, using ocean winds instead of following the shore.", "Da Gama sailed east through the Mediterranean and the Red Sea instead of around Africa.", "Da Gama turned back at the same point where Dias had turned back.", "Da Gama sailed west across the Atlantic, as Columbus had done."],
+          ["Correct. Dias's dashed line follows the coast of Africa, while da Gama's solid line curves far out to sea, where his fleet was out of sight of land for about three months. The wide route avoided the currents near the Gulf of Guinea and caught winds that carried ships around the Cape.",
+            "Both Portuguese routes on the map go around Africa. Neither passes through the Mediterranean or the Red Sea.",
+            "Dias turned back at Kwaaihoek, while da Gama went on up the east coast of Africa to Malindi and across to Calicut.",
+            "Da Gama swung southwest into the South Atlantic and then east around Africa. He did not cross to the Americas."]),
+        M(8, "t42-s2", "Claims and evidence in sources", "The map's label at Malindi best supports which claim about the Indian Ocean in 1498?",
+          ["The Portuguese entered a trade network that already existed and relied on local sailors who knew the route to India.", "Portugal already controlled the ports of East Africa before da Gama arrived.", "East African ports had no trade with India before Europeans came.", "The Portuguese crossed to India without any help from people in the region."],
+          ["Correct. At Malindi, a pilot who knew the route joined da Gama's fleet and guided it across the Arabian Sea to Calicut. Swahili, Arab, and Indian merchants had sailed these routes with the monsoons for centuries.",
+            "Da Gama was the first Portuguese captain to reach East Africa by sea. Portuguese forts there came later, after 1500.",
+            "A pilot at Malindi knew the way to India because East African ports already traded with India.",
+            "The map's label says a pilot joined at Malindi, so the fleet had local help."]),
         // ===== SAQ: Magellan's voyage =====
         Q("a", "Identify ONE piece of evidence from the passage that supports the claim that Magellan's voyage was driven by competition between Portugal and Spain.",
           "The response points to something specific in the passage that shows rivalry between the two kingdoms.",

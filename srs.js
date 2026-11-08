@@ -65,7 +65,9 @@ function interleave(items, rand) {
 // When nothing is due and nothing is new, it takes the cards that are least solid, so "keep going" always works.
 // types limits the session to some item types (the "only vocabulary" buttons); long items (written and free responses) are capped at two.
 const LONG = new Set(["wr", "fr", "code", "essay", "frq"]);
-export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, filter = null, longCap = 2 } = {}) {
+// mix: { filter, per } makes sure a set has at least `per` items that pass `filter` when the pool has them (AP World uses it
+// so maps, charts, and pictures come up in ordinary review, not only under their own button). Due items are never pushed out.
+export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = Math.random, types = null, skills = null, filter = null, longCap = 2, mix = null } = {}) {
   const pool = openItems(deck, now).filter((it) => (!types || types.includes(it.type)) && (!skills || skills.includes(it.skill)) && (!filter || filter(it)));
   const due = pool.filter((it) => cards[it.id]?.n && cards[it.id].due <= now)
     .sort((a, b) => (cards[a.id].b - cards[b.id].b) || (cards[a.id].due - cards[b.id].due));
@@ -76,6 +78,14 @@ export function buildSession(deck, cards, { size = 10, now = Date.now(), rand = 
     if (pick.length >= size) break;
     if (LONG.has(it.type)) { if (long >= longCap) continue; long++; }
     pick.push(it);
+  }
+  if (mix && pick.length) {
+    const want = Math.min(mix.per, pick.length);
+    const extraMix = [...due, ...fresh].filter((it) => mix.filter(it) && !pick.includes(it) && !LONG.has(it.type));
+    for (let k = pick.length - 1; k >= 0 && pick.filter(mix.filter).length < want && extraMix.length; k--) {
+      const it = pick[k];
+      if (!mix.filter(it) && !LONG.has(it.type) && !cards[it.id]?.n) pick[k] = extraMix.shift();
+    }
   }
   let extra = false;
   if (!pick.length) {

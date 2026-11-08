@@ -1,14 +1,13 @@
 // AP World History: Modern, Unit 9 (Globalization) unit assessment, form w9a.
 // Every stimulus is new: none of these documents or data tables appears in the Unit 9 review bank.
+import { maps } from "../whap/maps.js";
 export const sets = {
   "w9a-s1": {
-    id: "w9a-s1", name: "Bush on AIDS in Africa, 2003", intro: "Use the source below to answer the questions that follow.",
+    id: "w9a-s1", name: "The last cases of smallpox, 1971 to 1977", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [
-      { title: "Source", blocks: [
-        { p: "Today, on the continent of Africa, nearly 30 million people have the AIDS virus, including 3 million children under the age 15. There are whole countries in Africa where more than one-third of the adult population carries the infection. More than 4 million require immediate drug treatment. Yet across that continent, only 50,000 AIDS victims—only 50,000—are receiving the medicine they need. ..." },
-        { p: "AIDS can be prevented. Antiretroviral drugs can extend life for many years. And the cost of those drugs has dropped from $12,000 a year to under $300 a year, which places a tremendous possibility within our grasp. ..." },
-        { p: "And to meet a severe and urgent crisis abroad, tonight I propose the Emergency Plan for AIDS Relief, a work of mercy beyond all current international efforts to help the people of Africa. This comprehensive plan will prevent 7 million new AIDS infections, treat at least 2 million people with life-extending drugs, and provide humane care for millions of people suffering from AIDS and for children orphaned by AIDS." },
-        { cite: "George W. Bush, President of the United States, \"Address Before a Joint Session of the Congress on the State of the Union,\" Washington, D.C., January 28, 2003, in Public Papers of the Presidents of the United States: George W. Bush (2003, Book I).", url: "https://www.govinfo.gov/content/pkg/PPP-2003-book1/pdf/PPP-2003-book1-doc-pg82.pdf", kind: "primary" },
+      { title: "Map", blocks: [
+        { svg: maps["u9-smallpox"], caption: "The last cases of smallpox in each region, 1971 to 1977, and the headquarters of the World Health Organization" },
+        { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against Frank Fenner and others, Smallpox and Its Eradication (World Health Organization, 1988), and Centers for Disease Control, \"Smallpox Surveillance, Worldwide,\" MMWR (1978, reprinted 1999).", kind: "map" },
       ] },
     ],
   },
@@ -98,50 +97,50 @@ export default {
   forms: [
     { id: "w9a", name: "Unit 9 Assessment", group: "Unit 9: Globalization",
       items: [
-        // Set 1: Bush on AIDS in Africa
-        { id: "w9a-m01", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Causation",
-          question: "Which of the following best explains the historical context of the situation Bush describes in the first paragraph?",
+        // Set 1: The last cases of smallpox (map)
+        { id: "w9a-m01", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Developments and processes",
+          question: "The map best illustrates which of the following developments of the period after 1945?",
           choices: [
-            "HIV/AIDS, first identified in the early 1980s, had spread widely in Sub-Saharan Africa, where most infected people could not afford the drugs available in wealthy countries.",
-            "A new strain of influenza had spread around the world as soldiers returned home at the end of the First World War.",
-            "The eradication of smallpox had led African governments to close the clinics that once gave vaccinations.",
-            "The Green Revolution had reduced harvests across Africa, leaving people too weak to resist infection.",
+            "An international campaign coordinated by the World Health Organization ended smallpox one region at a time, until the last natural case in 1977.",
+            "Smallpox spread to new regions of the world along air travel routes in the 1970s.",
+            "Smallpox disappeared first from Africa and last from the Americas.",
+            "New antibiotics allowed doctors in each region to cure smallpox after it had spread.",
           ],
           why: [
-            "Correct. AIDS was identified in the early 1980s, and by 2003 Sub-Saharan Africa was the hardest hit region, while the antiretroviral drugs Bush mentions were reaching mostly people in richer countries.",
-            "This describes the influenza pandemic of 1918, not the AIDS epidemic of the 1980s to 2000s that Bush describes.",
-            "Smallpox was declared eradicated in 1980, but that success did not cause the spread of AIDS, which is a different disease spread in a different way.",
-            "The Green Revolution raised crop yields, mainly in Asia and Latin America, so it did not reduce harvests in Africa.",
+            "Correct. The map marks the last case in each region, from Brazil in 1971 to Somalia in 1977, and the WHO in Geneva ran the campaign that found cases and vaccinated the people around them. Smallpox was declared eradicated in 1980.",
+            "The map shows where smallpox ended, not where it spread, and each place is the last case in its region.",
+            "The map shows the reverse: the last case in the Americas was in Brazil in 1971, and the last cases in the world were in Ethiopia and Somalia in 1976 and 1977.",
+            "Smallpox is caused by a virus, which antibiotics do not kill; it was ended by vaccination.",
           ],
           answer: 0 },
-        { id: "w9a-m02", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Claims and evidence in sources",
-          question: "Bush's statement that the cost of drugs \"has dropped from $12,000 a year to under $300 a year\" is used mainly to support the claim that",
+        { id: "w9a-m02", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Causation",
+          question: "Which of the following best explains why the last cases shown on the map were in Ethiopia and Somalia?",
           choices: [
-            "a large program to treat people with AIDS in poor countries had become practical",
-            "AIDS had stopped spreading in most African countries",
-            "African governments should pay for their own treatment programs",
-            "the United States had already ended the AIDS epidemic within its own borders",
+            "Few roads, herding families who moved often, and war between the two countries made it hard to find every case and vaccinate the people around it.",
+            "Ethiopia and Somalia refused to allow vaccination teams from the World Health Organization to enter.",
+            "No vaccine against smallpox existed until the campaign reached East Africa in the 1970s.",
+            "Smallpox first reached East Africa in the 1970s, carried by travelers from South Asia.",
           ],
           why: [
-            "Correct. Bush says the lower cost \"places a tremendous possibility within our grasp\" and then proposes a plan to treat at least 2 million people.",
-            "Bush says millions need treatment and the plan aims to prevent 7 million new infections, so the disease was still spreading.",
-            "Bush proposes that the United States fund the plan, not that African governments pay for it alone.",
-            "The excerpt discusses only the crisis in Africa and makes no claim that the epidemic had ended in the United States.",
+            "Correct. In the Horn of Africa many people were nomadic herders far from roads, and fighting in the Ogaden region in 1977 disrupted the work, so the disease lasted there after it was gone from Asia.",
+            "Both governments took part in the campaign, which is how the last cases were found and recorded.",
+            "Edward Jenner developed a smallpox vaccine in 1796, and the same kind of vaccine was used everywhere on the map.",
+            "Smallpox had been present in Africa for centuries; the map shows where it ended, not where it arrived.",
           ],
           answer: 0 },
-        { id: "w9a-m03", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Comparison",
-          question: "Compared with the influenza pandemic of 1918, the AIDS crisis described in the excerpt was different in that",
+        { id: "w9a-m03", skill: "u9", type: "mcq", set: "w9a-s1", topic: "9.2", reasoning: "Contextualization",
+          question: "The campaign whose results the map shows is best understood in the context of which of the following?",
           choices: [
-            "medicines existed that could extend the lives of infected people, though most of those who needed them could not obtain them",
-            "it affected only one continent, while the influenza pandemic spread around the world",
-            "it spread mainly through soldiers moving between battlefronts during a world war",
-            "it was caused by bacteria that could be cured quickly with antibiotics",
+            "Cooperation through a United Nations agency during the Cold War, when both the United States and the Soviet Union supplied vaccine and experts",
+            "The League of Nations' efforts to control disease in the years between the two world wars",
+            "Vaccination programs run by European colonial governments in their African and Asian empires",
+            "The response to the HIV/AIDS epidemic, which led governments to build new clinics in Africa and Asia",
           ],
           why: [
-            "Correct. No drug could treat the 1918 influenza, but by 2003 antiretroviral drugs could \"extend life for many years,\" even though Bush says only 50,000 people in Africa were receiving them.",
-            "AIDS was a worldwide epidemic, so Africa was the worst affected region but not the only one.",
-            "This describes the 1918 influenza pandemic, which spread with troop movements at the end of the First World War.",
-            "HIV is a virus, not bacteria, and antiretroviral drugs control it without curing it.",
+            "Correct. The WHO, a UN agency based in Geneva, ran the campaign, and the two Cold War rivals both supported it; the Soviet Union donated much of the vaccine.",
+            "The League of Nations had ended by 1946, decades before the cases on the map.",
+            "By the 1970s Indonesia, Bangladesh, Ethiopia, Somalia, and Brazil were all independent, so their own governments worked with the WHO.",
+            "HIV/AIDS was first identified in 1981, after the last case of smallpox shown on the map.",
           ],
           answer: 0 },
 

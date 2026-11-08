@@ -1,5 +1,8 @@
 // Topic 8.2 Quiz: The Cold War
 // Sources: every stimulus this quiz uses, keyed by id. Written only for this quiz: no source or item here is in review or a unit assessment.
+import { maps } from "../whap/maps.js";
+const MAP = "Map drawn for this review from Natural Earth land outlines (public domain). Places, dates, and routes checked against ";
+const map = (id, caption, refs) => [{ svg: maps[id], caption }, { cite: MAP + refs + ".", kind: "map" }];
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 const ONE = "Use the source below to answer the questions that follow.";
 const SAQ = "Use the passage below to answer all parts of the question that follows.";
@@ -18,11 +21,8 @@ export const sets = {
     ] }],
   },
   "t82-s2": {
-    id: "t82-s2", name: "The Berlin airlift", intro: "Use the passage below to answer the questions that follow.",
-    sources: [{ title: "Source", blocks: [
-      { p: "Many historians argue that the Berlin crisis of 1948 and 1949 turned the division of Germany into a lasting feature of the Cold War. After the war, Germany and its capital, Berlin, were divided into American, British, French, and Soviet zones, with Berlin lying deep inside the Soviet zone. In June 1948, when the Western powers introduced a new currency in their zones, the Soviet Union cut off all road, rail, and canal links to West Berlin. Rather than abandon the city or force their way in, the United States and Britain supplied its two million people by air, flying in food and coal for nearly a year. In May 1949 the Soviets lifted the blockade. That same year, the Western zones became the Federal Republic of Germany, the Soviet zone became the German Democratic Republic, and the Western powers founded NATO." },
-      PRACTICE,
-    ] }],
+    id: "t82-s2", name: "The Berlin airlift", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: map("u8-berlin-airlift", "The Berlin airlift, June 1948 to September 1949: the three air corridors from the western zones of Germany to Berlin (corridors and zone border approximate)", "Roger G. Miller, To Save a City: The Berlin Airlift, 1948 to 1949 (U.S. Air Force, 2000), the Office of the Historian, U.S. Department of State, and Encyclopaedia Britannica, \"Berlin blockade and airlift\"") }],
   },
   "t82-s3": {
     id: "t82-s3", name: "The Cuban Missile Crisis", intro: SAQ,
@@ -62,31 +62,31 @@ export default {
             "It provided aid.",
             "It was an American program.",
             "Western Europe received the aid."]),
-        // ===== Set 2: Berlin =====
-        M(5, "t82-s2", "Causation", "According to the passage, the Soviet Union blockaded West Berlin after",
-          ["the Western powers introduced a new currency in their zones", "the Western powers invaded the Soviet zone", "Germany was reunified", "NATO attacked the Soviet Union"],
-          ["Correct. The currency reform in June 1948 prompted the blockade.",
-            "No invasion occurred.",
-            "Germany was divided.",
-            "NATO was founded after the blockade began and did not attack."]),
-        M(6, "t82-s2", "Developments and processes", "The Western powers' decision to supply Berlin by air best illustrates which Cold War pattern?",
-          ["Confronting the other side without direct military combat between the superpowers", "Using nuclear weapons to settle disputes", "Giving in to every Soviet demand", "Fighting a full-scale war in Europe"],
-          ["Correct. The airlift resisted the blockade without firing a shot.",
-            "No weapons were used.",
-            "They refused to abandon the city.",
-            "No war broke out."]),
-        M(7, "t82-s2", "Continuity and change", "The division of Germany described in the passage lasted until",
-          ["1990, when East and West Germany were reunified after the fall of the Berlin Wall", "1949", "1961", "1945"],
-          ["Correct. Germany was reunified in October 1990.",
-            "The two states were founded in 1949.",
-            "The Berlin Wall was built in 1961.",
-            "The division began in 1945."]),
-        M(8, "t82-s2", "Comparison", "The Berlin crisis is most similar to which other Cold War event?",
-          ["The Cuban Missile Crisis, in which the superpowers faced off without direct war", "The Iranian Revolution", "The independence of Ghana", "The Bandung Conference"],
-          ["Correct. Both were tense standoffs that ended without fighting between the superpowers.",
-            "That was a revolution within Iran.",
-            "That was decolonization.",
-            "That was a meeting of nonaligned states."]),
+        // ===== Set 2: Berlin airlift map =====
+        M(5, "t82-s2", "Developments and processes", "Based on the map, which of the following best explains why the Soviet Union was able to cut West Berlin off by land in June 1948?",
+          ["Berlin lay far inside the Soviet zone, so every road and rail line from the western zones had to cross Soviet-held territory.", "Berlin lay on the border between the Soviet zone and the American zone.", "Berlin was a port on the Baltic Sea that the Soviet navy could close.", "The western zones had no cities large enough to send supplies to Berlin."],
+          ["Correct. The map places Berlin well east of the dashed line, so land traffic from the west had to pass through the Soviet zone, as at the Helmstedt crossing the Soviets closed.",
+            "The map shows Berlin far from the edge of the Soviet zone, not on a border with the American zone.",
+            "The map shows Berlin inland, well south of the Baltic coast, and the blockade closed roads, railways, and canals, not a seaport.",
+            "The map shows Hamburg and Frankfurt in the western zones sending supplies along the corridors."]),
+        M(6, "t82-s2", "Causation", "The routes on the map were used for the airlift mainly because",
+          ["the three air corridors had been agreed to by all four occupying powers, so flying supplies in did not require forcing a way through the Soviet zone on the ground", "Soviet troops had withdrawn from the land between the western zones and Berlin", "aircraft could carry more cargo at lower cost than trains and barges", "the United Nations ordered the Soviet Union to open the corridors"],
+          ["Correct. The corridors were agreed in 1945, so the United States and Britain could supply the city without sending armed convoys across the Soviet zone, which might have started a war.",
+            "The map labels the land between the western zones and Berlin as the Soviet zone, and Soviet forces stayed there throughout the blockade.",
+            "Flying supplies in cost far more than shipping them by land; the airlift was chosen because the land routes were closed.",
+            "The corridors came from agreements among the occupying powers, not from a United Nations order."]),
+        M(7, "t82-s2", "Contextualization", "The division of Germany into the zones shown on the map was a result of",
+          ["agreements among the Allied powers to occupy Germany jointly after its defeat in 1945", "the Treaty of Versailles that ended the First World War in 1919", "the Warsaw Pact, which the Soviet Union formed in 1955", "a vote by the German people to divide their country"],
+          ["Correct. The United States, Britain, the Soviet Union, and France each occupied a zone of Germany, and a sector of Berlin, after Germany surrendered in 1945.",
+            "The Treaty of Versailles took territory from Germany but did not divide it into occupation zones.",
+            "The Warsaw Pact came seven years after the airlift shown on the map.",
+            "The occupying powers, not the German people, decided how Germany would be governed after 1945."]),
+        M(8, "t82-s2", "Continuity and change", "Which of the following best describes how the dashed line on the map changed in the decades after the airlift?",
+          ["It became the border between West Germany and East Germany, founded in 1949, and divided the country until reunification in 1990.", "It disappeared in 1949, when the Soviet Union ended the blockade and withdrew from Germany.", "It became the border between Germany and Poland after the Second World War.", "It was moved east to the Oder River when the Western powers took over the Soviet zone in 1961."],
+          ["Correct. The western zones became the Federal Republic of Germany and the Soviet zone the German Democratic Republic in 1949, and the line between them lasted until 1990.",
+            "The blockade ended in May 1949, but Soviet forces stayed in East Germany for the rest of the Cold War.",
+            "The map shows Poland farther east; the dashed line runs through the middle of Germany.",
+            "The Western powers never took over the Soviet zone; in 1961 East Germany built the Berlin Wall, which hardened the division."]),
         // ===== SAQ: Cuba =====
         Q("a", "Identify ONE cause of the Cuban Missile Crisis described in the passage.",
           "The response names one cause from the passage.",

@@ -27,7 +27,7 @@ export default {
     name: "Topic 2.1 Quiz: Average and Instantaneous Rates of Change",
     group: "Unit 2: Differentiation: Definition and Fundamental Properties",
     items: [
-      { id: "q201-m01", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+      { id: "q201-m01", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "easy",
         question: String.raw`What is the average rate of change of $f(x) = \sqrt{x + 12}$ over the interval $[4, 13]$?`,
         choices: [String.raw`$\frac{1}{9}$`, "$1$", String.raw`$\frac{9}{2}$`, String.raw`$-\frac{1}{9}$`],
         why: [
@@ -36,16 +36,16 @@ export default {
           String.raw`$\dfrac{9}{2}$ is the average of the two function values, $\dfrac{5 + 4}{2}$. The average rate of change divides the change in $f$ by the change in $x$.`,
           String.raw`$-\dfrac{1}{9}$ comes from subtracting in the wrong order in the numerator only: $\dfrac{f(4) - f(13)}{13 - 4}$. Both differences must start from the same endpoint.`,
         ], answer: 0 },
-      { id: "q201-m02", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "q201-s1",
+      { id: "q201-m02", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "easy", set: "q201-s1",
         question: String.raw`Based on the table, what is the average rate of change of $V$ over the interval $2 \le t \le 8$, in gallons per minute?`,
-        choices: ["$7$", "$42$", "$6.75$", String.raw`$\frac{1}{7}$`],
+        choices: ["$7$", "$42$", String.raw`$\frac{27}{4}$`, String.raw`$\frac{1}{7}$`],
         why: [
           String.raw`$\dfrac{V(8) - V(2)}{8 - 2} = \dfrac{94 - 52}{6} = \dfrac{42}{6} = 7$ gallons per minute.`,
           String.raw`$42$ gallons is the change in volume. Divide it by the $6$ minutes that passed.`,
-          String.raw`$6.75$ is $\dfrac{V(8) - V(0)}{8 - 0} = \dfrac{54}{8}$, which uses the interval $0 \le t \le 8$ instead of $2 \le t \le 8$.`,
+          String.raw`$\dfrac{27}{4}$ is $\dfrac{V(8) - V(0)}{8 - 0} = \dfrac{54}{8}$, which uses the interval $0 \le t \le 8$ instead of $2 \le t \le 8$.`,
           String.raw`$\dfrac{1}{7}$ is the reciprocal, $\dfrac{8 - 2}{V(8) - V(2)}$, which gives minutes per gallon.`,
         ], answer: 0 },
-      { id: "q201-m03", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+      { id: "q201-m03", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "easy",
         question: String.raw`Which of the following expressions gives the instantaneous rate of change of $g(x) = 5^{x}$ at $x = 2$?`,
         choices: [
           String.raw`$\displaystyle \lim_{h \to 0} \frac{5^{2+h} - 25}{h}$`,
@@ -59,7 +59,7 @@ export default {
           String.raw`Here $h$ approaches $2$, so the expression equals $\dfrac{5^{4} - 25}{2} = 300$, the average rate of change over $[2, 4]$. The width $h$ must approach $0$.`,
           String.raw`The denominator must be the change in $x$, which is $(2 + h) - 2 = h$, not the new $x$-value $2 + h$. This limit equals $0$.`,
         ], answer: 0 },
-      { id: "q201-m04", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+      { id: "q201-m04", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "moderate",
         question: String.raw`For $h \ne 0$, the average rate of change of a function $k$ over the interval $[1, 1 + h]$ is $6 + 2h - h^{2}$. What is the instantaneous rate of change of $k$ at $x = 1$?`,
         choices: ["$6$", "$7$", "$3$", String.raw`It cannot be determined without a formula for $k$.`],
         why: [
@@ -68,7 +68,7 @@ export default {
           String.raw`$3$ is the value at $h = -1$, the average rate of change over $[0, 1]$. The limit as $h \to 0$ is needed.`,
           String.raw`The average rates of change for every $h$ are given, and their limit as $h \to 0$ is the instantaneous rate of change. No formula for $k$ is needed.`,
         ], answer: 0 },
-      { id: "q201-m05", type: "mcq", skill: "u2", topic: "2.1", calc: false,
+      { id: "q201-m05", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "moderate",
         question: String.raw`The height of an elevator above the ground is $A(t) = 3t^{2} + 2t$ feet at time $t$ seconds. For $h \ne 0$, which expression gives the average rate of change of $A$ over the interval $[2, 2 + h]$?`,
         choices: ["$14 + 3h$", "$14$", "$12 + 3h$", "$14h + 3h^{2}$"],
         why: [
@@ -77,7 +77,7 @@ export default {
           String.raw`$12 + 3h$ drops the $2h$ that comes from the $2t$ term when $A(2 + h)$ is expanded.`,
           String.raw`$14h + 3h^{2}$ is the change $A(2 + h) - A(2)$. It must be divided by the change in time, $h$.`,
         ], answer: 0 },
-      { id: "q201-m06", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "q201-s2",
+      { id: "q201-m06", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "easy", set: "q201-s2",
         question: String.raw`What is the instantaneous rate of change of $f$ at $x = 3$?`,
         choices: [String.raw`$-\frac{3}{2}$`, String.raw`$\frac{1}{2}$`, String.raw`$-\frac{1}{3}$`, String.raw`$-\frac{2}{3}$`],
         why: [

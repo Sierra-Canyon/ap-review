@@ -24,7 +24,7 @@ export const sets = {
 
 const items = [
   {
-    id: "q113-m1", type: "mcq", skill: "u1", topic: "1.13", calc: false,
+    id: "q113-m1", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.13", calc: false,
     question: String.raw`The function $g(x) = \dfrac{3x^2 + 5x - 2}{x^2 + x - 2}$ has a removable discontinuity at $x = -2$. What value should be assigned to $g(-2)$ to make $g$ continuous at $x = -2$?`,
     choices: [String.raw`$\frac{7}{3}$`, String.raw`$-\frac{7}{3}$`, "$3$", "$0$"],
     why: [
@@ -36,21 +36,21 @@ const items = [
     answer: 0,
   },
   {
-    id: "q113-m2", type: "mcq", skill: "u1", topic: "1.13", calc: false,
+    id: "q113-m2", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.13", calc: false,
     question: String.raw`Let $r(x) = \begin{cases} \sqrt{x + k}, & x < 4 \\ x - 1, & x \geq 4, \end{cases}$ where $k$ is a constant. For what value of $k$ is $r$ continuous at $x = 4$?`,
-    choices: ["$5$", "$-1$", "$13$", "$9$"],
+    choices: ["$k = 5$", "$k = -1$", "$k = 13$", "$k = 12$"],
     why: [
       String.raw`The left-hand limit is $\sqrt{4 + k}$, and the right-hand limit and $r(4)$ are both $4 - 1 = 3$. Setting $\sqrt{4 + k} = 3$ gives $4 + k = 9$, so $k = 5$.`,
       String.raw`$-1$ comes from $4 + k = 3$, which forgets to square both sides.`,
       String.raw`$13$ comes from $4 + k = 9$ solved as $k = 9 + 4$. Subtract $4$ instead.`,
-      String.raw`$9$ comes from $\sqrt{k} = 3$, which drops the $4$ under the square root.`,
+      String.raw`$12$ sets the left-hand limit $\sqrt{4 + k}$ equal to $4$, the $x$-value, instead of $r(4) = 3$: $4 + k = 16$.`,
     ],
     answer: 0,
   },
   {
-    id: "q113-m3", type: "mcq", skill: "u1", topic: "1.13", calc: false,
+    id: "q113-m3", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.13", calc: false,
     question: String.raw`The function $m$ is defined by $m(x) = \dfrac{e^{2x} - 1}{e^{x} - 1}$ for $x \neq 0$. What value should be assigned to $m(0)$ to make $m$ continuous at $x = 0$?`,
-    choices: ["$2$", "$1$", "$0$", String.raw`There is no such value of $m(0)$.`],
+    choices: ["$m(0) = 2$", "$m(0) = 1$", "$m(0) = 0$", "No such value exists."],
     why: [
       String.raw`$e^{2x} - 1 = \left(e^{x} - 1\right)\left(e^{x} + 1\right)$, so $m(x) = e^{x} + 1$ for $x \neq 0$. The limit at $x = 0$ is $e^{0} + 1 = 2$.`,
       String.raw`$1$ is $e^{0}$ alone. After canceling, $m(x) = e^{x} + 1$, which approaches $2$.`,
@@ -60,33 +60,33 @@ const items = [
     answer: 0,
   },
   {
-    id: "q113-m4", type: "mcq", skill: "u1", topic: "1.13", calc: false,
-    question: String.raw`Let $p(x) = \dfrac{\sin(x - 2)}{x^2 - 4}$ for $x \neq 2$ and $x \neq -2$. What value of $p(2)$ makes $p$ continuous at $x = 2$?`,
-    choices: [String.raw`$\frac{1}{4}$`, "$1$", "$4$", "$0$"],
+    id: "q113-m4", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.13", calc: false,
+    question: String.raw`Let $p(x) = \dfrac{x^2 - 4}{\sin(x - 2)}$ for $1 < x < 3$, $x \neq 2$. What value of $p(2)$ makes $p$ continuous at $x = 2$?`,
+    choices: ["$p(2) = 4$", String.raw`$p(2) = \frac{1}{4}$`, "$p(2) = 1$", "$p(2) = 0$"],
     why: [
-      String.raw`$p(x) = \dfrac{\sin(x - 2)}{x - 2} \cdot \dfrac{1}{x + 2}$. As $x \to 2$, $\dfrac{\sin(x - 2)}{x - 2} \to 1$ and $\dfrac{1}{x + 2} \to \dfrac{1}{4}$, so the limit is $\dfrac{1}{4}$.`,
-      String.raw`$1$ uses $\dfrac{\sin(x - 2)}{x - 2} \to 1$ but leaves out the factor $\dfrac{1}{x + 2}$.`,
-      String.raw`$4$ is the reciprocal: the factor $x + 2$ is in the denominator, so it contributes $\dfrac{1}{4}$.`,
-      String.raw`$\sin 0 = 0$, but the denominator is also $0$. The form $\dfrac{0}{0}$ does not give $0$.`,
+      String.raw`$p(x) = (x + 2) \cdot \dfrac{x - 2}{\sin(x - 2)}$. As $x \to 2$, $x + 2 \to 4$ and $\dfrac{x - 2}{\sin(x - 2)} \to 1$, so the limit is $4$. Continuity requires $p(2) = 4$.`,
+      String.raw`$\frac{1}{4}$ is the reciprocal of the limit. It treats the quotient as $\dfrac{\sin(x - 2)}{x^2 - 4}$, with the sine on top.`,
+      String.raw`$1$ uses $\dfrac{x - 2}{\sin(x - 2)} \to 1$ but leaves out the factor $x + 2$, which approaches $4$.`,
+      String.raw`The numerator is $0$ at $x = 2$, but so is $\sin 0$. The form $\dfrac{0}{0}$ does not give $0$.`,
     ],
     answer: 0,
   },
   {
-    id: "q113-m5", type: "mcq", skill: "u1", topic: "1.13", calc: false,
+    id: "q113-m5", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.13", calc: false,
     question: String.raw`Let $q(x) = \begin{cases} ax + 2, & x < 1 \\ 5, & x = 1 \\ x^2 + b, & x > 1, \end{cases}$ where $a$ and $b$ are constants. If $q$ is continuous at $x = 1$, what is $a + b$?`,
-    choices: ["$7$", "$9$", "$11$", "$6$"],
+    choices: ["$7$", "$-1$", "$11$", "$13$"],
     why: [
       String.raw`Both one-sided limits must equal $q(1) = 5$. From the left, $a + 2 = 5$, so $a = 3$. From the right, $1 + b = 5$, so $b = 4$. Then $a + b = 7$.`,
-      String.raw`$9$ uses $b = 6$, from adding $1$ to $5$ instead of subtracting it.`,
+      String.raw`$-1$ uses $b = 1 - 5 = -4$, subtracting in the wrong order. From $1 + b = 5$, $b = 5 - 1 = 4$.`,
       String.raw`$11$ uses $a = 7$, from adding $2$ to $5$ instead of subtracting it.`,
-      String.raw`$6$ uses $b = 3$, which evaluates $x^2$ at $x = 1$ as $2$ instead of $1$.`,
+      String.raw`$13$ adds instead of subtracting in both equations, giving $a = 5 + 2 = 7$ and $b = 5 + 1 = 6$.`,
     ],
     answer: 0,
   },
   {
-    id: "q113-m6", type: "mcq", skill: "u1", topic: "1.13", calc: false, set: "q113-s1",
+    id: "q113-m6", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.13", calc: false, set: "q113-s1",
     question: String.raw`The function $g$ is defined by $g(x) = f(x)$ for $x \neq 2$ and $g(2) = c$. For what value of $c$ is $g$ continuous at $x = 2$?`,
-    choices: ["$1$", "$3$", "$2$", String.raw`There is no such value of $c$.`],
+    choices: ["$c = 1$", "$c = 3$", "$c = 2$", "No such value exists."],
     why: [
       String.raw`Both segments approach the open circle at $(2, 1)$, so $\lim_{x \to 2} f(x) = 1$. Since $g$ agrees with $f$ near $x = 2$, $\lim_{x \to 2} g(x) = 1$, and continuity requires $c = 1$.`,
       String.raw`$3$ is the value $f(2)$, which is what makes $f$ discontinuous at $x = 2$.`,

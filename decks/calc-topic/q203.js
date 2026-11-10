@@ -1,6 +1,6 @@
 import { graph } from "../../plot.js";
 
-const f3 = (x) => 3 - (x - 2) / 2 + (x - 2) ** 2 / 4;
+const f3 = (x) => -(x ** 3) / 2 + 3 * x ** 2 - (5 * x) / 2 + 1;
 
 export const sets = {
   "q203-s1": {
@@ -10,10 +10,10 @@ export const sets = {
     sources: [{ title: "", blocks: [{ table: { head: ["$t$ (days)", "$0$", "$4$", "$6$", "$9$", "$15$"], rows: [["$R(t)$ (million gallons)", "$120$", "$138$", "$151$", "$169$", "$190$"]] } }] }],
   },
   "q203-s2": {
-    name: "The graph of f and a tangent line",
+    name: "The graph of f",
     label: "Graph",
-    intro: String.raw`The graph of the function $f$ and the line tangent to the graph of $f$ at $x = 6$ (dashed) are shown below. The tangent line passes through the points $(4, 2)$ and $(8, 8)$.`,
-    sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 8], y: [0, 9], xname: "x", yname: "y", fns: [{ f: f3, from: -1, to: 8, label: "f", labelAt: 1 }, { f: (x) => 5 + 1.5 * (x - 6), from: 3, to: 8, dash: true }], dots: [[6, 5, "closed"], [4, 2, "closed"], [8, 8, "closed"]], alt: "Graph of f, a curve that opens upward, with its lowest point near x = 3. The dashed tangent line at x = 6 touches the curve at (6, 5) and also passes through the grid points (4, 2) and (8, 8)." }) }] }],
+    intro: String.raw`The graph of the differentiable function $f$ is shown below for $0 \le x \le 5$. The points $(2, 4)$, $(3, 7)$, and $(4, 7)$ are on the graph of $f$.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 6], y: [-1, 9], xname: "x", yname: "y", fns: [{ f: f3, from: 0, to: 5 }], labels: [[1, 3, "f"]], dots: [[2, 4, "closed"], [3, 7, "closed"], [4, 7, "closed"]], alt: "Graph of f for x from 0 to 5. The curve starts at (0, 1), dips to a low point near (0.5, 0.4), rises through (1, 1), (2, 4), and (3, 7), reaches a high point a little above y = 7.5 near x = 3.5, passes through (4, 7), and falls to (5, 1). The points (2, 4), (3, 7), and (4, 7) are marked." }) }] }],
   },
   "q203-s3": {
     name: "Values of f near x = 2",
@@ -47,7 +47,7 @@ export default {
     name: "Topic 2.3 Quiz: Estimating Derivatives at a Point",
     group: "Unit 2: Differentiation: Definition and Fundamental Properties",
     items: [
-      { id: "q203-m01", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "q203-s1",
+      { id: "q203-m01", type: "mcq", skill: "u2", topic: "2.3", calc: false, difficulty: "easy", set: "q203-s1",
         question: String.raw`Using the data in the table, what is the best estimate of $R'(7)$, in million gallons per day?`,
         choices: ["$6$", "$18$", String.raw`$\frac{1}{6}$`, String.raw`$\frac{14}{3}$`],
         why: [
@@ -56,7 +56,7 @@ export default {
           String.raw`$\dfrac{1}{6}$ is the reciprocal, $\dfrac{9 - 6}{R(9) - R(6)}$, which would be days per million gallons.`,
           String.raw`$\dfrac{14}{3}$ is $\dfrac{190 - 120}{15 - 0}$, the average rate over all $15$ days. The interval $[6, 9]$, which contains $t = 7$, gives the best estimate.`,
         ], answer: 0 },
-      { id: "q203-m02", type: "mcq", skill: "u2", topic: "2.3", calc: true,
+      { id: "q203-m02", type: "mcq", skill: "u2", topic: "2.3", calc: true, difficulty: "easy",
         question: String.raw`Let $g(x) = \dfrac{x^{2}}{1 + e^{x}}$. What is the value of $g'(1.5)$?`,
         choices: ["$0.212$", "$0.410$", "$0.208$", "$0.274$"],
         why: [
@@ -65,16 +65,16 @@ export default {
           String.raw`$0.208$ is $\dfrac{g(2) - g(1)}{2 - 1}$, the average rate of change over $[1, 2]$. The calculator can find the derivative at $x = 1.5$ directly.`,
           String.raw`$0.274$ is $\dfrac{g(1.5) - g(0)}{1.5 - 0}$, the slope of the line from the origin to the point on the graph, not the slope of the tangent line.`,
         ], answer: 0 },
-      { id: "q203-m03", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "q203-s2",
-        question: String.raw`What is the value of $f'(6)$?`,
-        choices: [String.raw`$\frac{3}{2}$`, String.raw`$\frac{2}{3}$`, "$5$", String.raw`$-\frac{3}{2}$`],
+      { id: "q203-m03", type: "mcq", skill: "u2", topic: "2.3", calc: false, difficulty: "difficult", set: "q203-s2",
+        question: String.raw`Let $g(x) = x^{2} - 3f(x)$. Using the values of $f$ at $x = 2$ and $x = 4$ to estimate $f'(3)$, what is the estimate of $g'(3)$?`,
+        choices: [String.raw`$\frac{3}{2}$`, "$6$", String.raw`$\frac{9}{2}$`, "$-3$"],
         why: [
-          String.raw`$f'(6)$ is the slope of the tangent line. The line passes through $(4, 2)$ and $(8, 8)$, so its slope is $\dfrac{8 - 2}{8 - 4} = \dfrac{3}{2}$.`,
-          String.raw`$\dfrac{2}{3}$ is run over rise, $\dfrac{8 - 4}{8 - 2}$. Slope is the change in $y$ over the change in $x$.`,
-          String.raw`$5$ is $f(6)$, the height of the point of tangency, not the slope.`,
-          String.raw`The tangent line rises from left to right, so its slope is positive.`,
+          String.raw`$f'(3) \approx \dfrac{f(4) - f(2)}{4 - 2} = \dfrac{7 - 4}{2} = \dfrac{3}{2}$. By the sum and constant multiple rules, $g'(x) = 2x - 3f'(x)$, so $g'(3) \approx 6 - 3 \cdot \dfrac{3}{2} = \dfrac{3}{2}$.`,
+          String.raw`$6$ uses the slope from $x = 3$ to $x = 4$, $\dfrac{7 - 7}{1} = 0$, as the estimate of $f'(3)$. The question uses the values at $x = 2$ and $x = 4$, which give $\dfrac{3}{2}$.`,
+          String.raw`$\dfrac{9}{2}$ is $6 - \dfrac{3}{2}$, which drops the constant multiple $3$. The derivative of $3f(x)$ is $3f'(x)$.`,
+          String.raw`$-3$ is $6 - 3 \cdot 3$, which uses the change $f(4) - f(2) = 3$ as the estimate of $f'(3)$ without dividing by $4 - 2 = 2$.`,
         ], answer: 0 },
-      { id: "q203-m04", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "q203-s3",
+      { id: "q203-m04", type: "mcq", skill: "u2", topic: "2.3", calc: false, difficulty: "easy", set: "q203-s3",
         question: String.raw`Using the values at $x = 1.9$ and $x = 2.1$, what is the estimate of $f'(2)$?`,
         choices: ["$4$", "$0.8$", "$0.4$", "$5.8$"],
         why: [
@@ -83,7 +83,7 @@ export default {
           String.raw`$0.4$ divides the change in $f$ by $2$ instead of by $2.1 - 1.9 = 0.2$.`,
           String.raw`$5.8$ is $f(2)$, the value of the function at $x = 2$, not its rate of change.`,
         ], answer: 0 },
-      { id: "q203-m05", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "q203-s4",
+      { id: "q203-m05", type: "mcq", skill: "u2", topic: "2.3", calc: false, difficulty: "easy", set: "q203-s4",
         question: String.raw`Using the data in the table, what is the best estimate of $P'(750)$?`,
         choices: ["$-0.0112$ kilopascals per meter", "$-5.6$ kilopascals per meter", "$-0.0112$ meters per kilopascal", "$0.0112$ kilopascals per meter"],
         why: [
@@ -92,7 +92,7 @@ export default {
           String.raw`The number is right but the units are reversed. A derivative $P'(a)$ has units of $P$ per unit of $a$: kilopascals per meter.`,
           String.raw`The pressure drops from $95.5$ to $89.9$ as the altitude increases, so the estimate is negative.`,
         ], answer: 0 },
-      { id: "q203-m06", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "q203-s5",
+      { id: "q203-m06", type: "mcq", skill: "u2", topic: "2.3", calc: false, difficulty: "moderate", set: "q203-s5",
         question: String.raw`Based on the table, which of the following is the best estimate of $f'(1)$?`,
         choices: ["$2.718$", "$2.859$", "$2.587$", String.raw`$f'(1)$ cannot be estimated because the quotient is undefined at $h = 0$.`],
         why: [

@@ -1,21 +1,29 @@
+import { graph } from "../../plot.js";
+
+// q602-s2: f(x) = (x^3 - 8x^2 + 4x)/16 + 4 on [0, 8]; f(0) = 4, f(2) = 3, f(4) = 1, f(6) = 1, f(8) = 6 (marked points).
+const cubic = (x) => (x ** 3 - 8 * x ** 2 + 4 * x) / 16 + 4;
+
 export const sets = {
   "q602-s1": { name: "A runner's velocity", label: "Table", intro: String.raw`A runner's velocity $v(t)$, in meters per second, is measured at selected times $t$, in seconds. The velocity is a continuous function of $t$.`,
     sources: [{ title: "", blocks: [{ table: { head: ["$t$ (seconds)", "$0$", "$1$", "$4$", "$6$"], rows: [["$v(t)$ (meters per second)", "$2$", "$5$", "$8$", "$3$"]] } }] }] },
+  "q602-s2": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the function $f$ on the interval $0 \le x \le 8$ is shown below. The marked points on the graph are $(0, 4)$, $(2, 3)$, $(4, 1)$, $(6, 1)$, and $(8, 6)$.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 9], y: [0, 7], xname: "x", yname: "y", fns: [{ f: cubic, from: 0, to: 8 }], dots: [[0, 4, "closed"], [2, 3, "closed"], [4, 1, "closed"], [6, 1, "closed"], [8, 6, "closed"]], labels: [[7.1, 5.9, "f"]],
+      alt: "Graph of a smooth curve f on 0 to 8 with marked points (0, 4), (2, 3), (4, 1), (6, 1), and (8, 6). The curve falls from (0, 4) to a low point a little above the x-axis between x = 4 and x = 6, then rises steeply to (8, 6)." }) }] }] },
   "q602-s9": { name: "Cars at a toll plaza", label: "Free response", intro: String.raw`Cars pass through a toll plaza at a rate of $C(t)$ cars per minute, where $t$ is measured in minutes and $C$ is continuous. Selected values of $C(t)$ are given in the table below.`,
     sources: [{ title: "", blocks: [{ table: { head: ["$t$ (minutes)", "$0$", "$4$", "$6$", "$12$", "$20$"], rows: [["$C(t)$ (cars per minute)", "$18$", "$24$", "$22$", "$15$", "$9$"]] } }] }] },
 };
 
 const items = [
-  { id: "q602-m01", type: "mcq", skill: "u6", topic: "6.2", calc: false,
-    question: String.raw`What is the right Riemann sum approximation of $\displaystyle \int_0^4 \left( x^2 + 1 \right) dx$ using 4 subintervals of equal length?`,
-    choices: ["$34$", "$18$", "$26$", "$25$"],
+  { id: "q602-m01", type: "mcq", skill: "u6", topic: "6.2", calc: false, difficulty: "easy", set: "q602-s2",
+    question: String.raw`What is the right Riemann sum approximation of $\displaystyle \int_0^8 f(x)\,dx$ using 4 subintervals of equal length?`,
+    choices: ["$22$", "$18$", "$11$", "$20$"],
     why: [
-      String.raw`Each subinterval has width 1, and the right endpoints are $1, 2, 3, 4$: $1\left( 2 + 5 + 10 + 17 \right) = 34$.`,
-      String.raw`$18$ uses the left endpoints $0, 1, 2, 3$: $1 + 2 + 5 + 10$.`,
-      String.raw`$26$ is the trapezoidal sum, the average of the left sum $18$ and the right sum $34$.`,
-      String.raw`$25$ uses the midpoints $0.5, 1.5, 2.5, 3.5$.`,
+      String.raw`Each subinterval has width 2, and the right endpoints are $2, 4, 6, 8$: $2\left( 3 + 1 + 1 + 6 \right) = 22$.`,
+      String.raw`$18$ uses the left endpoints $0, 2, 4, 6$: $2\left( 4 + 3 + 1 + 1 \right)$.`,
+      String.raw`$3 + 1 + 1 + 6 = 11$ adds the heights at the right endpoints without multiplying by the width 2.`,
+      String.raw`$20$ is the trapezoidal sum, the average of the left sum $18$ and the right sum $22$.`,
     ], answer: 0 },
-  { id: "q602-m02", type: "mcq", skill: "u6", topic: "6.2", calc: false, set: "q602-s1",
+  { id: "q602-m02", type: "mcq", skill: "u6", topic: "6.2", calc: false, difficulty: "moderate", set: "q602-s1",
     question: String.raw`Using a trapezoidal sum with the three subintervals given by the table, what is the approximation of $\displaystyle \int_0^{6} v(t)\,dt$?`,
     choices: ["$34$", "$33$", "$35$", "$31$"],
     why: [
@@ -24,7 +32,7 @@ const items = [
       String.raw`$35$ is the right Riemann sum: $1(5) + 3(8) + 2(3)$.`,
       String.raw`$31$ treats every subinterval as having width $\dfrac{6}{3} = 2$. The subintervals in the table have widths 1, 3, and 2.`,
     ], answer: 0 },
-  { id: "q602-m03", type: "mcq", skill: "u6", topic: "6.2", calc: false,
+  { id: "q602-m03", type: "mcq", skill: "u6", topic: "6.2", calc: false, difficulty: "difficult",
     stem: String.raw`The function $f$ is increasing and concave down on $[a, b]$. Let $A = \displaystyle \int_a^b f(x)\,dx$. Using the same number of equal subintervals, let $L$, $R$, $M$, and $T$ be the left Riemann sum, right Riemann sum, midpoint Riemann sum, and trapezoidal sum approximations of $A$.`,
     question: "Which of the following is true?",
     choices: ["$L < T < A < M < R$", "$L < M < A < T < R$", "$R < T < A < M < L$", "$L < A < T < M < R$"],
@@ -34,16 +42,16 @@ const items = [
       String.raw`This switches $L$ and $R$. That order holds for a decreasing function.`,
       String.raw`For a concave down function, the trapezoids lie below the curve, so $T < A$, not $T > A$.`,
     ], answer: 0 },
-  { id: "q602-m04", type: "mcq", skill: "u6", topic: "6.2", calc: false,
-    question: String.raw`What is the midpoint Riemann sum approximation of $\displaystyle \int_1^7 \dfrac{12}{x}\,dx$ using 3 subintervals of equal length?`,
-    choices: ["$22$", "$11$", String.raw`$\frac{184}{5}$`, String.raw`$\frac{568}{35}$`],
+  { id: "q602-m04", type: "mcq", skill: "u6", topic: "6.2", calc: false, difficulty: "moderate", set: "q602-s2",
+    question: String.raw`What is the midpoint Riemann sum approximation of $\displaystyle \int_0^8 f(x)\,dx$ using 2 subintervals of equal length?`,
+    choices: ["$16$", "$20$", "$28$", "$8$"],
     why: [
-      String.raw`Each subinterval has width 2, and the midpoints are $2, 4, 6$: $2\left( 6 + 3 + 2 \right) = 22$.`,
-      String.raw`$6 + 3 + 2 = 11$ adds the heights without multiplying by the width 2.`,
-      String.raw`$\dfrac{184}{5} = 2\left( 12 + 4 + \dfrac{12}{5} \right)$ uses the left endpoints $1, 3, 5$.`,
-      String.raw`$\dfrac{568}{35} = 2\left( 4 + \dfrac{12}{5} + \dfrac{12}{7} \right)$ uses the right endpoints $3, 5, 7$.`,
+      String.raw`The subintervals are $[0, 4]$ and $[4, 8]$, each of width 4, with midpoints $2$ and $6$: $4\left( f(2) + f(6) \right) = 4(3 + 1) = 16$.`,
+      String.raw`$20 = 4\left( f(0) + f(4) \right)$ uses the left endpoints of the two subintervals, not the midpoints.`,
+      String.raw`$28 = 4\left( f(4) + f(8) \right)$ uses the right endpoints of the two subintervals, not the midpoints.`,
+      String.raw`$8 = 2(3 + 1)$ uses the width 2 from four subintervals. With two subintervals of equal length, each has width 4.`,
     ], answer: 0 },
-  { id: "q602-m05", type: "mcq", skill: "u6", topic: "6.2", calc: false,
+  { id: "q602-m05", type: "mcq", skill: "u6", topic: "6.2", calc: false, difficulty: "easy",
     stem: String.raw`The function $f$ is positive and decreasing on $[0, 6]$. Nothing is known about the concavity of $f$.`,
     question: String.raw`Which of the following must be an overestimate of $\displaystyle \int_0^6 f(x)\,dx$?`,
     choices: [
@@ -58,7 +66,7 @@ const items = [
       "More subintervals make the right sum closer to the integral, but every right rectangle still lies below the curve, so it is still an underestimate.",
       "Whether a midpoint sum is too large or too small depends on concavity, which is not known.",
     ], answer: 0 },
-  { id: "q602-m06", type: "mcq", skill: "u6", topic: "6.2", calc: true,
+  { id: "q602-m06", type: "mcq", skill: "u6", topic: "6.2", calc: true, difficulty: "easy",
     question: String.raw`What is the trapezoidal sum approximation of $\displaystyle \int_1^3 \dfrac{e^{x}}{x}\,dx$ using 4 subintervals of equal length?`,
     choices: ["$8.131$", "$7.137$", "$9.125$", "$7.993$"],
     why: [

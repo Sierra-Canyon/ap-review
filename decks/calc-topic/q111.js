@@ -24,7 +24,7 @@ export const sets = {
 
 const items = [
   {
-    id: "q111-m1", type: "mcq", skill: "u1", topic: "1.11", calc: false,
+    id: "q111-m1", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.11", calc: false,
     question: String.raw`Let $r(x) = \begin{cases} x^2 - 1, & x \leq 2 \\ 2x - 2, & x > 2. \end{cases}$ Which of the following is true?`,
     choices: [
       String.raw`$r$ is not continuous at $x = 2$ because $\lim_{x \to 2} r(x)$ does not exist.`,
@@ -41,24 +41,22 @@ const items = [
     answer: 0,
   },
   {
-    id: "q111-m2", type: "mcq", skill: "u1", topic: "1.11", calc: false,
-    question: String.raw`A function $v$ satisfies $v(4) = 2$ and $\displaystyle \lim_{x \to 4^{-}} v(x) = 2$. Which of the following additional facts would guarantee that $v$ is continuous at $x = 4$?`,
-    choices: [
-      String.raw`$\lim_{x \to 4^{+}} v(x) = 2$`,
-      String.raw`$\lim_{x \to 4^{+}} v(x)$ exists.`,
-      String.raw`$v$ is defined for all real numbers.`,
-      String.raw`$\lim_{x \to 2} v(x) = 4$`,
-    ],
+    id: "q111-m2", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.11", calc: false,
+    question: String.raw`A function $v$ satisfies $v(4) = 2$ and $\displaystyle \lim_{x \to 4^{-}} v(x) = 2$. Which of the following additional facts, each by itself, would guarantee that $v$ is continuous at $x = 4$?
+I. $v$ is defined for all real numbers.
+II. $\displaystyle \lim_{x \to 4^{+}} v(x)$ exists.
+III. $\displaystyle \lim_{x \to 4} v(x)$ exists.`,
+    choices: ["III only", "I and III only", "II and III only", "I, II, and III"],
     why: [
-      String.raw`With both one-sided limits equal to $2$, $\lim_{x \to 4} v(x) = 2 = v(4)$. All three conditions of continuity hold.`,
-      String.raw`The right-hand limit could exist and differ from $2$. Then $\lim_{x \to 4} v(x)$ would not exist.`,
-      String.raw`Being defined everywhere says nothing about the right-hand limit at $x = 4$.`,
-      String.raw`This swaps the input and the output. Continuity at $x = 4$ is about the limit as $x \to 4$.`,
+      String.raw`III is enough: if $\lim_{x \to 4} v(x)$ exists, it equals the left-hand limit, $2$, which is $v(4)$, so all three conditions of continuity hold. II is not enough, because the right-hand limit could exist and equal a number other than $2$. I is not enough, because being defined everywhere says nothing about the right-hand limit at $x = 4$.`,
+      String.raw`I is not enough. $v$ could be defined everywhere and still jump at $x = 4$, with a right-hand limit different from $2$.`,
+      String.raw`II is not enough. The right-hand limit could exist and differ from $2$, and then $\lim_{x \to 4} v(x)$ would not exist.`,
+      String.raw`I and II both allow a jump at $x = 4$: $v$ could be defined everywhere and have a right-hand limit, such as $5$, that differs from $2$.`,
     ],
     answer: 0,
   },
   {
-    id: "q111-m3", type: "mcq", skill: "u1", topic: "1.11", calc: false, set: "q111-s1",
+    id: "q111-m3", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.11", calc: false, set: "q111-s1",
     question: String.raw`At which of the following values of $x$ is $f$ continuous?`,
     choices: ["$x = 1$", "$x = -2$", "$x = 0$", "$x = 3$"],
     why: [
@@ -70,24 +68,24 @@ const items = [
     answer: 0,
   },
   {
-    id: "q111-m4", type: "mcq", skill: "u1", topic: "1.11", calc: false, set: "q111-s1",
+    id: "q111-m4", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.11", calc: false, set: "q111-s1",
     question: String.raw`Which of the following explains why $f$ is not continuous at $x = -2$?`,
     choices: [
-      String.raw`$f(-2)$ is defined and $\lim_{x \to -2} f(x)$ exists, but they are not equal.`,
-      String.raw`$f(-2)$ is not defined.`,
-      String.raw`$\lim_{x \to -2} f(x)$ does not exist.`,
+      String.raw`$\lim_{x \to -2} f(x)$ exists but does not equal $f(-2)$.`,
+      String.raw`$f(-2)$ is not defined, because the graph has an open circle at $x = -2$.`,
+      String.raw`$\lim_{x \to -2} f(x)$ does not exist, because the filled dot is off the segment.`,
       String.raw`$f(-2) = 2$, which does not equal $\lim_{x \to -2} f(x) = 3$.`,
     ],
     why: [
-      String.raw`Both sides approach the open circle at $(-2, 2)$, so $\lim_{x \to -2} f(x) = 2$. The filled dot gives $f(-2) = 3$. The third condition, $\lim_{x \to -2} f(x) = f(-2)$, fails.`,
-      String.raw`The filled dot at $(-2, 3)$ shows that $f(-2) = 3$.`,
-      String.raw`The graph approaches $2$ from both sides of $x = -2$, so the limit exists.`,
+      String.raw`Both sides approach the open circle at $(-2, 2)$, so $\lim_{x \to -2} f(x) = 2$. The filled dot gives $f(-2) = 3$. The limit exists and $f(-2)$ is defined, but the third condition, $\lim_{x \to -2} f(x) = f(-2)$, fails.`,
+      String.raw`The filled dot at $(-2, 3)$ shows that $f(-2) = 3$. The open circle marks the height the graph approaches, not a missing value.`,
+      String.raw`The graph approaches $2$ from both sides of $x = -2$, so the limit exists. A filled dot off the segment changes the value $f(-2)$, not the limit.`,
       String.raw`This swaps the two numbers. The open circle at $(-2, 2)$ gives the limit, and the filled dot at $(-2, 3)$ gives the value.`,
     ],
     answer: 0,
   },
   {
-    id: "q111-m5", type: "mcq", skill: "u1", topic: "1.11", calc: false,
+    id: "q111-m5", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.11", calc: false,
     question: String.raw`Let $s$ be the function defined by $s(x) = \dfrac{x^2 - 16}{x - 4}$ for $x \neq 4$ and $s(4) = 6$. Which of the following is true?`,
     choices: [
       String.raw`$\lim_{x \to 4} s(x)$ exists, but $s$ is not continuous at $x = 4$.`,
@@ -104,10 +102,10 @@ const items = [
     answer: 0,
   },
   {
-    id: "q111-m6", type: "mcq", skill: "u1", topic: "1.11", calc: false,
+    id: "q111-m6", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.11", calc: false,
     question: String.raw`Let $w(x) = \begin{cases} \cos(\pi x), & x < 1 \\ x - 2, & x \geq 1. \end{cases}$ Which of the following is true?`,
     choices: [
-      String.raw`$w$ is continuous at $x = 1$.`,
+      String.raw`$w$ is continuous at $x = 1$, since both one-sided limits equal $w(1)$.`,
       String.raw`$w$ is not continuous at $x = 1$ because $\lim_{x \to 1^{-}} w(x) = 1$.`,
       String.raw`$w$ is not continuous at $x = 1$ because $\lim_{x \to 1^{+}} w(x) \neq w(1)$.`,
       String.raw`$\lim_{x \to 1} w(x)$ does not exist because $\cos(\pi x)$ oscillates.`,

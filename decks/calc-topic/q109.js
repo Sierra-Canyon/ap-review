@@ -21,11 +21,11 @@ export const sets = {
   "q109-s2": {
     name: "Values of k",
     label: "Table",
-    intro: String.raw`The function $k$ is defined by $k(x) = \dfrac{\sqrt{2x + 1} - 3}{x - 4}$ for $x \geq -\dfrac{1}{2}$, $x \neq 4$. Selected values of $k$, rounded to five decimal places, are given in the table.`,
+    intro: String.raw`The function $k$ is defined by $k(x) = \dfrac{x^2 - 16}{x^2 - 3x - 4}$ for $x \neq -1$ and $x \neq 4$. Selected values of $k$, rounded to five decimal places, are given in the table.`,
     sources: [{ title: "", blocks: [
       { table: {
         head: ["$x$", "$3.9$", "$3.99$", "$3.999$", "$4.001$", "$4.01$", "$4.1$"],
-        rows: [["$k(x)$", "$0.33521$", "$0.33352$", "$0.33335$", "$0.33331$", "$0.33315$", "$0.33150$"]],
+        rows: [["$k(x)$", "$1.61224$", "$1.60120$", "$1.60012$", "$1.59988$", "$1.59880$", "$1.58824$"]],
       } },
     ] }],
   },
@@ -44,9 +44,9 @@ export const sets = {
 
 const items = [
   {
-    id: "q109-m1", type: "mcq", skill: "u1", topic: "1.9", calc: false, set: "q109-s1",
-    question: String.raw`What is $\displaystyle \lim_{x \to 2^{-}} \left( f(x) + g(x) \right)$?`,
-    choices: ["$4$", "$8$", "$3$", "The limit does not exist."],
+    id: "q109-m1", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.9", calc: false, set: "q109-s1",
+    question: String.raw`Which of the following is true about $\displaystyle \lim_{x \to 2^{-}} \left( f(x) + g(x) \right)$?`,
+    choices: ["It equals $4$.", "It equals $8$.", "It equals $3$.", "It does not exist."],
     why: [
       String.raw`From the graph, $\lim_{x \to 2^{-}} f(x) = -1$. The table shows $g(x)$ approaching $5$ from both sides of $x = 2$. The limit is $-1 + 5 = 4$.`,
       String.raw`$8$ uses $\lim_{x \to 2^{+}} f(x) = 3$. The limit is from the left, where $f(x)$ approaches $-1$.`,
@@ -56,9 +56,9 @@ const items = [
     answer: 0,
   },
   {
-    id: "q109-m2", type: "mcq", skill: "u1", topic: "1.9", calc: false, set: "q109-s1",
-    question: String.raw`What is $\displaystyle \lim_{x \to -1} \dfrac{f(x)}{x + 3}$?`,
-    choices: ["$1$", String.raw`$-\frac{1}{2}$`, String.raw`$\frac{1}{2}$`, "The limit does not exist."],
+    id: "q109-m2", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.9", calc: false, set: "q109-s1",
+    question: String.raw`Which of the following is true about $\displaystyle \lim_{x \to -1} \dfrac{f(x)}{x + 3}$?`,
+    choices: ["It equals $1$.", String.raw`It equals $-\frac{1}{2}$.`, String.raw`It equals $\frac{1}{2}$.`, "It does not exist."],
     why: [
       String.raw`From the graph, $\lim_{x \to -1} f(x) = 2$, and $\lim_{x \to -1} (x + 3) = 2 \neq 0$. The limit of the quotient is $\dfrac{2}{2} = 1$.`,
       String.raw`$-\frac{1}{2}$ uses the value $f(-1) = -1$ in place of $\lim_{x \to -1} f(x) = 2$.`,
@@ -68,31 +68,31 @@ const items = [
     answer: 0,
   },
   {
-    id: "q109-m3", type: "mcq", skill: "u1", topic: "1.9", calc: false,
-    question: String.raw`A function $p$ satisfies $\displaystyle \lim_{x \to 3^{-}} p(x) = 5$, $\displaystyle \lim_{x \to 3^{+}} p(x) = -1$, and $p(3) = -1$. Which of the following is true?`,
-    choices: [String.raw`$\lim_{x \to 3} p(x)$ does not exist.`, String.raw`$\lim_{x \to 3} p(x) = -1$`, String.raw`$\lim_{x \to 3} p(x) = 2$`, String.raw`$\lim_{x \to 3} p(x) = 5$`],
+    id: "q109-m3", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.9", calc: false,
+    question: String.raw`A function $p$ satisfies $\displaystyle \lim_{x \to 3^{-}} p(x) = 5$, $\displaystyle \lim_{x \to 3^{+}} p(x) = -1$, and $p(3) = -1$. Which of the following limits exists?`,
+    choices: [String.raw`$\lim_{x \to 3} \left(p(x) - 2\right)^2$`, String.raw`$\lim_{x \to 3} \left(p(x)\right)^2$`, String.raw`$\lim_{x \to 3} \left(p(x) + 1\right)^2$`, String.raw`$\lim_{x \to 3} \left|p(x)\right|$`],
     why: [
-      String.raw`The two-sided limit exists only when the one-sided limits are equal. Here they are $5$ and $-1$, so $\lim_{x \to 3} p(x)$ does not exist.`,
-      String.raw`$-1$ matches the right-hand limit and the value $p(3)$, but the left-hand limit is $5$. The value at $x = 3$ does not decide the limit.`,
-      String.raw`$2$ is the average of the one-sided limits. When the one-sided limits differ, the limit does not exist.`,
-      String.raw`$5$ is only the left-hand limit. The right-hand limit is $-1$.`,
+      String.raw`From the left, $\left(p(x) - 2\right)^2 \to (5 - 2)^2 = 9$. From the right, $\left(p(x) - 2\right)^2 \to (-1 - 2)^2 = 9$. Both one-sided limits are $9$, so this limit exists and equals $9$, even though $\lim_{x \to 3} p(x)$ does not exist.`,
+      String.raw`From the left, $\left(p(x)\right)^2 \to 25$, and from the right, $\left(p(x)\right)^2 \to 1$. Squaring does not make $5$ and $-1$ agree.`,
+      String.raw`From the left, $\left(p(x) + 1\right)^2 \to 36$, and from the right, $\left(p(x) + 1\right)^2 \to 0$. The value $\left(p(3) + 1\right)^2 = 0$ matches only the right side, and a value never decides a limit.`,
+      String.raw`From the left, $|p(x)| \to 5$, and from the right, $|p(x)| \to 1$. The absolute value removes the sign of $-1$, but $5 \ne 1$.`,
     ],
     answer: 0,
   },
   {
-    id: "q109-m4", type: "mcq", skill: "u1", topic: "1.9", calc: false, set: "q109-s2",
+    id: "q109-m4", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.9", calc: false, set: "q109-s2",
     question: String.raw`What is $\displaystyle \lim_{x \to 4} k(x)$?`,
-    choices: [String.raw`$\frac{1}{3}$`, "$0$", String.raw`$\frac{1}{6}$`, "The limit does not exist."],
+    choices: [String.raw`$\frac{8}{5}$`, String.raw`$\frac{5}{8}$`, "$4$", "$1$"],
     why: [
-      String.raw`Multiply by the conjugate: $\dfrac{\sqrt{2x+1}-3}{x-4} \cdot \dfrac{\sqrt{2x+1}+3}{\sqrt{2x+1}+3} = \dfrac{2x - 8}{(x-4)\left(\sqrt{2x+1}+3\right)} = \dfrac{2}{\sqrt{2x+1}+3}$ for $x \neq 4$. The limit is $\dfrac{2}{3 + 3} = \dfrac{1}{3}$, which agrees with the table values near $0.3333$.`,
-      String.raw`Substitution gives $\dfrac{0}{0}$, which is indeterminate, not $0$. The table values stay near $0.333$.`,
-      String.raw`$\frac{1}{6}$ loses the factor $2$: $(2x + 1) - 9 = 2x - 8 = 2(x - 4)$, not $x - 4$.`,
-      String.raw`The form $\dfrac{0}{0}$ at $x = 4$ does not mean the limit fails to exist. The table values approach the same number from both sides.`,
+      String.raw`Factor: $\dfrac{(x - 4)(x + 4)}{(x - 4)(x + 1)} = \dfrac{x + 4}{x + 1}$ for $x \neq 4$, so the limit is $\dfrac{8}{5} = 1.6$. The table values approach $1.6$ from both sides, which agrees.`,
+      String.raw`$\frac{5}{8}$ is the reciprocal of the limit. After canceling, $x + 4$ is the numerator. The table values are near $1.6$, not $0.625$.`,
+      String.raw`$4$ is the ratio of the constant terms, $\frac{-16}{-4}$. The common factor $x - 4$ has to be canceled first, and the table values are near $1.6$.`,
+      String.raw`$1$ is the ratio of the leading coefficients, which gives the limit as $x \to \infty$, not as $x \to 4$. The table values are near $1.6$.`,
     ],
     answer: 0,
   },
   {
-    id: "q109-m5", type: "mcq", skill: "u1", topic: "1.9", calc: false,
+    id: "q109-m5", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.9", calc: false,
     question: String.raw`A function $m$ is not defined at $x = -2$, and $\displaystyle \lim_{x \to -2} m(x) = -4$. Which of the following could define $m$?`,
     choices: [String.raw`$m(x) = \frac{x^2 - 4}{x + 2}$`, String.raw`$m(x) = \frac{x + 2}{x^2 - 4}$`, String.raw`$m(x) = \frac{x^2 + 4}{x + 2}$`, String.raw`$m(x) = \frac{x^2 - 4}{x - 2}$`],
     why: [
@@ -104,7 +104,7 @@ const items = [
     answer: 0,
   },
   {
-    id: "q109-m6", type: "mcq", skill: "u1", topic: "1.9", calc: false, set: "q109-s1",
+    id: "q109-m6", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.9", calc: false, set: "q109-s1",
     question: "Which of the following limits does not exist?",
     choices: [String.raw`$\lim_{x \to 2} f(x)$`, String.raw`$\lim_{x \to -1} f(x)$`, String.raw`$\lim_{x \to 2^{+}} f(x)$`, String.raw`$\lim_{x \to 0} f(x)$`],
     why: [

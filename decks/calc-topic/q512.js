@@ -7,7 +7,7 @@ export const sets = {
 };
 
 const items = [
-  { id: "q512-m01", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "q512-m01", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "moderate",
     question: String.raw`At which points on the curve $y^2 = x^3 - 12x + 20$ is the tangent line horizontal?`,
     choices: [String.raw`$(2, 2)$, $(2, -2)$, $(-2, 6)$, and $(-2, -6)$`, String.raw`$(2, 2)$ and $(-2, 6)$ only`, String.raw`$(2, 0)$ and $(-2, 0)$`, String.raw`$\left(0, 2\sqrt{5}\right)$ and $\left(0, -2\sqrt{5}\right)$`],
     why: [
@@ -16,7 +16,7 @@ const items = [
       String.raw`These points are not on the curve: at $x = 2$, $y^2 = 4$, not $0$. Also, $y = 0$ would make the denominator $0$.`,
       String.raw`At $x = 0$, $\dfrac{dy}{dx} = \dfrac{-12}{2y} \ne 0$.`,
     ], answer: 0 },
-  { id: "q512-m02", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "q512-m02", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "moderate",
     question: String.raw`At which points does the curve $x = y^3 - 3y$ have a vertical tangent line?`,
     choices: [String.raw`$(-2, 1)$ and $(2, -1)$`, String.raw`$(1, -2)$ and $(-1, 2)$`, String.raw`$(0, 0)$ only`, "The curve has no vertical tangent lines."],
     why: [
@@ -25,7 +25,7 @@ const items = [
       String.raw`At $(0, 0)$, $\dfrac{dy}{dx} = \dfrac{1}{-3} = -\dfrac{1}{3}$, which is defined, so the tangent line is not vertical.`,
       String.raw`$\dfrac{dy}{dx} = \dfrac{1}{3y^2 - 3}$ is undefined where $3y^2 - 3 = 0$, and the curve has points with $y = \pm 1$.`,
     ], answer: 0 },
-  { id: "q512-m03", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "q512-m03", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "difficult",
     question: String.raw`For the curve $x^3 + y^3 = 9$, what is the value of $\dfrac{d^2y}{dx^2}$ at the point $(1, 2)$?`,
     choices: [String.raw`$-\frac{9}{16}$`, String.raw`$-\frac{1}{4}$`, String.raw`$-\frac{1}{2}$`, String.raw`$\frac{9}{16}$`],
     why: [
@@ -34,7 +34,7 @@ const items = [
       String.raw`This treats $y$ as a constant when differentiating $-\dfrac{x^2}{y^2}$, giving $-\dfrac{2x}{y^2} = -\dfrac{1}{2}$. The quotient rule needs the $y'$ term too.`,
       String.raw`This loses the negative sign in front of $\dfrac{x^2}{y^2}$ when differentiating.`,
     ], answer: 0 },
-  { id: "q512-m04", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "q512-m04", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "difficult",
     stem: String.raw`Consider the curve $x^2 - y^2 = 9$ near the point $(5, 4)$.`,
     question: String.raw`Which of the following is true at $(5, 4)$?`,
     choices: [
@@ -49,16 +49,16 @@ const items = [
       String.raw`$y' = \dfrac{x}{y}$, and $x$ and $y$ are both positive at $(5, 4)$, so $y' > 0$.`,
       String.raw`Both signs are reversed. $y' = \dfrac{5}{4}$ and $y'' = -\dfrac{9}{64}$.`,
     ], answer: 0 },
-  { id: "q512-m05", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "q512-m05", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "difficult",
     question: String.raw`At which point or points does the curve $xy^2 + x^3 = 16$ have a horizontal tangent line?`,
-    choices: ["The curve has no horizontal tangent lines.", String.raw`$(0, 0)$`, String.raw`$\left(2\sqrt[3]{2}, 0\right)$`, String.raw`$(2, 2)$`],
+    choices: ["There are none.", String.raw`$(0, 0)$`, String.raw`$\left(2\sqrt[3]{2}, 0\right)$`, String.raw`$(2, 2)$`],
     why: [
       String.raw`$y^2 + 2xyy' + 3x^2 = 0$ gives $\dfrac{dy}{dx} = -\dfrac{y^2 + 3x^2}{2xy}$. The numerator $y^2 + 3x^2$ is $0$ only at $(0, 0)$, which is not on the curve ($0 \ne 16$). So $\dfrac{dy}{dx}$ is never $0$ on the curve.`,
       String.raw`$(0, 0)$ makes the numerator $0$, but it is not on the curve: $0 + 0 \ne 16$.`,
       String.raw`At $\left(2\sqrt[3]{2}, 0\right)$ the denominator $2xy$ is $0$ and the numerator is not, so the tangent line there is vertical.`,
       String.raw`$(2, 2)$ is on the curve, since $8 + 8 = 16$, but $\dfrac{dy}{dx} = -\dfrac{4 + 12}{8} = -2$ there.`,
     ], answer: 0 },
-  { id: "q512-m06", type: "mcq", skill: "u5", topic: "5.12", calc: true,
+  { id: "q512-m06", type: "mcq", skill: "u5", topic: "5.12", calc: true, difficulty: "moderate",
     stem: String.raw`The point $(1, b)$ lies on the curve $x^2 + xy + y^3 = 9$.`,
     question: String.raw`What is the slope of the line tangent to the curve at $(1, b)$?`,
     choices: ["$-0.346$", "$-2.892$", "$0.346$", "$-0.380$"],

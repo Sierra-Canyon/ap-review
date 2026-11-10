@@ -1,14 +1,14 @@
 // AP Calculus AB unit test, Unit 5: Analytical Applications of Differentiation.
 import { graph } from "../../plot.js";
 
-// Graph of f'(x) = (x + 1)^2(2 - x)/2 on [-2, 3], used by c5t-m04 and c5t-m05.
-// f'(-2) = 2, f'(-1) = 0, f'(1) = 2, f'(2) = 0, f'(3) = -8; f' has a relative minimum at x = -1 and a relative maximum at x = 1.
-const fp = (x) => ((x + 1) ** 2 * (2 - x)) / 2;
+// Graph of f' used by c5t-m04 and c5t-m05: segments (-2, 2)-(-1, 0), (-1, 0)-(1, 3), (1, 3)-(3, -3).
+// f' touches the x-axis at x = -1 (no sign change) and crosses it at x = 2; f' falls on (-2, -1) and (1, 3) and rises on (-1, 1).
 const fpGraph = graph({
-  x: [-2, 3], y: [-8, 3], step: { x: 1, y: 2 }, height: 300, xname: "x", yname: "y",
-  fns: [{ f: fp, from: -2, to: 3, label: "f'", labelAt: 2.6 }],
-  dots: [[-2, 2, "closed"], [3, -8, "closed"]],
-  alt: "Graph of the derivative f prime on the interval from x = -2 to x = 3. The graph starts at (-2, 2), falls to touch the x-axis at (-1, 0), where it has a low point, rises to a high point at (1, 2), then falls, crossing the x-axis at x = 2, down to (3, -8).",
+  x: [-2, 3], y: [-3, 4], xname: "x", yname: "y",
+  segments: [[-2, 2, -1, 0], [-1, 0, 1, 3], [1, 3, 3, -3]],
+  dots: [[-2, 2, "closed"], [3, -3, "closed"]],
+  labels: [[1.7, 3.2, "y = f'(x)"]],
+  alt: "Graph of the derivative f prime on the interval from x = -2 to x = 3, made of three line segments. It falls from (-2, 2) to touch the x-axis at (-1, 0), rises to (1, 3), and then falls, crossing the x-axis at x = 2, to (3, -3).",
 });
 
 // Graph of f(x) = (x - 2)^2 - 1 on [0, 4], used by c5t-m09: f(1) = 0, f'(1) = -2, f''(1) = 2.
@@ -19,9 +19,45 @@ const fGraph = graph({
   alt: "Graph of f on the interval from x = 0 to x = 4: a parabola opening upward from (0, 3) down through (1, 0) to its lowest point at (2, -1), then up through (3, 0) to (4, 3).",
 });
 
+// Graph of f(x) = x^3 - 6x^2 + 11x - 3 on [0, 4], used by c5t-m01: f(0) = -3, f(1) = f(2) = f(3) = 3, f(4) = 9.
+const mvtGraph = graph({
+  x: [-1, 5], y: [-4, 10], step: { x: 1, y: 2 }, height: 300, xname: "x", yname: "y",
+  fns: [{ f: (x) => x ** 3 - 6 * x ** 2 + 11 * x - 3, from: 0, to: 4, label: "f", labelAt: 3.7 }],
+  dots: [[0, -3, "closed"], [4, 9, "closed"]],
+  alt: "Graph of f on the interval from x = 0 to x = 4. The graph starts at a closed dot at (0, -3), rises steeply through (1, 3), levels off through (2, 3), rises slowly through (3, 3), and then rises steeply to a closed dot at (4, 9).",
+});
+
+// Graph of f' used by c5t-m02: segments (-3, -1)-(-1, 1) and (-1, 1)-(1, 2), open dots at (1, 2) and (1, -2),
+// then (1, -2)-(4, 1). f' = 0 at x = -2 and x = 3; f'(1) does not exist; the graph of f' has a corner at x = -1.
+const jumpGraph = graph({
+  x: [-3, 4], y: [-3, 3], xname: "x", yname: "y",
+  segments: [[-3, -1, -1, 1], [-1, 1, 1, 2], [1, -2, 4, 1]],
+  dots: [[-3, -1, "closed"], [1, 2, "open"], [1, -2, "open"], [4, 1, "closed"]],
+  labels: [[2.6, 1.6, "y = f'(x)"]],
+  alt: "Graph of y = f'(x) for x from -3 to 4, made of three line segments. It rises from a closed dot at (-3, -1) through (-2, 0) to a corner at (-1, 1), rises less steeply to an open dot at (1, 2), then starts again at an open dot at (1, -2) and rises through (3, 0) to a closed dot at (4, 1).",
+});
+
+// Graph of f(x) = (x^3 - 6x^2 + 18)/4 on [-2, 6], used by c5t-m08: f(-2) = -3.5, f(0) = 4.5, f(2) = 0.5, f(4) = -3.5, f(6) = 4.5.
+// f'(x) = (3/4)x(x - 4) and f''(x) = (3/2)(x - 2). Its zeros (about -1.54, 2.17, 5.38) sit away from the tick labels.
+const polyGraph = graph({
+  x: [-2, 6], y: [-4, 5], step: { x: 1, y: 2 }, xname: "x", yname: "y",
+  fns: [{ f: (x) => (x ** 3 - 6 * x ** 2 + 18) / 4, from: -2, to: 6 }],
+  dots: [[0, 4.5, "closed"], [4, -3.5, "closed"]],
+  alt: "Graph of f for x from -2 to 6. The graph rises from (-2, -3.5) to a high point at (0, 4.5), falls through (2, 0.5), where it changes from concave down to concave up, to a low point at (4, -3.5), and rises to (6, 4.5).",
+});
+
 export const sets = {
+  "c5t-s5": { name: "The graph of f", label: "Graph",
+    intro: String.raw`The graph of a differentiable function $f$ on the closed interval $[0, 4]$ is shown below.`,
+    sources: [{ title: "", blocks: [{ svg: mvtGraph }] }] },
+  "c5t-s6": { name: "The graph of f'", label: "Graph",
+    intro: String.raw`The function $f$ is continuous on the closed interval $[-3, 4]$. The graph of its derivative $f'$, which consists of three line segments, is shown below. $f'(1)$ does not exist.`,
+    sources: [{ title: "", blocks: [{ svg: jumpGraph }] }] },
+  "c5t-s7": { name: "The graph of a polynomial", label: "Graph",
+    intro: String.raw`The graph of a polynomial function $f$ is shown below. It has horizontal tangent lines at $(0, 4.5)$ and $(4, -3.5)$.`,
+    sources: [{ title: "", blocks: [{ svg: polyGraph }] }] },
   "c5t-s1": { name: "The graph of f'", label: "Graph",
-    intro: String.raw`The function $f$ is twice differentiable on the interval $[-2, 3]$. The graph of its derivative $f'$ is shown below. The graph of $f'$ has horizontal tangent lines at $x = -1$ and $x = 1$.`,
+    intro: String.raw`The function $f$ is differentiable on the closed interval $[-2, 3]$. The graph of its derivative $f'$, which consists of three line segments, is shown below.`,
     sources: [{ title: "", blocks: [{ svg: fpGraph }] }] },
   "c5t-s2": { name: "The graph of f", label: "Graph",
     intro: String.raw`The graph of the twice differentiable function $f$ is shown below.`,
@@ -36,29 +72,27 @@ export const sets = {
 
 const items = [
   // Multiple choice, no calculator
-  { id: "c5t-m01", type: "mcq", skill: "u5", topic: "5.1", calc: false,
-    stem: String.raw`Let $f(x) = \sqrt{x}$.`,
-    question: String.raw`What value of $c$ satisfies the conclusion of the Mean Value Theorem for $f$ on the interval $[1, 9]$?`,
-    choices: ["$4$", "$5$", "$16$", String.raw`$\frac{1}{64}$`],
+  { id: "c5t-m01", type: "mcq", skill: "u5", topic: "5.1", calc: false, difficulty: "easy", set: "c5t-s5",
+    question: String.raw`The Mean Value Theorem guarantees a value $c$ in the open interval $(0, 4)$ for which $f'(c)$ equals which of the following?`,
+    choices: ["$3$", "$12$", String.raw`$\frac{1}{3}$`, String.raw`$\frac{9}{4}$`],
     why: [
-      String.raw`The average rate of change is $\dfrac{\sqrt{9} - \sqrt{1}}{9 - 1} = \dfrac{2}{8} = \dfrac{1}{4}$. Setting $f'(c) = \dfrac{1}{2\sqrt{c}} = \dfrac{1}{4}$ gives $\sqrt{c} = 2$, so $c = 4$, which is in $(1, 9)$.`,
-      String.raw`$5$ is the midpoint of the interval. $f'(5) = \dfrac{1}{2\sqrt{5}} \ne \dfrac{1}{4}$.`,
-      String.raw`This uses $f'(c) = \dfrac{1}{\sqrt{c}}$, leaving out the factor $\dfrac{1}{2}$ from the power rule. Also, $16$ is not in $(1, 9)$.`,
-      String.raw`This flips the average rate of change, using $\dfrac{9 - 1}{\sqrt{9} - \sqrt{1}} = 4$, and solves $\dfrac{1}{2\sqrt{c}} = 4$.`,
+      String.raw`From the graph, $f(0) = -3$ and $f(4) = 9$. $f$ is differentiable, so it is continuous on $[0, 4]$ and differentiable on $(0, 4)$, and the theorem gives $f'(c) = \dfrac{9 - (-3)}{4 - 0} = 3$ for some $c$ in $(0, 4)$.`,
+      String.raw`$12$ is the change $f(4) - f(0)$. The slope divides that change by the length of the interval, $4$.`,
+      String.raw`This divides the run by the rise, $\dfrac{4 - 0}{9 - (-3)}$. The slope of the secant line is rise over run.`,
+      String.raw`This divides $f(4) = 9$ by $4$ and leaves out $f(0) = -3$.`,
     ],
     answer: 0 },
-  { id: "c5t-m02", type: "mcq", skill: "u5", topic: "5.2", calc: false,
-    stem: String.raw`Let $f(x) = \left(x^2 - 4\right)^{2/3}$.`,
-    question: String.raw`What are all the critical points of $f$?`,
-    choices: [String.raw`$x = -2$, $x = 0$, and $x = 2$`, String.raw`$x = 0$ only`, String.raw`$x = -2$ and $x = 2$ only`, String.raw`$x = -4$, $x = 0$, and $x = 4$`],
+  { id: "c5t-m02", type: "mcq", skill: "u5", topic: "5.2", calc: false, difficulty: "difficult", set: "c5t-s6",
+    question: String.raw`How many critical points does $f$ have in the open interval $(-3, 4)$?`,
+    choices: ["$3$", "$2$", "$4$", "$1$"],
     why: [
-      String.raw`By the chain rule, $f'(x) = \dfrac{2}{3}\left(x^2 - 4\right)^{-1/3}(2x) = \dfrac{4x}{3\sqrt[3]{x^2 - 4}}$. $f'(0) = 0$, and $f'(\pm 2)$ does not exist while $f(\pm 2) = 0$ is defined, so all three are critical points.`,
-      String.raw`This finds only where $f'(x) = 0$. Points of the domain where $f'$ does not exist, $x = \pm 2$, are also critical points.`,
-      String.raw`This finds only where $f'$ does not exist. Leaving out the chain rule factor $2x$ loses the zero of $f'$ at $x = 0$.`,
-      String.raw`This solves $x^2 - 4 = 0$ as $x = \pm 4$. The zeros of $x^2 - 4$ are $x = \pm 2$.`,
+      String.raw`A critical point is a point of the domain where $f'$ is $0$ or does not exist. $f'(x) = 0$ at $x = -2$ and $x = 3$, and $f'(1)$ does not exist while $f$ is defined at $x = 1$ (it is continuous there). That makes three.`,
+      String.raw`This counts only the zeros of $f'$, at $x = -2$ and $x = 3$. The point $x = 1$, where $f'$ does not exist, is also a critical point because $f$ is defined there.`,
+      String.raw`This also counts $x = -1$, where the graph of $f'$ has a corner. $f'(-1) = 1$ exists and is not $0$, so $x = -1$ is not a critical point of $f$; the corner only means $f''(-1)$ does not exist.`,
+      String.raw`This counts only $x = 1$, where $f'$ does not exist. The points $x = -2$ and $x = 3$, where $f'(x) = 0$, are critical points too.`,
     ],
     answer: 0 },
-  { id: "c5t-m03", type: "mcq", skill: "u5", topic: "5.3", calc: false,
+  { id: "c5t-m03", type: "mcq", skill: "u5", topic: "5.3", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = 3x^5 - 20x^3$.`,
     question: String.raw`On which of the following is $f$ decreasing?`,
     choices: [String.raw`$(-2, 2)$`, String.raw`$(-\infty, -2)$ and $(2, \infty)$`, String.raw`$(0, 2)$ only`, String.raw`$\left(-\sqrt{2}, 0\right)$ and $\left(\sqrt{2}, \infty\right)$`],
@@ -69,22 +103,22 @@ const items = [
       String.raw`These are where $f''(x) = 60x^3 - 120x = 60x\left(x^2 - 2\right) > 0$, where the graph is concave up.`,
     ],
     answer: 0 },
-  { id: "c5t-m04", type: "mcq", skill: "u5", topic: "5.4", calc: false, set: "c5t-s1",
+  { id: "c5t-m04", type: "mcq", skill: "u5", topic: "5.4", calc: false, difficulty: "moderate", set: "c5t-s1",
     question: String.raw`Which of the following describes all the relative extrema of $f$ on the open interval $(-2, 3)$?`,
     choices: [
       String.raw`A relative maximum at $x = 2$ only`,
       String.raw`A relative minimum at $x = -1$ and a relative maximum at $x = 2$`,
-      String.raw`A relative maximum at $x = 1$ only`,
+      String.raw`A relative maximum at $x = 1$ and at $x = 2$`,
       String.raw`A relative minimum at $x = -1$ and a relative maximum at $x = 1$`,
     ],
     why: [
       String.raw`$f'(x) = 0$ at $x = -1$ and $x = 2$. At $x = -1$ the graph of $f'$ touches the axis but stays above it, so $f'$ does not change sign and there is no extremum. At $x = 2$, $f'$ changes from positive to negative, so by the First Derivative Test $f$ has a relative maximum there.`,
       String.raw`$f'(-1) = 0$, but $f'$ is positive on both sides of $x = -1$, so $f$ keeps increasing and has no extremum there.`,
-      String.raw`At $x = 1$, $f'$ has a relative maximum, but $f'(1) = 2 > 0$, so $f$ is increasing there.`,
+      String.raw`At $x = 1$, $f'$ has a relative maximum, but $f'(1) = 3 > 0$, so $f$ is increasing there. Only $x = 2$ is a relative maximum of $f$.`,
       String.raw`These are the relative extrema of $f'$, not of $f$. They are the points of inflection of $f$.`,
     ],
     answer: 0 },
-  { id: "c5t-m05", type: "mcq", skill: "u5", topic: "5.6", calc: false, set: "c5t-s1",
+  { id: "c5t-m05", type: "mcq", skill: "u5", topic: "5.6", calc: false, difficulty: "moderate", set: "c5t-s1",
     question: String.raw`On which of the following open intervals is the graph of $f$ concave down?`,
     choices: [String.raw`$(-2, -1)$ and $(1, 3)$`, String.raw`$(-1, 1)$`, String.raw`$(2, 3)$ only`, String.raw`$(-2, -1)$ and $(2, 3)$`],
     why: [
@@ -94,7 +128,7 @@ const items = [
       String.raw`This misses $(1, 2)$, where $f'$ is positive but decreasing, so the graph of $f$ is concave down there too.`,
     ],
     answer: 0 },
-  { id: "c5t-m06", type: "mcq", skill: "u5", topic: "5.5", calc: false,
+  { id: "c5t-m06", type: "mcq", skill: "u5", topic: "5.5", calc: false, difficulty: "easy",
     stem: String.raw`Let $f(x) = x^2 + \dfrac{16}{x}$.`,
     question: String.raw`What is the absolute minimum value of $f$ on the closed interval $[1, 4]$?`,
     choices: ["$12$", "$2$", "$17$", "$20$"],
@@ -105,7 +139,7 @@ const items = [
       String.raw`$20 = f(4)$ is the absolute maximum value.`,
     ],
     answer: 0 },
-  { id: "c5t-m07", type: "mcq", skill: "u5", topic: "5.7", calc: false,
+  { id: "c5t-m07", type: "mcq", skill: "u5", topic: "5.7", calc: false, difficulty: "difficult",
     stem: String.raw`Let $f(x) = x^5 - 5x^4$.`,
     question: String.raw`Which of the following describes all the relative extrema of $f$?`,
     choices: [String.raw`A relative maximum at $x = 0$ and a relative minimum at $x = 4$`, String.raw`A relative minimum at $x = 4$ only`, String.raw`Relative minima at $x = 0$ and $x = 4$`, String.raw`A relative minimum at $x = 0$ and a relative maximum at $x = 4$`],
@@ -116,18 +150,17 @@ const items = [
       String.raw`The types are reversed. $f''(4) = 320 > 0$ means concave up at $x = 4$, a relative minimum.`,
     ],
     answer: 0 },
-  { id: "c5t-m08", type: "mcq", skill: "u5", topic: "5.8", calc: false,
-    stem: String.raw`The graph of a polynomial function $f$ has horizontal tangent lines at exactly $x = -1$ and $x = 3$ and a point of inflection at exactly $x = 1$.`,
+  { id: "c5t-m08", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "difficult", set: "c5t-s7",
     question: String.raw`Which of the following could be $f'(x)$?`,
-    choices: [String.raw`$3(x + 1)(x - 3)$`, String.raw`$3(x - 1)^2$`, String.raw`$(x + 1)(x - 1)(x - 3)$`, String.raw`$3(x - 1)(x + 3)$`],
+    choices: [String.raw`$\frac{3}{4}x(x - 4)$`, String.raw`$-\frac{3}{4}x(x - 4)$`, String.raw`$\frac{3}{4}x(x - 2)(x - 4)$`, String.raw`$\frac{3}{4}x(x - 4)^2$`],
     why: [
-      String.raw`$f'(x) = 3(x + 1)(x - 3)$ is $0$ only at $x = -1$ and $x = 3$. Then $f''(x) = 3(2x - 2) = 6(x - 1)$ changes sign only at $x = 1$, so the graph of $f$ has its only point of inflection there.`,
-      String.raw`This $f'$ is $0$ only at $x = 1$, so the graph of $f$ would have a horizontal tangent at $x = 1$, not at $x = -1$ and $x = 3$.`,
-      String.raw`This $f'$ is also $0$ at $x = 1$, a third horizontal tangent. Its derivative $3x^2 - 6x - 1$ changes sign at $x = 1 \pm \dfrac{2}{\sqrt{3}}$, not at $x = 1$.`,
-      String.raw`The signs are reversed: this $f'$ is $0$ at $x = 1$ and $x = -3$.`,
+      String.raw`$f$ increases to its high point at $x = 0$, decreases to its low point at $x = 4$, and then increases, so $f'$ must be positive, then negative, then positive, with zeros only at $x = 0$ and $x = 4$. $\dfrac{3}{4}x(x - 4)$ has exactly that sign pattern, and its derivative $\dfrac{3}{2}(x - 2)$ changes sign at $x = 2$, where the graph changes concavity.`,
+      String.raw`This is negative for $x < 0$, so $f$ would be decreasing there, but the graph rises to its high point at $x = 0$. The signs are reversed.`,
+      String.raw`This is $0$ at $x = 2$, which would put a horizontal tangent at $\left(2, \frac{1}{2}\right)$, but the graph is falling there. A point of inflection is a zero of $f''$, not of $f'$.`,
+      String.raw`With the factor $(x - 4)^2$, this $f'$ does not change sign at $x = 4$, so $f$ could not have its low point there. It is also positive on $(0, 4)$, where the graph falls.`,
     ],
     answer: 0 },
-  { id: "c5t-m09", type: "mcq", skill: "u5", topic: "5.9", calc: false, set: "c5t-s2",
+  { id: "c5t-m09", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "easy", set: "c5t-s2",
     question: String.raw`Which of the following is true?`,
     choices: [String.raw`$f'(1) < f(1) < f''(1)$`, String.raw`$f(1) < f'(1) < f''(1)$`, String.raw`$f''(1) < f(1) < f'(1)$`, String.raw`$f'(1) < f''(1) < f(1)$`],
     why: [
@@ -137,20 +170,20 @@ const items = [
       String.raw`$f''(1) > 0 = f(1)$ because the graph is concave up, so $f''(1)$ cannot be less than $f(1)$.`,
     ],
     answer: 0 },
-  { id: "c5t-m10", type: "mcq", skill: "u5", topic: "5.12", calc: false,
-    stem: String.raw`Consider the curve $y^2 + xy - x^2 = 5$.`,
-    question: String.raw`At which points on the curve is the tangent line horizontal?`,
-    choices: [String.raw`$(1, 2)$ and $(-1, -2)$`, String.raw`$(1, 2)$ only`, String.raw`$\left(0, \sqrt{5}\right)$ and $\left(0, -\sqrt{5}\right)$`, String.raw`$(2, 1)$ and $(-2, -1)$`],
+  { id: "c5t-m10", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "moderate",
+    stem: String.raw`The point $(3, 3)$ lies on the curve $x^3 + y^3 = 6xy$.`,
+    question: String.raw`Which of the following is an equation of the line tangent to the curve at $(3, 3)$?`,
+    choices: [String.raw`$y = -x + 6$`, String.raw`$y = x$`, String.raw`$y = 2x - 3$`, String.raw`$y = 3$`],
     why: [
-      String.raw`$2yy' + y + xy' - 2x = 0$, so $\dfrac{dy}{dx} = \dfrac{2x - y}{2y + x}$. This is $0$ when $y = 2x$ and $2y + x \ne 0$. Then $4x^2 + 2x^2 - x^2 = 5x^2 = 5$, so $x = \pm 1$, giving $(1, 2)$ and $(-1, -2)$, where $2y + x = \pm 5 \ne 0$.`,
-      String.raw`$5x^2 = 5$ has two solutions, $x = 1$ and $x = -1$. The point $(-1, -2)$ is also on the curve with slope $0$.`,
-      String.raw`These are where the curve crosses the $y$-axis. There $\dfrac{dy}{dx} = \dfrac{-y}{2y} = -\dfrac{1}{2}$, not $0$.`,
-      String.raw`This uses $x = 2y$ instead of $y = 2x$. These points are not on the curve: $1 + 2 - 4 = -1 \ne 5$.`,
+      String.raw`Differentiating, $3x^2 + 3y^2\dfrac{dy}{dx} = 6y + 6x\dfrac{dy}{dx}$, so $\dfrac{dy}{dx} = \dfrac{2y - x^2}{y^2 - 2x}$. At $(3, 3)$ this is $\dfrac{6 - 9}{9 - 6} = -1$, and the line is $y - 3 = -(x - 3)$, or $y = -x + 6$.`,
+      String.raw`This comes from a sign error that gives $\dfrac{dy}{dx} = \dfrac{x^2 - 2y}{y^2 - 2x} = 1$ at $(3, 3)$. Solving $3y^2\dfrac{dy}{dx} - 6x\dfrac{dy}{dx} = 6y - 3x^2$ gives a slope of $-1$.`,
+      String.raw`This differentiates $y^3$ as $3y^2$ without the factor $\dfrac{dy}{dx}$, which gives a slope of $2$. Every $y$ term needs the chain rule.`,
+      String.raw`The curve is symmetric about the line $y = x$, but that does not make the tangent at $(3, 3)$ horizontal. Its slope is $-1$.`,
     ],
     answer: 0 },
 
   // Multiple choice, calculator
-  { id: "c5t-m11", type: "mcq", skill: "u5", topic: "5.3", calc: true,
+  { id: "c5t-m11", type: "mcq", skill: "u5", topic: "5.3", calc: true, difficulty: "easy",
     stem: String.raw`The derivative of a function $f$ is $f'(x) = x^3 - 2^{x}$ for $0 \le x \le 4$.`,
     question: String.raw`On which interval is $f$ increasing?`,
     choices: [String.raw`$1.373 < x < 4$`, String.raw`$0 < x < 1.373$`, String.raw`$0.590 < x < 4$`, String.raw`$1.414 < x < 4$`],
@@ -161,7 +194,7 @@ const items = [
       String.raw`This treats $2^{x}$ as $2x$, solving $x^3 = 2x$ to get $x = \sqrt{2}$.`,
     ],
     answer: 0 },
-  { id: "c5t-m12", type: "mcq", skill: "u5", topic: "5.5", calc: true,
+  { id: "c5t-m12", type: "mcq", skill: "u5", topic: "5.5", calc: true, difficulty: "easy",
     stem: String.raw`Let $f(x) = x^2 - 6\ln(x + 1)$.`,
     question: String.raw`What is the absolute minimum value of $f$ on the closed interval $[0, 4]$?`,
     choices: ["$-3.307$", "$0$", "$1.303$", "$6.343$"],
@@ -172,7 +205,7 @@ const items = [
       String.raw`$6.343 = f(4)$ is the absolute maximum value.`,
     ],
     answer: 0 },
-  { id: "c5t-m13", type: "mcq", skill: "u5", topic: "5.6", calc: true,
+  { id: "c5t-m13", type: "mcq", skill: "u5", topic: "5.6", calc: true, difficulty: "moderate",
     stem: String.raw`The derivative of a function $f$ is $f'(x) = 2\sin x - \dfrac{x^2}{2}$.`,
     question: String.raw`At what value of $x$ in the open interval $(0, 4)$ does the graph of $f$ have a point of inflection?`,
     choices: ["$1.030$", "$1.571$", "$1.252$", "$1.934$"],
@@ -183,7 +216,7 @@ const items = [
       String.raw`$1.934$ solves $f'(x) = 0$, a critical point of $f$. A point of inflection is where $f''$ changes sign.`,
     ],
     answer: 0 },
-  { id: "c5t-m14", type: "mcq", skill: "u5", topic: "5.11", calc: true,
+  { id: "c5t-m14", type: "mcq", skill: "u5", topic: "5.11", calc: true, difficulty: "difficult",
     question: String.raw`What is the least distance from the origin to a point on the graph of $y = e^{-x}$?`,
     choices: ["$0.780$", "$1.000$", "$0.426$", "$0.608$"],
     why: [
@@ -193,7 +226,7 @@ const items = [
       String.raw`$0.608$ is the square of the least distance. The square root was not taken.`,
     ],
     answer: 0 },
-  { id: "c5t-m15", type: "mcq", skill: "u5", topic: "5.1", calc: true,
+  { id: "c5t-m15", type: "mcq", skill: "u5", topic: "5.1", calc: true, difficulty: "moderate",
     stem: String.raw`Let $f(x) = x\ln x$.`,
     question: String.raw`What value of $c$ in the interval $(1, 3)$ satisfies the conclusion of the Mean Value Theorem for $f$ on $[1, 3]$?`,
     choices: ["$1.912$", "$2.000$", "$5.196$", "$0.368$"],

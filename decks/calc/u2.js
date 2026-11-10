@@ -3,6 +3,10 @@ import { graph } from "../../plot.js";
 
 // f(x) = x^2/2 + 1, with its tangent line y = -2x - 1 at x = -2. Items m02 and m09 read values from this graph.
 const s2f = (x) => (x * x) / 2 + 1;
+// f(x) = -x^3/3 + x^2/3 + 4x, with tangent lines y = 4x at x = 0 and y = -3x + 15 at x = 3. Item m31 reads this graph.
+const s8f = (x) => -(x ** 3) / 3 + (x * x) / 3 + 4 * x;
+// f(x) = (x + 2)^2 on [-4, -1], x + 2 on (-1, 1], 2 + cbrt((x - 3)/2) on (1, 5]. Items m32 and m33 read this graph.
+const s9c = (x) => 2 + Math.cbrt((x - 3) / 2);
 
 export const sets = {
   "c2r-s1": {
@@ -57,20 +61,44 @@ export const sets = {
     intro: String.raw`The function $f$ is differentiable for all real numbers. The table below gives values of $f$ and its derivative $f'$ at selected values of $x$.`,
     sources: [{ title: "", blocks: [{ table: { head: ["$x$", "$0$", "$1$", "$2$", "$3$"], rows: [["$f(x)$", "$2$", "$-1$", "$4$", "$6$"], ["$f'(x)$", "$3$", "$5$", "$-2$", "$1$"]] } }] }],
   },
+  "c2r-s8": {
+    name: "A curve and two tangent lines",
+    label: "Graph",
+    intro: String.raw`The graph of the function $f$ is shown below, along with the lines tangent to the graph of $f$ at $x = 0$ and at $x = 3$ (dashed). The points $(0, 0)$ and $(3, 6)$ are on the graph of $f$. The tangent line at $x = 0$ passes through $(1, 4)$, and the tangent line at $x = 3$ passes through $(4, 3)$.`,
+    sources: [{ title: "", blocks: [{ svg: graph({
+      x: [-1, 5], y: [-2, 9], step: 1, xname: "x", yname: "y",
+      labels: [[1.75, 4.7, "f"]],
+      fns: [{ f: s8f, from: -0.5, to: 4.15 }, { f: (x) => 4 * x, from: -0.45, to: 1.9, dash: true }, { f: (x) => -3 * x + 15, from: 2.05, to: 4.3, dash: true }],
+      dots: [[0, 0, "closed"], [3, 6, "closed"], [1, 4, "closed"], [4, 3, "closed"]],
+      alt: "Graph of f, a curve that rises from (0, 0) to a high point a little above y = 6.9 near x = 2.4, then falls through (3, 6) to cross the x-axis at x = 4. A dashed tangent line at (0, 0) rises steeply through (1, 4). A dashed tangent line at (3, 6) falls through (4, 3).",
+    }) }] }],
+  },
+  "c2r-s9": {
+    name: "A function defined in three pieces",
+    label: "Graph",
+    intro: String.raw`The function $f$ is defined on the closed interval $[-4, 5]$ by $$f(x) = \begin{cases} (x + 2)^{2}, & -4 \le x \le -1 \\ x + 2, & -1 < x \le 1 \\ 2 + \sqrt[3]{\dfrac{x - 3}{2}}, & 1 < x \le 5 \end{cases}$$ The graph of $f$ is shown below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({
+      x: [-4.5, 5.5], y: [-1, 5], step: 1, xname: "x", yname: "y",
+      fns: [{ f: (x) => (x + 2) ** 2, from: -4, to: -1 }, { f: s9c, from: 1.0001, to: 5 }],
+      segments: [[-1, 1, 1, 3]],
+      dots: [[-4, 4, "closed"], [1, 3, "closed"], [1, 1, "open"], [5, 3, "closed"]],
+      alt: "Graph of f on [-4, 5]. A parabola falls from (-4, 4) to its lowest point (-2, 0) and rises to (-1, 1). A line segment rises from (-1, 1) to a filled point at (1, 3). At x = 1 the graph drops to an open circle at (1, 1), then a cube root curve rises through (3, 2), where the curve is vertical, to a filled point at (5, 3).",
+    }) }] }],
+  },
 };
 
 export default [
   // 2.1 Average and instantaneous rates of change
-  { id: "c2r-m01", type: "mcq", skill: "u2", topic: "2.1", calc: false,
-    question: String.raw`Let $f(x) = \dfrac{8}{x} + x^{2}$. What is the average rate of change of $f$ over the interval $[1, 4]$?`,
-    choices: ["$3$", "$9$", String.raw`$\frac{3}{4}$`, String.raw`$\frac{1}{3}$`],
+  { id: "c2r-m01", type: "mcq", skill: "u2", topic: "2.1", calc: false, difficulty: "easy",
+    question: String.raw`Let $f(x) = \dfrac{8}{x} + x^{2}$. What is the average rate of change of $f$ over the interval $[2, 4]$?`,
+    choices: ["$5$", "$10$", String.raw`$\frac{19}{4}$`, String.raw`$\frac{1}{5}$`],
     why: [
-      String.raw`$f(4) = 2 + 16 = 18$ and $f(1) = 8 + 1 = 9$, so $\dfrac{f(4) - f(1)}{4 - 1} = \dfrac{9}{3} = 3$.`,
-      String.raw`$9$ is $f(4) - f(1)$, the change in $f$, without dividing by the length of the interval, $3$.`,
-      String.raw`$\dfrac{3}{4}$ averages the rates at the endpoints: $f'(1) = -6$, $f'(4) = \dfrac{15}{2}$, and $\dfrac{1}{2}\left(-6 + \dfrac{15}{2}\right) = \dfrac{3}{4}$. The average rate of change uses values of $f$, not values of $f'$.`,
-      String.raw`$\dfrac{1}{3}$ is $\dfrac{4 - 1}{f(4) - f(1)}$, the change in $x$ over the change in $f$, which is the reciprocal.`,
+      String.raw`$f(4) = 2 + 16 = 18$ and $f(2) = 4 + 4 = 8$, so $\dfrac{f(4) - f(2)}{4 - 2} = \dfrac{10}{2} = 5$.`,
+      String.raw`$10$ is $f(4) - f(2)$, the change in $f$, without dividing by the length of the interval, $2$.`,
+      String.raw`$\dfrac{19}{4}$ averages the rates at the endpoints: $f'(2) = -2 + 4 = 2$, $f'(4) = -\dfrac{1}{2} + 8 = \dfrac{15}{2}$, and $\dfrac{1}{2}\left(2 + \dfrac{15}{2}\right) = \dfrac{19}{4}$. The average rate of change uses values of $f$, not values of $f'$.`,
+      String.raw`$\dfrac{1}{5}$ is $\dfrac{4 - 2}{f(4) - f(2)}$, the change in $x$ over the change in $f$, which is the reciprocal.`,
     ], answer: 0 },
-  { id: "c2r-m02", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "c2r-s2",
+  { id: "c2r-m02", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "c2r-s2", difficulty: "easy",
     question: String.raw`What is the average rate of change of $f$ over the interval $[-2, 4]$?`,
     choices: ["$1$", "$-2$", "$6$", "$3$"],
     why: [
@@ -79,16 +107,16 @@ export default [
       String.raw`$6$ is $f(4) - f(-2)$, the change in $f$, without dividing by the length of the interval, $6$.`,
       String.raw`$3$ is $\dfrac{f(4) - f(2)}{4 - 2} = \dfrac{9 - 3}{2}$, which uses $x = 2$ in place of the left endpoint $x = -2$.`,
     ], answer: 0 },
-  { id: "c2r-m03", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "c2r-s1",
+  { id: "c2r-m03", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "c2r-s1", difficulty: "easy",
     question: String.raw`What is the average velocity of the bus, in miles per minute, over the time interval $3 \le t \le 8$?`,
-    choices: ["$0.46$", "$2.3$", "$2.05$", String.raw`$\frac{50}{23}$`],
+    choices: ["$0.46$", "$2.3$", "$2.05$", "$0.4$"],
     why: [
       String.raw`$\dfrac{s(8) - s(3)}{8 - 3} = \dfrac{3.2 - 0.9}{5} = \dfrac{2.3}{5} = 0.46$ mile per minute.`,
       String.raw`$2.3$ is $s(8) - s(3)$, the distance traveled, without dividing by the $5$ minutes it took.`,
       String.raw`$2.05$ is $\dfrac{s(3) + s(8)}{2}$, the average of the two positions, not a rate of change.`,
-      String.raw`$\dfrac{50}{23}$ is $\dfrac{5}{2.3}$, the change in time over the change in distance. That is the reciprocal of the average velocity.`,
+      String.raw`$0.4$ is $\dfrac{s(8)}{8} = \dfrac{3.2}{8}$, the average velocity over $0 \le t \le 8$, which starts at $t = 0$ instead of $t = 3$.`,
     ], answer: 0 },
-  { id: "c2r-m04", type: "mcq", skill: "u2", topic: "2.1", calc: true,
+  { id: "c2r-m04", type: "mcq", skill: "u2", topic: "2.1", calc: true, difficulty: "easy",
     question: String.raw`The amount of water in a tank, in gallons, is modeled by $W(t) = 200 + 30\sin(0.4t)$, where $t$ is measured in hours. What is the average rate of change of $W$, in gallons per hour, over the interval $0 \le t \le 5$?`,
     choices: ["$5.456$", "$6.484$", "$27.279$", "$0.209$"],
     why: [
@@ -99,7 +127,7 @@ export default [
     ], answer: 0 },
 
   // 2.2 The derivative and derivative notation
-  { id: "c2r-m05", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+  { id: "c2r-m05", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "moderate",
     question: String.raw`$\displaystyle \lim_{x \to \frac{\pi}{3}} \dfrac{\sin x - \frac{\sqrt{3}}{2}}{x - \frac{\pi}{3}}$ is`,
     choices: [String.raw`$\frac{1}{2}$`, String.raw`$\frac{\sqrt{3}}{2}$`, String.raw`$-\frac{1}{2}$`, "The limit does not exist."],
     why: [
@@ -108,32 +136,31 @@ export default [
       String.raw`$-\dfrac{1}{2}$ uses $-\cos x$ as the derivative of $\sin x$. The derivative of $\sin x$ is $\cos x$.`,
       String.raw`Substituting $x = \dfrac{\pi}{3}$ gives $\dfrac{0}{0}$, an indeterminate form, which does not mean the limit fails to exist. The limit is the derivative of $\sin x$ at $x = \dfrac{\pi}{3}$.`,
     ], answer: 0 },
-  { id: "c2r-m06", type: "mcq", skill: "u2", topic: "2.2", calc: false,
-    question: String.raw`If $\displaystyle \lim_{h \to 0} \dfrac{f(1 + h) - f(1)}{h} = 0$, which of the following must be true?`,
-    choices: [
-      String.raw`The line tangent to the graph of $f$ at $x = 1$ is horizontal.`,
-      "$f(1) = 0$",
-      String.raw`$f$ is not differentiable at $x = 1$.`,
-      String.raw`The graph of $f$ has a vertical tangent line at $x = 1$.`,
-    ],
+  { id: "c2r-m06", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "difficult",
+    question: String.raw`If $\displaystyle \lim_{h \to 0} \dfrac{f(1 + h) - f(1)}{h} = 0$, which of the following must be true?
+
+I. $f$ is continuous at $x = 1$.
+II. The line tangent to the graph of $f$ at $x = 1$ is horizontal.
+III. $f(1) = 0$`,
+    choices: ["I and II only", "II only", "I, II, and III", "II and III only"],
     why: [
-      String.raw`The limit is the definition of $f'(1)$, so $f'(1) = 0$. The tangent line at $x = 1$ has slope $0$, so it is horizontal.`,
-      String.raw`The limit gives the derivative $f'(1)$, not the value $f(1)$. For example, $f(x) = (x - 1)^{2} + 5$ has $f'(1) = 0$ and $f(1) = 5$.`,
-      String.raw`The limit exists and equals $0$, so $f'(1)$ exists and equals $0$. A limit of $0$ is a value, not a sign that the limit fails to exist.`,
-      String.raw`A vertical tangent line has an undefined slope, where the difference quotient grows without bound. Here the slope is $0$.`,
+      String.raw`The limit is the definition of $f'(1)$, so $f'(1)$ exists and equals $0$. I is true because a function that is differentiable at a point is continuous there. II is true because the tangent line has slope $0$. III need not be true: $f(x) = (x - 1)^{2} + 5$ has $f'(1) = 0$ and $f(1) = 5$.`,
+      String.raw`I is also true. The limit shows that $f$ is differentiable at $x = 1$, and a function that is differentiable at a point is continuous there.`,
+      String.raw`III need not be true. The limit gives the derivative $f'(1)$, not the value $f(1)$: $f(x) = (x - 1)^{2} + 5$ has $f'(1) = 0$ and $f(1) = 5$.`,
+      String.raw`This treats the limit $0$ as the value $f(1)$, which it is not, and misses I: a function that is differentiable at $x = 1$ is continuous there.`,
     ], answer: 0 },
-  { id: "c2r-m07", type: "mcq", skill: "u2", topic: "2.2", calc: false,
-    question: String.raw`The line $y = 5x - 7$ is tangent to the graph of $f$ at $x = 2$. What is the value of $\displaystyle \lim_{h \to 0} \dfrac{f(2 + h) - 3}{h}$?`,
-    choices: ["$5$", "$3$", "$-7$", "$0$"],
+  { id: "c2r-m07", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "moderate",
+    question: String.raw`The line $y = 5x - 7$ is tangent to the graph of $f$ at $x = 4$. What is the value of $\displaystyle \lim_{h \to 0} \dfrac{f(4 + h) - 13}{h}$?`,
+    choices: ["$5$", "$13$", "$-7$", String.raw`$-\frac{1}{5}$`],
     why: [
-      String.raw`The tangent line touches the graph at $x = 2$, so $f(2) = 5(2) - 7 = 3$. The limit is $\displaystyle \lim_{h \to 0} \dfrac{f(2 + h) - f(2)}{h} = f'(2)$, the slope of the tangent line, which is $5$.`,
-      String.raw`$3$ is $f(2)$, the value of the function at the point of tangency, not the slope.`,
+      String.raw`The tangent line touches the graph at $x = 4$, so $f(4) = 5(4) - 7 = 13$. The limit is $\displaystyle \lim_{h \to 0} \dfrac{f(4 + h) - f(4)}{h} = f'(4)$, the slope of the tangent line, which is $5$.`,
+      String.raw`$13$ is $f(4)$, the value of the function at the point of tangency, not the slope.`,
       String.raw`$-7$ is the $y$-intercept of the tangent line, not its slope.`,
-      String.raw`The numerator approaches $0$, but so does the denominator. The limit is the derivative $f'(2) = 5$.`,
+      String.raw`$-\dfrac{1}{5}$ is the negative reciprocal of $5$, the slope of the line perpendicular to the tangent line. The limit is the slope of the tangent line itself.`,
     ], answer: 0 },
 
   // 2.3 Estimating derivatives
-  { id: "c2r-m08", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "c2r-s1",
+  { id: "c2r-m08", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "c2r-s1", difficulty: "easy",
     question: String.raw`Based on the data in the table, which of the following is the best estimate of $s'(6)$, in miles per minute?`,
     choices: ["$0.5$", "$1.5$", "$2$", "$0.34$"],
     why: [
@@ -142,7 +169,7 @@ export default [
       String.raw`$2$ is $\dfrac{8 - 5}{3.2 - 1.7}$, the change in time over the change in distance, which is the reciprocal.`,
       String.raw`$0.34$ is $\dfrac{s(5)}{5}$, the average velocity over $[0, 5]$, an interval that does not contain $t = 6$.`,
     ], answer: 0 },
-  { id: "c2r-m09", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "c2r-s2",
+  { id: "c2r-m09", type: "mcq", skill: "u2", topic: "2.3", calc: false, set: "c2r-s2", difficulty: "easy",
     question: String.raw`What is the value of $f'(-2)$?`,
     choices: ["$-2$", "$3$", String.raw`$-\frac{1}{2}$`, "$-1$"],
     why: [
@@ -151,7 +178,7 @@ export default [
       String.raw`$-\dfrac{1}{2}$ is $\dfrac{-1 - (-3)}{1 - 5}$, the run over the rise, which is the reciprocal of the slope.`,
       String.raw`$-1$ is the $y$-intercept of the tangent line $y = -2x - 1$, not its slope.`,
     ], answer: 0 },
-  { id: "c2r-m10", type: "mcq", skill: "u2", topic: "2.3", calc: true,
+  { id: "c2r-m10", type: "mcq", skill: "u2", topic: "2.3", calc: true, difficulty: "easy",
     question: String.raw`Let $f(x) = x^{3}\ln x - 4\sqrt{x}$. What is the value of $f'(2)$?`,
     choices: ["$10.904$", "$-0.112$", "$13.367$", "$4.586$"],
     why: [
@@ -162,7 +189,7 @@ export default [
     ], answer: 0 },
 
   // 2.4 Differentiability and continuity
-  { id: "c2r-m11", type: "mcq", skill: "u2", topic: "2.4", calc: false, set: "c2r-s3",
+  { id: "c2r-m11", type: "mcq", skill: "u2", topic: "2.4", calc: false, set: "c2r-s3", difficulty: "moderate",
     question: String.raw`For which of the following values of $x$ does $f'(x)$ exist?`,
     choices: ["$x = 1$", "$x = -1$", "$x = 2$", "$x = 4$"],
     why: [
@@ -171,7 +198,7 @@ export default [
       String.raw`At $x = 2$ the graph jumps from $-1$ to $1$. $f$ is not continuous there, so it is not differentiable there.`,
       String.raw`At $x = 4$, $\displaystyle \lim_{x \to 4} f(x) = 1$ but $f(4) = 3$. $f$ is not continuous there, so it is not differentiable there, even though the graph has slope $0$ on both sides.`,
     ], answer: 0 },
-  { id: "c2r-m12", type: "mcq", skill: "u2", topic: "2.4", calc: false, set: "c2r-s3",
+  { id: "c2r-m12", type: "mcq", skill: "u2", topic: "2.4", calc: false, set: "c2r-s3", difficulty: "difficult",
     question: String.raw`On the open interval $-3 < x < 5$, at how many values of $x$ is $f$ not differentiable?`,
     choices: ["$3$", "$1$", "$2$", "$4$"],
     why: [
@@ -180,7 +207,7 @@ export default [
       String.raw`$2$ counts the discontinuities at $x = 2$ and $x = 4$ but misses the corner at $x = -1$, where the slope changes from $1$ to $-1$.`,
       String.raw`$4$ also counts $x = 1$, where the graph crosses the $x$-axis. The graph is a straight segment there with slope $-1$, so $f$ is differentiable at $x = 1$.`,
     ], answer: 0 },
-  { id: "c2r-m13", type: "mcq", skill: "u2", topic: "2.4", calc: false,
+  { id: "c2r-m13", type: "mcq", skill: "u2", topic: "2.4", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f$ be the function defined by $$f(x) = \begin{cases} x^{2} + 1, & x \le 1 \\ 2x, & x > 1 \end{cases}$$`,
     question: String.raw`Which of the following is true about $f$ at $x = 1$?`,
     choices: [
@@ -197,7 +224,7 @@ export default [
     ], answer: 0 },
 
   // 2.5 The power rule
-  { id: "c2r-m14", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+  { id: "c2r-m14", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "moderate",
     question: String.raw`If $f(x) = \dfrac{x^{2}}{\sqrt[3]{x}}$, then $f'(8) =$`,
     choices: [String.raw`$\frac{20}{3}$`, "$192$", String.raw`$\frac{160}{3}$`, "$32$"],
     why: [
@@ -206,7 +233,7 @@ export default [
       String.raw`$\dfrac{160}{3}$ is $\dfrac{5}{3}(8)^{5/3}$: the exponent was brought down but not reduced by $1$.`,
       String.raw`$32$ is $f(8) = \dfrac{64}{2}$, the value of the function.`,
     ], answer: 0 },
-  { id: "c2r-m15", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+  { id: "c2r-m15", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "easy",
     question: String.raw`If $y = \dfrac{2}{x^{3}}$, what is the value of $\dfrac{dy}{dx}$ at $x = 2$?`,
     choices: [String.raw`$-\frac{3}{8}$`, String.raw`$\frac{1}{6}$`, String.raw`$-\frac{3}{2}$`, String.raw`$\frac{3}{8}$`],
     why: [
@@ -215,7 +242,7 @@ export default [
       String.raw`$-\dfrac{3}{2}$ is $-6x^{-2}$ at $x = 2$, which raises the exponent from $-3$ to $-2$. The power rule lowers it by $1$, to $-4$.`,
       String.raw`$\dfrac{3}{8}$ drops the negative sign of the exponent: the derivative of $2x^{-3}$ is $-6x^{-4}$.`,
     ], answer: 0 },
-  { id: "c2r-m16", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+  { id: "c2r-m16", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "difficult",
     question: String.raw`Let $f(x) = x^{n}$, where $n$ is a positive integer. If $f'(2) = 32$, what is the value of $n$?`,
     choices: ["$4$", "$5$", "$16$", "$6$"],
     why: [
@@ -226,16 +253,16 @@ export default [
     ], answer: 0 },
 
   // 2.6 Constant, sum, difference, and constant multiple rules
-  { id: "c2r-m17", type: "mcq", skill: "u2", topic: "2.6", calc: false,
-    question: String.raw`If $f(x) = 3x^{4} - 5x^{2} + 7x - 2$, what is $f'(-1)$?`,
-    choices: ["$5$", "$-11$", "$9$", "$3$"],
+  { id: "c2r-m17", type: "mcq", skill: "u2", topic: "2.6", calc: false, difficulty: "easy",
+    question: String.raw`If $f(x) = 3x^{4} - 5x^{2} + 7x - 12$, what is $f'(-1)$?`,
+    choices: ["$5$", "$-21$", "$29$", "$-7$"],
     why: [
       String.raw`$f'(x) = 12x^{3} - 10x + 7$, so $f'(-1) = -12 + 10 + 7 = 5$.`,
-      String.raw`$-11$ is $f(-1) = 3 - 5 - 7 - 2$, the value of the function.`,
-      String.raw`$9$ is $f'(1) = 12 - 10 + 7$, which treats $(-1)^{3}$ as $1$ and $-10(-1)$ as $-10$.`,
-      String.raw`$3$ keeps the constant term: $-12 + 10 + 7 - 2$. The derivative of the constant $-2$ is $0$.`,
+      String.raw`$-21$ is $f(-1) = 3 - 5 - 7 - 12$, the value of the function.`,
+      String.raw`$29$ treats $(-1)^{3}$ as $1$: $12(1) - 10(-1) + 7 = 29$. Since $(-1)^{3} = -1$, the first term is $-12$.`,
+      String.raw`$-7$ keeps the constant term: $-12 + 10 + 7 - 12$. The derivative of the constant $-12$ is $0$.`,
     ], answer: 0 },
-  { id: "c2r-m18", type: "mcq", skill: "u2", topic: "2.6", calc: false,
+  { id: "c2r-m18", type: "mcq", skill: "u2", topic: "2.6", calc: false, difficulty: "moderate",
     question: String.raw`If $f(x) = (2x + 1)^{2}$, what is $f'(1)$?`,
     choices: ["$12$", "$6$", "$9$", "$4$"],
     why: [
@@ -246,7 +273,7 @@ export default [
     ], answer: 0 },
 
   // 2.7 Derivatives of cos x, sin x, e^x, and ln x
-  { id: "c2r-m19", type: "mcq", skill: "u2", topic: "2.7", calc: false,
+  { id: "c2r-m19", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "moderate",
     question: String.raw`If $f(x) = x^{2} - 4\cos x$, what is $f'\left(\dfrac{\pi}{6}\right)$?`,
     choices: [String.raw`$\frac{\pi}{3} + 2$`, String.raw`$\frac{\pi}{3} - 2$`, String.raw`$\frac{\pi}{3} + 2\sqrt{3}$`, String.raw`$\frac{\pi^{2}}{36} - 2\sqrt{3}$`],
     why: [
@@ -255,7 +282,7 @@ export default [
       String.raw`This uses $\cos\dfrac{\pi}{6} = \dfrac{\sqrt{3}}{2}$ in place of $\sin\dfrac{\pi}{6} = \dfrac{1}{2}$.`,
       String.raw`This is $f\left(\dfrac{\pi}{6}\right) = \dfrac{\pi^{2}}{36} - 4 \cdot \dfrac{\sqrt{3}}{2}$, the value of the function.`,
     ], answer: 0 },
-  { id: "c2r-m20", type: "mcq", skill: "u2", topic: "2.7", calc: false,
+  { id: "c2r-m20", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "easy",
     question: String.raw`What is the slope of the line tangent to the graph of $y = 3\sin x + 2e^{x}$ at $x = 0$?`,
     choices: ["$5$", "$-1$", "$2$", "$3$"],
     why: [
@@ -264,7 +291,7 @@ export default [
       String.raw`$2$ is the value of $y$ at $x = 0$, $3\sin 0 + 2e^{0}$, not the slope.`,
       String.raw`$3$ applies the power rule to $e^{x}$, giving $2xe^{x - 1} = 0$ at $x = 0$. The derivative of $e^{x}$ is $e^{x}$.`,
     ], answer: 0 },
-  { id: "c2r-m21", type: "mcq", skill: "u2", topic: "2.7", calc: true,
+  { id: "c2r-m21", type: "mcq", skill: "u2", topic: "2.7", calc: true, difficulty: "moderate",
     question: String.raw`Let $f(x) = e^{x} - 5\sin x$. For $0 < x < 2$, at what value of $x$ is the line tangent to the graph of $f$ horizontal?`,
     choices: ["$0.998$", "$1.609$", "$0.263$", "$-1.489$"],
     why: [
@@ -275,7 +302,7 @@ export default [
     ], answer: 0 },
 
   // 2.8 The product rule
-  { id: "c2r-m22", type: "mcq", skill: "u2", topic: "2.8", calc: false,
+  { id: "c2r-m22", type: "mcq", skill: "u2", topic: "2.8", calc: false, difficulty: "easy",
     question: String.raw`If $f(x) = \sqrt{x}\,e^{x}$, then $f'(x) =$`,
     choices: [String.raw`$e^{x}\left(\sqrt{x} + \frac{1}{2\sqrt{x}}\right)$`, String.raw`$\frac{e^{x}}{2\sqrt{x}}$`, String.raw`$\sqrt{x}\,e^{x} + \frac{1}{2\sqrt{x}}$`, String.raw`$e^{x}\left(\sqrt{x} - \frac{1}{2\sqrt{x}}\right)$`],
     why: [
@@ -284,7 +311,7 @@ export default [
       String.raw`The term $\dfrac{1}{2\sqrt{x}}$ is missing its factor $e^{x}$: the first term of the product rule is $\dfrac{1}{2\sqrt{x}} \cdot e^{x}$.`,
       String.raw`This subtracts the terms, as in the quotient rule. The two terms of the product rule are added.`,
     ], answer: 0 },
-  { id: "c2r-m23", type: "mcq", skill: "u2", topic: "2.8", calc: false, set: "c2r-s4",
+  { id: "c2r-m23", type: "mcq", skill: "u2", topic: "2.8", calc: false, set: "c2r-s4", difficulty: "easy",
     question: String.raw`Let $h(x) = f(x)g(x)$. What is $h'(0)$?`,
     choices: ["$10$", "$-8$", "$-2$", "$2$"],
     why: [
@@ -293,7 +320,7 @@ export default [
       String.raw`$-2$ subtracts the terms: $f'(0)g(0) - f(0)g'(0) = 4 - 6$. The product rule adds them.`,
       String.raw`$2$ is $f(0)g'(0) - f'(0)g(0) = 6 - 4$, which subtracts the terms. The product rule adds them.`,
     ], answer: 0 },
-  { id: "c2r-m24", type: "mcq", skill: "u2", topic: "2.8", calc: false,
+  { id: "c2r-m24", type: "mcq", skill: "u2", topic: "2.8", calc: false, difficulty: "moderate",
     question: String.raw`If $y = x^{2}\sin x$, what is the value of $\dfrac{dy}{dx}$ at $x = \pi$?`,
     choices: [String.raw`$-\pi^{2}$`, String.raw`$-2\pi$`, "$0$", String.raw`$\pi^{2}$`],
     why: [
@@ -304,7 +331,7 @@ export default [
     ], answer: 0 },
 
   // 2.9 The quotient rule
-  { id: "c2r-m25", type: "mcq", skill: "u2", topic: "2.9", calc: false,
+  { id: "c2r-m25", type: "mcq", skill: "u2", topic: "2.9", calc: false, difficulty: "easy",
     question: String.raw`If $f(x) = \dfrac{5}{x^{2} + 1}$, what is $f'(1)$?`,
     choices: [String.raw`$-\frac{5}{2}$`, "$0$", String.raw`$\frac{5}{2}$`, "$-5$"],
     why: [
@@ -313,7 +340,7 @@ export default [
       String.raw`$\dfrac{5}{2}$ reverses the subtraction in the numerator of the quotient rule.`,
       String.raw`$-5$ divides by $x^{2} + 1 = 2$ instead of $(x^{2} + 1)^{2} = 4$.`,
     ], answer: 0 },
-  { id: "c2r-m26", type: "mcq", skill: "u2", topic: "2.9", calc: false, set: "c2r-s4",
+  { id: "c2r-m26", type: "mcq", skill: "u2", topic: "2.9", calc: false, set: "c2r-s4", difficulty: "moderate",
     question: String.raw`Let $k(x) = \dfrac{f(x)}{g(x)}$. What is $k'(2)$?`,
     choices: [String.raw`$-\frac{13}{4}$`, String.raw`$\frac{13}{4}$`, String.raw`$\frac{13}{2}$`, String.raw`$-\frac{1}{3}$`],
     why: [
@@ -322,7 +349,7 @@ export default [
       String.raw`$\dfrac{13}{2}$ divides by $g(2) = -2$ instead of $[g(2)]^{2} = 4$.`,
       String.raw`$-\dfrac{1}{3}$ is $\dfrac{f'(2)}{g'(2)}$, the quotient of the derivatives.`,
     ], answer: 0 },
-  { id: "c2r-m27", type: "mcq", skill: "u2", topic: "2.9", calc: false,
+  { id: "c2r-m27", type: "mcq", skill: "u2", topic: "2.9", calc: false, difficulty: "moderate",
     question: String.raw`What is the slope of the line tangent to the graph of $y = \dfrac{\sin x}{x}$ at $x = \pi$?`,
     choices: [String.raw`$-\frac{1}{\pi}$`, String.raw`$\frac{1}{\pi}$`, "$-1$", "$0$"],
     why: [
@@ -333,7 +360,7 @@ export default [
     ], answer: 0 },
 
   // 2.10 Derivatives of tan x, cot x, sec x, and csc x
-  { id: "c2r-m28", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+  { id: "c2r-m28", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy",
     question: String.raw`If $f(x) = x + \csc x$, what is $f'\left(\dfrac{\pi}{4}\right)$?`,
     choices: [String.raw`$1 - \sqrt{2}$`, String.raw`$1 + \sqrt{2}$`, "$-1$", String.raw`$\frac{\pi}{4} + \sqrt{2}$`],
     why: [
@@ -342,7 +369,7 @@ export default [
       String.raw`$-1$ uses $-\csc^{2}x$, the derivative of $\cot x$, in place of the derivative of $\csc x$: $1 - 2$.`,
       String.raw`$\dfrac{\pi}{4} + \sqrt{2}$ is $f\left(\dfrac{\pi}{4}\right)$, the value of the function.`,
     ], answer: 0 },
-  { id: "c2r-m29", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+  { id: "c2r-m29", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "difficult",
     question: String.raw`If $f(x) = \sin x\sec x$, then $f'(x) =$`,
     choices: [String.raw`$\sec^{2}x$`, String.raw`$\tan x$`, String.raw`$\sec x\tan x$`, String.raw`$1 - \tan^{2}x$`],
     why: [
@@ -351,7 +378,7 @@ export default [
       String.raw`$\sec x\tan x$ is the derivative of $\sec x$. Since $\sin x\sec x = \tan x$, the derivative is $\sec^{2}x$.`,
       String.raw`$1 - \tan^{2}x$ subtracts the two terms of the product rule. They are added: $1 + \tan^{2}x = \sec^{2}x$.`,
     ], answer: 0 },
-  { id: "c2r-m30", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+  { id: "c2r-m30", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy",
     question: String.raw`What is the slope of the line tangent to the graph of $y = \csc x$ at $x = \dfrac{\pi}{3}$?`,
     choices: [String.raw`$-\frac{2}{3}$`, String.raw`$\frac{2}{3}$`, String.raw`$-\frac{4}{3}$`, String.raw`$\frac{2\sqrt{3}}{3}$`],
     why: [
@@ -361,6 +388,35 @@ export default [
       String.raw`$\dfrac{2\sqrt{3}}{3}$ is $\csc\left(\dfrac{\pi}{3}\right)$, the $y$-coordinate of the point, not the slope.`,
     ], answer: 0 },
 
+
+  // Graph items added in the 11/10 quality pass
+  { id: "c2r-m31", type: "mcq", skill: "u2", topic: "2.1", calc: false, set: "c2r-s8", difficulty: "moderate",
+    question: String.raw`Let $A$ be the average rate of change of $f$ over the interval $[0, 3]$. Which of the following orders $f'(0)$, $f'(3)$, and $A$ from least to greatest?`,
+    choices: [String.raw`$f'(3) < A < f'(0)$`, String.raw`$A < f'(3) < f'(0)$`, String.raw`$f'(3) < f'(0) < A$`, String.raw`$f'(0) < A < f'(3)$`],
+    why: [
+      String.raw`$f'(0)$ is the slope of the tangent line through $(0, 0)$ and $(1, 4)$, which is $4$. $f'(3)$ is the slope of the tangent line through $(3, 6)$ and $(4, 3)$, which is $-3$. $A = \dfrac{f(3) - f(0)}{3 - 0} = \dfrac{6 - 0}{3} = 2$. So $-3 < 2 < 4$.`,
+      String.raw`This compares the steepness of the tangent line at $x = 3$, $3$, with $A = 2$ and ignores its sign. The tangent line at $x = 3$ falls, so $f'(3) = -3$, which is less than $A$.`,
+      String.raw`This uses $f(3) - f(0) = 6$ for $A$ without dividing by the length of the interval, $3$. Then $A$ looks greater than $f'(0) = 4$, but $A = 2$.`,
+      String.raw`This orders the heights of the points, $f(0) = 0$ and $f(3) = 6$, instead of the slopes of the tangent lines there.`,
+    ], answer: 0 },
+  { id: "c2r-m32", type: "mcq", skill: "u2", topic: "2.4", calc: false, set: "c2r-s9", difficulty: "difficult",
+    question: String.raw`At which values of $x$ in the open interval $-4 < x < 5$ is $f$ continuous but not differentiable?`,
+    choices: [String.raw`$x = -1$ and $x = 3$`, String.raw`$x = -1$ only`, String.raw`$x = -2$, $x = -1$, and $x = 3$`, String.raw`$x = -1$, $x = 1$, and $x = 3$`],
+    why: [
+      String.raw`At $x = -1$ both pieces equal $1$, but the slope is $2(x + 2) = 2$ from the left and $1$ from the right, a corner. At $x = 3$ the cube root piece is continuous, but $\dfrac{d}{dx}\sqrt[3]{\dfrac{x - 3}{2}} = \dfrac{1}{6}\left(\dfrac{x - 3}{2}\right)^{-2/3}$ grows without bound as $x \to 3$, a vertical tangent line. At $x = 1$ the graph jumps, so $f$ is not continuous there.`,
+      String.raw`This misses $x = 3$. The curve is continuous there, but its tangent line is vertical, so $f'(3)$ does not exist.`,
+      String.raw`At $x = -2$ the parabola has a smooth lowest point with $f'(-2) = 2(0) = 0$, so $f$ is differentiable there.`,
+      String.raw`At $x = 1$ the graph jumps from $f(1) = 3$ down to values near $1$, so $f$ is not continuous there. The question asks for points where $f$ is continuous.`,
+    ], answer: 0 },
+  { id: "c2r-m33", type: "mcq", skill: "u2", topic: "2.2", calc: false, set: "c2r-s9", difficulty: "moderate",
+    question: String.raw`What is the value of $\displaystyle \lim_{h \to 0} \dfrac{f(h) - 2}{h}$?`,
+    choices: ["$1$", "$2$", "$0$", "The limit does not exist."],
+    why: [
+      String.raw`$f(0) = 0 + 2 = 2$, so the limit is $\displaystyle \lim_{h \to 0} \dfrac{f(0 + h) - f(0)}{h} = f'(0)$. Near $x = 0$, $f(x) = x + 2$, whose slope is $1$.`,
+      String.raw`$2$ is $f(0)$, the value of the function at $x = 0$, not the derivative.`,
+      String.raw`The numerator approaches $0$, but so does the denominator. The quotient approaches $f'(0)$, the slope of the segment through $x = 0$.`,
+      String.raw`Substituting $h = 0$ gives $\dfrac{0}{0}$, which is indeterminate. Near $x = 0$ the graph is a line segment, so $f'(0)$ exists.`,
+    ], answer: 0 },
   // Free response 1: a rising balloon (table and model)
   { id: "c2r-f1a", type: "frq", skill: "u2", topic: "2.1", calc: false, set: "c2r-s5", part: "(a)",
     prompt: String.raw`Find the average rate of change of $h$ over the interval $0 \le t \le 10$. Indicate units of measure.`,

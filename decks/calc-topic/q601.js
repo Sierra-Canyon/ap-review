@@ -13,17 +13,17 @@ export const sets = {
 };
 
 const items = [
-  { id: "q601-m01", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+  { id: "q601-m01", type: "mcq", skill: "u6", topic: "6.1", calc: false, difficulty: "easy",
     stem: "A printer prints pages at a constant rate of 15 pages per minute for 4 minutes. Then it slows to a constant 6 pages per minute for the next 5 minutes.",
     question: "How many pages does the printer print during these 9 minutes?",
-    choices: ["$90$", "$21$", "$94.5$", "$135$"],
+    choices: ["$90$", "$114$", "$94.5$", "$135$"],
     why: [
       String.raw`The amount is the area under the graph of the rate: $15(4) + 6(5) = 60 + 30 = 90$ pages.`,
-      String.raw`$15 + 6 = 21$ adds the two rates. Each rate has to be multiplied by the time it lasts.`,
+      String.raw`$15(4) + 6(9) = 114$ multiplies the second rate by all 9 minutes. The slower rate lasts only the last 5 minutes.`,
       String.raw`This multiplies the average of the two rates, $10.5$, by 9 minutes. The two rates do not last equally long.`,
       String.raw`$15(9) = 135$ uses the first rate for all 9 minutes.`,
     ], answer: 0 },
-  { id: "q601-m02", type: "mcq", skill: "u6", topic: "6.1", calc: false, set: "q601-s1",
+  { id: "q601-m02", type: "mcq", skill: "u6", topic: "6.1", calc: false, difficulty: "easy", set: "q601-s1",
     question: String.raw`What is the cyclist's displacement, in meters, from $t = 0$ to $t = 8$?`,
     choices: ["$24$", "$32$", "$20$", "$16$"],
     why: [
@@ -32,7 +32,7 @@ const items = [
       "This leaves out one of the two triangles.",
       String.raw`$16$ is only the rectangle from $t = 2$ to $t = 6$. The triangles at each end also add distance.`,
     ], answer: 0 },
-  { id: "q601-m03", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+  { id: "q601-m03", type: "mcq", skill: "u6", topic: "6.1", calc: false, difficulty: "easy",
     stem: String.raw`Gasoline is pumped into a tank at a rate of $p(t)$ gallons per minute, where $t$ is measured in minutes.`,
     question: String.raw`What does the area of the region between the graph of $p$ and the $t$-axis from $t = 0$ to $t = 3$ represent?`,
     choices: [
@@ -47,7 +47,7 @@ const items = [
       "The average rate is the area divided by 3 minutes. The area itself is measured in gallons.",
       String.raw`$p'(3)$ is the slope of the graph at $t = 3$, not an area.`,
     ], answer: 0 },
-  { id: "q601-m04", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+  { id: "q601-m04", type: "mcq", skill: "u6", topic: "6.1", calc: false, difficulty: "moderate",
     stem: String.raw`A particle moves along a line with velocity $v(t) = 3 - t$ meters per second for $0 \le t \le 6$ seconds.`,
     question: String.raw`What is the total distance, in meters, the particle travels from $t = 0$ to $t = 6$?`,
     choices: ["$9$", "$0$", "$18$", String.raw`$\frac{9}{2}$`],
@@ -57,7 +57,7 @@ const items = [
       String.raw`$18$ uses a base of 6 and a height of 3 for each triangle. Each triangle has a base of 3.`,
       String.raw`$\dfrac{9}{2}$ counts only the motion before $t = 3$. The particle keeps moving, in the other direction, after it turns around.`,
     ], answer: 0 },
-  { id: "q601-m05", type: "mcq", skill: "u6", topic: "6.1", calc: false,
+  { id: "q601-m05", type: "mcq", skill: "u6", topic: "6.1", calc: false, difficulty: "moderate",
     stem: "At the start of a storm, there are 6 inches of snow on the ground. Snow falls at a rate of 2 inches per hour for the first 1.5 hours and then at a rate of 0.5 inch per hour for the next 4 hours. No snow melts.",
     question: "How many inches of snow are on the ground at the end of the 5.5 hours?",
     choices: ["$11$", "$5$", "$8.5$", "$12.875$"],
@@ -67,7 +67,7 @@ const items = [
       String.raw`$6 + 2 + 0.5 = 8.5$ adds the rates to the starting depth without multiplying each rate by its time.`,
       String.raw`This multiplies the average of the rates, $1.25$, by the whole $5.5$ hours and adds the result to the starting $6$ inches. The two rates do not last equally long.`,
     ], answer: 0 },
-  { id: "q601-m06", type: "mcq", skill: "u6", topic: "6.1", calc: false, set: "q601-s2",
+  { id: "q601-m06", type: "mcq", skill: "u6", topic: "6.1", calc: false, difficulty: "moderate", set: "q601-s2",
     question: String.raw`How many liters of water are in the tank at time $t = 6$?`,
     choices: ["$28$", "$36$", "$8$", "$32$"],
     why: [

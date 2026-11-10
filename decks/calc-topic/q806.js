@@ -1,19 +1,26 @@
+import { graph } from "../../plot.js";
+
 export const sets = {
+  "q806-s1": { name: "A cubic and a line", label: "Graph", intro: String.raw`The graphs of $f(x) = x^3 - 5x^2 + 3x + 2$ and $g(x) = 2 - x$ are shown below. They intersect at the three marked points.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 5], y: [-8, 4], step: { x: 1, y: 4 }, xname: "x", yname: "y",
+      fns: [{ f: (x) => x ** 3 - 5 * x * x + 3 * x + 2, from: -0.8, to: 4.9, label: "f", labelAt: 4.3 }, { f: (x) => 2 - x, label: "g", labelAt: -0.6 }],
+      dots: [[0, 2, "closed"], [1, 1, "closed"], [4, -2, "closed"]],
+      alt: "The graphs of the cubic f(x) = x^3 - 5x^2 + 3x + 2 and the line g(x) = 2 - x for x from -1 to 5. They intersect at the three marked points (0, 2), (1, 1), and (4, -2). Between x = 0 and x = 1 the cubic is above the line, enclosing a small region. Between x = 1 and x = 4 the cubic dips below the line to a low point near (3, -7), enclosing a larger region." }) }] }] },
   "q806-s9": { name: "A cubic and a line", label: "Free response", intro: String.raw`Let $f(x) = x^3 - 3x^2$ and $g(x) = 4x$. The graphs of $f$ and $g$ enclose two regions.`,
     sources: [] },
 };
 
 const items = [
-  { id: "q806-m01", type: "mcq", skill: "u8", topic: "8.6", calc: false,
-    question: String.raw`What is the total area of the regions enclosed by the graphs of $y = x^3$ and $y = x$?`,
-    choices: [String.raw`$\frac{1}{2}$`, "$0$", String.raw`$\frac{1}{4}$`, String.raw`$-\frac{1}{2}$`],
+  { id: "q806-m01", type: "mcq", skill: "u8", topic: "8.6", calc: false, difficulty: "moderate", set: "q806-s1",
+    question: String.raw`What is the total area of the regions enclosed by the graphs of $f$ and $g$?`,
+    choices: [String.raw`$\frac{71}{6}$`, String.raw`$\frac{32}{3}$`, String.raw`$\frac{45}{4}$`, String.raw`$\frac{7}{12}$`],
     why: [
-      String.raw`The graphs meet at $x = -1$, $0$, and $1$. On $[-1, 0]$, $x^3 \ge x$; on $[0, 1]$, $x \ge x^3$. The area is $\displaystyle\int_{-1}^{0} \left(x^3 - x\right)dx + \int_0^1 \left(x - x^3\right)dx = \dfrac{1}{4} + \dfrac{1}{4} = \dfrac{1}{2}$.`,
-      String.raw`$0$ is $\displaystyle\int_{-1}^{1} \left(x - x^3\right)dx$. The upper curve changes at $x = 0$, so the two regions cancel unless the integral is split there.`,
-      String.raw`$\dfrac{1}{4}$ is the area of only one of the two regions.`,
-      String.raw`This uses the wrong upper curve on both intervals, so both integrals are negative.`,
+      String.raw`$f(x) - g(x) = x^3 - 5x^2 + 4x = x(x - 1)(x - 4)$, so the graphs meet at $x = 0$, $1$, and $4$. $f$ is above $g$ on $(0, 1)$ and below it on $(1, 4)$. With $H(x) = \dfrac{x^4}{4} - \dfrac{5x^3}{3} + 2x^2$, $\displaystyle\int_0^1 (f - g)\,dx = \dfrac{7}{12}$ and $\displaystyle\int_1^4 (g - f)\,dx = \dfrac{45}{4}$. The total area is $\dfrac{7}{12} + \dfrac{45}{4} = \dfrac{71}{6}$.`,
+      String.raw`This is $\left|\displaystyle\int_0^4 \left(f(x) - g(x)\right)dx\right| = \left|\dfrac{7}{12} - \dfrac{45}{4}\right|$. The graphs cross at $x = 1$, so the two regions partly cancel unless the integral is split there.`,
+      String.raw`$\dfrac{45}{4}$ is the area of the region on $[1, 4]$ only. The region on $[0, 1]$ must be added.`,
+      String.raw`$\dfrac{7}{12}$ is the area of the region on $[0, 1]$ only. The region on $[1, 4]$ must be added.`,
     ], answer: 0 },
-  { id: "q806-m02", type: "mcq", skill: "u8", topic: "8.6", calc: false,
+  { id: "q806-m02", type: "mcq", skill: "u8", topic: "8.6", calc: false, difficulty: "moderate",
     question: String.raw`Which expression gives the total area of the regions enclosed by the graphs of $y = x^3$ and $y = 2x - x^2$?`,
     choices: [
       String.raw`$\displaystyle\int_{-2}^{0} \left(x^3 + x^2 - 2x\right)dx + \int_0^1 \left(2x - x^2 - x^3\right)dx$`,
@@ -27,7 +34,7 @@ const items = [
       String.raw`This reverses the upper and lower curves on both intervals, so the expression equals $-\dfrac{37}{12}$.`,
       String.raw`This gives the area of only the region on $[0, 1]$. There is a second region on $[-2, 0]$.`,
     ], answer: 0 },
-  { id: "q806-m03", type: "mcq", skill: "u8", topic: "8.6", calc: false,
+  { id: "q806-m03", type: "mcq", skill: "u8", topic: "8.6", calc: false, difficulty: "moderate",
     question: String.raw`What is the total area of the regions enclosed by the graph of $y = x^3 - x^2 - 6x$ and the $x$-axis?`,
     choices: [String.raw`$\frac{253}{12}$`, String.raw`$\frac{125}{12}$`, String.raw`$\frac{63}{4}$`, String.raw`$\frac{16}{3}$`],
     why: [
@@ -36,7 +43,7 @@ const items = [
       String.raw`$\dfrac{63}{4}$ is the area of the region on $[0, 3]$ only.`,
       String.raw`$\dfrac{16}{3}$ is the area of the region on $[-2, 0]$ only.`,
     ], answer: 0 },
-  { id: "q806-m04", type: "mcq", skill: "u8", topic: "8.6", calc: true,
+  { id: "q806-m04", type: "mcq", skill: "u8", topic: "8.6", calc: true, difficulty: "easy",
     question: String.raw`What is the total area of the regions enclosed by the graphs of $y = x^3 - 3x + 1$ and $y = e^{x/2} - 1$?`,
     choices: ["$6.586$", "$3.189$", "$4.887$", "$1.698$"],
     why: [
@@ -45,16 +52,16 @@ const items = [
       String.raw`$4.887$ is the area of the region on $(a, b)$ only.`,
       String.raw`$1.698$ is the area of the region on $(b, c)$ only.`,
     ], answer: 0 },
-  { id: "q806-m05", type: "mcq", skill: "u8", topic: "8.6", calc: false,
-    question: String.raw`The graphs of the continuous functions $f$ and $g$ intersect at $x = 0$, $x = 2$, and $x = 5$. The graph of $f$ is above the graph of $g$ on $(0, 2)$, and the region between them there has area $5$. The graph of $g$ is above the graph of $f$ on $(2, 5)$, and the region between them there has area $3$. What is the value of $\displaystyle\int_0^5 \left(f(x) - g(x)\right)dx$?`,
-    choices: ["$2$", "$8$", "$-2$", "$-8$"],
+  { id: "q806-m05", type: "mcq", skill: "u8", topic: "8.6", calc: false, difficulty: "easy",
+    question: String.raw`The graphs of the continuous functions $f$ and $g$ intersect at $x = 0$, $x = 2$, and $x = 5$. The graph of $f$ is above the graph of $g$ on $(0, 2)$, and the region between them there has area $7$. The graph of $g$ is above the graph of $f$ on $(2, 5)$, and the region between them there has area $4$. What is the value of $\displaystyle\int_0^5 \left(f(x) - g(x)\right)dx$?`,
+    choices: ["$3$", "$11$", "$-3$", "$-11$"],
     why: [
-      String.raw`On $[0, 2]$, $f - g \ge 0$, so that part of the integral is $5$. On $[2, 5]$, $f - g \le 0$, so that part is $-3$. The integral is $5 - 3 = 2$.`,
-      String.raw`$8$ is the total area of the two regions. The integral of $f - g$ counts the region where $g$ is on top as negative.`,
+      String.raw`On $[0, 2]$, $f - g \ge 0$, so that part of the integral is $7$. On $[2, 5]$, $f - g \le 0$, so that part is $-4$. The integral is $7 - 4 = 3$.`,
+      String.raw`$11$ is the total area of the two regions. The integral of $f - g$ counts the region where $g$ is on top as negative.`,
       String.raw`This is $\displaystyle\int_0^5 \left(g(x) - f(x)\right)dx$, the integral with the functions reversed.`,
       String.raw`This makes both regions negative. Only the region where $g$ is above $f$ counts as negative in $\displaystyle\int_0^5 (f - g)\,dx$.`,
     ], answer: 0 },
-  { id: "q806-m06", type: "mcq", skill: "u8", topic: "8.6", calc: false,
+  { id: "q806-m06", type: "mcq", skill: "u8", topic: "8.6", calc: false, difficulty: "difficult",
     question: String.raw`What is the total area of the regions between the graphs of $y = \cos x$ and $y = \cos(2x)$ on the interval $[0, \pi]$?`,
     choices: [String.raw`$\frac{3\sqrt{3}}{2}$`, "$0$", String.raw`$\frac{3\sqrt{3}}{4}$`, String.raw`$\frac{\sqrt{3}}{2}$`],
     why: [

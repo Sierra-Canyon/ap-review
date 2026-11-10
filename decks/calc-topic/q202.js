@@ -21,7 +21,7 @@ export default {
     name: "Topic 2.2 Quiz: The Derivative and Its Notation",
     group: "Unit 2: Differentiation: Definition and Fundamental Properties",
     items: [
-      { id: "q202-m01", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+      { id: "q202-m01", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "difficult",
         question: String.raw`The expression $\displaystyle \lim_{h \to 0} \dfrac{\sqrt[4]{16 + h} - 2}{h}$ is equal to $f'(a)$ for which function $f$ and number $a$?`,
         choices: [
           String.raw`$f(x) = \sqrt[4]{x}$ and $a = 16$`,
@@ -35,7 +35,7 @@ export default {
           String.raw`For $f(x) = x^{4}$ and $a = 2$ the numerator is $(2 + h)^{4} - 16$. The expression takes the fourth root of $16 + h$, so $f$ is the fourth root function and $a = 16$.`,
           String.raw`For $f(x) = \sqrt[4]{16x}$ and $a = 1$, $f(1 + h) = \sqrt[4]{16 + 16h}$, not $\sqrt[4]{16 + h}$.`,
         ], answer: 0 },
-      { id: "q202-m02", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+      { id: "q202-m02", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "easy",
         question: String.raw`Let $f(x) = \dfrac{6}{x}$. What is the value of $\displaystyle \lim_{x \to 2} \dfrac{f(x) - f(2)}{x - 2}$?`,
         choices: [String.raw`$-\frac{3}{2}$`, String.raw`$\frac{3}{2}$`, "$3$", "The limit does not exist."],
         why: [
@@ -44,7 +44,7 @@ export default {
           String.raw`$3$ is the value $f(2)$. The limit is the slope of the tangent line at $x = 2$, not the height of the graph.`,
           String.raw`Direct substitution gives $\dfrac{0}{0}$, which is indeterminate. After simplifying, the limit exists and equals $-\dfrac{3}{2}$.`,
         ], answer: 0 },
-      { id: "q202-m03", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+      { id: "q202-m03", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "moderate",
         question: String.raw`Let $y = f(x)$ be a differentiable function. Which of the following is NOT equal to $f'(-2)$?`,
         choices: [
           String.raw`$\dfrac{d}{dx}\left[ f(-2) \right]$`,
@@ -58,7 +58,7 @@ export default {
           String.raw`This is the definition of the derivative at $x = -2$ written with $x \to -2$. The denominator $x + 2$ is $x - (-2)$, so it equals $f'(-2)$.`,
           String.raw`This is the definition of the derivative at $x = -2$ written with $h \to 0$, so it equals $f'(-2)$.`,
         ], answer: 0 },
-      { id: "q202-m04", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+      { id: "q202-m04", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "difficult",
         question: String.raw`For a function $g$, $g(-1) = 6$ and $\displaystyle \lim_{x \to -1} \dfrac{g(x) - 6}{x + 1} = 3$. At what value of $x$ does the line tangent to the graph of $g$ at $x = -1$ cross the $x$-axis?`,
         choices: ["$-3$", String.raw`$-\frac{3}{2}$`, "$-2$", "$9$"],
         why: [
@@ -67,7 +67,7 @@ export default {
           String.raw`$-2$ comes from the line $y = 6 + 3x$, which passes through $(0, 6)$ instead of the point of tangency $(-1, 6)$.`,
           String.raw`$9$ is where the tangent line crosses the $y$-axis: at $x = 0$, $y = 6 + 3(1) = 9$. The question asks where it crosses the $x$-axis.`,
         ], answer: 0 },
-      { id: "q202-m05", type: "mcq", skill: "u2", topic: "2.2", calc: false,
+      { id: "q202-m05", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "easy",
         question: String.raw`$\displaystyle \lim_{h \to 0} \dfrac{3(x + h)^{2} - 5(x + h) - \left( 3x^{2} - 5x \right)}{h}$ is`,
         choices: ["$6x - 5$", "$6x - 5 + 3h$", "$-5$", "$3x - 5$"],
         why: [
@@ -76,7 +76,7 @@ export default {
           String.raw`$-5$ comes from expanding $(x + h)^{2}$ as $x^{2} + h^{2}$, which loses the $2xh$ term.`,
           String.raw`$3x - 5$ comes from expanding $(x + h)^{2}$ as $x^{2} + xh + h^{2}$. The middle term is $2xh$.`,
         ], answer: 0 },
-      { id: "q202-m06", type: "mcq", skill: "u2", topic: "2.2", calc: false, set: "q202-s1",
+      { id: "q202-m06", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "easy", set: "q202-s1",
         question: String.raw`Which of the following is true?`,
         choices: [
           "$g'(0) < g'(1) < g'(2)$",

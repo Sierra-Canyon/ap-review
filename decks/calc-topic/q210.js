@@ -13,7 +13,7 @@ export default {
     name: "Topic 2.10 Quiz: Derivatives of tan x, cot x, sec x, and csc x",
     group: "Unit 2: Differentiation: Definition and Fundamental Properties",
     items: [
-      { id: "q210-m01", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+      { id: "q210-m01", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "moderate",
         question: String.raw`If $f(x) = 3\tan x + 2\csc x$, what is the value of $f'\left( \dfrac{\pi}{6} \right)$?`,
         choices: [String.raw`$4 - 4\sqrt{3}$`, String.raw`$4 + 4\sqrt{3}$`, String.raw`$-2\sqrt{3}$`, String.raw`$4 + \sqrt{3}$`],
         why: [
@@ -22,16 +22,16 @@ export default {
           String.raw`This uses $\sec x$ for the derivative of $\tan x$: $3 \cdot \dfrac{2}{\sqrt{3}} - 4\sqrt{3} = -2\sqrt{3}$. The derivative of $\tan x$ is $\sec^{2} x$.`,
           String.raw`$4 + \sqrt{3}$ is $f\left( \frac{\pi}{6} \right) = 3 \cdot \dfrac{\sqrt{3}}{3} + 2 \cdot 2$, the value of the function.`,
         ], answer: 0 },
-      { id: "q210-m02", type: "mcq", skill: "u2", topic: "2.10", calc: false,
-        question: String.raw`What is the slope of the line tangent to the graph of $y = 2\cot x$ at $x = \dfrac{2\pi}{3}$?`,
-        choices: [String.raw`$-\frac{8}{3}$`, String.raw`$\frac{8}{3}$`, String.raw`$-\frac{4\sqrt{3}}{3}$`, "$-8$"],
+      { id: "q210-m02", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy",
+        question: String.raw`What is the slope of the line tangent to the graph of $y = 2\sec x$ at $x = \dfrac{2\pi}{3}$?`,
+        choices: [String.raw`$4\sqrt{3}$`, String.raw`$-4\sqrt{3}$`, "$8$", String.raw`$-2\sqrt{3}$`],
         why: [
-          String.raw`$\dfrac{dy}{dx} = -2\csc^{2} x$. At $x = \dfrac{2\pi}{3}$, $\sin x = \dfrac{\sqrt{3}}{2}$, so $\csc^{2} x = \dfrac{4}{3}$ and the slope is $-\dfrac{8}{3}$.`,
-          String.raw`The derivative of $\cot x$ is $-\csc^{2} x$, which is negative. The graph of $\cot x$ falls on $0 < x < \pi$.`,
-          String.raw`$-\dfrac{4\sqrt{3}}{3}$ is $-2\csc x$ at $x = \frac{2\pi}{3}$. The derivative is $-2\csc^{2} x$, so $\csc x$ must be squared.`,
-          String.raw`$-8$ is $-2\sec^{2} x$ at $x = \frac{2\pi}{3}$. The derivative of $\cot x$ uses $\csc x$, not $\sec x$.`,
+          String.raw`$\dfrac{dy}{dx} = 2\sec x \tan x$. At $x = \dfrac{2\pi}{3}$, $\cos x = -\dfrac{1}{2}$, so $\sec x = -2$ and $\tan x = -\sqrt{3}$. The slope is $2(-2)\left( -\sqrt{3} \right) = 4\sqrt{3}$.`,
+          String.raw`This uses $-\sec x \tan x$ for the derivative of $\sec x$. The negative sign belongs to the derivative of $\csc x$, which is $-\csc x \cot x$.`,
+          String.raw`$8$ is $2\sec^{2} x$ at $x = \frac{2\pi}{3}$, which is the derivative of $2\tan x$. The derivative of $\sec x$ is $\sec x \tan x$.`,
+          String.raw`$-2\sqrt{3}$ is $2\tan x$ at $x = \frac{2\pi}{3}$, which leaves out the factor $\sec x$ in $\sec x \tan x$.`,
         ], answer: 0 },
-      { id: "q210-m03", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+      { id: "q210-m03", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "moderate",
         question: String.raw`If $f(x) = \sec x \tan x$, what is the value of $f'\left( \dfrac{\pi}{4} \right)$?`,
         choices: [String.raw`$3\sqrt{2}$`, String.raw`$2\sqrt{2}$`, String.raw`$\sqrt{2}$`, String.raw`$2 + \sqrt{2}$`],
         why: [
@@ -40,7 +40,7 @@ export default {
           String.raw`$\sqrt{2}$ is $f\left( \frac{\pi}{4} \right) = \sqrt{2} \cdot 1$, the value of the function.`,
           String.raw`$2 + \sqrt{2}$ uses $\sec x$ for the derivative of $\tan x$, giving $\sec x \tan^{2} x + \sec^{2} x$. The derivative of $\tan x$ is $\sec^{2} x$.`,
         ], answer: 0 },
-      { id: "q210-m04", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+      { id: "q210-m04", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy",
         question: String.raw`Writing $\csc x = \dfrac{1}{\sin x}$ and using the quotient rule, $\dfrac{d}{dx}(\csc x) =$`,
         choices: [String.raw`$-\frac{\cos x}{\sin^{2} x}$`, String.raw`$\frac{\cos x}{\sin^{2} x}$`, String.raw`$\frac{1}{\cos x}$`, String.raw`$-\csc^{2} x$`],
         why: [
@@ -49,7 +49,7 @@ export default {
           String.raw`$\dfrac{1}{\cos x}$ is the reciprocal of the derivative of $\sin x$. The derivative of $\dfrac{1}{\sin x}$ is not $\dfrac{1}{\cos x}$. Use the quotient rule.`,
           String.raw`$-\csc^{2} x$ is the derivative of $\cot x$, not of $\csc x$.`,
         ], answer: 0 },
-      { id: "q210-m05", type: "mcq", skill: "u2", topic: "2.10", calc: false,
+      { id: "q210-m05", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "difficult",
         question: String.raw`For $0 < x < \pi$, at which values of $x$ does the graph of $y = 2\sec x - \tan x$ have a horizontal tangent line?`,
         choices: [String.raw`$\frac{\pi}{6}$ and $\frac{5\pi}{6}$`, String.raw`$\frac{\pi}{6}$ only`, String.raw`$\frac{\pi}{2}$`, "There are no such values."],
         why: [
@@ -58,7 +58,7 @@ export default {
           String.raw`At $x = \dfrac{\pi}{2}$, $\cos x = 0$, so $\sec x$ and $\tan x$ are undefined. The function has no tangent line there.`,
           String.raw`This comes from swapping the rules: $2\sec^{2} x - \sec x \tan x = \dfrac{2 - \sin x}{\cos^{2} x}$ is never $0$. The derivative of $\sec x$ is $\sec x \tan x$ and the derivative of $\tan x$ is $\sec^{2} x$.`,
         ], answer: 0 },
-      { id: "q210-m06", type: "mcq", skill: "u2", topic: "2.10", calc: true,
+      { id: "q210-m06", type: "mcq", skill: "u2", topic: "2.10", calc: true, difficulty: "moderate",
         question: String.raw`Let $f(x) = \tan x - x^{2}$. For $0 < x < \dfrac{\pi}{2}$, at what value of $x$ is $f'(x) = 4$?`,
         choices: ["$1.162$", "$1.405$", "$1.424$", "$1.180$"],
         why: [

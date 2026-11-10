@@ -1,19 +1,27 @@
+import { graph } from "../../plot.js";
+
 export const sets = {
+  "q804-s1": { name: "A parabola and a line", label: "Graph", intro: String.raw`The graph of $f(x) = x^2 - 2x$ and a line $\ell$ are shown below. The line $\ell$ passes through the marked points $(-1, 3)$ and $(1, -1)$.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-2, 3], y: [-2, 4], xname: "x", yname: "y",
+      fns: [{ f: (x) => x * x - 2 * x, from: -1.3, to: 2.9 }, { f: (x) => 1 - 2 * x, from: -1.5, to: 1.5, label: "ℓ", labelAt: -1.4 }],
+      dots: [[-1, 3, "closed"], [1, -1, "closed"]],
+      labels: [[2.62, 1.0, "f"]],
+      alt: "The graph of f(x) = x^2 - 2x, an upward parabola with vertex (1, -1) crossing the x-axis at 0 and 2, and a line ℓ that slopes down through the marked points (-1, 3) and (1, -1). The parabola and the line meet at those two points and enclose a region between them, with the line above the parabola." }) }] }] },
   "q804-s9": { name: "The region between f and g", label: "Free response", intro: String.raw`Let $f(x) = 9 - x^2$ and $g(x) = x^2 - 2x - 3$. Let $R$ be the region enclosed by the graphs of $f$ and $g$.`,
     sources: [] },
 };
 
 const items = [
-  { id: "q804-m01", type: "mcq", skill: "u8", topic: "8.4", calc: false,
-    question: String.raw`What is the area of the region enclosed by the graphs of $y = 2x^2$ and $y = 4x$?`,
-    choices: [String.raw`$\frac{8}{3}$`, String.raw`$\frac{16}{3}$`, "$8$", String.raw`$\frac{40}{3}$`],
+  { id: "q804-m01", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "difficult", set: "q804-s1",
+    question: String.raw`What is the area of the region enclosed by the graph of $f$ and the line $\ell$?`,
+    choices: [String.raw`$\frac{4}{3}$`, "$2$", String.raw`$\frac{2}{3}$`, String.raw`$-\frac{4}{3}$`],
     why: [
-      String.raw`The graphs meet where $2x^2 = 4x$, at $x = 0$ and $x = 2$, and $4x \ge 2x^2$ between them. The area is $\displaystyle\int_0^2 \left(4x - 2x^2\right)dx = 8 - \dfrac{16}{3} = \dfrac{8}{3}$.`,
-      String.raw`$\dfrac{16}{3}$ is $\displaystyle\int_0^2 2x^2\,dx$, the area under the lower curve only.`,
-      String.raw`$8$ is $\displaystyle\int_0^2 4x\,dx$, the area under the upper curve only. The area under $y = 2x^2$ must be subtracted.`,
-      String.raw`This adds the two functions in place of subtracting the lower one from the upper one.`,
+      String.raw`The slope of $\ell$ is $\dfrac{-1 - 3}{1 - (-1)} = -2$, so $\ell$ is $y = 1 - 2x$. It meets the parabola where $x^2 - 2x = 1 - 2x$, at $x = \pm 1$, and the line is above the parabola between them. The area is $\displaystyle\int_{-1}^{1} \left((1 - 2x) - \left(x^2 - 2x\right)\right)dx = \int_{-1}^{1} \left(1 - x^2\right)dx = 2 - \dfrac{2}{3} = \dfrac{4}{3}$.`,
+      String.raw`$2$ is $\displaystyle\int_{-1}^{1} (1 - 2x)\,dx$, the integral of the line alone. The integral of $f$ must be subtracted.`,
+      String.raw`$\dfrac{2}{3}$ is $\displaystyle\int_{-1}^{1} \left(x^2 - 2x\right)dx$, the integral of $f$ alone, not the area between the graphs.`,
+      String.raw`This subtracts the line from the parabola, $\displaystyle\int_{-1}^{1} \left(x^2 - 1\right)dx$. The line is the upper boundary, so the integrand is line minus parabola.`,
     ], answer: 0 },
-  { id: "q804-m02", type: "mcq", skill: "u8", topic: "8.4", calc: false,
+  { id: "q804-m02", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "moderate",
     question: String.raw`Which integral gives the area of the region in the first quadrant enclosed by the graphs of $y = 2x$ and $y = x^3$?`,
     choices: [String.raw`$\displaystyle\int_0^{\sqrt{2}} \left(2x - x^3\right)dx$`, String.raw`$\displaystyle\int_0^{\sqrt{2}} \left(x^3 - 2x\right)dx$`, String.raw`$\displaystyle\int_0^{2\sqrt{2}} \left(2x - x^3\right)dx$`, String.raw`$\displaystyle\int_0^{2} \left(2x - x^3\right)dx$`],
     why: [
@@ -22,7 +30,7 @@ const items = [
       String.raw`$2\sqrt{2}$ is the $y$-coordinate of the intersection point $\left(\sqrt{2}, 2\sqrt{2}\right)$. The limits of an integral in $x$ are $x$-values.`,
       String.raw`This solves $x^2 = 2$ as $x = 2$. The solution is $x = \sqrt{2}$.`,
     ], answer: 0 },
-  { id: "q804-m03", type: "mcq", skill: "u8", topic: "8.4", calc: false,
+  { id: "q804-m03", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "easy",
     question: String.raw`What is the area of the region bounded by the graphs of $y = e^{x}$ and $y = x$ and the vertical lines $x = 0$ and $x = 1$?`,
     choices: [String.raw`$e - \frac{3}{2}$`, String.raw`$e - \frac{1}{2}$`, "$e - 1$", String.raw`$\frac{3}{2} - e$`],
     why: [
@@ -31,7 +39,7 @@ const items = [
       String.raw`$e - 1$ is $\displaystyle\int_0^1 e^{x}\,dx$, the area under the upper curve only.`,
       String.raw`This subtracts the upper curve from the lower one, $\displaystyle\int_0^1 \left(x - e^{x}\right)dx$, which is negative.`,
     ], answer: 0 },
-  { id: "q804-m04", type: "mcq", skill: "u8", topic: "8.4", calc: false,
+  { id: "q804-m04", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "moderate",
     question: String.raw`What is the area of the region bounded by the graphs of $y = \dfrac{1}{x}$ and $y = 1$ and the vertical line $x = e$?`,
     choices: ["$e - 2$", "$2 - e$", "$e - 1$", "$1$"],
     why: [
@@ -40,7 +48,7 @@ const items = [
       String.raw`$e - 1$ is $\displaystyle\int_1^e 1\,dx$, the area under $y = 1$ only.`,
       String.raw`$1$ is $\displaystyle\int_1^e \dfrac{1}{x}\,dx$, the area under the lower curve only.`,
     ], answer: 0 },
-  { id: "q804-m05", type: "mcq", skill: "u8", topic: "8.4", calc: true,
+  { id: "q804-m05", type: "mcq", skill: "u8", topic: "8.4", calc: true, difficulty: "moderate",
     question: String.raw`What is the area of the region enclosed by the graphs of $y = e^{-x^2}$ and $y = x^2$?`,
     choices: ["$0.979$", "$0.490$", "$1.264$", "$1.549$"],
     why: [
@@ -49,7 +57,7 @@ const items = [
       String.raw`This integrates $e^{-x^2}$ alone between the intersection points. The area under $y = x^2$ must be subtracted.`,
       String.raw`This adds $x^2$ in place of subtracting it.`,
     ], answer: 0 },
-  { id: "q804-m06", type: "mcq", skill: "u8", topic: "8.4", calc: false,
+  { id: "q804-m06", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "easy",
     question: String.raw`What is the area of the region enclosed by the graphs of $y = 8 - x^2$ and $y = 2x$?`,
     choices: ["$36$", String.raw`$\frac{28}{3}$`, "$12$", "$24$"],
     why: [

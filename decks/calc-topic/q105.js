@@ -31,7 +31,7 @@ export const sets = {
 };
 
 const items = [
-  { id: "q105-m1", type: "mcq", skill: "u1", topic: "1.5", calc: false,
+  { id: "q105-m1", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.5", calc: false,
     stem: String.raw`$\displaystyle \lim_{x \to 2} f(x) = -3$ and $\displaystyle \lim_{x \to 2} g(x) = 4$.`,
     question: String.raw`What is $\displaystyle \lim_{x \to 2} \left[ f(x)g(x) - 5f(x) \right]$?`,
     choices: ["$3$", "$-27$", "$-9$", "$-12$"],
@@ -41,26 +41,26 @@ const items = [
       String.raw`$-9$ drops the factor $5$: $(-3)(4) - (-3) = -9$.`,
       String.raw`$-12$ is only the limit of $f(x)g(x)$. The limit of $-5f(x)$, which is $15$, was left out.`,
     ], answer: 0 },
-  { id: "q105-m2", type: "mcq", skill: "u1", topic: "1.5", calc: false,
+  { id: "q105-m2", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.5", calc: false,
     stem: String.raw`$\displaystyle \lim_{x \to -1} f(x) = 6$ and $\displaystyle \lim_{x \to -1} g(x) = 1$.`,
-    question: String.raw`What is $\displaystyle \lim_{x \to -1} \dfrac{f(x)}{g(x) + 2}$?`,
-    choices: ["$2$", "$6$", String.raw`$\frac{1}{2}$`, String.raw`$\frac{8}{3}$`],
+    question: String.raw`Which of the following is true about $\displaystyle \lim_{x \to -1} \dfrac{f(x)}{g(x) + 2}$?`,
+    choices: ["It equals $2$.", "It equals $6$.", String.raw`It equals $\frac{1}{2}$.`, String.raw`It equals $\frac{8}{3}$.`],
     why: [
       String.raw`The limit of the denominator is $1 + 2 = 3$, which is not $0$, so the quotient property applies: $\dfrac{6}{3} = 2$.`,
       String.raw`$6$ is $\frac{6}{1}$: the $2$ was not added to the limit of $g(x)$.`,
       String.raw`$\frac{1}{2}$ is the reciprocal, $\frac{3}{6}$. The limit of $f(x)$ goes in the numerator.`,
       String.raw`$\frac{8}{3}$ adds $2$ to the numerator as well, $\frac{6 + 2}{1 + 2}$. Only the denominator is $g(x) + 2$.`,
     ], answer: 0 },
-  { id: "q105-m3", type: "mcq", skill: "u1", topic: "1.5", calc: false, set: "q105-s1",
-    question: String.raw`What is $\displaystyle \lim_{x \to 1} \left[ f(x)g(x) \right]$?`,
-    choices: ["$2$", "The limit does not exist.", "$0$", "$-2$"],
+  { id: "q105-m3", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.5", calc: false, set: "q105-s1",
+    question: String.raw`Which of the following is true about $\displaystyle \lim_{x \to 1} \left[ f(x)g(x) \right]$?`,
+    choices: ["It equals $2$.", "It does not exist.", "It equals $0$.", "It equals $-2$."],
     why: [
       String.raw`From the left, $f(x) \to 2$ and $g(x) \to 1$, so $f(x)g(x) \to 2$. From the right, $f(x) \to -2$ and $g(x) \to -1$, so $f(x)g(x) \to 2$. Both one-sided limits of the product are $2$, so the limit is $2$.`,
       String.raw`Neither $\lim_{x \to 1} f(x)$ nor $\lim_{x \to 1} g(x)$ exists, so the product property cannot be used. The product still has a limit, because both of its one-sided limits equal $2$.`,
       String.raw`$0$ is $f(1)g(1) = (0)(-1)$. The limit depends on the values near $x = 1$, not at $x = 1$.`,
       String.raw`$-2$ multiplies the left-hand limit of $f$, $2$, by the right-hand limit of $g$, $-1$. Each one-sided limit of the product uses both functions on the same side.`,
     ], answer: 0 },
-  { id: "q105-m4", type: "mcq", skill: "u1", topic: "1.5", calc: false,
+  { id: "q105-m4", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.5", calc: false,
     question: String.raw`What is $\displaystyle \lim_{x \to \pi/6} \left( 4\sin^2 x + \cos(2x) \right)$?`,
     choices: [String.raw`$\frac{3}{2}$`, String.raw`$\frac{9}{2}$`, String.raw`$1 + \sqrt{3}$`, String.raw`$\frac{3}{4}$`],
     why: [
@@ -69,7 +69,7 @@ const items = [
       String.raw`$1 + \sqrt{3}$ replaces $\cos(2x)$ with $2\cos x = \sqrt{3}$. At $x = \frac{\pi}{6}$, $\cos(2x) = \cos\frac{\pi}{3} = \frac{1}{2}$.`,
       String.raw`$\frac{3}{4}$ drops the factor $4$: $\left(\frac{1}{2}\right)^2 + \frac{1}{2} = \frac{3}{4}$.`,
     ], answer: 0 },
-  { id: "q105-m5", type: "mcq", skill: "u1", topic: "1.5", calc: false,
+  { id: "q105-m5", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.5", calc: false,
     stem: String.raw`For a function $f$, $\displaystyle \lim_{x \to 2} f(x) = 3$ and $f(2) = 5$. Let $g(x) = x^2 + 1$.`,
     question: String.raw`What is $\displaystyle \lim_{x \to 2} g(f(x))$?`,
     choices: ["$10$", "$26$", "$5$", "$9$"],
@@ -79,17 +79,17 @@ const items = [
       String.raw`$5$ is $g(2)$. It evaluates $g$ at the number $x$ approaches instead of at the number $f(x)$ approaches.`,
       String.raw`$9$ is $3^2$. The $+1$ in $g(x) = x^2 + 1$ was dropped.`,
     ], answer: 0 },
-  { id: "q105-m6", type: "mcq", skill: "u1", topic: "1.5", calc: false,
+  { id: "q105-m6", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.5", calc: false,
     question: String.raw`If $\displaystyle \lim_{x \to a} f(x) = 0$ and $\displaystyle \lim_{x \to a} g(x) = 0$, which of the following limits must equal $0$?
-I. $\displaystyle \lim_{x \to a} \left[ f(x) + g(x) \right]$
-II. $\displaystyle \lim_{x \to a} \left[ f(x)g(x) \right]$
-III. $\displaystyle \lim_{x \to a} \dfrac{f(x)}{g(x)}$`,
-    choices: ["I and II only", "I only", "II only", "I, II, and III"],
+I. $\displaystyle \lim_{x \to a} \left[ f(x)g(x) \right]$
+II. $\displaystyle \lim_{x \to a} \dfrac{f(x)}{g(x)}$
+III. $\displaystyle \lim_{x \to a} \dfrac{f(x) + 1}{g(x) + 1}$`,
+    choices: ["I only", "I and II only", "I and III only", "I, II, and III"],
     why: [
-      String.raw`By the sum and product properties, the limits in I and II are $0 + 0 = 0$ and $0 \cdot 0 = 0$. The quotient property does not apply to III, because the limit of the denominator is $0$. For example, $f(x) = 2(x - a)$ and $g(x) = x - a$ give a limit of $2$ in III.`,
-      String.raw`II must also equal $0$: by the product property, its limit is $0 \cdot 0 = 0$.`,
-      String.raw`I must also equal $0$: by the sum property, its limit is $0 + 0 = 0$.`,
-      String.raw`III does not have to equal $0$. The quotient property needs a denominator whose limit is not $0$, and $f(x) = 2(x - a)$ with $g(x) = x - a$ gives a limit of $2$.`,
+      String.raw`By the product property, the limit in I is $0 \cdot 0 = 0$. The quotient property does not apply to II, because the limit of its denominator is $0$; for example, $f(x) = 2(x - a)$ and $g(x) = x - a$ give a limit of $2$. In III the denominator approaches $0 + 1 = 1$, so the quotient property applies and the limit is $\dfrac{0 + 1}{0 + 1} = 1$, not $0$.`,
+      String.raw`II does not have to equal $0$. Its denominator approaches $0$, so the quotient property does not apply, and $f(x) = 2(x - a)$ with $g(x) = x - a$ gives a limit of $2$.`,
+      String.raw`III equals $1$. Its denominator approaches $1$, not $0$, so the quotient property gives $\dfrac{0 + 1}{0 + 1} = 1$.`,
+      String.raw`II does not have to equal $0$, because its denominator approaches $0$, and III equals $\dfrac{0 + 1}{0 + 1} = 1$.`,
     ], answer: 0 },
 
   { id: "q105-f1a", type: "frq", skill: "u1", topic: "1.5", calc: false, set: "q105-s2", part: "(a)",

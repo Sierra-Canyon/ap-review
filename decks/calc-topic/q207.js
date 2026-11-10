@@ -13,16 +13,21 @@ export default {
     name: "Topic 2.7 Quiz: Derivatives of cos x, sin x, e^x, and ln x",
     group: "Unit 2: Differentiation: Definition and Fundamental Properties",
     items: [
-      { id: "q207-m01", type: "mcq", skill: "u2", topic: "2.7", calc: false,
-        question: String.raw`For which of the following functions is $f'(x) = \sin x - e^{x}$?`,
-        choices: [String.raw`$f(x) = -\cos x - e^{x}$`, String.raw`$f(x) = \cos x - e^{x}$`, String.raw`$f(x) = \cos x + e^{x}$`, String.raw`$f(x) = -\sin x - e^{x}$`],
+      { id: "q207-m01", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "easy",
+        question: String.raw`If $f(x) = 4\cos x - e^{x} + \ln x$, then $f'(x) =$`,
+        choices: [
+          String.raw`$-4\sin x - e^{x} + \frac{1}{x}$`,
+          String.raw`$4\sin x - e^{x} + \frac{1}{x}$`,
+          String.raw`$-4\sin x - xe^{x - 1} + \frac{1}{x}$`,
+          String.raw`$-\sin x - e^{x} + \frac{1}{x}$`,
+        ],
         why: [
-          String.raw`$\dfrac{d}{dx}(-\cos x) = -(-\sin x) = \sin x$ and $\dfrac{d}{dx}\left( -e^{x} \right) = -e^{x}$, so $f'(x) = \sin x - e^{x}$.`,
-          String.raw`$\dfrac{d}{dx}(\cos x) = -\sin x$, so this function has derivative $-\sin x - e^{x}$.`,
-          String.raw`This function has derivative $-\sin x + e^{x}$. Both signs are opposite to $\sin x - e^{x}$.`,
-          String.raw`$\dfrac{d}{dx}(-\sin x) = -\cos x$, so this function has derivative $-\cos x - e^{x}$.`,
+          String.raw`$\dfrac{d}{dx}(4\cos x) = -4\sin x$, $\dfrac{d}{dx}\left( e^{x} \right) = e^{x}$, and $\dfrac{d}{dx}(\ln x) = \dfrac{1}{x}$, so $f'(x) = -4\sin x - e^{x} + \dfrac{1}{x}$.`,
+          String.raw`This uses $\dfrac{d}{dx}(\cos x) = \sin x$. The derivative of $\cos x$ is $-\sin x$.`,
+          String.raw`This applies the power rule to $e^{x}$ as if $x$ were the base. The derivative of $e^{x}$ is $e^{x}$.`,
+          String.raw`This drops the constant multiple $4$. The derivative of $4\cos x$ is $4$ times the derivative of $\cos x$.`,
         ], answer: 0 },
-      { id: "q207-m02", type: "mcq", skill: "u2", topic: "2.7", calc: false,
+      { id: "q207-m02", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "moderate",
         question: String.raw`Which of the following is an equation of the line tangent to the graph of $y = e^{x} + \ln x$ at $x = 1$?`,
         choices: ["$y = e + (e + 1)(x - 1)$", "$y = (e + 1) + e(x - 1)$", "$y = e + (e + 1)x$", "$y = e + e(x - 1)$"],
         why: [
@@ -31,7 +36,7 @@ export default {
           String.raw`This line has the right slope but passes through $(0, e)$, not the point of tangency $(1, e)$.`,
           String.raw`This slope treats the derivative of $\ln x$ as $\ln x$, which is $0$ at $x = 1$. The derivative of $\ln x$ is $\dfrac{1}{x}$, which is $1$ at $x = 1$.`,
         ], answer: 0 },
-      { id: "q207-m03", type: "mcq", skill: "u2", topic: "2.7", calc: false,
+      { id: "q207-m03", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "difficult",
         question: String.raw`$\displaystyle \lim_{h \to 0} \dfrac{\cos\left( \frac{2\pi}{3} + h \right) + \frac{1}{2}}{h}$ is`,
         choices: [String.raw`$-\frac{\sqrt{3}}{2}$`, String.raw`$\frac{\sqrt{3}}{2}$`, String.raw`$-\frac{1}{2}$`, "nonexistent"],
         why: [
@@ -40,7 +45,7 @@ export default {
           String.raw`$-\dfrac{1}{2}$ is $\cos\dfrac{2\pi}{3}$, the value of the function. The limit is the slope of the tangent line there.`,
           String.raw`Substitution gives $\dfrac{0}{0}$, which is indeterminate. The limit is the derivative of $\cos x$ at $x = \frac{2\pi}{3}$, which exists.`,
         ], answer: 0 },
-      { id: "q207-m04", type: "mcq", skill: "u2", topic: "2.7", calc: false,
+      { id: "q207-m04", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "moderate",
         question: String.raw`For $0 < x < 2\pi$, at which values of $x$ is the line tangent to the graph of $y = \sin x + \cos x$ horizontal?`,
         choices: [String.raw`$\frac{\pi}{4}$ and $\frac{5\pi}{4}$`, String.raw`$\frac{3\pi}{4}$ and $\frac{7\pi}{4}$`, String.raw`$\frac{\pi}{4}$ only`, String.raw`$\frac{\pi}{2}$ and $\frac{3\pi}{2}$`],
         why: [
@@ -49,7 +54,7 @@ export default {
           String.raw`$\tan x = 1$ also holds in the third quadrant, at $x = \dfrac{5\pi}{4}$, where $\sin x = \cos x = -\dfrac{\sqrt{2}}{2}$.`,
           String.raw`These solve $\cos x = 0$, which leaves out the $-\sin x$ term of the derivative.`,
         ], answer: 0 },
-      { id: "q207-m05", type: "mcq", skill: "u2", topic: "2.7", calc: false,
+      { id: "q207-m05", type: "mcq", skill: "u2", topic: "2.7", calc: false, difficulty: "moderate",
         question: String.raw`At what value of $x$ is the line tangent to the graph of $y = 4e^{x}$ parallel to the line $y = 8x + 1$?`,
         choices: [String.raw`$\ln 2$`, String.raw`$\ln 8$`, "$e^{2}$", "$2$"],
         why: [
@@ -58,7 +63,7 @@ export default {
           String.raw`$e^{2}$ reverses the inverse: $e^{x} = 2$ means $x = \ln 2$, not $x = e^{2}$.`,
           String.raw`$2$ is the value of $e^{x}$, not of $x$. $e^{x} = 2$ gives $x = \ln 2$.`,
         ], answer: 0 },
-      { id: "q207-m06", type: "mcq", skill: "u2", topic: "2.7", calc: true,
+      { id: "q207-m06", type: "mcq", skill: "u2", topic: "2.7", calc: true, difficulty: "moderate",
         question: String.raw`Let $f(x) = 2\sin x + \ln x$. For $0 < x < 3$, at what value of $x$ is $f'(x) = 1$?`,
         choices: ["$1.422$", "$0.723$", "$1.845$", "$1.794$"],
         why: [

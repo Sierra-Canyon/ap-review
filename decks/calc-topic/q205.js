@@ -13,7 +13,7 @@ export default {
     name: "Topic 2.5 Quiz: The Power Rule",
     group: "Unit 2: Differentiation: Definition and Fundamental Properties",
     items: [
-      { id: "q205-m01", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+      { id: "q205-m01", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "moderate",
         question: String.raw`If $f(x) = \dfrac{1}{\sqrt[4]{x}}$, what is the value of $f'(16)$?`,
         choices: [String.raw`$-\frac{1}{128}$`, "$-2$", "$32$", String.raw`$\frac{1}{2}$`],
         why: [
@@ -22,7 +22,7 @@ export default {
           String.raw`$32$ is $\dfrac{1}{\frac{1}{4}x^{-3/4}}$ at $x = 16$, which differentiates the denominator $x^{1/4}$ and keeps the $1$ on top. The function must be written as $x^{-1/4}$ first.`,
           String.raw`$\dfrac{1}{2}$ is $f(16) = \dfrac{1}{2}$, the value of the function.`,
         ], answer: 0 },
-      { id: "q205-m02", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+      { id: "q205-m02", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "moderate",
         question: String.raw`If $f(x) = \sqrt{x} \cdot \sqrt[3]{x}$, what is the value of $f'(64)$?`,
         choices: [String.raw`$\frac{5}{12}$`, String.raw`$\frac{1}{768}$`, "$32$", String.raw`$\frac{80}{3}$`],
         why: [
@@ -31,21 +31,21 @@ export default {
           String.raw`$32$ is $f(64) = 8 \cdot 4$, the value of the function.`,
           String.raw`$\dfrac{80}{3}$ is $\dfrac{5}{6} \cdot 64^{5/6}$. The coefficient is right, but the exponent must also drop by $1$ to $-\dfrac{1}{6}$.`,
         ], answer: 0 },
-      { id: "q205-m03", type: "mcq", skill: "u2", topic: "2.5", calc: false,
-        question: String.raw`Which of the following is an equation of the line tangent to the graph of $y = \sqrt[5]{x}$ at $x = 32$?`,
+      { id: "q205-m03", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "easy",
+        question: String.raw`If $f(x) = \dfrac{1}{4x^{2}}$, then $f'(x) =$`,
         choices: [
-          String.raw`$y = 2 + \frac{1}{80}(x - 32)$`,
-          String.raw`$y = 2 + \frac{2}{5}(x - 32)$`,
-          String.raw`$y = 2 + \frac{1}{80}(x + 32)$`,
-          String.raw`$y = \frac{1}{80} + 2(x - 32)$`,
+          String.raw`$-\frac{1}{2x^{3}}$`,
+          String.raw`$-\frac{1}{2x}$`,
+          String.raw`$\frac{1}{8x}$`,
+          String.raw`$-\frac{8}{x^{3}}$`,
         ],
         why: [
-          String.raw`$y = x^{1/5}$, so $\dfrac{dy}{dx} = \dfrac{1}{5}x^{-4/5}$. At $x = 32$, $y = 2$ and the slope is $\dfrac{1}{5} \cdot \dfrac{1}{32^{4/5}} = \dfrac{1}{5} \cdot \dfrac{1}{16} = \dfrac{1}{80}$.`,
-          String.raw`This slope is $\dfrac{1}{5} \cdot 32^{1/5}$, which keeps the original exponent. After the power rule the exponent is $\dfrac{1}{5} - 1 = -\dfrac{4}{5}$.`,
-          String.raw`This line passes through $(-32, 2)$. The point of tangency is $(32, 2)$, so the factor is $x - 32$.`,
-          String.raw`This swaps the slope and the $y$-coordinate. The point of tangency is $(32, 2)$ and the slope is $\dfrac{1}{80}$.`,
+          String.raw`Rewrite $f(x) = \dfrac{1}{4}x^{-2}$. The power rule gives $f'(x) = \dfrac{1}{4} \cdot (-2)x^{-3} = -\dfrac{1}{2}x^{-3} = -\dfrac{1}{2x^{3}}$.`,
+          String.raw`$-\dfrac{1}{2x}$ is $-\dfrac{1}{2}x^{-1}$, which lowers the size of the exponent from $2$ to $1$. The power rule subtracts $1$ from the exponent: $-2 - 1 = -3$.`,
+          String.raw`$\dfrac{1}{8x}$ is $1$ over the derivative of the denominator $4x^{2}$. The derivative of a reciprocal is not the reciprocal of the derivative. Rewrite with a negative exponent first.`,
+          String.raw`$-\dfrac{8}{x^{3}}$ is the derivative of $4x^{-2}$. The $4$ is in the denominator, so $f(x) = \dfrac{1}{4}x^{-2}$, not $4x^{-2}$.`,
         ], answer: 0 },
-      { id: "q205-m04", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+      { id: "q205-m04", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "moderate",
         question: String.raw`At which points on the graph of $y = x^{5}$ is the tangent line parallel to the line $y = 80x - 3$?`,
         choices: ["$(2, 32)$ and $(-2, -32)$", "$(2, 32)$ only", "$(2, 80)$ and $(-2, 80)$", "$(4, 1024)$ only"],
         why: [
@@ -54,7 +54,7 @@ export default {
           String.raw`$80$ is the slope of the tangent line, not the $y$-coordinate. The $y$-coordinates come from $y = x^{5}$.`,
           String.raw`This takes the square root of $16$ instead of the fourth root. $4^{4} = 256$, not $16$.`,
         ], answer: 0 },
-      { id: "q205-m05", type: "mcq", skill: "u2", topic: "2.5", calc: false,
+      { id: "q205-m05", type: "mcq", skill: "u2", topic: "2.5", calc: false, difficulty: "difficult",
         question: String.raw`$\displaystyle \lim_{x \to -1} \dfrac{x^{7} + 1}{x + 1}$ is`,
         choices: ["$7$", "$-7$", "$-1$", "nonexistent"],
         why: [
@@ -63,7 +63,7 @@ export default {
           String.raw`$-1$ is $f(-1) = (-1)^{7}$, the value of the function, not the limit of the difference quotient.`,
           String.raw`Substitution gives $\dfrac{0}{0}$, which is indeterminate. The limit is the derivative of $x^{7}$ at $x = -1$, which exists.`,
         ], answer: 0 },
-      { id: "q205-m06", type: "mcq", skill: "u2", topic: "2.5", calc: true,
+      { id: "q205-m06", type: "mcq", skill: "u2", topic: "2.5", calc: true, difficulty: "easy",
         question: String.raw`If $f(x) = x^{2.4}$, what is the value of $f'(3)$?`,
         choices: ["$11.173$", "$13.967$", "$33.520$", "$11.290$"],
         why: [

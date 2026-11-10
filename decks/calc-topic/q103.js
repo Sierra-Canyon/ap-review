@@ -31,34 +31,39 @@ export const sets = {
 };
 
 const items = [
-  { id: "q103-m1", type: "mcq", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
-    question: String.raw`$\displaystyle \lim_{x \to -2^{-}} f(x)$ is`,
-    choices: ["$3$", "$-1$", "$1$", "nonexistent"],
+  { id: "q103-m1", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
+    question: String.raw`Which of the following is true about $\displaystyle \lim_{x \to -2^{-}} f(x)$?`,
+    choices: ["It equals $3$.", "It equals $-1$.", "It equals $1$.", "It does not exist."],
     why: [
       String.raw`As $x$ approaches $-2$ from the left, the graph follows the segment that rises toward the open circle at $(-2, 3)$. The left-hand limit is $3$.`,
       String.raw`$-1$ is $f(-2)$, the closed dot, and it is also the right-hand limit. The left-hand limit uses the segment to the left of $x = -2$.`,
       String.raw`$1$ is the average of $3$ and $-1$. The left-hand limit uses only the values of $f$ to the left of $x = -2$.`,
       String.raw`The two-sided limit at $x = -2$ does not exist, but the left-hand limit does: from the left, $f(x)$ approaches $3$.`,
     ], answer: 0 },
-  { id: "q103-m2", type: "mcq", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
-    question: String.raw`$\displaystyle \lim_{x \to 1} f(x)$ is`,
-    choices: ["$2$", "$4$", "$3$", "nonexistent"],
+  { id: "q103-m2", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
+    question: String.raw`Which of the following is true about $\displaystyle \lim_{x \to 1} f(x)$?`,
+    choices: ["It equals $2$.", "It equals $4$.", "It equals $3$.", "It does not exist."],
     why: [
       String.raw`From both sides of $x = 1$, the segments approach the open circle at $(1, 2)$. Both one-sided limits are $2$, so the limit is $2$.`,
       String.raw`$4$ is the value $f(1)$, shown by the closed dot. The limit depends on the values of $f$ near $x = 1$, which approach $2$.`,
       String.raw`$3$ is the average of the limit $2$ and the value $f(1) = 4$.`,
       String.raw`The open circle shows a hole at $(1, 2)$, but both one-sided limits equal $2$, so the limit exists.`,
     ], answer: 0 },
-  { id: "q103-m3", type: "mcq", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
-    question: String.raw`$\displaystyle \lim_{x \to -2} f(x)$ is`,
-    choices: ["nonexistent", "$3$", "$-1$", "$1$"],
+  { id: "q103-m3", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
+    question: String.raw`Which of the following explains why $\displaystyle \lim_{x \to -2} f(x)$ does not exist?`,
+    choices: [
+      String.raw`The one-sided limits at $x = -2$ are not equal.`,
+      String.raw`$f(-2)$ does not equal the left-hand limit at $x = -2$.`,
+      String.raw`$f(x)$ increases without bound as $x$ approaches $-2$.`,
+      String.raw`$f$ is not defined at $x = -2$, so no limit exists there.`,
+    ],
     why: [
-      String.raw`The left-hand limit at $x = -2$ is $3$ and the right-hand limit is $-1$. They are not equal, so the limit does not exist.`,
-      String.raw`$3$ is only the left-hand limit. From the right, $f(x)$ approaches $-1$.`,
-      String.raw`$-1$ is $f(-2)$ and the right-hand limit. From the left, $f(x)$ approaches $3$.`,
-      String.raw`$1$ is the average of the one-sided limits. When the one-sided limits differ, the limit does not exist.`,
+      String.raw`From the left, $f(x)$ approaches $3$, and from the right, $f(x)$ approaches $-1$. A two-sided limit exists only when the one-sided limits are equal, so $\lim_{x \to -2} f(x)$ does not exist.`,
+      String.raw`The statement is true, since $f(-2) = -1$ and the left-hand limit is $3$, but it is not the reason. The value of $f$ at $x = -2$ never decides whether the limit exists.`,
+      String.raw`Near $x = -2$ the graph stays between $-1$ and $3$, so $f(x)$ is bounded. The one-sided limits are finite numbers that differ.`,
+      String.raw`The closed dot shows $f(-2) = -1$, so $f$ is defined at $x = -2$. A limit can also exist where a function is undefined.`,
     ], answer: 0 },
-  { id: "q103-m4", type: "mcq", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
+  { id: "q103-m4", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
     question: String.raw`What is the value of $f(1) + \displaystyle \lim_{x \to -2^{+}} f(x)$?`,
     choices: ["$3$", "$1$", "$7$", "$5$"],
     why: [
@@ -67,7 +72,7 @@ const items = [
       String.raw`This uses $3$, the left-hand limit at $x = -2$, in place of the right-hand limit $-1$: $4 + 3 = 7$.`,
       String.raw`This uses the limit $2$ in place of $f(1) = 4$ and the left-hand limit $3$ in place of the right-hand limit $-1$: $2 + 3 = 5$.`,
     ], answer: 0 },
-  { id: "q103-m5", type: "mcq", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
+  { id: "q103-m5", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
     question: String.raw`For how many values of $c$ in the open interval $-4 < c < 5$ does $\displaystyle \lim_{x \to c} f(x)$ fail to exist?`,
     choices: ["$1$", "$2$", "$3$", "$0$"],
     why: [
@@ -76,17 +81,17 @@ const items = [
       String.raw`This counts $c = 1$ and the corner at $c = 3$. At each of those points, both sides approach the same value.`,
       String.raw`At $c = -2$, the left-hand limit is $3$ and the right-hand limit is $-1$, so that limit fails to exist.`,
     ], answer: 0 },
-  { id: "q103-m6", type: "mcq", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
+  { id: "q103-m6", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.3", calc: false, set: "q103-s1",
     question: String.raw`Based on the graph, which of the following statements are true?
 I. $\displaystyle \lim_{x \to 1} f(x) = f(1)$
-II. $\displaystyle \lim_{x \to 3} f(x) = 0$
+II. $\displaystyle \lim_{x \to -2} f(x) = 3$
 III. $\displaystyle \lim_{x \to -2^{+}} f(x) = f(-2)$`,
-    choices: ["II and III only", "II only", "I and II only", "I, II, and III"],
+    choices: ["III only", "I and III only", "II and III only", "I, II, and III"],
     why: [
-      String.raw`I is false: the limit at $x = 1$ is $2$, and $f(1) = 4$. II is true: both segments meet at $(3, 0)$. III is true: from the right, $f(x)$ approaches $-1$, and the closed dot gives $f(-2) = -1$.`,
-      String.raw`III is also true. The right-hand limit at $x = -2$ is $-1$, the same as the value $f(-2)$ at the closed dot.`,
-      String.raw`I is false: the limit at $x = 1$ is $2$, but $f(1) = 4$. III is true, because the right-hand limit at $x = -2$ and $f(-2)$ are both $-1$.`,
-      String.raw`I is false: the limit at $x = 1$ is $2$, but the closed dot gives $f(1) = 4$.`,
+      String.raw`I is false: both sides approach $2$ at $x = 1$, but the closed dot gives $f(1) = 4$. II is false: $3$ is only the left-hand limit at $x = -2$, and the right-hand limit is $-1$, so the two-sided limit does not exist. III is true: from the right, $f(x)$ approaches $-1$, and the closed dot gives $f(-2) = -1$.`,
+      String.raw`I is false. The limit at $x = 1$ is $2$, the height of the open circle, while the closed dot above it gives $f(1) = 4$.`,
+      String.raw`II is false. $3$ is the left-hand limit at $x = -2$, but the right-hand limit is $-1$, so the two-sided limit does not exist.`,
+      String.raw`I is false because $f(1) = 4$ while the limit at $x = 1$ is $2$, and II is false because the one-sided limits at $x = -2$ differ.`,
     ], answer: 0 },
 
   { id: "q103-f1a", type: "frq", skill: "u1", topic: "1.3", calc: false, set: "q103-s2", part: "(a)",

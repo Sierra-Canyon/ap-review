@@ -1,10 +1,15 @@
+import { graph } from "../../plot.js";
+
 export const sets = {
+  "q607-s1": { name: "The graph of f'", label: "Graph", intro: String.raw`The function $f$ is differentiable on the interval $0 \le x \le 6$. The graph of $f'$, the derivative of $f$, is shown below. It is made of three line segments, one of which lies along the $x$-axis.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [0, 7], y: [-5, 4], xname: "x", yname: "y", segments: [[0, -4, 2, 0], [2, 0, 4, 0], [4, 0, 6, 3]], labels: [[5.2, 2.6, "f'"]],
+      alt: "Graph of f prime made of three segments: from (0, negative 4) up to (2, 0); along the x-axis from (2, 0) to (4, 0); and from (4, 0) up to (6, 3)." }) }] }] },
   "q607-s9": { name: "A function from its derivative", label: "Free response", intro: String.raw`The function $g$ is differentiable for $x > 0$, with $g(1) = 2$ and derivative $g'(x) = 6\sqrt{x} - \dfrac{3}{x^2}$.`,
     sources: [{ title: "", blocks: [{ p: String.raw`$$g'(x) = 6\sqrt{x} - \dfrac{3}{x^2}, \qquad g(1) = 2$$` }] }] },
 };
 
 const items = [
-  { id: "q607-m01", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+  { id: "q607-m01", type: "mcq", skill: "u6", topic: "6.7", calc: false, difficulty: "easy",
     question: String.raw`$\displaystyle \int_1^2 \left( 6x^2 - 2x \right) dx =$`,
     choices: ["$11$", "$13$", "$12$", "$16$"],
     why: [
@@ -13,7 +18,7 @@ const items = [
       String.raw`$12$ is $F(2)$ alone. The value of the antiderivative at the lower limit, $F(1) = 1$, must be subtracted.`,
       String.raw`$16 = 20 - 4$ subtracts values of the integrand, $6x^2 - 2x$, in place of values of an antiderivative.`,
     ], answer: 0 },
-  { id: "q607-m02", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+  { id: "q607-m02", type: "mcq", skill: "u6", topic: "6.7", calc: false, difficulty: "easy",
     question: String.raw`$\displaystyle \int_0^{\pi/3} \sin x\,dx =$`,
     choices: [String.raw`$\frac{1}{2}$`, String.raw`$-\frac{1}{2}$`, String.raw`$\frac{\sqrt{3}}{2}$`, String.raw`$\frac{3}{2}$`],
     why: [
@@ -22,26 +27,25 @@ const items = [
       String.raw`$\dfrac{\sqrt{3}}{2} = \sin\dfrac{\pi}{3} - \sin 0$ evaluates the integrand in place of an antiderivative.`,
       String.raw`$\dfrac{1}{2} + 1 = \dfrac{3}{2}$ adds the value at the lower limit in place of subtracting it.`,
     ], answer: 0 },
-  { id: "q607-m03", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+  { id: "q607-m03", type: "mcq", skill: "u6", topic: "6.7", calc: false, difficulty: "easy",
     question: String.raw`$\displaystyle \int_1^4 \dfrac{1}{\sqrt{x}}\,dx =$`,
-    choices: ["$2$", String.raw`$-\frac{1}{2}$`, "$1$", String.raw`$\frac{14}{3}$`],
+    choices: ["$2$", String.raw`$-\frac{1}{2}$`, String.raw`$\frac{7}{12}$`, String.raw`$\frac{14}{3}$`],
     why: [
       String.raw`$\dfrac{1}{\sqrt{x}} = x^{-1/2}$ has antiderivative $2x^{1/2}$, so the integral is $2\sqrt{4} - 2\sqrt{1} = 4 - 2 = 2$.`,
       String.raw`$\dfrac{1}{2} - 1 = -\dfrac{1}{2}$ evaluates the integrand at the limits in place of an antiderivative.`,
-      String.raw`$\sqrt{4} - \sqrt{1} = 1$ leaves out the factor 2 from dividing by the new exponent $\dfrac{1}{2}$.`,
+      String.raw`This lowers the exponent in place of raising it, using $-\dfrac{2}{3}x^{-3/2}$: $-\dfrac{2}{3}\left( \dfrac{1}{8} - 1 \right) = \dfrac{7}{12}$. The antiderivative of $x^{-1/2}$ is $\dfrac{x^{1/2}}{1/2}$.`,
       String.raw`$\dfrac{2}{3}\left( 8 - 1 \right) = \dfrac{14}{3}$ is the integral of $\sqrt{x}$, not of $\dfrac{1}{\sqrt{x}}$.`,
     ], answer: 0 },
-  { id: "q607-m04", type: "mcq", skill: "u6", topic: "6.7", calc: false,
-    stem: String.raw`The function $f$ is differentiable, $f(1) = 4$, and $f'(x) = 3x^2 + 2$.`,
-    question: String.raw`What is the value of $f(3)$?`,
-    choices: ["$34$", "$30$", "$29$", "$37$"],
+  { id: "q607-m04", type: "mcq", skill: "u6", topic: "6.7", calc: false, difficulty: "difficult", set: "q607-s1",
+    question: String.raw`If $f(6) = 2$, what is the value of $f(0)$?`,
+    choices: ["$3$", "$1$", "$-5$", "$-1$"],
     why: [
-      String.raw`$f(3) = f(1) + \displaystyle \int_1^3 \left( 3x^2 + 2 \right) dx = 4 + \left[ x^3 + 2x \right]_1^3 = 4 + (33 - 3) = 34$.`,
-      String.raw`$30$ is $\displaystyle \int_1^3 f'(x)\,dx$, the change in $f$. The starting value $f(1) = 4$ must be added.`,
-      String.raw`$29$ is $f'(3)$, the derivative at $x = 3$, not the value of $f$.`,
-      String.raw`$4 + 33 = 37$ adds the antiderivative's value at $x = 3$ without subtracting its value at $x = 1$.`,
+      String.raw`By the Fundamental Theorem of Calculus, $f(6) - f(0) = \displaystyle \int_0^6 f'(x)\,dx = -4 + 0 + 3 = -1$, from the triangle below the axis on $[0, 2]$ and the triangle above it on $[4, 6]$. So $f(0) = f(6) + 1 = 3$.`,
+      String.raw`$2 + (-1) = 1$ adds the change in $f$ to $f(6)$. Going back from $x = 6$ to $x = 0$ undoes the change, so it is subtracted.`,
+      String.raw`$2 - 7 = -5$ counts the triangle below the axis as positive area, so $\displaystyle \int_0^6 f'(x)\,dx$ becomes $4 + 3 = 7$.`,
+      String.raw`$-1$ is $\displaystyle \int_0^6 f'(x)\,dx = f(6) - f(0)$, the change in $f$, not the value of $f(0)$.`,
     ], answer: 0 },
-  { id: "q607-m05", type: "mcq", skill: "u6", topic: "6.7", calc: true,
+  { id: "q607-m05", type: "mcq", skill: "u6", topic: "6.7", calc: true, difficulty: "moderate",
     stem: String.raw`The function $f$ is differentiable, $f(1) = 4$, and $f'(x) = \sqrt{x^4 + 1}$.`,
     question: String.raw`What is the value of $f(3)$?`,
     choices: ["$12.980$", "$8.980$", "$-4.980$", "$9.055$"],
@@ -51,7 +55,7 @@ const items = [
       String.raw`$4 - 8.980 = -4.980$ subtracts the change in $f$. Since $x$ increases from 1 to 3, the change is added.`,
       String.raw`$9.055$ is $f'(3) = \sqrt{82}$, the derivative at $x = 3$.`,
     ], answer: 0 },
-  { id: "q607-m06", type: "mcq", skill: "u6", topic: "6.7", calc: false,
+  { id: "q607-m06", type: "mcq", skill: "u6", topic: "6.7", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = \begin{cases} x^2, & x \le 2 \\ 6 - x, & x > 2 \end{cases}$`,
     question: String.raw`What is the value of $\displaystyle \int_0^4 f(x)\,dx$?`,
     choices: [String.raw`$\frac{26}{3}$`, String.raw`$\frac{64}{3}$`, "$16$", String.raw`$\frac{56}{3}$`],

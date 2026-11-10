@@ -1,10 +1,24 @@
+import { graph } from "../../plot.js";
+
 export const sets = {
+  "q805-s1": { name: "A region left of the y-axis", label: "Graph", intro: String.raw`Let $R$ be the region enclosed by the graph of $x = y^2 - 2y$ and the $y$-axis, shown below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-2, 2], y: [-1, 3], xname: "x", yname: "y",
+      fns: [{ f: (x) => 1 + Math.sqrt(1 + x), from: -1, to: 1.9 }, { f: (x) => 1 - Math.sqrt(1 + x), from: -1, to: 1.9 }],
+      labels: [[-0.75, 0.9, "R"], [0.25, 2.75, "x = y² − 2y"]],
+      alt: "The graph of x = y^2 - 2y, a parabola that opens to the right with vertex (-1, 1). It crosses the y-axis at (0, 0) and (0, 2). The region R lies between the parabola on the left and the y-axis on the right, for y from 0 to 2." }) }] }] },
+  "q805-s2": { name: "A region bounded by x = y^3", label: "Graph", intro: String.raw`Let $R$ be the region bounded by the graph of $x = y^3$, the line $x = 8$, and the $x$-axis, shown below.`,
+    sources: [{ title: "", blocks: [{ svg: graph({ x: [-1, 9], y: [-0.5, 2.5], step: { x: 1, y: 0.5 }, xname: "x", yname: "y",
+      fns: [{ f: (x) => Math.cbrt(x), from: 0, to: 8.8 }],
+      segments: [[8, 0, 8, 2]],
+      dots: [[8, 2, "closed"]],
+      labels: [[5.2, 0.7, "R"], [1.6, 1.9, "x = y³"]],
+      alt: "The graph of x = y^3, which is the same curve as y equal to the cube root of x, rising from the origin through (1, 1) to (8, 2), and the vertical line x = 8. The region R lies below the curve and above the x-axis, between x = 0 and x = 8. Its corners are (0, 0), (8, 0), and (8, 2)." }) }] }] },
   "q805-s9": { name: "A region between two parabolas", label: "Free response", intro: String.raw`Let $R$ be the region enclosed by the graphs of $x = 4y - y^2$ and $x = y^2 - 2y$.`,
     sources: [] },
 };
 
 const items = [
-  { id: "q805-m01", type: "mcq", skill: "u8", topic: "8.5", calc: false,
+  { id: "q805-m01", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "easy",
     question: String.raw`What is the area of the region enclosed by the graph of $x = y^2$ and the line $x = 4$?`,
     choices: [String.raw`$\frac{32}{3}$`, String.raw`$\frac{16}{3}$`, String.raw`$\frac{64}{3}$`, String.raw`$-\frac{32}{3}$`],
     why: [
@@ -13,8 +27,8 @@ const items = [
       String.raw`This adds $y^2$ to $4$ in place of subtracting the left curve from the right one.`,
       String.raw`This subtracts the right curve from the left one, $\displaystyle\int_{-2}^{2} \left(y^2 - 4\right)dy$, which is negative.`,
     ], answer: 0 },
-  { id: "q805-m02", type: "mcq", skill: "u8", topic: "8.5", calc: false,
-    question: String.raw`Which integral gives the area of the region enclosed by the graph of $x = y^2 - 2y$ and the $y$-axis?`,
+  { id: "q805-m02", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "easy", set: "q805-s1",
+    question: String.raw`Which integral gives the area of the region $R$?`,
     choices: [String.raw`$\displaystyle\int_0^2 \left(2y - y^2\right)dy$`, String.raw`$\displaystyle\int_0^2 \left(y^2 - 2y\right)dy$`, String.raw`$\displaystyle\int_{-1}^{0} \left(2y - y^2\right)dy$`, String.raw`$\displaystyle\int_0^1 \left(2y - y^2\right)dy$`],
     why: [
       String.raw`$y^2 - 2y = 0$ at $y = 0$ and $y = 2$. Between them $y^2 - 2y < 0$, so the $y$-axis ($x = 0$) is the right boundary and the area is $\displaystyle\int_0^2 \left(0 - (y^2 - 2y)\right)dy = \int_0^2 \left(2y - y^2\right)dy$.`,
@@ -22,34 +36,41 @@ const items = [
       String.raw`The curve reaches $x = -1$ at its vertex, but the limits of an integral in $y$ are $y$-values, here $0$ and $2$.`,
       String.raw`This stops at $y = 1$, the vertex of the parabola. The region continues up to $y = 2$.`,
     ], answer: 0 },
-  { id: "q805-m03", type: "mcq", skill: "u8", topic: "8.5", calc: false,
-    question: String.raw`What is the area of the region enclosed by the graphs of $x = y^2$ and $x = y + 6$?`,
-    choices: [String.raw`$\frac{125}{6}$`, String.raw`$\frac{27}{2}$`, String.raw`$\frac{22}{3}$`, String.raw`$\frac{95}{6}$`],
+  { id: "q805-m03", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "moderate",
+    question: String.raw`What is the area of the region enclosed by the graphs of $x = e^{y} - 1$ and $x = (e - 1)y$?`,
+    choices: [String.raw`$\frac{3 - e}{2}$`, String.raw`$\frac{e - 3}{2}$`, String.raw`$\frac{3e - 5}{2}$`, String.raw`$\frac{e - 1}{2}$`],
     why: [
-      String.raw`$y^2 = y + 6$ gives $(y - 3)(y + 2) = 0$, so $y = -2$ and $y = 3$, and $y + 6 \ge y^2$ between them. The area is $\displaystyle\int_{-2}^{3} \left(y + 6 - y^2\right)dy = \left[\dfrac{y^2}{2} + 6y - \dfrac{y^3}{3}\right]_{-2}^{3} = \dfrac{27}{2} + \dfrac{22}{3} = \dfrac{125}{6}$.`,
-      String.raw`This integrates from $y = 0$ to $y = 3$ only. The region extends down to $y = -2$.`,
-      String.raw`This integrates from $y = -2$ to $y = 0$ only. The region extends up to $y = 3$.`,
-      String.raw`This factors $y^2 - y - 6$ as $(y + 3)(y - 2)$ and integrates from $-3$ to $2$. The correct factors are $(y - 3)(y + 2)$.`,
+      String.raw`The graphs meet where $e^{y} - 1 = (e - 1)y$, at $y = 0$ and $y = 1$. For $0 < y < 1$ the line $x = (e - 1)y$ is to the right of the curve (at $y = \frac{1}{2}$, $0.86 > 0.65$). The area is $\displaystyle\int_0^1 \left((e - 1)y - e^{y} + 1\right)dy = \dfrac{e - 1}{2} - (e - 1) + 1 = \dfrac{3 - e}{2}$.`,
+      String.raw`This subtracts the right boundary from the left one, $\displaystyle\int_0^1 \left(e^{y} - 1 - (e - 1)y\right)dy$, which is negative.`,
+      String.raw`This adds $e^{y} - 1$ to the line in place of subtracting it: $\displaystyle\int_0^1 \left((e - 1)y + e^{y} - 1\right)dy = \dfrac{e - 1}{2} + (e - 1) - 1$.`,
+      String.raw`$\dfrac{e - 1}{2}$ is $\displaystyle\int_0^1 (e - 1)y\,dy$, the area between the line and the $y$-axis. The area between the curve and the $y$-axis must be subtracted.`,
     ], answer: 0 },
-  { id: "q805-m04", type: "mcq", skill: "u8", topic: "8.5", calc: false,
-    question: String.raw`What is the area of the region bounded by the graph of $x = y^3$, the line $x = 8$, and the $x$-axis?`,
-    choices: ["$12$", "$4$", "$16$", "$20$"],
+  { id: "q805-m04", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "difficult", set: "q805-s2",
+    stem: String.raw`Consider the following expressions.
+
+I. $\displaystyle\int_0^2 \left(8 - y^3\right)dy$
+
+II. $\displaystyle\int_0^8 x^{1/3}\,dx$
+
+III. $\displaystyle\int_0^8 \left(2 - x^{1/3}\right)dx$`,
+    question: String.raw`Which of the expressions above give the area of $R$?`,
+    choices: ["I and II only", "I only", "I and III only", "I, II, and III"],
     why: [
-      String.raw`The curve $x = y^3$ meets $x = 8$ at $y = 2$. For $0 \le y \le 2$ the region runs from $x = y^3$ to $x = 8$, so the area is $\displaystyle\int_0^2 \left(8 - y^3\right)dy = 16 - 4 = 12$.`,
-      String.raw`$4$ is $\displaystyle\int_0^2 y^3\,dy$, the area between the curve and the $y$-axis, which is the region on the other side of the curve.`,
-      String.raw`$16$ is $\displaystyle\int_0^2 8\,dy$, the area of the whole rectangle. The part to the left of $x = y^3$ must be subtracted.`,
-      String.raw`This adds $y^3$ to $8$ in place of subtracting the left boundary from the right one.`,
+      String.raw`With horizontal strips, $R$ runs from $x = y^3$ to $x = 8$ for $0 \le y \le 2$, so I gives the area: $16 - 4 = 12$. With vertical strips, $R$ lies between the $x$-axis and $y = x^{1/3}$ for $0 \le x \le 8$, so II gives the area: $\dfrac{3}{4} \cdot 8^{4/3} = 12$. III is the area between the curve and the line $y = 2$, which is $16 - 12 = 4$.`,
+      String.raw`II also gives the area. Solving $x = y^3$ for $y$ gives $y = x^{1/3}$, and $R$ lies under that curve for $0 \le x \le 8$, so $\displaystyle\int_0^8 x^{1/3}\,dx = 12$.`,
+      String.raw`III is $\displaystyle\int_0^8 \left(2 - x^{1/3}\right)dx = 4$, the area of the region above the curve and below $y = 2$, not $R$. II gives the area of $R$.`,
+      String.raw`III equals $4$, the area between the curve and the line $y = 2$. $R$ lies below the curve, and its area is $12$.`,
     ], answer: 0 },
-  { id: "q805-m05", type: "mcq", skill: "u8", topic: "8.5", calc: true,
+  { id: "q805-m05", type: "mcq", skill: "u8", topic: "8.5", calc: true, difficulty: "moderate",
     question: String.raw`What is the area of the region enclosed by the graphs of $x = 5 - y^2$ and $x = e^{y}$?`,
-    choices: ["$9.671$", "$3.109$", "$13.021$", "$16.371$"],
+    choices: ["$9.671$", "$-9.671$", "$13.021$", "$16.371$"],
     why: [
       String.raw`With a calculator, the graphs meet at $y = c = -2.21144$ and $y = d = 1.24114$, and $5 - y^2 > e^{y}$ between them. The area is $\displaystyle\int_c^d \left(5 - y^2 - e^{y}\right)dy = 9.671$.`,
-      String.raw`This integrates from $y = 0$ to $y = d$ only. The region also lies below the $x$-axis, down to $y = -2.21144$.`,
+      String.raw`This subtracts the right curve from the left one, $\displaystyle\int_c^d \left(e^{y} - 5 + y^2\right)dy$, which is negative. An area is positive.`,
       String.raw`This integrates $5 - y^2$ alone and leaves out the left boundary $x = e^{y}$.`,
       String.raw`This adds $e^{y}$ in place of subtracting it.`,
     ], answer: 0 },
-  { id: "q805-m06", type: "mcq", skill: "u8", topic: "8.5", calc: false,
+  { id: "q805-m06", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "moderate",
     question: String.raw`Let $R$ be the region in the first quadrant bounded by the graph of $y = x^2$, the line $y = 9$, and the $y$-axis. Which integral gives the area of $R$?`,
     choices: [String.raw`$\displaystyle\int_0^9 \sqrt{y}\,dy$`, String.raw`$\displaystyle\int_0^9 \left(3 - \sqrt{y}\right)dy$`, String.raw`$\displaystyle\int_0^3 \sqrt{y}\,dy$`, String.raw`$\displaystyle\int_0^9 y^2\,dy$`],
     why: [

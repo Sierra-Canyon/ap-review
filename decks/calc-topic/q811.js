@@ -4,7 +4,7 @@ export const sets = {
 };
 
 const items = [
-  { id: "q811-m01", type: "mcq", skill: "u8", topic: "8.11", calc: false,
+  { id: "q811-m01", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "moderate",
     question: String.raw`The region enclosed by the graphs of $y = x + 2$ and $y = x^2$ is revolved about the $x$-axis. What is the volume of the resulting solid?`,
     choices: [String.raw`$\frac{72\pi}{5}$`, String.raw`$\frac{42\pi}{5}$`, String.raw`$\frac{9\pi}{2}$`, String.raw`$\frac{81\pi}{10}$`],
     why: [
@@ -13,7 +13,7 @@ const items = [
       String.raw`This is $\pi$ times the area of the region, $\pi\displaystyle\int_{-1}^{2} \left(x + 2 - x^2\right)dx$. Each washer has area $\pi\left(R^2 - r^2\right)$.`,
       String.raw`This squares the difference of the radii, $\pi\displaystyle\int_{-1}^{2} \left(x + 2 - x^2\right)^2 dx$. The washer area is $\pi\left(R^2 - r^2\right)$, not $\pi(R - r)^2$.`,
     ], answer: 0 },
-  { id: "q811-m02", type: "mcq", skill: "u8", topic: "8.11", calc: false,
+  { id: "q811-m02", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "difficult",
     question: String.raw`The region in the first quadrant enclosed by the graphs of $y = x^3$ and $y = 4x$ is revolved about the $y$-axis. What is the volume of the resulting solid?`,
     choices: [String.raw`$\frac{128\pi}{15}$`, String.raw`$\frac{512\pi}{21}$`, String.raw`$\frac{256\pi}{105}$`, String.raw`$4\pi$`],
     why: [
@@ -22,7 +22,7 @@ const items = [
       String.raw`This squares the difference of the radii, $\pi\displaystyle\int_0^8 \left(y^{1/3} - \dfrac{y}{4}\right)^2 dy$, in place of subtracting the squares.`,
       String.raw`This does not square the radii: $\pi\displaystyle\int_0^8 \left(y^{1/3} - \dfrac{y}{4}\right)dy$.`,
     ], answer: 0 },
-  { id: "q811-m03", type: "mcq", skill: "u8", topic: "8.11", calc: false,
+  { id: "q811-m03", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "easy",
     question: String.raw`The region bounded by the graph of $y = e^{x}$ and the lines $y = 1$ and $x = 1$ is revolved about the $x$-axis. Which integral gives the volume of the resulting solid?`,
     choices: [String.raw`$\pi\displaystyle\int_0^1 \left(e^{2x} - 1\right)dx$`, String.raw`$\pi\displaystyle\int_0^1 \left(e^{x} - 1\right)^2 dx$`, String.raw`$\pi\displaystyle\int_0^1 \left(e^{x^2} - 1\right)dx$`, String.raw`$\pi\displaystyle\int_0^1 \left(1 - e^{2x}\right)dx$`],
     why: [
@@ -31,25 +31,25 @@ const items = [
       String.raw`This squares $e^{x}$ as $e^{x^2}$. The square of $e^{x}$ is $e^{2x}$.`,
       String.raw`This subtracts the outer radius squared from the inner one, so the integral is negative.`,
     ], answer: 0 },
-  { id: "q811-m04", type: "mcq", skill: "u8", topic: "8.11", calc: false,
+  { id: "q811-m04", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "difficult",
     question: String.raw`The region bounded by the line $y = x$, the $x$-axis, and the line $x = 2$ is revolved about the $y$-axis. What is the volume of the resulting solid?`,
-    choices: [String.raw`$\frac{16\pi}{3}$`, String.raw`$\frac{8\pi}{3}$`, String.raw`$8\pi$`, String.raw`$6\pi$`],
+    choices: [String.raw`$\frac{16\pi}{3}$`, String.raw`$\frac{8\pi}{3}$`, String.raw`$\frac{32\pi}{3}$`, String.raw`$6\pi$`],
     why: [
       String.raw`At height $y$, $0 \le y \le 2$, the region runs from $x = y$ to $x = 2$. The outer radius is $2$ and the inner radius is $y$, so the volume is $\pi\displaystyle\int_0^2 \left(4 - y^2\right)dy = \pi\left(8 - \dfrac{8}{3}\right) = \dfrac{16\pi}{3}$.`,
       String.raw`$\dfrac{8\pi}{3}$ is $\pi\displaystyle\int_0^2 x^2\,dx$, the cone formed by revolving the region about the $x$-axis.`,
-      String.raw`$8\pi$ is the volume of the whole cylinder of radius $2$ and height $2$. The hole of radius $y$ must be removed.`,
+      String.raw`This adds the squares of the radii, $\pi\displaystyle\int_0^2 \left(4 + y^2\right)dy$. Each washer has area $\pi\left(R^2 - r^2\right)$.`,
       String.raw`This does not square the inner radius: $\pi\displaystyle\int_0^2 \left(4 - y\right)dy$.`,
     ], answer: 0 },
-  { id: "q811-m05", type: "mcq", skill: "u8", topic: "8.11", calc: true,
-    question: String.raw`The region enclosed by the graphs of $y = \cos x$ and $y = x^2$ is revolved about the $x$-axis. What is the volume of the resulting solid?`,
-    choices: ["$3.677$", "$2.747$", "$3.439$", "$1.171$"],
+  { id: "q811-m05", type: "mcq", skill: "u8", topic: "8.11", calc: true, difficulty: "moderate",
+    question: String.raw`The region enclosed by the graphs of $y = \ln(x + 1)$ and $y = x^2$ is revolved about the $x$-axis. What is the volume of the resulting solid?`,
+    choices: ["$0.132$", "$0.040$", "$0.279$", "$0.042$"],
     why: [
-      String.raw`With a calculator, the graphs meet at $x = \pm 0.82413$, with $\cos x \ge x^2 \ge 0$ between them. The volume is $\pi\displaystyle\int_{-0.82413}^{0.82413} \left(\cos^2 x - x^4\right)dx = 3.677$.`,
-      String.raw`This squares the difference of the radii, $\pi\displaystyle\int (\cos x - x^2)^2\,dx$, in place of subtracting the squares.`,
-      String.raw`This does not square the radii: $\pi\displaystyle\int (\cos x - x^2)\,dx$.`,
+      String.raw`With a calculator, the graphs meet at $x = 0$ and $x = b = 0.74688$, with $\ln(x + 1) \ge x^2 \ge 0$ between them. The volume is $\pi\displaystyle\int_0^{b} \left(\left(\ln(x + 1)\right)^2 - x^4\right)dx = 0.132$.`,
+      String.raw`This squares the difference of the radii, $\pi\displaystyle\int_0^{b} \left(\ln(x + 1) - x^2\right)^2 dx$, in place of subtracting the squares.`,
+      String.raw`This does not square the radii: $\pi\displaystyle\int_0^{b} \left(\ln(x + 1) - x^2\right)dx$.`,
       String.raw`This leaves out the factor $\pi$ in the area of a washer.`,
     ], answer: 0 },
-  { id: "q811-m06", type: "mcq", skill: "u8", topic: "8.11", calc: false,
+  { id: "q811-m06", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "moderate",
     question: String.raw`The region bounded by the graph of $y = x^2 + 1$ and the lines $y = 1$ and $x = 2$ is revolved about the $x$-axis. What is the volume of the resulting solid?`,
     choices: [String.raw`$\frac{176\pi}{15}$`, String.raw`$\frac{32\pi}{5}$`, String.raw`$\frac{206\pi}{15}$`, String.raw`$\frac{236\pi}{15}$`],
     why: [

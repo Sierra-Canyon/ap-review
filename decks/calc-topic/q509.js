@@ -1,13 +1,14 @@
 import { graph } from "../../plot.js";
 
-// s1: f(x) = 2 sin x on [0, 6.5]; labeled points at x = 1, 2, 4, 5.5
-const f1 = (x) => 2 * Math.sin(x);
+// s1: f(x) = 2 sin x + x/2 on [0, 6.5]; labeled points at x = 1 (rising, concave down), 2.5 (falling, concave down),
+// 4 (falling, concave up), 5.5 (rising, concave up). High point near x = 1.82, low point near x = 4.46, inflection at x = pi.
+const f1 = (x) => 2 * Math.sin(x) + x / 2;
 const g1 = graph({
-  x: [0, 6.5], y: [-3, 3], xname: "x", yname: "y",
+  x: [0, 6.5], y: [-1, 4], xname: "x", yname: "y",
   fns: [{ f: f1, from: 0, to: 6.5 }],
-  dots: [[1, f1(1), "closed"], [2, f1(2), "closed"], [4, f1(4), "closed"], [5.5, f1(5.5), "closed"]],
-  labels: [[0.75, f1(1) + 0.45, "A"], [2.1, f1(2) + 0.4, "B"], [3.65, f1(4) - 0.3, "C"], [5.6, f1(5.5) - 0.3, "D"]],
-  alt: "Graph of y = f(x) for x from 0 to 6.5, a wave that rises from the origin to a high point near x = 1.6, falls through about (3.1, 0) to a low point near x = 4.7, and rises again. Point A is at x = 1, on the rising part before the high point. Point B is at x = 2, on the falling part just after the high point. Point C is at x = 4, on the falling part before the low point. Point D is at x = 5.5, on the rising part after the low point.",
+  dots: [[1, f1(1), "closed"], [2.5, f1(2.5), "closed"], [4, f1(4), "closed"], [5.5, f1(5.5), "closed"]],
+  labels: [[0.7, f1(1) + 0.35, "A"], [2.6, f1(2.5) + 0.3, "B"], [3.65, f1(4) - 0.45, "C"], [5.65, f1(5.5) - 0.35, "D"]],
+  alt: "Graph of y = f(x) for x from 0 to 6.5, a wave that drifts upward. It rises from the origin to a high point near (1.8, 2.8), falls to a low point near (4.5, 0.3), and rises to about (6.5, 3.7). It is concave down for x < 3.14 and concave up for x > 3.14. Point A is at x = 1, on the rising part before the high point. Point B is at x = 2.5, on the falling part after the high point. Point C is at x = 4, on the falling part before the low point. Point D is at x = 5.5, on the rising part after the low point.",
 });
 
 // s2: f'(x) = x^2 - 2x on [-1, 3]
@@ -37,17 +38,21 @@ export const sets = {
 };
 
 const items = [
-  { id: "q509-m01", type: "mcq", skill: "u5", topic: "5.9", calc: false,
-    stem: String.raw`A twice-differentiable function $f$ has $f'(2) = -3$ and $f''(2) = 4$.`,
-    question: String.raw`Which of the following describes the graph of $f$ at $x = 2$?`,
-    choices: [String.raw`Decreasing and concave up`, String.raw`Increasing and concave up`, String.raw`Decreasing and concave down`, String.raw`Increasing and concave down`],
+  { id: "q509-m01", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "moderate", set: "q509-s2",
+    question: String.raw`Which of the following describes $f$ on the open interval $(-1, 3)$?`,
+    choices: [
+      String.raw`A relative maximum at $x = 0$, a relative minimum at $x = 2$, and a point of inflection at $x = 1$`,
+      String.raw`A relative minimum at $x = 0$, a relative maximum at $x = 2$, and a point of inflection at $x = 1$`,
+      String.raw`A relative minimum at $x = 1$ and points of inflection at $x = 0$ and $x = 2$`,
+      String.raw`A relative maximum at $x = 0$, a relative minimum at $x = 2$, and no point of inflection`,
+    ],
     why: [
-      String.raw`$f'(2) < 0$, so $f$ is decreasing at $x = 2$. $f''(2) > 0$, so the graph is concave up there.`,
-      String.raw`$f'(2) = -3 < 0$ means $f$ is decreasing, not increasing.`,
-      String.raw`$f''(2) = 4 > 0$ means concave up. The sign of $f'$ does not determine concavity.`,
-      String.raw`Both signs are reversed: $f' < 0$ gives decreasing, and $f'' > 0$ gives concave up.`,
+      String.raw`$f'$ changes from positive to negative at $x = 0$ (relative maximum) and from negative to positive at $x = 2$ (relative minimum). $f'$ decreases until $x = 1$ and then increases, so the graph of $f$ changes concavity at $x = 1$.`,
+      String.raw`The sign changes are reversed. $f'$ is positive just left of $x = 0$ and negative just right of it, so $f$ rises and then falls: a relative maximum.`,
+      String.raw`This reads the graph of $f'$ as if it were the graph of $f$. The low point of $f'$ at $x = 1$ marks a change in concavity of $f$, and the zeros of $f'$ at $x = 0$ and $x = 2$ mark extrema of $f$.`,
+      String.raw`$f'$ changes from decreasing to increasing at $x = 1$, so $f''$ changes sign there and the graph of $f$ has a point of inflection.`,
     ], answer: 0 },
-  { id: "q509-m02", type: "mcq", skill: "u5", topic: "5.9", calc: false, set: "q509-s1",
+  { id: "q509-m02", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "easy", set: "q509-s1",
     question: String.raw`At which labeled point are $f'(x)$ and $f''(x)$ both negative?`,
     choices: ["$B$", "$A$", "$C$", "$D$"],
     why: [
@@ -56,7 +61,7 @@ const items = [
       String.raw`At $C$ the graph is falling, so $f' < 0$, but it is concave up, so $f'' > 0$.`,
       String.raw`At $D$ the graph is rising and concave up, so $f'$ and $f''$ are both positive.`,
     ], answer: 0 },
-  { id: "q509-m03", type: "mcq", skill: "u5", topic: "5.9", calc: false, set: "q509-s2",
+  { id: "q509-m03", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "moderate", set: "q509-s2",
     question: String.raw`On which interval is $f$ both increasing and concave up?`,
     choices: [String.raw`$(2, 3)$`, String.raw`$(1, 2)$`, String.raw`$(-1, 0)$`, String.raw`$(1, 3)$`],
     why: [
@@ -65,22 +70,22 @@ const items = [
       String.raw`$f$ is increasing on $(-1, 0)$, but $f'$ is decreasing there, so the graph of $f$ is concave down.`,
       String.raw`The graph of $f$ is concave up on all of $(1, 3)$, but $f$ is decreasing on the part $(1, 2)$.`,
     ], answer: 0 },
-  { id: "q509-m04", type: "mcq", skill: "u5", topic: "5.9", calc: false,
-    stem: String.raw`A function $f$ is twice differentiable for all real numbers, with $f'(4) = 0$ and $f''(x) < 0$ for all $x$.`,
+  { id: "q509-m04", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "difficult",
+    stem: String.raw`A function $f$ is twice differentiable for all real numbers, with $f'(0) = 0$. Also, $f''(x) < 0$ for $x < 0$ and $f''(x) > 0$ for $x > 0$.`,
     question: String.raw`Which of the following must be true?`,
     choices: [
-      String.raw`$f(4)$ is the absolute maximum value of $f$.`,
-      String.raw`$f(4)$ is the absolute minimum value of $f$.`,
-      String.raw`The graph of $f$ has a point of inflection at $x = 4$.`,
-      String.raw`$f(5) > f(4)$`,
+      String.raw`$f$ has no relative extremum at $x = 0$, and its graph has a point of inflection there.`,
+      String.raw`$f$ has a relative minimum at $x = 0$, and its graph has no point of inflection there.`,
+      String.raw`$f$ has a relative maximum at $x = 0$, and its graph has a point of inflection there.`,
+      String.raw`$f$ is decreasing for $x < 0$, and its graph has a point of inflection at $x = 0$.`,
     ],
     why: [
-      String.raw`$f'' < 0$ everywhere, so $f'$ is decreasing everywhere. Since $f'(4) = 0$, $f'(x) > 0$ for $x < 4$ and $f'(x) < 0$ for $x > 4$. $f$ increases up to $x = 4$ and decreases after it, so $f(4)$ is the greatest value of $f$.`,
-      String.raw`A graph that is concave down everywhere lies below its horizontal tangent at $x = 4$, so $f(4)$ is a maximum, not a minimum.`,
-      String.raw`$f''$ is negative everywhere, so it never changes sign and the graph has no point of inflection.`,
-      String.raw`$f'(x) < 0$ for $x > 4$, so $f$ is decreasing on $(4, 5)$ and $f(5) < f(4)$.`,
+      String.raw`For $x < 0$, $f'' < 0$, so $f'$ is decreasing on $(-\infty, 0]$ down to $f'(0) = 0$; that makes $f'(x) > 0$ for $x < 0$. For $x > 0$, $f'' > 0$, so $f'$ increases from $0$ and $f'(x) > 0$. $f'$ does not change sign at $x = 0$, so there is no extremum, and $f''$ changes sign there, so the graph has a point of inflection.`,
+      String.raw`A relative minimum needs $f'$ to change from negative to positive. Here $f'(x) > 0$ on both sides of $x = 0$. Also, $f''$ changes sign at $x = 0$, so the graph does have a point of inflection.`,
+      String.raw`A relative maximum needs $f'$ to change from positive to negative, but $f'(x) > 0$ on both sides of $x = 0$.`,
+      String.raw`$f'' < 0$ for $x < 0$ means $f'$ is decreasing there, not $f$. Since $f'$ decreases to $f'(0) = 0$, $f'(x) > 0$ for $x < 0$, so $f$ is increasing.`,
     ], answer: 0 },
-  { id: "q509-m05", type: "mcq", skill: "u5", topic: "5.9", calc: false, set: "q509-s3",
+  { id: "q509-m05", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "easy", set: "q509-s3",
     question: String.raw`At which value of $x$ in the table is $f$ increasing and the graph of $f$ concave down?`,
     choices: [String.raw`$x = -2$`, String.raw`$x = 2$`, String.raw`$x = -1$`, String.raw`$x = 0$`],
     why: [
@@ -89,7 +94,7 @@ const items = [
       String.raw`$f'(-1) = 0$, so $f$ has a horizontal tangent at $x = -1$ (a relative maximum, since $f''(-1) < 0$).`,
       String.raw`$f'(0) = -2 < 0$, so $f$ is decreasing at $x = 0$. The value $f(0) = 2$ being positive does not matter.`,
     ], answer: 0 },
-  { id: "q509-m06", type: "mcq", skill: "u5", topic: "5.9", calc: true,
+  { id: "q509-m06", type: "mcq", skill: "u5", topic: "5.9", calc: true, difficulty: "difficult",
     stem: String.raw`A function $f$ has derivative $f'(x) = 3\sin x - x$.`,
     question: String.raw`On which interval within $0 < x < 3$ is $f$ increasing and the graph of $f$ concave down?`,
     choices: [String.raw`$(1.231, 2.279)$`, String.raw`$(0, 1.231)$`, String.raw`$(2.279, 3)$`, String.raw`$(0, 2.279)$`],

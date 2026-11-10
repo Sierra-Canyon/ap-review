@@ -1,12 +1,14 @@
 import { graph } from "../../plot.js";
 
-// s1: f(x) = x^4/4 - 2x^2
-const f1 = (x) => x ** 4 / 4 - 2 * x ** 2;
+// s1: f(x) = (20(x - 1)^3 - 3(x - 1)^5)/32 + 1 on [-1.5, 3.5]; f'(x) = -15(x + 1)(x - 1)^2(x - 3)/32.
+// Horizontal tangents at (-1, -1) (relative minimum), (1, 1) (no extremum: f' does not change sign), and (3, 3) (relative maximum).
+// Concavity changes at x = 1 - sqrt(2), 1, and 1 + sqrt(2).
+const f1 = (x) => (20 * (x - 1) ** 3 - 3 * (x - 1) ** 5) / 32 + 1;
 const g1 = graph({
-  x: [-3, 3], y: [-5, 3], xname: "x", yname: "y",
-  fns: [{ f: f1, from: -3, to: 3, label: "y = f(x)", labelAt: 2.75 }],
-  dots: [[-2, -4, "closed"], [0, 0, "closed"], [2, -4, "closed"]],
-  alt: "Graph of y = f(x) for x from -3 to 3, shaped like a W. It falls from (-3, 2.25) to a relative minimum at (-2, -4), rises to a relative maximum at (0, 0), falls to a relative minimum at (2, -4), and rises to (3, 2.25). It crosses the x-axis at about x = -2.83 and x = 2.83 and touches it at x = 0. The concavity changes at about x = -1.15 and x = 1.15.",
+  x: [-2, 4], y: [-2, 4], xname: "x", yname: "y",
+  fns: [{ f: f1, from: -1.5, to: 3.5 }],
+  dots: [[-1, -1, "closed"], [1, 1, "closed"], [3, 3, "closed"]],
+  alt: "Graph of y = f(x) for x from -1.5 to 3.5. It falls from about (-1.5, 0.4) to a low point at (-1, -1), rises to (1, 1), where the graph levels off for an instant with a horizontal tangent and then keeps rising, reaches a high point at (3, 3), and falls to about (3.5, 1.6).",
 });
 
 // s2: f' line segments through (-4, -2), (-1, 1), (1, -1), (4, 2); zeros at -2, 0, 2; corners at -1 and 1
@@ -62,7 +64,7 @@ const g9 = graph({
 const box = (svg) => [{ title: "", blocks: [{ svg }] }];
 
 export const sets = {
-  "q508-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of a differentiable function $f$ is shown below.`, sources: box(g1) },
+  "q508-s1": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of a differentiable function $f$ is shown below for $-1.5 \le x \le 3.5$. The graph has horizontal tangent lines at $(-1, -1)$, $(1, 1)$, and $(3, 3)$.`, sources: box(g1) },
   "q508-s2": { name: "The graph of f'", label: "Graph", intro: String.raw`The graph of $f'$, the derivative of a function $f$, consists of three line segments and is shown below for $-4 \le x \le 4$.`, sources: box(g2) },
   "q508-s3": { name: "The graph of f", label: "Graph", intro: String.raw`The graph of the continuous function $f$, which consists of three line segments, is shown below for $-2 \le x \le 5$.`, sources: box(g3) },
   "q508-s4": { name: "The graph of f'", label: "Graph", intro: String.raw`The graph of $f'$, the derivative of a function $f$, is the parabola shown below.`, sources: box(g4) },
@@ -72,21 +74,21 @@ export const sets = {
 };
 
 const items = [
-  { id: "q508-m01", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s1",
-    question: String.raw`Which of the following describes the graph of $f'$ on the interval $-3 < x < 3$?`,
+  { id: "q508-m01", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "moderate", set: "q508-s1",
+    question: String.raw`Which of the following describes the graph of $f'$ on the interval $-1.5 < x < 3.5$?`,
     choices: [
-      String.raw`It crosses the $x$-axis at $x = -2$, $x = 0$, and $x = 2$.`,
-      String.raw`It crosses the $x$-axis at $x = -2\sqrt{2}$, $x = 0$, and $x = 2\sqrt{2}$.`,
-      String.raw`It crosses the $x$-axis only at $x = -2$ and $x = 2$.`,
-      String.raw`It crosses the $x$-axis only at $x = -\frac{2}{\sqrt{3}}$ and $x = \frac{2}{\sqrt{3}}$.`,
+      String.raw`It touches the $x$-axis at $x = 1$ and crosses it at $x = -1$ and $x = 3$.`,
+      String.raw`It crosses the $x$-axis at $x = -1$, $x = 1$, and $x = 3$.`,
+      String.raw`It touches the $x$-axis at $x = -1$ and $x = 3$ and crosses it at $x = 1$.`,
+      String.raw`It crosses the $x$-axis only at $x = 1 - \sqrt{2}$ and $x = 1 + \sqrt{2}$.`,
     ],
     why: [
-      String.raw`$f$ has horizontal tangents at its three relative extrema, $x = -2$, $x = 0$, and $x = 2$, and $f$ changes between increasing and decreasing at each one, so the graph of $f'$ crosses the $x$-axis there.`,
-      String.raw`These are where the graph of $f$ meets the $x$-axis. $f' = 0$ where the tangent line is horizontal.`,
-      String.raw`The relative maximum at $(0, 0)$ also has a horizontal tangent: $f$ rises before $x = 0$ and falls after it, so $f'$ changes from positive to negative there.`,
-      String.raw`At these values the graph of $f$ changes concavity, so $f'$ has relative extrema there, not zeros.`,
+      String.raw`$f' = 0$ at each horizontal tangent. At $x = -1$, $f$ changes from decreasing to increasing, and at $x = 3$ from increasing to decreasing, so $f'$ changes sign there and its graph crosses the axis. At $x = 1$, $f$ is increasing on both sides, so $f'(1) = 0$ but $f'$ stays positive: its graph touches the axis.`,
+      String.raw`$f$ is increasing on both sides of $x = 1$, so $f'$ is positive on both sides and does not change sign there. Its graph touches the axis at $x = 1$ instead of crossing it.`,
+      String.raw`This reverses the two cases. $f$ changes direction at $x = -1$ and $x = 3$, so $f'$ changes sign there; it keeps rising through $x = 1$, so $f'$ does not change sign there.`,
+      String.raw`These are where the graph of $f$ changes concavity (along with $x = 1$), so $f'$ has relative extrema there, not zeros. $f' = 0$ where the tangent line is horizontal.`,
     ], answer: 0 },
-  { id: "q508-m02", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s2",
+  { id: "q508-m02", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "difficult", set: "q508-s2",
     question: String.raw`At which values of $x$ in the open interval $(-4, 4)$ does the graph of $f$ have a point of inflection?`,
     choices: [String.raw`$x = -1$ and $x = 1$`, String.raw`$x = -2$, $x = 0$, and $x = 2$`, String.raw`$x = 0$ only`, String.raw`$x = -2$ and $x = 2$`],
     why: [
@@ -95,7 +97,7 @@ const items = [
       String.raw`$f'$ changes from positive to negative at $x = 0$, so $f$ has a relative maximum there.`,
       String.raw`$f'$ changes from negative to positive at $x = -2$ and $x = 2$, so $f$ has relative minima there.`,
     ], answer: 0 },
-  { id: "q508-m03", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s3",
+  { id: "q508-m03", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "easy", set: "q508-s3",
     question: String.raw`What are the values of $f'(x)$ for $0 < x < 3$ and for $3 < x < 5$, in that order?`,
     choices: [String.raw`$0$ and $-2$`, String.raw`$4$ and $-2$`, String.raw`$0$ and $2$`, String.raw`$0$ and $-4$`],
     why: [
@@ -104,7 +106,7 @@ const items = [
       String.raw`The segment on $(3, 5)$ falls, so its slope is negative.`,
       String.raw`$-4$ is the change in $f$ on $(3, 5)$. The slope divides that change by the run, $2$.`,
     ], answer: 0 },
-  { id: "q508-m04", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s4",
+  { id: "q508-m04", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "moderate", set: "q508-s4",
     question: String.raw`Which of the following describes the graph of $f$?`,
     choices: [
       String.raw`$f$ has a relative maximum at $x = -2$, a relative minimum at $x = 2$, and a point of inflection at $x = 0$.`,
@@ -118,7 +120,7 @@ const items = [
       String.raw`This reads the graph of $f'$ as if it were the graph of $f$. $f'(0) = -4 \ne 0$, so $x = 0$ is not a critical point of $f$.`,
       String.raw`$f'$ has its least value at $x = 0$, where it changes from decreasing to increasing, so the concavity of $f$ changes there.`,
     ], answer: 0 },
-  { id: "q508-m05", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s5",
+  { id: "q508-m05", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "difficult", set: "q508-s5",
     question: String.raw`At what value of $x$ in the interval $[-2, 4]$ is $f'(x)$ greatest?`,
     choices: [String.raw`$x = 1$`, String.raw`$x = 2$`, String.raw`$x = 0$`, String.raw`$x = -2$`],
     why: [
@@ -127,7 +129,7 @@ const items = [
       String.raw`At $x = 0$, $f$ has a relative minimum, so $f'(0) = 0$.`,
       String.raw`$f$ has its greatest value at $x = -2$, but the graph is falling steeply there, so $f'(-2) < 0$.`,
     ], answer: 0 },
-  { id: "q508-m06", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "q508-s6",
+  { id: "q508-m06", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "easy", set: "q508-s6",
     question: String.raw`Which of the following describes the graph of $f$?`,
     choices: [
       String.raw`Concave up everywhere, with a relative minimum at $x = 1$`,

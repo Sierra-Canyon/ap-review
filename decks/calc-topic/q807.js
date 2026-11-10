@@ -4,7 +4,7 @@ export const sets = {
 };
 
 const items = [
-  { id: "q807-m01", type: "mcq", skill: "u8", topic: "8.7", calc: false,
+  { id: "q807-m01", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "easy",
     question: String.raw`The base of a solid is the region in the first quadrant bounded by the line $y = 4 - x$ and the coordinate axes. Cross sections of the solid perpendicular to the $x$-axis are squares. What is the volume of the solid?`,
     choices: [String.raw`$\frac{64}{3}$`, String.raw`$\frac{64\pi}{3}$`, "$8$", String.raw`$\frac{128}{3}$`],
     why: [
@@ -13,16 +13,16 @@ const items = [
       String.raw`$8$ is $\displaystyle\int_0^4 (4 - x)\,dx$, the area of the base. The side length must be squared.`,
       String.raw`This squares $4$ and $x$ separately, $\displaystyle\int_0^4 \left(16 - x^2\right)dx$. The side $4 - x$ must be squared as a whole.`,
     ], answer: 0 },
-  { id: "q807-m02", type: "mcq", skill: "u8", topic: "8.7", calc: false,
-    question: String.raw`The base of a solid is the region enclosed by the graph of $y = 4 - x^2$ and the $x$-axis. Cross sections of the solid perpendicular to the $x$-axis are rectangles whose height is half the length of the side in the base. What is the volume of the solid?`,
-    choices: [String.raw`$\frac{256}{15}$`, String.raw`$\frac{512}{15}$`, String.raw`$\frac{128}{15}$`, String.raw`$\frac{16}{3}$`],
+  { id: "q807-m02", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "moderate",
+    question: String.raw`The base of a solid is the region bounded by the graph of $y = \dfrac{2}{x + 1}$, the $x$-axis, the $y$-axis, and the line $x = 1$. Cross sections of the solid perpendicular to the $x$-axis are rectangles whose height is half the length of the side in the base. What is the volume of the solid?`,
+    choices: ["$1$", String.raw`$\frac{1}{2}$`, String.raw`$\ln 2$`, String.raw`$2\ln 2$`],
     why: [
-      String.raw`The base side is $4 - x^2$ and the height is $\dfrac{1}{2}(4 - x^2)$, so the area is $\dfrac{1}{2}(4 - x^2)^2$. The volume is $\dfrac{1}{2}\displaystyle\int_{-2}^{2} \left(16 - 8x^2 + x^4\right)dx = \dfrac{1}{2} \cdot \dfrac{512}{15} = \dfrac{256}{15}$.`,
-      String.raw`$\dfrac{512}{15}$ is the volume with square cross sections. The height is half the base, so the area is $\dfrac{1}{2}s^2$.`,
+      String.raw`The side in the base is $s = \dfrac{2}{x + 1}$ and the height is $\dfrac{1}{2}s$, so the area is $\dfrac{1}{2}s^2 = \dfrac{2}{(x + 1)^2}$. The volume is $\displaystyle\int_0^1 \dfrac{2}{(x + 1)^2}\,dx = \left[-\dfrac{2}{x + 1}\right]_0^1 = -1 + 2 = 1$.`,
       String.raw`This squares the height, using $\left(\dfrac{1}{2}s\right)^2 = \dfrac{1}{4}s^2$. The area of a rectangle is base times height, $s \cdot \dfrac{1}{2}s$.`,
-      String.raw`This is $\dfrac{1}{2}$ of the area of the base, $\dfrac{32}{3}$. The cross section area $\dfrac{1}{2}s^2$ needs the side squared.`,
+      String.raw`$\ln 2$ is half the area of the base, $\dfrac{1}{2}\displaystyle\int_0^1 \dfrac{2}{x + 1}\,dx$. The cross section area $\dfrac{1}{2}s^2$ needs the side squared.`,
+      String.raw`This uses $2\ln(x + 1)$ as an antiderivative of $\dfrac{2}{(x + 1)^2}$. An antiderivative of $(x + 1)^{-2}$ is $-(x + 1)^{-1}$.`,
     ], answer: 0 },
-  { id: "q807-m03", type: "mcq", skill: "u8", topic: "8.7", calc: false,
+  { id: "q807-m03", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "moderate",
     question: String.raw`The base of a solid is the region enclosed by the graphs of $y = x^2$ and $y = x^4$. Cross sections of the solid perpendicular to the $x$-axis are squares. Which integral gives the volume of the solid?`,
     choices: [String.raw`$\displaystyle\int_{-1}^{1} \left(x^2 - x^4\right)^2 dx$`, String.raw`$\displaystyle\int_{-1}^{1} \left(x^4 - x^8\right)dx$`, String.raw`$\pi\displaystyle\int_{-1}^{1} \left(x^4 - x^8\right)dx$`, String.raw`$\displaystyle\int_{-1}^{1} \left(x^2 - x^4\right)dx$`],
     why: [
@@ -31,7 +31,7 @@ const items = [
       String.raw`This is the washer volume for revolving the region about the $x$-axis, not a solid with square cross sections.`,
       String.raw`This is the area of the base. The side length must be squared to give the area of each square.`,
     ], answer: 0 },
-  { id: "q807-m04", type: "mcq", skill: "u8", topic: "8.7", calc: false,
+  { id: "q807-m04", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "difficult",
     question: String.raw`The base of a solid is the region enclosed by the graph of $y = x^2$ and the line $y = 4$. Cross sections of the solid perpendicular to the $y$-axis are squares. What is the volume of the solid?`,
     choices: ["$32$", "$8$", String.raw`$\frac{512}{15}$`, String.raw`$\frac{32}{3}$`],
     why: [
@@ -40,7 +40,7 @@ const items = [
       String.raw`This uses squares perpendicular to the $x$-axis with side $4 - x^2$. The cross sections are perpendicular to the $y$-axis.`,
       String.raw`$\dfrac{32}{3}$ is the area of the base. The side length must be squared.`,
     ], answer: 0 },
-  { id: "q807-m05", type: "mcq", skill: "u8", topic: "8.7", calc: true,
+  { id: "q807-m05", type: "mcq", skill: "u8", topic: "8.7", calc: true, difficulty: "easy",
     question: String.raw`The base of a solid is the region bounded by the graph of $y = e^{-x^2}$, the $x$-axis, and the lines $x = -1$ and $x = 1$. Cross sections of the solid perpendicular to the $x$-axis are squares. What is the volume of the solid?`,
     choices: ["$1.196$", "$1.494$", "$1.690$", "$3.758$"],
     why: [
@@ -49,7 +49,7 @@ const items = [
       String.raw`This squares the exponent, using $e^{-x^4}$. Squaring $e^{-x^2}$ doubles the exponent: $e^{-2x^2}$.`,
       String.raw`This includes a factor of $\pi$, as for discs. Square cross sections have area $s^2$.`,
     ], answer: 0 },
-  { id: "q807-m06", type: "mcq", skill: "u8", topic: "8.7", calc: false,
+  { id: "q807-m06", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "moderate",
     question: String.raw`The base of a solid is the region bounded by the graph of $y = \dfrac{1}{x}$, the $x$-axis, and the lines $x = 1$ and $x = 2$. Cross sections of the solid perpendicular to the $x$-axis are rectangles of height $x^2$. What is the volume of the solid?`,
     choices: [String.raw`$\frac{3}{2}$`, String.raw`$\ln 2$`, String.raw`$\frac{1}{2}$`, String.raw`$\frac{7}{3}$`],
     why: [

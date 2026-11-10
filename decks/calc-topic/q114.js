@@ -24,7 +24,7 @@ export const sets = {
 
 const items = [
   {
-    id: "q114-m1", type: "mcq", skill: "u1", topic: "1.14", calc: false,
+    id: "q114-m1", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.14", calc: false,
     question: String.raw`$\displaystyle \lim_{x \to 4^{+}} \dfrac{x + 1}{16 - x^2}$ is`,
     choices: [String.raw`$-\infty$`, String.raw`$\infty$`, "$-1$", "$0$"],
     why: [
@@ -36,19 +36,19 @@ const items = [
     answer: 0,
   },
   {
-    id: "q114-m2", type: "mcq", skill: "u1", topic: "1.14", calc: false,
-    question: String.raw`On the interval $0 < x < \pi$, what are all the vertical asymptotes of the graph of $y = \tan(2x)$?`,
-    choices: [String.raw`$x = \frac{\pi}{4}$ and $x = \frac{3\pi}{4}$`, String.raw`$x = \frac{\pi}{2}$ only`, String.raw`$x = \frac{\pi}{4}$ only`, String.raw`$x = \frac{\pi}{2}$ and $x = \pi$`],
+    id: "q114-m2", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.14", calc: false,
+    question: String.raw`On the interval $0 < x < 4\pi$, what are all the vertical asymptotes of the graph of $y = \tan\left(\dfrac{x}{2}\right)$?`,
+    choices: [String.raw`$x = \pi$ and $x = 3\pi$`, String.raw`$x = \frac{\pi}{2}$ and $x = \frac{3\pi}{2}$`, String.raw`$x = \pi$, $x = 2\pi$, and $x = 3\pi$`, String.raw`$x = 2\pi$ only`],
     why: [
-      String.raw`$\tan(2x) = \dfrac{\sin(2x)}{\cos(2x)}$ is unbounded where $\cos(2x) = 0$ and $\sin(2x) \neq 0$. On $0 < x < \pi$, $2x$ is between $0$ and $2\pi$, so $2x = \dfrac{\pi}{2}$ or $2x = \dfrac{3\pi}{2}$, which gives $x = \dfrac{\pi}{4}$ and $x = \dfrac{3\pi}{4}$.`,
-      String.raw`$x = \frac{\pi}{2}$ is the asymptote of $\tan x$. For $\tan(2x)$, at $x = \frac{\pi}{2}$ the value is $\tan \pi = 0$.`,
-      String.raw`This finds only $2x = \frac{\pi}{2}$. On $0 < x < \pi$, $2x$ also reaches $\frac{3\pi}{2}$.`,
-      String.raw`$\tan(2x) = 0$ at $x = \frac{\pi}{2}$, and $x = \pi$ is outside the open interval. These come from the zeros of $\sin(2x)$, not $\cos(2x)$.`,
+      String.raw`$\tan\left(\dfrac{x}{2}\right) = \dfrac{\sin(x/2)}{\cos(x/2)}$ is unbounded where $\cos\left(\dfrac{x}{2}\right) = 0$. On $0 < x < 4\pi$, $\dfrac{x}{2}$ is between $0$ and $2\pi$, so $\dfrac{x}{2} = \dfrac{\pi}{2}$ or $\dfrac{x}{2} = \dfrac{3\pi}{2}$, which gives $x = \pi$ and $x = 3\pi$.`,
+      String.raw`$\frac{\pi}{2}$ and $\frac{3\pi}{2}$ are asymptotes of $\tan x$. For $\tan\left(\frac{x}{2}\right)$, the input $\frac{x}{2}$ must equal $\frac{\pi}{2}$ or $\frac{3\pi}{2}$, so $x = \pi$ or $x = 3\pi$.`,
+      String.raw`At $x = 2\pi$, $\tan\left(\frac{x}{2}\right) = \tan \pi = 0$. That is a zero of the function, not an asymptote.`,
+      String.raw`$x = 2\pi$ is where $\sin\left(\frac{x}{2}\right) = 0$, a zero of $\tan\left(\frac{x}{2}\right)$. The asymptotes come from the zeros of $\cos\left(\frac{x}{2}\right)$.`,
     ],
     answer: 0,
   },
   {
-    id: "q114-m3", type: "mcq", skill: "u1", topic: "1.14", calc: false,
+    id: "q114-m3", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.14", calc: false,
     question: String.raw`$\displaystyle \lim_{x \to 1} \dfrac{x - 4}{(x - 1)^2}$ is`,
     choices: [String.raw`$-\infty$`, String.raw`$\infty$`, "$-3$", "$0$"],
     why: [
@@ -60,7 +60,7 @@ const items = [
     answer: 0,
   },
   {
-    id: "q114-m4", type: "mcq", skill: "u1", topic: "1.14", calc: false,
+    id: "q114-m4", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.14", calc: false,
     question: String.raw`$\displaystyle \lim_{x \to \pi^{+}} \csc x$ is`,
     choices: [String.raw`$-\infty$`, String.raw`$\infty$`, "$0$", "$-1$"],
     why: [
@@ -72,7 +72,7 @@ const items = [
     answer: 0,
   },
   {
-    id: "q114-m5", type: "mcq", skill: "u1", topic: "1.14", calc: false, set: "q114-s1",
+    id: "q114-m5", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.14", calc: false, set: "q114-s1",
     question: "Which of the following is true?",
     choices: [String.raw`$\lim_{x \to 1^{-}} f(x) = -\infty$`, String.raw`$\lim_{x \to 1^{+}} f(x) = -\infty$`, String.raw`$\lim_{x \to 1} f(x) = \infty$`, String.raw`$\lim_{x \to 1^{-}} f(x) = 1$`],
     why: [
@@ -84,14 +84,17 @@ const items = [
     answer: 0,
   },
   {
-    id: "q114-m6", type: "mcq", skill: "u1", topic: "1.14", calc: false,
-    question: String.raw`Which of the following functions has a vertical asymptote at $x = 3$?`,
-    choices: [String.raw`$\ln(x - 3)$`, String.raw`$\frac{x^2 - 9}{x - 3}$`, String.raw`$\frac{x - 3}{x + 3}$`, String.raw`$e^{x - 3}$`],
+    id: "q114-m6", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.14", calc: false,
+    question: String.raw`Which of the following functions have a vertical asymptote at $x = 3$?
+I. $f(x) = \dfrac{x^2 - 9}{x - 3}$
+II. $g(x) = \dfrac{x - 3}{x^2 - 9}$
+III. $h(x) = \begin{cases} \dfrac{1}{3 - x}, & x < 3 \\ 0, & x \geq 3 \end{cases}$`,
+    choices: ["III only", "I and III only", "II and III only", "I, II, and III"],
     why: [
-      String.raw`As $x \to 3^{+}$, $x - 3 \to 0^{+}$ and $\ln(x - 3) \to -\infty$, so $x = 3$ is a vertical asymptote.`,
-      String.raw`$\dfrac{x^2 - 9}{x - 3} = x + 3$ for $x \neq 3$, so the limit at $x = 3$ is $6$: a hole, not an asymptote.`,
-      String.raw`The denominator is $0$ at $x = -3$, so the asymptote is $x = -3$. At $x = 3$ the function equals $0$.`,
-      String.raw`$e^{x - 3}$ is defined and continuous for all $x$. At $x = 3$ it equals $1$.`,
+      String.raw`I equals $x + 3$ for $x \neq 3$, so its limit at $x = 3$ is $6$: a hole. II equals $\dfrac{1}{x + 3}$ for $x \neq 3$, so its limit at $x = 3$ is $\dfrac{1}{6}$: also a hole. For III, as $x \to 3^{-}$, $3 - x$ is positive and approaches $0$, so $h(x) \to \infty$. One infinite one-sided limit makes $x = 3$ a vertical asymptote, even though $h(3) = 0$ is defined.`,
+      String.raw`I has a hole at $x = 3$, not an asymptote: $\dfrac{x^2 - 9}{x - 3} = x + 3$ for $x \neq 3$, which approaches $6$.`,
+      String.raw`II has a hole at $x = 3$: $\dfrac{x - 3}{x^2 - 9} = \dfrac{1}{x + 3}$ for $x \neq 3$, which approaches $\dfrac{1}{6}$. Its vertical asymptote is $x = -3$.`,
+      String.raw`I and II both cancel the factor $x - 3$, so each has a hole at $x = 3$, where their limits are $6$ and $\dfrac{1}{6}$.`,
     ],
     answer: 0,
   },

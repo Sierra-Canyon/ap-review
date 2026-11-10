@@ -17,6 +17,14 @@ export const sets = {
       rows: [["$F(t)$ (gallons)", "$34$", "$24$", "$19$", "$16$", "$5$"]],
     } }] }],
   },
+  "q101-s4": {
+    name: "Average velocities near t = 3", label: "Table",
+    intro: String.raw`A particle moves along a line. Its position at time $t$ seconds is $s(t)$ meters, and $s$ is continuous. The table gives the average velocity of the particle, in meters per second, over the interval between $t = 3$ and $t = 3 + h$ for six values of $h$.`,
+    sources: [{ title: "", blocks: [{ table: {
+      head: ["$h$", "$-0.1$", "$-0.01$", "$-0.001$", "$0.001$", "$0.01$", "$0.1$"],
+      rows: [[String.raw`$\dfrac{s(3 + h) - s(3)}{h}$`, "$2.1$", "$2.01$", "$2.001$", "$4.999$", "$4.99$", "$4.9$"]],
+    } }] }],
+  },
   "q101-s3": {
     name: "A rock dropped from a bridge", label: "Free response",
     intro: String.raw`A rock is dropped from a bridge. The distance, in meters, that the rock has fallen $t$ seconds after it is released is given by the function $d$ below, for $0 \le t \le 3$.`,
@@ -25,7 +33,7 @@ export const sets = {
 };
 
 const items = [
-  { id: "q101-m1", type: "mcq", skill: "u1", topic: "1.1", calc: false,
+  { id: "q101-m1", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.1", calc: false,
     stem: String.raw`A ball is thrown upward. Its height, in meters, $t$ seconds after it is thrown is $h(t) = 30t - 5t^2$.`,
     question: String.raw`What is the average velocity of the ball, in meters per second, over the interval $1 \le t \le 3$?`,
     choices: ["$10$", "$20$", "$35$", "$-10$"],
@@ -35,26 +43,29 @@ const items = [
       String.raw`$35$ is the average of the two heights, $\dfrac{25 + 45}{2}$. That is a height in meters, not a rate of change.`,
       String.raw`$-10$ subtracts in the wrong order, $\dfrac{h(1) - h(3)}{3 - 1}$. The height increases from 25 meters to 45 meters, so the average velocity is positive.`,
     ], answer: 0 },
-  { id: "q101-m2", type: "mcq", skill: "u1", topic: "1.1", calc: false, set: "q101-s1",
-    question: String.raw`Based on the table, which of the following is the best estimate of the instantaneous rate of change of $f$ at $x = 2$?`,
-    choices: ["$-0.25$", "$-0.23810$", "$0$", String.raw`It cannot be estimated, because the average rate of change is undefined when $h = 0$.`],
+  { id: "q101-m2", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.1", calc: false, set: "q101-s1",
+    question: "Based on the table, which of the following best describes the instantaneous rate of change of $f$ at $x = 2$?",
+    choices: ["It is about $-0.25$.", "It is about $-0.23810$.", "It is about $0$.", "It cannot be estimated."],
     why: [
       String.raw`As $h$ gets closer to $0$, the average rates of change $-0.23810$, $-0.24876$, and $-0.24988$ get closer to $-0.25$. The instantaneous rate of change at $x = 2$ is the value these averages approach, so the best estimate is $-0.25$.`,
       String.raw`$-0.23810$ is the average rate of change over the longest interval in the table, $[2, 2.1]$. Shorter intervals give better estimates of the rate at the instant $x = 2$.`,
       String.raw`The rate at an instant is not $0$ just because the interval shrinks to a point. The change in $f$ and the length of the interval both shrink, and their quotient approaches $-0.25$.`,
       String.raw`The average rate cannot be computed with $h = 0$, but the instantaneous rate is the value the averages approach as $h$ approaches $0$. The table shows that value is about $-0.25$.`,
     ], answer: 0 },
-  { id: "q101-m3", type: "mcq", skill: "u1", topic: "1.1", calc: false,
+  { id: "q101-m3", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.1", calc: false,
     stem: String.raw`The position of a particle moving along a line is $s(t)$, where $t$ is measured in seconds.`,
-    question: String.raw`Which of the following gives the best approximation of the velocity of the particle at the instant $t = 4$?`,
-    choices: [String.raw`$\frac{s(4.01) - s(4)}{0.01}$`, String.raw`$\frac{s(4.01) - s(4)}{4}$`, String.raw`$s(4.01) - s(4)$`, String.raw`$\frac{s(4)}{4}$`],
+    question: String.raw`Which of the following expressions give a good approximation of the velocity of the particle at the instant $t = 4$?
+I. $\dfrac{s(4.01) - s(4)}{0.01}$
+II. $\dfrac{s(4) - s(3.99)}{-0.01}$
+III. $\dfrac{s(4.01) - s(3.99)}{0.01}$`,
+    choices: ["I only", "I and II only", "I and III only", "I, II, and III"],
     why: [
-      String.raw`The velocity at an instant is approximated by the average velocity over a short interval that contains the instant. Over $[4, 4.01]$, the average velocity is the change in position divided by the elapsed time, $0.01$ seconds.`,
-      String.raw`This divides the change in position by $4$, the time at the start of the interval, instead of by the elapsed time $4.01 - 4 = 0.01$.`,
-      String.raw`This is the change in position over $[4, 4.01]$, a distance. It was not divided by the elapsed time of $0.01$ seconds.`,
-      String.raw`$\dfrac{s(4)}{4}$ uses the whole interval $[0, 4]$ and also assumes $s(0) = 0$. An average over four seconds does not approximate the velocity at one instant.`,
+      String.raw`I is the average velocity over $[4, 4.01]$: the change in position divided by the elapsed time, $0.01$ second. II divides the change in position over $[3.99, 4]$ by $-0.01$, but the elapsed time is $4 - 3.99 = 0.01$, so II is the negative of the average velocity. III divides the change over $[3.99, 4.01]$ by $0.01$, but that interval lasts $0.02$ second, so III is twice the average velocity.`,
+      String.raw`II has the wrong sign. From $t = 3.99$ to $t = 4$ the elapsed time is $4 - 3.99 = 0.01$, not $-0.01$, so II is the negative of the average velocity over $[3.99, 4]$.`,
+      String.raw`III uses a good interval, $[3.99, 4.01]$, but that interval is $0.02$ second long. Dividing by $0.01$ doubles the average velocity.`,
+      String.raw`Only I divides a change in position by the elapsed time. II has the wrong sign, and III divides by half the length of its interval.`,
     ], answer: 0 },
-  { id: "q101-m4", type: "mcq", skill: "u1", topic: "1.1", calc: false, set: "q101-s2",
+  { id: "q101-m4", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.1", calc: false, set: "q101-s2",
     question: String.raw`What is the average rate of change of $F$ over the interval $2 \le t \le 6$, in gallons per hour?`,
     choices: ["$-2$", "$2$", "$-8$", "$-3$"],
     why: [
@@ -63,7 +74,7 @@ const items = [
       String.raw`$-8$ gallons is the change in the amount of fuel. It was not divided by the elapsed time, $4$ hours.`,
       String.raw`$-3$ is $\dfrac{F(6) - F(0)}{6 - 0} = \dfrac{16 - 34}{6}$, the average rate of change over $[0, 6]$, not over $[2, 6]$.`,
     ], answer: 0 },
-  { id: "q101-m5", type: "mcq", skill: "u1", topic: "1.1", calc: false,
+  { id: "q101-m5", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.1", calc: false,
     question: String.raw`Let $g(x) = \sqrt{x}$. The average rate of change of $g$ over which of the following intervals gives the best approximation of the instantaneous rate of change of $g$ at $x = 4$?`,
     choices: ["$[4, 4.001]$", "$[4, 4.1]$", "$[3, 5]$", "$[0, 4]$"],
     why: [
@@ -72,20 +83,14 @@ const items = [
       String.raw`$[3, 5]$ is centered at $x = 4$, but it is 2 units long. Its average rate of change, about $0.2520$, is a worse estimate than the one from $[4, 4.001]$.`,
       String.raw`$[0, 4]$ is 4 units long. Its average rate of change is $\dfrac{2 - 0}{4 - 0} = 0.5$, twice the rate at $x = 4$.`,
     ], answer: 0 },
-  { id: "q101-m6", type: "mcq", skill: "u1", topic: "1.1", calc: false,
-    stem: String.raw`The position of a car at time $t$ is $s(t)$. The velocity of the car at the instant $t = 3$ cannot be found directly as $\dfrac{\text{change in position}}{\text{change in time}}$.`,
-    question: "Which of the following is the reason?",
-    choices: [
-      String.raw`At a single instant the change in time is $0$, so the quotient would be $\frac{0}{0}$, which is undefined.`,
-      String.raw`At a single instant the change in position is $0$, so the velocity is $0$.`,
-      String.raw`The position $s(3)$ is not defined at a single instant.`,
-      String.raw`The velocity at $t = 3$ always equals the average velocity over $[0, 3]$.`,
-    ],
+  { id: "q101-m6", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.1", calc: false, set: "q101-s4",
+    question: String.raw`Based on the table, which of the following best describes the velocity of the particle at the instant $t = 3$?`,
+    choices: ["It does not exist.", "It is about $5$.", "It is about $2$.", "It is about $3.5$."],
     why: [
-      String.raw`Over the "interval" from $t = 3$ to $t = 3$, both the change in position and the change in time are $0$, and $\frac{0}{0}$ is undefined. The velocity at the instant is found instead as the value that average velocities over shorter and shorter intervals containing $t = 3$ approach.`,
-      String.raw`The change in position over a single instant is $0$, but so is the change in time. The quotient $\frac{0}{0}$ is undefined, not $0$, and a moving car does not have velocity $0$.`,
-      String.raw`The car has a position at every instant, so $s(3)$ is defined. The problem is the change in time, which is $0$ at a single instant.`,
-      String.raw`The average velocity over $[0, 3]$ describes three seconds of motion. It equals the velocity at $t = 3$ only by coincidence.`,
+      String.raw`The velocity at $t = 3$ is the single value the average velocities approach as $h$ approaches $0$ from both sides. For $h < 0$ the averages $2.1$, $2.01$, $2.001$ approach $2$, and for $h > 0$ the averages $4.9$, $4.99$, $4.999$ approach $5$. The two sides approach different values, so the velocity at $t = 3$ does not exist, even though $s$ is continuous there.`,
+      String.raw`$5$ is the value the averages approach only for $h > 0$, over intervals after $t = 3$. Over intervals before $t = 3$ the averages approach $2$.`,
+      String.raw`$2$ is the value the averages approach only for $h < 0$, over intervals before $t = 3$. Over intervals after $t = 3$ the averages approach $5$.`,
+      String.raw`$3.5$ is the mean of $2$ and $5$, the values the two sides approach. Averaging the two sides does not give a velocity at the instant, because no single value is approached.`,
     ], answer: 0 },
 
   { id: "q101-f1a", type: "frq", skill: "u1", topic: "1.1", calc: false, set: "q101-s3", part: "(a)",

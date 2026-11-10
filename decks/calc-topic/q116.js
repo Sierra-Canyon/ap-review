@@ -19,26 +19,26 @@ export const sets = {
 
 const items = [
   {
-    id: "q116-m1", type: "mcq", skill: "u1", topic: "1.16", calc: false,
+    id: "q116-m1", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.16", calc: false,
     question: String.raw`A function $g$ is continuous on the closed interval $[1, 5]$, with $g(1) = -3$ and $g(5) = 4$. Which of the following must be true?`,
     choices: [
       String.raw`$g(c) = 0$ for at least one $c$ in $(1, 5)$.`,
-      String.raw`$g(3) = \frac{1}{2}$`,
+      String.raw`$g(3) = \frac{1}{2}$, the average of $g(1)$ and $g(5)$.`,
       String.raw`$g(c) = 5$ for at least one $c$ in $(1, 5)$.`,
-      String.raw`$g$ is increasing on $[1, 5]$.`,
+      String.raw`$g$ is increasing on $[1, 5]$, since $g(1) < g(5)$.`,
     ],
     why: [
       String.raw`$g$ is continuous on $[1, 5]$ and $0$ is between $g(1) = -3$ and $g(5) = 4$, so by the Intermediate Value Theorem there is a $c$ in $(1, 5)$ with $g(c) = 0$.`,
       String.raw`$\frac{1}{2}$ is the average of $-3$ and $4$, and $3$ is the midpoint of the interval. The theorem says $g$ takes the value $\frac{1}{2}$ somewhere in $(1, 5)$, not at the midpoint.`,
       String.raw`$5$ is not between $-3$ and $4$, so the theorem does not guarantee it.`,
-      String.raw`Continuity and the endpoint values do not tell whether $g$ increases. $g$ could rise and fall on the interval.`,
+      String.raw`$g(1) < g(5)$ does not make $g$ increasing. A continuous $g$ with these endpoint values could rise and fall on the interval.`,
     ],
     answer: 0,
   },
   {
-    id: "q116-m2", type: "mcq", skill: "u1", topic: "1.16", calc: false, set: "q116-s1",
+    id: "q116-m2", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.16", calc: false, set: "q116-s1",
     question: String.raw`For which of the following values of $N$ must the equation $f(x) = N$ have at least three solutions in the interval $(0, 6)$?`,
-    choices: ["$2$", String.raw`$3.5$`, "$0$", "$-3$"],
+    choices: ["$N = 2$", "$N = 3.5$", "$N = 0$", "$N = -3$"],
     why: [
       String.raw`$f$ is continuous, and $2$ is between the endpoint values on each of $[0, 2]$ ($1$ and $4$), $[2, 4]$ ($4$ and $-2$), and $[4, 6]$ ($-2$ and $3$). By the Intermediate Value Theorem, $f(x) = 2$ has a solution in each of $(0, 2)$, $(2, 4)$, and $(4, 6)$.`,
       String.raw`$3.5$ is between $1$ and $4$ and between $4$ and $-2$, but not between $-2$ and $3$, so only two solutions are guaranteed.`,
@@ -48,9 +48,9 @@ const items = [
     answer: 0,
   },
   {
-    id: "q116-m3", type: "mcq", skill: "u1", topic: "1.16", calc: false,
+    id: "q116-m3", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.16", calc: false,
     question: String.raw`Let $p(x) = \ln x + x - 2$. On which of the following intervals does the Intermediate Value Theorem guarantee a solution of $p(x) = 0$?`,
-    choices: ["$[1, 2]$", "$[0, 1]$", "$[2, 3]$", String.raw`$\left[\frac{1}{2}, 1\right]$`],
+    choices: ["$[1, 2]$", "$[0, 1]$", "$[2, 3]$", String.raw`$[\frac{1}{2}, 1]$`],
     why: [
       String.raw`$p$ is continuous for $x > 0$, so it is continuous on $[1, 2]$. $p(1) = 0 + 1 - 2 = -1 < 0$ and $p(2) = \ln 2 > 0$, so $0$ is between $p(1)$ and $p(2)$ and a solution exists in $(1, 2)$.`,
       String.raw`$\ln x$ is not defined at $x = 0$, so $p$ is not continuous on $[0, 1]$ and the theorem does not apply there.`,
@@ -60,12 +60,12 @@ const items = [
     answer: 0,
   },
   {
-    id: "q116-m4", type: "mcq", skill: "u1", topic: "1.16", calc: false,
+    id: "q116-m4", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.16", calc: false,
     question: String.raw`$\tan\left(\dfrac{\pi}{4}\right) = 1$ and $\tan\left(\dfrac{3\pi}{4}\right) = -1$, but $\tan x = 0$ has no solution in the interval $\left(\dfrac{\pi}{4}, \dfrac{3\pi}{4}\right)$. Why does this not contradict the Intermediate Value Theorem?`,
     choices: [
       String.raw`$\tan x$ is not continuous on $\left[\frac{\pi}{4}, \frac{3\pi}{4}\right]$.`,
-      String.raw`$0$ is not between $1$ and $-1$.`,
-      "The theorem applies only to polynomials.",
+      String.raw`The value $0$ is not between $\tan\left(\frac{\pi}{4}\right)$ and $\tan\left(\frac{3\pi}{4}\right)$.`,
+      String.raw`The theorem applies only to polynomials, and $\tan x$ is not one.`,
       String.raw`$\tan\left(\frac{\pi}{4}\right)$ and $\tan\left(\frac{3\pi}{4}\right)$ have the same sign.`,
     ],
     why: [
@@ -77,19 +77,19 @@ const items = [
     answer: 0,
   },
   {
-    id: "q116-m5", type: "mcq", skill: "u1", topic: "1.16", calc: false,
-    question: String.raw`A function $k$ is continuous on $[-2, 4]$, with $k(-2) = 5$ and $k(4) = -1$. For which of the following values of $N$ does the Intermediate Value Theorem guarantee that $k(c) = N$ for some $c$ in the open interval $(-2, 4)$?`,
-    choices: ["$3$", "$6$", "$-2$", "$5$"],
+    id: "q116-m5", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.16", calc: false, set: "q116-s1",
+    question: String.raw`What is the fewest number of solutions that the equation $f(x) = 4 - x$ must have in the interval $[0, 6]$?`,
+    choices: ["$3$", "$2$", "$1$", "$0$"],
     why: [
-      String.raw`$3$ is between $k(4) = -1$ and $k(-2) = 5$, and $k$ is continuous on $[-2, 4]$, so some $c$ in $(-2, 4)$ has $k(c) = 3$.`,
-      String.raw`$6$ is greater than both endpoint values, $5$ and $-1$.`,
-      String.raw`$-2$ is the left endpoint of the interval, an $x$-value. As an output, $-2$ is less than both $-1$ and $5$.`,
-      String.raw`$k(-2) = 5$ happens at the endpoint $x = -2$, which is not in the open interval. The theorem guarantees only values strictly between $-1$ and $5$.`,
+      String.raw`Let $h(x) = f(x) - (4 - x) = f(x) + x - 4$, which is continuous on $[0, 6]$ because $f$ is. From the table, $h(0) = -3$, $h(2) = 2$, $h(4) = -2$, and $h(6) = 5$. The sign of $h$ changes on $[0, 2]$, on $[2, 4]$, and on $[4, 6]$, so by the Intermediate Value Theorem $h(x) = 0$ has a solution in each of $(0, 2)$, $(2, 4)$, and $(4, 6)$: at least $3$ solutions.`,
+      String.raw`$2$ counts the sign changes of $f$ itself, on $[2, 4]$ and $[4, 6]$. Those guarantee solutions of $f(x) = 0$, not of $f(x) = 4 - x$.`,
+      String.raw`$1$ uses only the endpoints, $h(0) = -3$ and $h(6) = 5$. The table also shows sign changes of $h$ inside $[0, 6]$, at $x = 2$ and $x = 4$.`,
+      String.raw`No table entry has $f(x) = 4 - x$ exactly, but the theorem guarantees solutions between the table values wherever $f(x) - (4 - x)$ changes sign.`,
     ],
     answer: 0,
   },
   {
-    id: "q116-m6", type: "mcq", skill: "u1", topic: "1.16", calc: false,
+    id: "q116-m6", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.16", calc: false,
     question: String.raw`Let $r(x) = \begin{cases} x^2 - 3, & x \leq 2 \\ 3x - 5, & x > 2. \end{cases}$ Does the Intermediate Value Theorem guarantee a value $c$ in $(0, 3)$ with $r(c) = 0$?`,
     choices: [
       String.raw`Yes, because $r$ is continuous on $[0, 3]$ and $r(0) < 0 < r(3)$.`,

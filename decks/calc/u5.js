@@ -26,6 +26,54 @@ const absGraph = graph({
   alt: "Graph of f for x from -3 to 3. The graph comes down from (-3, 5) to a sharp corner on the x-axis at (-2, 0), rises along a smooth arch to a rounded peak at (0, 4), falls to a second sharp corner at (2, 0), and rises to (3, 5).",
 });
 
+// Graph of f'' = x(x - 3)^2 / 4 on [-1, 4], used by c5r-m28: f''(-1) = -4, f''(1) = 1, f''(2) = 1/2, f''(4) = 1; zero at 0, touch at 3.
+const fppGraph = graph({
+  x: [-1, 4], y: [-4, 2], xname: "x", yname: "y",
+  fns: [{ f: (x) => (x * (x - 3) ** 2) / 4, from: -1, to: 4 }],
+  dots: [[-1, -4, "closed"], [4, 1, "closed"]],
+  alt: "Graph of the second derivative f double prime for x from -1 to 4. It rises from (-1, -4) and crosses the x-axis at x = 0, rises to a high point near (1, 1), comes back down to touch the x-axis at x = 3 without crossing, and rises to (4, 1).",
+});
+
+// Graph of f(x) = -1 + 2(x - 2)/(1 + (x - 2)^2) on [-2, 6], used by c5r-m37: low point (1, -2), high point (3, 0),
+// point of inflection (2, -1) where f'(2) = 2 and f''(2) = 0.
+const sGraph = graph({
+  x: [-2, 6], y: [-3, 1], xname: "x", yname: "y",
+  fns: [{ f: (x) => -1 + (2 * (x - 2)) / (1 + (x - 2) ** 2), from: -2, to: 6 }],
+  dots: [[1, -2, "closed"], [2, -1, "closed"], [3, 0, "closed"]],
+  alt: "Graph of f for x from -2 to 6. The graph falls from about (-2, -1.5) to a low point at (1, -2), rises through the point (2, -1), where it changes from concave up to concave down, to a high point at (3, 0), and then falls slowly toward about (6, -0.5).",
+});
+
+// Graph of f(x) = x(x - 3)^2 / 4 on [-1, 5] and four candidate graphs for f', used by c5r-m38.
+// f'(x) = 3(x - 1)(x - 3)/4 is Graph C. A is -f', B is f''(x) = (3x - 6)/2, D is 3x(x - 3)/4 (zeros of f).
+const cubF = graph({
+  x: [-1, 5], y: [-5, 6], step: { x: 1, y: 2 }, xname: "x", yname: "y",
+  fns: [{ f: (x) => (x * (x - 3) ** 2) / 4, from: -1, to: 5 }],
+  dots: [[1, 1, "closed"], [3, 0, "closed"]],
+  alt: "Graph of f for x from -1 to 5. The graph rises from (-1, -4) through the origin to a high point at (1, 1), falls to a low point at (3, 0) on the x-axis, and rises to (5, 5).",
+});
+const cand = (f, alt) => graph({ x: [-1, 5], y: [-5, 6], step: { x: 1, y: 2 }, xname: "x", yname: "y", width: 260, height: 200, fns: [{ f, from: -1, to: 5 }], alt });
+const candA = cand((x) => (-3 * (x - 1) * (x - 3)) / 4, "Graph A: a downward-opening parabola crossing the x-axis at x = 1 and x = 3, highest at x = 2.");
+const candB = cand((x) => (3 * x - 6) / 2, "Graph B: a rising straight line crossing the x-axis at x = 2.");
+const candC = cand((x) => (3 * (x - 1) * (x - 3)) / 4, "Graph C: an upward-opening parabola crossing the x-axis at x = 1 and x = 3, lowest at x = 2.");
+const candD = cand((x) => (3 * x * (x - 3)) / 4, "Graph D: an upward-opening parabola crossing the x-axis at x = 0 and x = 3, lowest at x = 1.5.");
+
+// Graph of f' for c5r-m39: segments through (-3, 0), (-1, 4), (1, 0), (3, 4), (5, 2). f'(x) = 2 at x = -2, 0, 2 and 5.
+const fpGraph2 = graph({
+  x: [-3, 5], y: [-1, 5], xname: "x", yname: "y",
+  segments: [[-3, 0, -1, 4], [-1, 4, 1, 0], [1, 0, 3, 4], [3, 4, 5, 2]],
+  dots: [[-3, 0, "closed"], [5, 2, "closed"]],
+  alt: "Graph of the derivative f prime for x from -3 to 5, made of four line segments joining the points (-3, 0), (-1, 4), (1, 0), (3, 4), and (5, 2). It touches the x-axis at x = 1.",
+});
+
+// Graph of f(x) = (x^3 - 9x^2 + 24x)/4 on [0, 6] with the dashed segment from (0, 0) to (6, 9), used by c5r-m41.
+// f'(x) = 3/2 at x = 3 - sqrt(3) and x = 3 + sqrt(3); the segment meets the graph at x = 0, 3, 6.
+const mvtGraph = graph({
+  x: [0, 6], y: [0, 10], step: { x: 1, y: 2 }, xname: "x", yname: "y",
+  fns: [{ f: (x) => (x ** 3 - 9 * x ** 2 + 24 * x) / 4, from: 0, to: 6 }, { f: (x) => 1.5 * x, from: 0, to: 6, dash: true }],
+  dots: [[0, 0, "closed"], [6, 9, "closed"]],
+  alt: "Graph of f for x from 0 to 6. The graph rises from (0, 0) to a high point at (2, 5), falls to a low point at (4, 4), and rises to (6, 9). A dashed line segment joins (0, 0) and (6, 9).",
+});
+
 // Graph of f' for the first free-response question: segment (-3, 2) to (-1, 0), lower semicircle of radius 1 centered at
 // the origin, segment (1, 0) to (3, 2), segment (3, 2) to (5, -2).
 const semi = (x) => -Math.sqrt(Math.max(0, 1 - x * x));
@@ -52,6 +100,31 @@ export const sets = {
     sources: [{ title: "", blocks: [{ table: { head: ["$x$", "$x < -1$", "$x = -1$", "$-1 < x < 2$", "$x = 2$", "$2 < x < 4$", "$x = 4$", "$x > 4$"], rows: [
       ["$f'(x)$", "positive", "$0$", "negative", "undefined", "negative", "$0$", "positive"],
     ] } }] }] },
+  "c5r-s9": { name: "Possible values of f", label: "Table",
+    intro: String.raw`The function $f$ is twice differentiable with $f'(x) > 0$ and $f''(x) < 0$ for all $x$. Each row of the table gives possible values of $f(0)$, $f(1)$, and $f(2)$.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["Row", "$f(0)$", "$f(1)$", "$f(2)$"], rows: [
+      ["A", "$7$", "$4$", "$2$"], ["B", "$2$", "$5$", "$7$"], ["C", "$2$", "$4$", "$7$"], ["D", "$7$", "$5$", "$2$"],
+    ] } }] }] },
+  "c5r-s10": { name: "The graph of f''", label: "Graph",
+    intro: String.raw`The function $f$ is twice differentiable on the interval $[-1, 4]$. The graph of its second derivative $f''$ is shown below. $f''(0) = 0$ and $f''(3) = 0$.`,
+    sources: [{ title: "", blocks: [{ svg: fppGraph }] }] },
+  "c5r-s11": { name: "A graph of f with a point of inflection", label: "Graph",
+    intro: String.raw`The graph of a twice-differentiable function $f$ is shown below. The graph has horizontal tangent lines at $(1, -2)$ and $(3, 0)$, and a point of inflection at $(2, -1)$.`,
+    sources: [{ title: "", blocks: [{ svg: sGraph }] }] },
+  "c5r-s12": { name: "Choosing the graph of f'", label: "Graphs",
+    intro: String.raw`The graph of a differentiable function $f$ is shown first, with a horizontal tangent line at $(1, 1)$ and at $(3, 0)$. Four graphs, labeled A to D, follow it.`,
+    sources: [{ title: "", blocks: [{ svg: cubF, caption: "The graph of $f$" }, { svg: candA, caption: "Graph A" }, { svg: candB, caption: "Graph B" }, { svg: candC, caption: "Graph C" }, { svg: candD, caption: "Graph D" }] }] },
+  "c5r-s13": { name: "The graph of f' and a line", label: "Graph",
+    intro: String.raw`The function $f$ is differentiable on the closed interval $[-3, 5]$. The graph of its derivative $f'$, which consists of four line segments, is shown below. Let $g(x) = f(x) - 2x$.`,
+    sources: [{ title: "", blocks: [{ svg: fpGraph2 }] }] },
+  "c5r-s14": { name: "Values of f, f', and f''", label: "Table",
+    intro: String.raw`The function $f$ is twice differentiable for all real numbers. Selected values of $f$, $f'$, and $f''$ are given in the table below.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["$x$", "$1$", "$2$", "$3$", "$4$"], rows: [
+      ["$f(x)$", "$5$", "$3$", "$-1$", "$2$"], ["$f'(x)$", "$-2$", "$4$", "$0$", "$-3$"], ["$f''(x)$", "$1$", "$-5$", "$2$", "$6$"],
+    ] } }] }] },
+  "c5r-s15": { name: "A graph and a secant line", label: "Graph",
+    intro: String.raw`The graph of a differentiable function $f$ on the interval $[0, 6]$ is shown below, with the dashed line segment joining $(0, 0)$ and $(6, 9)$. $f$ has a horizontal tangent line at $(2, 5)$ and at $(4, 4)$.`,
+    sources: [{ title: "", blocks: [{ svg: mvtGraph }] }] },
   "c5r-s5": { name: "Reading the graph of f'", label: "Free response",
     intro: String.raw`The function $f$ is differentiable on the closed interval $[-3, 5]$. The graph of $f'$, the derivative of $f$, is shown below. It consists of a line segment from $(-3, 2)$ to $(-1, 0)$, a semicircle below the $x$-axis from $(-1, 0)$ to $(1, 0)$, and line segments from $(1, 0)$ to $(3, 2)$ and from $(3, 2)$ to $(5, -2)$. Selected values of $f$ are given in the table.`,
     sources: [{ title: "", blocks: [
@@ -74,7 +147,7 @@ export const sets = {
 
 export default [
   // 5.1 Using the Mean Value Theorem
-  { id: "c5r-m01", type: "mcq", skill: "u5", topic: "5.1", calc: false,
+  { id: "c5r-m01", type: "mcq", skill: "u5", topic: "5.1", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = x^3 - x$.`,
     question: String.raw`What value of $c$ satisfies the conclusion of the Mean Value Theorem for $f$ on the interval $[0, 2]$?`,
     choices: [String.raw`$\frac{2\sqrt{3}}{3}$`, "$1$", String.raw`$\frac{\sqrt{3}}{3}$`, String.raw`$\frac{\sqrt{21}}{3}$`],
@@ -85,17 +158,17 @@ export default [
       String.raw`This solves $3c^2 - 1 = 6$, using the change $f(2) - f(0) = 6$ without dividing by the length of the interval.`,
     ],
     answer: 0 },
-  { id: "c5r-m02", type: "mcq", skill: "u5", topic: "5.1", calc: false,
+  { id: "c5r-m02", type: "mcq", skill: "u5", topic: "5.1", calc: false, difficulty: "moderate",
     question: String.raw`For which of the following functions are the hypotheses of the Mean Value Theorem satisfied on the interval $[0, 4]$?`,
-    choices: [String.raw`$f(x) = \sqrt{x}$`, String.raw`$f(x) = |x - 1|$`, String.raw`$f(x) = \sqrt[3]{x - 3}$`, String.raw`$f(x) = \dfrac{1}{x - 2}$`],
+    choices: [String.raw`$f(x) = \sqrt{x}$`, String.raw`$f(x) = x + |x - 1|$`, String.raw`$f(x) = \sqrt[3]{x - 3}$`, String.raw`$f(x) = \dfrac{1}{x - 2}$`],
     why: [
       String.raw`$\sqrt{x}$ is continuous on $[0, 4]$, and $f'(x) = \dfrac{1}{2\sqrt{x}}$ exists for every $x$ in the open interval $(0, 4)$. The theorem needs differentiability only on the open interval, so $f'(0)$ not existing does not matter.`,
-      String.raw`$|x - 1|$ is continuous on $[0, 4]$ but is not differentiable at $x = 1$, where the graph has a corner.`,
+      String.raw`$x + |x - 1|$ is continuous on $[0, 4]$ but is not differentiable at $x = 1$, where the graph has a corner: the slope is $0$ from the left and $2$ from the right.`,
       String.raw`$\sqrt[3]{x - 3}$ is continuous, but $f'(x) = \dfrac{1}{3(x - 3)^{2/3}}$ does not exist at $x = 3$, where the graph has a vertical tangent line.`,
       String.raw`$\dfrac{1}{x - 2}$ is not defined at $x = 2$, so it is not continuous on $[0, 4]$.`,
     ],
     answer: 0 },
-  { id: "c5r-m03", type: "mcq", skill: "u5", topic: "5.1", calc: true,
+  { id: "c5r-m03", type: "mcq", skill: "u5", topic: "5.1", calc: true, difficulty: "moderate",
     stem: String.raw`Let $f(x) = \ln(x + 1)$.`,
     question: String.raw`What value of $c$ in the interval $(0, 4)$ satisfies the conclusion of the Mean Value Theorem for $f$ on $[0, 4]$?`,
     choices: ["$1.485$", "$2.000$", "$2.485$", "$0.402$"],
@@ -106,7 +179,7 @@ export default [
       String.raw`$0.402$ is the average rate of change, the slope that $f'(c)$ must equal, not the value of $c$.`,
     ],
     answer: 0 },
-  { id: "c5r-m04", type: "mcq", skill: "u5", topic: "5.1", calc: false,
+  { id: "c5r-m04", type: "mcq", skill: "u5", topic: "5.1", calc: false, difficulty: "easy",
     stem: String.raw`The function $f$ is differentiable for all real numbers, with $f(1) = 4$ and $f(6) = -6$.`,
     question: String.raw`Which of the following must be true?`,
     choices: [
@@ -124,7 +197,7 @@ export default [
     answer: 0 },
 
   // 5.2 Extreme Value Theorem, global versus local extrema, critical points
-  { id: "c5r-m05", type: "mcq", skill: "u5", topic: "5.2", calc: false,
+  { id: "c5r-m05", type: "mcq", skill: "u5", topic: "5.2", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = x - 3x^{2/3}$.`,
     question: String.raw`What are all the critical points of $f$?`,
     choices: [String.raw`$x = 0$ and $x = 8$`, String.raw`$x = 8$ only`, String.raw`$x = 0$ and $x = 27$`, String.raw`$x = 0$, $x = 8$, and $x = 27$`],
@@ -135,40 +208,40 @@ export default [
       String.raw`$x = 27$ is a zero of $f$, not a critical point. Only $x = 0$ and $x = 8$ are critical points.`,
     ],
     answer: 0 },
-  { id: "c5r-m06", type: "mcq", skill: "u5", topic: "5.2", calc: false,
+  { id: "c5r-m06", type: "mcq", skill: "u5", topic: "5.2", calc: false, difficulty: "moderate",
     question: String.raw`For which of the following does the Extreme Value Theorem guarantee that the function has both an absolute maximum and an absolute minimum on the given interval?`,
     choices: [
       String.raw`$f(x) = \sqrt{9 - x^2}$ on $[-3, 3]$`,
-      String.raw`$f(x) = \ln x$ on $[0, 2]$`,
+      String.raw`$f(x) = \dfrac{1}{x - 1}$ on $[0, 2]$`,
       String.raw`$f(x) = x^2$ on $(0, 2)$`,
       String.raw`$f(x) = \tan x$ on $[0, \pi]$`,
     ],
     why: [
       String.raw`$9 - x^2 \ge 0$ on $[-3, 3]$, so $f$ is defined and continuous on the whole closed interval. The Extreme Value Theorem applies.`,
-      String.raw`$\ln x$ is not defined at $x = 0$, so $f$ is not continuous on $[0, 2]$. In fact $\ln x$ decreases without bound as $x \to 0^{+}$, so there is no absolute minimum.`,
+      String.raw`$\dfrac{1}{x - 1}$ is not defined at $x = 1$, which is in $[0, 2]$, so $f$ is not continuous there. In fact $f$ has no absolute maximum or minimum on $[0, 2]$: it grows without bound as $x \to 1^{+}$.`,
       String.raw`The interval is open. On $(0, 2)$, $x^2$ gets close to $0$ and $4$ but never reaches them, so it has no absolute extrema there.`,
       String.raw`$\tan x$ is not continuous at $x = \dfrac{\pi}{2}$, which is in $[0, \pi]$, so the theorem does not apply.`,
     ],
     answer: 0 },
-  { id: "c5r-m07", type: "mcq", skill: "u5", topic: "5.2", calc: false,
+  { id: "c5r-m07", type: "mcq", skill: "u5", topic: "5.2", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = 2x^3 - 3x^2 - 12x$ on the closed interval $[-2, 4]$.`,
     question: String.raw`Which of the following statements is true?`,
     choices: [
-      String.raw`$f$ has a relative maximum at $x = -1$, but the absolute maximum of $f$ on $[-2, 4]$ is at $x = 4$.`,
+      String.raw`The absolute maximum of $f$ on $[-2, 4]$ is at $x = 4$.`,
       String.raw`The absolute maximum of $f$ on $[-2, 4]$ is at $x = -1$.`,
       String.raw`The absolute minimum of $f$ on $[-2, 4]$ is at $x = -2$.`,
       String.raw`$f$ has no absolute maximum on $[-2, 4]$ because $f'(4) \ne 0$.`,
     ],
     why: [
       String.raw`$f'(x) = 6x^2 - 6x - 12 = 6(x - 2)(x + 1)$ changes from positive to negative at $x = -1$, a relative maximum with $f(-1) = 7$. But $f(4) = 32 > 7$, so the absolute maximum is at the endpoint $x = 4$.`,
-      String.raw`$f(-1) = 7$ is only a relative maximum. The endpoint value $f(4) = 32$ is larger.`,
+      String.raw`$f$ has a relative maximum at $x = -1$, but $f(-1) = 7$ is less than the endpoint value $f(4) = 32$.`,
       String.raw`$f(-2) = -4$, but $f(2) = -20$ is smaller. The absolute minimum is at $x = 2$.`,
       String.raw`$f$ is continuous on a closed interval, so the Extreme Value Theorem guarantees an absolute maximum. An absolute maximum can occur at an endpoint where $f'$ is not $0$.`,
     ],
     answer: 0 },
 
   // 5.3 Increasing and decreasing
-  { id: "c5r-m08", type: "mcq", skill: "u5", topic: "5.3", calc: false,
+  { id: "c5r-m08", type: "mcq", skill: "u5", topic: "5.3", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = x^4 - 4x^3 + 4x^2$.`,
     question: String.raw`On which of the following is $f$ increasing?`,
     choices: [
@@ -184,7 +257,7 @@ export default [
       String.raw`This is the sign of $x(x - 2)$ alone. The factor $x - 1$ also changes sign, at $x = 1$.`,
     ],
     answer: 0 },
-  { id: "c5r-m09", type: "mcq", skill: "u5", topic: "5.3", calc: false, set: "c5r-s1",
+  { id: "c5r-m09", type: "mcq", skill: "u5", topic: "5.3", calc: false, difficulty: "easy", set: "c5r-s1",
     question: String.raw`On which of the following open intervals is $f$ increasing?`,
     choices: [
       String.raw`$(-3, 0)$ and $(2, 4)$`,
@@ -201,7 +274,7 @@ export default [
     answer: 0 },
 
   // 5.4 First Derivative Test
-  { id: "c5r-m10", type: "mcq", skill: "u5", topic: "5.4", calc: false, set: "c5r-s1",
+  { id: "c5r-m10", type: "mcq", skill: "u5", topic: "5.4", calc: false, difficulty: "easy", set: "c5r-s1",
     question: String.raw`At which values of $x$ in the open interval $(-4, 5)$ does $f$ have a relative maximum?`,
     choices: [String.raw`$x = 0$ and $x = 4$`, String.raw`$x = -3$ and $x = 2$`, String.raw`$x = -2$ and $x = 3$`, String.raw`$x = -2$, $x = 1$, and $x = 3$`],
     why: [
@@ -211,7 +284,7 @@ export default [
       String.raw`These are where the graph of $f'$ changes direction, the points of inflection of $f$. $f'$ is not $0$ at any of them.`,
     ],
     answer: 0 },
-  { id: "c5r-m11", type: "mcq", skill: "u5", topic: "5.4", calc: false,
+  { id: "c5r-m11", type: "mcq", skill: "u5", topic: "5.4", calc: false, difficulty: "difficult",
     stem: String.raw`Let $f(x) = x^2\ln x$ for $x > 0$.`,
     question: String.raw`What is the relative minimum value of $f$?`,
     choices: [String.raw`$-\frac{1}{2e}$`, String.raw`$\frac{1}{\sqrt{e}}$`, String.raw`$\frac{1}{2e}$`, "$0$"],
@@ -222,7 +295,7 @@ export default [
       String.raw`This uses $f'(x) = 2x\ln x$, leaving out the second term of the product rule, so it finds $x = 1$ and $f(1) = 0$.`,
     ],
     answer: 0 },
-  { id: "c5r-m12", type: "mcq", skill: "u5", topic: "5.4", calc: false,
+  { id: "c5r-m12", type: "mcq", skill: "u5", topic: "5.4", calc: false, difficulty: "moderate",
     stem: String.raw`The derivative of a function $f$ is $f'(x) = (x - 1)^2(x + 3)e^{x}$.`,
     question: String.raw`At which values of $x$ does $f$ have a relative minimum?`,
     choices: [String.raw`$x = -3$ only`, String.raw`$x = 1$ only`, String.raw`$x = -3$ and $x = 1$`, String.raw`$x = 3$ only`],
@@ -233,7 +306,7 @@ export default [
       String.raw`The zero of $x + 3$ is $x = -3$, not $x = 3$. This is a sign error.`,
     ],
     answer: 0 },
-  { id: "c5r-m13", type: "mcq", skill: "u5", topic: "5.4", calc: false, set: "c5r-s4",
+  { id: "c5r-m13", type: "mcq", skill: "u5", topic: "5.4", calc: false, difficulty: "moderate", set: "c5r-s4",
     question: String.raw`Which of the following describes all the relative extrema of $f$?`,
     choices: [
       String.raw`A relative maximum at $x = -1$ and a relative minimum at $x = 4$`,
@@ -250,7 +323,7 @@ export default [
     answer: 0 },
 
   // 5.5 Candidates Test
-  { id: "c5r-m14", type: "mcq", skill: "u5", topic: "5.5", calc: false,
+  { id: "c5r-m14", type: "mcq", skill: "u5", topic: "5.5", calc: false, difficulty: "moderate",
     stem: String.raw`Let $f(x) = 2x^3 - 15x^2 + 24x$.`,
     question: String.raw`What is the absolute maximum value of $f$ on the closed interval $[0, 6]$?`,
     choices: ["$36$", "$11$", "$-16$", "$60$"],
@@ -261,18 +334,18 @@ export default [
       String.raw`$60$ is $f'(6)$, the slope at the right endpoint, not the value of $f$.`,
     ],
     answer: 0 },
-  { id: "c5r-m15", type: "mcq", skill: "u5", topic: "5.5", calc: false,
+  { id: "c5r-m15", type: "mcq", skill: "u5", topic: "5.5", calc: false, difficulty: "difficult",
     stem: String.raw`Let $f(x) = \sin(2x) - x$.`,
     question: String.raw`What is the absolute maximum value of $f$ on the closed interval $[0, \pi]$?`,
-    choices: [String.raw`$\frac{\sqrt{3}}{2} - \frac{\pi}{6}$`, "$0$", String.raw`$\frac{1}{2} - \frac{\pi}{6}$`, String.raw`$\frac{\pi}{6}$`],
+    choices: [String.raw`$\frac{\sqrt{3}}{2} - \frac{\pi}{6}$`, String.raw`$-\frac{\sqrt{3}}{2} - \frac{5\pi}{6}$`, String.raw`$\frac{1}{2} - \frac{\pi}{6}$`, String.raw`$\frac{\pi}{6}$`],
     why: [
       String.raw`$f'(x) = 2\cos(2x) - 1 = 0$ when $\cos(2x) = \dfrac{1}{2}$, so $2x = \dfrac{\pi}{3}$ or $\dfrac{5\pi}{3}$ and $x = \dfrac{\pi}{6}$ or $\dfrac{5\pi}{6}$. The candidates are $f(0) = 0$, $f\left(\dfrac{\pi}{6}\right) = \dfrac{\sqrt{3}}{2} - \dfrac{\pi}{6}$, $f\left(\dfrac{5\pi}{6}\right) = -\dfrac{\sqrt{3}}{2} - \dfrac{5\pi}{6}$, and $f(\pi) = -\pi$. Since $\dfrac{\sqrt{3}}{2} > \dfrac{\pi}{6}$, the largest is $\dfrac{\sqrt{3}}{2} - \dfrac{\pi}{6} \approx 0.342$.`,
-      String.raw`$0$ is the value at the endpoint $x = 0$. The value at the critical point $x = \dfrac{\pi}{6}$ is larger.`,
+      String.raw`This is $f\left(\dfrac{5\pi}{6}\right) \approx -3.484$, the smallest of the candidate values, so it is the absolute minimum value.`,
       String.raw`This uses $\sin\left(\dfrac{\pi}{3}\right) = \dfrac{1}{2}$, which is the cosine value. $\sin\left(\dfrac{\pi}{3}\right) = \dfrac{\sqrt{3}}{2}$.`,
       String.raw`$\dfrac{\pi}{6}$ is the $x$-value where the maximum occurs, not the maximum value.`,
     ],
     answer: 0 },
-  { id: "c5r-m16", type: "mcq", skill: "u5", topic: "5.5", calc: true,
+  { id: "c5r-m16", type: "mcq", skill: "u5", topic: "5.5", calc: true, difficulty: "moderate",
     stem: String.raw`Let $f(x) = \ln\left(x^2 + 1\right) - \dfrac{x}{2}$.`,
     question: String.raw`What is the absolute maximum value of $f$ on the closed interval $[0, 4]$?`,
     choices: ["$0.837$", "$0.833$", "$3.732$", "$-0.065$"],
@@ -285,7 +358,7 @@ export default [
     answer: 0 },
 
   // 5.6 Concavity
-  { id: "c5r-m17", type: "mcq", skill: "u5", topic: "5.6", calc: false,
+  { id: "c5r-m17", type: "mcq", skill: "u5", topic: "5.6", calc: false, difficulty: "easy",
     stem: String.raw`Let $f(x) = x^4 - 6x^3 + 12x^2$.`,
     question: String.raw`On which of the following is the graph of $f$ concave down?`,
     choices: [String.raw`$(1, 2)$`, String.raw`$(-\infty, 1)$ and $(2, \infty)$`, String.raw`$(-\infty, 0)$`, String.raw`$\left(-\infty, \frac{3}{2}\right)$`],
@@ -296,7 +369,7 @@ export default [
       String.raw`This is where $f'''(x) = 24x - 36 < 0$, where $f''$ is decreasing. Concavity depends on the sign of $f''$, not on whether $f''$ is decreasing.`,
     ],
     answer: 0 },
-  { id: "c5r-m18", type: "mcq", skill: "u5", topic: "5.6", calc: false,
+  { id: "c5r-m18", type: "mcq", skill: "u5", topic: "5.6", calc: false, difficulty: "moderate",
     stem: String.raw`The second derivative of a function $f$ is $f''(x) = x^3(x - 3)^2(x + 2)$.`,
     question: String.raw`At which values of $x$ does the graph of $f$ have a point of inflection?`,
     choices: [String.raw`$x = -2$ and $x = 0$`, String.raw`$x = -2$, $x = 0$, and $x = 3$`, String.raw`$x = -2$ only`, String.raw`$x = 2$, $x = 0$, and $x = -3$`],
@@ -307,7 +380,7 @@ export default [
       String.raw`This is a sign error: the zeros of $x - 3$ and $x + 2$ are $x = 3$ and $x = -2$, and only $x = -2$ and $x = 0$ give sign changes.`,
     ],
     answer: 0 },
-  { id: "c5r-m19", type: "mcq", skill: "u5", topic: "5.6", calc: true,
+  { id: "c5r-m19", type: "mcq", skill: "u5", topic: "5.6", calc: true, difficulty: "moderate",
     stem: String.raw`The derivative of a function $f$ is $f'(x) = \sin\left(x^2\right)$ for $0 < x < 2$.`,
     question: String.raw`On which interval is the graph of $f$ concave up?`,
     choices: [String.raw`$0 < x < 1.253$`, String.raw`$0 < x < 1.772$`, String.raw`$1.253 < x < 2$`, String.raw`$0 < x < 1.571$`],
@@ -320,7 +393,7 @@ export default [
     answer: 0 },
 
   // 5.7 Second Derivative Test
-  { id: "c5r-m20", type: "mcq", skill: "u5", topic: "5.7", calc: false,
+  { id: "c5r-m20", type: "mcq", skill: "u5", topic: "5.7", calc: false, difficulty: "easy",
     stem: String.raw`Let $f(x) = x^3 + 3x^2 - 9x$.`,
     question: String.raw`Which of the following is true?`,
     choices: [
@@ -336,7 +409,7 @@ export default [
       String.raw`$f''(-3) = -12 < 0$, so $x = -3$ is a relative maximum, not a minimum.`,
     ],
     answer: 0 },
-  { id: "c5r-m21", type: "mcq", skill: "u5", topic: "5.7", calc: false,
+  { id: "c5r-m21", type: "mcq", skill: "u5", topic: "5.7", calc: false, difficulty: "easy",
     stem: String.raw`The function $f$ has a continuous second derivative for all real numbers, with $f'(-1) = 0$ and $f''(-1) = 5$.`,
     question: String.raw`Which of the following is true?`,
     choices: [
@@ -352,25 +425,25 @@ export default [
       String.raw`The Second Derivative Test gives a conclusion whenever $f'(c) = 0$ and $f''(c) \ne 0$. It fails only when $f''(c) = 0$.`,
     ],
     answer: 0 },
-  { id: "c5r-m22", type: "mcq", skill: "u5", topic: "5.7", calc: false,
+  { id: "c5r-m22", type: "mcq", skill: "u5", topic: "5.7", calc: false, difficulty: "difficult",
     stem: String.raw`The function $f$ is twice differentiable for all real numbers, with $f'(2) = 0$ and $f''(2) = 0$.`,
-    question: String.raw`Which of the following is true?`,
+    question: String.raw`What can be concluded about $f$ at $x = 2$?`,
     choices: [
-      String.raw`From this information alone, $f$ could have a relative maximum, a relative minimum, or neither at $x = 2$.`,
+      String.raw`No conclusion about an extremum is possible.`,
       String.raw`The graph of $f$ has a point of inflection at $x = 2$.`,
       String.raw`$f$ has neither a relative maximum nor a relative minimum at $x = 2$.`,
-      String.raw`$f$ has a relative minimum at $x = 2$.`,
+      String.raw`$f$ has a relative minimum at $x = 2$, because $f'(2) = 0$.`,
     ],
     why: [
       String.raw`When $f''(2) = 0$, the Second Derivative Test gives no conclusion. $(x - 2)^4$ has a relative minimum at $x = 2$, $-(x - 2)^4$ has a relative maximum, and $(x - 2)^3$ has neither, and all three have $f'(2) = f''(2) = 0$.`,
       String.raw`$f''(2) = 0$ does not guarantee that $f''$ changes sign. For $(x - 2)^4$, $f'' \ge 0$ on both sides, so there is no point of inflection.`,
       String.raw`This is true for $(x - 2)^3$ but not for $(x - 2)^4$, which has a relative minimum at $x = 2$.`,
-      String.raw`This is true for $(x - 2)^4$ but not for $-(x - 2)^4$, which has a relative maximum at $x = 2$.`,
+      String.raw`$f'(2) = 0$ makes $x = 2$ a critical point, but a critical point can be a maximum or neither. $-(x - 2)^4$ has a relative maximum at $x = 2$.`,
     ],
     answer: 0 },
 
   // 5.8 Sketching graphs of functions and their derivatives
-  { id: "c5r-m23", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "c5r-s2",
+  { id: "c5r-m23", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "easy", set: "c5r-s2",
     question: String.raw`At which values of $x$ does the graph of $f'$ cross or touch the $x$-axis?`,
     choices: [String.raw`$x = -1$ and $x = 1$`, String.raw`$x = -\sqrt{3}$, $x = 0$, and $x = \sqrt{3}$`, String.raw`$x = 0$ only`, String.raw`$x = 2$ and $x = -2$`],
     why: [
@@ -380,11 +453,11 @@ export default [
       String.raw`These are the $y$-values of the high and low points, $2$ and $-2$, used as $x$-values.`,
     ],
     answer: 0 },
-  { id: "c5r-m24", type: "mcq", skill: "u5", topic: "5.8", calc: false,
+  { id: "c5r-m24", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "difficult",
     stem: String.raw`The function $f$ is twice differentiable for all real numbers, and the graph of $f$ has a point of inflection at $x = 2$.`,
     question: String.raw`Which of the following must be true about the graph of $f'$?`,
     choices: [
-      String.raw`The graph of $f'$ has a relative maximum or a relative minimum at $x = 2$.`,
+      String.raw`The graph of $f'$ has a relative extremum at $x = 2$.`,
       String.raw`The graph of $f'$ crosses the $x$-axis at $x = 2$.`,
       String.raw`The graph of $f'$ has a point of inflection at $x = 2$.`,
       String.raw`The graph of $f'$ is concave up at $x = 2$.`,
@@ -396,7 +469,7 @@ export default [
       String.raw`Concavity of $f'$ depends on $f'''$, which is not given. The graph of $f'$ could be concave up, concave down, or neither at $x = 2$.`,
     ],
     answer: 0 },
-  { id: "c5r-m25", type: "mcq", skill: "u5", topic: "5.8", calc: false, set: "c5r-s3",
+  { id: "c5r-m25", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "moderate", set: "c5r-s3",
     question: String.raw`For which values of $x$ in the open interval $(-3, 3)$ does $f'(x)$ fail to exist?`,
     choices: [String.raw`$x = -2$ and $x = 2$`, String.raw`$x = 0$ only`, String.raw`$x = -2$, $x = 0$, and $x = 2$`, String.raw`$f'(x)$ exists for every $x$ in $(-3, 3)$.`],
     why: [
@@ -408,7 +481,7 @@ export default [
     answer: 0 },
 
   // 5.9 Connecting f, f', and f''
-  { id: "c5r-m26", type: "mcq", skill: "u5", topic: "5.9", calc: false, set: "c5r-s1",
+  { id: "c5r-m26", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "moderate", set: "c5r-s1",
     question: String.raw`On which of the following open intervals is $f$ both decreasing and concave up?`,
     choices: [
       String.raw`$(-4, -3)$ and $(1, 2)$`,
@@ -423,36 +496,29 @@ export default [
       String.raw`On these intervals $f' > 0$ and $f'$ is decreasing, so $f$ is increasing and concave down.`,
     ],
     answer: 0 },
-  { id: "c5r-m27", type: "mcq", skill: "u5", topic: "5.9", calc: false,
-    stem: String.raw`The function $f$ is twice differentiable with $f'(x) > 0$ and $f''(x) < 0$ for all $x$.`,
-    question: String.raw`Which of the following could be the values of $f(0)$, $f(1)$, and $f(2)$?`,
-    choices: [
-      String.raw`$f(0) = 2$, $f(1) = 5$, $f(2) = 7$`,
-      String.raw`$f(0) = 2$, $f(1) = 4$, $f(2) = 7$`,
-      String.raw`$f(0) = 7$, $f(1) = 5$, $f(2) = 2$`,
-      String.raw`$f(0) = 7$, $f(1) = 4$, $f(2) = 2$`,
-    ],
+  { id: "c5r-m27", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "moderate", set: "c5r-s9",
+    question: String.raw`Which row of the table could give the values of $f$?`,
+    choices: ["Row B", "Row C", "Row D", "Row A"],
     why: [
-      String.raw`$f' > 0$ means the values increase. $f'' < 0$ means $f'$ is decreasing, so the increases get smaller: $5 - 2 = 3$, then $7 - 5 = 2$.`,
-      String.raw`The values increase, but by $2$ and then $3$. Growing increases mean the graph is concave up.`,
-      String.raw`The values decrease, so $f' < 0$ somewhere. This pattern (drops of $2$, then $3$) is decreasing and concave down.`,
-      String.raw`The values decrease, so $f' < 0$ somewhere. This pattern (drops of $3$, then $2$) is decreasing and concave up.`,
+      String.raw`$f' > 0$, so the values must increase. $f'' < 0$, so $f'$ is decreasing and the increases must get smaller. Row B rises by $3$ and then by $2$.`,
+      String.raw`Row C rises by $2$ and then by $3$. Growing increases fit a graph that is concave up, so $f'' > 0$.`,
+      String.raw`Row D falls, so $f' < 0$ somewhere. Its drops of $2$ and then $3$ fit a function that is decreasing and concave down.`,
+      String.raw`Row A falls, so $f' < 0$ somewhere. Its drops of $3$ and then $2$ fit a function that is decreasing and concave up.`,
     ],
     answer: 0 },
-  { id: "c5r-m28", type: "mcq", skill: "u5", topic: "5.9", calc: false,
-    stem: String.raw`The second derivative of a function $f$ is $f''(x) = x(x - 3)^2$.`,
-    question: String.raw`On which of the following intervals is $f'$ increasing?`,
-    choices: [String.raw`$x > 0$`, String.raw`$0 < x < 3$ only`, String.raw`$x > 3$ only`, String.raw`$x < 0$`],
+  { id: "c5r-m28", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "difficult", set: "c5r-s10",
+    question: String.raw`What is the largest open interval on which $f'$ is increasing?`,
+    choices: [String.raw`$(0, 4)$`, String.raw`$(0, 3)$ and $(3, 4)$`, String.raw`$(-1, 1)$ and $(3, 4)$`, String.raw`$(-1, 0)$`],
     why: [
-      String.raw`$f''$ is the derivative of $f'$, so $f'$ increases where $f'' > 0$. $(x - 3)^2 \ge 0$, so $f''(x) > 0$ for all $x > 0$ except $x = 3$, where $f''(3) = 0$. A single point where $f'' = 0$ does not stop $f'$ from increasing, so $f'$ increases for all $x > 0$.`,
-      String.raw`$f''(3) = 0$, but $f''$ is positive on both sides of $x = 3$, so $f'$ keeps increasing past $x = 3$.`,
-      String.raw`This misses $0 < x < 3$, where $f''(x) = x(x - 3)^2$ is also positive.`,
-      String.raw`For $x < 0$, $f''(x) < 0$, so $f'$ is decreasing there.`,
+      String.raw`$f''$ is the derivative of $f'$, so $f'$ increases where $f'' > 0$. The graph of $f''$ is above the $x$-axis for $0 < x < 4$ except at $x = 3$, where it touches the axis. One point where $f'' = 0$ does not stop $f'$ from increasing, so $f'$ increases on all of $(0, 4)$.`,
+      String.raw`$f''(3) = 0$, but $f''$ is positive on both sides of $x = 3$, so $f'$ keeps increasing through $x = 3$. The largest interval does not split there.`,
+      String.raw`These are where the graph of $f''$ is rising. That reads the graph of $f''$ as if it were the graph of $f'$, one derivative too many.`,
+      String.raw`On $(-1, 0)$ the graph of $f''$ is below the axis, so $f'$ is decreasing there.`,
     ],
     answer: 0 },
 
   // 5.10 Introduction to optimization
-  { id: "c5r-m29", type: "mcq", skill: "u5", topic: "5.10", calc: false,
+  { id: "c5r-m29", type: "mcq", skill: "u5", topic: "5.10", calc: false, difficulty: "moderate",
     stem: String.raw`Two positive numbers $x$ and $y$ have a product of $50$.`,
     question: String.raw`What is the least possible value of $x + 2y$?`,
     choices: ["$20$", "$5$", "$10$", String.raw`$15\sqrt{2}$`],
@@ -463,7 +529,7 @@ export default [
       String.raw`This takes $x = y = \sqrt{50} = 5\sqrt{2}$, so $x + 2y = 15\sqrt{2} \approx 21.2$. Equal numbers do not minimize $x + 2y$.`,
     ],
     answer: 0 },
-  { id: "c5r-m30", type: "mcq", skill: "u5", topic: "5.10", calc: false,
+  { id: "c5r-m30", type: "mcq", skill: "u5", topic: "5.10", calc: false, difficulty: "easy",
     stem: String.raw`A rectangle has its base on the $x$-axis and its two upper corners on the parabola $y = 9 - x^2$, at $(-x, 9 - x^2)$ and $(x, 9 - x^2)$ with $0 < x < 3$.`,
     question: String.raw`Which function should be maximized to find the rectangle with the greatest area?`,
     choices: [String.raw`$A(x) = 2x\left(9 - x^2\right)$`, String.raw`$A(x) = x\left(9 - x^2\right)$`, String.raw`$A(x) = 2x + 2\left(9 - x^2\right)$`, String.raw`$A(x) = 2x\left(9 - 4x^2\right)$`],
@@ -476,18 +542,18 @@ export default [
     answer: 0 },
 
   // 5.11 Solving optimization problems
-  { id: "c5r-m31", type: "mcq", skill: "u5", topic: "5.11", calc: false,
-    stem: String.raw`An open box is made from a $16$ inch by $10$ inch sheet of cardboard by cutting a square of side $x$ inches from each corner and folding up the sides.`,
-    question: String.raw`What is the greatest possible volume of the box, in cubic inches?`,
-    choices: ["$144$", "$288$", "$72$", "$2$"],
+  { id: "c5r-m31", type: "mcq", skill: "u5", topic: "5.11", calc: false, difficulty: "moderate",
+    stem: String.raw`A shipping service accepts a box with square ends only if its length plus its girth (the perimeter of a square end) is at most $108$ inches.`,
+    question: String.raw`What is the greatest possible volume of such a box, in cubic inches?`,
+    choices: ["$11664$", "$46656$", "$5832$", "$18$"],
     why: [
-      String.raw`$V(x) = x(16 - 2x)(10 - 2x) = 4x^3 - 52x^2 + 160x$ for $0 < x < 5$. $V'(x) = 12x^2 - 104x + 160 = 4(3x - 20)(x - 2)$. The only critical point in $(0, 5)$ is $x = 2$, where $V'$ changes from positive to negative. $V(2) = 2(12)(6) = 144$.`,
-      String.raw`This uses $V(x) = x(16 - x)(10 - x)$, cutting only one length $x$ from each dimension. A square is cut from both ends of each side, so each dimension shrinks by $2x$.`,
-      String.raw`$72 = 12 \cdot 6$ is the area of the base when $x = 2$. The volume also multiplies by the height $x = 2$.`,
-      String.raw`$2$ is the side of the square cut out, the value of $x$ that gives the greatest volume, not the volume itself.`,
+      String.raw`With square ends of side $x$, the girth is $4x$ and the longest allowed length is $108 - 4x$, so $V(x) = x^2(108 - 4x) = 108x^2 - 4x^3$ for $0 < x < 27$. $V'(x) = 216x - 12x^2 = 12x(18 - x)$, which changes from positive to negative at $x = 18$. $V(18) = 18^2 \cdot 36 = 11664$.`,
+      String.raw`This takes the girth to be $2x$, so $V(x) = x^2(108 - 2x)$, with its maximum at $x = 36$. The girth is the whole perimeter of the square end, $4x$.`,
+      String.raw`$5832 = 18^3$ treats the box as a cube with side $18$. At $x = 18$ the length is $108 - 72 = 36$, not $18$.`,
+      String.raw`$18$ inches is the side of the square end of the best box, not its volume.`,
     ],
     answer: 0 },
-  { id: "c5r-m32", type: "mcq", skill: "u5", topic: "5.11", calc: false,
+  { id: "c5r-m32", type: "mcq", skill: "u5", topic: "5.11", calc: false, difficulty: "difficult",
     question: String.raw`What are the $x$-coordinates of the points on the graph of $y = x^2$ that are closest to the point $(0, 3)$?`,
     choices: [String.raw`$x = \pm\frac{\sqrt{10}}{2}$`, "$x = 0$", String.raw`$x = \pm\sqrt{3}$`, String.raw`$x = \pm\frac{\sqrt{11}}{2}$`],
     why: [
@@ -497,7 +563,7 @@ export default [
       String.raw`$\dfrac{\sqrt{11}}{2}$ is the least distance itself, $\sqrt{\dfrac{11}{4}}$, not the $x$-coordinate of the closest points.`,
     ],
     answer: 0 },
-  { id: "c5r-m33", type: "mcq", skill: "u5", topic: "5.11", calc: true,
+  { id: "c5r-m33", type: "mcq", skill: "u5", topic: "5.11", calc: true, difficulty: "moderate",
     stem: String.raw`A cylindrical tank with a bottom and no top is to hold $400$ cubic feet. Its surface area is $S = \pi r^2 + 2\pi rh$, where $r$ is the radius and $h$ is the height, in feet.`,
     question: String.raw`What radius, in feet, makes the surface area as small as possible?`,
     choices: ["$5.031$", "$3.993$", "$6.338$", "$11.284$"],
@@ -510,7 +576,7 @@ export default [
     answer: 0 },
 
   // 5.12 Behaviors of implicit relations
-  { id: "c5r-m34", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "c5r-m34", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "moderate",
     stem: String.raw`Consider the curve $x^2 - xy + y^2 = 27$.`,
     question: String.raw`At which points on the curve is the tangent line horizontal?`,
     choices: [String.raw`$(3, 6)$ and $(-3, -6)$`, String.raw`$(6, 3)$ and $(-6, -3)$`, String.raw`$\left(3\sqrt{3}, 3\sqrt{3}\right)$ and $\left(-3\sqrt{3}, -3\sqrt{3}\right)$`, String.raw`$\left(0, 3\sqrt{3}\right)$ and $\left(0, -3\sqrt{3}\right)$`],
@@ -521,7 +587,7 @@ export default [
       String.raw`These are where the curve crosses the $y$-axis. There $\dfrac{dy}{dx} = \dfrac{y}{2y} = \dfrac{1}{2}$.`,
     ],
     answer: 0 },
-  { id: "c5r-m35", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "c5r-m35", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "difficult",
     stem: String.raw`For the curve $xy^2 = 4$ with $y > 0$, $\dfrac{dy}{dx} = -\dfrac{y}{2x}$.`,
     question: String.raw`What is the value of $\dfrac{d^2y}{dx^2}$ at the point $(1, 2)$?`,
     choices: [String.raw`$\frac{3}{2}$`, "$-1$", String.raw`$-\frac{3}{2}$`, "$1$"],
@@ -532,7 +598,7 @@ export default [
       String.raw`This treats $y$ as a constant, differentiating $-\dfrac{y}{2x}$ as $\dfrac{y}{2x^2}$. Since $y$ depends on $x$, the quotient rule must include $\dfrac{dy}{dx}$.`,
     ],
     answer: 0 },
-  { id: "c5r-m36", type: "mcq", skill: "u5", topic: "5.12", calc: false,
+  { id: "c5r-m36", type: "mcq", skill: "u5", topic: "5.12", calc: false, difficulty: "difficult",
     stem: String.raw`Consider the curve $4x^2 + y^2 - 8x + 6y = 12$.`,
     question: String.raw`At which points on the curve is the tangent line vertical?`,
     choices: [String.raw`$\left(\frac{7}{2}, -3\right)$ and $\left(-\frac{3}{2}, -3\right)$`, String.raw`$(1, 2)$ and $(1, -8)$`, String.raw`$(1, -3)$ only`, String.raw`$\left(-\frac{7}{2}, -3\right)$ and $\left(\frac{3}{2}, -3\right)$`],
@@ -541,6 +607,63 @@ export default [
       String.raw`These are where the numerator $4 - 4x$ is $0$, where the tangent line is horizontal.`,
       String.raw`$(1, -3)$ makes both the numerator and the denominator $0$, but it is the center of the ellipse and is not on the curve: $4 + 9 - 8 - 18 = -13 \ne 12$.`,
       String.raw`These come from a sign error in factoring $4x^2 - 8x - 21$. The roots are $\dfrac{7}{2}$ and $-\dfrac{3}{2}$.`,
+    ],
+    answer: 0 },
+
+  // More multiple choice on graphs and tables (added 11/10)
+  { id: "c5r-m37", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "difficult", set: "c5r-s11",
+    question: String.raw`Which of the following is true?`,
+    choices: [String.raw`$f(2) < f''(2) < f'(2)$`, String.raw`$f''(2) < f(2) < f'(2)$`, String.raw`$f(2) < f'(2) < f''(2)$`, String.raw`$f'(2) < f''(2) < f(2)$`],
+    why: [
+      String.raw`From the graph, $f(2) = -1$. The graph is rising at $x = 2$, so $f'(2) > 0$. $(2, -1)$ is a point of inflection of a twice-differentiable function, so $f''(2) = 0$. So $f(2) < f''(2) < f'(2)$.`,
+      String.raw`This makes $f''(2)$ less than $-1$, as if the graph were concave down at $x = 2$. At a point of inflection, $f''(2) = 0$.`,
+      String.raw`This makes $f''(2)$ greater than $f'(2)$, as if the graph were bending up at $x = 2$. At a point of inflection, $f''(2) = 0$, which is less than $f'(2)$.`,
+      String.raw`This makes $f'(2)$ the smallest, as if the graph were falling at $x = 2$. The graph rises from $(1, -2)$ to $(3, 0)$, so $f'(2) > 0$.`,
+    ],
+    answer: 0 },
+  { id: "c5r-m38", type: "mcq", skill: "u5", topic: "5.8", calc: false, difficulty: "easy", set: "c5r-s12",
+    question: String.raw`Which of the graphs A to D could be the graph of $f'$?`,
+    choices: ["Graph C", "Graph A", "Graph B", "Graph D"],
+    why: [
+      String.raw`$f$ increases on $(-1, 1)$, decreases on $(1, 3)$, and increases on $(3, 5)$, with horizontal tangents at $x = 1$ and $x = 3$. So $f'$ is positive, then negative, then positive, with zeros at $x = 1$ and $x = 3$. Graph C has that pattern.`,
+      String.raw`Graph A has the right zeros, but its signs are reversed: it is negative where $f$ is increasing.`,
+      String.raw`Graph B crosses the axis at $x = 2$, where $f$ changes concavity. It could be the graph of $f''$, not $f'$.`,
+      String.raw`Graph D crosses the axis at $x = 0$ and $x = 3$, the zeros of $f$. $f'$ is $0$ where the graph of $f$ has horizontal tangents, at $x = 1$ and $x = 3$.`,
+    ],
+    answer: 0 },
+  { id: "c5r-m39", type: "mcq", skill: "u5", topic: "5.4", calc: false, difficulty: "difficult", set: "c5r-s13",
+    question: String.raw`At which values of $x$ in the open interval $(-3, 5)$ does $g$ have a relative maximum?`,
+    choices: [String.raw`$x = 0$ only`, String.raw`$x = -2$ and $x = 2$`, String.raw`$x = -1$ and $x = 3$`, String.raw`$x = -3$ and $x = 1$`],
+    why: [
+      String.raw`$g'(x) = f'(x) - 2$, so $g' = 0$ where the graph of $f'$ is at height $2$: at $x = -2$, $x = 0$, $x = 2$, and the endpoint $x = 5$. At $x = 0$ the graph of $f'$ falls through height $2$, so $g'$ changes from positive to negative and $g$ has a relative maximum. That is the only such point.`,
+      String.raw`At $x = -2$ and $x = 2$ the graph of $f'$ rises through height $2$, so $g'$ changes from negative to positive. These are relative minima of $g$.`,
+      String.raw`These are where $f'$ is largest. There $g'(x) = 4 - 2 = 2 > 0$, so $g$ is increasing, not at a maximum.`,
+      String.raw`These are where $f'(x) = 0$, which would matter for $f$. For $g$, the critical points come from $f'(x) = 2$.`,
+    ],
+    answer: 0 },
+  { id: "c5r-m40", type: "mcq", skill: "u5", topic: "5.9", calc: false, difficulty: "difficult", set: "c5r-s14",
+    question: String.raw`Let $h(x) = f(2x)$. Which of the following describes $h$ at $x = 1$?`,
+    choices: [
+      String.raw`$h$ is increasing, and its graph is concave down.`,
+      String.raw`$h$ is decreasing, and its graph is concave up.`,
+      String.raw`$h$ is increasing, and its graph is concave up.`,
+      String.raw`$h$ is decreasing, and its graph is concave down.`,
+    ],
+    why: [
+      String.raw`By the chain rule, $h'(x) = 2f'(2x)$ and $h''(x) = 4f''(2x)$. So $h'(1) = 2f'(2) = 8 > 0$ and $h''(1) = 4f''(2) = -20 < 0$: $h$ is increasing and concave down.`,
+      String.raw`This reads $f'(1) = -2$ and $f''(1) = 1$. The chain rule evaluates $f'$ and $f''$ at $2x = 2$, not at $x = 1$.`,
+      String.raw`The direction is right, but the concavity uses $f''(1) = 1$. $h''(1) = 4f''(2) = -20$.`,
+      String.raw`The concavity is right, but the direction uses $f'(1) = -2$. $h'(1) = 2f'(2) = 8$.`,
+    ],
+    answer: 0 },
+  { id: "c5r-m41", type: "mcq", skill: "u5", topic: "5.1", calc: false, difficulty: "moderate", set: "c5r-s15",
+    question: String.raw`For how many values of $c$ in the open interval $(0, 6)$ is the line tangent to the graph of $f$ at $x = c$ parallel to the dashed segment?`,
+    choices: ["$2$", "$1$", "$3$", "$4$"],
+    why: [
+      String.raw`The segment has slope $\dfrac{9 - 0}{6 - 0} = \dfrac{3}{2}$. On $(0, 2)$ the graph rises steeply and then levels off to slope $0$, so its slope passes $\dfrac{3}{2}$ once. On $(2, 4)$ the slope is negative. On $(4, 6)$ the slope grows from $0$ and passes $\dfrac{3}{2}$ once more. That makes $2$.`,
+      String.raw`The Mean Value Theorem guarantees at least one such $c$, not exactly one. The graph has a tangent of slope $\dfrac{3}{2}$ on $(0, 2)$ and another on $(4, 6)$.`,
+      String.raw`This counts where the dashed segment meets the graph, at $x = 0$, $x = 3$, and $x = 6$. Those are crossings, not points where the slopes match.`,
+      String.raw`This adds the horizontal tangents at $x = 2$ and $x = 4$. Their slope is $0$, not $\dfrac{3}{2}$.`,
     ],
     answer: 0 },
 

@@ -4,7 +4,7 @@ export const sets = {
 };
 
 const items = [
-  { id: "q808-m01", type: "mcq", skill: "u8", topic: "8.8", calc: false,
+  { id: "q808-m01", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "moderate",
     question: String.raw`The base of a solid is the region bounded by the graph of $y = \sqrt[3]{x}$, the $x$-axis, and the line $x = 8$. Cross sections of the solid perpendicular to the $x$-axis are semicircles whose diameters lie in the base. What is the volume of the solid?`,
     choices: [String.raw`$\frac{12\pi}{5}$`, String.raw`$\frac{48\pi}{5}$`, String.raw`$\frac{24\pi}{5}$`, String.raw`$\frac{96\pi}{5}$`],
     why: [
@@ -13,16 +13,16 @@ const items = [
       String.raw`This uses whole circles of diameter $x^{1/3}$, with area $\dfrac{\pi}{4}x^{2/3}$. A semicircle has half that area.`,
       String.raw`This uses whole circles with radius $x^{1/3}$, as in the disc method.`,
     ], answer: 0 },
-  { id: "q808-m02", type: "mcq", skill: "u8", topic: "8.8", calc: false,
-    question: String.raw`The base of a solid is the region enclosed by the graph of $y = 9 - x^2$ and the $x$-axis. Cross sections of the solid perpendicular to the $x$-axis are equilateral triangles. What is the volume of the solid?`,
-    choices: [String.raw`$\frac{324\sqrt{3}}{5}$`, String.raw`$\frac{648}{5}$`, String.raw`$\frac{1296}{5}$`, String.raw`$\frac{648\sqrt{3}}{5}$`],
+  { id: "q808-m02", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "moderate",
+    question: String.raw`The base of a solid is the region in the first quadrant enclosed by the graph of $y = 4x - x^3$ and the $x$-axis. Cross sections of the solid perpendicular to the $x$-axis are equilateral triangles. What is the volume of the solid?`,
+    choices: [String.raw`$\frac{256\sqrt{3}}{105}$`, String.raw`$\frac{512}{105}$`, String.raw`$\frac{1024}{105}$`, String.raw`$\frac{512\sqrt{3}}{105}$`],
     why: [
-      String.raw`An equilateral triangle with side $s = 9 - x^2$ has area $\dfrac{\sqrt{3}}{4}s^2$. Since $\displaystyle\int_{-3}^{3} \left(9 - x^2\right)^2 dx = \dfrac{1296}{5}$, the volume is $\dfrac{\sqrt{3}}{4} \cdot \dfrac{1296}{5} = \dfrac{324\sqrt{3}}{5}$.`,
+      String.raw`In the first quadrant the graph meets the $x$-axis at $x = 0$ and $x = 2$. An equilateral triangle with side $s = 4x - x^3$ has area $\dfrac{\sqrt{3}}{4}s^2$. Since $\displaystyle\int_0^2 \left(4x - x^3\right)^2 dx = \int_0^2 \left(16x^2 - 8x^4 + x^6\right)dx = \dfrac{128}{3} - \dfrac{256}{5} + \dfrac{128}{7} = \dfrac{1024}{105}$, the volume is $\dfrac{\sqrt{3}}{4} \cdot \dfrac{1024}{105} = \dfrac{256\sqrt{3}}{105}$.`,
       String.raw`This uses the area $\dfrac{1}{2}s^2$, which belongs to an isosceles right triangle with a leg of length $s$. An equilateral triangle with side $s$ has height $\dfrac{\sqrt{3}}{2}s$.`,
-      String.raw`$\dfrac{1296}{5}$ is the volume with square cross sections, area $s^2$.`,
+      String.raw`$\dfrac{1024}{105}$ is the volume with square cross sections, area $s^2$.`,
       String.raw`This uses the height $\dfrac{\sqrt{3}}{2}s$ as the area factor and leaves out the $\dfrac{1}{2}$ in $\dfrac{1}{2} \cdot s \cdot \dfrac{\sqrt{3}}{2}s$.`,
     ], answer: 0 },
-  { id: "q808-m03", type: "mcq", skill: "u8", topic: "8.8", calc: false,
+  { id: "q808-m03", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "moderate",
     question: String.raw`The base of a solid is the region bounded by the graph of $y = e^{x}$, the $x$-axis, and the lines $x = 0$ and $x = 1$. Cross sections of the solid perpendicular to the $x$-axis are isosceles right triangles whose hypotenuses lie in the base. What is the volume of the solid?`,
     choices: [String.raw`$\frac{e^{2} - 1}{8}$`, String.raw`$\frac{e^{2} - 1}{4}$`, String.raw`$\frac{e - 1}{4}$`, String.raw`$\frac{e^{2}}{8}$`],
     why: [
@@ -31,7 +31,7 @@ const items = [
       String.raw`This does not square the side: $\dfrac{1}{4}\displaystyle\int_0^1 e^{x}\,dx$. The area is $\dfrac{1}{4}\left(e^{x}\right)^2 = \dfrac{1}{4}e^{2x}$.`,
       String.raw`This leaves out the lower limit. At $x = 0$ the antiderivative $\dfrac{1}{8}e^{2x}$ equals $\dfrac{1}{8}$, which must be subtracted.`,
     ], answer: 0 },
-  { id: "q808-m04", type: "mcq", skill: "u8", topic: "8.8", calc: false,
+  { id: "q808-m04", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "difficult",
     question: String.raw`The base of a solid is the region enclosed by the graph of $y = x^2$ and the line $y = 9$. Cross sections of the solid perpendicular to the $y$-axis are semicircles whose diameters lie in the base. Which integral gives the volume of the solid?`,
     choices: [String.raw`$\displaystyle\int_0^9 \dfrac{\pi}{2}y\,dy$`, String.raw`$\displaystyle\int_0^9 2\pi y\,dy$`, String.raw`$\displaystyle\int_0^9 \dfrac{\pi}{8}y\,dy$`, String.raw`$\displaystyle\int_0^9 \pi y\,dy$`],
     why: [
@@ -40,7 +40,7 @@ const items = [
       String.raw`This uses $\sqrt{y}$ as the diameter. That is only half the width of the base, from the $y$-axis to the curve.`,
       String.raw`This is the area of a whole circle of radius $\sqrt{y}$. A semicircle has half that area.`,
     ], answer: 0 },
-  { id: "q808-m05", type: "mcq", skill: "u8", topic: "8.8", calc: true,
+  { id: "q808-m05", type: "mcq", skill: "u8", topic: "8.8", calc: true, difficulty: "moderate",
     question: String.raw`The base of a solid is the region in the first quadrant bounded by the graph of $y = \cos\left(x^2\right)$ and the coordinate axes. Cross sections of the solid perpendicular to the $x$-axis are equilateral triangles. What is the volume of the solid?`,
     choices: ["$0.373$", "$0.861$", "$0.338$", "$0.746$"],
     why: [
@@ -49,7 +49,7 @@ const items = [
       String.raw`$0.338$ is the volume with semicircular cross sections, area $\dfrac{\pi}{8}s^2$.`,
       String.raw`This uses $\dfrac{\sqrt{3}}{2}s^2$, the height times the side without the factor $\dfrac{1}{2}$.`,
     ], answer: 0 },
-  { id: "q808-m06", type: "mcq", skill: "u8", topic: "8.8", calc: false,
+  { id: "q808-m06", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "moderate",
     question: String.raw`The base of a solid is the region enclosed by the graphs of $y = 3 - x^2$ and $y = 2x^2$. Cross sections of the solid perpendicular to the $x$-axis are isosceles right triangles with one leg in the base. What is the volume of the solid?`,
     choices: [String.raw`$\frac{24}{5}$`, String.raw`$\frac{48}{5}$`, String.raw`$\frac{12}{5}$`, String.raw`$\frac{32}{5}$`],
     why: [

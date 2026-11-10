@@ -24,19 +24,19 @@ export const sets = {
 
 const items = [
   {
-    id: "q112-m1", type: "mcq", skill: "u1", topic: "1.12", calc: false,
-    question: String.raw`On which of the following intervals is $q(x) = \dfrac{x^2 - 4}{\ln x}$ continuous?`,
-    choices: ["$(0, 1)$", "$[0, 1)$", "$(-1, 1)$", "$(0, 2)$"],
+    id: "q112-m1", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.12", calc: false,
+    question: String.raw`What is the largest set on which $q(x) = \dfrac{x^2 - 4}{\ln x}$ is continuous?`,
+    choices: [String.raw`$(0, 1) \cup (1, \infty)$`, String.raw`$[0, 1) \cup (1, \infty)$`, String.raw`$(0, \infty)$`, String.raw`$(0, 1) \cup (1, 2) \cup (2, \infty)$`],
     why: [
-      String.raw`$\ln x$ is continuous for $x > 0$, and $\ln x = 0$ only at $x = 1$. A quotient of continuous functions is continuous wherever the denominator is not $0$, so $q$ is continuous for $x > 0$, $x \neq 1$, and $(0, 1)$ lies inside that set.`,
-      String.raw`$\ln x$ is not defined at $x = 0$, so $q$ is not continuous on an interval that includes $x = 0$.`,
-      String.raw`$\ln x$ is defined only for $x > 0$, so $q$ is undefined on $(-1, 0]$.`,
-      String.raw`$(0, 2)$ contains $x = 1$, where $\ln 1 = 0$ makes the denominator $0$.`,
+      String.raw`$\ln x$ is defined and continuous only for $x > 0$, and $\ln x = 0$ only at $x = 1$. A quotient of continuous functions is continuous wherever its denominator is not $0$, so $q$ is continuous exactly for $x > 0$ with $x \neq 1$.`,
+      String.raw`$\ln x$ is not defined at $x = 0$, so $q(0)$ does not exist and $0$ cannot belong to the set.`,
+      String.raw`At $x = 1$, $\ln 1 = 0$, so the denominator is $0$ and $q$ is undefined there.`,
+      String.raw`At $x = 2$ the numerator is $0$, so $q(2) = \dfrac{0}{\ln 2} = 0$. A zero of the numerator is not a discontinuity.`,
     ],
     answer: 0,
   },
   {
-    id: "q112-m2", type: "mcq", skill: "u1", topic: "1.12", calc: false,
+    id: "q112-m2", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.12", calc: false,
     question: "Which of the following functions is continuous for all real numbers?",
     choices: [String.raw`$\sqrt[3]{x - 5}$`, String.raw`$\sqrt{x - 5}$`, String.raw`$\frac{x - 5}{x^2 - 25}$`, String.raw`$\frac{1}{e^{x} - 1}$`],
     why: [
@@ -48,7 +48,7 @@ const items = [
     answer: 0,
   },
   {
-    id: "q112-m3", type: "mcq", skill: "u1", topic: "1.12", calc: false,
+    id: "q112-m3", type: "mcq", difficulty: "moderate", skill: "u1", topic: "1.12", calc: false,
     question: String.raw`Let $h(x) = \begin{cases} \dfrac{6}{x - 1}, & x < 0 \\ x^2 - 6, & x \geq 0. \end{cases}$ Which of the following describes all values of $x$ at which $h$ is continuous?`,
     choices: ["All real numbers", String.raw`All $x$ except $x = 1$`, String.raw`All $x$ except $x = 0$`, String.raw`All $x$ except $x = 0$ and $x = 1$`],
     why: [
@@ -60,7 +60,7 @@ const items = [
     answer: 0,
   },
   {
-    id: "q112-m4", type: "mcq", skill: "u1", topic: "1.12", calc: false,
+    id: "q112-m4", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.12", calc: false,
     question: String.raw`Let $p(x) = \dfrac{x + 1}{x^2 - 2x - 8}$. On which of the following closed intervals is $p$ continuous?`,
     choices: ["$[-1, 3]$", "$[-3, 0]$", "$[0, 5]$", "$[-2, 4]$"],
     why: [
@@ -72,7 +72,7 @@ const items = [
     answer: 0,
   },
   {
-    id: "q112-m5", type: "mcq", skill: "u1", topic: "1.12", calc: false, set: "q112-s1",
+    id: "q112-m5", type: "mcq", difficulty: "difficult", skill: "u1", topic: "1.12", calc: false, set: "q112-s1",
     question: String.raw`On which of the following closed intervals is $g$ continuous?`,
     choices: ["$[0, 1]$", "$[1, 3]$", "$[-2, 0]$", "$[0, 2]$"],
     why: [
@@ -84,13 +84,13 @@ const items = [
     answer: 0,
   },
   {
-    id: "q112-m6", type: "mcq", skill: "u1", topic: "1.12", calc: false,
+    id: "q112-m6", type: "mcq", difficulty: "easy", skill: "u1", topic: "1.12", calc: false,
     question: String.raw`Which of the following functions is continuous on the closed interval $[0, \pi]$?`,
-    choices: [String.raw`$\frac{1}{2 + \cos x}$`, String.raw`$\sec x$`, String.raw`$\cot x$`, String.raw`$\frac{1}{1 + \cos x}$`],
+    choices: [String.raw`$\frac{1}{2 + \cos x}$`, String.raw`$\frac{1}{\cos x}$`, String.raw`$\frac{\cos x}{\sin x}$`, String.raw`$\frac{1}{1 + \cos x}$`],
     why: [
       String.raw`$\cos x \geq -1$, so $2 + \cos x \geq 1$ and the denominator is never $0$. The quotient is continuous on $[0, \pi]$.`,
-      String.raw`$\sec x = \dfrac{1}{\cos x}$ is undefined at $x = \dfrac{\pi}{2}$.`,
-      String.raw`$\cot x = \dfrac{\cos x}{\sin x}$ is undefined at $x = 0$ and $x = \pi$, where $\sin x = 0$.`,
+      String.raw`$\cos \dfrac{\pi}{2} = 0$, so $\dfrac{1}{\cos x}$ is undefined at $x = \dfrac{\pi}{2}$, inside the interval.`,
+      String.raw`$\dfrac{\cos x}{\sin x}$ is undefined at $x = 0$ and $x = \pi$, where $\sin x = 0$. A closed interval includes its endpoints.`,
       String.raw`At $x = \pi$, $1 + \cos \pi = 0$, so the function is undefined at the right endpoint.`,
     ],
     answer: 0,

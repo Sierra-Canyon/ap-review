@@ -24,12 +24,41 @@ const m11Graph = graph({
   alt: "The curve y = 3/x and the line y = 4 - x in the first quadrant. They intersect at (1, 3) and (3, 1), and the line is above the curve between those points.",
 });
 
-// c8r-m14: x = y^2 and x = 2y + 3 meet at (1, -1) and (9, 3).
+// c8r-m14 and c8r-m37: y = x^2 (x >= 0), y = 6 - x, and the x-axis bound R, with corners (0, 0), (2, 4), (6, 0).
 const m14Graph = graph({
-  x: [-1, 10], y: [-2, 4], xname: "x", yname: "y",
-  fns: [{ f: (x) => Math.sqrt(x), from: 0, to: 10, label: "x = y²", labelAt: 9.5 }, { f: (x) => -Math.sqrt(x), from: 0, to: 4 }, { f: (x) => (x - 3) / 2, from: -1, to: 10, label: "x = 2y + 3", labelAt: 5.2 }],
-  dots: [[1, -1, "closed"], [9, 3, "closed"]],
-  alt: "The parabola x = y^2, opening to the right, and the line x = 2y + 3. They intersect at (1, -1) and (9, 3). Between y = -1 and y = 3 the line is to the right of the parabola.",
+  x: [-1, 7], y: [-1, 6], xname: "x", yname: "y",
+  fns: [{ f: (x) => x * x, from: 0, to: 2.45, label: "y = x²", labelAt: 2.3 }, { f: (x) => 6 - x, from: 0.5, to: 6.5, label: "y = 6 − x", labelAt: 4.6 }],
+  dots: [[0, 0, "closed"], [2, 4, "closed"], [6, 0, "closed"]],
+  labels: [[2.4, 1.3, "R"]],
+  alt: "The region R bounded by the curve y = x^2 for x at least 0, the line y = 6 - x, and the x-axis. The curve and the line meet at (2, 4). R has corners at (0, 0), (2, 4), and (6, 0): its left side is the curve, its right side is the line, and its bottom is the x-axis from x = 0 to x = 6.",
+});
+
+// c8r-m38: f is level at 2 from (0, 2) to (2, 2), then falls in a straight line to (4, 0).
+const discGraph = graph({
+  x: [-0.5, 5], y: [-1, 3], xname: "x", yname: "y",
+  segments: [[0, 2, 2, 2], [2, 2, 4, 0]],
+  dots: [[0, 2, "closed"], [2, 2, "closed"], [4, 0, "closed"]],
+  labels: [[1.6, 0.9, "R"], [2.9, 1.7, "f"]],
+  alt: "Graph of f for 0 to 4, made of two line segments: level at height 2 from (0, 2) to (2, 2), then a straight line down from (2, 2) to (4, 0). The region R lies between the graph of f and the x-axis, to the right of the y-axis.",
+});
+
+// c8r-m39: f(x) = -(x + 1)(x - 3), vertex (1, 4); g is the line through (-1, 0) and (2, 3).
+const fgGraph = graph({
+  x: [-2, 4], y: [-2, 6], xname: "x", yname: "y",
+  fns: [{ f: (x) => -(x + 1) * (x - 3), from: -1.6, to: 3.6 }, { f: (x) => x + 1, from: -2, to: 4, label: "g", labelAt: 3.3 }],
+  dots: [[-1, 0, "closed"], [1, 4, "closed"], [3, 0, "closed"], [2, 3, "closed"]],
+  labels: [[3.0, 1.4, "f"]],
+  alt: "The graph of a quadratic function f, a parabola opening down with x-intercepts at (-1, 0) and (3, 0) and vertex at (1, 4), and the graph of a linear function g through (-1, 0) and (2, 3). The marked points are (-1, 0), (1, 4), (3, 0), and (2, 3). The two graphs cross at (-1, 0) and (2, 3), with f above g between them.",
+});
+
+// c8r-m40: R is bounded by y = 1 + sqrt(x), y = 1, and x = 4; the dashed line l is y = 4.
+const washerGraph = graph({
+  x: [-1, 5], y: [-1, 5], xname: "x", yname: "y",
+  fns: [{ f: (x) => 1 + Math.sqrt(x), from: 0, to: 4 }],
+  segments: [[0, 1, 4, 1], [4, 1, 4, 3]],
+  hlines: [{ y: 4 }],
+  labels: [[2.7, 1.6, "R"], [-0.7, 4.3, "ℓ"], [0.3, 3.3, "y = 1 + √x"]],
+  alt: "The region R bounded by the curve y = 1 + square root of x, the horizontal line y = 1, and the vertical line x = 4. R has corners at (0, 1), (4, 1), and (4, 3). A dashed horizontal line labeled l is drawn at y = 4, above the region.",
 });
 
 // c8r-s2: f(x) = 4/(1 + x^2) and g(x) = x^2 meet at x = ±1.250.
@@ -65,7 +94,7 @@ export const sets = {
     sources: [{ title: "", blocks: [{ p: "A graphing calculator is allowed." }] }] },
   "c8r-s5": { name: "A curve and a line", label: "Graph", intro: String.raw`The graphs of $y = \dfrac{3}{x}$ and $y = 4 - x$ are shown below.`,
     sources: [{ title: "", blocks: [{ svg: m11Graph }] }] },
-  "c8r-s6": { name: "Curves in terms of y", label: "Graph", intro: String.raw`The graphs of $x = y^2$ and $x = 2y + 3$ are shown below.`,
+  "c8r-s6": { name: "A region bounded by a curve, a line, and the x-axis", label: "Graph", intro: String.raw`Let $R$ be the region bounded by the graph of $y = x^2$, the line $y = 6 - x$, and the $x$-axis, shown below.`,
     sources: [{ title: "", blocks: [{ svg: m14Graph }] }] },
   "c8r-s2": { name: "The region R between f and g", label: "Graph", intro: String.raw`Let $f(x) = \dfrac{4}{1 + x^2}$ and $g(x) = x^2$. Let $R$ be the region enclosed by the graphs of $f$ and $g$, shown below. A graphing calculator is allowed.`,
     sources: [{ title: "", blocks: [{ svg: s2Graph }] }] },
@@ -73,6 +102,16 @@ export const sets = {
     sources: [{ title: "", blocks: [{ svg: m17Graph }] }] },
   "c8r-s9": { name: "Cars in a parking garage", label: "Free response", intro: String.raw`At 6:00 A.M. ($t = 0$) there are $120$ cars in a parking garage. For $0 \le t \le 12$ hours, cars enter the garage at a rate modeled by $E(t) = 60 + 40\sin\left(\dfrac{\pi t}{12}\right)$ cars per hour, and cars leave the garage at a rate modeled by $L(t) = 10t$ cars per hour.`,
     sources: [{ title: "", blocks: [{ p: String.raw`A graphing calculator is allowed. Give decimal answers to three decimal places.` }] }] },
+  "c8r-s11": { name: "Lake temperature", label: "Table", intro: String.raw`The temperature of the water in a lake, in degrees Celsius, is modeled by a continuous function $W$ of the time $h$, in hours after sunrise. Selected values of $W(h)$ are shown in the table below.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["$h$ (hours)", "$0$", "$2$", "$4$", "$6$", "$8$"], rows: [["$W(h)$ (degrees Celsius)", "$14$", "$15$", "$18$", "$21$", "$20$"]] } }] }] },
+  "c8r-s12": { name: "A draining tank", label: "Table", intro: String.raw`A tank holds $200$ liters of water at time $t = 0$. For $0 \le t \le 10$ minutes, water drains from the tank at a rate of $D(t)$ liters per minute, where $D$ is continuous, and water is pumped into the tank at a constant rate of $12$ liters per minute. Selected values of $D(t)$ are shown in the table below.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["$t$ (minutes)", "$0$", "$2$", "$5$", "$9$", "$10$"], rows: [["$D(t)$ (liters per minute)", "$8$", "$11$", "$15$", "$20$", "$22$"]] } }] }] },
+  "c8r-s13": { name: "A region under a broken line", label: "Graph", intro: String.raw`The graph of the function $f$ on the interval $0 \le x \le 4$ consists of two line segments, as shown below. Let $R$ be the region bounded by the graph of $f$, the $x$-axis, and the $y$-axis.`,
+    sources: [{ title: "", blocks: [{ svg: discGraph }] }] },
+  "c8r-s14": { name: "A parabola and a line", label: "Graph", intro: String.raw`The graphs of a quadratic function $f$ and a linear function $g$ are shown below. The marked points all have integer coordinates.`,
+    sources: [{ title: "", blocks: [{ svg: fgGraph }] }] },
+  "c8r-s15": { name: "A region and a line", label: "Graph", intro: String.raw`The figure below shows the region $R$, bounded by the graph of $y = 1 + \sqrt{x}$ and two lines, and the dashed line $\ell$.`,
+    sources: [{ title: "", blocks: [{ svg: washerGraph }] }] },
   "c8r-s7": { name: "The region between a line and a parabola", label: "Free response", intro: String.raw`Let $f(x) = 2x + 2$ and $g(x) = x^2 - 2x + 2$. Let $R$ be the region enclosed by the graphs of $f$ and $g$, shown below.`,
     sources: [{ title: "", blocks: [{ svg: s7Graph }, { p: String.raw`Answer each part without a calculator. Show the work that leads to each answer.` }] }] },
   "c8r-s10": { name: "A particle on the x-axis", label: "Free response", intro: String.raw`A particle moves along the $x$-axis. Its velocity at time $t$ seconds is $v(t) = 4\cos\left(\dfrac{t^2}{8}\right)$ meters per second for $0 \le t \le 5$. At time $t = 0$, the particle is at $x = -3$.`,
@@ -81,7 +120,7 @@ export const sets = {
 
 export default [
   // 8.1 Average value of a function
-  { id: "c8r-m01", type: "mcq", skill: "u8", topic: "8.1", calc: false,
+  { id: "c8r-m01", type: "mcq", skill: "u8", topic: "8.1", calc: false, difficulty: "easy",
     question: String.raw`What is the average value of $f(x) = 6x^2 - 4x + 1$ on the interval $0 \le x \le 2$?`,
     choices: ["$5$", "$10$", "$9$", "$8$"],
     why: [
@@ -91,7 +130,7 @@ export default [
       String.raw`This is the average rate of change, $\dfrac{f(2) - f(0)}{2 - 0} = \dfrac{16}{2}$, not the average value of $f$.`,
     ],
     answer: 0 },
-  { id: "c8r-m02", type: "mcq", skill: "u8", topic: "8.1", calc: false, set: "c8r-s1",
+  { id: "c8r-m02", type: "mcq", skill: "u8", topic: "8.1", calc: false, difficulty: "moderate", set: "c8r-s1",
     question: String.raw`What is the average value of $f$ on the interval $0 \le x \le 6$?`,
     choices: [String.raw`$-\frac{1}{3}$`, String.raw`$\frac{5}{3}$`, "$-2$", "$1$"],
     why: [
@@ -101,7 +140,7 @@ export default [
       String.raw`This is the average of the endpoint values, $\dfrac{f(0) + f(6)}{2} = \dfrac{4 + (-2)}{2}$.`,
     ],
     answer: 0 },
-  { id: "c8r-m03", type: "mcq", skill: "u8", topic: "8.1", calc: true,
+  { id: "c8r-m03", type: "mcq", skill: "u8", topic: "8.1", calc: true, difficulty: "easy",
     stem: String.raw`The concentration of a medicine in a patient's blood $t$ hours after it is taken is $C(t) = 8te^{-0.4t}$ milligrams per liter.`,
     question: String.raw`What is the average concentration of the medicine over the first $6$ hours?`,
     choices: [String.raw`$5.763$ milligrams per liter`, String.raw`$34.578$ milligrams per liter`, String.raw`$2.177$ milligrams per liter`, String.raw`$0.726$ milligrams per liter`],
@@ -114,18 +153,18 @@ export default [
     answer: 0 },
 
   // 8.2 Position, velocity, and acceleration using integrals
-  { id: "c8r-m04", type: "mcq", skill: "u8", topic: "8.2", calc: false,
+  { id: "c8r-m04", type: "mcq", skill: "u8", topic: "8.2", calc: false, difficulty: "difficult",
     stem: String.raw`A particle moves along a line with velocity $v(t) = 2t^2 - 8t + 6$ for $t \ge 0$.`,
     question: String.raw`What is the total distance the particle travels from $t = 0$ to $t = 2$?`,
-    choices: ["$4$", String.raw`$\frac{4}{3}$`, String.raw`$\frac{8}{3}$`, "$8$"],
+    choices: ["$4$", String.raw`$\frac{4}{3}$`, String.raw`$\frac{8}{3}$`, String.raw`$\frac{16}{3}$`],
     why: [
       String.raw`$v(t) = 2(t - 1)(t - 3)$ is positive on $0 < t < 1$ and negative on $1 < t < 2$. With $V(t) = \dfrac{2t^3}{3} - 4t^2 + 6t$, $\displaystyle\int_0^1 v(t)\,dt = \dfrac{8}{3}$ and $\displaystyle\int_1^2 v(t)\,dt = \dfrac{4}{3} - \dfrac{8}{3} = -\dfrac{4}{3}$. The total distance is $\dfrac{8}{3} + \dfrac{4}{3} = 4$.`,
       String.raw`This is the displacement, $\displaystyle\int_0^2 v(t)\,dt$. The distance traveled while moving left is subtracted from the distance traveled while moving right.`,
       String.raw`This is the distance for $0 \le t \le 1$ only. The particle also travels $\dfrac{4}{3}$ while moving left on $1 < t < 2$.`,
-      String.raw`This is the change in velocity, $\left|v(2) - v(0)\right| = \left|-2 - 6\right|$, not a distance.`,
+      String.raw`This is $\displaystyle\int_0^3 \left|v(t)\right|dt = \dfrac{8}{3} + \dfrac{8}{3}$, which runs to $t = 3$, the second zero of $v$, instead of stopping at $t = 2$.`,
     ],
     answer: 0 },
-  { id: "c8r-m05", type: "mcq", skill: "u8", topic: "8.2", calc: false, set: "c8r-s3",
+  { id: "c8r-m05", type: "mcq", skill: "u8", topic: "8.2", calc: false, difficulty: "moderate", set: "c8r-s3",
     question: String.raw`What is the position of the particle at $t = 8$?`,
     choices: ["$11$", "$14$", "$15$", "$17$"],
     why: [
@@ -135,7 +174,7 @@ export default [
       String.raw`This subtracts the starting position, $14 - (-3)$. The position is $x(0) + \displaystyle\int_0^8 v(t)\,dt$.`,
     ],
     answer: 0 },
-  { id: "c8r-m06", type: "mcq", skill: "u8", topic: "8.2", calc: true,
+  { id: "c8r-m06", type: "mcq", skill: "u8", topic: "8.2", calc: true, difficulty: "moderate",
     stem: String.raw`A particle moves along a line with velocity $v(t) = 3\sin\left(\dfrac{t^2}{4}\right)$ meters per second for $0 \le t \le 5$.`,
     question: String.raw`What is the total distance, in meters, the particle travels from $t = 0$ to $t = 5$?`,
     choices: ["$8.155$", "$2.583$", "$5.369$", "$2.786$"],
@@ -148,13 +187,13 @@ export default [
     answer: 0 },
 
   // 8.3 Accumulation in applied contexts
-  { id: "c8r-m07", type: "mcq", skill: "u8", topic: "8.3", calc: false,
+  { id: "c8r-m07", type: "mcq", skill: "u8", topic: "8.3", calc: false, difficulty: "easy",
     stem: String.raw`A tank contains $10$ gallons of water at time $t = 0$. Water flows into the tank at a rate of $R(t)$ gallons per minute, and no water leaves the tank. It is known that $\displaystyle\int_0^5 R(t)\,dt = 40$.`,
     question: "Which of the following is the best interpretation of this equation?",
     choices: [
       String.raw`During the first $5$ minutes, $40$ gallons of water flow into the tank.`,
       String.raw`At time $t = 5$ minutes, water flows into the tank at a rate of $40$ gallons per minute.`,
-      String.raw`At time $t = 5$ minutes, the tank contains $40$ gallons of water.`,
+      String.raw`At time $t = 5$ minutes, the tank contains a total of $40$ gallons of water.`,
       String.raw`During the first $5$ minutes, water flows into the tank at an average rate of $40$ gallons per minute.`,
     ],
     why: [
@@ -164,7 +203,7 @@ export default [
       String.raw`The average rate is $\dfrac{1}{5}\displaystyle\int_0^5 R(t)\,dt = 8$ gallons per minute.`,
     ],
     answer: 0 },
-  { id: "c8r-m08", type: "mcq", skill: "u8", topic: "8.3", calc: true, set: "c8r-s4",
+  { id: "c8r-m08", type: "mcq", skill: "u8", topic: "8.3", calc: true, difficulty: "moderate", set: "c8r-s4",
     question: String.raw`How many gallons of oil are in the tank at time $t = 8$ hours?`,
     choices: ["$584.016$", "$888.016$", "$415.984$", "$499.487$"],
     why: [
@@ -174,7 +213,7 @@ export default [
       String.raw`This adds the net rate at one instant, $P(8) - D(8) = -0.513$, to $500$. The net change comes from integrating the net rate.`,
     ],
     answer: 0 },
-  { id: "c8r-m09", type: "mcq", skill: "u8", topic: "8.3", calc: true, set: "c8r-s4",
+  { id: "c8r-m09", type: "mcq", skill: "u8", topic: "8.3", calc: true, difficulty: "difficult", set: "c8r-s4",
     question: String.raw`At what time $t$, for $0 \le t \le 10$, is the amount of oil in the tank greatest?`,
     choices: [String.raw`$t = 7.907$`, String.raw`$t = 4.712$`, String.raw`$t = 3.142$`, String.raw`$t = 10$`],
     why: [
@@ -184,7 +223,7 @@ export default [
       String.raw`At $t = 10$ the amount is $571.340$ gallons, less than at $t = 7.907$, because oil drains faster than it enters after $t = 7.907$.`,
     ],
     answer: 0 },
-  { id: "c8r-m10", type: "mcq", skill: "u8", topic: "8.3", calc: false,
+  { id: "c8r-m10", type: "mcq", skill: "u8", topic: "8.3", calc: false, difficulty: "moderate",
     stem: String.raw`Oil leaks from a pipe at a rate of $r(t) = 6e^{-0.5t}$ liters per hour, where $t$ is measured in hours.`,
     question: "How many liters of oil leak from the pipe during the first $4$ hours?",
     choices: [String.raw`$12\left(1 - e^{-2}\right)$`, String.raw`$6\left(1 - e^{-2}\right)$`, String.raw`$3\left(1 - e^{-2}\right)$`, String.raw`$24e^{-2}$`],
@@ -197,7 +236,7 @@ export default [
     answer: 0 },
 
   // 8.4 Area between curves, functions of x
-  { id: "c8r-m11", type: "mcq", skill: "u8", topic: "8.4", calc: false, set: "c8r-s5",
+  { id: "c8r-m11", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "moderate", set: "c8r-s5",
     question: String.raw`What is the area of the region enclosed by the graphs of $y = \dfrac{3}{x}$ and $y = 4 - x$?`,
     choices: [String.raw`$4 - 3\ln 3$`, String.raw`$3\ln 3 - 4$`, "$4$", String.raw`$4 - \ln 3$`],
     why: [
@@ -207,7 +246,7 @@ export default [
       String.raw`This drops the constant $3$ from the antiderivative of $\dfrac{3}{x}$, which is $3\ln x$.`,
     ],
     answer: 0 },
-  { id: "c8r-m12", type: "mcq", skill: "u8", topic: "8.4", calc: false,
+  { id: "c8r-m12", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "easy",
     stem: String.raw`Let $R$ be the region enclosed by the graphs of $y = x^2 - 3x$ and $y = x$.`,
     question: String.raw`Which of the following gives the area of $R$?`,
     choices: [
@@ -223,7 +262,7 @@ export default [
       String.raw`This drops the parentheses when subtracting: $x - \left(x^2 - 3x\right)$ is $x - x^2 + 3x$, not $x - x^2 - 3x$.`,
     ],
     answer: 0 },
-  { id: "c8r-m13", type: "mcq", skill: "u8", topic: "8.4", calc: true, set: "c8r-s2",
+  { id: "c8r-m13", type: "mcq", skill: "u8", topic: "8.4", calc: true, difficulty: "moderate", set: "c8r-s2",
     question: String.raw`What is the area of $R$?`,
     choices: ["$5.866$", "$2.933$", "$7.167$", "$5.471$"],
     why: [
@@ -235,17 +274,17 @@ export default [
     answer: 0 },
 
   // 8.5 Area between curves, functions of y
-  { id: "c8r-m14", type: "mcq", skill: "u8", topic: "8.5", calc: false, set: "c8r-s6",
-    question: String.raw`What is the area of the region enclosed by the graphs of $x = y^2$ and $x = 2y + 3$?`,
-    choices: [String.raw`$\frac{32}{3}$`, String.raw`$\frac{28}{3}$`, "$9$", "$20$"],
+  { id: "c8r-m14", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "moderate", set: "c8r-s6",
+    question: String.raw`What is the area of $R$?`,
+    choices: [String.raw`$\frac{32}{3}$`, "$16$", String.raw`$\frac{8}{3}$`, String.raw`$\frac{64}{3}$`],
     why: [
-      String.raw`The graphs meet where $y^2 = 2y + 3$, so $(y - 3)(y + 1) = 0$ and $y = -1$ or $y = 3$. Using right minus left, the area is $\displaystyle\int_{-1}^{3} \left(2y + 3 - y^2\right)dy = \Big[y^2 + 3y - \dfrac{y^3}{3}\Big]_{-1}^{3} = 9 - \left(-\dfrac{5}{3}\right) = \dfrac{32}{3}$.`,
-      String.raw`This is $\displaystyle\int_1^9 \left(\sqrt{x} - \dfrac{x - 3}{2}\right)dx$, which integrates in $x$ but only from $x = 1$ to $x = 9$. It leaves out the part of the region for $0 \le x \le 1$, which lies between $y = -\sqrt{x}$ and $y = \sqrt{x}$ and has area $\dfrac{4}{3}$.`,
-      String.raw`This integrates only from $y = 0$ to $y = 3$, which leaves out the part of the region below the $x$-axis.`,
-      String.raw`This is $\displaystyle\int_{-1}^{3} (2y + 3)\,dy$, which does not subtract the left boundary $x = y^2$.`,
+      String.raw`Integrate with respect to $y$. Solving for $x$, the curve is $x = \sqrt{y}$ and the line is $x = 6 - y$; they meet at $y = 4$. Each horizontal strip runs from $x = \sqrt{y}$ on the left to $x = 6 - y$ on the right, so the area is $\displaystyle\int_0^4 \left(6 - y - \sqrt{y}\right)dy = \Big[6y - \dfrac{y^2}{2} - \dfrac{2}{3}y^{3/2}\Big]_0^4 = 24 - 8 - \dfrac{16}{3} = \dfrac{32}{3}$.`,
+      String.raw`This is $\displaystyle\int_0^4 (6 - y)\,dy$, which measures each strip from the $y$-axis to the line. The left boundary of $R$ is the curve $x = \sqrt{y}$, not the $y$-axis.`,
+      String.raw`This is $\displaystyle\int_0^2 x^2\,dx$, the part of $R$ under the curve only. It leaves out the triangle under the line from $x = 2$ to $x = 6$, which has area $8$.`,
+      String.raw`This is $\displaystyle\int_0^4 \left(6 - y + \sqrt{y}\right)dy$, which adds the left boundary instead of subtracting it. Strip length is right minus left.`,
     ],
     answer: 0 },
-  { id: "c8r-m15", type: "mcq", skill: "u8", topic: "8.5", calc: false,
+  { id: "c8r-m15", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "moderate",
     stem: String.raw`Let $R$ be the region bounded by the graph of $y = \sqrt{x - 1}$, the $y$-axis, the $x$-axis, and the line $y = 2$.`,
     question: String.raw`Which of the following gives the area of $R$?`,
     choices: [
@@ -263,7 +302,7 @@ export default [
     answer: 0 },
 
   // 8.6 Curves that intersect at more than two points
-  { id: "c8r-m16", type: "mcq", skill: "u8", topic: "8.6", calc: false,
+  { id: "c8r-m16", type: "mcq", skill: "u8", topic: "8.6", calc: false, difficulty: "difficult",
     question: String.raw`What is the total area of the regions enclosed by the graphs of $y = x^3$ and $y = 2x^2 + 3x$?`,
     choices: [String.raw`$\frac{71}{6}$`, String.raw`$\frac{32}{3}$`, String.raw`$\frac{45}{4}$`, String.raw`$\frac{7}{12}$`],
     why: [
@@ -273,7 +312,7 @@ export default [
       String.raw`This is the area of the region on $-1 \le x \le 0$ only.`,
     ],
     answer: 0 },
-  { id: "c8r-m17", type: "mcq", skill: "u8", topic: "8.6", calc: true, set: "c8r-s8",
+  { id: "c8r-m17", type: "mcq", skill: "u8", topic: "8.6", calc: true, difficulty: "moderate", set: "c8r-s8",
     question: String.raw`What is the total area of the regions enclosed by the two graphs?`,
     choices: ["$4.221$", "$1.605$", "$1.308$", "$2.913$"],
     why: [
@@ -285,7 +324,7 @@ export default [
     answer: 0 },
 
   // 8.7 Cross sections: squares and rectangles
-  { id: "c8r-m18", type: "mcq", skill: "u8", topic: "8.7", calc: false,
+  { id: "c8r-m18", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "easy",
     stem: String.raw`The base of a solid is the region in the first quadrant bounded by the graph of $y = \sqrt{9 - x}$ and the coordinate axes. Cross sections of the solid perpendicular to the $x$-axis are squares.`,
     question: "What is the volume of the solid?",
     choices: [String.raw`$\frac{81}{2}$`, String.raw`$\frac{81\pi}{2}$`, "$18$", String.raw`$\frac{81}{4}$`],
@@ -296,7 +335,7 @@ export default [
       String.raw`This uses $\dfrac{1}{2}s^2$, the area of an isosceles right triangle with a leg in the base, instead of the area of a square.`,
     ],
     answer: 0 },
-  { id: "c8r-m19", type: "mcq", skill: "u8", topic: "8.7", calc: false,
+  { id: "c8r-m19", type: "mcq", skill: "u8", topic: "8.7", calc: false, difficulty: "difficult",
     stem: String.raw`The base of a solid is the region enclosed by the graph of $y = 2x - x^2$ and the $x$-axis. Cross sections of the solid perpendicular to the $x$-axis are rectangles whose height is $3$ times the length of the base of the rectangle in the region.`,
     question: "What is the volume of the solid?",
     choices: [String.raw`$\frac{16}{5}$`, String.raw`$\frac{16}{15}$`, "$4$", String.raw`$\frac{64}{5}$`],
@@ -307,7 +346,7 @@ export default [
       String.raw`This is $3\displaystyle\int_0^2 \left(4x^2 - x^4\right)dx$, which squares each term separately. The base length $2x - x^2$ must be squared as a whole.`,
     ],
     answer: 0 },
-  { id: "c8r-m20", type: "mcq", skill: "u8", topic: "8.7", calc: true,
+  { id: "c8r-m20", type: "mcq", skill: "u8", topic: "8.7", calc: true, difficulty: "difficult",
     stem: String.raw`The base of a solid is the region bounded by the graph of $y = \ln x$, the $x$-axis, and the line $x = 3$. Cross sections of the solid perpendicular to the $y$-axis are squares.`,
     question: "What is the volume of the solid?",
     choices: ["$1.888$", "$1.029$", "$1.296$", "$5.930$"],
@@ -320,7 +359,7 @@ export default [
     answer: 0 },
 
   // 8.8 Cross sections: triangles and semicircles
-  { id: "c8r-m21", type: "mcq", skill: "u8", topic: "8.8", calc: false,
+  { id: "c8r-m21", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "difficult",
     stem: String.raw`The base of a solid is the region bounded by the graph of $y = \cos x$ and the $x$-axis for $-\dfrac{\pi}{2} \le x \le \dfrac{\pi}{2}$. Cross sections of the solid perpendicular to the $x$-axis are semicircles with diameters in the base.`,
     question: "What is the volume of the solid?",
     choices: [String.raw`$\frac{\pi^2}{16}$`, String.raw`$\frac{\pi^2}{8}$`, String.raw`$\frac{\pi^2}{4}$`, String.raw`$\frac{\pi^2}{2}$`],
@@ -331,7 +370,7 @@ export default [
       String.raw`This uses $\pi s^2$, the disc method for revolving the base about the $x$-axis.`,
     ],
     answer: 0 },
-  { id: "c8r-m22", type: "mcq", skill: "u8", topic: "8.8", calc: false,
+  { id: "c8r-m22", type: "mcq", skill: "u8", topic: "8.8", calc: false, difficulty: "moderate",
     stem: String.raw`The base of a solid is the region enclosed by the graph of $y = 2 - 2x^2$ and the $x$-axis. Cross sections of the solid perpendicular to the $x$-axis are equilateral triangles.`,
     question: "What is the volume of the solid?",
     choices: [String.raw`$\frac{16\sqrt{3}}{15}$`, String.raw`$\frac{32\sqrt{3}}{15}$`, String.raw`$\frac{64}{15}$`, String.raw`$\frac{32}{15}$`],
@@ -342,7 +381,7 @@ export default [
       String.raw`This uses $\dfrac{1}{2}s^2$, the area of an isosceles right triangle with a leg in the base.`,
     ],
     answer: 0 },
-  { id: "c8r-m23", type: "mcq", skill: "u8", topic: "8.8", calc: true,
+  { id: "c8r-m23", type: "mcq", skill: "u8", topic: "8.8", calc: true, difficulty: "moderate",
     stem: String.raw`The base of a solid is the region bounded by the graph of $y = e^{\sin x}$, the $x$-axis, and the lines $x = 0$ and $x = \pi$. Cross sections of the solid perpendicular to the $x$-axis are isosceles right triangles with the hypotenuse in the base.`,
     question: "What is the volume of the solid?",
     choices: ["$3.312$", "$6.624$", "$13.248$", "$5.737$"],
@@ -355,29 +394,29 @@ export default [
     answer: 0 },
 
   // 8.9 Disc method about the x- or y-axis
-  { id: "c8r-m24", type: "mcq", skill: "u8", topic: "8.9", calc: false,
+  { id: "c8r-m24", type: "mcq", skill: "u8", topic: "8.9", calc: false, difficulty: "easy",
     stem: String.raw`The region bounded by the graph of $y = x^{3/2}$, the $x$-axis, and the line $x = 4$ is revolved about the $x$-axis.`,
     question: "What is the volume of the solid generated?",
-    choices: [String.raw`$64\pi$`, String.raw`$\frac{64\pi}{5}$`, "$64$", String.raw`$\frac{384\pi}{7}$`],
+    choices: [String.raw`$64\pi$`, String.raw`$\frac{64\pi}{5}$`, String.raw`$256\pi$`, String.raw`$\frac{384\pi}{7}$`],
     why: [
       String.raw`Each disc at $x$ has radius $x^{3/2}$. The volume is $\pi\displaystyle\int_0^4 \left(x^{3/2}\right)^2 dx = \pi\displaystyle\int_0^4 x^3\,dx = \pi \cdot \dfrac{256}{4} = 64\pi$.`,
       String.raw`This is $\pi\displaystyle\int_0^4 x^{3/2}\,dx$. The radius $x^{3/2}$ was not squared.`,
-      String.raw`This leaves out the factor $\pi$ in the area of a disc, $\pi r^2$.`,
+      String.raw`This is $\pi(8)^2(4)$, a cylinder that uses the largest radius, $4^{3/2} = 8$, for every disc. The radius changes with $x$.`,
       String.raw`This is $\pi\displaystyle\int_0^8 \left(y^{2/3}\right)^2 dy$, discs about the $y$-axis for the region to the left of the curve. The region is revolved about the $x$-axis.`,
     ],
     answer: 0 },
-  { id: "c8r-m25", type: "mcq", skill: "u8", topic: "8.9", calc: false,
+  { id: "c8r-m25", type: "mcq", skill: "u8", topic: "8.9", calc: false, difficulty: "moderate",
     stem: String.raw`The region in the first quadrant bounded by the graph of $y = x^2 + 1$, the $y$-axis, and the line $y = 5$ is revolved about the $y$-axis.`,
     question: "What is the volume of the solid generated?",
-    choices: [String.raw`$8\pi$`, String.raw`$\frac{16\pi}{3}$`, String.raw`$\frac{15\pi}{2}$`, "$8$"],
+    choices: [String.raw`$8\pi$`, String.raw`$\frac{16\pi}{3}$`, String.raw`$\frac{15\pi}{2}$`, String.raw`$\frac{544\pi}{15}$`],
     why: [
       String.raw`Each disc at height $y$, $1 \le y \le 5$, has radius $x = \sqrt{y - 1}$. The volume is $\pi\displaystyle\int_1^5 (y - 1)\,dy = \pi\Big[\dfrac{y^2}{2} - y\Big]_1^5 = \pi\left(\dfrac{15}{2} + \dfrac{1}{2}\right) = 8\pi$.`,
       String.raw`This is $\pi\displaystyle\int_1^5 \sqrt{y - 1}\,dy$. The radius $\sqrt{y - 1}$ was not squared.`,
       String.raw`This is $\pi\displaystyle\int_0^5 (y - 1)\,dy$. The region starts at $y = 1$, the lowest point of the curve, and the radius is not defined below that.`,
-      String.raw`This leaves out the factor $\pi$ in the area of a disc.`,
+      String.raw`This is $\pi\displaystyle\int_0^2 \left(25 - \left(x^2 + 1\right)^2\right)dx$, washers for revolving the region about the $x$-axis. The region is revolved about the $y$-axis.`,
     ],
     answer: 0 },
-  { id: "c8r-m26", type: "mcq", skill: "u8", topic: "8.9", calc: true,
+  { id: "c8r-m26", type: "mcq", skill: "u8", topic: "8.9", calc: true, difficulty: "easy",
     stem: String.raw`The region bounded by the graph of $y = \dfrac{x}{x + 1}$, the $x$-axis, and the line $x = 3$ is revolved about the $x$-axis.`,
     question: "What is the volume of the solid generated?",
     choices: ["$3.071$", "$5.070$", "$0.977$", "$6.141$"],
@@ -390,7 +429,7 @@ export default [
     answer: 0 },
 
   // 8.10 Disc method about other axes
-  { id: "c8r-m27", type: "mcq", skill: "u8", topic: "8.10", calc: false,
+  { id: "c8r-m27", type: "mcq", skill: "u8", topic: "8.10", calc: false, difficulty: "difficult",
     stem: String.raw`The region bounded by the graph of $y = \sqrt{x}$, the $y$-axis, and the line $y = 3$ is revolved about the line $y = 3$.`,
     question: "What is the volume of the solid generated?",
     choices: [String.raw`$\frac{27\pi}{2}$`, String.raw`$9\pi$`, String.raw`$\frac{81\pi}{2}$`, String.raw`$\frac{27}{2}$`],
@@ -401,7 +440,7 @@ export default [
       String.raw`This leaves out the factor $\pi$ in the area of a disc.`,
     ],
     answer: 0 },
-  { id: "c8r-m28", type: "mcq", skill: "u8", topic: "8.10", calc: true,
+  { id: "c8r-m28", type: "mcq", skill: "u8", topic: "8.10", calc: true, difficulty: "difficult",
     stem: String.raw`Let $R$ be the region bounded by the graph of $y = \ln(x + 2)$, the line $x = -1$, and the line $y = 1$. The region $R$ is revolved about the line $x = -1$.`,
     question: "What is the volume of the solid generated?",
     choices: ["$2.381$", "$1.010$", "$2.257$", "$5.921$"],
@@ -414,34 +453,34 @@ export default [
     answer: 0 },
 
   // 8.11 Washer method about the x- or y-axis
-  { id: "c8r-m29", type: "mcq", skill: "u8", topic: "8.11", calc: false,
-    stem: String.raw`The region enclosed by the graphs of $y = x$ and $y = x^2$ is revolved about the $x$-axis.`,
+  { id: "c8r-m29", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "moderate",
+    stem: String.raw`The region enclosed by the graphs of $y = 3x - x^2$ and $y = x$ is revolved about the $x$-axis.`,
     question: "What is the volume of the solid generated?",
-    choices: [String.raw`$\frac{2\pi}{15}$`, String.raw`$\frac{\pi}{30}$`, String.raw`$\frac{\pi}{6}$`, String.raw`$\frac{2}{15}$`],
+    choices: [String.raw`$\frac{56\pi}{15}$`, String.raw`$\frac{16\pi}{15}$`, String.raw`$\frac{4\pi}{3}$`, String.raw`$\frac{56}{15}$`],
     why: [
-      String.raw`On $0 \le x \le 1$, the outer radius is $x$ and the inner radius is $x^2$. The volume is $\pi\displaystyle\int_0^1 \left(x^2 - x^4\right)dx = \pi\left(\dfrac{1}{3} - \dfrac{1}{5}\right) = \dfrac{2\pi}{15}$.`,
-      String.raw`This is $\pi\displaystyle\int_0^1 \left(x - x^2\right)^2 dx$, which squares the difference of the radii. A washer's area is $\pi\left(R^2 - r^2\right)$, not $\pi(R - r)^2$.`,
-      String.raw`This is $\pi\displaystyle\int_0^1 \left(x - x^2\right)dx$. Neither radius was squared.`,
+      String.raw`The graphs meet where $3x - x^2 = x$, at $x = 0$ and $x = 2$, and the parabola is on top between them. The outer radius is $3x - x^2$ and the inner radius is $x$, so the volume is $\pi\displaystyle\int_0^2 \left(\left(3x - x^2\right)^2 - x^2\right)dx = \pi\displaystyle\int_0^2 \left(8x^2 - 6x^3 + x^4\right)dx = \pi\left(\dfrac{64}{3} - 24 + \dfrac{32}{5}\right) = \dfrac{56\pi}{15}$.`,
+      String.raw`This is $\pi\displaystyle\int_0^2 \left(\left(3x - x^2\right) - x\right)^2 dx$, which squares the difference of the radii. A washer's area is $\pi\left(R^2 - r^2\right)$, not $\pi(R - r)^2$.`,
+      String.raw`This is $\pi\displaystyle\int_0^2 \left(\left(3x - x^2\right) - x\right)dx$. Neither radius was squared.`,
       String.raw`This leaves out the factor $\pi$ in the area of a washer.`,
     ],
     answer: 0 },
-  { id: "c8r-m30", type: "mcq", skill: "u8", topic: "8.11", calc: false,
-    stem: String.raw`The region enclosed by the graphs of $y = 2x$ and $y = x^2$ is revolved about the $y$-axis.`,
+  { id: "c8r-m30", type: "mcq", skill: "u8", topic: "8.11", calc: false, difficulty: "moderate",
+    stem: String.raw`The region in the first quadrant enclosed by the graphs of $y = \sqrt{x}$ and $y = \dfrac{x^2}{8}$ is revolved about the $y$-axis.`,
     question: "Which of the following gives the volume of the solid generated?",
     choices: [
-      String.raw`$\displaystyle\pi\int_0^4 \left(y - \frac{y^2}{4}\right)dy$`,
-      String.raw`$\displaystyle\pi\int_0^2 \left(4x^2 - x^4\right)dx$`,
-      String.raw`$\displaystyle\pi\int_0^4 \left(\sqrt{y} - \frac{y}{2}\right)^2 dy$`,
-      String.raw`$\displaystyle\pi\int_0^4 \left(\frac{y^2}{4} - y\right)dy$`,
+      String.raw`$\displaystyle\pi\int_0^2 \left(8y - y^4\right)dy$`,
+      String.raw`$\displaystyle\pi\int_0^4 \left(x - \frac{x^4}{64}\right)dx$`,
+      String.raw`$\displaystyle\pi\int_0^2 \left(\sqrt{8y} - y^2\right)^2 dy$`,
+      String.raw`$\displaystyle\pi\int_0^4 \left(8y - y^4\right)dy$`,
     ],
     why: [
-      String.raw`In terms of $y$, the curves are $x = \sqrt{y}$ and $x = \dfrac{y}{2}$, which meet at $y = 0$ and $y = 4$. The outer radius is $\sqrt{y}$ and the inner radius is $\dfrac{y}{2}$, so the volume is $\pi\displaystyle\int_0^4 \left(\left(\sqrt{y}\right)^2 - \left(\dfrac{y}{2}\right)^2\right)dy$.`,
+      String.raw`The graphs meet where $\sqrt{x} = \dfrac{x^2}{8}$, at $(0, 0)$ and $(4, 2)$. In terms of $y$, the curves are $x = y^2$ and $x = \sqrt{8y}$, and for $0 < y < 2$, $\sqrt{8y} > y^2$. The outer radius is $\sqrt{8y}$ and the inner radius is $y^2$, so the volume is $\pi\displaystyle\int_0^2 \left(\left(\sqrt{8y}\right)^2 - \left(y^2\right)^2\right)dy = \pi\displaystyle\int_0^2 \left(8y - y^4\right)dy$.`,
       String.raw`This is the washer integral for revolving the region about the $x$-axis.`,
       String.raw`This squares the difference of the radii instead of subtracting the squares of the radii.`,
-      String.raw`This subtracts the outer radius squared from the inner radius squared, so its value is negative.`,
+      String.raw`This uses the $x$-values $0$ and $4$ as the limits of an integral in $y$. The region runs from $y = 0$ to $y = 2$.`,
     ],
     answer: 0 },
-  { id: "c8r-m31", type: "mcq", skill: "u8", topic: "8.11", calc: true, set: "c8r-s2",
+  { id: "c8r-m31", type: "mcq", skill: "u8", topic: "8.11", calc: true, difficulty: "moderate", set: "c8r-s2",
     question: String.raw`The region $R$ is revolved about the $x$-axis. What is the volume of the solid generated?`,
     choices: ["$65.725$", "$55.604$", "$20.921$", "$69.555$"],
     why: [
@@ -453,18 +492,18 @@ export default [
     answer: 0 },
 
   // 8.12 Washer method about other axes
-  { id: "c8r-m32", type: "mcq", skill: "u8", topic: "8.12", calc: false,
-    stem: String.raw`The region enclosed by the graphs of $y = x$ and $y = x^2$ is revolved about the line $y = 2$.`,
+  { id: "c8r-m32", type: "mcq", skill: "u8", topic: "8.12", calc: false, difficulty: "moderate",
+    stem: String.raw`The region bounded by the graph of $y = \dfrac{2}{x}$, the $x$-axis, and the lines $x = 1$ and $x = 2$ is revolved about the line $y = -1$.`,
     question: "What is the volume of the solid generated?",
-    choices: [String.raw`$\frac{8\pi}{15}$`, String.raw`$\frac{4\pi}{5}$`, String.raw`$\frac{2\pi}{15}$`, String.raw`$\frac{\pi}{30}$`],
+    choices: [String.raw`$\pi\left(2 + 4\ln 2\right)$`, String.raw`$\pi\left(3 + 4\ln 2\right)$`, String.raw`$\pi\left(2 - 4\ln 2\right)$`, String.raw`$\pi\left(2\ln 2\right)$`],
     why: [
-      String.raw`The curve $y = x^2$ is farther from $y = 2$, so the outer radius is $2 - x^2$ and the inner radius is $2 - x$. The volume is $\pi\displaystyle\int_0^1 \left(\left(2 - x^2\right)^2 - (2 - x)^2\right)dx = \pi\displaystyle\int_0^1 \left(x^4 - 5x^2 + 4x\right)dx = \pi\left(\dfrac{1}{5} - \dfrac{5}{3} + 2\right) = \dfrac{8\pi}{15}$.`,
-      String.raw`This uses radii $x + 2$ and $x^2 + 2$, which revolve the region about the line $y = -2$.`,
-      String.raw`This is the volume for revolving the region about the $x$-axis, with radii $x$ and $x^2$.`,
-      String.raw`This is $\pi\displaystyle\int_0^1 \left((2 - x^2) - (2 - x)\right)^2 dx$, which squares the difference of the radii.`,
+      String.raw`Measured from $y = -1$, the outer radius is $\dfrac{2}{x} + 1$ and the inner radius is $0 + 1 = 1$. The volume is $\pi\displaystyle\int_1^2 \left(\left(\dfrac{2}{x} + 1\right)^2 - 1\right)dx = \pi\displaystyle\int_1^2 \left(\dfrac{4}{x^2} + \dfrac{4}{x}\right)dx = \pi\Big[-\dfrac{4}{x} + 4\ln x\Big]_1^2 = \pi\left(2 + 4\ln 2\right)$.`,
+      String.raw`This is $\pi\displaystyle\int_1^2 \left(\dfrac{2}{x} + 1\right)^2 dx$, which leaves out the hole. The region does not touch the line $y = -1$, so the solid has a hole of radius $1$.`,
+      String.raw`This uses radii $\dfrac{2}{x} - 1$ and $1$, as if the axis were the line $y = 1$. Its value is negative, which no volume can be.`,
+      String.raw`This is $\pi\displaystyle\int_1^2 \left(\left(\dfrac{2}{x} + 1\right) - 1\right)dx$. Neither radius was squared.`,
     ],
     answer: 0 },
-  { id: "c8r-m33", type: "mcq", skill: "u8", topic: "8.12", calc: false,
+  { id: "c8r-m33", type: "mcq", skill: "u8", topic: "8.12", calc: false, difficulty: "easy",
     stem: String.raw`Let $R$ be the region bounded by the graph of $y = \sqrt{x}$, the $x$-axis, and the line $x = 4$. The region $R$ is revolved about the line $y = -2$.`,
     question: "Which of the following gives the volume of the solid generated?",
     choices: [
@@ -480,7 +519,7 @@ export default [
       String.raw`This squares each radius term by term, writing $\left(\sqrt{x} + 2\right)^2$ as $x + 4$, and leaves out the hole.`,
     ],
     answer: 0 },
-  { id: "c8r-m34", type: "mcq", skill: "u8", topic: "8.12", calc: true, set: "c8r-s2",
+  { id: "c8r-m34", type: "mcq", skill: "u8", topic: "8.12", calc: true, difficulty: "moderate", set: "c8r-s2",
     question: String.raw`The region $R$ is revolved about the line $y = -1$. What is the volume of the solid generated?`,
     choices: ["$102.585$", "$28.866$", "$65.725$", "$55.604$"],
     why: [
@@ -488,6 +527,74 @@ export default [
       String.raw`This uses $f(x) - 1$ and $g(x) - 1$ as the radii, subtracting $1$ instead of adding it. The distance from a point at height $y$ to the line $y = -1$ is $y + 1$.`,
       String.raw`This is the volume for revolving $R$ about the $x$-axis, with radii $f(x)$ and $g(x)$.`,
       String.raw`This is $\pi\displaystyle\int \left(\left(f(x) + 1\right) - \left(g(x) + 1\right)\right)^2 dx$, which squares the difference of the radii.`,
+    ],
+    answer: 0 },
+
+  { id: "c8r-m35", type: "mcq", skill: "u8", topic: "8.1", calc: false, difficulty: "moderate", set: "c8r-s11",
+    question: String.raw`Using a midpoint Riemann sum with two subintervals of equal length, what is the approximate average temperature of the water, in degrees Celsius, over the interval $0 \le h \le 8$?`,
+    choices: ["$18$", "$144$", "$17.6$", "$17.75$"],
+    why: [
+      String.raw`The two subintervals are $[0, 4]$ and $[4, 8]$, with midpoints $h = 2$ and $h = 6$. So $\displaystyle\int_0^8 W(h)\,dh \approx 4(15) + 4(21) = 144$, and the average value is about $\dfrac{144}{8} = 18$ degrees Celsius.`,
+      String.raw`This is the estimate of $\displaystyle\int_0^8 W(h)\,dh$ without dividing by the length of the interval, $8$.`,
+      String.raw`This is the average of the five values in the table, $\dfrac{14 + 15 + 18 + 21 + 20}{5}$. The question asks for the average value from a midpoint sum.`,
+      String.raw`This uses a trapezoidal sum with four subintervals, $\dfrac{2}{2}\left(14 + 2(15) + 2(18) + 2(21) + 20\right) = 142$, divided by $8$. The question asks for a midpoint sum with two subintervals.`,
+    ],
+    answer: 0 },
+  { id: "c8r-m36", type: "mcq", skill: "u8", topic: "8.3", calc: false, difficulty: "difficult", set: "c8r-s12",
+    question: String.raw`Using a trapezoidal sum with the four subintervals indicated by the table to approximate $\displaystyle\int_0^{10} D(t)\,dt$, what is the approximate amount of water, in liters, in the tank at time $t = 10$?`,
+    choices: ["$171$", "$51$", "$191$", "$469$"],
+    why: [
+      String.raw`The trapezoidal sum is $2 \cdot \dfrac{8 + 11}{2} + 3 \cdot \dfrac{11 + 15}{2} + 4 \cdot \dfrac{15 + 20}{2} + 1 \cdot \dfrac{20 + 22}{2} = 19 + 39 + 70 + 21 = 149$. Water pumped in is $12 \cdot 10 = 120$ liters, so the amount at $t = 10$ is about $200 + 120 - 149 = 171$ liters.`,
+      String.raw`This is $200 - 149$, which leaves out the $120$ liters pumped into the tank.`,
+      String.raw`This uses a left Riemann sum, $2(8) + 3(11) + 4(15) + 1(20) = 129$, for the water drained. The question asks for a trapezoidal sum.`,
+      String.raw`This adds the water that drained out, $200 + 120 + 149$. Draining removes water from the tank, so it is subtracted.`,
+    ],
+    answer: 0 },
+  { id: "c8r-m37", type: "mcq", skill: "u8", topic: "8.5", calc: false, difficulty: "difficult", set: "c8r-s6",
+    stem: String.raw`Consider the following expressions.
+
+I. $\displaystyle\int_0^4 \left(6 - y - \sqrt{y}\right)dy$
+
+II. $\displaystyle\int_0^2 x^2\,dx + \int_2^6 (6 - x)\,dx$
+
+III. $\displaystyle\int_0^6 \left(6 - x - x^2\right)dx$`,
+    question: String.raw`Which of the expressions above give the area of $R$?`,
+    choices: ["I and II only", "I only", "II only", "I, II, and III"],
+    why: [
+      String.raw`I uses horizontal strips from $x = \sqrt{y}$ to $x = 6 - y$ for $0 \le y \le 4$. II uses vertical strips, split at $x = 2$ where the top boundary changes from the curve to the line. Both equal $\dfrac{32}{3}$. III subtracts the curve from the line over all of $[0, 6]$, but the region is bounded below by the $x$-axis, and the integral equals $-54$.`,
+      String.raw`II is also correct. With vertical strips the top boundary is $y = x^2$ for $0 \le x \le 2$ and $y = 6 - x$ for $2 \le x \le 6$, so the area splits into those two integrals.`,
+      String.raw`I is also correct. Solving each boundary for $x$ gives $x = \sqrt{y}$ and $x = 6 - y$, and right minus left over $0 \le y \le 4$ gives the area.`,
+      String.raw`III is not correct. The region is bounded below by the $x$-axis, not by the curve, and for $x > 2$ the curve is above the line. Its value is $-54$, which cannot be an area.`,
+    ],
+    answer: 0 },
+  { id: "c8r-m38", type: "mcq", skill: "u8", topic: "8.9", calc: false, difficulty: "moderate", set: "c8r-s13",
+    question: String.raw`The region $R$ is revolved about the $x$-axis. What is the volume of the solid generated?`,
+    choices: [String.raw`$\frac{32\pi}{3}$`, String.raw`$6\pi$`, String.raw`$16\pi$`, String.raw`$\frac{56\pi}{3}$`],
+    why: [
+      String.raw`From the graph, $f(x) = 2$ on $0 \le x \le 2$ and $f(x) = 4 - x$ on $2 \le x \le 4$. The volume is $\pi\displaystyle\int_0^2 2^2\,dx + \pi\int_2^4 (4 - x)^2\,dx = 8\pi + \dfrac{8\pi}{3} = \dfrac{32\pi}{3}$, a cylinder and a cone.`,
+      String.raw`This is $\pi\displaystyle\int_0^4 f(x)\,dx = \pi(4 + 2)$, which uses the radius instead of its square.`,
+      String.raw`This is $\pi\displaystyle\int_0^4 2^2\,dx$, which treats the radius as $2$ on the whole interval. On $2 \le x \le 4$ the radius is $4 - x$.`,
+      String.raw`This is $\pi\displaystyle\int_0^2 (4 - y)^2\,dy$, discs about the $y$-axis. The region is revolved about the $x$-axis.`,
+    ],
+    answer: 0 },
+  { id: "c8r-m39", type: "mcq", skill: "u8", topic: "8.4", calc: false, difficulty: "difficult", set: "c8r-s14",
+    question: String.raw`What is the area of the region enclosed by the graphs of $f$ and $g$?`,
+    choices: [String.raw`$\frac{9}{2}$`, String.raw`$\frac{27}{2}$`, String.raw`$-\frac{9}{2}$`, String.raw`$\frac{32}{3}$`],
+    why: [
+      String.raw`The parabola has $x$-intercepts $-1$ and $3$ and passes through $(1, 4)$, so $f(x) = -(x + 1)(x - 3) = -x^2 + 2x + 3$. The line through $(-1, 0)$ and $(2, 3)$ is $g(x) = x + 1$. They meet at $x = -1$ and $x = 2$, so the area is $\displaystyle\int_{-1}^{2} \left(-x^2 + x + 2\right)dx = \Big[-\dfrac{x^3}{3} + \dfrac{x^2}{2} + 2x\Big]_{-1}^{2} = \dfrac{10}{3} + \dfrac{7}{6} = \dfrac{9}{2}$.`,
+      String.raw`This is $\displaystyle\int_{-1}^{2} \left(f(x) + g(x)\right)dx$, which adds $g$ instead of subtracting it.`,
+      String.raw`This is $\displaystyle\int_{-1}^{2} \left(g(x) - f(x)\right)dx$, the lower graph minus the upper one, so the value is negative.`,
+      String.raw`This is $\displaystyle\int_{-1}^{3} f(x)\,dx$, the area between the parabola and the $x$-axis. The region is bounded below by $g$, not the $x$-axis, and ends at $x = 2$, where the graphs cross.`,
+    ],
+    answer: 0 },
+  { id: "c8r-m40", type: "mcq", skill: "u8", topic: "8.12", calc: false, difficulty: "moderate", set: "c8r-s15",
+    question: String.raw`The region $R$ is revolved about the line $\ell$. What is the volume of the solid generated?`,
+    choices: [String.raw`$24\pi$`, String.raw`$\frac{40\pi}{3}$`, String.raw`$\frac{184\pi}{3}$`, String.raw`$\frac{56\pi}{3}$`],
+    why: [
+      String.raw`From the figure, $R$ lies between $y = 1$ and $y = 1 + \sqrt{x}$ for $0 \le x \le 4$, and $\ell$ is the line $y = 4$, above $R$. The outer radius is $4 - 1 = 3$ and the inner radius is $4 - \left(1 + \sqrt{x}\right) = 3 - \sqrt{x}$. The volume is $\pi\displaystyle\int_0^4 \left(9 - \left(3 - \sqrt{x}\right)^2\right)dx = \pi\displaystyle\int_0^4 \left(6\sqrt{x} - x\right)dx = \pi(32 - 8) = 24\pi$.`,
+      String.raw`This is $\pi\displaystyle\int_0^4 \left(9 - \left(1 + \sqrt{x}\right)^2\right)dx$, which uses the height of the curve, $1 + \sqrt{x}$, as the inner radius. The inner radius is the distance from the curve up to $\ell$, $4 - \left(1 + \sqrt{x}\right)$.`,
+      String.raw`This uses radii $5 + \sqrt{x}$ and $5$, the distances to the line $y = -4$. The line $\ell$ is $y = 4$, above the region, so each radius is $4$ minus a height.`,
+      String.raw`This is the volume for revolving $R$ about the $x$-axis, with radii $1 + \sqrt{x}$ and $1$.`,
     ],
     answer: 0 },
 

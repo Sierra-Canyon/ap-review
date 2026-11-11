@@ -8,6 +8,9 @@ import { mkdirSync } from "node:fs";
 const out = process.argv[2] || "tools/.shots";
 mkdirSync(out, { recursive: true });
 const BASE = "http://localhost:8765/index.html?demo";
+// Items with an opens date in the future are not shown yet (the spring Big Idea items open on the day they are taught).
+const TODAY = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; })();
+const OPEN = deck.items.filter((it) => !it.opens || it.opens <= TODAY).length;
 const byId = Object.fromEntries([...deck.items, ...(deck.forms || []).flatMap((f) => f.items)].map((i) => [i.id, i]));
 const errors = [];
 const log = (...a) => console.log(...a);
@@ -62,7 +65,7 @@ async function answer(page, right) {
   await page.waitForSelector(".choices-home");
   const fresh = await page.textContent(".mode .row");
   log("home:", fresh.replace(/\s+/g, " ").trim());
-  assert(new RegExp(`0\\s*due now\\s*${deck.items.length}\\s*new`).test(fresh), "home should show 0 due and all new");
+  assert(new RegExp(`0\\s*due now\\s*${OPEN}\\s*new`).test(fresh), "home should show 0 due and all new");
   await page.screenshot({ path: `${out}/02-home-new.png`, fullPage: true });
 
   // A full review set: miss the first, get the rest right.
@@ -91,7 +94,7 @@ async function answer(page, right) {
   await page.click("text=Home");
   const after = (await page.textContent(".mode .row")).replace(/\s+/g, " ");
   log("home after:", after.trim());
-  assert(new RegExp(`0\\s*due now\\s*${deck.items.length - 10}\\s*new`).test(after), "after one set: 0 due and 10 fewer new; got " + after);
+  assert(new RegExp(`0\\s*due now\\s*${OPEN - 10}\\s*new`).test(after), "after one set: 0 due and 10 fewer new; got " + after);
 
   // One of each type that may not have come up, straight from the review flow: run sets until each type has been seen.
   let guard = 0; const typesSeen = new Set(types);

@@ -6,3 +6,4 @@ preview.html
 Claude outputs/
 package-lock.json
 __pycache__/
+*.BACKUP-*

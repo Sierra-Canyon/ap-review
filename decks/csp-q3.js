@@ -8,6 +8,24 @@ import mockWR from "./csp-q3-mocks/wr.js";
 import q4A from "./csp-q4/review-a.js";
 import q4WR from "./csp-q4/review-wr.js";
 import q4Mocks from "./csp-q4/mocks.js";
+// Spring 2027: the Big Ideas taught on Khan Academy. Each review item opens on the day its topic is taught.
+import bi1 from "./csp-spring/bi1.js";
+import bi2 from "./csp-spring/bi2.js";
+import bi3 from "./csp-spring/bi3.js";
+import bi4 from "./csp-spring/bi4.js";
+import bi5 from "./csp-spring/bi5.js";
+import bi1m from "./csp-spring-mocks/bi1m.js";
+import bi2m from "./csp-spring-mocks/bi2m.js";
+import bi3m from "./csp-spring-mocks/bi3m.js";
+import bi4m from "./csp-spring-mocks/bi4m.js";
+import bi5m from "./csp-spring-mocks/bi5m.js";
+import pe3a from "./csp-spring-mocks/pe3a.js";
+import pe3b from "./csp-spring-mocks/pe3b.js";
+const SPRING = [...bi1.items, ...bi2.items, ...bi4.items, ...bi5.items, ...bi3.items];
+const BI = { "1": ["crd-collab", "crd-purpose", "crd-design", "crd-errors"], "2": ["bits", "limits", "text-analog", "compression", "data-use", "bigdata"],
+  "3": ["pc-vars", "pc-cond", "pc-proc", "pc-loops", "pc-lists", "robot", "algo-build", "algo-search", "algo-hard", "sim"],
+  "4": ["internet", "ip-routing", "packets-web", "protocols", "parallel"], "5": ["innovations", "crowd", "divide", "mlbias", "copyright", "privacy", "attacks", "crypto"] };
+const sform = (id, name, mod, group, date) => ({ id, name, items: mod.items, group, date, total: mod.items.length * 2 });
 // Fixed mock quizzes, written only for the mocks: none of their items is in review.
 const mockItems = [...mockMC.items, ...mockWR.items, ...q4Mocks.items];
 const form = (prefix) => mockItems.filter((it) => it.id.startsWith(prefix + "-"));
@@ -27,6 +45,17 @@ export default {
     { name: "Quiz 4", date: "2026-11-20" },
     { name: "WR7", date: "2026-11-23" },
     { name: "WR8", date: "2026-12-09" },
+    { name: "Big Idea 1 mock quiz", date: "2027-01-27" },
+    { name: "Big Idea 2 mock quiz", date: "2027-02-11" },
+    { name: "Data unit test", date: "2027-02-12" },
+    { name: "Networks unit test", date: "2027-02-25" },
+    { name: "Impact unit test", date: "2027-03-16" },
+    { name: "Big Idea 5 mock quiz", date: "2027-03-17" },
+    { name: "Big Idea 4 mock quiz", date: "2027-03-19" },
+    { name: "Big Idea 3 mock quiz", date: "2027-04-21" },
+    { name: "Algorithms unit test", date: "2027-04-22" },
+    { name: "Practice Exam 3", date: "2027-05-10" },
+    { name: "The AP exam", date: "2027-05-14" },
   ],
   lang: "csharp",
   blurb: "Code-reading questions, output and trace tables, and written responses scored with the quiz's own rubric rows.",
@@ -35,6 +64,12 @@ export default {
     { id: "wr5", name: "WR5 (11/9)", skills: ["wr-grows", "wr-validity"], size: 4 },
     { id: "wr6", name: "WR6 (11/10)", skills: ["wr-algo", "wr-proc"], size: 4 },
     { id: "q4", name: "Quiz 4 (11/20)", skills: ["totals", "grid", "draw", "walk", "rewrite", "wr-params", "wr-logic"] },
+    { id: "bi1", name: "Big Idea 1", skills: BI["1"] },
+    { id: "bi2", name: "Big Idea 2", skills: BI["2"] },
+    { id: "bi4", name: "Big Idea 4", skills: BI["4"] },
+    { id: "bi5", name: "Big Idea 5", skills: BI["5"] },
+    { id: "bi1245", name: "Big Ideas 1, 2, 4, 5", skills: [...BI["1"], ...BI["2"], ...BI["4"], ...BI["5"]] },
+    { id: "bi3", name: "Big Idea 3", skills: BI["3"] },
   ],
   skills: [
     { id: "index", name: "Index and Count", from: "Lists 1", short: "Lists 1" },
@@ -55,6 +90,40 @@ export default {
     { id: "wr-proc", name: "A logic error in the procedure (2025 Set 1, 2(b))", from: "Written response", short: "WR: proc" },
     { id: "wr-params", name: "Parameters (2024 Set 2, 2(c))", from: "Written response", short: "WR: params" },
     { id: "wr-logic", name: "A logic error (2025 Set 2, 2(b))", from: "Written response", short: "WR: logic" },
+
+    { id: "crd-collab", name: "Collaboration", from: "BI1", short: "Collaboration" },
+    { id: "crd-purpose", name: "Program purpose and function", from: "BI1", short: "Program" },
+    { id: "crd-design", name: "Design and development", from: "BI1", short: "Design" },
+    { id: "crd-errors", name: "Errors and testing", from: "BI1", short: "Errors" },
+    { id: "bits", name: "Bits and binary", from: "BI2", short: "Bits" },
+    { id: "limits", name: "Overflow and roundoff", from: "BI2", short: "Overflow" },
+    { id: "text-analog", name: "Text and analog data", from: "BI2", short: "Text" },
+    { id: "compression", name: "Compression", from: "BI2", short: "Compression" },
+    { id: "data-use", name: "Using data", from: "BI2", short: "Using" },
+    { id: "bigdata", name: "Big data", from: "BI2", short: "Big" },
+    { id: "internet", name: "The Internet", from: "BI4", short: "The" },
+    { id: "ip-routing", name: "Addresses and routing", from: "BI4", short: "Addresses" },
+    { id: "packets-web", name: "Packets and the web", from: "BI4", short: "Packets" },
+    { id: "protocols", name: "Protocols and scale", from: "BI4", short: "Protocols" },
+    { id: "parallel", name: "Parallel and distributed", from: "BI4", short: "Parallel" },
+    { id: "innovations", name: "Effects of innovations", from: "BI5", short: "Effects" },
+    { id: "crowd", name: "Crowdsourcing and sensors", from: "BI5", short: "Crowdsourcing" },
+    { id: "divide", name: "The digital divide", from: "BI5", short: "The" },
+    { id: "mlbias", name: "Bias in algorithms", from: "BI5", short: "Bias" },
+    { id: "copyright", name: "Copyright and licenses", from: "BI5", short: "Copyright" },
+    { id: "privacy", name: "Personal data", from: "BI5", short: "Personal" },
+    { id: "attacks", name: "Cyber attacks", from: "BI5", short: "Cyber" },
+    { id: "crypto", name: "Encryption and logins", from: "BI5", short: "Encryption" },
+    { id: "pc-vars", name: "Variables and math", from: "BI3", short: "Variables" },
+    { id: "pc-cond", name: "Conditions and IF", from: "BI3", short: "Conditions" },
+    { id: "pc-proc", name: "Procedures", from: "BI3", short: "Procedures" },
+    { id: "pc-loops", name: "REPEAT loops", from: "BI3", short: "REPEAT" },
+    { id: "pc-lists", name: "Lists", from: "BI3", short: "Lists" },
+    { id: "robot", name: "The robot", from: "BI3", short: "The" },
+    { id: "algo-build", name: "Building algorithms", from: "BI3", short: "Building" },
+    { id: "algo-search", name: "Search and efficiency", from: "BI3", short: "Search" },
+    { id: "algo-hard", name: "Hard problems", from: "BI3", short: "Hard" },
+    { id: "sim", name: "Simulations", from: "BI3", short: "Simulations" },
   ],
   forms: [
     { id: "m1", name: "Quiz 3 Mock 1", items: form("q3m1"), ...Q3 },
@@ -63,17 +132,24 @@ export default {
     { id: "q4m1", name: "Quiz 4 Mock 1", items: form("q4m1"), ...Q4 },
     { id: "q4m2", name: "Quiz 4 Mock 2", items: form("q4m2"), ...Q4 },
     { id: "q4m3", name: "Quiz 4 Mock 3", items: form("q4m3"), ...Q4 },
+    sform("bi1m", "Big Idea 1 mock quiz", bi1m, "Big Idea 1: Creative Development", "2027-01-27"),
+    sform("bi2m", "Big Idea 2 mock quiz", bi2m, "Big Idea 2: Data", "2027-02-11"),
+    sform("bi5m", "Big Idea 5 mock quiz", bi5m, "Big Idea 5: Impact of Computing", "2027-03-17"),
+    sform("bi4m", "Big Idea 4 mock quiz", bi4m, "Big Idea 4: Computer Systems and Networks", "2027-03-19"),
+    sform("bi3m", "Big Idea 3 mock quiz", bi3m, "Big Idea 3: Algorithms and Programming", "2027-04-21"),
+    sform("pe3a", "Practice Exam 3 Part 1", pe3a, "Practice Exam 3", "2027-05-10"),
+    sform("pe3b", "Practice Exam 3 Part 2", pe3b, "Practice Exam 3", "2027-05-12"),
   ],
   mock: {
     name: "Mock quiz",
     title: "Quiz practice",
     total: 20,
     clock: "25:00",
-    blurb: "Mock quizzes for Quiz 3 and Quiz 4, each six multiple choice and two written responses, the same shape as the quiz. None of their questions are in review.",
+    blurb: "Fall: mock quizzes for Quiz 3 and Quiz 4, six multiple choice and two written responses each. Spring: a multiple-choice mock quiz for each Big Idea, and Practice Exam 3 in two parts. None of their questions are in review.",
     intro: [
-      ["Part A.", "Six multiple-choice items, 2 points each. Read the code and choose what it does."],
-      ["Part B.", "Two written responses, 4 points each, scored with the quiz's rubric rows. Quiz 3: the code without the list (2026 exam, 2(c)) and a logic error (2025 exam, Set 2, 2(b)). Quiz 4: the parameters of a procedure (2024 exam, Set 2, 2(c)) and a logic error (2025 exam, Set 2, 2(b))."],
-      ["", "No feedback until the end. The quiz itself is 25 minutes, with LockDown on. None of these questions are in review, so each mock quiz shows how you do on code you have not practiced."],
+      ["Fall quizzes.", "Six multiple-choice items, 2 points each, then two written responses, 4 points each, scored with the quiz's rubric rows."],
+      ["Spring.", "A Big Idea mock quiz is 10 or 15 multiple-choice items, 2 points each. Practice Exam 3 is two parts of 25 multiple-choice items, at the AP exam's pace of about 1 minute 40 seconds a question."],
+      ["", "No feedback until the end. None of these questions are in review, so each mock shows how you do on questions you have not practiced."],
     ],
     partA: { points: 2, slots: [["totals"], ["grid"], ["draw"], ["walk"], ["rewrite"], ["rewrite"]] },
     partB: { kind: "wr", points: 4, slots: [["wr-params"], ["wr-logic"]] },
@@ -1746,5 +1822,6 @@ int F(List<string> names, string wanted) { for (int i = 0; i < names.Count; i++)
     },
     ...q4A.items,
     ...q4WR.items,
+    ...SPRING,
   ],
 };

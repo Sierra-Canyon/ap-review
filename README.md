@@ -124,6 +124,14 @@ Two parts, one sign-in:
 - None of it copies Q4, WR4, WR5, or WR6 in AP Classroom: no item uses a real quiz item's function with its twist and inputs, and the written responses avoid MyRallyCry, RemoveItem, AddMany, TotalHealth, CountItem, and the level-drawing loop the real drills use.
 - The deck keeps the id `csp-q3`, so progress and the Firestore rules carry over. Every block of code was compiled and run on .NET 10 (`node tools/verify.mjs` on each file).
 
+### Spring 2027: the Big Ideas (added 11/10)
+
+The spring is taught on Khan Academy with a sub in the room, and this deck is the practice. The same deck (`csp-q3`) gained:
+
+- **243 review items** in `decks/csp-spring/` (`bi1.js` to `bi5.js`), one skill for each topic. Each item has an `opens` date, the day its Khan lesson is taught, so review never shows a topic early. The "Big Idea 1" to "Big Idea 5" buttons on Home pick a Big Idea.
+- **Seven mock forms** in `decks/csp-spring-mocks/`: a mock quiz for each Big Idea (10 or 15 multiple choice), and Practice Exam 3 in two parts of 25 (5/10 and 5/12). None of their items are in review.
+- Big Idea 3 is in AP pseudocode, text only, indexes from 1. Every pseudocode key was run through two separate Python interpreters (the writer's and a second reader's).
+
 ## Learn
 
 | Chapter | Sections | From |

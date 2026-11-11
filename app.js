@@ -26,6 +26,16 @@ function mathText(s) {
 const tx = (s) => (deck.lang === "math" ? mathText(s) : esc(s));
 const typeLabel = (t) => deck.typeNames?.[t] || baseTypes[t] || t;
 const isChoice = (it) => it.type === "mcq" || it.type === "vocab";
+// What an essay item is called and the note under its prompt. AP World uses kind "leq" and "dbq"; other courses add
+// their own kinds (AP Gov: "scotus", "argument") here.
+const ESSAY_KINDS = {
+  dbq: ["Document-based question", "Write an essay that responds to the question, using at least four of the documents and evidence beyond them. On the exam this is 60 minutes, with a 15-minute reading period."],
+  leq: ["Long essay question", "Write an essay that responds to the question with a thesis, context, specific evidence, and reasoning. On the exam this is 40 minutes."],
+  scotus: ["SCOTUS comparison question", "Answer each part in a few sentences, comparing the case described with the required Supreme Court case. On the exam this is about 20 minutes."],
+  argument: ["Argument essay", "Write an essay with a defensible claim, evidence from at least one of the listed foundational documents and one more piece of evidence, reasoning, and a response to an opposing view. On the exam this is about 25 minutes."],
+};
+const essayLabel = (it) => (ESSAY_KINDS[it.kind] || ESSAY_KINDS.leq)[0];
+const essayNote = (it) => (ESSAY_KINDS[it.kind] || ESSAY_KINDS.leq)[1];
 const choiceText = (t) => (deck.lang === "java" ? md(t) : deck.lang === "math" ? mathText(t) : esc(t));
 const shuffle = (a) => { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
 const pct = (x) => Math.round(x * 100);
@@ -417,8 +427,8 @@ function itemHTML(item, opts = {}) {
   if (item.type === "essay") {
     return `${head}
       ${item.set ? sourcesHTML(deck.sets[item.set], opts.sourcesOpen !== false) : ""}
-      <div class="prompt"><b>${item.kind === "dbq" ? "Document-based question" : "Long essay question"}.</b> ${esc(item.prompt)}</div>
-      <p class="small muted">${item.kind === "dbq" ? "Write an essay that responds to the question, using at least four of the documents and evidence beyond them. On the exam this is 60 minutes, with a 15-minute reading period." : "Write an essay that responds to the question with a thesis, context, specific evidence, and reasoning. On the exam this is 40 minutes."}</p>
+      <div class="prompt"><b>${essayLabel(item)}.</b> ${esc(item.prompt)}</div>
+      <p class="small muted">${essayNote(item)}</p>
       <label for="wr-${item.id}" class="small muted">Your essay</label>
       <textarea class="wr essay-in" id="wr-${item.id}" spellcheck="true"></textarea>`;
   }
@@ -983,7 +993,7 @@ function renderMockScore() {
     : it.type === "frq"
     ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span>${calcChip(it)}</div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}${frqPrompt(it)}${yours}`
     : it.type === "essay"
-    ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}<div class="prompt"><b>${it.kind === "dbq" ? "Document-based question" : "Long essay question"}.</b> ${esc(it.prompt)}</div><div class="stack"><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div></div>`
+    ? `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span></div>${it.set ? sourcesHTML(deck.sets[it.set], false) : ""}<div class="prompt"><b>${essayLabel(it)}.</b> ${esc(it.prompt)}</div><div class="stack"><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div></div>`
     : `<div class="row"><span class="chip accent">${esc(skillName(it.skill))}</span><span class="src">${esc(it.source)}</span></div>
     ${codeBlock(it.listII, wrLabel(it, 1))}<div class="prompt">${esc(it.prompt)}</div>${yours}`;
   const area = document.createElement("div"); area.className = "stack"; card.append(area);
@@ -1079,7 +1089,7 @@ function renderMockDone() {
     ${B.map((it, k) => (cfg.sections && partName(it) !== partName(B[k - 1] || A[0]) ? `<h2>${esc(partName(it, true))}</h2>` : "")
       + (!set && it.set && it.set !== B[k - 1]?.set ? sourcesHTML(deck.sets[it.set], false) : "")
       + (it.type === "code" || it.type === "essay" || it.type === "frq"
-      ? `<details class="panel" open><summary><span class="chip ${bScore(it, m) === rowsMax(it) ? "good" : bScore(it, m) * 2 >= rowsMax(it) ? "warn" : "bad"}">${bScore(it, m)} / ${rowsMax(it)}</span> ${it.type === "essay" ? (it.kind === "dbq" ? "Document-based question" : "Long essay question") : it.type === "frq" ? `${esc(it.part || "")} ${tx(it.prompt)}` : esc(it.title)}</summary>
+      ? `<details class="panel" open><summary><span class="chip ${bScore(it, m) === rowsMax(it) ? "good" : bScore(it, m) * 2 >= rowsMax(it) ? "warn" : "bad"}">${bScore(it, m)} / ${rowsMax(it)}</span> ${it.type === "essay" ? essayLabel(it) : it.type === "frq" ? `${esc(it.part || "")} ${tx(it.prompt)}` : esc(it.title)}</summary>
         <div class="stack">${it.type === "essay" ? `<div class="prompt">${esc(it.prompt)}</div><b>Your essay</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>` : it.type === "frq" ? `<b>Your work</b><div class="your">${esc(m.answers[it.id]?.text || "(blank)")}</div>` : `<b>Your code</b><pre class="code"><code>${esc(m.answers[it.id]?.text || "(blank)")}</code></pre>`}
         <div class="tablewrap"><table><tbody>${it.rows.map((r, k) => { const got = (m.wr[it.id].levels || [])[k] || 0, mx = r.max ?? (r.levels ? r.levels.length - 1 : 1); return `<tr><td class="num">${mx === 1 ? (got ? "✓" : "·") : `${got} / ${mx}`}</td><td><b>${esc(r.name)}</b><br><span class="small">${prose(r.levels ? r.levels[got] : r.earns || "")}</span></td></tr>`; }).join("")}</tbody></table></div>
         ${solutionHTML(it, bScore(it, m))}</div></details>`

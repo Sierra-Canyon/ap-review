@@ -440,6 +440,14 @@ svg.graph .g-dash { stroke-dasharray: 5 4; }
 svg.graph .g-dot { fill: var(--accent); stroke: var(--accent); stroke-width: 2; }
 figure.graphwrap svg.graph.chart { max-width: 560px; }
 svg.graph .g-bar { fill: var(--accent); opacity: .85; }
+svg.graph .g-bar.g-s1 { fill: var(--muted); opacity: .9; }
+svg.graph .g-bar.g-s2 { fill: none; stroke: currentColor; stroke-width: 1.4; opacity: 1; }
+svg.graph .g-line { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linejoin: round; }
+svg.graph .g-line.g-s1 { stroke: var(--muted); stroke-dasharray: 7 4; }
+svg.graph .g-line.g-s2 { stroke: currentColor; stroke-dasharray: 2 3; stroke-width: 2; }
+svg.graph .g-mark { fill: var(--accent); }
+svg.graph .g-mark.g-s1 { fill: var(--muted); }
+svg.graph .g-mark.g-s2 { fill: currentColor; }
 svg.graph .g-val { fill: currentColor; font: 700 11.5px var(--font-body); }
 svg.graph .g-open { fill: var(--surface, #fff); stroke: var(--accent); stroke-width: 2; }
 figure.imgwrap { margin: 8px 0; max-width: 100%; }

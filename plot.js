@@ -87,8 +87,11 @@ ${out.join("\n").replace(/url\(#g-arrow\)/g, `url(#${id}a)`)}
 // so a screen reader gets them.
 // bars({ labels: ["1290", ...], values: [4.75, ...], y: [0, 5], step: 1, yname: "Millions of people", alt: "...", width: 520, height: 300, fmt: (v) => v.toFixed(2) })
 export function bars(o) {
-  const width = o.width || 520, height = o.height || 300, L = 48, R = 12, T = 26, B = 34;
-  const [y0, y1] = o.y, step = o.step || 1, n = o.values.length;
+  // One series: { labels, values }. Several (grouped bars, with a legend): { labels, series: [{ name, values }, ...] } (up to 3).
+  const series = o.series || [{ name: "", values: o.values }];
+  const leg = series.length > 1 ? 22 : 0;
+  const width = o.width || 520, height = (o.height || 300) + leg, L = 48, R = 12, T = 26 + leg, B = 34;
+  const [y0, y1] = o.y, step = o.step || 1, n = o.labels.length, k = series.length;
   const sy = (v) => height - B - ((v - y0) / (y1 - y0)) * (height - T - B);
   const bw = (width - L - R) / n;
   const p = (v) => +v.toFixed(1);
@@ -97,15 +100,55 @@ export function bars(o) {
     out.push(`<line class="g-grid" x1="${L}" y1="${p(sy(v))}" x2="${width - R}" y2="${p(sy(v))}"/>`);
     out.push(`<text class="g-tick" x="${L - 6}" y="${p(sy(v) + 4)}" text-anchor="end">${fmt(v)}</text>`);
   }
-  o.values.forEach((v, i) => {
-    const x = L + i * bw + bw * 0.16, w = bw * 0.68;
-    out.push(`<rect class="g-bar" x="${p(x)}" y="${p(sy(v))}" width="${p(w)}" height="${p(sy(y0) - sy(v))}"/>`);
-    out.push(`<text class="g-val" x="${p(x + w / 2)}" y="${p(sy(v) - 5)}" text-anchor="middle">${escx(o.fmt ? o.fmt(v) : String(v))}</text>`);
-    out.push(`<text class="g-tick" x="${p(x + w / 2)}" y="${height - B + 16}" text-anchor="middle">${escx(o.labels[i])}</text>`);
+  o.labels.forEach((lab, i) => {
+    const gw = bw * 0.72, x0 = L + i * bw + (bw - gw) / 2, w = gw / k;
+    series.forEach((s, j) => {
+      const v = s.values[i], x = x0 + j * w;
+      if (v === null || v === undefined) return;
+      out.push(`<rect class="g-bar g-s${j}" x="${p(x + w * 0.06)}" y="${p(sy(v))}" width="${p(w * 0.88)}" height="${p(sy(y0) - sy(v))}"/>`);
+      out.push(`<text class="g-val" x="${p(x + w / 2)}" y="${p(sy(v) - 5)}" text-anchor="middle"${k > 2 ? ' font-size="10"' : ""}>${escx(o.fmt ? o.fmt(v) : String(v))}</text>`);
+    });
+    out.push(`<text class="g-tick" x="${p(L + i * bw + bw / 2)}" y="${height - B + 16}" text-anchor="middle">${escx(lab)}</text>`);
   });
   out.push(`<line class="g-axis" x1="${L}" y1="${p(sy(y0))}" x2="${width - R}" y2="${p(sy(y0))}"/>`);
+  if (leg) series.forEach((s, j) => {
+    const x = L + j * ((width - L - R) / k);
+    out.push(`<rect class="g-bar g-s${j}" x="${p(x)}" y="6" width="14" height="12"/><text class="g-tick" x="${p(x + 20)}" y="16">${escx(s.name)}</text>`);
+  });
   if (o.yname) out.push(`<text class="g-name" x="${L - 40}" y="${T - 10}">${escx(o.yname)}</text>`);
   if (o.xname) out.push(`<text class="g-name" x="${width - R}" y="${height - 4}" text-anchor="end">${escx(o.xname)}</text>`);
   if (!o.alt) throw new Error("bars() needs alt text");
+  return `<svg class="graph chart" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="${escx(o.alt)}" xmlns="http://www.w3.org/2000/svg">${out.join("")}</svg>`;
+}
+
+// A line chart of data over time (or any ordered categories): { labels, series: [{ name, values }, ...] (up to 3),
+// y: [0, 100], step: 20, yname, fmt, alt, width, height, marks: true }. Each line is labeled at its last point, and
+// the series are told apart by dash pattern as well as shade, so they read in grayscale.
+export function lines(o) {
+  const width = o.width || 560, height = o.height || 300, L = 48, R = o.right ?? 96, T = 26, B = 34;
+  const [y0, y1] = o.y, step = o.step || 1, n = o.labels.length;
+  const sy = (v) => height - B - ((v - y0) / (y1 - y0)) * (height - T - B);
+  const sx = (i) => L + (n === 1 ? (width - L - R) / 2 : (i * (width - L - R)) / (n - 1));
+  const p = (v) => +v.toFixed(1);
+  const out = [];
+  for (let v = y0; v <= y1 + 1e-9; v += step) {
+    out.push(`<line class="g-grid" x1="${L}" y1="${p(sy(v))}" x2="${width - R}" y2="${p(sy(v))}"/>`);
+    out.push(`<text class="g-tick" x="${L - 6}" y="${p(sy(v) + 4)}" text-anchor="end">${fmt(v)}</text>`);
+  }
+  const every = o.labelEvery || 1;
+  o.labels.forEach((lab, i) => { if (i % every === 0 || i === n - 1) out.push(`<text class="g-tick" x="${p(sx(i))}" y="${height - B + 16}" text-anchor="middle">${escx(lab)}</text>`); });
+  out.push(`<line class="g-axis" x1="${L}" y1="${p(sy(y0))}" x2="${width - R}" y2="${p(sy(y0))}"/>`);
+  o.series.forEach((s, j) => {
+    const pts = s.values.map((v, i) => (v === null || v === undefined ? null : [sx(i), sy(v)]));
+    let d = "", pen = false;
+    pts.forEach((q) => { if (!q) { pen = false; return; } d += (pen ? "L" : "M") + p(q[0]) + "," + p(q[1]); pen = true; });
+    out.push(`<path class="g-line g-s${j}" d="${d}"/>`);
+    if (o.marks !== false) pts.forEach((q) => q && out.push(`<circle class="g-mark g-s${j}" cx="${p(q[0])}" cy="${p(q[1])}" r="3"/>`));
+    const last = pts.map((q, i) => [q, i]).filter(([q]) => q).pop();
+    if (last && s.name) out.push(`<text class="g-tick" x="${p(last[0][0] + 6)}" y="${p(last[0][1] + 4 + (s.dy || 0))}">${escx(s.name)}</text>`);
+  });
+  if (o.yname) out.push(`<text class="g-name" x="${L - 40}" y="${T - 10}">${escx(o.yname)}</text>`);
+  if (o.xname) out.push(`<text class="g-name" x="${width - R}" y="${height - 4}" text-anchor="end">${escx(o.xname)}</text>`);
+  if (!o.alt) throw new Error("lines() needs alt text");
   return `<svg class="graph chart" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="${escx(o.alt)}" xmlns="http://www.w3.org/2000/svg">${out.join("")}</svg>`;
 }

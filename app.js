@@ -407,7 +407,8 @@ function sourcesHTML(set, open = true) {
     <p class="small muted">${tx(set.intro)}</p>
     ${set.sources.map((src) => `<section class="source">${src.title ? `<h3>${esc(src.title)}</h3>` : ""}${src.blocks.map(block).join("")}</section>`).join("")}</details>`;
 }
-const frPrompt = (item) => /^SAQ/.test(item.part)
+// AP World labels a part "SAQ 1"; AP Gov labels it by question type ("Concept application", "Quantitative analysis").
+const frPrompt = (item) => /^(SAQ|Concept|Quantitative)/.test(item.part)
   ? `<p class="small muted">${esc(item.part)}. ${tx(item.lead)}</p><div class="prompt"><b>(${esc(item.sub)})</b> ${tx(item.prompt)}</div>`
   : `<p class="small muted">Part ${esc(item.part)}. ${tx(item.lead)}</p><div class="prompt"><b>${esc(item.part)} (${esc(item.sub)})</b> ${tx(item.prompt)}</div>`;
 // A part of a math free-response question: the shared lead, then this part's prompt.

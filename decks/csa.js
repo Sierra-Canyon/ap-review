@@ -12,6 +12,11 @@ import mocks2 from "./csa-u2/mocks-2.js";
 // Review and a third Quiz 5 mock built on the crawler quests (13 to 17), added 11/3.
 import reviewCrawler from "./csa-u2/review-crawler.js";
 import mocks3 from "./csa-u2/mocks-3.js";
+// Before the Unit 2 Test (11/11): review for 2.1 to 2.6 where the site was thin against Albert's Unit 2 (review-c),
+// harder items and two free responses for 2.7 to 2.12 (review-d), and Unit 2 Test Practice 4 and 5 (mocks-4).
+import reviewC from "./csa-u2/review-c.js";
+import reviewD from "./csa-u2/review-d.js";
+import mocks4 from "./csa-u2/mocks-4.js";
 // Mock assessments for the whole year, two forms of each (decks/csa-year/).
 import q1q2 from "./csa-year/q1-q2.js";
 import u1 from "./csa-year/u1.js";
@@ -24,7 +29,7 @@ import u4 from "./csa-year/u4.js";
 import apa from "./csa-year/apa.js";
 import apb from "./csa-year/apb.js";
 
-const fallForms = [...mocks1.forms, ...mocks2.forms, ...mocks3.forms].map((f) => ({
+const fallForms = [...mocks1.forms, ...mocks2.forms, ...mocks3.forms, ...mocks4.forms].map((f) => ({
   ...f,
   group: f.id.startsWith("q5") ? "Quiz 5: String Algorithms" : "Unit 2 Test",
   date: f.id.startsWith("q5") ? "2026-11-06" : "2026-11-17",
@@ -56,13 +61,13 @@ export default {
   typeNames: { mcq: "Code reading", output: "Type the output", code: "Free response" },
   blurb: "Code-reading questions, type-the-output questions, and free responses scored row by row like the test's rubric.",
   focus: [
-    { id: "string", name: "Quiz 5 (11/6)", skills: ["string"] },
-    { id: "u2test", name: "Unit 2 Test (11/17)", skills: ["bool", "if", "while", "for", "algo", "string", "nested", "runtime", "frq"] },
+    { id: "u2test", name: "Unit 2 Test (11/17)", skills: ["design", "bool", "if", "while", "for", "algo", "string", "nested", "runtime", "frq"] },
     { id: "quests", name: "Quests 13 to 17", filter: (it) => it.id.startsWith("u2c-") },
     { id: "read", name: "Code reading", types: ["mcq", "output"] },
     { id: "code", name: "Free response", types: ["code"], size: 3 },
   ],
   skills: [
+    { id: "design", name: "Algorithms with selection and repetition", from: "2.1", short: "Design" },
     { id: "bool", name: "Boolean expressions", from: "2.2, 2.5, 2.6", short: "Boolean" },
     { id: "if", name: "if statements", from: "2.3, 2.4", short: "if" },
     { id: "while", name: "while loops", from: "2.7", short: "while" },
@@ -105,5 +110,5 @@ export default {
     partA: { points: 1, slots: [] },
     partB: { kind: "rubric" },
   },
-  items: [...reviewA, ...reviewB, ...reviewFrq, ...reviewCrawler],
+  items: [...reviewA, ...reviewB, ...reviewFrq, ...reviewCrawler, ...reviewC, ...reviewD],
 };

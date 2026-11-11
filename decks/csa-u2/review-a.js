@@ -211,7 +211,7 @@ const F04 = (header) => `${header}
 
 export default [
   // ---------- bool: 2.2, 2.5, 2.6 ----------
-  { id: "u2r-a-01", skill: "bool", type: "mcq", topic: "2.2",
+  { id: "u2r-a-01", skill: "bool", type: "mcq", topic: "2.2", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int gold = 15;
 int cost = 12;
@@ -229,7 +229,7 @@ System.out.println(canBuy + " " + broke);`,
     answer: 0,
     verify: { out: "true false" } },
 
-  { id: "u2r-a-02", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2r-a-02", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String spell = "";
 if (spell.length() == 0 || spell.substring(0, 1).equals("F"))
@@ -256,7 +256,7 @@ else
     answer: 0,
     verify: { out: "no spell" } },
 
-  { id: "u2r-a-03", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2r-a-03", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "Consider the following expression, where `locked` is a `boolean` and `torches` is an `int`.",
     code: `!(!locked && torches > 2)`,
     question: "Which of the following is equivalent to the expression for all values of `locked` and `torches`?",
@@ -275,7 +275,7 @@ else
       { run: tableB03("locked || torches < 2"), out: "1" },
     ] } },
 
-  { id: "u2r-a-04", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2r-a-04", skill: "bool", type: "mcq", topic: "2.6", difficulty: "moderate",
     stem: "Consider the following expression, where `x` is an `int`.",
     code: `x > 3 && x > 7`,
     question: "Which of the following is equivalent to the expression for all values of `x`?",
@@ -294,7 +294,7 @@ else
       { run: tableB04("x > 3 || x > 7"), out: "4" },
     ] } },
 
-  { id: "u2r-a-05", skill: "bool", type: "output", topic: "2.5",
+  { id: "u2r-a-05", skill: "bool", type: "output", topic: "2.5", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `boolean shield = false;
 boolean potion = true;
@@ -307,7 +307,7 @@ System.out.println(first + " " + second);`,
     why: "A `!` applies only to what comes right after it, and `&&` is done before `||`. The first expression is `(true && true) || false`, which is `true`. In the second, the parentheses come first: `shield || hp < 5` is `true`, the `!` makes it `false`, and `false && potion` is `false`.",
     verify: { out: "true false" } },
 
-  { id: "u2r-a-06", skill: "bool", type: "output", topic: "2.6",
+  { id: "u2r-a-06", skill: "bool", type: "output", topic: "2.6", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int a = 5;
 int b = 8;
@@ -319,7 +319,7 @@ System.out.println(a <= 4 || b <= 9);`,
     why: "`a > 4 && b > 9` is `true && false`, so the first line prints `true`. The second line flips both comparisons but keeps `&&`, which is the usual De Morgan mistake: `a <= 4` is false, so it prints `false`. The third line also changes `&&` to `||`, as De Morgan's law says, and it agrees with the first line.",
     verify: { out: "true\nfalse\ntrue" } },
 
-  { id: "u2r-a-07", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2r-a-07", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
     stem: "The following code segment is intended to print `strong` when the average damage per hit, `damage / hits`, is greater than 4, and to print `weak` otherwise. When `hits` is 0, it should print `weak` without throwing an exception.",
     code: `int damage = 30;
 int hits = 0;
@@ -354,7 +354,7 @@ else
       { run: guardB07("hits == 0 || damage / hits > 4", 0), out: "strong" },
     ] } },
 
-  { id: "u2r-a-08", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2r-a-08", skill: "bool", type: "mcq", topic: "2.6", difficulty: "difficult",
     stem: "Consider the following code segment, where `x` and `y` are `int` variables that have been properly declared and initialized.",
     code: `boolean result = (x > 0 || y > 0) && !(x > 0 && y > 0);`,
     question: "Which of the following best describes when `result` is `true`?",
@@ -386,7 +386,7 @@ y = 0;
 System.out.println((x > 0 || y > 0) && !(x > 0 && y > 0));`, out: "true true false false" },
     ] } },
 
-  { id: "u2r-a-09", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2r-a-09", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int floor = 7;
 if (1 <= floor <= 10)
@@ -410,7 +410,7 @@ if (1 <= floor <= 10)
     verify: { error: "bad operand types for binary operator '<='" } },
 
   // ---------- if: 2.3, 2.4 ----------
-  { id: "u2r-a-10", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2r-a-10", skill: "if", type: "mcq", topic: "2.3", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int damage = 0;
 int roll = 18;
@@ -438,7 +438,7 @@ System.out.println(damage);`,
     answer: 0,
     verify: { out: "9" } },
 
-  { id: "u2r-a-11", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2r-a-11", skill: "if", type: "mcq", topic: "2.3", difficulty: "moderate",
     stem: "Consider the following code segment, where `temp` is an `int` variable that has been properly declared and initialized.",
     code: `if (temp > 50)
 {
@@ -484,7 +484,7 @@ else
 }`, out: "cold\ncold\nwarm\nwarm\nwarm\nwarm\nwarm" },
     ] } },
 
-  { id: "u2r-a-12", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2r-a-12", skill: "if", type: "mcq", topic: "2.3", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String word = "icebolt";
 String part = word.substring(0, 3);
@@ -502,17 +502,17 @@ else
 }
 System.out.println();`,
     question: "What is printed as a result of executing the code segment?",
-    choices: ["B", "AB", "C", "Nothing is printed. The code segment does not compile."],
+    choices: ["B", "AB", "AC", "BC"], mono: true,
     why: [
       "`substring` builds a new String, so `part` and the literal `\"ice\"` are two different objects. `==` checks whether both sides are the same object, so it is false. `equals` compares the letters, so it is true.",
       "`==` on Strings does not compare the letters. It is true only when both sides refer to the same object, and `part` is a new String made by `substring`.",
-      "`equals` compares the characters one by one. `part` holds `ice`, so `part.equals(\"ice\")` is true and B is printed.",
-      "`==` compiles with two Strings. It compares references, which is why it is a silent bug rather than a compile error.",
+      "This swaps what the two tests do. `==` compares references, so it is false, and `equals` compares the letters, so `part.equals(\"ice\")` is true and B is printed.",
+      "An `else` runs only when its own `if` is false. `part.equals(\"ice\")` is true, so C is skipped.",
     ],
     answer: 0,
     verify: { out: "B" } },
 
-  { id: "u2r-a-13", skill: "if", type: "mcq", topic: "2.4",
+  { id: "u2r-a-13", skill: "if", type: "mcq", topic: "2.4", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int keys = 2;
 int gold = 3;
@@ -540,7 +540,7 @@ System.out.println(msg);`,
     answer: 0,
     verify: { out: "wait" } },
 
-  { id: "u2r-a-14", skill: "if", type: "mcq", topic: "2.4",
+  { id: "u2r-a-14", skill: "if", type: "mcq", topic: "2.4", difficulty: "moderate",
     stem: "Consider the following code segment, where `level` and `mana` are `int` variables that have been properly declared and initialized.",
     code: `if (level >= 5)
 {
@@ -565,7 +565,7 @@ System.out.println(msg);`,
       { run: gridI05(I05[3]), out: "4,10:\n4,11:\n5,10:cast\n\n5,11:" },
     ] } },
 
-  { id: "u2r-a-15", skill: "if", type: "output", topic: "2.4",
+  { id: "u2r-a-15", skill: "if", type: "output", topic: "2.4", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int hp = 12;
 int armor = 3;
@@ -591,7 +591,7 @@ System.out.println("done");`,
     why: "`hp > 10` is true, so the outer block runs. Inside it, `armor > 5` is false, so the inner `else` prints `fighter`, and `ready` comes next because it is inside the outer block too. The `else if` is skipped because the outer `if` was true. `done` is outside every `if`, so it always prints.",
     verify: { out: "fighter\nready\ndone" } },
 
-  { id: "u2r-a-16", skill: "if", type: "output", topic: "2.3",
+  { id: "u2r-a-16", skill: "if", type: "output", topic: "2.3", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int gold = 40;
 if (gold > 30)
@@ -616,7 +616,7 @@ System.out.println(gold);`,
     why: "These are three separate `if` statements, and each one tests the value left by the one before it. 40 is more than 30, so `gold` becomes 15. 15 is more than 10, so it becomes 5. 5 is less than 10, so it doubles to 10.",
     verify: { out: "10" } },
 
-  { id: "u2r-a-17", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2r-a-17", skill: "if", type: "mcq", topic: "2.3", difficulty: "moderate",
     stem: "The following code segment is intended to set `rank` to `\"gold\"` when `points` is at least 500, to `\"silver\"` when `points` is at least 200 but less than 500, and to `\"bronze\"` otherwise. Assume `points` is an `int` that has been properly declared and initialized.",
     code: `String rank;
 /* missing code */
@@ -637,7 +637,7 @@ System.out.println(rank);`,
       { methods: rankI08(I08[3]), run: rankRun, out: "gold silver silver bronze bronze" },
     ] } },
 
-  { id: "u2r-a-18", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2r-a-18", skill: "if", type: "mcq", topic: "2.3", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int lives = 3;
 if (lives = 0)
@@ -665,7 +665,7 @@ else
     verify: { error: "incompatible types: int cannot be converted to boolean" } },
 
   // ---------- while: 2.7 ----------
-  { id: "u2r-a-19", skill: "while", type: "output", topic: "2.7",
+  { id: "u2r-a-19", skill: "while", type: "output", topic: "2.7", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int energy = 50;
 int turns = 0;
@@ -680,7 +680,7 @@ System.out.println(energy + " " + turns);`,
     why: "`energy` goes 50, 38, 26, 14, 2, and then -10. The test is checked before each pass, and 2 is still greater than 0, so a fifth pass runs. Nothing in the loop stops `energy` at 0.",
     verify: { out: "-10 5" } },
 
-  { id: "u2r-a-20", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2r-a-20", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int total = 0;
 int value = 3;
@@ -695,7 +695,7 @@ System.out.println(total);`,
       "15, and the body runs 3 times",
       "15, and the body runs 4 times",
       "12, and the body runs 3 times",
-      "Nothing is printed, because the loop never stops.",
+      "Nothing is printed. The loop never stops.",
     ],
     why: [
       "`value` goes 3, 8, 4, and then `(4 + 5) % 9`, which is 0. The loop stops at the stop value 0, and each value before it is added once, for a total of 15.",
@@ -717,7 +717,7 @@ while (value != 0)
 System.out.println(total + " " + passes);`, out: "15 3" },
     ] } },
 
-  { id: "u2r-a-21", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2r-a-21", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int n = 4071;
 int rev = 0;
@@ -732,13 +732,13 @@ System.out.println(rev);`,
     why: [
       "`n % 10` takes the last digit and `n /= 10` removes it. `rev` goes 1, 17, 170, and then 1704: multiplying by 10 makes room for the next digit, even when that digit is 0.",
       "The 0 is not lost. On that pass `rev` goes from 17 to `17 * 10 + 0`, which is 170.",
-      "`n % 10` gives the LAST digit first, so the digits come out in reverse order.",
+      "`n % 10` gives the last digit first, so the digits come out in reverse order.",
       "That is the sum of the digits. `rev * 10` shifts the digits left before each new one is added.",
     ],
     answer: 0,
     verify: { out: "1704" } },
 
-  { id: "u2r-a-22", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2r-a-22", skill: "while", type: "mcq", topic: "2.7", difficulty: "difficult",
     stem: "Each of the following code segments contains a `while` loop.",
     question: "Which of the following code segments contains a loop that never stops?",
     choices: W04, mono: true,
@@ -756,7 +756,7 @@ System.out.println(rev);`,
       { run: guardW04("int k = 0;", "k < 0", "k--;"), out: "0" },
     ] } },
 
-  { id: "u2r-a-23", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2r-a-23", skill: "while", type: "mcq", topic: "2.7", difficulty: "easy",
     stem: "The following code segment is intended to print the multiples of 7 from 7 to 70, inclusive, on one line.",
     code: `int m = 7;
 while (/* missing condition */)
@@ -780,7 +780,7 @@ while (/* missing condition */)
       { run: W05("m * 7 <= 70"), out: "7" },
     ] } },
 
-  { id: "u2r-a-24", skill: "while", type: "output", topic: "2.7",
+  { id: "u2r-a-24", skill: "while", type: "output", topic: "2.7", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int n = 50306;
 int zeros = 0;
@@ -800,7 +800,7 @@ System.out.println(digits + " " + zeros);`,
     why: "Each pass looks at the last digit with `n % 10` and then removes it with `n /= 10`. From the right, the digits are 6, 0, 3, 0, and 5: five passes, and two of those digits are 0. A 0 digit does not stop the loop. It stops only when `n` itself reaches 0.",
     verify: { out: "5 2" } },
 
-  { id: "u2r-a-25", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2r-a-25", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int a = 12;
 int b = 4;
@@ -839,7 +839,7 @@ while (a > b)
 System.out.println(count + " " + a + " " + b);`, out: "2 6 6" },
     ] } },
 
-  { id: "u2r-a-26", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2r-a-26", skill: "while", type: "mcq", topic: "2.7", difficulty: "difficult",
     stem: "Consider the following code segment, where `n` is a positive `int` that has been properly declared and initialized.",
     code: `int p = 1;
 while (p * 2 <= n)
@@ -869,7 +869,7 @@ System.out.println(p);`,
     ] } },
 
   // ---------- for: 2.8 ----------
-  { id: "u2r-a-27", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2r-a-27", skill: "for", type: "mcq", topic: "2.8", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `for (int k = 30; k >= 0; k -= 4)
 {
@@ -886,7 +886,7 @@ System.out.println(p);`,
     answer: 0,
     verify: { out: "########" } },
 
-  { id: "u2r-a-28", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2r-a-28", skill: "for", type: "mcq", topic: "2.8", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int sum = 0;
 for (int p = 1; p < 100; p *= 3)
@@ -919,7 +919,7 @@ for (int p = 1; p < 100; p *= 3)
 System.out.println(sum + " " + passes);`, out: "121 5" },
     ] } },
 
-  { id: "u2r-a-29", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2r-a-29", skill: "for", type: "mcq", topic: "2.8", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: `for (int n = 20; n > 5; n -= 5)
 {
@@ -946,7 +946,7 @@ System.out.println("|");`, out: "20 15 10 |" },
       { run: F03[3] + `\nSystem.out.println("|");`, out: "|" },
     ] } },
 
-  { id: "u2r-a-30", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2r-a-30", skill: "for", type: "mcq", topic: "2.8", difficulty: "easy",
     stem: "The following code segment is intended to print `10 8 6 4 2` on one line.",
     code: `/* missing loop header */
 {
@@ -973,7 +973,7 @@ System.out.println("|");`, out: "20 15 10 |" },
       { run: F04("for (int i = 2; i <= 10; i += 2)"), out: "2 4 6 8 10" },
     ] } },
 
-  { id: "u2r-a-31", skill: "for", type: "output", topic: "2.8",
+  { id: "u2r-a-31", skill: "for", type: "output", topic: "2.8", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String s = "";
 for (int i = 1; i <= 4; i++)
@@ -983,10 +983,10 @@ for (int i = 1; i <= 4; i++)
 System.out.println(s);`,
     question: "What is printed? Type it exactly, one line per line.",
     answer: "43211234",
-    why: "Each pass puts `i` on both ends of `s`. After the first pass `s` is `11`, then `2112`, then `321123`, and then `43211234`. `i + s` joins rather than adds, because `s` is a String, so the numbers are joined as text and never added together.",
+    why: "Each pass puts `i` on both ends of `s`. After the first pass `s` is `11`, then `2112`, then `321123`, and then `43211234`. Because `s` is a String, `i + s` joins text, so the numbers are never added together.",
     verify: { out: "43211234" } },
 
-  { id: "u2r-a-32", skill: "for", type: "output", topic: "2.8",
+  { id: "u2r-a-32", skill: "for", type: "output", topic: "2.8", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int i;
 int sum = 0;
@@ -1000,7 +1000,7 @@ System.out.println(sum + " " + i);`,
     why: "`i` is declared before the loop, so it still exists after the loop ends. It takes the values 2, 6, 10, and 14, which add to 32. Then the step makes `i` equal to 18, the test `18 < 15` is false, and the loop ends with `i` still holding 18.",
     verify: { out: "32 18" } },
 
-  { id: "u2r-a-33", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2r-a-33", skill: "for", type: "mcq", topic: "2.8", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `for (int k = 0; k < 10; k++)
 {
@@ -1018,7 +1018,7 @@ System.out.println(sum + " " + i);`,
     answer: 0,
     verify: { out: "0 2 4 6 8" } },
 
-  { id: "u2r-a-34", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2r-a-34", skill: "for", type: "mcq", topic: "2.8", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int total = 0;
 int n = 8;

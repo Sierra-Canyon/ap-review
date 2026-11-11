@@ -68,21 +68,50 @@ else
     fee = 18;
 }`;
 
-const P2_19 = `int sum = 0;
-for (int i = 0; i < 10; i += 2)
+const P2_03 = `String title = "ice cold";
+int ends = 0;
+for (int i = 0; i <= title.length(); i++)
 {
-    for (int j = i; j < 10; j++)
+    if (i == title.length() || title.substring(i, i + 1).equals(" "))
     {
-        sum += j;
+        ends++;
+    }
+}
+System.out.println("Word ends counted: " + ends);`;
+
+const P2_10 = `int id = 4031020;
+int product = 1;
+while (id > 0)
+{
+    int d = id % 10;
+    if (d != 0)
+    {
+        product *= d;
+    }
+    id /= 10;
+}
+System.out.println(product);`;
+
+const P2_19 = `int count = 0;
+for (int i = 1; i <= 5; i++)
+{
+    for (int j = 1; j <= 4; j++)
+    {
+        if (j != i)
+        {
+            count++;
+        }
     }
 }`;
 
-const P2_20 = `int pages = 1000;
-int steps = 0;
-while (pages > 1)
+const P2_20 = `int count = 0;
+for (int i = 0; i < n; i++)
 {
-    pages = pages / 2;
-    steps++;
+    count++;
+}
+for (int i = 0; i < n; i += 2)
+{
+    count++;
 }`;
 
 const P2F = `int parked = 0;
@@ -141,11 +170,27 @@ else
     notice = "hold";
 }`;
 
+const P3_18 = `String grid = "CATATCATOATS";
+int cols = 4;
+int found = 0;
+for (int r = 0; r < 3; r++)
+{
+    for (int c = 0; c < cols - 1; c++)
+    {
+        int at = r * cols + c;
+        if (grid.substring(at, at + 2).equals("AT"))
+        {
+            found++;
+        }
+    }
+}
+System.out.println(found);`;
+
 const P3_19 = `int count = 0;
 for (int i = 1; i <= 4; i++)
 {
     int j = i;
-    while (j < 8)
+    while (j < 6)
     {
         j += 2;
         count++;
@@ -195,13 +240,13 @@ const P3F = `public static int levelScore(String run)
 }`;
 
 const practice2 = [
-  { id: "u2p2-01", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2p2-01", skill: "if", type: "mcq", topic: "2.3", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int temp = 52;
-String label = "hot";
+String label = "sweltering";
 if (temp < 85)
 {
-    label = "warm";
+    label = "balmy";
 }
 if (temp < 65)
 {
@@ -209,21 +254,21 @@ if (temp < 65)
 }
 if (temp < 45)
 {
-    label = "cold";
+    label = "frosty";
 }
 System.out.println(label);`,
     question: "What is printed as a result of executing the code segment?",
-    choices: ["mild", "warm", "cold", "hot"], mono: true,
+    choices: ["mild", "balmy", "frosty", "sweltering"], mono: true,
     why: [
       "These are three separate if statements, not an else if chain, so every test is checked. `temp < 85` and `temp < 65` are both true, and the second assignment replaces the first.",
       "That is the answer for an else if chain, where the first true test wins. Separate if statements are each checked, so a later true test replaces the label.",
       "`52 < 45` is false, so the last assignment never runs.",
-      "\"hot\" is only the starting value. `temp < 85` is true, so it is replaced.",
+      "\"sweltering\" is only the starting value. `temp < 85` is true, so it is replaced.",
     ],
     answer: 0,
     verify: { out: "mild" } },
 
-  { id: "u2p2-02", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2p2-02", skill: "if", type: "mcq", topic: "2.3", difficulty: "moderate",
     stem: "In a parking garage, the following code segment sets the fee for a stay of `hours` hours, where `hours` is an `int` from 0 to 12.",
     code: P2_02,
     question: "For which values of `hours` is `fee` set to 12?",
@@ -239,30 +284,24 @@ System.out.println(label);`,
       { run: `for (int hours = 0; hours <= 12; hours++)\n{\n${ind(P2_02, 4)}\n    if (fee == 12)\n    {\n        System.out.print(hours + " ");\n    }\n}`, out: "5 6 7" },
     ] } },
 
-  { id: "u2p2-03", skill: "bool", type: "mcq", topic: "2.5",
-    stem: "Consider the following code segment from a recipe app.",
-    code: `int cups = 6;
-int servings = 0;
-if (servings == 0 || cups / servings < 2)
-{
-    System.out.println("scale up");
-}
-else
-{
-    System.out.println("enough");
-}`,
+  { id: "u2p2-03", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
+    stem: "A music app counts the words in a song title by counting the places where a word ends. Consider the following code segment.",
+    code: P2_03,
     question: "What is the result of executing the code segment?",
-    choices: ["scale up", "Nothing is printed. An ArithmeticException is thrown.", "enough", "Nothing is printed. The code segment does not compile."],
+    choices: ["Word ends counted: 2", "Nothing is printed. A StringIndexOutOfBoundsException is thrown.", "Word ends counted: 1", "Word ends counted: 9"], mono: true,
     why: [
-      "`servings == 0` is true, so `||` already knows the whole condition is true and never evaluates `cups / servings`. The if branch runs.",
-      "Dividing by 0 would throw it, but `||` stops as soon as its left side is true. The division is never done.",
-      "The else runs only when the whole condition is false. With `||`, one true side is enough, and the left side is true.",
-      "Both sides are boolean expressions joined by `||`, so the code compiles.",
+      "The loop runs one step past the last index on purpose. When i equals `title.length()`, the left side of `||` is true, so `substring` is never called, and that pass counts the end of the last word. The space counts the end of the first.",
+      "`title.substring(8, 9)` would throw, but `||` stops as soon as its left side is true. The check `i == title.length()` comes first and guards it.",
+      "That counts only the space. The pass with i equal to `title.length()` counts the end of the last word.",
+      "That is the number of passes. `ends` goes up only when the condition is true.",
     ],
     answer: 0,
-    verify: { out: "scale up" } },
+    verify: { cases: [
+      { run: P2_03, out: "Word ends counted: 2" },
+      { run: P2_03.replace("i == title.length() || title.substring(i, i + 1).equals(\" \")", "title.substring(i, i + 1).equals(\" \") || i == title.length()"), throws: "StringIndexOutOfBoundsException" },
+    ] } },
 
-  { id: "u2p2-04", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2p2-04", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "Consider the following expression, where `wind` and `rain` are `int` variables.",
     code: `!(wind > 7 && rain <= 2)`,
     question: "Which of the following is equivalent to the expression for all integer values of `wind` and `rain`?",
@@ -281,29 +320,29 @@ else
       { run: equiv("wind", "rain", "!(wind > 7 && rain <= 2)", "wind <= 7 || rain >= 2", -5, 15), out: "differs" },
     ] } },
 
-  { id: "u2p2-05", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2p2-05", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
     stem: "A playlist has 15 tracks. Consider the following code segment.",
     code: `int count = 0;
 for (int track = 1; track <= 15; track++)
 {
-    if (track > 9 || track % 3 == 0 && track < 5)
+    if (track > 4 || track % 3 == 0 && track < 5)
     {
         count++;
     }
 }
 System.out.println(count);`,
     question: "What is printed as a result of executing the code segment?",
-    choices: ["7", "1", "12", "8"], mono: true,
+    choices: ["12", "1", "15", "13"], mono: true,
     why: [
-      "`&&` is done before `||`: the condition is true for every track above 9, and also for multiples of 3 below 5, which is only 3.",
-      "This groups the `||` first, so every track would also have to be below 5. Without parentheses, `&&` binds tighter, so `track > 9` stands on its own.",
-      "This reads `&&` as `||`. A multiple of 3 counts only when it is also below 5.",
-      "This also counts 9. The test is `track > 9`.",
+      "`&&` is done before `||`: the condition is true for every track above 4, which is 11 tracks, and also for multiples of 3 below 5, which is only 3.",
+      "This groups the `||` first, so every track would also have to be below 5. Without parentheses, `&&` binds tighter, so `track > 4` stands on its own.",
+      "This reads `&&` as `||`, which counts every track. A multiple of 3 counts only when it is also below 5.",
+      "This also counts 4. The test is `track > 4`, and 4 is not a multiple of 3.",
     ],
     answer: 0,
-    verify: { out: "7" } },
+    verify: { out: "12" } },
 
-  { id: "u2p2-06", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2p2-06", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "A music app skips a song when `secs < 90 || secs > 300`, where `secs` is the length of the song in seconds.",
     question: "Which of the following is true exactly when the song is NOT skipped, for every integer value of `secs`?",
     choices: ["secs >= 90 && secs <= 300", "secs >= 90 || secs <= 300", "secs > 90 && secs < 300", "secs <= 90 && secs >= 300"], mono: true,
@@ -321,7 +360,7 @@ System.out.println(count);`,
       { run: equiv1("secs", "!(secs < 90 || secs > 300)", "secs <= 90 && secs >= 300", 0, 400), out: "differs" },
     ] } },
 
-  { id: "u2p2-07", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2p2-07", skill: "for", type: "mcq", topic: "2.8", difficulty: "moderate",
     stem: "A weather station adds up the rainfall on certain days. Consider the following code segment.",
     code: `int total = 0;
 for (int day = 3; day < 21; day += 3)
@@ -343,7 +382,7 @@ System.out.println(total);`,
     answer: 0,
     verify: { out: "27" } },
 
-  { id: "u2p2-08", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2p2-08", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "The snow on a roof melts during a warm afternoon. Consider the following code segment.",
     code: `int snow = 50;
 int hours = 0;
@@ -364,7 +403,7 @@ System.out.println(hours + " " + snow);`,
     answer: 0,
     verify: { out: "5 15" } },
 
-  { id: "u2p2-09", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2p2-09", skill: "algo", type: "mcq", topic: "2.9", difficulty: "difficult",
     stem: "In a video game, a player builds a streak, and each scoring round adds the current streak to the score. Consider the following code segment.",
     code: `int score = 0;
 int streak = 0;
@@ -392,47 +431,42 @@ System.out.println(score + " " + streak);`,
     answer: 0,
     verify: { out: "9 2" } },
 
-  { id: "u2p2-10", skill: "algo", type: "mcq", topic: "2.9",
-    stem: "A weather station takes five readings on a cold night. Consider the following code segment.",
-    code: `int warmest = 0;
-for (int hour = 1; hour <= 5; hour++)
-{
-    int temp = hour * 3 - 20;
-    if (temp > warmest)
-    {
-        warmest = temp;
-    }
-}
-System.out.println(warmest);`,
+  { id: "u2p2-10", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
+    stem: "A weather station has an ID number with some zero digits. Consider the following code segment.",
+    code: P2_10,
     question: "What is printed as a result of executing the code segment?",
-    choices: ["0", "-5", "-17", "-55"], mono: true,
+    choices: ["24", "0", "10", "6"], mono: true,
     why: [
-      "Every reading is below 0, so `temp > warmest` is never true and `warmest` keeps its starting value. A running maximum should start at the first reading or at `Integer.MIN_VALUE`, not at 0.",
-      "-5 is the warmest reading, but it never replaces the starting 0, because no reading is bigger than 0.",
-      "-17 is the coldest reading. The test `temp > warmest` keeps a larger value, and no reading is larger than 0.",
-      "That is the sum of the readings. The if keeps one value; it does not add them up.",
+      "The loop takes the digits from the right, 0, 2, 0, 1, 3, 0, 4, and multiplies `product` by each one that is not 0: 2 * 1 * 3 * 4.",
+      "The `if` skips the zeros. Multiplying by 0 even once would make the product 0.",
+      "That adds the digits. `product *= d` multiplies.",
+      "That leaves out the first digit, 4, as `id > 9` would. The test is `id > 0`, so the loop also handles the last digit left.",
     ],
     answer: 0,
-    verify: { out: "0" } },
+    verify: { cases: [
+      { run: P2_10, out: "24" },
+      { run: P2_10.replace("    if (d != 0)\n    {\n        product *= d;\n    }", "    product *= d;"), out: "0" },
+      { run: P2_10.replace("id > 0", "id > 9"), out: "6" },
+    ] } },
 
-  { id: "u2p2-11", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2p2-11", skill: "for", type: "mcq", topic: "2.8", difficulty: "easy",
     stem: "Consider the following code segment.",
-    code: `for (int k = 20; k > 2; k -= 3)
+    code: `for (int k = 3; k < 1000; k *= 2)
 {
     System.out.print("~");
 }`,
     question: "How many times is `~` printed?",
-    choices: ["6", "7", "18", "3"], mono: true,
+    choices: ["9", "10", "333", "997"], mono: true,
     why: [
-      "`k` takes the values 20, 17, 14, 11, 8, and 5. The next value, 2, is not greater than 2, so the loop stops.",
-      "This lets `k` reach 2. The test is `k > 2`, and 2 is not greater than 2.",
-      "This counts every value from 20 down to 3. `k` goes down by 3 each pass.",
-      "That is the step, not a count. Write out the values `k` takes and count them.",
+      "`k` takes the values 3, 6, 12, 24, 48, 96, 192, 384, and 768. The next value, 1536, is not less than 1000, so the loop stops.",
+      "This also counts 1536. The test is checked before each pass, and `1536 < 1000` is false.",
+      "That is 1000 divided by 3, as if `k` went up by 3. `k` doubles each pass.",
+      "That counts every value from 3 to 999. `k` doubles, so it skips most of them.",
     ],
     answer: 0,
-    verify: { out: "~~~~~~" } },
+    verify: { out: "~~~~~~~~~" } },
 
-  { id: "u2p2-12", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p2-12", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "A playlist stores one letter for the genre of each song, in order. Consider the following code segment.",
     code: `String genres = "RRJPPPJR";
 int repeats = 0;
@@ -445,9 +479,9 @@ for (int i = 1; i < genres.length(); i++)
         repeats++;
     }
 }
-System.out.println(repeats);`,
+System.out.println("Repeated neighbors: " + repeats);`,
     question: "What is the result of executing the code segment?",
-    choices: ["3", "Nothing is printed. A StringIndexOutOfBoundsException is thrown.", "2", "5"],
+    choices: ["Repeated neighbors: 3", "Nothing is printed. A StringIndexOutOfBoundsException is thrown.", "Repeated neighbors: 2", "Repeated neighbors: 5"], mono: true,
     why: [
       "Each pass compares the letter at `i` with the letter just before it. RR gives one match, and PPP gives two: the pair at indexes 3 and 4, and the pair at indexes 4 and 5.",
       "That would happen with `i` starting at 0, because `genres.substring(-1, 0)` is out of range. Starting at 1 keeps the index before `i` at 0 or more.",
@@ -455,9 +489,9 @@ System.out.println(repeats);`,
       "This counts the letters that belong to a repeat. The code adds 1 for each pair of neighbors that match, not for each letter.",
     ],
     answer: 0,
-    verify: { out: "3" } },
+    verify: { out: "Repeated neighbors: 3" } },
 
-  { id: "u2p2-13", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p2-13", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "A library call number is stored in `code`. Consider the following code segment.",
     code: `String code = "QA76.73";
 String t = "";
@@ -481,7 +515,7 @@ System.out.println(t);`,
     answer: 0,
     verify: { out: "3767" } },
 
-  { id: "u2p2-14", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p2-14", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "Consider the following code segment, which looks for \"lal\" in a song lyric.",
     code: `String tune = "lalalaland";
 int n = 0;
@@ -504,11 +538,12 @@ System.out.println(n + " " + tune);`,
     answer: 0,
     verify: { out: "3 aland" } },
 
-  { id: "u2p2-15", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p2-15", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "A library shelves its books in alphabetical order by title. Consider the following code segment.",
     code: `String t1 = "Dune";
 String t2 = "Dunes";
 String t3 = "Dracula";
+String t4 = "Duet";
 String last = t1;
 if (t2.compareTo(last) > 0)
 {
@@ -518,19 +553,23 @@ if (t3.compareTo(last) > 0)
 {
     last = t3;
 }
+if (t4.compareTo(last) > 0)
+{
+    last = t4;
+}
 System.out.println(last);`,
-    question: "What is the result of executing the code segment?",
-    choices: ["Dunes", "Dune", "Dracula", "Nothing is printed. The code segment does not compile."],
+    question: "What is printed as a result of executing the code segment?",
+    choices: ["Dunes", "Dune", "Dracula", "Duet"], mono: true,
     why: [
-      "When one String is the start of the other, the shorter one comes first, so `t2.compareTo(last)` is positive and `last` becomes \"Dunes\". \"Dracula\" comes before \"Dunes\", because r comes before u.",
+      "When one String is the start of the other, the shorter one comes first, so `t2.compareTo(last)` is positive and `last` becomes \"Dunes\". \"Dracula\" comes before \"Dunes\" (r comes before u), and so does \"Duet\" (e comes before n).",
       "\"Dune\" is the start of \"Dunes\", and the shorter String comes first. A positive result means `t2` comes after `last`, so `last` is replaced.",
       "This keeps the title that comes first. `compareTo` returns a positive number when the String it is called on comes later.",
-      "`compareTo` returns an `int`, and comparing an `int` with 0 is a boolean expression, so the code compiles.",
+      "\"Duet\" and \"Dunes\" first differ at e and n, and e comes first in the alphabet, so \"Duet\" comes before \"Dunes\" and does not replace it.",
     ],
     answer: 0,
     verify: { out: "Dunes" } },
 
-  { id: "u2p2-16", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p2-16", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "A parking garage has 4 levels, and level `level` has `2 * level` spaces. Consider the following code segment.",
     code: `int spaces = 0;
 for (int level = 1; level <= 4; level++)
@@ -552,7 +591,7 @@ System.out.println(spaces);`,
     answer: 0,
     verify: { out: "20" } },
 
-  { id: "u2p2-17", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p2-17", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int row = 3; row >= 1; row--)
 {
@@ -580,7 +619,7 @@ System.out.println(spaces);`,
     answer: 0,
     verify: { out: "..#\n.##\n###" } },
 
-  { id: "u2p2-18", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p2-18", skill: "nested", type: "mcq", topic: "2.11", difficulty: "moderate",
     stem: "A parking garage map lists its spots level by level, 4 spots per level: \"X\" is a taken spot and \".\" is a free one. Consider the following code segment.",
     code: `String garage = "X..XXXX..X.X";
 int width = 4;
@@ -608,36 +647,37 @@ for (int level = 0; level < garage.length() / width; level++)
     answer: 0,
     verify: { out: "2 1 2" } },
 
-  { id: "u2p2-19", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2p2-19", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: P2_19,
-    question: "How many times is the statement `sum += j;` executed?",
-    choices: ["30", "50", "55", "100"], mono: true,
+    question: "How many times is the statement `count++;` executed?",
+    choices: ["16", "20", "15", "4"], mono: true,
     why: [
-      "`i` takes the values 0, 2, 4, 6, and 8, and the inner loop runs from `i` up to 9: 10, 8, 6, 4, and 2 times. Add them.",
-      "That is 5 outer passes times 10, as if the inner loop always started at 0. It starts at `i`, so it gets shorter.",
-      "This counts `i` going up by 1. With `i += 2`, there are only 5 outer passes.",
-      "That is 10 times 10. The outer loop runs only 5 times, and the inner loop gets shorter as `i` grows.",
+      "The inner loop runs 4 times for each of the 5 values of `i`, 20 times in all. `count++;` is skipped only when `j` equals `i`, which happens for `i` equal to 1, 2, 3, and 4, but never for 5.",
+      "That is every pass of the inner loop. `count++;` runs only when `j != i`.",
+      "That skips one pass for every `i`. When `i` is 5, `j` never equals `i`, since `j` stops at 4.",
+      "That counts the passes where `j` equals `i`, the ones that are skipped.",
     ],
     answer: 0,
     verify: { cases: [
-      { run: P2_19.replace("sum += j;", "sum += j;\n        runs++;").replace("int sum = 0;", "int sum = 0;\nint runs = 0;") + "\nSystem.out.println(runs);", out: "30" },
+      { run: P2_19 + "\nSystem.out.println(count);", out: "16" },
     ] } },
 
-  { id: "u2p2-20", skill: "runtime", type: "mcq", topic: "2.12",
-    stem: "A search through a 1000-page library book keeps cutting the pages left to check in half. Consider the following code segment.",
+  { id: "u2p2-20", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "difficult",
+    stem: "A library scans `n` books and then checks every second one again. Consider the following code segment, where `n` is a positive even `int`.",
     code: P2_20,
-    question: "How many times does the body of the loop run?",
-    choices: ["9", "10", "500", "999"], mono: true,
+    question: "Which of the following gives the value of `count` after the code segment runs?",
+    choices: ["n + n / 2", "2 * n", "n / 2", "n * n / 2"], mono: true,
     why: [
-      "Integer division halves `pages` each pass: 500, 250, 125, 62, 31, 15, 7, 3, 1. That is 9 passes, and then `pages > 1` is false. Halving gets down to 1 in very few steps.",
-      "This also runs when `pages` equals 1. The test is `pages > 1`.",
-      "That is the value of `pages` after one pass, not a count of passes.",
-      "That is how many passes subtracting 1 would take. Halving gets there much faster.",
+      "The first loop runs once for each of the n values from 0 to `n - 1`. The second loop goes up by 2, so it runs n / 2 times. The loops run one after the other, so their counts add.",
+      "That runs the second loop n times too. With `i += 2`, it visits only every other value.",
+      "That counts only the second loop. The first loop also adds 1 to `count` on each of its n passes.",
+      "That multiplies the counts, as if one loop were inside the other. These loops run one after the other.",
     ],
     answer: 0,
     verify: { cases: [
-      { run: P2_20 + "\nSystem.out.println(steps);", out: "9" },
+      { run: "int n = 10;\n" + P2_20 + "\nSystem.out.println(count);", out: "15" },
+      { run: "int n = 40;\n" + P2_20 + "\nSystem.out.println(count);", out: "60" },
     ] } },
 
   { id: "u2p2-frq", skill: "frq", type: "code", topic: "2.10", title: "The parking garage",
@@ -666,7 +706,7 @@ for (int level = 0; level < garage.length() / width; level++)
 ];
 
 const practice3 = [
-  { id: "u2p3-01", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2p3-01", skill: "if", type: "mcq", topic: "2.3", difficulty: "easy",
     stem: "A parking garage sets its fee from the number of minutes a car stays. Consider the following code segment.",
     code: `int minutes = 25;
 int fee;
@@ -698,7 +738,7 @@ System.out.println(fee);`,
     answer: 0,
     verify: { out: "15" } },
 
-  { id: "u2p3-02", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2p3-02", skill: "if", type: "mcq", topic: "2.3", difficulty: "moderate",
     stem: "A library sends a notice for a book that is `days` days late, where `days` is an `int` from 0 to 14. Consider the following code segment.",
     code: P3_02,
     question: "For which values of `days` is `notice` set to \"letter\"?",
@@ -714,7 +754,7 @@ System.out.println(fee);`,
       { run: `for (int days = 0; days <= 14; days++)\n{\n${ind(P3_02, 4)}\n    if (notice.equals("letter"))\n    {\n        System.out.print(days + " ");\n    }\n}`, out: "4 5 6 8 9 10" },
     ] } },
 
-  { id: "u2p3-03", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2p3-03", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
     stem: "A recipe app splits eggs between mixing bowls. Consider the following code segment.",
     code: `int eggs = 9;
 int bowls = 0;
@@ -737,7 +777,7 @@ else
     answer: 0,
     verify: { throws: "ArithmeticException" } },
 
-  { id: "u2p3-04", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2p3-04", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "Consider the following expression, where `level` and `spot` are `int` variables.",
     code: `!(level != 3 || spot >= 10)`,
     question: "Which of the following is equivalent to the expression for all integer values of `level` and `spot`?",
@@ -756,29 +796,34 @@ else
       { run: equiv("level", "spot", "!(level != 3 || spot >= 10)", "level != 3 && spot < 10", -5, 15), out: "differs" },
     ] } },
 
-  { id: "u2p3-05", skill: "bool", type: "mcq", topic: "2.5",
-    stem: "A weather app counts the days of a 15-day forecast that get an alert. Consider the following code segment.",
-    code: `int alerts = 0;
-for (int day = 1; day <= 15; day++)
-{
-    if (day < 4 || day > 10 && day % 2 == 1)
-    {
-        alerts++;
-    }
-}
-System.out.println(alerts);`,
-    question: "What is printed as a result of executing the code segment?",
-    choices: ["6", "5", "11", "7"], mono: true,
+  { id: "u2p3-05", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
+    stem: "A weather app sends an alert on day `x` of the month when the following expression is true, where `x` is an `int`.",
+    code: "x % 3 == 0 || x > 10 && x < 20",
+    question: "For which of the following values of `x` is the expression false?",
+    choices: ["7", "21", "30", "13"], mono: true,
     why: [
-      "`&&` is done before `||`: the condition is true for every day below 4, and also for the odd days above 10.",
-      "This groups the `||` first, so every day would also have to be odd, which leaves out 2. Without parentheses, `&&` binds tighter.",
-      "This reads `&&` as `||`. An odd day counts only when it is also above 10.",
-      "This also counts 4. The test is `day < 4`.",
+      "`&&` is done before `||`. 7 is not a multiple of 3, and 7 is not above 10, so both sides of `||` are false.",
+      "21 is a multiple of 3, so the left side of `||` is true. It would be false only if the `||` were done first, as in `(x % 3 == 0 || x > 10) && x < 20`.",
+      "30 is a multiple of 3, so the left side of `||` is true, and `x < 20` does not matter. Without parentheses, `&&` binds tighter.",
+      "13 is above 10 and below 20, so the `&&` part is true, and that makes the whole expression true.",
     ],
     answer: 0,
-    verify: { out: "6" } },
+    verify: { cases: [
+      { run: `int[] days = {7, 21, 30, 13};
+for (int k = 0; k < 4; k++)
+{
+    int x = days[k];
+    System.out.print((x % 3 == 0 || x > 10 && x < 20) + " ");
+}`, out: "false true true true" },
+      { run: `int[] days = {7, 21, 30, 13};
+for (int k = 0; k < 4; k++)
+{
+    int x = days[k];
+    System.out.print(((x % 3 == 0 || x > 10) && x < 20) + " ");
+}`, out: "false false false true" },
+    ] } },
 
-  { id: "u2p3-06", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2p3-06", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "A car may enter a parking garage when `height <= 84 && weight < 6000`, where `height` is in inches and `weight` is in pounds.",
     question: "Which of the following is true exactly when a car may NOT enter, for all integer values of `height` and `weight`?",
     choices: ["height > 84 || weight >= 6000", "height > 84 && weight >= 6000", "height >= 84 || weight >= 6000", "height > 84 || weight > 6000"], mono: true,
@@ -796,7 +841,7 @@ System.out.println(alerts);`,
       { run: equivHW("!(height <= 84 && weight < 6000)", "height > 84 || weight > 6000"), out: "differs" },
     ] } },
 
-  { id: "u2p3-07", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2p3-07", skill: "for", type: "mcq", topic: "2.8", difficulty: "easy",
     stem: "A library adds up the fines on some overdue books. Consider the following code segment.",
     code: `int fines = 0;
 for (int day = 10; day > 0; day -= 2)
@@ -822,7 +867,7 @@ System.out.println(fines);`,
     answer: 0,
     verify: { out: "11" } },
 
-  { id: "u2p3-08", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2p3-08", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "Bread dough rises in a warm kitchen. Consider the following code segment.",
     code: `int rise = 3;
 int minutes = 0;
@@ -850,7 +895,7 @@ System.out.println(minutes + " " + rise);`,
     answer: 0,
     verify: { out: "25 17" } },
 
-  { id: "u2p3-09", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2p3-09", skill: "algo", type: "mcq", topic: "2.9", difficulty: "difficult",
     stem: "A small parking garage holds at most 12 cars. Consider the following code segment.",
     code: `int cars = 0;
 int full = 0;
@@ -879,7 +924,7 @@ System.out.println(cars + " " + full);`,
     answer: 0,
     verify: { out: "12 3" } },
 
-  { id: "u2p3-10", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2p3-10", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "A video game score table shows the best round of a game. Consider the following code segment.",
     code: `int best = 0;
 int bestRound = 0;
@@ -904,24 +949,24 @@ System.out.println(best + " in round " + bestRound);`,
     answer: 0,
     verify: { out: "4 in round 2" } },
 
-  { id: "u2p3-11", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2p3-11", skill: "for", type: "mcq", topic: "2.8", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int n = 7; n <= 40; n += 4)
 {
     System.out.print("+");
 }`,
     question: "How many times is `+` printed?",
-    choices: ["9", "8", "10", "34"], mono: true,
+    choices: ["9", "10", "34", "33"], mono: true,
     why: [
       "`n` takes the values 7, 11, 15, 19, 23, 27, 31, 35, and 39. The next value, 43, is more than 40.",
-      "This counts the steps between the first value and the last, not the values. Write out the values and count them, including 7.",
       "This counts one pass too many. After 39, `n` becomes 43, and `43 <= 40` is false.",
       "This counts every value from 7 to 40. `n` goes up by 4.",
+      "That is 40 - 7, the distance `n` covers, not a count of passes. Write out the values `n` takes and count them.",
     ],
     answer: 0,
     verify: { out: "+++++++++" } },
 
-  { id: "u2p3-12", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p3-12", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "A melody is stored as one letter per note. Consider the following code segment, which counts the C major chords spelled out in it.",
     code: `String notes = "GCEGACEG";
 int chords = 0;
@@ -944,7 +989,7 @@ System.out.println(chords);`,
     answer: 0,
     verify: { out: "2" } },
 
-  { id: "u2p3-13", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p3-13", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "A library catalog shortens a title to its initials. Consider the following code segment.",
     code: `String title = "war and peace";
 String t = title.substring(0, 1);
@@ -967,7 +1012,7 @@ System.out.println(t);`,
     answer: 0,
     verify: { out: "wap" } },
 
-  { id: "u2p3-14", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p3-14", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "Consider the following code segment, which finds where \"stir\" appears in a recipe.",
     code: `String steps = "stir, bake, stir, cool, stir";
 String rest = steps;
@@ -992,7 +1037,7 @@ System.out.println(found);`,
     answer: 0,
     verify: { out: "0 12 24" } },
 
-  { id: "u2p3-15", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p3-15", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String word = "monsoon";
 int count = 0;
@@ -1015,7 +1060,7 @@ System.out.println(count);`,
     answer: 0,
     verify: { out: "6" } },
 
-  { id: "u2p3-16", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p3-16", skill: "nested", type: "mcq", topic: "2.11", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int n = 0;
 for (int i = 4; i >= 1; i--)
@@ -1037,7 +1082,7 @@ System.out.println(n);`,
     answer: 0,
     verify: { out: "18" } },
 
-  { id: "u2p3-17", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p3-17", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int r = 1; r <= 3; r++)
 {
@@ -1058,49 +1103,43 @@ System.out.println(n);`,
     answer: 0,
     verify: { out: "1 2 3\n4 6\n9" } },
 
-  { id: "u2p3-18", skill: "nested", type: "mcq", topic: "2.11",
-    stem: "A word search game stores its grid of 3 rows and 4 columns row by row in one String. Consider the following code segment.",
-    code: `String grid = "ABCDEFGHIJKL";
-int rows = 3;
-int cols = 4;
-for (int c = 0; c < cols; c++)
-{
-    String line = "";
-    for (int r = 0; r < rows; r++)
-    {
-        int at = r * cols + c;
-        line += grid.substring(at, at + 1);
-    }
-    System.out.print(line + " ");
-}`,
+  { id: "u2p3-18", skill: "nested", type: "mcq", topic: "2.11", difficulty: "difficult",
+    stem: "A word search game stores its grid of 3 rows and 4 columns row by row in one String: `\"CATA\"`, then `\"TCAT\"`, then `\"OATS\"`. Consider the following code segment.",
+    code: P3_18,
     question: "What is printed as a result of executing the code segment?",
-    choices: ["AEI BFJ CGK DHL", "ABC DEF GHI JKL", "ADG BEH CFI DGJ", "ABCD EFGH IJKL"], mono: true,
+    choices: ["3", "4", "9", "2"], mono: true,
     why: [
-      "`r * cols + c` is the index of row `r`, column `c`. The outer loop picks a column, and the inner loop reads it from top to bottom.",
-      "This reads the String in order, three letters at a time. Each row starts `cols` characters after the row before, so going down one row adds 4 to the index.",
-      "This uses `rows` as the length of a row. Each row has `cols` letters, so the index is `r * cols + c`.",
-      "This prints the rows. The outer loop here picks the column, so each group is one column read from top to bottom.",
-    ],
-    answer: 0,
-    verify: { out: "AEI BFJ CGK DHL" } },
-
-  { id: "u2p3-19", skill: "runtime", type: "mcq", topic: "2.12",
-    stem: "Consider the following code segment.",
-    code: P3_19,
-    question: "How many times is the statement `count++;` executed?",
-    choices: ["12", "14", "16", "4"], mono: true,
-    why: [
-      "For each `i`, the inner loop adds 2 to `j` until it reaches 8 or more: 4 passes when `i` is 1, 3 when it is 2, 3 when it is 3, and 2 when it is 4. Add them.",
-      "This also runs when `j` equals 8. The test is `j < 8`.",
-      "This runs the inner loop 4 times for every `i`. `j` starts at `i`, so a larger `i` reaches 8 sooner.",
-      "That counts the outer loop only. `count++;` is inside the inner loop.",
+      "`r * cols + c` is the index of row `r`, column `c`, and `c` stops at column 2, so each pair of letters stays inside its row. Each row holds one \"AT\": at column 1, column 2, and column 1.",
+      "That also counts the A at the end of the first row with the T at the start of the second. The inner loop never looks at a pair that crosses into the next row.",
+      "That is how many pairs the loops check, 3 in each row. `found` goes up only for a pair that is \"AT\".",
+      "That leaves out the pair at column 2. `c < cols - 1` lets `c` reach 2, the start of the last pair in a row.",
     ],
     answer: 0,
     verify: { cases: [
-      { run: P3_19 + "\nSystem.out.println(count);", out: "12" },
+      { run: P3_18, out: "3" },
+      { run: P3_18.replace("c < cols - 1", "c < cols").replace("int at = r * cols + c;", "int at = r * cols + c;\n        if (at + 2 > grid.length())\n        {\n            break;\n        }"), out: "4" },
+      { run: P3_18.replace("c < cols - 1", "c < cols - 2"), out: "2" },
     ] } },
 
-  { id: "u2p3-20", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2p3-19", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "moderate",
+    stem: "Consider the following code segment.",
+    code: P3_19,
+    question: "How many times is the statement `count++;` executed?",
+    choices: ["8", "10", "12", "14"], mono: true,
+    why: [
+      "For each `i`, the inner loop adds 2 to `j` until it reaches 6 or more: 3 passes when `i` is 1, then 2, 2, and 1. Add them.",
+      "This also runs when `j` equals 6. The test is `j < 6`, so a `j` of 6 ends the inner loop.",
+      "This runs the inner loop 3 times for every `i`. `j` starts at `i`, so a larger `i` reaches 6 sooner.",
+      "That moves `j` up by 1. With `j += 2`, the inner loop takes about half as many passes.",
+    ],
+    answer: 0,
+    verify: { cases: [
+      { run: P3_19 + "\nSystem.out.println(count);", out: "8" },
+      { run: P3_19.replace("j < 6", "j <= 6") + "\nSystem.out.println(count);", out: "10" },
+      { run: P3_19.replace("j += 2", "j++") + "\nSystem.out.println(count);", out: "14" },
+    ] } },
+
+  { id: "u2p3-20", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "difficult",
     stem: "Consider the following code segment, where `n` is a positive `int`.",
     code: P3_20,
     question: "When `n` is 10, `steps` is 100 after the code segment runs. What is `steps` when `n` is 20?",

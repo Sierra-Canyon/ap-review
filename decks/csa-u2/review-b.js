@@ -2,12 +2,12 @@
 // In every mcq the key is written first (answer: 0); the site shuffles.
 
 const OUT = "What is printed? Type it exactly, one line per line.";
-const THROWS = "Nothing is printed. A StringIndexOutOfBoundsException is thrown.";
-const NOCOMPILE = "Nothing is printed. The code segment does not compile.";
+const THROWS = "A StringIndexOutOfBoundsException is thrown.";
+const NOCOMPILE = "The code segment does not compile.";
 
 export default [
   // ---------- string (2.10) ----------
-  { id: "u2r-b-01", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-01", skill: "string", type: "mcq", topic: "2.10", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String spell = "frost";
 int count = 0;
@@ -20,7 +20,7 @@ for (int i = 0; i < spell.length(); i++)
 }
 System.out.println(count);`,
     question: "What is the result of executing the code segment?",
-    choices: [NOCOMPILE, "1", "0", THROWS], mono: false,
+    choices: [NOCOMPILE, "1 is printed.", "0 is printed.", THROWS], mono: false,
     why: [
       "`spell[i]` uses brackets, and brackets do not index a String in Java. The compiler stops with `array required, but String found`. One character of spell is `spell.substring(i, i + 1)`.",
       "That is what the loop would print with `spell.substring(i, i + 1).equals(\"s\")`. As written, the code never runs.",
@@ -30,7 +30,7 @@ System.out.println(count);`,
     answer: 0,
     verify: { error: "array required, but String found" } },
 
-  { id: "u2r-b-02", skill: "string", type: "output", topic: "2.10",
+  { id: "u2r-b-02", skill: "string", type: "output", topic: "2.10", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String name = "goblin";
 String masked = "";
@@ -52,7 +52,7 @@ System.out.println(masked);`,
     why: "Each letter of name is checked once, in order. `\"aeiou\".indexOf(letter) >= 0` is true for a vowel, so a vowel adds `*` to masked and any other letter adds itself.",
     verify: { out: "g*bl*n" } },
 
-  { id: "u2r-b-03", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-03", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "The following code segment is intended to print `true` if word contains the one-letter String target, and `false` otherwise.",
     code: `String word = "ember";
 String target = "b";
@@ -86,7 +86,7 @@ System.out.println(found);`,
       { run: `String word = "ember";\nString target = "b";\nboolean found = false;\nfor (int i = 0; i < word.length(); i++)\n{\n    if (word.substring(i, i + 1).compareTo(target) < 0)\n    {\n        found = true;\n    }\n}\nSystem.out.println(found);`, out: "false" },
     ] } },
 
-  { id: "u2r-b-04", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-04", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "The following code segment is intended to print the letters of s in reverse order. For \"torch\" it should print hcrot.",
     code: `String s = "torch";
 String rev = "";
@@ -96,24 +96,24 @@ System.out.println(rev);`,
     choices: [
       "for (int i = s.length() - 1; i >= 0; i--)\n{\n    rev += s.substring(i, i + 1);\n}",
       "for (int i = s.length(); i >= 0; i--)\n{\n    rev += s.substring(i, i + 1);\n}",
-      "for (int i = s.length() - 1; i > 0; i--)\n{\n    rev += s.substring(i, i + 1);\n}",
+      "for (int i = s.length() - 1; i >= 1; i--)\n{\n    rev += s.substring(i, i + 1);\n}",
       "for (int i = 0; i < s.length(); i++)\n{\n    rev += s.substring(i, i + 1);\n}",
     ], mono: true,
     why: [
       "The last index is `s.length() - 1`, so i starts there and counts down through index 0. Each letter is added to the end of rev, last letter first.",
       "On the first pass i is `s.length()`, and `s.substring(5, 6)` asks for a letter past the end. A `StringIndexOutOfBoundsException` is thrown.",
-      "`i > 0` stops before index 0, so the first letter is never added. This prints hcro.",
+      "`i >= 1` stops before index 0, so the first letter is never added. This prints hcro.",
       "This visits the letters front to back and adds each one to the end, so rev is a copy of s: torch.",
     ],
     answer: 0,
     verify: { cases: [
       { run: `String s = "torch";\nString rev = "";\nfor (int i = s.length() - 1; i >= 0; i--)\n{\n    rev += s.substring(i, i + 1);\n}\nSystem.out.println(rev);`, out: "hcrot" },
       { run: `String s = "torch";\nString rev = "";\nfor (int i = s.length(); i >= 0; i--)\n{\n    rev += s.substring(i, i + 1);\n}\nSystem.out.println(rev);`, throws: "StringIndexOutOfBoundsException" },
-      { run: `String s = "torch";\nString rev = "";\nfor (int i = s.length() - 1; i > 0; i--)\n{\n    rev += s.substring(i, i + 1);\n}\nSystem.out.println(rev);`, out: "hcro" },
+      { run: `String s = "torch";\nString rev = "";\nfor (int i = s.length() - 1; i >= 1; i--)\n{\n    rev += s.substring(i, i + 1);\n}\nSystem.out.println(rev);`, out: "hcro" },
       { run: `String s = "torch";\nString rev = "";\nfor (int i = 0; i < s.length(); i++)\n{\n    rev += s.substring(i, i + 1);\n}\nSystem.out.println(rev);`, out: "torch" },
     ] } },
 
-  { id: "u2r-b-05", skill: "string", type: "output", topic: "2.10",
+  { id: "u2r-b-05", skill: "string", type: "output", topic: "2.10", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String w = "staff";
 for (int i = 1; i <= w.length(); i += 2)
@@ -125,7 +125,7 @@ for (int i = 1; i <= w.length(); i += 2)
     why: "`w.substring(0, i)` is the first i letters of w, and i takes the values 1, 3, and 5. `i <= w.length()` is safe here because the end index of `substring` may equal the length; an end index past the length is what throws.",
     verify: { out: "s\nsta\nstaff" } },
 
-  { id: "u2r-b-06", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-06", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String code = "rune42x7";
 int i = 0;
@@ -153,7 +153,7 @@ System.out.println(i);`,
     answer: 0,
     verify: { out: "4" } },
 
-  { id: "u2r-b-07", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-07", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String word = "monster";
 String kept = "";
@@ -167,17 +167,17 @@ for (int i = 0; i < word.length(); i++)
 }
 System.out.println(kept);`,
     question: "What is printed?",
-    choices: ["onstr", "monstr", "e", "ostr"], mono: true,
+    choices: ["onstr", "monstr", "me", "ostr"], mono: true,
     why: [
       "`ch.compareTo(\"m\") > 0` is true when ch comes after m in the alphabet. o, n, s, t, and r do; m and e do not.",
       "This keeps the m. A String compared with an equal String gives 0, and `0 > 0` is false.",
-      "This keeps the letters that come before m. A positive result means ch comes after \"m\".",
+      "This keeps the letters that do NOT come after m: m itself and e. A positive result means ch comes after \"m\".",
       "This leaves out the n. n comes right after m, so `\"n\".compareTo(\"m\")` is 1, which is positive.",
     ],
     answer: 0,
     verify: { out: "onstr" } },
 
-  { id: "u2r-b-08", skill: "string", type: "output", topic: "2.10",
+  { id: "u2r-b-08", skill: "string", type: "output", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String sound = "shhhooot";
 String out = sound.substring(0, 1);
@@ -195,7 +195,7 @@ System.out.println(out);`,
     why: "out starts with the first letter. From index 1 on, a letter is added only when it differs from the letter just before it, `sound.substring(i - 1, i)`, so each run of the same letter is kept once.",
     verify: { out: "shot" } },
 
-  { id: "u2r-b-09", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-09", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String s = "deep";
 int n = 0;
@@ -208,17 +208,17 @@ for (int i = 0; i < s.length(); i++)
 }
 System.out.println(n);`,
     question: "What is the result of executing the code segment?",
-    choices: [THROWS, "1", NOCOMPILE, "2"], mono: false,
+    choices: [THROWS, "1 is printed.", NOCOMPILE, "2 is printed."], mono: false,
     why: [
       "On the last pass i is 3, and `s.substring(4, 5)` asks for the letter after the end of a String of length 4. To compare each letter with the next one, the loop must stop at `i < s.length() - 1`.",
       "The ee pair is counted at i equal to 1, but the loop keeps going, and the last pass reads past the end before println is reached.",
       "Index bounds are checked while the code runs, not when it compiles. Every statement here is valid Java.",
-      "ee is one pair of neighbors, and it is counted once. In any case the loop never reaches the println.",
+      "ee is one pair of neighbors, and it would be counted once. In any case the loop never reaches the println.",
     ],
     answer: 0,
     verify: { throws: "StringIndexOutOfBoundsException" } },
 
-  { id: "u2r-b-10", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-10", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String str = "mississippi";
 String result = "";
@@ -233,9 +233,9 @@ for (int i = 0; i < str.length(); i++)
 System.out.println(result);`,
     question: "Which of the following best describes what is printed, for any value of str?",
     choices: [
-      "Each different character of str once, in the order each first appears",
+      "Each different character of str once, in order of first appearance",
       "Only the characters that appear exactly once in str, in their order",
-      "Each different character of str once, in the order each last appears",
+      "Each different character of str once, in order of its last appearance",
       "Only the characters that appear more than once in str, each one once",
     ], mono: false,
     why: [
@@ -247,7 +247,7 @@ System.out.println(result);`,
     answer: 0,
     verify: { out: "misp" } },
 
-  { id: "u2r-b-11", skill: "string", type: "output", topic: "2.10",
+  { id: "u2r-b-11", skill: "string", type: "output", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String a = "fire";
 String b = "ICE";
@@ -266,9 +266,9 @@ System.out.println(mix);`,
     why: "Each pass adds the letter of a at index i, then the letter of b at index i when b has one. b is shorter, so on the last pass `i < b.length()` is false and only the e is added. The if is what keeps `b.substring(3, 4)` from throwing.",
     verify: { out: "fIiCrEe" } },
 
-  { id: "u2r-b-12", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-12", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
-    code: `String loot = "g3s12k";
+    code: `String loot = "goblins1x23";
 int total = 0;
 for (int i = 0; i < loot.length(); i++)
 {
@@ -280,17 +280,17 @@ for (int i = 0; i < loot.length(); i++)
 }
 System.out.println(total);`,
     question: "What is printed?",
-    choices: ["6", "15", "312", "3"], mono: true,
+    choices: ["6", "24", "123", "-2"], mono: true,
     why: [
-      "Each digit sits at the index of its own value in \"0123456789\", so indexOf gives the digit's value, and -1 for a letter. The if adds only the digits: 3 + 1 + 2.",
-      "This reads 12 as twelve. The loop looks at one character at a time, so 1 and 2 are added separately.",
+      "Each digit sits at the index of its own value in \"0123456789\", so indexOf gives the digit's value, and -1 for a letter. The if adds only the digits: 1 + 2 + 3.",
+      "This reads 23 as twenty-three. The loop looks at one character at a time, so 2 and 3 are added separately.",
       "total is an int, so `+=` adds the numbers; it does not join them as text.",
-      "That would be the result without the if: each of the three letters would add -1. The test `d >= 0` skips them.",
+      "That would be the result without the if: each of the eight letters would add -1. The test `d >= 0` skips them.",
     ],
     answer: 0,
     verify: { out: "6" } },
 
-  { id: "u2r-b-13", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-13", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "The following code segment is intended to print `true` if w reads the same forward and backward, and `false` otherwise.",
     code: `String w = "stats";
 boolean same = true;
@@ -309,13 +309,13 @@ System.out.println(same);`,
       "w.substring(w.length() - 1 - i, w.length() - i)",
       "w.substring(w.length() - i, w.length() - i + 1)",
       "w.substring(w.length() - 1 - i)",
-      "w.substring(i, i + 1)",
+      "w.substring(w.length() - 1, w.length())",
     ], mono: true,
     why: [
       "Index i from the front pairs with index `w.length() - 1 - i` from the back, and the substring ends one after it. For i equal to 0 this is the last letter.",
       "On the first pass i is 0, so this is `w.substring(5, 6)`, which starts at the length. A `StringIndexOutOfBoundsException` is thrown.",
       "With one argument, substring goes to the end, so after the first pass back is more than one letter. For \"stats\" it compares t with ts and prints false.",
-      "This compares each front letter with itself, so same is always true, even for a word such as \"start\".",
+      "This is always the last letter of w, so after the first pass each front letter is compared with the last one. For \"stats\" it compares t with s and prints false.",
     ],
     answer: 0,
     verify: { cases: [
@@ -323,10 +323,10 @@ System.out.println(same);`,
       { run: `String w = "start";\nboolean same = true;\nfor (int i = 0; i < w.length() / 2; i++)\n{\n    String front = w.substring(i, i + 1);\n    String back = w.substring(w.length() - 1 - i, w.length() - i);\n    if (!front.equals(back))\n    {\n        same = false;\n    }\n}\nSystem.out.println(same);`, out: "false" },
       { run: `String w = "stats";\nboolean same = true;\nfor (int i = 0; i < w.length() / 2; i++)\n{\n    String front = w.substring(i, i + 1);\n    String back = w.substring(w.length() - i, w.length() - i + 1);\n    if (!front.equals(back))\n    {\n        same = false;\n    }\n}\nSystem.out.println(same);`, throws: "StringIndexOutOfBoundsException" },
       { run: `String w = "stats";\nboolean same = true;\nfor (int i = 0; i < w.length() / 2; i++)\n{\n    String front = w.substring(i, i + 1);\n    String back = w.substring(w.length() - 1 - i);\n    if (!front.equals(back))\n    {\n        same = false;\n    }\n}\nSystem.out.println(same);`, out: "false" },
-      { run: `String w = "start";\nboolean same = true;\nfor (int i = 0; i < w.length() / 2; i++)\n{\n    String front = w.substring(i, i + 1);\n    String back = w.substring(i, i + 1);\n    if (!front.equals(back))\n    {\n        same = false;\n    }\n}\nSystem.out.println(same);`, out: "true" },
+      { run: `String w = "stats";\nboolean same = true;\nfor (int i = 0; i < w.length() / 2; i++)\n{\n    String front = w.substring(i, i + 1);\n    String back = w.substring(w.length() - 1, w.length());\n    if (!front.equals(back))\n    {\n        same = false;\n    }\n}\nSystem.out.println(same);`, out: "false" },
     ] } },
 
-  { id: "u2r-b-14", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-14", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String s = "aabbbcbb";
 int run = 1;
@@ -358,7 +358,7 @@ System.out.println(best);`,
     answer: 0,
     verify: { out: "3" } },
 
-  { id: "u2r-b-15", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-15", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: `String list = "orc bat imp ";
 String best = "";
@@ -384,7 +384,7 @@ System.out.println(best);`,
     answer: 0,
     verify: { out: "orc" } },
 
-  { id: "u2r-b-16", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2r-b-16", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: `String log = "hit miss hit hit";
 String rest = log;
@@ -408,7 +408,7 @@ while (rest.indexOf("hit") >= 0)
     verify: { out: "0 9 13" } },
 
   // ---------- algo (2.9) ----------
-  { id: "u2r-b-17", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-17", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int sum = 0;
 int n = 0;
@@ -429,7 +429,7 @@ System.out.println((double) (sum / n) + " " + (double) sum / n);`,
     answer: 0,
     verify: { out: "7.0 7.5" } },
 
-  { id: "u2r-b-18", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-18", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "The following code segment is intended to print the largest value that t takes in the loop.",
     code: `int warmest = 0;
 for (int t = -9; t <= -1; t += 3)
@@ -451,7 +451,7 @@ System.out.println(warmest);`,
     answer: 0,
     verify: { out: "0" } },
 
-  { id: "u2r-b-19", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-19", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "The following code segment is intended to print the smallest value of hp computed in the loop.",
     code: `/* missing code */
 for (int k = 1; k <= 5; k++)
@@ -479,7 +479,7 @@ System.out.println(least);`,
       { run: `int least = 12;\nfor (int k = 1; k <= 5; k++)\n{\n    int hp = (k * 7) % 10 + 12;\n    if (hp < least)\n    {\n        least = hp;\n    }\n}\nSystem.out.println(least);`, out: "12" },
     ] } },
 
-  { id: "u2r-b-20", skill: "algo", type: "output", topic: "2.9",
+  { id: "u2r-b-20", skill: "algo", type: "output", topic: "2.9", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int n = 3070;
 int rev = 0;
@@ -494,7 +494,7 @@ System.out.println(rev);`,
     why: "Each pass takes the last digit with `n % 10`, puts it at the end of rev with `rev * 10 +`, and drops it from n with `n /= 10`. The digits come off as 0, 7, 0, 3. The first one is 0, which leaves rev at 0, so the result is the int 703, not 0703.",
     verify: { out: "703" } },
 
-  { id: "u2r-b-21", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-21", skill: "algo", type: "mcq", topic: "2.9", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int count = 0;
 for (int n = 1; n <= 40; n++)
@@ -516,7 +516,7 @@ System.out.println(count);`,
     answer: 0,
     verify: { out: "7" } },
 
-  { id: "u2r-b-22", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-22", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int sum = 0;
 int n = 0;
@@ -537,7 +537,7 @@ System.out.println(n + " " + sum);`,
     answer: 0,
     verify: { out: "10 55" } },
 
-  { id: "u2r-b-23", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-23", skill: "algo", type: "mcq", topic: "2.9", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int num = 91;
 int d = 2;
@@ -557,7 +557,7 @@ System.out.println(d);`,
     answer: 0,
     verify: { out: "7" } },
 
-  { id: "u2r-b-24", skill: "algo", type: "output", topic: "2.9",
+  { id: "u2r-b-24", skill: "algo", type: "output", topic: "2.9", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int num = 52814;
 int evens = 0;
@@ -581,7 +581,7 @@ System.out.println(evens + " " + oddSum);`,
     why: "The loop takes the digits from the right: 4, 1, 8, 2, 5. The even ones, 4, 8, and 2, are counted, and the odd ones, 1 and 5, are added to oddSum.",
     verify: { out: "3 6" } },
 
-  { id: "u2r-b-25", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2r-b-25", skill: "algo", type: "mcq", topic: "2.9", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int total = 0;
 int count = 0;
@@ -607,7 +607,7 @@ System.out.println(avg);`,
     verify: { out: "10.5" } },
 
   // ---------- nested (2.11) ----------
-  { id: "u2r-b-26", skill: "nested", type: "output", topic: "2.11",
+  { id: "u2r-b-26", skill: "nested", type: "output", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int r = 4; r >= 1; r--)
 {
@@ -622,7 +622,7 @@ System.out.println(avg);`,
     why: "r counts down from 4 to 1, and for each r the inner loop prints the numbers from 1 to r on one line. println ends the line after each row, so each row is one shorter than the one above it.",
     verify: { out: "1234\n123\n12\n1" } },
 
-  { id: "u2r-b-27", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2r-b-27", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int count = 0;
 for (int i = 1; i <= 4; i++)
@@ -644,7 +644,7 @@ System.out.println(count);`,
     answer: 0,
     verify: { out: "30" } },
 
-  { id: "u2r-b-28", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2r-b-28", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int r = 1; r <= 3; r++)
 {
@@ -659,19 +659,19 @@ System.out.println(count);`,
     System.out.println();
 }`,
     question: "What is printed?",
-    choices: ["..#\n.##\n###", "#..\n##.\n###", "...#\n..##\n.###", "..#\n..##\n..###"], mono: true,
+    choices: ["..#\n.##\n###", "..##\n.###\n####", "...#\n..##\n.###", "..#\n..##\n..###"], mono: true,
     why: [
       "On row r the first inner loop prints `3 - r` dots and the second prints r # characters: 2, 1, and 0 dots, then 1, 2, and 3 #.",
-      "The dot loop comes first in each row, so the dots are printed before the # characters.",
+      "This prints one # too many on each row, as `k <= r` would. `k < r`, starting at 0, runs r times.",
       "`s < 3 - r` runs `3 - r` times, starting at 0: 2 dots on the first row, not 3.",
       "The dot loop's bound is `3 - r`, so each row has one dot fewer than the row before it.",
     ],
     answer: 0,
     verify: { out: "..#\n.##\n###" } },
 
-  { id: "u2r-b-29", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2r-b-29", skill: "nested", type: "mcq", topic: "2.11", difficulty: "moderate",
     stem: "Consider the following code segment.",
-    code: `String s = "banana";
+    code: `String s = "cocoon";
 int pairs = 0;
 for (int i = 0; i < s.length(); i++)
 {
@@ -685,17 +685,17 @@ for (int i = 0; i < s.length(); i++)
 }
 System.out.println(pairs);`,
     question: "What is printed?",
-    choices: ["4", "8", "10", "3"], mono: true,
+    choices: ["4", "8", "10", "14"], mono: true,
     why: [
-      "j always starts after i, so each pair of positions is checked once. The a's at indexes 1, 3, and 5 make 3 pairs, and the n's at 2 and 4 make 1.",
+      "j always starts after i, so each pair of positions is checked once. The c's at indexes 0 and 2 make 1 pair, and the o's at 1, 3, and 4 make 3.",
       "That counts each pair twice, once from each end. j starts at `i + 1`, so a pair is checked only from its first letter.",
-      "This also compares each letter with itself. j starts at `i + 1`, never at i.",
-      "This counts only the pairs of a. The n's at indexes 2 and 4 match too.",
+      "This also compares each letter with itself, as starting j at i would: 4 pairs plus 6 self-matches. j starts at `i + 1`.",
+      "This starts j at 0, so each letter also matches itself and each pair is counted from both ends: 6 + 8. j starts at `i + 1`.",
     ],
     answer: 0,
     verify: { out: "4" } },
 
-  { id: "u2r-b-30", skill: "nested", type: "output", topic: "2.11",
+  { id: "u2r-b-30", skill: "nested", type: "output", topic: "2.11", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `for (int i = 1; i <= 3; i++)
 {
@@ -711,7 +711,7 @@ System.out.println(pairs);`,
     why: "The inner loop starts at j equal to i, so each row is one shorter. Row 1 joins 1, 2, and 3; row 2 joins 4 and 6; row 3 is 9. `line += i * j` multiplies first and then joins the number to the String.",
     verify: { out: "123\n46\n9" } },
 
-  { id: "u2r-b-31", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2r-b-31", skill: "nested", type: "mcq", topic: "2.11", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: `int i = 1;
 int total = 0;
@@ -727,17 +727,17 @@ while (i <= 8)
 }
 System.out.println(total);`,
     question: "What is printed?",
-    choices: ["8", "15", "4", "11"], mono: true,
+    choices: ["8", "15", "10", "11"], mono: true,
     why: [
       "i takes the values 1, 2, 4, and 8. Each time, the inner loop counts j down by 2 from i while j is positive, which takes 1, 1, 2, and 4 passes.",
       "That adds i each time. j goes down by 2, so the inner loop runs i / 2 times, rounded up, not i times.",
-      "That counts the outer passes only. total++ is inside the inner loop.",
+      "This reads `i *= 2` as `i += 2`, so i would be 1, 3, 5, and 7. `i *= 2` doubles i, so it skips from 2 to 4 to 8.",
       "This also runs when j is 0. The test is `j > 0`.",
     ],
     answer: 0,
     verify: { out: "8" } },
 
-  { id: "u2r-b-32", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2r-b-32", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "The following code segment is intended to print three lines: 1, then 22, then 333.",
     code: `for (int r = 1; r <= 3; r++)
 {
@@ -766,7 +766,7 @@ System.out.println(total);`,
     ] } },
 
   // ---------- runtime (2.12) ----------
-  { id: "u2r-b-33", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2r-b-33", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int i = 1; i <= 10; i++)
 {
@@ -789,7 +789,7 @@ System.out.println(total);`,
     answer: 0,
     verify: { out: "xxxxxxxxxxxxxxx" } },
 
-  { id: "u2r-b-34", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2r-b-34", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "moderate",
     stem: "Consider the following two code segments, which both count the divisors of n.",
     code: `int n = 40;
 
@@ -825,7 +825,7 @@ for (int d = 1; d <= n / 2; d++)
       { run: `int n = 40;\nint t1 = 0;\nint t2 = 0;\nint count1 = 0;\nfor (int d = 1; d <= n; d++)\n{\n    t1++;\n    if (n % d == 0)\n    {\n        count1++;\n    }\n}\nint count2 = 1;\nfor (int d = 1; d <= n / 2; d++)\n{\n    t2++;\n    if (n % d == 0)\n    {\n        count2++;\n    }\n}\nSystem.out.println(t1 + " " + t2 + " " + count1 + " " + count2);`, out: "40 20 8 8" },
     ] } },
 
-  { id: "u2r-b-35", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2r-b-35", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int n = 16;
 int ops = 0;
@@ -849,7 +849,7 @@ for (int i = 1; i <= n; i *= 2)
       { run: `int n = 16;\nint ops = 0;\nfor (int i = 1; i <= n; i *= 2)\n{\n    for (int j = 0; j < n; j++)\n    {\n        ops++;\n    }\n}\nSystem.out.println(ops);`, out: "80" },
     ] } },
 
-  { id: "u2r-b-36", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2r-b-36", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "moderate",
     stem: "Consider the following two code segments, where n is a positive int.",
     code: `// Segment I
 int a = 0;
@@ -869,10 +869,10 @@ for (int i = 0; i < n; i++)
 }`,
     question: "When n changes from 50 to 100, how does the number of times `a++;` and `b++;` are executed change?",
     choices: [
-      "`a++` runs twice as many times, and `b++` runs four times as many times.",
-      "`a++` and `b++` both run twice as many times as before.",
-      "`a++` and `b++` both run four times as many times as before.",
-      "`a++` runs 50 more times, and `b++` runs 100 more times.",
+      "2 times as many for `a++`, and 4 times as many for `b++`",
+      "2 times as many for `a++`, and 2 times as many for `b++`",
+      "4 times as many for `a++`, and 4 times as many for `b++`",
+      "50 more for `a++`, and 100 more for `b++`",
     ], mono: false,
     why: [
       "`a++` runs n times: 50, then 100. `b++` runs n times n: 2,500, then 10,000. Doubling n doubles a single loop and multiplies a nested pair of loops by four.",
@@ -886,7 +886,7 @@ for (int i = 0; i < n; i++)
       { run: `int n = 100;\nint a = 0;\nfor (int i = 0; i < n; i++)\n{\n    a++;\n}\nint b = 0;\nfor (int i = 0; i < n; i++)\n{\n    for (int j = 0; j < n; j++)\n    {\n        b++;\n    }\n}\nSystem.out.println(a + " " + b);`, out: "100 10000" },
     ] } },
 
-  { id: "u2r-b-37", skill: "runtime", type: "output", topic: "2.12",
+  { id: "u2r-b-37", skill: "runtime", type: "output", topic: "2.12", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int ops = 0;
 for (int i = 0; i < 4; i++)
@@ -903,24 +903,24 @@ System.out.println(ops);`,
     why: "The inner loop does `ops++` 3 times on each of the 4 outer passes, which is 12. The `ops++` after the inner loop is inside the outer loop only, so it runs once per outer pass, 4 more.",
     verify: { out: "16" } },
 
-  { id: "u2r-b-38", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2r-b-38", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "easy",
     stem: "Consider the following code segment.",
-    code: `String word = "dungeon";
+    code: `String path = "night forest";
 int i = 0;
-while (i < word.length() && !word.substring(i, i + 1).equals("e"))
+while (i < path.length() && !path.substring(i, i + 1).equals("e"))
 {
     i++;
 }`,
     question: "How many times is the statement `i++;` executed?",
-    choices: ["4", "5", "7", "0"], mono: true,
+    choices: ["9", "10", "12", "11"], mono: true,
     why: [
-      "The loop moves past d, u, n, and g, then stops at the e at index 4, where the test is false. Each pass adds 1, so `i++` runs 4 times.",
+      "The loop moves past the 9 characters before the e at index 9, the space included, and stops when the test is false at the e. Each pass adds 1, so `i++` runs 9 times.",
       "This counts the check at the e. That test is false, so the body does not run for it.",
-      "That is the length of word. The loop stops early, at the first e.",
-      "The test is true while the letter is NOT e, so the body runs for every letter before the first e.",
+      "That is the length of path. The loop stops early, at the first e.",
+      "That counts every character that is not an e. The loop stops at the first e and never reaches the s and t after it.",
     ],
     answer: 0,
     verify: { cases: [
-      { run: `String word = "dungeon";\nint i = 0;\nint runs = 0;\nwhile (i < word.length() && !word.substring(i, i + 1).equals("e"))\n{\n    i++;\n    runs++;\n}\nSystem.out.println(runs);`, out: "4" },
+      { run: `String path = "night forest";\nint i = 0;\nint runs = 0;\nwhile (i < path.length() && !path.substring(i, i + 1).equals("e"))\n{\n    i++;\n    runs++;\n}\nSystem.out.println(runs);`, out: "9" },
     ] } },
 ];

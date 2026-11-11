@@ -106,12 +106,13 @@ async function answer(page, right) {
   log("misses after practicing them:", after);
   assert(after < before, "practicing misses right takes them off the list");
 
-  // Quiz 5 strings only
+  // Unit 2 Test review only (Unit 2 skills, including 2.1 items that show numbered steps instead of code)
+  const u2 = ["design", "bool", "if", "while", "for", "algo", "string", "nested", "runtime", "frq"];
   await page.click("text=Home");
-  await page.click("button[data-focus='string']");
+  await page.click("button[data-focus='u2test']");
   for (let k = 0; k < 10; k++) {
     await page.waitForSelector("#card");
-    const it = await answer(page, true); assert(it.skill === "string", "Quiz 5 focus gave " + it.skill);
+    const it = await answer(page, true); assert(u2.includes(it.skill), "Unit 2 Test focus gave " + it.skill);
     await page.click("#next");
     if (await page.$("text=Set done")) break;
   }

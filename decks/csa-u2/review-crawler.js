@@ -93,7 +93,7 @@ const S06 = ARROW("..@..", 2, 4);
 const S06_KEY = "step <= reach && heroCol + step < row.length() && stoppedAt == -1";
 const S06_B = "step <= reach && heroCol + step <= row.length() && stoppedAt == -1";
 const S06_C = "step <= reach && step < row.length() && stoppedAt == -1";
-const S06_D = "step < reach && stoppedAt == -1";
+const S06_D = "step <= reach && heroCol < row.length() && stoppedAt == -1";
 
 // ---------- n02: the index of a tile ----------
 const N02 = `String map = "#M.$.@.#";
@@ -147,11 +147,10 @@ for (int row = 0; row < rows; row++)
 System.out.println("Richest row: " + richest);
 System.out.println("Hero: " + hero);`;
 
-// f2: The battle log (Quests 13 and 14)
+// f2: The damage report (Quests 13 and 14)
 const F2 = `int swings = 0;
 int total = 0;
-int streak = 0;
-int longest = 0;
+int firstCrit = 0;
 String rest = log + " ";
 int space = rest.indexOf(" ");
 String word = rest.substring(0, space);
@@ -162,20 +161,14 @@ while (!word.equals("end"))
     if (word.equals("hit"))
     {
         total = total + 2;
-        streak++;
     }
     else if (word.equals("crit"))
     {
         total = total + 5;
-        streak++;
-    }
-    else
-    {
-        streak = 0;
-    }
-    if (streak > longest)
-    {
-        longest = streak;
+        if (firstCrit == 0)
+        {
+            firstCrit = swings;
+        }
     }
     space = rest.indexOf(" ");
     word = rest.substring(0, space);
@@ -189,11 +182,18 @@ if (swings > 0)
 System.out.println("Swings: " + swings);
 System.out.println("Damage: " + total);
 System.out.println("Average: " + average);
-System.out.println("Longest streak: " + longest);`;
+if (firstCrit == 0)
+{
+    System.out.println("First crit: none");
+}
+else
+{
+    System.out.println("First crit: swing " + firstCrit);
+}`;
 
 export default [
   // ===================== algo (2.9): Quest 13 Battle Report =====================
-  { id: "u2c-a01", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2c-a01", skill: "algo", type: "mcq", topic: "2.9", difficulty: "easy",
     stem: "A battle log holds the damage of each swing as one digit. Consider the following code segment.",
     code: `String log = "4093005";
 int hits = 0;
@@ -224,7 +224,7 @@ System.out.println(hits + " " + total + " " + biggest);`,
     answer: 0,
     verify: { out: "4 21 9" } },
 
-  { id: "u2c-a02", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2c-a02", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String log = "7260";
 int total = 0;
@@ -247,7 +247,7 @@ System.out.println(a + " " + b);`,
     answer: 0,
     verify: { out: "3.0 3.75" } },
 
-  { id: "u2c-a03", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2c-a03", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "The following code segment is intended to print the smallest damage in the log that is not 0.",
     code: `String log = "6038072";
 int smallest = 0;
@@ -271,7 +271,7 @@ System.out.println(smallest);`,
     answer: 0,
     verify: { out: "0" } },
 
-  { id: "u2c-a04", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2c-a04", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "The following code segment is intended to print the smallest damage that is not 0. The damages are 9, 3, 12, 6, 0, and 9, so it should print 3.",
     code: A04,
     question: "Which of the following can replace `/* missing code */` so that the code segment works as intended?",
@@ -290,7 +290,7 @@ System.out.println(smallest);`,
       { run: a04("int smallest = 1;"), out: "1" },
     ] } },
 
-  { id: "u2c-a05", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2c-a05", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String log = "3707205";
 int biggest = 0;
@@ -316,7 +316,7 @@ System.out.println("Swing " + bestSwing + ": " + biggest);`,
     answer: 0,
     verify: { out: "Swing 2: 7" } },
 
-  { id: "u2c-a06", skill: "algo", type: "output", topic: "2.9",
+  { id: "u2c-a06", skill: "algo", type: "output", topic: "2.9", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String log = "6047";
 int hits = 0;
@@ -350,7 +350,7 @@ else
     why: "The damages are 6, 0, 4, and 7. Three of them are above 0, and the total is 17. The cast comes before the division, so the average is `17.0 / 4`, which is `4.25`. That is not at least 6, but it is at least 3, so the middle branch prints.",
     verify: { out: "Hits: 3\nAverage: 4.25\nVerdict: 3 hits. A brawl, not a battle." } },
 
-  { id: "u2c-a07", skill: "algo", type: "output", topic: "2.9",
+  { id: "u2c-a07", skill: "algo", type: "output", topic: "2.9", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String log = "508030";
 int misses = 0;
@@ -375,7 +375,7 @@ System.out.println("Smallest hit: " + smallest);`,
     verify: { out: "Misses: 3\nSmallest hit: 3" } },
 
   // ===================== while (2.7): Quest 14 Mana and Turns =====================
-  { id: "u2c-w01", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2c-w01", skill: "while", type: "mcq", topic: "2.7", difficulty: "difficult",
     stem: "The commands are stored in one String, each followed by a space, and taken off the front one at a time. Consider the following code segment.",
     code: `int mana = 3;
 int turns = 0;
@@ -430,7 +430,7 @@ System.out.println(turns + " " + casts + " " + refused + " " + mana);`,
     answer: 0,
     verify: { out: "4 2 2 2" } },
 
-  { id: "u2c-w02", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2c-w02", skill: "while", type: "mcq", topic: "2.7", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: `int turns = 0;
 String input = "wait spark quit ";
@@ -444,8 +444,8 @@ System.out.println(turns);`,
     question: "What is the result of executing the code segment?",
     choices: [
       "Nothing is printed. A StringIndexOutOfBoundsException is thrown.",
-      "2",
-      "3",
+      "2 is printed.",
+      "3 is printed.",
       "Nothing is printed, because the loop never ends.",
     ],
     why: [
@@ -457,7 +457,7 @@ System.out.println(turns);`,
     answer: 0,
     verify: { throws: "StringIndexOutOfBoundsException" } },
 
-  { id: "u2c-w03", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2c-w03", skill: "while", type: "mcq", topic: "2.7", difficulty: "difficult",
     stem: "In this version, a refused spark is not a turn, but the check for mana coming back was moved outside the `if` statements. Consider the following code segment.",
     code: `int mana = 2;
 int turns = 0;
@@ -495,7 +495,7 @@ System.out.println(turns + " " + mana);`,
     answer: 0,
     verify: { out: "4 2" } },
 
-  { id: "u2c-w04", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2c-w04", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "`focus` adds 2 mana, but mana can never go above 6. The following code segment is intended to print 6.",
     code: W04,
     question: "Which of the following can replace `/* missing code */` so that the code segment works as intended?",
@@ -514,7 +514,7 @@ System.out.println(turns + " " + mana);`,
       { run: w04(W04_D), out: "5" },
     ] } },
 
-  { id: "u2c-w05", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2c-w05", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "This loop stops at `quit` or after 3 turns, whichever comes first. Consider the following code segment.",
     code: `int turns = 0;
 String last = "";
@@ -538,7 +538,7 @@ System.out.println(turns + " " + last + " " + command);`,
     answer: 0,
     verify: { out: "3 wait spark" } },
 
-  { id: "u2c-w06", skill: "while", type: "output", topic: "2.7",
+  { id: "u2c-w06", skill: "while", type: "output", topic: "2.7", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int mana = 3;
 int turns = 0;
@@ -566,7 +566,7 @@ ${ind(NEXT)}
     why: "The first spark has 3 mana, so it is cast and leaves 1. `wait` is turn 2 and changes nothing. Both later sparks find only 1 mana, so they print `refused` and `turns` does not go up. `quit` ends the loop without printing.",
     verify: { out: "Turn 1: spark 1\nTurn 2: wait 1\nrefused\nrefused" } },
 
-  { id: "u2c-w07", skill: "while", type: "output", topic: "2.7",
+  { id: "u2c-w07", skill: "while", type: "output", topic: "2.7", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int count = 0;
 String input = "wait focus quit spark wait ";
@@ -584,7 +584,7 @@ System.out.println("[" + input + "]");`,
     verify: { out: "2\n[spark wait ]" } },
 
   // ===================== string (2.10): Quests 15 and 16 =====================
-  { id: "u2c-s01", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2c-s01", skill: "string", type: "mcq", topic: "2.10", difficulty: "easy",
     stem: "A level with 4 rows of 6 tiles is stored as one String, row after row:\n`######`\n`#..$.#`\n`#.M@.#`\n`######`\n\nConsider the following code segment.",
     code: `String map = "#######..$.##.M@.#######";
 int width = 6;
@@ -608,7 +608,7 @@ System.out.println(heroAt / width + " " + heroAt % width);`,
     answer: 0,
     verify: { out: "2 3" } },
 
-  { id: "u2c-s02", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2c-s02", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String map = "$#M.$";
 int gold = 0;
@@ -632,7 +632,7 @@ System.out.println(gold);`,
     answer: 0,
     verify: { out: "1" } },
 
-  { id: "u2c-s03", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2c-s03", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "An arrow flies right from the hero along one row of the level. Consider the following code segment.",
     code: `String row = "@..M.#..";
 int heroCol = 0;
@@ -668,7 +668,7 @@ System.out.println(shot + " " + stoppedAt + " " + step);`,
     answer: 0,
     verify: { out: "hits 3 4" } },
 
-  { id: "u2c-s04", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2c-s04", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "The arrow should stop at the first `#` or `M` it meets, or after `reach` steps, whichever comes first. For the row below the code segment should print `hits 3`.",
     code: S04,
     question: "Which of the following can replace `/* missing condition */` so that the code segment works as intended?",
@@ -687,7 +687,7 @@ System.out.println(shot + " " + stoppedAt + " " + step);`,
       { run: fill(S04, "/* missing condition */", S04_D), out: "blocked 5" },
     ] } },
 
-  { id: "u2c-s05", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2c-s05", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: fill(ARROW("..@..", 2, 4), "/* missing condition */", "step <= reach && stoppedAt == -1"),
     question: "What is the result of executing the code segment?",
@@ -706,7 +706,7 @@ System.out.println(shot + " " + stoppedAt + " " + step);`,
     answer: 0,
     verify: { throws: "StringIndexOutOfBoundsException" } },
 
-  { id: "u2c-s06", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2c-s06", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "The arrow should also stop at the end of the row. For the row below the code segment should print `falls short -1`.",
     code: S06,
     question: "Which of the following can replace `/* missing condition */` so that the code segment works as intended?",
@@ -715,7 +715,7 @@ System.out.println(shot + " " + stoppedAt + " " + step);`,
       "The arrow is at column `heroCol + step`, and the last column is `row.length() - 1`, so `heroCol + step < row.length()` keeps every `substring(col, col + 1)` inside the row.",
       "With `<=`, column 5 is allowed in a row of length 5, and `substring(5, 6)` throws a StringIndexOutOfBoundsException.",
       "`step` is how far the arrow has gone, not its column. The hero starts at column 2, so step 3 is column 5, past the end, and a StringIndexOutOfBoundsException is thrown.",
-      "This only shortens the reach to 3 steps, and step 3 is column 5, past the end. A StringIndexOutOfBoundsException is thrown.",
+      "`heroCol` is where the hero stands, and it never changes, so this test is always true. At step 3 the arrow is at column 5, past the end, and a StringIndexOutOfBoundsException is thrown.",
     ],
     answer: 0,
     verify: { cases: [
@@ -725,7 +725,7 @@ System.out.println(shot + " " + stoppedAt + " " + step);`,
       { run: fill(S06, "/* missing condition */", S06_D), throws: "StringIndexOutOfBoundsException" },
     ] } },
 
-  { id: "u2c-s07", skill: "string", type: "output", topic: "2.10",
+  { id: "u2c-s07", skill: "string", type: "output", topic: "2.10", difficulty: "difficult",
     stem: "Consider the following code segment.",
     code: `String map = "#$.M.$#.";
 int width = 4;
@@ -751,7 +751,7 @@ System.out.println("Hero col: " + heroAt % width);`,
     why: "There are two $ tiles and no @, so `heroAt` stays -1. Integer division drops the fraction toward 0, so `-1 / 4` is 0, and `-1 % 4` is -1. A level with no hero still prints a row and a column, which is why -1 needs its own check.",
     verify: { out: "Gold: 2\nHero row: 0\nHero col: -1" } },
 
-  { id: "u2c-s08", skill: "string", type: "output", topic: "2.10",
+  { id: "u2c-s08", skill: "string", type: "output", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String map = "#.$@M.$M.$##";
 int width = 4;
@@ -784,7 +784,7 @@ System.out.println("Hero col: " + heroAt % width);`,
     verify: { out: "Gold: 3\nMonsters: 2\nHero row: 0\nHero col: 3" } },
 
   // ===================== nested (2.11): Quest 17 Draw the Map =====================
-  { id: "u2c-n01", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2c-n01", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String map = "#$..@MM.#";
 int width = 3;
@@ -815,7 +815,7 @@ for (int row = 0; row < rows; row++)
     answer: 0,
     verify: { out: "Drawn: # $ .\nDrawn: . @ M\nDrawn: M . #" } },
 
-  { id: "u2c-n02", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2c-n02", skill: "nested", type: "mcq", topic: "2.11", difficulty: "moderate",
     stem: "A level with 2 rows of 4 tiles is stored as one String. The following code segment is intended to print it row by row:\n`#M.$`\n`.@.#`",
     code: N02,
     question: "Which of the following can replace `/* missing expression */` so that the code segment works as intended?",
@@ -834,7 +834,7 @@ for (int row = 0; row < rows; row++)
       { run: n02("row * (width - 1) + col"), out: "#M.$\n$.@." },
     ] } },
 
-  { id: "u2c-n03", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2c-n03", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "The level below has 22 tiles, which is not a whole number of rows of 5. Consider the following code segment.",
     code: `String map = "#...##.M.##$@.######..";
 int width = 5;
@@ -858,7 +858,7 @@ System.out.println(drawn);`,
     answer: 0,
     verify: { out: "20" } },
 
-  { id: "u2c-n04", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2c-n04", skill: "nested", type: "mcq", topic: "2.11", difficulty: "difficult",
     stem: "In this version the two loops are swapped: columns outside, rows inside. Consider the following code segment.",
     code: `String map = "#M$.@.";
 int width = 3;
@@ -889,7 +889,7 @@ for (int col = 0; col < width; col++)
     answer: 0,
     verify: { out: "#.\nM@\n$." } },
 
-  { id: "u2c-n05", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2c-n05", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String map = "M..M..M.MM.M....";
 int width = 4;
@@ -924,7 +924,7 @@ System.out.println(bestRow + " " + most);`,
     answer: 0,
     verify: { out: "2 3" } },
 
-  { id: "u2c-n06", skill: "nested", type: "output", topic: "2.11",
+  { id: "u2c-n06", skill: "nested", type: "output", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String map = "#.M.$@";
 int width = 3;
@@ -962,7 +962,7 @@ for (int row = 0; row < map.length() / width; row++)
     why: "The rows are `#.M` and `.$@`. Each tile is swapped for its drawing character, and the @ matches none of the tests, so the `else` keeps it. `art` starts empty for each row, and each row is printed after its inner loop.",
     verify: { out: "Art: %,&\nArt: ,o@" } },
 
-  { id: "u2c-n07", skill: "nested", type: "output", topic: "2.11",
+  { id: "u2c-n07", skill: "nested", type: "output", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `String map = "#..##M.#M..M";
 int width = 4;
@@ -1008,27 +1008,28 @@ for (int row = 0; row < rows; row++)
       seg('String map = "$$.@$$";\nint width = 2;', F1.replace("gold > most", "gold >= most"), "Row 0: 2\nRow 1: 0\nRow 2: 2\nRichest row: 2\nHero: row 1, column 1"),
     ] } },
 
-  { id: "u2c-f2", skill: "frq", type: "code", topic: "2.7", title: "The battle log",
-    prompt: "The variable `log` has already been declared. It holds the results of a hero's swings as words separated by single spaces, and it always contains the word `end`. Each word before `end` is `hit` (2 damage), `crit` (5 damage), or `miss` (0 damage). Any words after `end` are ignored. There is no space at the start or the end of `log`.\n\nWrite a code segment that takes the words one at a time until it reaches `end` and then prints four lines:\n\n- `Swings: ` followed by the number of words before `end`\n- `Damage: ` followed by the total damage\n- `Average: ` followed by the average damage per swing as a `double`, with its fraction kept. If there are no swings, print `Average: 0.0`.\n- `Longest streak: ` followed by the most swings in a row that were not misses\n\nFor example, if `log` is `\"hit crit miss hit hit end\"`, the code segment prints `Swings: 5`, `Damage: 11`, `Average: 2.2`, then `Longest streak: 2`. If `log` is `\"crit miss end hit\"`, it prints `Swings: 2`, `Damage: 5`, `Average: 2.5`, then `Longest streak: 1`.\n\nUse a `while` loop that stops at `end`. " + SEG,
-    sample: "log = \"hit crit miss hit hit end\" prints\nSwings: 5\nDamage: 11\nAverage: 2.2\nLongest streak: 2\n\nlog = \"crit miss end hit\" prints\nSwings: 2\nDamage: 5\nAverage: 2.5\nLongest streak: 1\n\nlog = \"end\" prints\nSwings: 0\nDamage: 0\nAverage: 0.0\nLongest streak: 0",
+  { id: "u2c-f2", skill: "frq", type: "code", topic: "2.7", title: "The damage report",
+    prompt: "The variable `log` has already been declared. It holds the results of a hero's swings as words separated by single spaces, and it always contains the word `end`. Each word before `end` is `hit` (2 damage), `crit` (5 damage), or `miss` (0 damage). Any words after `end` are ignored. There is no space at the start or the end of `log`.\n\nWrite a code segment that takes the words one at a time until it reaches `end` and then prints four lines:\n\n- `Swings: ` followed by the number of words before `end`\n- `Damage: ` followed by the total damage\n- `Average: ` followed by the average damage per swing as a `double`, with its fraction kept. If there are no swings, print `Average: 0.0`.\n- `First crit: swing ` followed by the number of the first swing that was a `crit`, counting swings from 1. If no `crit` comes before `end`, print `First crit: none`.\n\nFor example, if `log` is `\"hit crit miss hit crit end\"`, the code segment prints `Swings: 5`, `Damage: 14`, `Average: 2.8`, then `First crit: swing 2`. If `log` is `\"miss hit end crit\"`, it prints `Swings: 2`, `Damage: 2`, `Average: 1.0`, then `First crit: none`.\n\nUse a `while` loop that stops at `end`. " + SEG,
+    sample: "log = \"hit crit miss hit crit end\" prints\nSwings: 5\nDamage: 14\nAverage: 2.8\nFirst crit: swing 2\n\nlog = \"miss hit end crit\" prints\nSwings: 2\nDamage: 2\nAverage: 1.0\nFirst crit: none\n\nlog = \"end\" prints\nSwings: 0\nDamage: 0\nAverage: 0.0\nFirst crit: none",
     rows: [
       { name: "Takes the words one at a time", earns: "Takes each word off `log` in order with `indexOf(\" \")` and `substring`, including a last word with no space after it, without a `StringIndexOutOfBoundsException`." },
       { name: "Stops at end", earns: "Uses a `while` loop that stops when the word is `end`, compared with `equals` (`!word.equals(\"end\")`), never `!=`, and does not count or score `end` or anything after it." },
       { name: "Counts the swings", earns: "Adds 1 for each word before `end`, misses included." },
       { name: "Totals the damage", earns: "Adds 2 for each `hit`, 5 for each `crit`, and nothing for a `miss`." },
       { name: "Computes the average", earns: "Divides as a `double` with the cast before the division (`(double) total / swings`, not `(double) (total / swings)`), and prints `0.0` without dividing when there are no swings." },
-      { name: "Finds the longest streak", earns: "Adds 1 to a streak for each hit or crit, starts it at 0 again on a miss, and keeps the largest streak seen, the last one included." },
+      { name: "Finds the first crit", earns: "Records the swing number, counting from 1, of the first `crit` only, so a later `crit` does not replace it, and gives `none` when no `crit` comes before `end`." },
       { name: "Prints the four results", earns: "Prints the four labeled lines once, after the loop, using the values the code computed." },
     ],
-    notes: NOTE + " A response may add a space to the end of a copy of `log`, or handle the last word when `indexOf(\" \")` returns -1; either earns row 1. A response that uses `!=` to test for `end` does not earn row 2. Row 5 is not earned with `(double) (total / swings)`, which prints `2.0` for the first example, or when `\"end\"` causes an `ArithmeticException` or prints `NaN`. Row 6 is not earned when the largest is checked only on a miss, so a streak at the end of the log is lost.",
+    notes: NOTE + " A response may add a space to the end of a copy of `log`, or handle the last word when `indexOf(\" \")` returns -1; either earns row 1. A response that uses `!=` to test for `end` does not earn row 2. Row 5 is not earned with `(double) (total / swings)`, which prints `2.0` for the first example, or when `\"end\"` causes an `ArithmeticException` or prints `NaN`. Row 6 is not earned when every `crit` replaces the swing number, so `\"crit hit crit end\"` gives swing 3, or when the swing is counted from 0.",
     solution: F2,
     verify: { cases: [
-      seg('String log = "hit crit miss hit hit end";', F2, "Swings: 5\nDamage: 11\nAverage: 2.2\nLongest streak: 2"),
-      seg('String log = "crit miss end hit";', F2, "Swings: 2\nDamage: 5\nAverage: 2.5\nLongest streak: 1"),
-      seg('String log = "end";', F2, "Swings: 0\nDamage: 0\nAverage: 0.0\nLongest streak: 0"),
-      seg('String log = "miss miss end crit crit";', F2, "Swings: 2\nDamage: 0\nAverage: 0.0\nLongest streak: 0"),
-      seg('String log = "hit hit hit miss crit end";', F2, "Swings: 5\nDamage: 11\nAverage: 2.2\nLongest streak: 3"),
-      seg('String log = "crit hit end";', F2, "Swings: 2\nDamage: 7\nAverage: 3.5\nLongest streak: 2"),
-      seg('String log = "hit crit miss hit hit end";', F2.replace("(double) total / swings", "(double) (total / swings)"), "Swings: 5\nDamage: 11\nAverage: 2.0\nLongest streak: 2"),
+      seg('String log = "hit crit miss hit crit end";', F2, "Swings: 5\nDamage: 14\nAverage: 2.8\nFirst crit: swing 2"),
+      seg('String log = "miss hit end crit";', F2, "Swings: 2\nDamage: 2\nAverage: 1.0\nFirst crit: none"),
+      seg('String log = "end";', F2, "Swings: 0\nDamage: 0\nAverage: 0.0\nFirst crit: none"),
+      seg('String log = "crit hit crit end";', F2, "Swings: 3\nDamage: 12\nAverage: 4.0\nFirst crit: swing 1"),
+      seg('String log = "miss miss end crit crit";', F2, "Swings: 2\nDamage: 0\nAverage: 0.0\nFirst crit: none"),
+      seg('String log = "hit hit hit miss crit end";', F2, "Swings: 5\nDamage: 11\nAverage: 2.2\nFirst crit: swing 5"),
+      seg('String log = "hit crit miss hit crit end";', F2.replace("(double) total / swings", "(double) (total / swings)"), "Swings: 5\nDamage: 14\nAverage: 2.0\nFirst crit: swing 2"),
+      seg('String log = "crit hit crit end";', F2.replace("        if (firstCrit == 0)\n        {\n            firstCrit = swings;\n        }", "        firstCrit = swings;"), "Swings: 3\nDamage: 12\nAverage: 4.0\nFirst crit: swing 3"),
     ] } },
 ];

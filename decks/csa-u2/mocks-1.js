@@ -772,7 +772,7 @@ System.out.println("Bounce backs: " + bounces);`;
 const frqCase = (season, out) => ({ run: `String season = "${season}";\n${FRQ}`, out });
 
 const u2p1 = [
-  { id: "u2p1-01", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2p1-01", skill: "if", type: "mcq", topic: "2.3", difficulty: "easy",
     stem: "A bike shop sets its shipping cost by weight. Consider the following code segment.",
     code: `int weight = 12;
 int cost = 5;
@@ -790,17 +790,17 @@ if (weight > 5)
 }
 System.out.println(cost);`,
     question: "What is printed?",
-    choices: ["8", "12", "20", "5"], mono: true,
+    choices: ["8", "12", "20", "25"], mono: true,
     why: [
       "These are three separate `if` statements, not an `else if` chain, so every test is checked. `weight > 10` and `weight > 5` are both true, and the last one to run sets `cost` to 8.",
       "That is what an `else if` chain would print. With separate `if` statements, a later true test runs too and replaces the value.",
       "`weight > 20` is false for 12, so that assignment never runs.",
-      "`cost` keeps 5 only when every test is false, and two of them are true.",
+      "That adds 12 and 8 to the starting 5. Each `if` that is true replaces `cost` with `=`; nothing is added.",
     ],
     answer: 0,
     verify: { out: "8" } },
 
-  { id: "u2p1-02", skill: "if", type: "mcq", topic: "2.3",
+  { id: "u2p1-02", skill: "if", type: "mcq", topic: "2.3", difficulty: "moderate",
     stem: "In the following code segment, `count` is the number of muffins in a bakery order, an int from 1 to 15.",
     code: `String box;
 if (count >= 12)
@@ -860,7 +860,7 @@ else
 }`, out: "5 7 8 9 10 11 " },
     ] } },
 
-  { id: "u2p1-03", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2p1-03", skill: "bool", type: "mcq", topic: "2.5", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `int games = 0;
 int goals = 9;
@@ -870,13 +870,13 @@ if (games == 0 || goals / games < 2)
 }
 else
 {
-    System.out.println("contender");
+    System.out.println("title contender");
 }`,
     question: "What is the result of executing the code segment?",
     choices: [
       "rebuilding",
       "Nothing is printed. An ArithmeticException is thrown.",
-      "contender",
+      "title contender",
       "Nothing is printed. The code segment does not compile.",
     ],
     why: [
@@ -895,7 +895,7 @@ if (games == 0 || goals / games < 2)
 }
 else
 {
-    System.out.println("contender");
+    System.out.println("title contender");
 }`, out: "rebuilding" },
       { run: `int games = 0;
 int goals = 9;
@@ -905,7 +905,7 @@ if (goals / games < 2 || games == 0)
 }`, throws: "ArithmeticException" },
     ] } },
 
-  { id: "u2p1-04", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2p1-04", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "Consider the following expression, where `isOpen` is a boolean variable and `stock` is an int variable.",
     code: "!(isOpen && stock > 0)",
     question: "Which of the following is equivalent to the expression for all values of `isOpen` and `stock`?",
@@ -929,7 +929,7 @@ if (goals / games < 2 || games == 0)
       { run: deMorgan04("isOpen || stock <= 0"), out: "6" },
     ] } },
 
-  { id: "u2p1-05", skill: "bool", type: "mcq", topic: "2.5",
+  { id: "u2p1-05", skill: "bool", type: "mcq", topic: "2.5", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int n = 0;
 for (int x = 1; x <= 10; x++)
@@ -951,7 +951,7 @@ System.out.println(n);`,
     answer: 0,
     verify: { out: "5" } },
 
-  { id: "u2p1-06", skill: "bool", type: "mcq", topic: "2.6",
+  { id: "u2p1-06", skill: "bool", type: "mcq", topic: "2.6", difficulty: "easy",
     stem: "A train runs on the off-peak schedule when `hour < 7 || hour > 18` is true, where `hour` is an int.",
     question: "Which of the following is true exactly when the train is NOT on the off-peak schedule, for every integer value of `hour`?",
     choices: [
@@ -974,7 +974,7 @@ System.out.println(n);`,
       { run: peak06("hour < 7 && hour > 18"), out: "12" },
     ] } },
 
-  { id: "u2p1-07", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2p1-07", skill: "for", type: "mcq", topic: "2.8", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int sum = 0;
 for (int i = 30; i > 0; i -= 4)
@@ -1013,7 +1013,7 @@ for (int i = 30; i > 0; i -= 4)
 System.out.println(sum + " " + passes);`, out: "54 8" },
     ] } },
 
-  { id: "u2p1-08", skill: "while", type: "mcq", topic: "2.7",
+  { id: "u2p1-08", skill: "while", type: "mcq", topic: "2.7", difficulty: "moderate",
     stem: "A baker doubles a sourdough starter each day while flour runs down. Consider the following code segment.",
     code: `int starter = 1;
 int flour = 40;
@@ -1050,7 +1050,7 @@ while (starter * 2 < flour)
 System.out.println(starter + " " + flour + " " + passes);`, out: "16 20 4" },
     ] } },
 
-  { id: "u2p1-09", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2p1-09", skill: "algo", type: "mcq", topic: "2.9", difficulty: "difficult",
     stem: "A rain barrel waters a garden. Consider the following code segment.",
     code: `int barrel = 7;
 int waterings = 0;
@@ -1078,7 +1078,7 @@ System.out.println(waterings + " " + barrel);`,
     answer: 0,
     verify: { out: "5 0" } },
 
-  { id: "u2p1-10", skill: "algo", type: "mcq", topic: "2.9",
+  { id: "u2p1-10", skill: "algo", type: "mcq", topic: "2.9", difficulty: "moderate",
     stem: "The following code segment is intended to print the warmest of four daily low temperatures. A temperature can be any int value, including a negative one.",
     code: U10,
     question: "Which of the following can replace `/* missing code */` so that the code segment works as intended?",
@@ -1097,7 +1097,7 @@ System.out.println(waterings + " " + barrel);`,
       { run: fill(U10, "/* missing code */", "-1"), out: "-1" },
     ] } },
 
-  { id: "u2p1-11", skill: "for", type: "mcq", topic: "2.8",
+  { id: "u2p1-11", skill: "for", type: "mcq", topic: "2.8", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int k = 20; k >= 3; k -= 3)
 {
@@ -1114,7 +1114,7 @@ System.out.println(waterings + " " + barrel);`,
     answer: 0,
     verify: { out: "######" } },
 
-  { id: "u2p1-12", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p1-12", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "In a sports league, a season is stored as a String with one letter for each game: W for a win and L for a loss. Consider the following code segment.",
     code: `String s = "WLWLWWLW";
 int n = 0;
@@ -1142,7 +1142,7 @@ System.out.println(n);`,
     answer: 0,
     verify: { out: "3" } },
 
-  { id: "u2p1-13", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p1-13", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `String word = "bread";
 String t = "";
@@ -1166,9 +1166,9 @@ System.out.println(t);`,
     answer: 0,
     verify: { out: "b.r.e.a.d" } },
 
-  { id: "u2p1-14", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p1-14", skill: "string", type: "mcq", topic: "2.10", difficulty: "difficult",
     stem: "A train ticket number is stored as a String. Consider the following code segment.",
-    code: `String ticket = "000702";
+    code: `String ticket = "0000";
 int n = 0;
 while (ticket.length() > 1 && ticket.substring(0, 1).equals("0"))
 {
@@ -1177,17 +1177,34 @@ while (ticket.length() > 1 && ticket.substring(0, 1).equals("0"))
 }
 System.out.println(n + " " + ticket);`,
     question: "What is printed?",
-    choices: ["3 702", "4 72", "4 702", "3 000702"], mono: true,
+    choices: ["3 0", "4", "3 0000", "4 0"], mono: true,
     why: [
-      "Each pass cuts off the first character while it is a 0. Once the first character is 7, the test is false and the loop ends.",
-      "This removes every 0. The loop ends at the first test that is false, so the 0 after the 7 stays.",
-      "n goes up only inside the body, and the check that fails does not run the body.",
+      "Each pass cuts off a leading 0, but only while more than one character is left. After 3 cuts `ticket` is \"0\", `ticket.length() > 1` is false, and the loop ends.",
+      "That would need a fourth cut, but `ticket.length() > 1` is false once one character is left, so the last 0 stays.",
       "`ticket` is reassigned on every pass, so the String printed is what is left after the last cut.",
+      "n goes up only inside the body, and the check that fails does not run the body.",
     ],
     answer: 0,
-    verify: { out: "3 702" } },
+    verify: { cases: [
+      { run: `String ticket = "0000";
+int n = 0;
+while (ticket.length() > 1 && ticket.substring(0, 1).equals("0"))
+{
+    ticket = ticket.substring(1);
+    n++;
+}
+System.out.println(n + " " + ticket);`, out: "3 0" },
+      { run: `String ticket = "0000";
+int n = 0;
+while (ticket.length() > 0 && ticket.substring(0, 1).equals("0"))
+{
+    ticket = ticket.substring(1);
+    n++;
+}
+System.out.println(n + " " + ticket);`, out: "4" },
+    ] } },
 
-  { id: "u2p1-15", skill: "string", type: "mcq", topic: "2.10",
+  { id: "u2p1-15", skill: "string", type: "mcq", topic: "2.10", difficulty: "moderate",
     stem: "A league stores its three-letter team codes as one String. Consider the following code segment.",
     code: `String codes = "BOSLAXATLCHI";
 String best = codes.substring(0, 3);
@@ -1211,7 +1228,7 @@ System.out.println(best);`,
     answer: 0,
     verify: { out: "LAX" } },
 
-  { id: "u2p1-16", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p1-16", skill: "nested", type: "mcq", topic: "2.11", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int n = 0;
 for (int i = 1; i <= 4; i++)
@@ -1226,17 +1243,17 @@ for (int i = 1; i <= 4; i++)
 }
 System.out.println(n);`,
     question: "What is printed?",
-    choices: ["6", "16", "10", "4"], mono: true,
+    choices: ["6", "16", "10", "12"], mono: true,
     why: [
       "The inner loop runs 4 times for each i, but n goes up only when j is greater than i: 3 times when i is 1, then 2, 1, and 0. Add them up.",
       "That is 4 times 4, every pair. The `if` counts only the pairs where i is less than j.",
       "This also counts the pairs where i equals j. The test is `<`.",
-      "The inner loop runs to the end on every pass of the outer loop, so n can go up more than once for each i.",
+      "That counts every pair where i and j differ. The test is `i < j`, so only the pairs where j is the larger one count.",
     ],
     answer: 0,
     verify: { out: "6" } },
 
-  { id: "u2p1-17", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p1-17", skill: "nested", type: "mcq", topic: "2.11", difficulty: "easy",
     stem: "Consider the following code segment.",
     code: `for (int r = 3; r >= 1; r--)
 {
@@ -1269,7 +1286,7 @@ System.out.println(n);`,
     answer: 0,
     verify: { out: "###.\n##..\n#..." } },
 
-  { id: "u2p1-18", skill: "nested", type: "mcq", topic: "2.11",
+  { id: "u2p1-18", skill: "nested", type: "mcq", topic: "2.11", difficulty: "difficult",
     stem: "A garden bed with 3 rows of 4 plants is stored as one String, row after row: `\"tcbt\"`, then `\"cctb\"`, then `\"btcc\"`. Consider the following code segment.",
     code: `String bed = "tcbtcctbbtcc";
 for (int c = 0; c < 4; c++)
@@ -1298,7 +1315,7 @@ for (int c = 0; c < 4; c++)
     answer: 0,
     verify: { out: "tcb\ncct\nbtc\ntbc" } },
 
-  { id: "u2p1-19", skill: "runtime", type: "mcq", topic: "2.12",
+  { id: "u2p1-19", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "moderate",
     stem: "Consider the following code segment.",
     code: `int ops = 0;
 for (int i = 0; i < 10; i += 2)
@@ -1329,20 +1346,21 @@ for (int i = 0; i < 10; i += 2)
 System.out.println(ops);`, out: "30" },
     ] } },
 
-  { id: "u2p1-20", skill: "runtime", type: "mcq", topic: "2.12",
-    stem: "Consider the following code segment.",
-    code: `int n = 1000;
+  { id: "u2p1-20", skill: "runtime", type: "mcq", topic: "2.12", difficulty: "difficult",
+    stem: "Consider the following code segment, where `n` is a positive `int`.",
+    code: `int passes = 0;
 while (n > 1)
 {
     n /= 2;
+    passes++;
 }`,
-    question: "How many times does the body of the loop run?",
-    choices: ["9", "10", "500", "999"], mono: true,
+    question: "When `n` starts at 1000, `passes` is 9 after the loop. What is `passes` when `n` starts at 4000?",
+    choices: ["11", "36", "18", "10"], mono: true,
     why: [
-      "n is cut in half each pass, with integer division: 1000, 500, 250, and so on. Count the passes until n is no longer greater than 1. Halving reaches 1 in very few steps.",
-      "This also runs when n equals 1. The test is `n > 1`.",
-      "That is the value of n after the first pass, not a count of passes.",
-      "That is how many passes subtracting 1 would take. Dividing by 2 gets there much faster.",
+      "Each pass halves n. Starting at 4000, two passes bring n to 1000, and from there it takes the same 9 passes. Multiplying n by 4 adds only 2 passes.",
+      "That multiplies the passes by 4. Halving 4000 twice brings it to 1000, so only 2 passes are added.",
+      "That doubles the passes. Each extra pass halves n, so a start 4 times as large needs only 2 more passes.",
+      "That adds one pass for the factor of 4. Each pass divides by 2, so a factor of 4 takes 2 passes.",
     ],
     answer: 0,
     verify: { cases: [
@@ -1354,6 +1372,14 @@ while (n > 1)
     passes++;
 }
 System.out.println(passes);`, out: "9" },
+      { run: `int n = 4000;
+int passes = 0;
+while (n > 1)
+{
+    n /= 2;
+    passes++;
+}
+System.out.println(passes);`, out: "11" },
     ] } },
 
   { id: "u2p1-frq", skill: "frq", type: "code", topic: "2.10", title: "Season results",

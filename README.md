@@ -6,7 +6,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 
 | Course | Period | Test | Review items | Mocks |
 |---|---|---|---:|---|
-| AP Computer Science Principles | D | Quiz 3 (11/3), WR4 to WR6 (11/4 to 11/10), Quiz 4: Functions and Loops (11/20) | 107 | 6 mock quizzes |
+| AP Computer Science Principles | D | WR7 to WR10 (11/12 to 11/18), Quiz 4: Functions and Loops (11/20), WR11 (11/23), WR12 (12/9); spring Big Ideas | 107 | 6 mock quizzes |
 | AP Computer Science A | B | Unit 2 now (Progress Check 11/13, Unit 2 Test 11/17); the countdown follows every assessment to the AP exam | 147 | 36 forms: practice for all 15 assessments of the year, five for the Unit 2 Test |
 | AP Cybersecurity | F | Unit 3 now: the daily quizzes (Quiz 23, 11/3, to Quiz 43, 1/8), the midterm 12/16, the Unit 3 Test 1/12 | 354 (opening by meeting) | 3 Unit 2 mock tests |
 | AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 903 | 71 topic quizzes (1.1 to 9.9) and 11 unit assessments (2 each for Units 2 and 3) |
@@ -123,6 +123,15 @@ Two parts, one sign-in:
 - `decks/csp-q4/mocks.js`: Quiz 4 Mock 1, 2, 3, in the quiz's shape (six multiple choice from Quests 13 to 16 and the rewrites, then the parameters question and the logic-error question).
 - None of it copies Q4, WR4, WR5, or WR6 in AP Classroom: no item uses a real quiz item's function with its twist and inputs, and the written responses avoid MyRallyCry, RemoveItem, AddMany, TotalHealth, CountItem, and the level-drawing loop the real drills use.
 - The deck keeps the id `csp-q3`, so progress and the Firestore rules carry over. Every block of code was compiled and run on .NET 10 (`node tools/verify.mjs` on each file).
+
+### WR7 to WR12: the Milestone 2 written responses (added 11/11)
+
+The written-response quizzes that open each Milestone 2 class (WR7 11/12, WR8 11/16, WR9 11/17, WR10 11/18) and the two after them (WR11 11/23, WR12 12/9) ask the released AP prompts about each student's own feature. The site practices the same prompts on sample features instead:
+
+- **21 review items** in `decks/csp-q4/review-m2.js` on three sample features (a shop ledger, a bounty board, a relic shelf), covering all 17 released prompts the real forms use, in five new skills (input and output, a selection statement, the list, the counting procedure, the report procedure). Each answer ends with how to say the same thing about the student's own feature. Home has a button for each WR.
+- **Six practice forms** in `decks/csp-q4/mocks-m2.js`, one for each of WR7 to WR12, with the real Form A's prompts on features not used in review (an herb pouch, a fishing log, a wishing well).
+- The countdown now names the spring tests as AP Classroom has them: the BI2, BI4, BI5, and BI3 Progress Checks, and Practice Exams 1 and 2.
+- Every block of code runs on .NET 10 (`node tools/verify.mjs`).
 
 ### Spring 2027: the Big Ideas (added 11/10)
 

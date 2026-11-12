@@ -8,6 +8,9 @@ import mockWR from "./csp-q3-mocks/wr.js";
 import q4A from "./csp-q4/review-a.js";
 import q4WR from "./csp-q4/review-wr.js";
 import q4Mocks from "./csp-q4/mocks.js";
+// Milestone 2 written responses (11/11): review on sample features (review-m2) and practice for WR7 to WR12 (mocks-m2).
+import m2Review from "./csp-q4/review-m2.js";
+import m2Mocks from "./csp-q4/mocks-m2.js";
 // Spring 2027: the Big Ideas taught on Khan Academy. Each review item opens on the day its topic is taught.
 import bi1 from "./csp-spring/bi1.js";
 import bi2 from "./csp-spring/bi2.js";
@@ -31,6 +34,12 @@ const mockItems = [...mockMC.items, ...mockWR.items, ...q4Mocks.items];
 const form = (prefix) => mockItems.filter((it) => it.id.startsWith(prefix + "-"));
 const Q3 = { group: "Quiz 3: Lists and Loops", date: "2026-11-03" };
 const Q4 = { group: "Quiz 4: Functions and Loops", date: "2026-11-20" };
+// The Milestone 2 openers (8 minutes, two prompts) and the two longer written responses after them, on the real dates.
+const WR = {
+  m2wr7: ["WR7: The Command Chain", "2026-11-12"], m2wr8: ["WR8: Your Command", "2026-11-16"], m2wr9: ["WR9: Your List", "2026-11-17"],
+  m2wr10: ["WR10: Your MyCount", "2026-11-18"], m2wr11: ["WR11: Your Own Code", "2026-11-23"], m2wr12: ["WR12: Practice Written Response", "2026-12-09"],
+};
+const wrForms = m2Mocks.forms.map((f) => ({ ...f, group: WR[f.id][0], date: WR[f.id][1], total: f.items.length * 4 }));
 
 export default {
   id: "csp-q3",
@@ -38,31 +47,35 @@ export default {
   title: "Lists, Loops, and Functions",
   // The countdown shows the next of these.
   dates: [
-    { name: "Quiz 3", date: "2026-11-03" },
-    { name: "WR4", date: "2026-11-04" },
-    { name: "WR5", date: "2026-11-09" },
-    { name: "WR6", date: "2026-11-10" },
+    { name: "WR7", date: "2026-11-12" },
+    { name: "WR8", date: "2026-11-16" },
+    { name: "WR9", date: "2026-11-17" },
+    { name: "WR10", date: "2026-11-18" },
     { name: "Quiz 4", date: "2026-11-20" },
-    { name: "WR7", date: "2026-11-23" },
-    { name: "WR8", date: "2026-12-09" },
+    { name: "WR11", date: "2026-11-23" },
+    { name: "WR12", date: "2026-12-09" },
     { name: "Big Idea 1 mock quiz", date: "2027-01-27" },
     { name: "Big Idea 2 mock quiz", date: "2027-02-11" },
-    { name: "Data unit test", date: "2027-02-12" },
-    { name: "Networks unit test", date: "2027-02-25" },
-    { name: "Impact unit test", date: "2027-03-16" },
+    { name: "The BI2 Progress Check", date: "2027-02-12" },
+    { name: "The BI4 Progress Check", date: "2027-02-25" },
+    { name: "The BI5 Progress Check", date: "2027-03-16" },
     { name: "Big Idea 5 mock quiz", date: "2027-03-17" },
     { name: "Big Idea 4 mock quiz", date: "2027-03-19" },
     { name: "Big Idea 3 mock quiz", date: "2027-04-21" },
-    { name: "Algorithms unit test", date: "2027-04-22" },
+    { name: "The BI3 Progress Check", date: "2027-04-22" },
+    { name: "Practice Exam 1", date: "2027-04-26" },
+    { name: "Practice Exam 2", date: "2027-05-03" },
     { name: "Practice Exam 3", date: "2027-05-10" },
     { name: "The AP exam", date: "2027-05-14" },
   ],
   lang: "csharp",
   blurb: "Code-reading questions, output and trace tables, and written responses scored with the quiz's own rubric rows.",
   focus: [
-    { id: "wr4", name: "WR4 (11/4)", skills: ["wr-nolist", "wr-calls"], size: 4 },
-    { id: "wr5", name: "WR5 (11/9)", skills: ["wr-grows", "wr-validity"], size: 4 },
-    { id: "wr6", name: "WR6 (11/10)", skills: ["wr-algo", "wr-proc"], size: 4 },
+    { id: "wr7", name: "WR7 (11/12)", skills: ["wr-io", "wr-select"], size: 4 },
+    { id: "wr8", name: "WR8 (11/16)", skills: ["wr-select", "wr-io"], size: 4 },
+    { id: "wr9", name: "WR9 (11/17)", skills: ["wr-listuse"], size: 4 },
+    { id: "wr10", name: "WR10 (11/18)", skills: ["wr-count"], size: 4 },
+    { id: "wr11", name: "WR11 (11/23)", skills: ["wr-report", "wr-listuse", "wr-io"], size: 4 },
     { id: "q4", name: "Quiz 4 (11/20)", skills: ["totals", "grid", "draw", "walk", "rewrite", "wr-params", "wr-logic"] },
     { id: "bi1", name: "Big Idea 1", skills: BI["1"] },
     { id: "bi2", name: "Big Idea 2", skills: BI["2"] },
@@ -90,6 +103,11 @@ export default {
     { id: "wr-proc", name: "A logic error in the procedure (2025 Set 1, 2(b))", from: "Written response", short: "WR: proc" },
     { id: "wr-params", name: "Parameters (2024 Set 2, 2(c))", from: "Written response", short: "WR: params" },
     { id: "wr-logic", name: "A logic error (2025 Set 2, 2(b))", from: "Written response", short: "WR: logic" },
+    { id: "wr-io", name: "Input and output (Question 1)", from: "WR7, WR8", short: "WR: I/O" },
+    { id: "wr-select", name: "A selection statement (2025, 2(a))", from: "WR7, WR8", short: "WR: if" },
+    { id: "wr-listuse", name: "Your list (2(c) and 2(b))", from: "WR9", short: "WR: list" },
+    { id: "wr-count", name: "Your counting procedure", from: "WR10", short: "WR: count" },
+    { id: "wr-report", name: "Your report procedure", from: "WR11, WR12", short: "WR: report" },
 
     { id: "crd-collab", name: "Collaboration", from: "BI1", short: "Collaboration" },
     { id: "crd-purpose", name: "Program purpose and function", from: "BI1", short: "Program" },
@@ -132,6 +150,7 @@ export default {
     { id: "q4m1", name: "Quiz 4 Mock 1", items: form("q4m1"), ...Q4 },
     { id: "q4m2", name: "Quiz 4 Mock 2", items: form("q4m2"), ...Q4 },
     { id: "q4m3", name: "Quiz 4 Mock 3", items: form("q4m3"), ...Q4 },
+    ...wrForms,
     sform("bi1m", "Big Idea 1 mock quiz", bi1m, "Big Idea 1: Creative Development", "2027-01-27"),
     sform("bi2m", "Big Idea 2 mock quiz", bi2m, "Big Idea 2: Data", "2027-02-11"),
     sform("bi5m", "Big Idea 5 mock quiz", bi5m, "Big Idea 5: Impact of Computing", "2027-03-17"),
@@ -145,9 +164,10 @@ export default {
     title: "Quiz practice",
     total: 20,
     clock: "25:00",
-    blurb: "Fall: mock quizzes for Quiz 3 and Quiz 4, six multiple choice and two written responses each. Spring: a multiple-choice mock quiz for each Big Idea, and Practice Exam 3 in two parts. None of their questions are in review.",
+    blurb: "Fall: mock quizzes for Quiz 3 and Quiz 4, six multiple choice and two written responses each, and practice for WR7 to WR12 on sample features. Spring: a multiple-choice mock quiz for each Big Idea, and Practice Exam 3 in two parts. None of their questions are in review.",
     intro: [
       ["Fall quizzes.", "Six multiple-choice items, 2 points each, then two written responses, 4 points each, scored with the quiz's rubric rows."],
+      ["WR7 to WR12.", "The same released AP prompts as the real quiz, asked about a sample feature. On the real quiz you answer about your own code, so each answer ends with how to say it about yours."],
       ["Spring.", "A Big Idea mock quiz is 10 or 15 multiple-choice items, 2 points each. Practice Exam 3 is two parts of 25 multiple-choice items, at the AP exam's pace of about 1 minute 40 seconds a question."],
       ["", "No feedback until the end. None of these questions are in review, so each mock shows how you do on questions you have not practiced."],
     ],
@@ -1822,6 +1842,7 @@ int F(List<string> names, string wanted) { for (int i = 0; i < names.Count; i++)
     },
     ...q4A.items,
     ...q4WR.items,
+    ...m2Review.items,
     ...SPRING,
   ],
 };

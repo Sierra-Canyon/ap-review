@@ -43,7 +43,7 @@ export default {
            "The spread of primaries took control of nominations away from party leaders.",
            "With delegates pledged in primaries, nominees are usually known before the convention, which needs one ballot.",
            "Primary turnout is much lower than general election turnout."], "s1"),
-        M(3, "moderate", "To be invited to the general election presidential debates, a candidate must, among other rules, reach 15 percent support in an average of five national polls. Which effect does this rule most likely have?",
+        M(3, "moderate", "To be invited to the general election presidential debates run by the Commission on Presidential Debates, a candidate must, among other rules, reach 15 percent support in an average of five national polls. Which effect does this rule most likely have?",
           ["It makes it hard for third-party candidates to gain the attention debates bring.", "It guarantees a podium to every candidate who is on the ballot in all fifty states.", "It is enforced by the FEC as a condition of receiving public campaign funding.", "It applies only to primary debates, not to debates in the general election."],
           ["Correct. Few third-party candidates poll at 15 percent, so most are left out of the debates, which draw the largest audiences of the campaign. The rule is set by the Commission on Presidential Debates, a private nonprofit group.",
            "Being on the ballot is not enough; a candidate must also meet the polling threshold.",

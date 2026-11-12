@@ -1242,7 +1242,7 @@ export default [
     ],
     answer: 0 },
   { id: "g3-m070", skill: "u3", type: "mcq", topic: "3.6", difficulty: "moderate",
-    question: "According to Article I, Section 9 of the Constitution, the privilege of the writ of habeas corpus may be suspended only when?",
+    question: "According to Article I, Section 9 of the Constitution, the privilege of the writ of habeas corpus may be suspended only under which conditions?",
     choices: [
       "In cases of rebellion or invasion when public safety requires it",
       "Whenever the president declares that a national emergency exists",
@@ -2246,7 +2246,7 @@ export default [
     ],
     answer: 0 },
   { id: "g3-m136", skill: "u3", type: "mcq", set: "g3-s19", topic: "3.13", difficulty: "moderate",
-    question: "Which state policy would supporters of the passage's view most likely oppose?",
+    question: "Which policy would supporters of the passage's view most likely oppose?",
     choices: [
       "Proposition 209 (1996), California's ban on racial preferences",
       "The Civil Rights Act of 1964's ban on job discrimination because of race or sex",

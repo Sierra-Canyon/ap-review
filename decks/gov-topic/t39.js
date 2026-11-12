@@ -71,7 +71,7 @@ export default {
             "The Due Process Clause of the Fourteenth Amendment",
             "The Establishment Clause of the First Amendment",
             "The Commerce Clause in Article I of the Constitution",
-            "The Cruel and Unusual Punishments Clause of the Eighth",
+            "The Eighth Amendment's ban on cruel punishments",
           ],
           why: [
             "Correct. The Court held that the liberty protected by the Fourteenth Amendment's Due Process Clause includes adults' private intimate choices.",

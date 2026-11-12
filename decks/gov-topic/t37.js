@@ -101,7 +101,7 @@ export default {
             "The Sixth Amendment right to a jury trial",
             "The Fifth Amendment right to a grand jury",
             "The Seventh Amendment right to a civil jury",
-            "The Equal Protection Clause of the Fourteenth",
+            "The Fourteenth Amendment's Equal Protection Clause",
           ],
           why: [
             "Correct. Ramos held that the Sixth Amendment's jury trial right requires a unanimous verdict for serious crimes and that this rule binds the states through the Fourteenth Amendment.",

@@ -47,7 +47,7 @@ export const sets = {
           ...imp.office.map((o, i) => [o, String(imp.convicted[i] + imp.acquitted[i] + imp.noVerdict[i]), String(imp.convicted[i]), String(imp.acquitted[i]), String(imp.noVerdict[i])]),
           ["Total", "22", "8", "9", "5"],
         ] } },
-        { cite: "U.S. Senate, \"List of Impeachment Trials,\" Senate.gov (accessed November 2026), which lists 22 impeachments from William Blount (1799) to Alejandro Mayorkas (2024). Counts by office and outcome were made for this review. Donald Trump was impeached twice and is counted twice.", url: "https://www.senate.gov/about/powers-procedures/impeachment/impeachment-list.htm", kind: "data" },
+        { cite: "U.S. Senate, \"About Impeachment: Impeachment Cases,\" Senate.gov (accessed November 2026), which lists 22 impeachments from William Blount (1799) to Alejandro Mayorkas (2024). Counts by office and outcome were made for this review. Donald Trump was impeached twice and is counted twice.", url: "https://www.senate.gov/about/powers-procedures/impeachment/impeachment-list.htm", kind: "data" },
       ] },
     ],
   },

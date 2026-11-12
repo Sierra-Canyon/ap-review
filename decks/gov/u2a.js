@@ -85,7 +85,7 @@ export const sets = {
     id: "g2a-s08", name: "Shaw v. Reno (1993)", intro: "Use the passage below to answer the questions that follow.",
     sources: [{ title: "Source", blocks: [
       { p: "A reapportionment plan that includes in one district individuals who belong to the same race, but who are otherwise widely separated by geographical and political boundaries, and who may have little in common with one another but the color of their skin, bears an uncomfortable resemblance to political apartheid. ... For these reasons, we conclude that a plaintiff challenging a reapportionment statute under the Equal Protection Clause may state a claim by alleging that the legislation, though race-neutral on its face, rationally cannot be understood as anything other than an effort to separate voters into different districts on the basis of race, and that the separation lacks sufficient justification." },
-      { cite: "Justice Sandra Day O'Connor, opinion of the Court, Shaw v. Reno, 509 U.S. 630 (1993).", url: "https://supreme.justia.com/cases/federal/us/509/630/", kind: "primary" },
+      { cite: "Justice Sandra Day O'Connor, opinion of the Court, Shaw v. Reno, 509 U.S. 630 (1993).", url: "https://www.law.cornell.edu/supremecourt/text/509/630", kind: "primary" },
     ] }],
   },
   "g2a-s09": {

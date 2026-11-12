@@ -11,6 +11,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | AP Cybersecurity | F | Unit 3 now: the daily quizzes (Quiz 23, 11/3, to Quiz 43, 1/8), the midterm 12/16, the Unit 3 Test 1/12 | 354 (opening by meeting) | 3 Unit 2 mock tests |
 | AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 903 | 71 topic quizzes (1.1 to 9.9) and 11 unit assessments (2 each for Units 2 and 3) |
 | AP Calculus AB | (another teacher) | all eight AB units | 966 | 81 topic quizzes and 8 unit tests |
+| AP U.S. Government and Politics | B, H (Ms. Salter) | all five units; no dates yet | 730 | 60 topic quizzes (1.1 to 5.13) and 5 unit tests |
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
 
@@ -23,6 +24,17 @@ One record per student (`students/` in Firestore), keyed by the school email, ho
 - Teachers make students' email sign-ins from the Class tab with a first password (printable cards); the student chooses their own at first sign-in, can change it on the account page, and resets it by email (**Forgot password?**, or the teacher's **Send reset link**). Teachers never see a chosen password.
 - Teachers other than @jd12 are listed in `teachers/` (added from the Class tab) and see only their courses. `firestore.rules` enforces all of it: a teacher can add or remove only their own courses on a record and read progress only for their students.
 - Before 11/1 the roster was keyed by GitHub number; @jd12's first visit to the Class tab moves it over, and each student's progress comes along on their first sign-in.
+
+## AP U.S. Government and Politics
+
+All five units of the CED (fall 2026), for Ms. Salter's Periods B and H on one deck: review in `decks/gov/` (one file per unit, Units 2 and 5 in two halves), a quiz per topic in `decks/gov-topic/`, and a test per unit in `decks/gov-mocks/`. Built like AP World: review that brings back misses, then **Quizzes and tests**. Sign-in is a school email and the shared first password; a student with a GitHub username on the roster signs in with GitHub.
+
+- **Modeled on Albert (11/11).** Readers went through every question in Albert's AP U.S. Government course (1,049 practice multiple choice in 60 topics, 25 free-response questions, the five unit assessments, and three practice exams) and wrote pattern notes in `../private/albert-notes/gov-*.md`. Review has at least 60 percent of Albert's count for every topic: 700 multiple choice, plus 14 concept applications, 7 quantitative analyses, 4 SCOTUS comparisons, and 5 argument essays. Difficulty is matched to Albert's spread by unit (review 34/46/20 percent easy, moderate, difficult; Albert's about 33/49/18), and charts and data tables to Albert's share by unit (18 percent; Albert's about 19, with cartoons and maps replaced by charts and tables). The key is the longest choice in 18 percent of review and the shortest in 23, at 0.99 times the wrong choices' length. Nothing is taken from Albert or the College Board, and items Albert keys wrongly or on dated law (Roe as current law, among others) were not modeled.
+- **Sources.** Founding documents, Supreme Court opinions, and government texts are quoted verbatim from public-domain pages with their citation and link, including the four documents added for fall 2026 (the Emancipation Proclamation, Federalist No. 39, the Gettysburg Address, and The Wealth of Nations). Modern arguments are labeled practice passages; scenarios are labeled. Every data set is real and cited (Census, FEC, House Clerk, Senate, BLS, FRED, CRS, Pew, Gallup), drawn with `bars()` or `lines()` in `plot.js` and given as a table too. No pictures in this build. Letter from Birmingham Jail is described, never quoted (it is under copyright).
+- **Free response** has four kinds, as on the exam: concept application (3 points) and quantitative analysis (4 points) as one-point parts, and the SCOTUS comparison (4 points: A 1, B 2, C 1) and argument essay (6 points) scored with rubric rows (`kind: "scotus"` and `kind: "argument"`, labeled from `ESSAY_KINDS` in `app.js`). Students score their own free response with the scoring guidelines before the model answers appear.
+- **Topic quizzes** (60): 8 multiple choice and a 3-part concept application, 11 points. **Unit tests** (5): the AP exam in miniature, 20 multiple choice and two free-response questions (one concept application or quantitative analysis, one SCOTUS comparison or argument essay), 27 to 30 points. None of their sources, data, or scenarios is in review, and no two forms share one. Forms: 580 multiple choice, 32/48/20 percent easy, moderate, difficult, 18 percent on a chart or table, key letters spread evenly on every form.
+- **Accuracy:** each writer checked its excerpts against the source page and its data against the cited table; a second reader per unit then solved all 1,280 multiple-choice questions blind (choices shuffled, no key), compared (every pick matched the key), fixed the wording problems and second defensible answers they found, and checked quoted sources and data against their pages (one data set, the Federal Register rule counts, was corrected from the Office of the Federal Register's own tables). `tools/check-gov.mjs` checks shapes, cites, rubric points, `difficulty`, and the writing rules (`node tools/check-gov.mjs decks/gov/*.js decks/gov-topic/*.js decks/gov-mocks/*.js`); `tools/e2e-gov.mjs` takes a unit test and a topic quiz in Chromium.
+- **No dates yet:** there is no countdown. When Ms. Salter sends dates, add `{ name, date }` entries to `dates` in `decks/gov.js` (next first) and a `date` on the forms.
 
 ## AP Calculus AB
 
@@ -214,6 +226,7 @@ The written-response prompts use the wording in `09 AP Classroom/fall_quizzes/KE
 | `srs.js` | Spaced review, sessions, and mock-quiz assembly. |
 | `plot.js` | Graphs for math questions (curves, pieces, open and closed dots, asymptotes, slope fields), as SVG. |
 | `decks/calc.js`, `decks/calc/`, `decks/calc-topic/`, `decks/calc-tests/` | AP Calculus AB: review, topic quizzes, unit tests. `decks/calc/u1x.js` to `u8x.js` are generated by `tools/gen-calc/` (the 11/6 additions). |
+| `decks/gov.js`, `decks/gov/`, `decks/gov-topic/`, `decks/gov-mocks/` | AP U.S. Government and Politics: review, topic quizzes, unit tests. |
 | `edits.js` | Teachers' edits to questions, laid over the decks after sign-in. |
 | `backend.js` | Firebase (GitHub and email sign-in, the student records), and the demo backend (browser storage). |
 | `firebase-config.js` | The Firebase config (null until Setup step 7), the teacher's GitHub number. |

@@ -82,7 +82,7 @@ export const sets = {
         alt: "Bar chart of the number of cases filed in the Supreme Court in each term: " + court.terms.map((t, i) => `${t}, ${comma(court.filed[i])}`).join("; ") + "." }),
         caption: "Cases filed in the U.S. Supreme Court, 2015 to 2024 terms. The table also gives the number of cases argued each term." },
       { table: { head: ["Term", "Cases filed", "Cases argued"], rows: court.terms.map((t, i) => [t, comma(court.filed[i]), String(court.argued[i])]) } },
-      { p: "A term begins in October; the 2024 Term ran from October 2024 into 2025. Cases filed include petitions for a writ of certiorari, most of which the Court denies." },
+      { p: "A term begins in October; the 2024 Term ran from October 2024 into 2025. Cases filed include petitions for a writ of certiorari, most of which the Court denies. Each figure comes from the text of the report that covers that term; for the 2020 Term the 2021 report's text gives 72 cases argued, though its appendix chart shows 73." },
       { cite: "Chief Justice John G. Roberts, Jr., Year-End Reports on the Federal Judiciary, 2017, 2019, 2021, 2023, and 2025, sections on the workload of the Supreme Court.", url: "https://www.supremecourt.gov/publicinfo/year-end/2025year-endreport.pdf", kind: "data" },
     ] }],
   },

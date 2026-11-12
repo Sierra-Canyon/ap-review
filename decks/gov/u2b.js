@@ -13,8 +13,8 @@ const conf = {
 // Office of the Federal Register, Document Count by Category: Rules and Proposed Rules published each year.
 const fedreg = {
   years: ["1980", "1985", "1990", "1995", "2000", "2005", "2010", "2015", "2020"],
-  rules: [7745, 4843, 4334, 4713, 4491, 3978, 3564, 3408, 3352],
-  proposed: [5347, 3381, 3041, 3339, 2724, 2510, 2445, 2342, 2149],
+  rules: [7745, 4843, 4334, 4713, 4313, 3943, 3573, 3410, 3353],
+  proposed: [5347, 3381, 3041, 3339, 2636, 2257, 2439, 2342, 2149],
 };
 // Gallup, Supreme Court job approval, September polls.
 const gallup = {
@@ -63,7 +63,7 @@ export const sets = {
         alt: "Line graph of rule documents published in the Federal Register every five years from 1980 to 2020. Final rules: " + fedreg.years.map((y, i) => `${y}, ${comma(fedreg.rules[i])}`).join("; ") + ". Proposed rules: " + fedreg.years.map((y, i) => `${y}, ${comma(fedreg.proposed[i])}`).join("; ") + "." }),
         caption: "Final rules and proposed rules published in the Federal Register in selected years, 1980 to 2020" },
       { table: { head: ["Year", "Final rules", "Proposed rules"], rows: fedreg.years.map((y, i) => [y, comma(fedreg.rules[i]), comma(fedreg.proposed[i])]) } },
-      { cite: "Office of the Federal Register, \"Document Count by Category Statistics,\" FederalRegister.gov, Rules and Proposed Rules by year.", url: "https://www.federalregister.gov/reader-aids/federal-register-statistics/category-document-statistics", kind: "data" },
+      { cite: "Office of the Federal Register, \"Federal Register Documents Published per Category,\" 1976 to 2023 (corrected January 2024), Rules and Proposed Rules by year.", url: "https://uploads.federalregister.gov/uploads/2024/01/30162408/2023_Rule_And_Prorule_Docs_Corrected.pdf", kind: "data" },
     ] }],
   },
   "g2b-s06": {
@@ -857,8 +857,8 @@ export default [
     why: [
       "Correct. Agencies published 7,745 final rules in 1980, the highest count in the chart.",
       "In 1995 agencies published 4,713 final rules.",
-      "In 2000 agencies published 4,491 final rules.",
-      "In 2020 agencies published 3,352 final rules, the lowest count shown.",
+      "In 2000 agencies published 4,313 final rules.",
+      "In 2020 agencies published 3,353 final rules, the lowest count shown.",
     ],
     answer: 0 },
   { id: "g2b-m053", skill: "u2", type: "mcq", set: "g2b-s05", topic: "2.13", difficulty: "moderate",
@@ -870,10 +870,10 @@ export default [
       "Final rules fell over the period while proposed rules rose after 2000.",
     ],
     why: [
-      "Correct. Final rules fell from 7,745 to 3,352 and proposed rules from 5,347 to 2,149; the largest drop in both came between 1980 and 1985.",
+      "Correct. Final rules fell from 7,745 to 3,353 and proposed rules from 5,347 to 2,149; the largest drop in both came between 1980 and 1985.",
       "Both lines generally decline, and both fell from 2015 to 2020.",
       "Final rules were higher than proposed rules in every year shown.",
-      "Proposed rules also fell after 2000, from 2,724 to 2,149.",
+      "Proposed rules also fell after 2000, from 2,636 to 2,149.",
     ],
     answer: 0 },
   { id: "g2b-m054", skill: "u2", type: "mcq", set: "g2b-s05", topic: "2.13", difficulty: "difficult",

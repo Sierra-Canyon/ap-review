@@ -36,9 +36,16 @@ const Q3 = { group: "Quiz 3: Lists and Loops", date: "2026-11-03" };
 const Q4 = { group: "Quiz 4: Functions and Loops", date: "2026-11-20" };
 // The Milestone 2 openers (8 minutes, two prompts) and the two longer written responses after them, on the real dates.
 const WR = {
-  m2wr7: ["WR7: The Command Chain", "2026-11-12"], m2wr8: ["WR8: Your Command", "2026-11-16"], m2wr9: ["WR9: Your List", "2026-11-17"],
-  m2wr10: ["WR10: Your MyCount", "2026-11-18"], m2wr11: ["WR11: Your Own Code", "2026-11-23"], m2wr12: ["WR12: Practice Written Response", "2026-12-09"],
+  m2wr7: ["WR7: The Command Chain", "2026-11-12"], m2wr8: ["WR8: The Command", "2026-11-16"], m2wr9: ["WR9: The List", "2026-11-17"],
+  m2wr10: ["WR10: MyCount", "2026-11-18"], m2wr11: ["WR11: The Finished Feature", "2026-11-23"], m2wr12: ["WR12: Practice Written Response", "2026-12-09"],
 };
+// The released prompts each WR asks (rebuilt 11/11: the same prompts on every form). A WR's button on Home picks the
+// written-response review items tagged with those prompts (each item's `released`).
+const ASKS = {
+  wr7: ["2024s1-2b", "2025s1-2a"], wr8: ["2025s1-2a", "2025s1-2b"], wr9: ["2026-2c", "2025s2-2b"],
+  wr10: ["2024s1-2b", "2024s1-2c"], wr11: ["2026-2c", "2025s1-2b", "2025s1-2a"], wr12: ["2026-q1", "2026-2a", "2026-2b", "2026-2c"],
+};
+const asks = (wr) => (it) => it.type === "wr" && ASKS[wr].includes(it.released);
 const wrForms = m2Mocks.forms.map((f) => ({ ...f, group: WR[f.id][0], date: WR[f.id][1], total: f.items.length * 4 }));
 
 export default {
@@ -71,11 +78,11 @@ export default {
   lang: "csharp",
   blurb: "Code-reading questions, output and trace tables, and written responses scored with the quiz's own rubric rows.",
   focus: [
-    { id: "wr7", name: "WR7 (11/12)", skills: ["wr-io", "wr-select"], size: 4 },
-    { id: "wr8", name: "WR8 (11/16)", skills: ["wr-select", "wr-io"], size: 4 },
-    { id: "wr9", name: "WR9 (11/17)", skills: ["wr-listuse"], size: 4 },
-    { id: "wr10", name: "WR10 (11/18)", skills: ["wr-count"], size: 4 },
-    { id: "wr11", name: "WR11 (11/23)", skills: ["wr-report", "wr-listuse", "wr-io"], size: 4 },
+    { id: "wr7", name: "WR7 (11/12)", filter: asks("wr7"), size: 4 },
+    { id: "wr8", name: "WR8 (11/16)", filter: asks("wr8"), size: 4 },
+    { id: "wr9", name: "WR9 (11/17)", filter: asks("wr9"), size: 4 },
+    { id: "wr10", name: "WR10 (11/18)", filter: asks("wr10"), size: 4 },
+    { id: "wr11", name: "WR11 (11/23)", filter: asks("wr11"), size: 4 },
     { id: "q4", name: "Quiz 4 (11/20)", skills: ["totals", "grid", "draw", "walk", "rewrite", "wr-params", "wr-logic"] },
     { id: "bi1", name: "Big Idea 1", skills: BI["1"] },
     { id: "bi2", name: "Big Idea 2", skills: BI["2"] },
@@ -167,7 +174,7 @@ export default {
     blurb: "Fall: mock quizzes for Quiz 3 and Quiz 4, six multiple choice and two written responses each, and practice for WR7 to WR12 on sample features. Spring: a multiple-choice mock quiz for each Big Idea, and Practice Exam 3 in two parts. None of their questions are in review.",
     intro: [
       ["Fall quizzes.", "Six multiple-choice items, 2 points each, then two written responses, 4 points each, scored with the quiz's rubric rows."],
-      ["WR7 to WR12.", "The same released AP prompts as the real quiz, asked about a sample feature. On the real quiz you answer about your own code, so each answer ends with how to say it about yours."],
+      ["WR7 to WR12.", "The same released AP prompts as the real quiz, asked about a sample feature. WR7 to WR11 ask about printed code, and WR12 about your own, so each answer ends with how to say it on the quiz and about your own code."],
       ["Spring.", "A Big Idea mock quiz is 10 or 15 multiple-choice items, 2 points each. Practice Exam 3 is two parts of 25 multiple-choice items, at the AP exam's pace of about 1 minute 40 seconds a question."],
       ["", "No feedback until the end. None of these questions are in review, so each mock shows how you do on questions you have not practiced."],
     ],

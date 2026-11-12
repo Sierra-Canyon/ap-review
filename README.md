@@ -126,10 +126,10 @@ Two parts, one sign-in:
 
 ### WR7 to WR12: the Milestone 2 written responses (added 11/11)
 
-The written-response quizzes that open each Milestone 2 class (WR7 11/12, WR8 11/16, WR9 11/17, WR10 11/18) and the two after them (WR11 11/23, WR12 12/9) ask the released AP prompts about each student's own feature. The site practices the same prompts on sample features instead:
+The written-response quizzes that open each Milestone 2 class (WR7 11/12, WR8 11/16, WR9 11/17, WR10 11/18) and the two after them (WR11 11/23, WR12 12/9) ask released AP prompts, the same prompts on every form: WR7 to WR11 about printed code (rebuilt late on 11/11), WR12 about each student's own. The site practices the same prompts on sample features:
 
-- **21 review items** in `decks/csp-q4/review-m2.js` on three sample features (a shop ledger, a bounty board, a relic shelf), covering all 17 released prompts the real forms use, in five new skills (input and output, a selection statement, the list, the counting procedure, the report procedure). Each answer ends with how to say the same thing about the student's own feature. Home has a button for each WR.
-- **Six practice forms** in `decks/csp-q4/mocks-m2.js`, one for each of WR7 to WR12, with the real Form A's prompts on features not used in review (an herb pouch, a fishing log, a wishing well).
+- **21 review items** in `decks/csp-q4/review-m2.js` on three sample features (a shop ledger, a bounty board, a relic shelf), covering all 17 released prompts the real forms use, in five new skills (input and output, a selection statement, the list, the counting procedure, the report procedure). Each item is tagged with its released prompt (`released`), and each WR's button on Home picks the review items for exactly the prompts that quiz asks (`ASKS` in `decks/csp-q3.js`).
+- **Six practice forms** in `decks/csp-q4/mocks-m2.js`, one for each of WR7 to WR12, asking that quiz's prompts in order, on features not used in review or on the quizzes (an herb pouch, a fishing log, a wishing well).
 - The countdown now names the spring tests as AP Classroom has them: the BI2, BI4, BI5, and BI3 Progress Checks, and Practice Exams 1 and 2.
 - Every block of code runs on .NET 10 (`node tools/verify.mjs`).
 

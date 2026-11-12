@@ -4,7 +4,8 @@
 // Three sample features, none of them the class's Bestiary or Loot Log: a Shop Ledger (shop), a Bounty Board (bounties)
 // and a Relic Shelf (relics). Each has a command in an else if chain, a list added to with a MyRecord-style call,
 // a MyCount-style counting procedure and a MyReport-style report with a loop.
-// An item's feedback ends (in facts) with one sentence on answering the same prompt about the student's own feature.
+// An item's feedback ends (in facts) with one sentence on answering the same prompt on the quiz and about the student's own code.
+// released: the released prompt, as year, set and part ("2024s1-2b", "2026-q1"); the field prompt already holds the prompt's text.
 
 // ---------------------------------------------------------------- the released prompts, word for word
 const P_INPUT = "Programs accept input to achieve their intended functionality. Describe at least one valid input to your program and what your program does with that input.";
@@ -348,6 +349,7 @@ export default {
     {
       id: "m2-w01", skill: "wr-io", type: "wr",
       source: "2024 exam, Set 1, question 1",
+      released: "2024s1-q1",
       labels: FILES,
       listI: `${SHOP_WORD}\n\n${SHOP_PRICE}\n\n${SHOP_BUY}`,
       listII: SHOP_BRANCH,
@@ -372,7 +374,7 @@ export default {
       ],
       model: "One valid input is buy potion.\n\nFirstWord(command) is buy, so the first if runs. It calls Buy(bought, \"potion\"). Inside Buy, Price(\"potion\") is 5, which is more than 0, so potion is added to the end of the list bought. Then the program prints Items bought: 1. The ledger now remembers the potion, so typing shop later shows potion, 5 gold and Spent: 5 gold.",
       note: NOTE_INPUT,
-      facts: "With buy potion typed, the program prints Items bought: 1. With shop typed on an empty ledger, it prints THE SHOP LEDGER: everything the party has bought and then Nothing bought yet. With buy sword typed, Price(\"sword\") is 0, nothing is added, and it prints Items bought: 0. About your own feature: give your word exactly as MyFeatureWord() returns it (or the input that makes MyRecord run) and say what your code does with it, line by line.",
+      facts: "With buy potion typed, the program prints Items bought: 1. With shop typed on an empty ledger, it prints THE SHOP LEDGER: everything the party has bought and then Nothing bought yet. With buy sword typed, Price(\"sword\") is 0, nothing is added, and it prints Items bought: 0. On the quiz, and on the exam about your own code: give an exact input (the feature's word as MyFeatureWord() returns it, or the input that makes MyRecord run) and say what the code does with it, line by line.",
       verify: {
         cases: [
           { run: shopRun("buy potion"), out: "Items bought: 1" },
@@ -384,6 +386,7 @@ export default {
     {
       id: "m2-w02", skill: "wr-io", type: "wr",
       source: "2025 exam, Set 2, question 1",
+      released: "2025s2-q1",
       labels: FILES,
       listI: `${BOUNTY_WORD}\n\n${BOUNTY_POST}`,
       listII: BOUNTY_BRANCH,
@@ -408,7 +411,7 @@ export default {
       ],
       model: "An unexpected input is take, with no monster after it.\n\nFirstWord(command) is take, so the first if runs. SecondWord(command) is \"\", because nothing was typed after take. Post checks monster != \"\", which is false, so nothing is added to board. The program prints Bounties taken: 3, the same number as before, so no empty bounty ends up on the board and nothing crashes.",
       note: NOTE_INVALID,
-      facts: "With take typed, it prints Bounties taken: 3. With Bounties typed, it prints I don't know that command. Type help. With bounties Dragon typed, it prints the title and then 0 of 3 bounties. With jump typed, it prints I don't know that command. Type help. About your own feature: give your word with a capital letter, or your word with a second word that is not in your list, and say exactly what your game prints.",
+      facts: "With take typed, it prints Bounties taken: 3. With Bounties typed, it prints I don't know that command. Type help. With bounties Dragon typed, it prints the title and then 0 of 3 bounties. With jump typed, it prints I don't know that command. Type help. On the quiz, and on the exam about your own code: give the feature's word with a capital letter, or with a second word that is not in the list, and say exactly what the program prints.",
       verify: {
         cases: [
           { run: bountyRun("take"), out: "Bounties taken: 3" },
@@ -421,6 +424,7 @@ export default {
     {
       id: "m2-w03", skill: "wr-io", type: "wr",
       source: "2025 exam, Set 1, question 1",
+      released: "2025s1-q1",
       labels: FILES,
       listI: `${RELIC_WORD}\n\n${RELIC_REPORT}`,
       listII: RELIC_BRANCH,
@@ -445,7 +449,7 @@ export default {
       ],
       model: "When the player types relics idol, the program prints the title THE RELIC SHELF: every relic the party has found, then 2. idol, then Relics: 3.\n\nThis output shows that the shelf remembers every relic the party has found, in order. The idol was the second relic placed, so it is shown as 2. The second word idol filters the report, so the two crowns are not shown, but Relics: 3 still counts everything on the shelf.",
       note: NOTE_OUTPUT,
-      facts: "With relics typed, the program prints the title, then 1. crown, 2. idol, 3. crown, and Relics: 3. With relics idol it prints the title, 2. idol and Relics: 3. With relics orb it prints the title and No orb on the shelf. About your own feature: copy one output of your command word for word, after the thing your list remembers has happened, and say what it shows your feature remembers.",
+      facts: "With relics typed, the program prints the title, then 1. crown, 2. idol, 3. crown, and Relics: 3. With relics idol it prints the title, 2. idol and Relics: 3. With relics orb it prints the title and No orb on the shelf. On the quiz, and on the exam about your own code: copy one output of the command word for word, after the thing the list remembers has happened, and say what it shows the feature remembers.",
       verify: {
         cases: [
           { run: relicRun("relics idol"), out: `${RELIC_TITLE}\n2. idol\nRelics: 3` },
@@ -457,6 +461,7 @@ export default {
     {
       id: "m2-w04", skill: "wr-io", type: "wr",
       source: "2026 exam, question 1",
+      released: "2026-q1",
       labels: FILES,
       listI: RELIC_COUNT_DOC,
       listII: W14_II,
@@ -481,7 +486,7 @@ export default {
       ],
       model: "One piece of documentation is the two comment lines above CountRelic. The first line says what the procedure does: it gives how many times one relic is on the shelf. The second line says what each parameter is for: shelf is every relic found so far, and relic is the one to count, such as crown.\n\nAnother programmer who wants to count relics can read those two lines and write CountRelic(shelf, \"crown\") without working through the loop. The second line also tells them that relic is one name, like crown, and not a number or a position on the shelf.",
       note: NOTE_DOC,
-      facts: "CountRelic(shelf, \"crown\") is 2 for crown, idol, crown, so the line prints crown: 2. About your own feature: name the two comment lines above your MyCount or MyReport (or its line in a README), quote what they say, and say how they help someone call that procedure.",
+      facts: "CountRelic(shelf, \"crown\") is 2 for crown, idol, crown, so the line prints crown: 2. About your own code on the quiz: name the two comment lines above the procedure on your Personalized Project Reference, quote what they say, and say how they help another programmer call or change it.",
       verify: {
         cases: [
           { run: `${W14_II}\n${RELIC_COUNT_DOC}`, out: "crown: 2" },
@@ -493,6 +498,7 @@ export default {
     {
       id: "m2-w05", skill: "wr-select", type: "wr",
       source: "2025 exam, Set 1, question 2(a)",
+      released: "2025s1-2a",
       labels: PROC,
       listI: SHOP_PRICE,
       listII: W05_II,
@@ -517,7 +523,7 @@ export default {
       ],
       model: "The first selection statement is if (item == \"potion\") in Price. Its Boolean expression is item == \"potion\".\n\nThe value \"potion\" makes it true, as in the call Price(\"potion\"). The parameter item is then \"potion\", and == on strings is true only when the two strings are exactly the same, letter for letter. They are, so the expression is true, Price returns 5, and the line prints A potion costs 5 gold.",
       note: NOTE_TRUE,
-      facts: "The two lines print A potion costs 5 gold. and A sword costs 0 gold. Price(\"Potion\") is 0: == is exact, so a capital P makes every test false. About your own feature: name the Boolean expression in your own else if (verb == MyFeatureWord() or command == MyFeatureWord()), give your word exactly as MyFeatureWord() returns it, and say the two strings are equal.",
+      facts: "The two lines print A potion costs 5 gold. and A sword costs 0 gold. Price(\"Potion\") is 0: == is exact, so a capital P makes every test false. On the quiz, and on the exam about your own code: name the Boolean expression in the first if of the Procedure section (for the command, verb == MyFeatureWord() or command == MyFeatureWord()), give a value that makes it true, such as the word exactly as MyFeatureWord() returns it, and say the two strings are equal.",
       verify: {
         cases: [
           { run: `${W05_II}\n${SHOP_PRICE}`, out: "A potion costs 5 gold.\nA sword costs 0 gold." },
@@ -528,6 +534,7 @@ export default {
     {
       id: "m2-w06", skill: "wr-select", type: "wr",
       source: "2025 exam, Set 2, question 2(a)",
+      released: "2025s2-2a",
       labels: PROC,
       listI: BOUNTY_WORD,
       listII: BOUNTY_BRANCH,
@@ -552,7 +559,7 @@ export default {
       ],
       model: "The first selection statement is if (verb == \"take\"), so its Boolean expression is verb == \"take\".\n\nIf the player types bounties, then verb is FirstWord(\"bounties\"), which is \"bounties\". \"bounties\" and \"take\" are not the same string, so the expression is false. The first if is skipped, and the else if runs and prints the board.",
       note: NOTE_FALSE,
-      facts: "With bounties typed, the program prints the title and then Wanted: Grub, Wanted: Bat, Wanted: Grub and 3 of 3 bounties. With Take Grub typed, verb is \"Take\", the expression is false, and it prints I don't know that command. Type help. With take Grub typed, the expression is true and it prints Bounties taken: 4. About your own feature: name the expression in your own else if and give an input that makes it false, such as another command or your word with a capital letter, and say the strings are not equal.",
+      facts: "With bounties typed, the program prints the title and then Wanted: Grub, Wanted: Bat, Wanted: Grub and 3 of 3 bounties. With Take Grub typed, verb is \"Take\", the expression is false, and it prints I don't know that command. Type help. With take Grub typed, the expression is true and it prints Bounties taken: 4. On the quiz, and on the exam about your own code: name the expression in the first if of the Procedure section, give an input that makes it false, such as another command or the word with a capital letter, and say the strings are not equal.",
       verify: {
         cases: [
           { run: bountyRun("bounties"), out: `THE BOUNTY BOARD: every monster the party has sworn to hunt\n${BOUNTY_OUT}` },
@@ -564,6 +571,7 @@ export default {
     {
       id: "m2-w07", skill: "wr-select", type: "wr",
       source: "2025 exam, Set 1, question 2(a)",
+      released: "2025s1-2a",
       labels: PROC,
       listI: RELIC_REPORT,
       listII: W07_II,
@@ -588,7 +596,7 @@ export default {
       ],
       model: "The first selection statement in ShelfReport is if (shelf.Count == 0), so the Boolean expression is shelf.Count == 0.\n\nIt is true when shelf has no relics, so shelf.Count is 0. That happens in the first call in Procedure (ii), because nothing has been placed yet. 0 == 0 is true, so ShelfReport returns The shelf is empty. After Place(shelf, \"idol\"), Count is 1, the expression is false, and the second call shows 1. idol.",
       note: NOTE_TRUE,
-      facts: "Procedure (ii) prints The shelf is empty., then 1. idol and Relics: 1. About your own feature: if your Procedure section starts with your else if, name its expression and your word; if it starts with MyReport, name the expression in its first if, such as entries.Count == 0, and give an empty list as the value.",
+      facts: "Procedure (ii) prints The shelf is empty., then 1. idol and Relics: 1. On the quiz, and on the exam about your own code: find the first if in the Procedure section; in a MyReport it is often entries.Count == 0, which an empty list makes true.",
       verify: {
         cases: [
           { run: `${W07_II}\n${RELIC_PLACE}\n${RELIC_COUNT}\n${RELIC_REPORT}`, out: "The shelf is empty.\n1. idol\nRelics: 1" },
@@ -600,6 +608,7 @@ export default {
     {
       id: "m2-w08", skill: "wr-listuse", type: "wr",
       source: "2026 exam, question 2(c)",
+      released: "2026-2c",
       listI: BOUNTY_LIST,
       listII: BOUNTY_REPORT,
       call: BOUNTY_CALL,
@@ -624,7 +633,7 @@ export default {
       ],
       model: "The list board manages complexity because one name holds every bounty the party takes, however many there are. BountyReport needs only one loop, from i = 0 while i < board.Count, to show every one of them, with the same if for each.\n\nWithout the list, it is not possible to get the same behavior. The player can type take as many times as they like, so the number of bounties is not known before the game runs. I would need separate variables like bounty1, bounty2 and bounty3, and BountyReport would need a separate if and a separate line for each variable instead of the loop. That only works up to the number of variables I wrote, so the fourth bounty would be lost.",
       note: NOTE_NOLIST,
-      facts: "BountyReport(board, \"\") prints Wanted: Grub, Wanted: Bat, Wanted: Grub, then 3 of 3 bounties. After Post(board, \"Ogre\"); the same call prints four Wanted lines and 4 of 4 bounties, with no change to BountyReport. About your own feature: say your list holds every entry under one name and one loop in MyReport shows them all, then say that without it you would need a variable and a line per entry, which cannot hold a number of entries the game does not know ahead of time.",
+      facts: "BountyReport(board, \"\") prints Wanted: Grub, Wanted: Bat, Wanted: Grub, then 3 of 3 bounties. After Post(board, \"Ogre\"); the same call prints four Wanted lines and 4 of 4 bounties, with no change to BountyReport. On the quiz, and on the exam about your own code: say the list holds every entry under one name and one loop shows them all, then say that without it the code would need a variable and a line per entry, which cannot hold a number of entries the game does not know ahead of time.",
       verify: {
         cases: [
           { run: `${BOUNTY_LIST}\n${BOUNTY_CALL}\n${BOUNTY_POST}\n${BOUNTY_REPORT}`, out: BOUNTY_OUT },
@@ -635,6 +644,7 @@ export default {
     {
       id: "m2-w09", skill: "wr-listuse", type: "wr",
       source: "2025 exam, Set 1, question 2(c)",
+      released: "2025s1-2c",
       listI: RELIC_LIST,
       listII: RELIC_REPORT,
       call: RELIC_CALL,
@@ -659,7 +669,7 @@ export default {
       ],
       model: "No change to ShelfReport is needed. Its loop runs while i < shelf.Count, and shelf.Count is how many relics are on the shelf right now. If another programmer adds an orb and another crown to the end, shelf.Count goes from 3 to 5, so the loop makes 5 passes and shows them as 4. orb and 5. crown. The last line also uses shelf.Count, so it says Relics: 5.",
       note: NOTE_GROWS,
-      facts: "ShelfReport(shelf, \"\") prints 1. crown, 2. idol, 3. crown and Relics: 3. After Place(shelf, \"orb\"); Place(shelf, \"crown\"); the same call prints five numbered relics and Relics: 5. About your own feature: point at the condition in your MyReport loop, i < entries.Count, and say Count grows with your list; if your loop has a number typed in place of Count, say that number must change.",
+      facts: "ShelfReport(shelf, \"\") prints 1. crown, 2. idol, 3. crown and Relics: 3. After Place(shelf, \"orb\"); Place(shelf, \"crown\"); the same call prints five numbered relics and Relics: 5. On the quiz, and on the exam about your own code: point at the loop condition in List (ii), i < entries.Count, and say Count grows with the list; if the loop has a number typed in place of Count, say that number must change.",
       verify: {
         cases: [
           { run: `${RELIC_LIST}\n${RELIC_CALL}\n${RELIC_PLACE}\n${RELIC_COUNT}\n${RELIC_REPORT}`, out: "1. crown\n2. idol\n3. crown\nRelics: 3" },
@@ -670,6 +680,7 @@ export default {
     {
       id: "m2-w10", skill: "wr-listuse", type: "wr",
       source: "2025 exam, Set 2, question 2(b)",
+      released: "2025s2-2b",
       listI: W10_I,
       listII: SHOP_REPORT,
       call: W10_CALL,
@@ -694,7 +705,7 @@ export default {
       ],
       model: "The other programmer could change int i = 0 to int i = 1. It still builds and runs, but the loop starts at the second item, so bought[0], the first potion, is never shown or added to spent. ShopReport(bought, \"\") prints arrow, 1 gold and potion, 5 gold, then Spent: 6 gold, when the party really spent 11 gold on three items.",
       note: NOTE_LOGIC,
-      facts: "As written, the call prints potion, 5 gold, arrow, 1 gold, potion, 5 gold and Spent: 11 gold. With int i = 1 it prints two lines and Spent: 6 gold. With && in place of ||, an empty item matches nothing and it prints only Spent: 0 gold. With Price(bought[0]) in place of Price(bought[i]) in the spent line, it says Spent: 15 gold. With i <= bought.Count it crashes with an ArgumentOutOfRangeException on the last pass, when i is 3. About your own feature: change one thing in the loop in your MyReport (the start, the condition, or [i]) and say exactly what your report would show wrong for a list you name.",
+      facts: "As written, the call prints potion, 5 gold, arrow, 1 gold, potion, 5 gold and Spent: 11 gold. With int i = 1 it prints two lines and Spent: 6 gold. With && in place of ||, an empty item matches nothing and it prints only Spent: 0 gold. With Price(bought[0]) in place of Price(bought[i]) in the spent line, it says Spent: 15 gold. With i <= bought.Count it crashes with an ArgumentOutOfRangeException on the last pass, when i is 3. On the quiz, and on the exam about your own code: change one thing in the List (ii) loop (the start, the condition, or [i]) and say exactly what would come out wrong for a list you name.",
       verify: {
         cases: [
           { run: `${W10_I}\n${W10_CALL}\n${SHOP_PRICE}\n${SHOP_BUY}\n${SHOP_REPORT}`, out: "potion, 5 gold\narrow, 1 gold\npotion, 5 gold\nSpent: 11 gold" },
@@ -708,6 +719,7 @@ export default {
     {
       id: "m2-w11", skill: "wr-listuse", type: "wr",
       source: "2024 exam, Set 1, question 2(c)",
+      released: "2024s1-2c",
       listI: BOUNTY_LIST,
       listII: BOUNTY_REPORT,
       call: BOUNTY_CALL,
@@ -732,7 +744,7 @@ export default {
       ],
       model: "1. Write a procedure AllValid that takes the list board.\n2. Set i to 0.\n3. While i is less than board.Count, call checkValidity(board[i]). This passes one monster name, like \"Bat\", not the number i.\n4. If that call returns false, stop and return false. One invalid bounty is enough.\n5. If it returns true, add 1 to i and go back to step 3.\n6. When the loop ends, every bounty has been checked and none was invalid, so return true.",
       note: NOTE_VALIDITY,
-      facts: "A C# version of these steps, with a stand-in checkValidity that accepts a name starting with a capital letter, gives True for Grub, Bat, Grub. After Post(board, \"grub\"); it gives False. Calling checkValidity(board) does not build (CS1503): board is a whole list, and checkValidity takes one string. About your own feature: write the same steps with your own list's name, a loop to its Count, and checkValidity on each entry, list[i].",
+      facts: "A C# version of these steps, with a stand-in checkValidity that accepts a name starting with a capital letter, gives True for Grub, Bat, Grub. After Post(board, \"grub\"); it gives False. Calling checkValidity(board) does not build (CS1503): board is a whole list, and checkValidity takes one string. On the quiz, and on the exam about your own code: write the same steps with the list's own name, a loop to its Count, and checkValidity on each entry, list[i].",
       verify: {
         cases: [
           { run: `${BOUNTY_LIST}\n${BOUNTY_CALL}\n${BOUNTY_POST}\n${BOUNTY_REPORT}`, out: BOUNTY_OUT },
@@ -759,6 +771,7 @@ bool checkValidity(string value)
     {
       id: "m2-w12", skill: "wr-count", type: "wr",
       source: "2024 exam, Set 2, question 2(c)",
+      released: "2024s2-2c",
       labels: PROC,
       listI: SHOP_TIMES,
       listII: W12_II,
@@ -783,7 +796,7 @@ bool checkValidity(string value)
       ],
       model: "The parameters are bought and item, in the header int TimesBought(List<string> bought, string item).\n\nitem lets one procedure count any item. The value passed in as item is what the if compares each entry with, so TimesBought(bought, \"potion\") gives 2 and TimesBought(bought, \"shield\") gives 0 with the same code. Without item, I would need CountPotions, CountArrows and CountShields, each with its own copy of the loop. bought lets the procedure count in whatever list is passed in, so it works on the party's ledger or on a test list.",
       note: NOTE_PARAMS,
-      facts: "The two lines print potion: 2 and shield: 0. About your own feature: name the two parameters of your MyCount, entries and word, from its header, and say that word lets one procedure count anything in your list.",
+      facts: "The two lines print potion: 2 and shield: 0. On the quiz, and on the exam about your own code: name the two parameters of MyCount, entries and word, from its header, and say word lets one procedure count anything in the list.",
       verify: {
         cases: [
           { run: `${W12_II}\n${SHOP_TIMES}`, out: "potion: 2\nshield: 0" },
@@ -793,6 +806,7 @@ bool checkValidity(string value)
     {
       id: "m2-w13", skill: "wr-count", type: "wr",
       source: "2026 exam, question 2(a)",
+      released: "2026-2a",
       labels: PROC,
       listI: BOUNTY_GOLD,
       listII: W13_II,
@@ -817,7 +831,7 @@ bool checkValidity(string value)
       ],
       model: "The first iteration statement is the for loop in BountyGold. The variables that decide when it stops are i and board.Count, because the loop keeps going only while i < board.Count.\n\nIn the call in Procedure (ii), board holds Grub, Bat, Grub, so board.Count is 3. i starts at 0 and goes up by 1 after each pass. After the pass for the second Grub, i becomes 3. Then 3 < 3 is false, so the loop stops, and BountyGold returns 10.",
       note: NOTE_ALGO,
-      facts: "The line prints Grub bounties pay 10 gold. A copy that prints i after the loop shows it stopped with i = 3 and board.Count = 3. About your own feature: name i and your list's Count from the loop in your MyCount, give a list with a known Count, and say i equal to that Count makes the condition false.",
+      facts: "The line prints Grub bounties pay 10 gold. A copy that prints i after the loop shows it stopped with i = 3 and board.Count = 3. About your own code on the quiz: name the variables in the condition of the first loop in your Procedure section (in a MyCount, i and entries.Count), give their values for a real call, and say why the condition is then false.",
       verify: {
         cases: [
           { run: `${W13_II}\n${BOUNTY_GOLD}`, out: "Grub bounties pay 10 gold." },
@@ -833,6 +847,7 @@ Console.WriteLine("stopped with i = " + i + " and board.Count = " + board.Count)
     {
       id: "m2-w14", skill: "wr-count", type: "wr",
       source: "2024 exam, Set 1, question 2(b)",
+      released: "2024s1-2b",
       labels: PROC,
       listI: RELIC_COUNT,
       listII: W14_II,
@@ -857,7 +872,7 @@ Console.WriteLine("stopped with i = " + i + " and board.Count = " + board.Count)
       ],
       model: "First call: CountRelic(shelf, \"idol\"), with shelf holding crown, idol, crown. The loop checks all three relics. The if is true once, when i is 1, so count = count + 1 runs once, and the call returns 1.\n\nSecond call: CountRelic(shelf, \"orb\"). The loop still checks all three relics, but the if is false every time, so count = count + 1 never runs, and the call returns 0.\n\nThe first call runs the code inside the if and the second never does.",
       note: NOTE_TWOCALLS,
-      facts: "CountRelic(shelf, \"idol\") is 1, CountRelic(shelf, \"orb\") is 0, and CountRelic(new List<string>(), \"crown\") is 0, since the loop body never runs. About your own feature: write one call to your MyCount with a word that is in your list and one with a word that is not, and say which one runs the line that adds 1.",
+      facts: "CountRelic(shelf, \"idol\") is 1, CountRelic(shelf, \"orb\") is 0, and CountRelic(new List<string>(), \"crown\") is 0, since the loop body never runs. On the quiz, and on the exam about your own code: write one call to MyCount with a word that is in the list and one with a word that is not, and say which one runs the line that adds 1.",
       verify: {
         cases: [
           { run: `${W14_II}\n${RELIC_COUNT}`, out: "crown: 2" },
@@ -872,6 +887,7 @@ ${RELIC_COUNT}`, out: "1\n0\n0" },
     {
       id: "m2-w15", skill: "wr-count", type: "wr",
       source: "2025 exam, Set 1, question 2(b)",
+      released: "2025s1-2b",
       labels: PROC,
       listI: BOUNTY_GOLD,
       listII: W15_II,
@@ -896,7 +912,7 @@ ${RELIC_COUNT}`, out: "1\n0\n0" },
       ],
       model: "The other programmer could change gold = gold + reward; to gold = reward;. It still builds and runs, but now gold is set to one reward each time a match is found, instead of growing. BountyGold(board, \"Bat\", 4) returns 4 instead of 8, even though two Bats are on the board, so the party would be paid for only one of them. A monster that is on the board once, like the Ogre, still gives the right gold, 10, so the error only shows when a bounty is taken twice.",
       note: NOTE_PROC,
-      facts: "As written, the calls print 8 and 10. With gold = reward; they print 4 and 10. With gold = gold + 1; they print 2 and 1. With board[i] == \"monster\" in quotation marks they print 0 and 0. With int i = 1 they print 4 and 10, since the first Bat is skipped. About your own feature: describe one change inside your MyCount, such as count = 1; or a return inside the loop, and say what a call you name would return then instead of now.",
+      facts: "As written, the calls print 8 and 10. With gold = reward; they print 4 and 10. With gold = gold + 1; they print 2 and 1. With board[i] == \"monster\" in quotation marks they print 0 and 0. With int i = 1 they print 4 and 10, since the first Bat is skipped. On the quiz, and on the exam about your own code: describe one change inside MyCount, such as count = 1; or a return inside the loop, and say what a call you name would return then instead of now.",
       verify: {
         cases: [
           { run: `${W15_II}\n${BOUNTY_GOLD}`, out: "8\n10" },
@@ -910,6 +926,7 @@ ${RELIC_COUNT}`, out: "1\n0\n0" },
     {
       id: "m2-w16", skill: "wr-count", type: "wr",
       source: "2025 exam, Set 2, question 2(c)",
+      released: "2025s2-2c",
       labels: PROC,
       listI: RELIC_COUNT,
       listII: W16_II,
@@ -934,7 +951,7 @@ ${RELIC_COUNT}`, out: "1\n0\n0" },
       ],
       model: "CountRelic gives how many relics on the shelf are exactly the relic passed in. For the shelf idol, crown, idol, idol, CountRelic(shelf, \"idol\") is 3 and CountRelic(shelf, \"crown\") is 1.\n\nBecause the counting is a procedure, the loop is written in one place and called wherever a count is needed: by the two lines in Procedure (ii), and by the second if in ShelfReport. If I wanted the count to ignore capital letters, so that Idol counts as idol, I would change the one if inside CountRelic, and every call would count the new way. Without the procedure, the same loop would be copied into each place, and I would have to find and fix every copy.",
       note: NOTE_MAINTAIN,
-      facts: "The two lines print idols: 3 and crowns: 1. About your own feature: say what your MyCount returns, then name the places that call it (your command's line, and the first lines of your MyReport) and say one change to MyCount fixes them all.",
+      facts: "The two lines print idols: 3 and crowns: 1. On the quiz, and on the exam about your own code: say what MyCount returns, then name the places that call it (the command's line, and the first lines of MyReport) and say one change to MyCount fixes them all.",
       verify: {
         cases: [
           { run: `${W16_II}\n${RELIC_COUNT}`, out: "idols: 3\ncrowns: 1" },
@@ -944,6 +961,7 @@ ${RELIC_COUNT}`, out: "1\n0\n0" },
     {
       id: "m2-w17", skill: "wr-count", type: "wr",
       source: "2024 exam, Set 2, question 2(b)",
+      released: "2024s2-2b",
       labels: PROC,
       listI: SHOP_TIMES,
       listII: W17_II,
@@ -968,7 +986,7 @@ ${RELIC_COUNT}`, out: "1\n0\n0" },
       ],
       model: "The call TimesBought(bought, \"potion\") is meant to find how many potions the party has bought. potion is in the list twice, at index 0 and index 2, so the if is true twice and the call returns 2. The program prints Potions bought: 2.\n\nA new call with a different argument is TimesBought(bought, \"arrow\"). arrow is also in the list exactly twice, at index 1 and index 3, so count goes up twice and the call returns 2. potions would be 2, and the line would still print Potions bought: 2.",
       note: NOTE_CALLS,
-      facts: "TimesBought(bought, \"potion\") and TimesBought(bought, \"arrow\") are both 2, so both print Potions bought: 2. TimesBought(bought, \"shield\") is 0. About your own feature: give the outcome of your own MyCount call, then a call with a different word or list that gives the same number, and say why from your list.",
+      facts: "TimesBought(bought, \"potion\") and TimesBought(bought, \"arrow\") are both 2, so both print Potions bought: 2. TimesBought(bought, \"shield\") is 0. On the quiz, and on the exam about your own code: give the outcome of the MyCount call shown, then a call with a different word or list that gives the same number, and say why from the list.",
       verify: {
         cases: [
           { run: `${W17_II}\n${SHOP_TIMES}`, out: "Potions bought: 2" },
@@ -984,6 +1002,7 @@ ${SHOP_TIMES}`, out: "2\n0" },
     {
       id: "m2-w18", skill: "wr-report", type: "wr",
       source: "2024 exam, Set 2, question 2(c)",
+      released: "2024s2-2c",
       labels: PROC,
       listI: BOUNTY_REPORT,
       listII: W18_II,
@@ -1008,7 +1027,7 @@ ${SHOP_TIMES}`, out: "2\n0" },
       ],
       model: "The parameters are board and monster, in the header string BountyReport(List<string> board, string monster).\n\nmonster lets one procedure make every report. When monster is \"\", the if inside the loop is true for every bounty, so BountyReport(board, \"\") shows all three. When monster is \"Grub\", the same if is true only for Grubs, so BountyReport(board, \"Grub\") shows two. Without monster, I would need one procedure for the whole board and another for each kind of monster, each with its own copy of the loop. board lets the same procedure report on whatever list is passed in.",
       note: NOTE_PARAMS,
-      facts: "BountyReport(board, \"\") prints three Wanted lines and 3 of 3 bounties. BountyReport(board, \"Grub\") prints two and 2 of 3 bounties. About your own feature: name entries and filter from your MyReport header and say filter lets one procedure show your whole list or only one word.",
+      facts: "BountyReport(board, \"\") prints three Wanted lines and 3 of 3 bounties. BountyReport(board, \"Grub\") prints two and 2 of 3 bounties. On the quiz, and on the exam about your own code: name entries and filter from the MyReport header and say filter lets one procedure show the whole list or only one word.",
       verify: {
         cases: [
           { run: `${W18_II}\n${BOUNTY_REPORT}`, out: `${BOUNTY_OUT}\nWanted: Grub\nWanted: Grub\n2 of 3 bounties` },
@@ -1018,6 +1037,7 @@ ${SHOP_TIMES}`, out: "2\n0" },
     {
       id: "m2-w19", skill: "wr-report", type: "wr",
       source: "2024 exam, Set 1, question 2(b)",
+      released: "2024s1-2b",
       labels: PROC,
       listI: RELIC_REPORT,
       listII: W19_II,
@@ -1042,7 +1062,7 @@ ${SHOP_TIMES}`, out: "2\n0" },
       ],
       model: "First call: ShelfReport(shelf, \"\"), with shelf holding crown, idol, crown. The shelf is not empty and relic is \"\", so both ifs at the top are false and the loop runs. relic == \"\" is true on every pass, so the report is 1. crown, 2. idol, 3. crown and Relics: 3.\n\nSecond call: ShelfReport(shelf, \"orb\"). The shelf is not empty, but relic is not \"\" and CountRelic(shelf, \"orb\") is 0, so the second if is true. It returns No orb on the shelf. right away, and the loop never runs.",
       note: NOTE_TWOCALLS,
-      facts: "ShelfReport(shelf, \"crown\") gives 1. crown, 3. crown and Relics: 3. ShelfReport(shelf, \"\") gives all three and Relics: 3. ShelfReport(shelf, \"orb\") gives No orb on the shelf. ShelfReport(new List<string>(), \"\") gives The shelf is empty. About your own feature: write two calls to your MyReport, such as an empty filter and a filter that is not in your list (or an empty list), and say which return each one reaches and what it gives.",
+      facts: "ShelfReport(shelf, \"crown\") gives 1. crown, 3. crown and Relics: 3. ShelfReport(shelf, \"\") gives all three and Relics: 3. ShelfReport(shelf, \"orb\") gives No orb on the shelf. ShelfReport(new List<string>(), \"\") gives The shelf is empty. On the quiz, and on the exam about your own code: write two calls to MyReport, such as an empty filter and a filter that is not in the list (or an empty list), and say which return each one reaches and what it gives.",
       verify: {
         cases: [
           { run: `${W19_II}\n${RELIC_COUNT}\n${RELIC_REPORT}`, out: "1. crown\n3. crown\nRelics: 3" },
@@ -1058,6 +1078,7 @@ ${RELIC_REPORT}`, out: "1. crown\n2. idol\n3. crown\nRelics: 3\nNo orb on the sh
     {
       id: "m2-w20", skill: "wr-report", type: "wr",
       source: "2025 exam, Set 2, question 2(c)",
+      released: "2025s2-2c",
       labels: PROC,
       listI: BOUNTY_REPORT,
       listII: W20_II,
@@ -1082,7 +1103,7 @@ ${RELIC_REPORT}`, out: "1. crown\n2. idol\n3. crown\nRelics: 3\nNo orb on the sh
       ],
       model: "BountyReport gives the bounty board as one string. If monster is \"\", it has a Wanted line for every bounty. If monster is a name, it has a line only for the bounties that are exactly that name. It ends with how many lines were shown out of the whole board, so BountyReport(board, \"Ogre\") gives Wanted: Ogre and 1 of 4 bounties.\n\nBecause the report is a procedure, the loop that builds it is written once. If I want every line to say Hunt: instead of Wanted:, I change one line inside BountyReport, and the full board and every one-monster report change together. Without the procedure, the loop would be copied for each way the board is shown, and I would have to change each copy and could miss one.",
       note: NOTE_MAINTAIN,
-      facts: "BountyReport(board, \"Ogre\") prints Wanted: Ogre and 1 of 4 bounties. About your own feature: say what your MyReport gives back, with and without a filter, and name one change to how your report looks that you would make once, inside MyReport, for every call.",
+      facts: "BountyReport(board, \"Ogre\") prints Wanted: Ogre and 1 of 4 bounties. On the quiz, and on the exam about your own code: say what MyReport gives back, with and without a filter, and name one change to how the report looks that is made once, inside MyReport, for every call.",
       verify: {
         cases: [
           { run: `${W20_II}\n${BOUNTY_REPORT}`, out: "Wanted: Ogre\n1 of 4 bounties" },
@@ -1092,6 +1113,7 @@ ${RELIC_REPORT}`, out: "1. crown\n2. idol\n3. crown\nRelics: 3\nNo orb on the sh
     {
       id: "m2-w21", skill: "wr-report", type: "wr",
       source: "2026 exam, question 2(b)",
+      released: "2026-2b",
       labels: PROC,
       listI: SHOP_REPORT,
       listII: W21_II,
@@ -1116,7 +1138,7 @@ ${RELIC_REPORT}`, out: "1. crown\n2. idol\n3. crown\nRelics: 3\nNo orb on the sh
       ],
       model: "A call that ShopReport accepts but gets wrong is ShopReport(new List<string> { \"potion\", \"sword\" }, \"\"). Both arguments are the right types, so it builds and runs.\n\nIt returns potion, 5 gold, then sword, 0 gold, then Spent: 5 gold. That is wrong: the shop does not sell swords, so a sword should not be in the ledger at all, and nothing costs 0 gold. It happens because ShopReport trusts the list it is given. In my game only Buy adds to bought, and Buy skips anything with a price of 0, but another program could pass in any list. Price(\"sword\") reaches the else and returns 0, and ShopReport prints that line anyway.",
       note: NOTE_BADCALL,
-      facts: "Procedure (ii) prints potion, 5 gold, shield, 8 gold and Spent: 13 gold. ShopReport(new List<string> { \"potion\", \"sword\" }, \"\") prints potion, 5 gold, sword, 0 gold and Spent: 5 gold. ShopReport(bought, \"Potion\") prints only Spent: 0 gold. About your own feature: write a call to your procedure with exact arguments it accepts but handles badly (a word with a capital letter, an empty string, a list built some other way) and say what it gives and which line causes it; if every accepted call works, say why.",
+      facts: "Procedure (ii) prints potion, 5 gold, shield, 8 gold and Spent: 13 gold. ShopReport(new List<string> { \"potion\", \"sword\" }, \"\") prints potion, 5 gold, sword, 0 gold and Spent: 5 gold. ShopReport(bought, \"Potion\") prints only Spent: 0 gold. About your own code on the quiz: write a call to the procedure on your Personalized Project Reference with exact arguments it accepts but handles badly (a word with a capital letter, an empty string, a list built some other way), and say what goes wrong and which line causes it; if every accepted call works, say why.",
       verify: {
         cases: [
           { run: `${W21_II}\n${SHOP_PRICE}\n${SHOP_BUY}\n${SHOP_REPORT}`, out: "potion, 5 gold\nshield, 8 gold\nSpent: 13 gold" },

@@ -1,31 +1,32 @@
 // AP CSP · Milestone 2 written responses · practice forms for WR7 to WR12
 // Same item shape as decks/csp-q4/review-m2.js. Every block of code here is checked on .NET 10 by tools/verify.mjs.
-// Each form uses the released prompts of the real Form A, in the same order, on a sample feature that is in no review item:
-// the Herb Pouch (WR7 to WR10, built up day by day), the Fishing Log (WR11) and the Wishing Well (WR12).
-// An item's feedback ends (in facts) with one sentence on answering the same prompt about the student's own feature.
+// Each form asks the released prompts of the real quiz (the same on Forms A, B and C), in the same order, about a sample
+// feature that is in no review item: the Herb Pouch (WR7 to WR10, built up day by day), the Fishing Log (WR11) and the Wishing Well (WR12).
+// An item's feedback ends (in facts) with one sentence on answering the same prompt on the quiz and about the student's own code.
+// released: the released prompt, as year, set and part ("2024s1-2b", "2026-q1"); the field prompt already holds the prompt's text.
 
 // ---------------------------------------------------------------- the released prompts, word for word
-const P_INPUT = "Programs accept input to achieve their intended functionality. Describe at least one valid input to your program and what your program does with that input.";
-const P_INVALID = "Identify an unexpected or invalid input that a user could provide to your program. Describe the behavior of your program after it receives this input. If it is not possible for your program to accept an unexpected or invalid input, explain why this is the case.";
 const P_DOC = "Describe one piece of documentation that would be appropriate to include with or in your program. Explain how this documentation can be used by another programmer to better understand a particular code segment in your program.";
 const P_TRUE = "Consider the first selection statement included in the Procedure section of your Personalized Project Reference. Identify the Boolean expression in this selection statement. Identify a specific value or set of values that will cause this expression to evaluate to true. Explain why the specified value(s) will cause the expression to evaluate to true.";
 const P_NOLIST = "Consider the list included in part (i) of the List section of your Personalized Project Reference. Explain how the list uses abstraction to manage complexity in your program. Suppose the list was not included in your program. Describe how you would need to adjust the code segment in part (ii) of the List section of your Personalized Project Reference so that it has the same behavior. If it is not possible to have the same behavior without the use of the list, explain why.";
-const P_GROWS = "Consider the list included in the List section of your Personalized Project Reference. Suppose another programmer adds several new elements to the end of the list. Explain how the code segment in part (ii) of the List section would need to be modified to account for the additional elements. If no changes to the code segment are necessary, explain why this is the case for your program.";
-const P_PARAMS = "Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference. Identify the parameter(s) used in this procedure. Explain how your identified parameter(s) use abstraction to manage complexity in your program.";
 const P_ALGO = "Consider the first iteration statement in the Procedure section of your Personalized Project Reference. Identify the variable(s) that determine when the iteration statement stops iterating. Identify specific values for the variable(s) that will cause the iteration statement to stop. Explain why these value(s) would cause the iteration statement to stop. If there are no such variable(s) or specific value(s), explain how the iteration statement stops.";
+const P_TWOCALLS = "Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference. Write two calls to your procedure that each cause a different code segment in the procedure to execute. Describe the expected behavior of each call. If it is not possible for two calls to your procedure to cause different code segments to execute, explain why this is the case for your procedure.";
+const P_PROC = "Consider the procedure included in part (i) of the Procedure section of your Personalized Project Reference. Suppose another programmer modifies the code within this procedure. Describe a modification the other programmer could make that would cause this procedure to have a logic error. Describe how the behavior of this procedure would change because of the error.";
+const P_LOGIC = "Consider the code segment in part (ii) of the List section of your Personalized Project Reference. Suppose another programmer modifies this code segment. Describe a modification the other programmer could make to this code segment that would result in a logic error. Explain why this modification would result in a logic error.";
+const P_VALIDITY = "Suppose another programmer provides you with a procedure called checkValidity(value) that returns true if a value passed as an argument is considered valid by the other programmer and returns false otherwise. Using the list identified in the List section of your Personalized Project Reference, explain in detailed steps an algorithm that uses checkValidity to check whether all elements in your list are considered valid by the other programmer. Your explanation must be detailed enough for someone else to write the program code for the algorithm that uses checkValidity.";
 const P_BADCALL = "Consider the procedure included in part (i) of the Procedure section of your Personalized Project Reference. Another programmer is planning to use your procedure in a different program and wants to write some test cases to check whether it will work. Write a procedure call with specific argument(s) that your procedure will accept but will cause your procedure to behave incorrectly. Describe the incorrect behavior. Explain why the incorrect behavior occurs as a result of this call. If it is not possible for a call with accepted arguments to cause your procedure to behave incorrectly, explain why this is the case for your procedure.";
 
 const PROC = ["Procedure (i)", "Procedure (ii)"];
 const FILES = ["MyFeature.cs", "Program.cs"];
 
-const NOTE_INPUT = "One point, earned or not, as on the exam: a specific valid input and what the program really does with it. \"The player types a command and the program answers\" names no input and earns nothing.";
-const NOTE_INVALID = "One point, earned or not, as on the exam: a specific unexpected or invalid input and what the program really does after it. A valid input earns nothing, and so does \"the program crashes\" when it does not.";
 const NOTE_DOC = "One point, earned or not, as on the exam: a particular piece of documentation and a particular code segment it helps another programmer understand. Help for the player, or \"comments make code easier to read\", earns nothing.";
 const NOTE_TRUE = "One point, earned or not, as on the exam: the Boolean expression of the first selection statement, a specific value that makes it true, and why. A value that makes it false, or no specific value, earns nothing.";
 const NOTE_NOLIST = "One point, earned or not, as on the exam, and only when both halves are there. \"The list is not used in part (ii)\" earns nothing.";
-const NOTE_GROWS = "One point, earned or not, as on the exam. \"No change is needed\" with no reason earns nothing, and so does a change that is not needed.";
-const NOTE_PARAMS = "One point, earned or not, as on the exam. Naming an argument from a call instead of a parameter earns nothing, and so does explaining how the list manages complexity instead of the parameters.";
 const NOTE_ALGO = "One point, earned or not, as on the exam, and only when both halves are there: the variables, and values for them with the reason they stop the loop.";
+const NOTE_TWOCALLS = "One point, earned or not, as on the exam. Two calls that run the same code, or calls with no specific arguments, earn nothing.";
+const NOTE_PROC = "One point, earned or not, as on the exam. A crash is a logic error if the response explains when and why it happens. A syntax error is not, and a change outside the procedure earns nothing.";
+const NOTE_LOGIC = "One point, earned or not, as on the exam. A crash is a logic error if the response explains when and why it happens. A syntax error is not, and \"the program will not run\" with no explanation earns nothing.";
+const NOTE_VALIDITY = "One point, earned or not, as on the exam. The steps earn the point only if they visit every element, pass each element (not its index) to checkValidity, give false when one call is false, and give true only after the loop.";
 const NOTE_BADCALL = "One point, earned or not, as on the exam. The call needs specific arguments the procedure accepts, and the answer must say what goes wrong and why. A call that does not build earns nothing.";
 
 // ---------------------------------------------------------------- stand-ins the runs need (not shown)
@@ -120,6 +121,23 @@ const HERB_COUNT = `int HerbCount(List<string> pouch, string herb)
 }`;
 const HERB_COUNT_II = `List<string> pouch = new List<string> { "mint", "sage", "mint", "moss" };
 Console.WriteLine("mint: " + HerbCount(pouch, "mint"));`;
+const HERB_COUNT_CALL = `Console.WriteLine("mint: " + HerbCount(pouch, "mint"));`;
+const HERB_ALL_VALID = `bool AllValid(List<string> pouch)
+{
+    for (int i = 0; i < pouch.Count; i++)
+    {
+        if (checkValidity(pouch[i]) == false)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+// A stand-in: this programmer counts only mint, sage and moss as valid herbs.
+bool checkValidity(string value)
+{
+    return value == "mint" || value == "sage" || value == "moss";
+}`;
 
 // ---------------------------------------------------------------- the Fishing Log: word "fish", list catches (WR11)
 const FISH_WORD = `string MyFeatureWord()
@@ -172,7 +190,8 @@ else
 {
     Console.WriteLine("I don't know that command. Type help.");
 }`;
-const fishRun = (t) => `${FISH_BRANCH}\n${typed(t)}\n${WORDS}\n${FISH_WORD}\n${FISH_REPORT}`;
+const fishRunWith = (t, report) => `${FISH_BRANCH}\n${typed(t)}\n${WORDS}\n${FISH_WORD}\n${report}`;
+const fishRun = (t) => fishRunWith(t, FISH_REPORT);
 const FISH_LIST = `List<string> catches = new List<string>();
 Hook(catches, "trout");
 Hook(catches, "eel");
@@ -212,45 +231,46 @@ const WISH_OUT = "* health\n* gold\nWishes made: 4";
 const items = [
   // ================================================================ WR7 Practice: The Command Chain
   {
-    id: "m2wr7-01", skill: "wr-io", type: "wr",
-    source: "2024 exam, Set 1, question 1",
+    id: "m2wr7-01", skill: "wr-count", type: "wr",
+    source: "2024 exam, Set 1, question 2(b)",
+    released: "2024s1-2b",
     labels: PROC,
     listI: HERB_HEAL,
     listII: HERB_EAT,
-    prompt: P_INPUT,
+    prompt: P_TWOCALLS,
     rows: [
       {
-        name: "A specific valid input",
+        name: "Two calls with specific arguments that run different code",
         levels: [
-          "Missing, no specific input (\"the player types eat\"), or an input the program does not accept, like heal mint.",
-          "Names the command eat, but not what is typed with it.",
-          "A whole input the program accepts, word for word, such as eat sage or eat mint.",
+          "Missing, calls with no specific arguments, or two calls that end in the same place (HerbHeal(\"rock\") and HerbHeal(\"stone\") both reach the else).",
+          "Two calls that do run different code, but without saying which code each one runs.",
+          "Two calls such as HerbHeal(\"mint\"), which returns from the first if, and HerbHeal(\"rock\"), which passes every test and reaches the else.",
         ],
       },
       {
-        name: "What the program does with it",
+        name: "The expected behavior of each call",
         levels: [
-          "Missing, or a behavior the code does not have (\"the herb is taken out of the pouch\").",
-          "\"Rook heals,\" with nothing about how much or why.",
-          "Follows the input through the code: FirstWord is eat, HerbHeal(\"sage\") returns 3, and the program prints Rook eats the sage and heals 3.",
+          "Missing, or results the code does not give.",
+          "Gives what one call returns, but not the other.",
+          "HerbHeal(\"mint\") returns 2, because herb == \"mint\" is true. HerbHeal(\"rock\") returns 0, because all three tests are false.",
         ],
       },
     ],
-    model: "One valid input is eat sage.\n\nFirstWord(command) is eat, so the if is true. SecondWord(command) is sage, so the program calls HerbHeal(\"sage\"). In HerbHeal, herb == \"mint\" is false and herb == \"sage\" is true, so it returns 3. healed is 3, and the program prints Rook eats the sage and heals 3.",
-    note: NOTE_INPUT,
-    facts: "With eat sage typed, the program prints Rook eats the sage and heals 3. With eat mint, it heals 2. With eat rock, HerbHeal reaches the else and the line says heals 0. With jump, it prints I don't know that command. Type help. About the game on the quiz: give one real command, such as d or lead Mote, and say exactly what the game does with it.",
+    model: "First call: HerbHeal(\"mint\"). The first test, herb == \"mint\", is true, so return 2 runs and none of the other tests is checked. The call returns 2, and eat mint prints Rook eats the mint and heals 2.\n\nSecond call: HerbHeal(\"rock\"). herb == \"mint\", herb == \"sage\" and herb == \"moss\" are all false, so the else runs and the call returns 0. eat rock prints Rook eats the rock and heals 0.\n\nThe first call runs the code in the first if, and the second runs the code in the else.",
+    note: NOTE_TWOCALLS,
+    facts: "HerbHeal(\"mint\") is 2, HerbHeal(\"sage\") is 3, HerbHeal(\"moss\") is 1 and HerbHeal(\"rock\") is 0. On the quiz, and on the exam about your own code: pick two arguments that end in different branches of the chain, one that makes the first if true and one that reaches the else, and say what each call returns.",
     verify: {
       cases: [
-        { run: eatRun("eat sage"), out: "Rook eats the sage and heals 3." },
         { run: eatRun("eat mint"), out: "Rook eats the mint and heals 2." },
+        { run: `Console.WriteLine(HerbHeal("mint") + " " + HerbHeal("sage") + " " + HerbHeal("moss") + " " + HerbHeal("rock"));\n${HERB_HEAL}`, out: "2 3 1 0" },
         { run: eatRun("eat rock"), out: "Rook eats the rock and heals 0." },
-        { run: eatRun("jump"), out: "I don't know that command. Type help." },
       ],
     },
   },
   {
     id: "m2wr7-02", skill: "wr-select", type: "wr",
     source: "2025 exam, Set 1, question 2(a)",
+    released: "2025s1-2a",
     labels: PROC,
     listI: HERB_HEAL,
     listII: HERB_EAT,
@@ -275,7 +295,7 @@ const items = [
     ],
     model: "The first selection statement is if (herb == \"mint\") in HerbHeal, so the Boolean expression is herb == \"mint\".\n\nThe value \"mint\" makes it true. If the player types eat mint, SecondWord(command) is \"mint\", and that is passed in as herb. == on strings is true only when the two strings are exactly the same, and they are, so the expression is true and HerbHeal returns 2. The program prints Rook eats the mint and heals 2.",
     note: NOTE_TRUE,
-    facts: "With eat mint typed, the program prints Rook eats the mint and heals 2. HerbHeal(\"Mint\") is 0, since == is exact. About the game on the quiz: the first selection statement is the first if in the procedure, not the else if, so name its expression and the exact command that makes it true.",
+    facts: "With eat mint typed, the program prints Rook eats the mint and heals 2. HerbHeal(\"Mint\") is 0, since == is exact. On the quiz, and on the exam about your own code: the first selection statement is the first if in the procedure, not an else if below it, so name its expression and the exact value that makes it true.",
     verify: {
       cases: [
         { run: eatRun("eat mint"), out: "Rook eats the mint and heals 2." },
@@ -284,10 +304,11 @@ const items = [
     },
   },
 
-  // ================================================================ WR8 Practice: Your Command
+  // ================================================================ WR8 Practice: The Command
   {
     id: "m2wr8-01", skill: "wr-select", type: "wr",
     source: "2025 exam, Set 1, question 2(a)",
+    released: "2025s1-2a",
     labels: PROC,
     listI: HERB_WORD,
     listII: HERB_BRANCH,
@@ -312,7 +333,7 @@ const items = [
     ],
     model: "The first selection statement is if (command == MyFeatureWord()), so the Boolean expression is command == MyFeatureWord().\n\nThe input herbs makes it true. MyFeatureWord() returns \"herbs\", and when the player types herbs, command is also \"herbs\". == on strings is true when the two strings are exactly the same, letter for letter, so the expression is true and the program prints THE HERB POUCH: every herb the party has picked.",
     note: NOTE_TRUE,
-    facts: "With herbs typed, the program prints THE HERB POUCH: every herb the party has picked. With Herbs typed, it prints I don't know that command. Type help. About your own feature: name the expression in your else if, give your word exactly as your MyFeatureWord() returns it, and say the two strings are equal.",
+    facts: "With herbs typed, the program prints THE HERB POUCH: every herb the party has picked. With Herbs typed, it prints I don't know that command. Type help. On the quiz, and on the exam about your own code: name the expression in the command's if or else if, give the word exactly as MyFeatureWord() returns it, and say the two strings are equal.",
     verify: {
       cases: [
         { run: branchRun("herbs"), out: HERB_TITLE },
@@ -321,46 +342,49 @@ const items = [
     },
   },
   {
-    id: "m2wr8-02", skill: "wr-io", type: "wr",
-    source: "2025 exam, Set 2, question 1",
-    labels: FILES,
+    id: "m2wr8-02", skill: "wr-select", type: "wr",
+    source: "2025 exam, Set 1, question 2(b)",
+    released: "2025s1-2b",
+    labels: PROC,
     listI: HERB_WORD,
     listII: HERB_BRANCH,
-    prompt: P_INVALID,
+    prompt: P_PROC,
     rows: [
       {
-        name: "A specific unexpected or invalid input",
+        name: "A modification inside the procedure that still builds",
         levels: [
-          "Missing, no specific input, or a valid input like herbs or help.",
-          "Describes a kind of input (\"a typo\") without the exact text.",
-          "An exact input the program does not expect, such as Herbs with a capital H, herbs mint, or jump.",
+          "None, a change that does not build (a missing quotation mark or semicolon), or a change to the chain in Procedure (ii) instead of MyFeatureWord or MyFeatureTitle.",
+          "A change too vague to try (\"change the word\").",
+          "A specific change inside MyFeatureWord or MyFeatureTitle that builds and runs, like return \"help\"; in place of return \"herbs\";.",
         ],
       },
       {
-        name: "What the program does after it",
+        name: "How the behavior changes",
         levels: [
-          "Missing, or a behavior the code does not have (\"the game crashes\").",
-          "\"It does not work,\" with nothing about what is printed.",
-          "What really happens: \"Herbs\" is not exactly \"herbs\" and not \"help\", so both tests are false and the else prints I don't know that command. Type help.",
+          "Missing, or the result described is not what the changed code does.",
+          "Says the command would not work, without saying what typing it does now.",
+          "Says what the program does now for an input, and what it should do: help prints the herb title instead of the list of commands, and herbs prints I don't know that command. Type help.",
         ],
       },
     ],
-    model: "An unexpected input is Herbs, with a capital H.\n\nThe first test compares command with MyFeatureWord(), which is \"herbs\". == on strings is exact, and \"Herbs\" has a capital letter, so the test is false. \"Herbs\" is not \"help\" either, so the else runs and the program prints I don't know that command. Type help. Nothing crashes, and the title is not printed.",
-    note: NOTE_INVALID,
-    facts: "Herbs, herbs mint and jump all print I don't know that command. Type help. on this code, because the whole command is compared. About your own feature: give your word with a capital letter, or with a second word, and say exactly what your game prints.",
+    model: "The other programmer could change return \"herbs\"; to return \"help\"; in MyFeatureWord. It still builds and runs, because \"help\" is a string.\n\nNow the first test in the chain is command == \"help\". When the player types help, that test is true, so the program prints THE HERB POUCH: every herb the party has picked instead of the list of commands, and the else if for help can never be reached. When the player types herbs, no test is true, so it prints I don't know that command. Type help. The pouch can no longer be shown at all.",
+    note: NOTE_PROC,
+    facts: "As written, help prints Commands: w a s d, eat, herbs, help. With return \"help\"; in MyFeatureWord, help prints the herb title and herbs prints I don't know that command. Type help. With return \"Herbs\"; only Herbs with a capital shows the title. On the quiz, and on the exam about your own code: describe one change inside the procedure in Procedure (i) that still builds, such as a different word in MyFeatureWord, and say what typing a command you name does then instead of now.",
     verify: {
       cases: [
-        { run: branchRun("Herbs"), out: "I don't know that command. Type help." },
-        { run: branchRun("herbs mint"), out: "I don't know that command. Type help." },
-        { run: branchRun("jump"), out: "I don't know that command. Type help." },
+        { run: branchRun("help"), out: "Commands: w a s d, eat, herbs, help" },
+        { run: `${HERB_BRANCH}\n${typed("help")}\n${HERB_WORD.replace('return "herbs";', 'return "help";')}`, out: HERB_TITLE },
+        { run: `${HERB_BRANCH}\n${typed("herbs")}\n${HERB_WORD.replace('return "herbs";', 'return "help";')}`, out: "I don't know that command. Type help." },
+        { run: `${HERB_BRANCH}\n${typed("Herbs")}\n${HERB_WORD.replace('return "herbs";', 'return "Herbs";')}`, out: HERB_TITLE },
       ],
     },
   },
 
-  // ================================================================ WR9 Practice: Your List
+  // ================================================================ WR9 Practice: The List
   {
     id: "m2wr9-01", skill: "wr-listuse", type: "wr",
     source: "2026 exam, question 2(c)",
+    released: "2026-2c",
     listI: HERB_LIST,
     listII: HERB_LOOP,
     prompt: P_NOLIST,
@@ -384,7 +408,7 @@ const items = [
     ],
     model: "The list pouch manages complexity because one name holds every herb the party picks, however many. The loop in List (ii) runs from i = 0 while i < pouch.Count, so the same Console.WriteLine prints every herb.\n\nWithout the list, it is not possible to keep the same behavior. The party can pick any number of herbs, and that number is not known before the game runs. I would need separate variables like herb1, herb2 and herb3, and List (ii) would become one Console.WriteLine for each variable instead of the loop. The fourth herb would have nowhere to go.",
     note: NOTE_NOLIST,
-    facts: "The loop prints mint, sage, mint. After Gather(pouch, \"moss\"); it prints four lines with no change to the loop. About your own feature: say your list holds every entry under one name and one loop shows them all, then say that without it you would need a variable and a line per entry, which cannot hold a number the game does not know ahead of time.",
+    facts: "The loop prints mint, sage, mint. After Gather(pouch, \"moss\"); it prints four lines with no change to the loop. On the quiz, and on the exam about your own code: say the list holds every entry under one name and one loop shows them all, then say that without it the code would need a variable and a line per entry, which cannot hold a number the game does not know ahead of time.",
     verify: {
       cases: [
         { run: `${HERB_LIST}\n${HERB_LOOP}\n${HERB_GATHER}`, out: "mint\nsage\nmint" },
@@ -394,158 +418,127 @@ const items = [
   },
   {
     id: "m2wr9-02", skill: "wr-listuse", type: "wr",
-    source: "2025 exam, Set 1, question 2(c)",
+    source: "2025 exam, Set 2, question 2(b)",
+    released: "2025s2-2b",
     listI: HERB_LIST,
     listII: HERB_LOOP,
-    prompt: P_GROWS,
+    prompt: P_LOGIC,
     rows: [
       {
-        name: "What List (ii) does with the new elements",
+        name: "A modification to List (ii) that still runs",
         levels: [
-          "Missing, or says a new Console.WriteLine is needed for each new herb.",
-          "\"No change is needed,\" with nothing about what happens to the new herbs.",
-          "No change is needed: the loop prints the new herbs too, after the old ones.",
+          "None, a change that does not build (a missing semicolon or brace), or a change to the Gather calls in List (i) instead of the loop.",
+          "A change too vague to try (\"change the loop\").",
+          "A specific change to the loop that builds and runs, like int i = 1.",
         ],
       },
       {
-        name: "Why, from the code",
+        name: "Why it is a logic error, consistent with the code",
         levels: [
-          "Missing, or a reason that is not about the loop.",
-          "Vague: \"the loop goes through the list.\"",
-          "The loop runs while i < pouch.Count. Count grows when herbs are added, so the loop gets one more pass for each new herb, with no number in the code to change.",
+          "Missing, or the result described is not what the changed code does.",
+          "Says the list would print wrong, without saying what comes out.",
+          "Says what comes out wrong and why, with what it prints for this pouch.",
         ],
       },
     ],
-    model: "No change to the loop is needed. It runs while i < pouch.Count, and pouch.Count is how many herbs are in the pouch right now. If another programmer adds moss and sage to the end, pouch.Count goes from 3 to 5, so the loop makes 5 passes and prints the two new herbs after the first three.",
-    note: NOTE_GROWS,
-    facts: "The loop prints mint, sage, mint. After Gather(pouch, \"moss\"); Gather(pouch, \"sage\"); it prints five lines with no change. About your own feature: point at the condition in your own loop, i < yourList.Count, and say Count grows with the list; if you typed a number in place of Count, say that number must change.",
+    model: "The other programmer could change int i = 0 to int i = 1. It still builds and runs, but the loop starts at the second herb, so pouch[0], the first mint, is never printed. The loop prints sage and mint, so the player sees two herbs when the party has picked three.",
+    note: NOTE_LOGIC,
+    facts: "As written, the loop prints mint, sage, mint. With int i = 1 it prints sage, mint. With pouch[0] in place of pouch[i] it prints mint three times. With i < pouch.Count - 1 it prints mint, sage, and the last herb is lost. With i <= pouch.Count it prints all three, then crashes with an ArgumentOutOfRangeException when i is 3. On the quiz, and on the exam about your own code: change one thing in the List (ii) loop (the start, the condition, or [i]) and say exactly what would print wrong for a list you name.",
     verify: {
       cases: [
         { run: `${HERB_LIST}\n${HERB_LOOP}\n${HERB_GATHER}`, out: "mint\nsage\nmint" },
-        { run: `${HERB_LIST}\nGather(pouch, "moss");\nGather(pouch, "sage");\n${HERB_LOOP}\n${HERB_GATHER}`, out: "mint\nsage\nmint\nmoss\nsage" },
+        { run: `${HERB_LIST}\n${HERB_LOOP.replace("int i = 0", "int i = 1")}\n${HERB_GATHER}`, out: "sage\nmint" },
+        { run: `${HERB_LIST}\n${HERB_LOOP.replace("pouch[i]", "pouch[0]")}\n${HERB_GATHER}`, out: "mint\nmint\nmint" },
+        { run: `${HERB_LIST}\n${HERB_LOOP.replace("i < pouch.Count", "i < pouch.Count - 1")}\n${HERB_GATHER}`, out: "mint\nsage" },
+        { run: `${HERB_LIST}\n${HERB_LOOP.replace("i < pouch.Count", "i <= pouch.Count")}\n${HERB_GATHER}`, out: "mint\nsage\nmint", crash: "ArgumentOutOfRangeException" },
       ],
     },
   },
 
-  // ================================================================ WR10 Practice: Your MyCount
+  // ================================================================ WR10 Practice: MyCount
   {
     id: "m2wr10-01", skill: "wr-count", type: "wr",
-    source: "2024 exam, Set 2, question 2(c)",
+    source: "2024 exam, Set 1, question 2(b)",
+    released: "2024s1-2b",
     labels: PROC,
     listI: HERB_COUNT,
     listII: HERB_COUNT_II,
-    prompt: P_PARAMS,
+    prompt: P_TWOCALLS,
     rows: [
       {
-        name: "The parameters, from the procedure header",
+        name: "Two calls with specific arguments that run different code",
         levels: [
-          "Missing, or names the argument \"mint\", or the variable count, instead of the parameters.",
-          "Names one of pouch and herb, but not both, or mixes in an argument.",
-          "pouch and herb, from the header HerbCount(List<string> pouch, string herb).",
+          "Missing, calls with no specific arguments, or two calls that run the same code (HerbCount(pouch, \"mint\") and HerbCount(pouch, \"moss\") both run count = count + 1).",
+          "Two calls that do run different code, but without saying which code each one runs.",
+          "Two calls such as HerbCount(pouch, \"moss\"), which runs count = count + 1 once, and HerbCount(pouch, \"thyme\"), which never runs it.",
         ],
       },
       {
-        name: "How the parameters manage complexity",
+        name: "The expected behavior of each call",
         levels: [
-          "Missing, or explains how the list manages complexity instead of the parameters.",
-          "Vague: \"it makes the code reusable,\" with nothing about what herb changes.",
-          "One procedure counts any herb: the value passed in as herb is what the if compares with, so HerbCount(pouch, \"mint\") and HerbCount(pouch, \"moss\") use the same loop. Without herb, there would be one procedure per herb.",
+          "Missing, or results the code does not give.",
+          "Gives what one call returns, but not the other.",
+          "HerbCount(pouch, \"moss\") returns 1, because the if is true once. HerbCount(pouch, \"thyme\") returns 0, because the if is false on every pass.",
         ],
       },
     ],
-    model: "The parameters are pouch and herb, in the header int HerbCount(List<string> pouch, string herb).\n\nherb lets one procedure count any herb. The value passed in as herb is what the if compares each entry with, so HerbCount(pouch, \"mint\") gives 2 and HerbCount(pouch, \"moss\") gives 1, with the same code. Without herb, I would need CountMint, CountSage and CountMoss, each with its own copy of the loop. pouch lets the procedure count in whatever list is passed in.",
-    note: NOTE_PARAMS,
-    facts: "The line prints mint: 2. HerbCount(pouch, \"moss\") is 1 and HerbCount(pouch, \"thyme\") is 0. About your own feature: name entries and word from your MyCount header, and say word lets one procedure count anything in your list.",
+    model: "First call: HerbCount(pouch, \"moss\"), with pouch holding mint, sage, mint, moss. The loop checks all four herbs. The if is true once, when i is 3, so count = count + 1 runs once and the call returns 1.\n\nSecond call: HerbCount(pouch, \"thyme\"). The loop still checks all four herbs, but the if is false every time, so count = count + 1 never runs and the call returns 0.\n\nThe first call runs the code inside the if, and the second never does.",
+    note: NOTE_TWOCALLS,
+    facts: "HerbCount(pouch, \"mint\") is 2, HerbCount(pouch, \"moss\") is 1, HerbCount(pouch, \"thyme\") is 0, and HerbCount(new List<string>(), \"mint\") is 0, since the loop body never runs. On the quiz, and on the exam about your own code: write one call to MyCount with a word that is in the list and one with a word that is not, and say which one runs the line that adds 1.",
     verify: {
       cases: [
         { run: `${HERB_COUNT_II}\n${HERB_COUNT}`, out: "mint: 2" },
         { run: `List<string> pouch = new List<string> { "mint", "sage", "mint", "moss" };
 Console.WriteLine(HerbCount(pouch, "moss"));
 Console.WriteLine(HerbCount(pouch, "thyme"));
-${HERB_COUNT}`, out: "1\n0" },
+Console.WriteLine(HerbCount(new List<string>(), "mint"));
+${HERB_COUNT}`, out: "1\n0\n0" },
       ],
     },
   },
   {
-    id: "m2wr10-02", skill: "wr-count", type: "wr",
-    source: "2026 exam, question 2(a)",
-    labels: PROC,
-    listI: HERB_COUNT,
-    listII: HERB_COUNT_II,
-    prompt: P_ALGO,
+    id: "m2wr10-02", skill: "wr-listuse", type: "wr",
+    source: "2024 exam, Set 1, question 2(c)",
+    released: "2024s1-2c",
+    listI: HERB_LIST,
+    listII: HERB_COUNT,
+    call: HERB_COUNT_CALL,
+    prompt: P_VALIDITY,
     rows: [
       {
-        name: "The variables that decide when it stops",
+        name: "Visits every element and passes each one to checkValidity",
         levels: [
-          "Missing, or names something that does not stop the loop: herb or count.",
-          "Names only one of the two: i, or pouch.Count.",
-          "i and pouch.Count, the two sides of the condition i < pouch.Count.",
+          "Missing, checks only one herb, or passes the index i (or the whole list pouch) to checkValidity.",
+          "Loops over pouch, but too vague to code: no start or stop, or it is unclear what is passed.",
+          "Starts i at 0 and keeps going while i < pouch.Count, calling checkValidity(pouch[i]) on each pass, so each call gets one herb.",
         ],
       },
       {
-        name: "Values that stop it, and why",
+        name: "Returns the right answer at the right time",
         levels: [
-          "Missing, values that would not stop it, or \"it stops when it finds mint\" (it checks every herb).",
-          "Gives values with no reason, or a reason with no values.",
-          "For this call pouch.Count is 4, so when i becomes 4, 4 < 4 is false and the loop ends after the moss is checked.",
+          "Missing, or returns true as soon as one herb is valid.",
+          "Returns false for an invalid herb, but does not say when true is returned, or returns true inside the loop.",
+          "Returns false as soon as one call gives false, and returns true only after the loop has checked every herb.",
         ],
       },
     ],
-    model: "The first iteration statement is the for loop in HerbCount. The variables that decide when it stops are i and pouch.Count, because the loop keeps going only while i < pouch.Count.\n\nIn the call in Procedure (ii), pouch holds mint, sage, mint, moss, so pouch.Count is 4. i starts at 0 and goes up by 1 after each pass. After the pass for moss, i becomes 4. Then 4 < 4 is false, so the loop stops, and HerbCount returns 2.",
-    note: NOTE_ALGO,
-    facts: "The line prints mint: 2. A copy that prints i after the loop shows it stopped with i = 4 and pouch.Count = 4. About your own feature: name i and entries.Count from the loop in your MyCount, give a list with a known Count, and say i equal to that Count makes the condition false.",
+    model: "1. Write a procedure AllValid that takes the list pouch.\n2. Set i to 0.\n3. While i is less than pouch.Count, call checkValidity(pouch[i]). This passes one herb, like \"sage\", not the number i.\n4. If that call returns false, stop and return false. One invalid herb is enough.\n5. If it returns true, add 1 to i and go back to step 3.\n6. When the loop ends, every herb has been checked and none was invalid, so return true.",
+    note: NOTE_VALIDITY,
+    facts: "A C# version of these steps, with a stand-in checkValidity that accepts only mint, sage and moss, gives True for mint, sage, mint. After Gather(pouch, \"rock\"); it gives False. Calling checkValidity(i) instead of checkValidity(pouch[i]) does not build (CS1503): i is an int, and checkValidity here takes a string. On the quiz, and on the exam about your own code: write the steps with the list's own name, a loop to its Count, and checkValidity on each entry, list[i].",
     verify: {
       cases: [
-        { run: `${HERB_COUNT_II}\n${HERB_COUNT}`, out: "mint: 2" },
-        { run: `List<string> pouch = new List<string> { "mint", "sage", "mint", "moss" };
-int i = 0;
-for (i = 0; i < pouch.Count; i++)
-{
-}
-Console.WriteLine("stopped with i = " + i + " and pouch.Count = " + pouch.Count);`, out: "stopped with i = 4 and pouch.Count = 4" },
+        { run: `${HERB_LIST}\n${HERB_COUNT_CALL}\n${HERB_GATHER}\n${HERB_COUNT}`, out: "mint: 2" },
+        { run: `${HERB_LIST}\nConsole.WriteLine(AllValid(pouch));\nGather(pouch, "rock");\nConsole.WriteLine(AllValid(pouch));\n${HERB_GATHER}\n${HERB_ALL_VALID}`, out: "True\nFalse" },
+        { run: `${HERB_LIST}\nConsole.WriteLine(AllValid(pouch));\n${HERB_GATHER}\n${HERB_ALL_VALID.replace("checkValidity(pouch[i])", "checkValidity(i)")}`, error: "CS1503" },
       ],
     },
   },
 
-  // ================================================================ WR11 Practice: Your Own Code
+  // ================================================================ WR11 Practice: The Finished Feature
   {
-    id: "m2wr11-01", skill: "wr-report", type: "wr",
-    source: "2024 exam, Set 2, question 2(c)",
-    labels: PROC,
-    listI: FISH_REPORT,
-    listII: FISH_BRANCH,
-    prompt: P_PARAMS,
-    rows: [
-      {
-        name: "The parameters, from the procedure header",
-        levels: [
-          "Missing, or names arguments (catches as passed in, or SecondWord(command)) or the variables report and shown instead of the parameters.",
-          "Names one of catches and fish, but not both, or mixes in an argument.",
-          "catches and fish, from the header FishReport(List<string> catches, string fish).",
-        ],
-      },
-      {
-        name: "How the parameters manage complexity",
-        levels: [
-          "Missing, or explains how the list manages complexity instead of the parameters.",
-          "Vague: \"it makes the code reusable,\" with nothing about what fish changes.",
-          "One procedure makes every report: fish is \"\" for the whole log or a name for just that fish, so the same loop and if give both, with no separate procedure for each kind of fish.",
-        ],
-      },
-    ],
-    model: "The parameters are catches and fish, in the header string FishReport(List<string> catches, string fish).\n\nfish lets one procedure make every report. When the player types fish, SecondWord gives \"\", the if inside the loop is true for every catch, and all three are shown. When the player types fish trout, fish is \"trout\", and the same if is true only for trout. Without fish, I would need one procedure for the whole log and another for each kind of fish, each with its own copy of the loop. catches lets the same procedure report on whatever list is passed in.",
-    note: NOTE_PARAMS,
-    facts: "With fish typed, the program prints the title, then ~ trout, ~ eel, ~ trout and Caught: 3. With fish trout, it prints the title, two trout lines and Caught: 2. About your own feature: name entries and filter from your MyReport header (not the list or SecondWord(command) from your call), and say filter lets one procedure show your whole list or only one word.",
-    verify: {
-      cases: [
-        { run: fishRun("fish"), out: `${FISH_TITLE}\n~ trout\n~ eel\n~ trout\nCaught: 3` },
-        { run: fishRun("fish trout"), out: `${FISH_TITLE}\n~ trout\n~ trout\nCaught: 2` },
-      ],
-    },
-  },
-  {
-    id: "m2wr11-02", skill: "wr-listuse", type: "wr",
+    id: "m2wr11-01", skill: "wr-listuse", type: "wr",
     source: "2026 exam, question 2(c)",
+    released: "2026-2c",
     listI: FISH_LIST,
     listII: FISH_REPORT,
     call: FISH_CALL,
@@ -570,7 +563,7 @@ Console.WriteLine("stopped with i = " + i + " and pouch.Count = " + pouch.Count)
     ],
     model: "The list catches manages complexity because one name holds every fish the party catches, however many. FishReport needs only one loop, from i = 0 while i < catches.Count, with the same if for every catch, to show all of them or only one kind.\n\nWithout the list, it is not possible to keep the same behavior. The party can fish as often as it likes, so the number of catches is not known before the game runs. I would need variables like fish1, fish2 and fish3, and FishReport would need a separate if and a separate line for each one instead of the loop, so it could only ever show as many fish as I wrote variables for.",
     note: NOTE_NOLIST,
-    facts: "FishReport(catches, \"\") prints ~ trout, ~ eel, ~ trout and Caught: 3. After Hook(catches, \"pike\"); it prints four lines and Caught: 4 with no change to FishReport. About your own feature: say your list holds every entry under one name and the loop in your MyReport goes over all of them, then say why a variable per entry cannot do the same.",
+    facts: "FishReport(catches, \"\") prints ~ trout, ~ eel, ~ trout and Caught: 3. After Hook(catches, \"pike\"); it prints four lines and Caught: 4 with no change to FishReport. On the quiz, and on the exam about your own code: say the list holds every entry under one name and the loop in MyReport goes over all of them, then say why a variable per entry cannot do the same.",
     verify: {
       cases: [
         { run: `${FISH_LIST}\n${FISH_CALL}\n${FISH_HOOK}\n${FISH_REPORT}`, out: "~ trout\n~ eel\n~ trout\nCaught: 3" },
@@ -579,38 +572,76 @@ Console.WriteLine("stopped with i = " + i + " and pouch.Count = " + pouch.Count)
     },
   },
   {
-    id: "m2wr11-03", skill: "wr-io", type: "wr",
-    source: "2025 exam, Set 2, question 1",
-    labels: FILES,
-    listI: `${FISH_WORD}\n\n${FISH_REPORT}`,
+    id: "m2wr11-02", skill: "wr-report", type: "wr",
+    source: "2025 exam, Set 1, question 2(b)",
+    released: "2025s1-2b",
+    labels: PROC,
+    listI: FISH_REPORT,
     listII: FISH_BRANCH,
-    prompt: P_INVALID,
+    prompt: P_PROC,
     rows: [
       {
-        name: "A specific unexpected or invalid input",
+        name: "A modification inside the procedure that still builds",
         levels: [
-          "Missing, no specific input, or a valid input like fish or fish trout.",
-          "Describes a kind of input (\"a fish that is not there\") without the exact text.",
-          "An exact input the program does not expect, such as fish shark, Fish with a capital F, or jump.",
+          "None, a change that does not build (a missing semicolon or brace), or a change to the call in Procedure (ii) instead of FishReport.",
+          "A change too vague to try (\"change the if\").",
+          "A specific change inside FishReport that builds and runs, like shown = 1; in place of shown = shown + 1;.",
         ],
       },
       {
-        name: "What the program does after it",
+        name: "How the behavior changes",
         levels: [
-          "Missing, or a behavior the code does not have (\"the game crashes\").",
-          "\"It says there are none,\" with nothing about what is printed or why.",
-          "What really happens: for fish shark, the title prints, the loop finds no shark, shown stays 0, and FishReport returns No shark caught yet.",
+          "Missing, or the result described is not what the changed code does.",
+          "Says the report would be wrong, without saying what it shows now.",
+          "Says what FishReport gives now for a call, and what it should give.",
         ],
       },
     ],
-    model: "An unexpected input is fish shark. No shark has been caught, and the game has no sharks.\n\nFirstWord is fish, so the if is true and the title prints. Then FishReport(catches, \"shark\") runs. The list is not empty, so the loop checks all three catches, but none of them is \"shark\", so shown stays 0. The if after the loop is true, and FishReport returns No shark caught yet. The game prints that line, and nothing crashes.",
-    note: NOTE_INVALID,
-    facts: "With fish shark typed, the program prints the title and No shark caught yet. With Fish typed, it prints I don't know that command. Type help. With jump, it prints the same. About your own feature: give your word with a second word that is not in your list (or your word with a capital letter) and say exactly what your MyReport or your game prints.",
+    model: "The other programmer could change shown = shown + 1; to shown = 1;. It still builds and runs, and every catch is still listed, but shown never goes past 1. When the player types fish, the report lists trout, eel and trout but ends with Caught: 1 instead of Caught: 3. Any report with more than one fish gives the wrong total.",
+    note: NOTE_PROC,
+    facts: "As written, fish shows three lines and Caught: 3. With shown = 1; it shows the same three lines and Caught: 1. With && in place of ||, fish gives No  caught yet. with an empty name, and fish trout gives No trout caught yet. On the quiz, and on the exam about your own code: describe one change inside MyReport that still builds, and say what a call you name would show then instead of now.",
     verify: {
       cases: [
-        { run: fishRun("fish shark"), out: `${FISH_TITLE}\nNo shark caught yet.` },
-        { run: fishRun("Fish"), out: "I don't know that command. Type help." },
-        { run: fishRun("jump"), out: "I don't know that command. Type help." },
+        { run: fishRun("fish"), out: `${FISH_TITLE}\n~ trout\n~ eel\n~ trout\nCaught: 3` },
+        { run: fishRunWith("fish", FISH_REPORT.replace("shown = shown + 1;", "shown = 1;")), out: `${FISH_TITLE}\n~ trout\n~ eel\n~ trout\nCaught: 1` },
+        { run: fishRunWith("fish", FISH_REPORT.replace("||", "&&")), out: `${FISH_TITLE}\nNo  caught yet.` },
+        { run: fishRunWith("fish trout", FISH_REPORT.replace("||", "&&")), out: `${FISH_TITLE}\nNo trout caught yet.` },
+      ],
+    },
+  },
+  {
+    id: "m2wr11-03", skill: "wr-select", type: "wr",
+    source: "2025 exam, Set 1, question 2(a)",
+    released: "2025s1-2a",
+    labels: PROC,
+    listI: FISH_REPORT,
+    listII: FISH_BRANCH,
+    prompt: P_TRUE,
+    rows: [
+      {
+        name: "The Boolean expression and a value that makes it true",
+        levels: [
+          "Missing, the if in Procedure (ii) or a later if in FishReport, a value that makes it false (the three catches in Procedure (ii)), or no specific value.",
+          "Names catches.Count == 0 but gives no specific value.",
+          "catches.Count == 0, with an empty list as catches, so catches.Count is 0.",
+        ],
+      },
+      {
+        name: "Why that value makes it true",
+        levels: [
+          "Missing, or a reason the code does not give.",
+          "\"Because no fish were caught,\" with nothing about Count.",
+          "Count is how many fish the list holds. With nothing caught, Count is 0, and 0 == 0 is true, so FishReport returns No fish caught yet. Try the water. before the loop.",
+        ],
+      },
+    ],
+    model: "The first selection statement in FishReport is if (catches.Count == 0), so the Boolean expression is catches.Count == 0.\n\nIt is true when catches is an empty list, as at the start of the game before the party catches anything. Then catches.Count is 0, and 0 == 0 is true, so FishReport returns No fish caught yet. Try the water. without running the loop. In Procedure (ii) the list holds three fish, so Count is 3 and the expression is false there.",
+    note: NOTE_TRUE,
+    facts: "FishReport(new List<string>(), \"\") gives No fish caught yet. Try the water. With the three catches in Procedure (ii), fish shows the three lines and Caught: 3. On the quiz, and on the exam about your own code: name the expression in the first if of MyReport (often entries.Count == 0), give a value that makes it true, such as an empty list, and say why.",
+    verify: {
+      cases: [
+        { run: fishRun("fish"), out: `${FISH_TITLE}\n~ trout\n~ eel\n~ trout\nCaught: 3` },
+        { run: `Console.WriteLine(FishReport(new List<string>(), ""));\n${FISH_REPORT}`, out: "No fish caught yet. Try the water." },
       ],
     },
   },
@@ -619,6 +650,7 @@ Console.WriteLine("stopped with i = " + i + " and pouch.Count = " + pouch.Count)
   {
     id: "m2wr12-01", skill: "wr-io", type: "wr",
     source: "2026 exam, question 1",
+    released: "2026-q1",
     labels: FILES,
     listI: WISH_LAST_DOC,
     listII: WISH_II,
@@ -653,6 +685,7 @@ Console.WriteLine("stopped with i = " + i + " and pouch.Count = " + pouch.Count)
   {
     id: "m2wr12-02", skill: "wr-report", type: "wr",
     source: "2026 exam, question 2(a)",
+    released: "2026-2a",
     labels: PROC,
     listI: WISH_LAST,
     listII: WISH_II,
@@ -694,6 +727,7 @@ Console.WriteLine("stopped with i = " + i + " and wishes.Count = " + wishes.Coun
   {
     id: "m2wr12-03", skill: "wr-report", type: "wr",
     source: "2026 exam, question 2(b)",
+    released: "2026-2b",
     labels: PROC,
     listI: WISH_LAST,
     listII: WISH_II,
@@ -734,6 +768,7 @@ ${WISH_LAST}`, crash: "ArgumentOutOfRangeException" },
   {
     id: "m2wr12-04", skill: "wr-listuse", type: "wr",
     source: "2026 exam, question 2(c)",
+    released: "2026-2c",
     listI: WISH_LIST,
     listII: WISH_LAST,
     call: WISH_CALL,
@@ -774,10 +809,10 @@ export default {
   items,
   forms: [
     { id: "m2wr7", name: "WR7 Practice: The Command Chain", items: form(7) },
-    { id: "m2wr8", name: "WR8 Practice: Your Command", items: form(8) },
-    { id: "m2wr9", name: "WR9 Practice: Your List", items: form(9) },
-    { id: "m2wr10", name: "WR10 Practice: Your MyCount", items: form(10) },
-    { id: "m2wr11", name: "WR11 Practice: Your Own Code", items: form(11) },
+    { id: "m2wr8", name: "WR8 Practice: The Command", items: form(8) },
+    { id: "m2wr9", name: "WR9 Practice: The List", items: form(9) },
+    { id: "m2wr10", name: "WR10 Practice: MyCount", items: form(10) },
+    { id: "m2wr11", name: "WR11 Practice: The Finished Feature", items: form(11) },
     { id: "m2wr12", name: "WR12 Practice: Practice Written Response", items: form(12) },
   ],
 };

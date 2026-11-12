@@ -1,0 +1,183 @@
+// Topic 2.5 Quiz: Checks on the Presidency
+
+// U.S. Senate, "Party Division," counts at the start of each Congress (party members; independents listed separately).
+const div = [
+  ["108th (2003 to 2005)", "George W. Bush (R)", "51", "48", "1", "Republican"],
+  ["109th (2005 to 2007)", "George W. Bush (R)", "55", "44", "1", "Republican"],
+  ["110th (2007 to 2009)", "George W. Bush (R)", "49", "49", "2", "Democratic"],
+  ["111th (2009 to 2011)", "Barack Obama (D)", "41", "56", "2", "Democratic"],
+  ["112th (2011 to 2013)", "Barack Obama (D)", "47", "51", "2", "Democratic"],
+  ["113th (2013 to 2015)", "Barack Obama (D)", "45", "53", "2", "Democratic"],
+  ["114th (2015 to 2017)", "Barack Obama (D)", "54", "44", "2", "Republican"],
+  ["115th (2017 to 2019)", "Donald Trump (R)", "52", "46", "2", "Republican"],
+  ["116th (2019 to 2021)", "Donald Trump (R)", "53", "45", "2", "Republican"],
+  ["117th (2021 to 2023)", "Joe Biden (D)", "50", "48", "2", "Democratic"],
+  ["118th (2023 to 2025)", "Joe Biden (D)", "49", "48", "3", "Democratic"],
+  ["119th (2025 to 2027)", "Donald Trump (R)", "53", "45", "2", "Republican"],
+];
+
+export const sets = {
+  "t25-s1": {
+    id: "t25-s1", name: "Federalist No. 69 on the president and the king", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The President of the United States would be an officer elected by the people for FOUR years; the king of Great Britain is a perpetual and HEREDITARY prince. The one would be amenable to personal punishment and disgrace; the person of the other is sacred and inviolable. The one would have a QUALIFIED negative upon the acts of the legislative body; the other has an ABSOLUTE negative. The one would have a right to command the military and naval forces of the nation; the other, in addition to this right, possesses that of DECLARING war, and of RAISING and REGULATING fleets and armies by his own authority. The one would have a concurrent power with a branch of the legislature in the formation of treaties; the other is the SOLE POSSESSOR of the power of making treaties. The one would have a like concurrent authority in appointing to offices; the other is the sole author of all appointments." },
+      { cite: "Alexander Hamilton, Federalist No. 69, 1788.", url: "https://avalon.law.yale.edu/18th_century/fed69.asp", kind: "primary" },
+    ] }],
+  },
+  "t25-s2": {
+    id: "t25-s2", name: "The president and the Senate majority, 2003 to 2027", intro: "Use the table below to answer the questions that follow.", label: "Table",
+    sources: [{ title: "Table", blocks: [
+      { table: { head: ["Congress", "President for most of the Congress", "Republican senators", "Democratic senators", "Independents", "Senate majority"], rows: div } },
+      { p: "Counts are at the start of each Congress. Independents caucused with the Democrats in every Congress shown. In the 117th Congress, after two Georgia runoffs, the Senate was split 50 to 50, and Vice President Kamala Harris's tie-breaking vote gave Democrats the majority." },
+      { cite: "U.S. Senate, \"Party Division,\" Senate.gov, party division at the start of each Congress, 108th to 119th Congresses.", url: "https://www.senate.gov/about/parties-leadership/party-division.htm", kind: "data" },
+    ] }],
+  },
+  "t25-s3": {
+    id: "t25-s3", name: "A stalled cabinet nominee", intro: "Use the scenario below to answer parts A, B, and C.",
+    sources: [{ title: "Scenario", blocks: [
+      { p: "The president nominates a close political ally with little management experience to lead a cabinet department. At the confirmation hearing, senators from both parties question the nominee's qualifications. The chair of the committee, a member of the president's own party, says she will not schedule a committee vote. The president calls the senators \"obstructionists\" in a speech and says he will leave the department under an acting secretary for as long as it takes. Several senators answer that they will cut the budget of the secretary's office until a confirmed secretary is in place." },
+      { cite: "Scenario written for this review.", kind: "scenario" },
+    ] }],
+  },
+};
+
+const lead = "Use the scenario to answer parts A, B, and C.";
+
+export default {
+  forms: [
+    { id: "t25", name: "Topic 2.5 Quiz: Checks on the Presidency", group: "Unit 2: Interactions Among Branches of Government",
+      items: [
+        { id: "t25-m01", skill: "u2", type: "mcq", set: "t25-s1", topic: "2.5", difficulty: "easy",
+          question: "Which statement best summarizes Hamilton's argument in the passage?",
+          choices: [
+            "The president's powers would be far more limited than the British king's powers.",
+            "The president, like the king, should hold office for life to keep the government stable.",
+            "The president should have an absolute veto so that Congress cannot overrule him.",
+            "The king's sole power over treaties should be given to the president alone.",
+          ],
+          why: [
+            "Correct. Hamilton contrasts a four-year, elected, impeachable president who shares powers with the Senate against a hereditary king with absolute powers.",
+            "Hamilton stresses that the president is elected for four years, unlike a \"perpetual and HEREDITARY prince.\"",
+            "Hamilton says the president has only a \"QUALIFIED negative,\" meaning a veto Congress can override.",
+            "Hamilton says the president would share treaty power with \"a branch of the legislature,\" the Senate.",
+          ],
+          answer: 0 },
+        { id: "t25-m02", skill: "u2", type: "mcq", set: "t25-s1", topic: "2.5", difficulty: "moderate",
+          question: "Which constitutional provision puts into practice Hamilton's statement that the president \"would be amenable to personal punishment and disgrace\"?",
+          choices: [
+            "House impeachment followed by Senate conviction and removal",
+            "The two-thirds vote of each chamber needed to override a veto",
+            "The Senate's role in approving treaties by a two-thirds vote",
+            "The Twenty-second Amendment's limit of two elected terms",
+          ],
+          why: [
+            "Correct. Article I gives the House the power to impeach and the Senate the power to try impeachments, and Article II, Section 4 provides for removal on conviction.",
+            "The override checks the president's veto, which Hamilton describes separately as a \"QUALIFIED negative.\"",
+            "Treaty approval matches Hamilton's point about a \"concurrent power\" over treaties, not punishment.",
+            "The Twenty-second Amendment was ratified in 1951, long after Hamilton wrote, and it limits terms rather than punishing misconduct.",
+          ],
+          answer: 0 },
+        { id: "t25-m03", skill: "u2", type: "mcq", set: "t25-s1", topic: "2.5", difficulty: "difficult",
+          question: "Hamilton says the president would have only a \"concurrent power\" with the Senate over treaties. Which modern practice have critics said weakens this limit?",
+          choices: [
+            "Presidents making executive agreements without the Senate",
+            "Presidents sending treaties to the Senate for a two-thirds vote",
+            "The Senate's committees holding hearings on proposed treaties",
+            "The House voting on money needed to carry out treaties",
+          ],
+          why: [
+            "Correct. Executive agreements are pacts with other nations made without the Senate's two-thirds approval, and they far outnumber treaties.",
+            "Submitting treaties to the Senate is the shared process Hamilton describes, not a way around it.",
+            "Committee hearings are part of the Senate's role in treaty-making and support the check.",
+            "House votes on funding add a check; they do not weaken the Senate's role.",
+          ],
+          answer: 0 },
+        { id: "t25-m04", skill: "u2", type: "mcq", set: "t25-s2", topic: "2.5", difficulty: "moderate",
+          question: "In how many of the Congresses shown did the president's party not hold the Senate majority?",
+          choices: ["Two", "One", "Three", "Four"],
+          why: [
+            "Correct. In the 110th Congress, a Republican president faced a Democratic majority, and in the 114th, a Democratic president faced a Republican majority.",
+            "There are two such Congresses, the 110th and the 114th.",
+            "In every Congress besides the 110th and 114th, the president's party held the majority.",
+            "Only the 110th and 114th Congresses had a Senate majority from the other party.",
+          ],
+          answer: 0 },
+        { id: "t25-m05", skill: "u2", type: "mcq", set: "t25-s2", topic: "2.5", difficulty: "difficult",
+          question: "In which pair of Congresses would a president most likely have found the Senate using its power to reject or delay nominees as a check?",
+          choices: [
+            "The 110th and 114th, when the other party held the majority",
+            "The 109th and 111th, when the president's party held 55 or more seats",
+            "The 115th and 116th, when the president's party held 52 and 53 seats",
+            "The 117th and 118th, when Democrats led with independent support",
+          ],
+          why: [
+            "Correct. Advice and consent is a stronger check under divided government, when the majority leader and committee chairs come from the party opposed to the president.",
+            "Large majorities for the president's own party make confirmation easier, not harder.",
+            "In the 115th and 116th, Republicans held the Senate under a Republican president, which eased confirmations.",
+            "In the 117th and 118th, the Democratic majority matched President Biden's party.",
+          ],
+          answer: 0 },
+        { id: "t25-m06", skill: "u2", type: "mcq", topic: "2.5", difficulty: "moderate",
+          question: "Under the War Powers Resolution (1973), a president who sends troops into hostilities without a declaration of war must",
+          choices: [
+            "report to Congress within 48 hours and end the action within 60 days unless Congress approves",
+            "get the approval of the Supreme Court within 10 days and report to the Senate within 30 days",
+            "win a two-thirds vote of the Senate before the troops leave and report to the House each month",
+            "end the action within 48 hours unless the House approves and the Senate does not object",
+          ],
+          why: [
+            "Correct. The law requires a report within 48 hours and, unless Congress declares war or authorizes the action, withdrawal within 60 days (with 30 more days allowed to withdraw safely).",
+            "The courts have no role under the War Powers Resolution.",
+            "The law sets no two-thirds approval in advance; Congress acts after the report.",
+            "Forty-eight hours is the reporting deadline, not the time limit on the action.",
+          ],
+          answer: 0 },
+        { id: "t25-m07", skill: "u2", type: "mcq", set: "t25-s2", topic: "2.5", difficulty: "easy",
+          question: "In which Congress did the president's party, counting independents who caucused with it, hold the most Senate seats?",
+          choices: ["111th", "109th", "113th", "119th"],
+          why: [
+            "Correct. In the 111th Congress, President Obama's party had 56 Democrats plus 2 independents, 58 seats at the start.",
+            "In the 109th Congress, Republicans held 55 seats under President George W. Bush.",
+            "In the 113th Congress, Democrats held 53 seats plus 2 independents, 55 in all.",
+            "In the 119th Congress, Republicans held 53 seats under President Trump.",
+          ],
+          answer: 0 },
+        { id: "t25-m08", skill: "u2", type: "mcq", topic: "2.5", difficulty: "moderate",
+          question: "A president's approval rating falls to 35 percent during her second term. Which effect is most likely?",
+          choices: [
+            "Members of Congress, even in her party, resist her agenda more.",
+            "The Senate may remove her from office by a simple majority vote.",
+            "Her vetoes can be overridden by a simple majority of each chamber.",
+            "She loses the power to issue executive orders to federal agencies.",
+          ],
+          why: [
+            "Correct. Low approval weakens a president's informal power to persuade, and as a lame duck she has less to offer members who face their own elections.",
+            "Removal requires impeachment by the House and conviction by two-thirds of senators present.",
+            "Overrides always require two-thirds of each chamber, whatever the president's popularity.",
+            "Approval ratings do not change the president's legal powers.",
+          ],
+          answer: 0 },
+        { id: "t25-ca1a", skill: "u2", type: "fr", set: "t25-s3", part: "Concept application", sub: "A", topic: "2.5", lead,
+          prompt: "Describe the check on the president shown when the committee chair refuses to schedule a vote on the nominee.",
+          earns: "Describes the Senate's advice and consent power over appointments (Article II), used here to stall a nominee.",
+          yes: ["Advice and consent: the president nominates, but the Senate must confirm, and the chair is using that power to stop the nominee.", "The Senate's confirmation power lets senators block an unqualified nominee by refusing to move the nomination forward."],
+          no: ["\"Checks and balances.\" Too general; it must describe the confirmation check.", "\"Impeachment.\" No one is being impeached."],
+          example: "The chair is using the Senate's advice and consent power. Article II says the president nominates cabinet secretaries but can appoint them only with the Senate's consent, so by refusing a vote the Senate checks the president's choice.",
+          notExample: "The senator is being partisan against the president." },
+        { id: "t25-ca1b", skill: "u2", type: "fr", set: "t25-s3", part: "Concept application", sub: "B", topic: "2.5", lead,
+          prompt: "Explain why a senator from the president's own party might refuse to support the nominee.",
+          earns: "Explains a reason tied to the senator's own incentives or role: her own voters and six-year term, institutional duty to check unqualified nominees, or the department's importance to her state.",
+          yes: ["Senators are elected by their own states, not by the president, so she can defend her reputation with her voters by refusing an unqualified nominee.", "The chair has an institutional interest in protecting the Senate's role, so she checks a nominee even from her own party's president."],
+          no: ["\"She does not like the president.\" This gives no reason tied to her role or incentives.", "\"She is in the other party.\" The scenario says she is in the president's party."],
+          example: "A senator answers to the voters of her own state and serves a six-year term, so she does not depend on the president to keep her job. Confirming an unqualified secretary could hurt her standing with those voters, and refusing protects the Senate's power to judge nominees.",
+          notExample: "The senator is checking the president because that is what the Constitution says to do." },
+        { id: "t25-ca1c", skill: "u2", type: "fr", set: "t25-s3", part: "Concept application", sub: "C", topic: "2.5", lead,
+          prompt: "Explain how Congress's power of the purse could limit the president's plan to rely on an acting secretary.",
+          earns: "Explains that Congress controls appropriations, so cutting or conditioning funds for the secretary's office raises the cost of avoiding confirmation and pressures the president to send a nominee the Senate will accept.",
+          yes: ["No money can be spent without an appropriation, so if Congress cuts the secretary's office budget, the acting secretary cannot run the office well, pushing the president to compromise.", "Congress can attach a condition to the department's funding that applies until a confirmed secretary serves, making the acting arrangement costly."],
+          no: ["\"Congress can fire the acting secretary.\" Congress removes officials only by impeachment.", "\"Congress controls money.\" This states the power without explaining how it limits the plan."],
+          example: "Congress must appropriate the money the department spends. By cutting the budget for the secretary's office, Congress makes it hard for an acting secretary to run the department, which raises the cost of the president's plan and pushes him to nominate someone the Senate will confirm.",
+          notExample: "Congress has the power of the purse, which is a check on the president." },
+      ] },
+  ],
+};

@@ -6,6 +6,7 @@ import cyberU2 from "./decks/cyber-u2.js";
 import csa from "./decks/csa.js";
 import whap from "./decks/whap.js";
 import calc from "./decks/calc.js";
+import gov from "./decks/gov.js";
 
 export const courses = [
   { id: "csp", name: "AP Computer Science Principles", short: "AP CSP", period: "Period D", book: true, decks: [cspQ3] },
@@ -23,6 +24,10 @@ export const courses = [
   { id: "calc-a", name: "AP Calculus AB", short: "AP Calc AB (A)", period: "Period A", book: false, passwords: true, decks: [calc] },
   { id: "calc", name: "AP Calculus AB", short: "AP Calc AB (B)", period: "Period B", book: false, passwords: true, decks: [calc] },
   { id: "calc-d", name: "AP Calculus AB", short: "AP Calc AB (D)", period: "Period D", book: false, passwords: true, decks: [calc] },
+  // AP U.S. Government and Politics (Ms. Salter) has two sections on one deck, Periods B and H. A student with a GitHub
+  // username on the roster signs in with GitHub; everyone else uses a school email and the shared first password.
+  { id: "gov-b", name: "AP U.S. Government and Politics", short: "AP Gov (B)", period: "Period B", book: false, passwords: true, decks: [gov] },
+  { id: "gov-h", name: "AP U.S. Government and Politics", short: "AP Gov (H)", period: "Period H", book: false, passwords: true, decks: [gov] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

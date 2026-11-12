@@ -197,7 +197,7 @@ export const sets = {
         alt: "Line graph of the percent of U.S. adults who get news often or sometimes from each platform, 2020 to 2026. Digital devices: " + platforms.digital.join(", ") + ". Television: " + platforms.tv.join(", ") + ". Print: " + platforms.print.join(", ") + "." }),
         caption: "Percent of U.S. adults who get news often or sometimes from digital devices, television, and print, 2020 to 2026 (radio is in the table)" },
       { table: { head: ["Year", "Digital devices", "Television", "Radio", "Print"], rows: platforms.years.map((y, i) => [y, String(platforms.digital[i]), String(platforms.tv[i]), String(platforms.radio[i]), String(platforms.print[i])]) } },
-      { p: "From 2020 to 2024 the print item was asked as \"print publications\"; in 2025 and 2026 it was asked as printed newspapers or printed magazines." },
+      { p: "From 2020 to 2024 the print item was asked as \"print publications\"; in 2025 and 2026 it was asked as \"printed newspapers or printed news magazines.\"" },
       { cite: "Pew Research Center, \"News Platform Fact Sheet\" (October 2026), survey of 5,166 U.S. adults, Aug. 24 to 30, 2026, and earlier years.", url: PEW_PLATFORM, kind: "data" },
     ] }],
   },

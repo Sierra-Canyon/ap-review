@@ -132,7 +132,7 @@ export const sets = {
     sources: [{ title: "Chart", blocks: [
       { svg: bars({ labels: fedResp.labels, series: [{ name: "Democrat or lean Democratic", values: fedResp.dem }, { name: "Republican or lean Republican", values: fedResp.rep }], y: [0, 100], step: 20, yname: "Percent", width: 660,
         alt: "Bar chart of the share saying the federal government has a responsibility to provide each item, April 2025. Republicans: " + words(fedResp.labels, fedResp.rep) + ". Democrats: " + words(fedResp.labels, fedResp.dem) + "." }),
-        caption: "Percent saying the federal government has a responsibility to provide each item, by party, April 2025" },
+        caption: "Percent saying the federal government has a responsibility to provide each item, by party, April 2025. Pew gives the Democratic shares for health insurance, K to 12 education, and internet access in words (about nine in ten, nine in ten, and six in ten); they are shown as 90, 90, and 60." },
       { table: { head: ["The federal government has a responsibility to provide", "Republican or lean Republican (%)", "Democrat or lean Democratic (%)"], rows: [
         ["Health insurance for all Americans", "45", "90"], ["An adequate standard of living for all", "52", "82"], ["Adequate income in retirement", "50", "81"],
         ["High-quality K to 12 education", "57", "90"], ["A college education for all", "22", "58"], ["High-speed internet access for all", "31", "60"],
@@ -725,7 +725,7 @@ export default [
     answer: 0 },
   { id: "g4-m060", skill: "u4", type: "mcq", set: "g4-s09", topic: "4.7", difficulty: "moderate",
     question: "Which statement best explains the pattern in the chart?",
-    choices: ["Liberals tend to favor a larger federal role in meeting people's needs.", "Republicans oppose any federal role in public education.", "Democrats prefer leaving most services to states and markets.", "The two parties hold nearly the same views on government's role."],
+    choices: ["The more liberal party favors a larger federal role in meeting people's needs.", "Republicans oppose any federal role in public education.", "Democrats prefer leaving most services to states and markets.", "The two parties hold nearly the same views on government's role."],
     why: ["Correct. Democrats, the more liberal party, are more likely than Republicans to say Washington is responsible for every item, which fits the liberal view of an active national government.",
       "A majority of Republicans (57 percent) say the federal government is responsible for K to 12 education.",
       "This describes the conservative view. Democrats are the more likely group to assign each item to the federal government.",

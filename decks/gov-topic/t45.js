@@ -53,13 +53,13 @@ export default {
         { id: "t45-m01", skill: S, type: "mcq", set: "t45-s1", topic: T, difficulty: "moderate",
           question: "Which trend do the data show?",
           choices: [
-            "Pollsters moved away from phone calls alone toward online and text methods.",
+            "More pollsters adopted online opt-in, random panel, and text messaging methods.",
             "Most national pollsters in 2022 used live phone calls as their only method.",
             "Fewer pollsters used probability-based panels in 2022 than in 2016.",
             "Fewer pollsters used online opt-in samples in 2020 than in 2012.",
           ],
           why: [
-            "Correct. Online opt-in samples, probability panels, and text messaging all grew, and only 10 percent of pollsters relied on live phone calls alone by 2022.",
+            "Correct. Pollsters using online opt-in samples rose from 10 to 47, probability panels from 7 to 23, and text messaging from 1 to 9.",
             "Only 10 percent used live phone calls as their only method in 2022, far from most.",
             "Pollsters using probability panels rose from 7 to 23, so this reverses the data.",
             "Pollsters using online opt-in samples rose from 10 to 47, so this reverses the data.",

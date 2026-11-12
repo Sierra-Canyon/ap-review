@@ -57,7 +57,7 @@ export default {
         { id: "t44-m01", skill: S, type: "mcq", set: "t44-s1", topic: T, difficulty: "moderate",
           question: "Which statement accurately describes the data?",
           choices: [
-            "Satisfaction rose after the two security events and fell after the two economic ones.",
+            "Satisfaction rose after the 2001 and 2003 events and fell after the 2008 and 2020 ones.",
             "Satisfaction fell after every event shown, since a crisis lowers public confidence.",
             "Satisfaction rose by more after the 2008 crisis than after the 2003 Iraq invasion.",
             "Satisfaction was lower in the poll after the Iraq invasion than in the poll before it.",

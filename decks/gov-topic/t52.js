@@ -1,0 +1,112 @@
+// AP Gov topic quiz 5.2: voter turnout, its demographic and structural causes, and regular versus occasional voters.
+import { bars } from "../../plot.js";
+
+// Pew Research Center, validated voter study (June 26, 2025): % of citizens ages 22+ who voted in all three national
+// elections of 2020, 2022, and 2024. Only values stated in the chapter's text are used.
+const regular = {
+  labels: ["All", "Ages 22 to 29", "Ages 65+", "College grad", "No degree", "White", "Black", "Hispanic"],
+  names: ["All adult citizens 22 and older", "Ages 22 to 29", "Ages 65 and older", "College graduates", "No college degree", "White adults", "Black adults", "Hispanic adults"],
+  pct: [41, 16, 63, 54, 35, 48, 27, 25],
+};
+
+const M = (n, difficulty, question, choices, why, set) => ({ id: "t52-m0" + n, skill: "u5", type: "mcq", topic: "5.2", ...(set ? { set: "t52-" + set } : {}), difficulty, question, choices, why, answer: 0 });
+
+export const sets = {
+  "t52-s1": {
+    id: "t52-s1", name: "Who voted in all three elections, 2020 to 2024", intro: "Use the graph and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: bars({ labels: regular.labels, values: regular.pct, y: [0, 80], step: 20, yname: "Percent", width: 720,
+        alt: "Bar chart of the percent of adult citizens ages 22 and older who voted in all three national elections of 2020, 2022, and 2024: " + regular.names.map((n, i) => `${n}, ${regular.pct[i]} percent`).join("; ") + "." }),
+        caption: "Percent of adult citizens ages 22 and older who voted in all three national elections: the 2020 presidential election, the 2022 midterm election, and the 2024 presidential election. Turnout was checked against official voter files. Pew estimates turnout among all adult citizens at 66 percent in 2020 and 64 percent in 2024." },
+      { table: { head: ["Group", "Voted in all three elections (%)"], rows: regular.names.map((n, i) => [n, String(regular.pct[i])]) } },
+      { cite: "Pew Research Center, \"Behind Trump's 2024 Victory, a More Racially and Ethnically Diverse Voter Coalition,\" June 26, 2025, chapter 1, \"Voter turnout, 2020-2024\" (validated voters). Figures are those stated in the chapter's text.", url: "https://www.pewresearch.org/politics/2025/06/26/voter-turnout-2020-2024/", kind: "data" },
+    ] }],
+  },
+  "t52-s2": {
+    id: "t52-s2", name: "Mail ballots and fewer polling places", intro: "Use the scenario to answer parts A, B, and C.",
+    sources: [{ title: "Scenario", blocks: [
+      { p: "The state of Aldon passes a law that mails a ballot to every registered voter three weeks before each election. Voters may return the ballot by mail or at a drop box. To save money, the same law cuts the number of in-person polling places from 400 to 120, so most remaining sites are in county seats. In the next election, turnout in Aldon's cities and suburbs rises, while turnout falls in several rural counties where many voters live far from a polling place and some do not receive mail at home. The state's two parties respond differently: one hires staff to help voters return their ballots, and the other asks the legislature to restore polling places." },
+      { cite: "Scenario written for this review.", kind: "scenario" },
+    ] }],
+  },
+};
+
+export default {
+  forms: [
+    { id: "t52", name: "Topic 5.2 Quiz: Voter Turnout", group: "Unit 5: Political Participation",
+      items: [
+        M(1, "easy", "According to the chart, which group had the largest share of citizens who voted in all three elections?",
+          ["Adults 65 and older", "College graduates", "White adults", "Adults ages 22 to 29"],
+          ["Correct. 63 percent of citizens 65 and older voted in all three elections, the highest share shown.",
+           "College graduates were at 54 percent, below the 63 percent for those 65 and older.",
+           "White adults were at 48 percent, below the 63 percent for those 65 and older.",
+           "Adults ages 22 to 29 were the lowest group shown, at 16 percent."], "s1"),
+        M(2, "moderate", "Which conclusion is consistent with the chart and with what is known about turnout?",
+          ["Older and more educated citizens vote more regularly, even in midterm years.", "Most citizens under 30 skip presidential elections but vote in midterm years.", "Race is a stronger predictor of regular voting than either age or education.", "Regular voting is about equal across age groups once education is counted."],
+          ["Correct. Citizens 65 and older (63 percent) and college graduates (54 percent) were far more likely than younger citizens (16 percent) and those without a degree (35 percent) to vote in all three elections, a midterm included. Age and education are among the strongest predictors of turnout.",
+           "This reverses the pattern. Young citizens vote least in midterm years, and only 16 percent voted in all three elections.",
+           "The White and Black gap is 21 points, but the gap between ages 65 and older and ages 22 to 29 is 47 points. Age divides regular voting more than race does in this chart.",
+           "The chart does not break age groups down by education, so it cannot support this claim. The age gap it does show is very large."], "s1"),
+        M(3, "difficult", "Which statement is supported by the chart?",
+          ["In every group shown, fewer than two-thirds voted in all three elections.", "In every group shown but one, fewer than half voted in all three elections.", "College graduates voted in all three elections more often than any age group.", "Hispanic adults were the least likely group shown to vote in all three elections."],
+          ["Correct. The highest value is 63 percent, for citizens 65 and older, which is below two-thirds (about 67 percent). Every other group is lower.",
+           "Two groups were above half: citizens 65 and older (63 percent) and college graduates (54 percent).",
+           "College graduates (54 percent) were below citizens 65 and older (63 percent).",
+           "Hispanic adults were at 25 percent, but adults ages 22 to 29 were lower, at 16 percent."], "s1"),
+        M(4, "moderate", "The chart counts only citizens who voted in all three elections, including the 2022 midterm. Which fact best explains why these shares are much lower than turnout in a single presidential year?",
+          ["Midterm turnout is usually far lower than presidential turnout.", "Federal law bars states from offering early voting in midterm election years.", "Citizens who are 22 years old were not old enough to vote in the 2020 election.", "Voter registration expires after each presidential election and must be redone."],
+          ["Correct. Many citizens vote only when the presidency is on the ballot, when media attention and campaign spending are highest. Voting in all three elections requires voting in the 2022 midterm, which fewer people do.",
+           "No federal law bars early voting in midterms. States set early voting rules, and most offer it every year.",
+           "A citizen who was 22 in 2024 was 18 in 2020 and could vote. The chart also starts at age 22 so that everyone counted was eligible in all three elections.",
+           "Registration does not expire after an election. States may remove voters only under procedures set by federal law, such as after a move or years of not voting."], "s1"),
+        M(5, "moderate", "In a survey, which answer shows a high sense of external political efficacy?",
+          ["Public officials care a lot about what people like me think.", "I follow news about national politics almost every day.", "I always vote for the same party, as my parents did.", "Politics is so complicated that I cannot understand it."],
+          ["Correct. External efficacy is the belief that government responds to citizens. People who think officials care what they think are more likely to vote.",
+           "Following the news shows interest in politics, not a belief that government responds to people like the speaker.",
+           "This describes party identification passed on through family socialization, not efficacy.",
+           "This shows low internal efficacy, the sense that one cannot understand or take part in politics."]),
+        M(6, "easy", "A state moves its voter registration deadline from 30 days before Election Day to Election Day itself, so citizens can register at the polls. What is the most likely effect on turnout?",
+          ["Turnout rises, mostly among people who moved recently or decided late.", "Turnout falls because officials need more time to check voter lists.", "Turnout stays the same because registration rules do not affect voting.", "Turnout rises only among citizens who voted in the last election."],
+          ["Correct. Same-day registration removes a structural barrier. States that adopt it tend to see higher turnout, especially among people who moved or became interested late in the campaign.",
+           "Studies of same-day registration find that turnout rises, not falls. Checking lists is an administrative cost, not a reason fewer people vote.",
+           "Registration deadlines are a structural barrier that keeps some eligible citizens from voting, so the rule matters.",
+           "Past voters are usually already registered. The change helps those who were not registered in time."]),
+        M(7, "moderate", "Which pattern has held in every U.S. presidential election since 1980?",
+          ["Women have voted at higher rates than men.", "Men have voted at higher rates than women.", "Voters under 30 have outvoted those over 65.", "Turnout has risen in each election from the last."],
+          ["Correct. Census surveys show women reporting voting at higher rates than men in every presidential election since 1980.",
+           "This reverses the gender gap in turnout. Women have voted at higher rates since 1980.",
+           "Older citizens consistently vote at much higher rates than young citizens.",
+           "Turnout has risen and fallen. For example, it fell from 2008 to 2012 and from 2020 to 2024."]),
+        M(8, "easy", "Which kind of election usually draws the lowest turnout?",
+          ["A midterm congressional primary", "A presidential general election", "A midterm general election", "A close presidential primary"],
+          ["Correct. Primaries draw fewer voters than general elections, and midterm years draw fewer than presidential years, so midterm primaries usually have the lowest turnout.",
+           "Presidential general elections draw the highest turnout of any U.S. election.",
+           "Midterm general elections draw fewer voters than presidential ones, but more than midterm primaries.",
+           "A close presidential primary draws attention and spending, so it usually draws more voters than a midterm primary."]),
+        { id: "t52-ca1a", skill: "u5", type: "fr", set: "t52-s2", part: "Concept application", sub: "A", topic: "5.2",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Describe one structural factor in the scenario that affects voter turnout.",
+          earns: "Names a rule or arrangement set by the state that makes voting easier or harder (mailed ballots, drop boxes, fewer polling places) and describes how it affects the cost of voting.",
+          yes: ["Mailing every voter a ballot is a structural factor that lowers the cost of voting, since voters do not have to travel to the polls.", "Cutting polling places from 400 to 120 is a structural barrier because voters far from a county seat must travel farther to vote in person."],
+          no: ["\"Rural voters are less interested\" does not earn the point; it is an attitude, not a structural factor.", "\"The law\" with no description of how it makes voting easier or harder does not earn the point."],
+          example: "One structural factor is the cut in polling places from 400 to 120. Structural factors are rules and arrangements that make voting easier or harder. With fewer sites, mostly in county seats, voters in rural areas must travel much farther to vote in person, which raises the cost of voting.",
+          notExample: "Turnout went up in cities because people there like politics more." },
+        { id: "t52-ca1b", skill: "u5", type: "fr", set: "t52-s2", part: "Concept application", sub: "B", topic: "5.2",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Explain why the law could raise turnout in some places and lower it in others.",
+          earns: "Explains that the same law lowers the cost of voting where mail delivery and drop boxes work well (cities and suburbs) but raises it where voters live far from the remaining polling places or lack home mail delivery (rural counties).",
+          yes: ["In cities, a mailed ballot saves voters a trip, so more vote; in rural counties, voters who do not get mail at home must now drive far to one of the few polling places, so fewer vote.", "The law helps voters who can use mail ballots easily but hurts those who depended on nearby in-person polling places."],
+          no: ["\"Cities have more people\" does not earn the point; population size does not explain a change in the rate.", "Restating that turnout rose in cities and fell in rural areas without a reason does not earn the point."],
+          example: "Mailing ballots lowers the cost of voting for people who get mail at home and live near a drop box, as most city and suburban voters do, so their turnout rises. Rural voters who do not receive mail at home must vote in person, and with fewer polling places they face long trips, which raises the cost of voting and lowers their turnout.",
+          notExample: "Some people like mail voting and some do not." },
+        { id: "t52-ca1c", skill: "u5", type: "fr", set: "t52-s2", part: "Concept application", sub: "C", topic: "5.2",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Explain how a political party could use the new law to increase turnout among its supporters.",
+          earns: "Explains a specific party action that uses mail voting (contacting supporters to return ballots, tracking returned ballots, helping with drop boxes) and how it raises turnout.",
+          yes: ["A party could use lists of voters who have not returned their ballots and send volunteers to remind and help them, which turns more of its supporters into voters.", "Because every voter gets a ballot weeks early, a party can run a get-out-the-vote drive over three weeks instead of one day, reminding supporters to mail their ballots or use drop boxes."],
+          no: ["\"The party could run ads\" does not earn the point unless it explains how the ads use the mail-voting law to raise turnout.", "\"The party could change the law\" does not earn the point; the prompt asks how a party could use the new law."],
+          example: "A party could track which of its registered supporters have returned their mailed ballots and send volunteers to contact those who have not, offering to explain the drop box locations. Because the ballots arrive three weeks early, these reminders can reach supporters many times before the deadline, so more of them vote.",
+          notExample: "Parties want people to vote for them." },
+      ] },
+  ],
+};

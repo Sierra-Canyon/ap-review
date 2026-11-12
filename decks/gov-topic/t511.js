@@ -1,0 +1,130 @@
+// AP Gov topic quiz 5.11: campaign finance: Citizens United's majority and dissent on corruption, the growth of PACs, super PACs, and BCRA.
+import { bars } from "../../plot.js";
+
+// FEC, PAC COUNT 1974 to present (in "Number of Federal PACs Decreases," July 10, 2007). 1974 and 1976 "trade" counts all other PACs.
+const pacs = {
+  dates: ["12/31/74", "12/31/76", "12/31/80", "12/31/84", "12/31/88", "12/31/96", "07/01/07"],
+  years: ["1974", "1976", "1980", "1984", "1988", "1996", "2007"],
+  corp: [89, 433, 1206, 1682, 1816, 1642, 1586],
+  labor: [201, 224, 297, 394, 354, 332, 273],
+  trade: [318, 489, 576, 698, 786, 838, 926],
+  noncon: [null, null, 374, 1053, 1115, 1103, 1247],
+  total: [608, 1146, 2551, 4009, 4268, 4079, 4168],
+};
+const num = (n) => (n === null ? "Not counted separately" : n.toLocaleString("en-US"));
+
+const M = (n, difficulty, question, choices, why, set) => ({ id: "t511-m0" + n, skill: "u5", type: "mcq", topic: "5.11", ...(set ? { set: "t511-" + set } : {}), difficulty, question, choices, why, answer: 0 });
+
+export const sets = {
+  "t511-s1": {
+    id: "t511-s1", name: "Citizens United v. FEC: the majority and a dissent on corruption", intro: "Use the two passages below to answer the questions that follow.",
+    sources: [
+      { title: "Source 1", blocks: [
+        { p: "The appearance of influence or access, furthermore, will not cause the electorate to lose faith in our democracy. By definition, an independent expenditure is political speech presented to the electorate that is not coordinated with a candidate. See Buckley, supra, at 46. The fact that a corporation, or any other speaker, is willing to spend money to try to persuade voters presupposes that the people have the ultimate influence over elected officials." },
+        { cite: "Justice Anthony Kennedy, opinion of the Court, Citizens United v. Federal Election Commission, 558 U.S. 310 (2010).", url: "https://www.law.cornell.edu/supct/html/08-205.ZO.html", kind: "primary" },
+      ] },
+      { title: "Source 2", blocks: [
+        { p: "Even in the cases that have construed the anticorruption interest most narrowly, we have never suggested that such quid pro quo debts must take the form of outright vote buying or bribes, which have long been distinct crimes. Rather, they encompass the myriad ways in which outside parties may induce an officeholder to confer a legislative benefit in direct response to, or anticipation of, some outlay of money the parties have made or will make on behalf of the officeholder. ... A democracy cannot function effectively when its constituent members believe laws are being bought and sold." },
+        { cite: "Justice John Paul Stevens, opinion concurring in part and dissenting in part, joined by Justices Ginsburg, Breyer, and Sotomayor, Citizens United v. Federal Election Commission, 558 U.S. 310 (2010). Quid pro quo means something given in exchange for something else.", url: "https://www.law.cornell.edu/supct/html/08-205.ZX.html", kind: "primary" },
+      ] },
+    ],
+  },
+  "t511-s2": {
+    id: "t511-s2", name: "The number of federal PACs, 1974 to 2007", intro: "Use the graph and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: bars({ labels: pacs.years, series: [{ name: "Corporate", values: pacs.corp }, { name: "Labor", values: pacs.labor }, { name: "Trade, membership, health", values: pacs.trade }], y: [0, 2000], step: 500, yname: "Number of PACs", width: 720,
+        alt: "Grouped bar chart of the number of registered federal political action committees by type. " + pacs.years.map((y, i) => `${y}: corporate ${pacs.corp[i]}, labor ${pacs.labor[i]}, trade, membership, and health ${pacs.trade[i]}`).join("; ") + "." }),
+        caption: "Number of registered federal PACs by type, selected dates, 1974 to 2007. In 1974 and 1976, the trade, membership, and health count includes all PACs that were not corporate or labor PACs. Nonconnected PACs and totals are in the table." },
+      { table: { head: ["Date", "Corporate", "Labor", "Trade, membership, health", "Nonconnected", "All PACs"], rows: pacs.dates.map((d, i) => [d, num(pacs.corp[i]), num(pacs.labor[i]), num(pacs.trade[i]), num(pacs.noncon[i]), num(pacs.total[i])]) } },
+      { p: "The table's total also includes cooperative PACs and PACs of corporations without stock. Nonconnected PACs are not sponsored by a corporation, union, or association." },
+      { cite: "Federal Election Commission, \"Number of Federal PACs Decreases,\" July 10, 2007, PAC count table, 1974 to 2007.", url: "https://www.fec.gov/updates/number-of-federal-pacs-decreases/", kind: "data" },
+    ] }],
+  },
+  "t511-s3": {
+    id: "t511-s3", name: "Outside money in a Senate race", intro: "Use the scenario to answer parts A, B, and C.",
+    sources: [{ title: "Scenario", blocks: [
+      { p: "In a close Senate race in the state of Brennan, the two candidates' campaigns together raise $60 million. Outside groups spend $95 million more. The largest is Brennan Forward, a super PAC that receives $20 million from four donors and must report their names to the Federal Election Commission. The second is Citizens for Fair Energy, a nonprofit social welfare group that spends $18 million on ads attacking one candidate and does not have to name its donors. Neither group may coordinate its ads with a campaign. After the election, several members of Congress propose a bill that would require all groups spending more than $10,000 on election ads to disclose their major donors." },
+      { cite: "Scenario written for this review.", kind: "scenario" },
+    ] }],
+  },
+};
+
+export default {
+  forms: [
+    { id: "t511", name: "Topic 5.11 Quiz: Campaign Finance", group: "Unit 5: Political Participation",
+      items: [
+        M(1, "easy", "Which constitutional provision is the basis of the majority's reasoning in Source 1?",
+          ["The First Amendment's protection of speech", "The Fourteenth Amendment's equal protection", "Article I's power to regulate elections", "The Tenth Amendment's reserved powers"],
+          ["Correct. The majority treats an independent expenditure as \"political speech,\" protected by the First Amendment, and struck down limits on such spending by corporations and unions.",
+           "Equal protection concerns discrimination by government. The case turned on free speech.",
+           "Article I lets Congress regulate congressional elections, but that power is limited by the First Amendment, which decided the case.",
+           "The Tenth Amendment was not the basis of the decision."], "s1"),
+        M(2, "moderate", "Justice Stevens's dissent most directly disputes which claim made in Source 1?",
+          ["That persuading voters with money will not erode faith in democracy", "That an independent expenditure is not coordinated with a candidate", "That outright vote buying and bribery have long been crimes", "That the First Amendment protects some forms of political speech"],
+          ["Correct. Kennedy says the appearance of influence \"will not cause the electorate to lose faith in our democracy.\" Stevens answers that a democracy cannot function when people \"believe laws are being bought and sold.\"",
+           "Stevens does not dispute the definition of an independent expenditure.",
+           "Stevens himself says bribery has long been a crime. His point is that corruption is broader than bribery.",
+           "Both justices agree that political speech is protected. They disagree over corruption."], "s1"),
+        M(3, "difficult", "Which change after 2010 most directly followed from the majority's reasoning in Source 1?",
+          ["Courts allowed groups to raise unlimited sums if they spent independently.", "Congress banned corporations from contributing money to party committees.", "The FEC stopped requiring reports on independent campaign spending.", "Corporations won the right to give directly to candidates' campaigns."],
+          ["Correct. Relying on the majority's view that independent spending does not corrupt, a federal appeals court in SpeechNow.org v. FEC (2010) struck limits on contributions to groups that only spend independently, creating super PACs.",
+           "Corporate contributions to national parties were already barred, and the 2002 law banned soft money before Citizens United.",
+           "The Court upheld disclosure requirements in Citizens United, and independent spending is still reported.",
+           "Direct corporate contributions to federal candidates are still banned."], "s1"),
+        M(4, "easy", "Which statement is supported by the graph and table?",
+          ["Corporate PACs grew from fewer than 100 in 1974 to more than 1,500 by 1984.", "Labor PACs outnumbered corporate PACs on every date shown in the chart.", "The total number of PACs fell between the end of 1976 and the end of 1980.", "Nonconnected PACs were the most common type of PAC at the end of 1988."],
+          ["Correct. There were 89 corporate PACs at the end of 1974 and 1,682 at the end of 1984.",
+           "Labor PACs outnumbered corporate PACs only in 1974 (201 to 89). From 1976 on, corporate PACs led.",
+           "The total rose from 1,146 to 2,551.",
+           "In 1988 there were 1,816 corporate PACs and 1,115 nonconnected PACs."], "s2"),
+        M(5, "moderate", "Which development best explains the rapid growth in PACs from 1974 to 1984?",
+          ["1970s election laws capped gifts to candidates and set rules for PACs.", "The Bipartisan Campaign Reform Act of 2002 created PACs for the first time.", "Citizens United v. FEC allowed unlimited corporate gifts directly to candidates.", "Buckley v. Valeo struck down every limit on contributions to federal candidates."],
+          ["Correct. The Federal Election Campaign Act and its 1974 amendments limited contributions to candidates and clarified that corporations and unions could form PACs, which pool members' and employees' donations. Groups formed PACs to give within the new rules.",
+           "The 2002 law came long after the growth shown, and PACs existed before 1974.",
+           "Citizens United was decided in 2010, and it did not allow direct corporate gifts to candidates.",
+           "Buckley v. Valeo (1976) upheld limits on contributions to candidates while striking limits on spending."], "s2"),
+        M(6, "moderate", "Which concern about interest groups do the data most support?",
+          ["Business groups formed far more PACs than unions did.", "Labor PACs grew faster than corporate PACs in every period shown.", "PACs replaced political parties as the source of party nominees.", "Most PACs registered by 1988 were sponsored by labor unions."],
+          ["Correct. By 1988 there were 1,816 corporate PACs and 786 trade, membership, and health PACs, compared with 354 labor PACs. Critics argue this gave business interests more ways to support candidates.",
+           "Corporate PACs grew much faster. Labor PACs fell after 1984.",
+           "PACs give money; they do not nominate candidates. The data say nothing about nominations.",
+           "Labor PACs were 354 of 4,268 in 1988."], "s2"),
+        M(7, "easy", "Which is a key difference between a traditional PAC and a super PAC?",
+          ["A super PAC may raise unlimited sums but may not give to candidates.", "A super PAC may give unlimited sums directly to candidates' campaigns.", "A traditional PAC may not give money to candidates at all.", "A traditional PAC need not report its donors to the FEC."],
+          ["Correct. A traditional PAC raises limited contributions and may give limited amounts to candidates. A super PAC may raise unlimited amounts but may only spend independently, not give to or coordinate with candidates.",
+           "Super PACs may not contribute to candidates. That is why their spending must be independent.",
+           "Traditional PACs give to candidates within limits, such as $5,000 per election from a multicandidate PAC.",
+           "Both kinds of PAC must report their donors to the FEC."]),
+        M(8, "moderate", "Which change did the Bipartisan Campaign Reform Act of 2002 make?",
+          ["It banned national parties from raising unlimited soft money.", "It created super PACs that may raise unlimited contributions.", "It required presidential candidates to accept public funds.", "It lifted all limits on gifts to candidates from individuals."],
+          ["Correct. The act, also called McCain-Feingold, barred national party committees from raising soft money, large unregulated gifts for party building, and added rules on issue ads and the \"stand by your ad\" disclaimer.",
+           "Super PACs arose in 2010 after court rulings, not from the 2002 law.",
+           "Public funding remains optional for presidential candidates.",
+           "The act raised the individual limit and indexed it for inflation. It did not remove limits."]),
+        { id: "t511-ca1a", skill: "u5", type: "fr", set: "t511-s3", part: "Concept application", sub: "A", topic: "5.11",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Describe one difference between Brennan Forward and Citizens for Fair Energy.",
+          earns: "Describes that the super PAC must disclose its donors to the FEC, while the nonprofit social welfare group does not have to name its donors.",
+          yes: ["Brennan Forward, a super PAC, must report its donors' names to the FEC, but Citizens for Fair Energy can keep its donors secret.", "Voters can learn who funds the super PAC, but not who funds the social welfare group."],
+          no: ["\"One spent more\" does not earn the point; it is not a difference in how they work.", "\"One can coordinate with candidates\" does not earn the point; neither may."],
+          example: "Brennan Forward is a super PAC, so it must report the names of its donors to the Federal Election Commission. Citizens for Fair Energy is a nonprofit social welfare group, which may run election ads without naming its donors.",
+          notExample: "They both spend money on ads." },
+        { id: "t511-ca1b", skill: "u5", type: "fr", set: "t511-s3", part: "Concept application", sub: "B", topic: "5.11",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Explain how Citizens United v. FEC (2010) made the outside spending in the scenario possible.",
+          earns: "Explains that the Court held that independent expenditures are protected speech that cannot be limited, which allowed corporations, unions, and groups funded by them to spend without limit and, with later rulings, allowed super PACs to accept unlimited contributions.",
+          yes: ["Citizens United struck down limits on independent spending by corporations and unions as a violation of free speech, so outside groups can spend millions as long as they do not coordinate with campaigns.", "Because the Court said independent spending does not corrupt, courts allowed super PACs to take unlimited gifts, like Brennan Forward's $20 million from four donors."],
+          no: ["\"Citizens United allowed corporations to give to candidates\" does not earn the point; direct contributions are still banned.", "Naming the case without explaining its holding does not earn the point."],
+          example: "In Citizens United, the Court held that the First Amendment bars limits on independent expenditures by corporations and unions. Because independent spending was treated as protected speech that does not corrupt, a later court ruling let groups that spend only independently, such as Brennan Forward, take unlimited contributions. That is why outside groups could outspend the campaigns.",
+          notExample: "The Supreme Court decides cases about money." },
+        { id: "t511-ca1c", skill: "u5", type: "fr", set: "t511-s3", part: "Concept application", sub: "C", topic: "5.11",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Explain why the proposed disclosure bill could survive a court challenge even though limits on independent spending could not.",
+          earns: "Explains that in Citizens United the Court upheld disclosure requirements, reasoning that disclosure informs voters without stopping anyone from speaking, so Congress may require it even though it may not cap independent spending.",
+          yes: ["Citizens United struck down spending limits but upheld disclosure rules by an 8 to 1 vote, because telling voters who pays for ads does not stop the speech.", "Courts treat disclosure as a lighter burden than a ban or cap, and they have accepted the interest in informing voters."],
+          no: ["\"Congress can pass any law it wants\" does not earn the point.", "\"Disclosure is popular\" does not earn the point; popularity does not decide constitutionality."],
+          example: "In Citizens United, the Court struck down limits on independent spending but upheld the law's disclosure rules, 8 to 1. The Court reasoned that disclosure lets voters judge who is behind an ad without preventing anyone from speaking. A bill that requires donor disclosure, rather than capping spending, fits within that holding.",
+          notExample: "The bill would help voters." },
+      ] },
+  ],
+};

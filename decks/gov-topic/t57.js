@@ -1,0 +1,117 @@
+// AP Gov topic quiz 5.7: groups influencing policy outcomes: labor unions and public opinion, social movements, types of groups, and access points.
+import { lines } from "../../plot.js";
+
+// Gallup, "Labor Unions" trends: % of U.S. adults who approve of labor unions (one poll per year shown).
+const unions = {
+  years: ["1936", "1953", "1965", "1979", "1991", "2001", "2009", "2015", "2022", "2026"],
+  pct: [72, 75, 71, 55, 60, 60, 48, 58, 71, 71],
+};
+
+const M = (n, difficulty, question, choices, why, set) => ({ id: "t57-m0" + n, skill: "u5", type: "mcq", topic: "5.7", ...(set ? { set: "t57-" + set } : {}), difficulty, question, choices, why, answer: 0 });
+
+export const sets = {
+  "t57-s1": {
+    id: "t57-s1", name: "Public approval of labor unions, 1936 to 2026", intro: "Use the graph and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: lines({ labels: unions.years, series: [{ name: "Approve", values: unions.pct }], y: [0, 100], step: 20, yname: "Percent who approve", width: 600, right: 70,
+        alt: "Line graph of the percent of U.S. adults who approve of labor unions in selected Gallup polls: " + unions.years.map((y, i) => `${y}, ${unions.pct[i]} percent`).join("; ") + "." }),
+        caption: "Percent of U.S. adults who say they approve of labor unions, selected Gallup polls, 1936 to 2026 (the years are not evenly spaced). Question: \"Do you approve or disapprove of labor unions?\"" },
+      { table: { head: ["Year", ...unions.years], rows: [["Approve (%)", ...unions.pct.map(String)]] } },
+      { cite: "Gallup, \"Labor Unions,\" Gallup historical trends (approval trend, polls from 1936 through August 2026). Polls from 2001 on were taken in August.", url: "https://news.gallup.com/poll/12751/labor-unions.aspx", kind: "data" },
+    ] }],
+  },
+  "t57-s2": {
+    id: "t57-s2", name: "The disability rights movement and the ADA", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "For much of the twentieth century, many Americans with disabilities could not enter public buildings, ride city buses, or get hired for jobs they could do. In the 1970s, disability rights activists began to organize across different disabilities. In 1977, protesters occupied a federal office building in San Francisco for nearly a month, and during the sit-in the government issued rules barring discrimination by programs that receive federal money. In March 1990, as a broader bill stalled in Congress, dozens of activists left their wheelchairs and crutches and pulled themselves up the steps of the U.S. Capitol while news cameras recorded the scene. Four months later, Congress passed the Americans with Disabilities Act, and President George H. W. Bush signed it." },
+      { cite: "Practice passage written for this review. It summarizes the standard history of the disability rights movement, including the 1977 Section 504 sit-in and the 1990 Capitol protest.", kind: "practice" },
+    ] }],
+  },
+  "t57-s3": {
+    id: "t57-s3", name: "A campaign for phone-free schools", intro: "Use the scenario to answer parts A, B, and C.",
+    sources: [{ title: "Scenario", blocks: [
+      { p: "In the state of Westbrook, a group of parents starts a social media page asking the legislature to ban student phones during the school day. Within a year, the page has 90,000 followers, and parents in every county hold meetings, collect petition signatures, and invite local reporters. The state teachers' union and the state association of school principals endorse the ban and send officers to testify at a legislative hearing. A national trade association of phone makers opposes a statewide ban, saying each school district should decide. The bill passes the state senate but stalls in a house committee whose chair says local districts, not the state, should set the rule." },
+      { cite: "Scenario written for this review.", kind: "scenario" },
+    ] }],
+  },
+};
+
+export default {
+  forms: [
+    { id: "t57", name: "Topic 5.7 Quiz: Groups Influencing Policy Outcomes", group: "Unit 5: Political Participation",
+      items: [
+        M(1, "easy", "In which year shown was approval of labor unions lowest?",
+          ["2009", "1979", "2015", "1991"],
+          ["Correct. Approval fell to 48 percent in 2009, the lowest value shown and the only one below half.",
+           "Approval in 1979 was 55 percent, above the 2009 low.",
+           "Approval in 2015 was 58 percent, a recovery from 2009.",
+           "Approval in 1991 was 60 percent."], "s1"),
+        M(2, "difficult", "A labor federation cites the most recent poll in the chart to urge Congress to pass a specific bill making it easier for workers to form unions. Which limit of the data should a member of Congress point out?",
+          ["Approval of unions in general does not show support for this particular bill.", "The poll measured the views of union members only, not of all adults.", "The poll was taken only in presidential election years, so it is out of date.", "The data show approval falling, so the public now opposes labor unions."],
+          ["Correct. The question asks whether people approve of labor unions. People who approve of unions may still disagree with a specific change in labor law, so the chart cannot show support for the bill.",
+           "Gallup surveys a sample of all U.S. adults, not only union members.",
+           "Gallup has asked the question in most years, including 2015, 2022, and 2026, which are not presidential election years.",
+           "Approval rose from 48 percent in 2009 to 71 percent in 2026, and a majority approves."], "s1"),
+        M(3, "moderate", "Labor unions such as the AFL-CIO try to influence policy mainly by",
+          ["lobbying, endorsing candidates, and mobilizing members to vote", "nominating their own candidates for office under the union's name", "writing the federal regulations that govern workplace safety", "deciding labor disputes as part of the federal court system"],
+          ["Correct. Unions are interest groups: they lobby lawmakers, endorse and give to candidates through PACs, and turn out their members on Election Day.",
+           "Nominating candidates under a group's own label is what political parties do.",
+           "Federal agencies such as the Occupational Safety and Health Administration write workplace rules.",
+           "Courts and agencies decide labor disputes. Unions bring cases but do not decide them."], "s1"),
+        M(4, "easy", "The passage describes which kind of political activity?",
+          ["A social movement using protest to push for new laws", "A political party nominating candidates for Congress", "A trade association lobbying for its member firms", "A federal agency acting on its own to write new rules"],
+          ["Correct. Activists from many groups organized protests, including a sit-in and the Capitol steps protest, to win federal protections. That is a social movement.",
+           "The passage describes no party or nomination.",
+           "A trade association represents businesses in one industry. The activists represented people with disabilities.",
+           "The 1977 rules came only after protesters occupied a federal building, so the agency did not act on its own."], "s2"),
+        M(5, "moderate", "Which outcome in the passage best shows that the movement influenced public policy?",
+          ["Congress passed the Americans with Disabilities Act.", "News cameras recorded activists climbing the steps of the U.S. Capitol.", "Protesters stayed in a federal office building for nearly a month.", "Activists with many different disabilities organized together."],
+          ["Correct. A law passed by Congress and signed by the president is a change in public policy, the goal the movement sought.",
+           "Media coverage helped the movement, but coverage is not itself a policy change.",
+           "The sit-in was a tactic. The policy outcome was the rules the government issued afterward.",
+           "Organizing across disabilities built the movement. It is not a change in policy."], "s2"),
+        M(6, "easy", "An organization whose members are companies in one industry, such as automakers, and that lobbies for policies that help that industry is best called",
+          ["a trade association", "a public interest group", "a labor union", "a political party"],
+          ["Correct. A trade association represents businesses in a single industry and lobbies for their shared interests.",
+           "A public interest group seeks benefits for the public at large, such as clean air, not for one industry.",
+           "A labor union represents workers, not companies.",
+           "A political party nominates candidates and seeks to control government."]),
+        M(7, "moderate", "Which statement correctly contrasts political parties with interest groups?",
+          ["Parties run candidates under their own label; interest groups seek influence without doing so.", "Interest groups run candidates under their own label; parties seek influence without doing so.", "Parties focus on a single issue; interest groups take positions on nearly every public issue.", "Interest groups must register with the FEC to lobby; parties must register to hold primaries."],
+          ["Correct. Parties nominate candidates and try to win control of government. Interest groups try to shape policy by lobbying, endorsing, and giving money, but they do not put their own nominees on the ballot.",
+           "This reverses the two roles.",
+           "This reverses the scope of each. Parties take broad platforms, and many interest groups focus on one area.",
+           "Lobbyists register with Congress, not the FEC, and primaries are run under state law."]),
+        M(8, "moderate", "Why does the American system of government give interest groups many chances to influence policy?",
+          ["Power is divided among branches and levels of government, creating many access points.", "The Constitution requires federal agencies to consult interest groups before they act.", "Federal judges are elected and often seek interest-group endorsements to stay on the bench.", "Congress may consider a bill only after an outside group formally asks it to act."],
+          ["Correct. Separation of powers and federalism spread power across Congress, the president, agencies, courts, and state and local governments. A group that loses in one place can try another. Madison's Federalist No. 39 describes this mix of national and state features.",
+           "The Constitution says nothing about consulting interest groups. Agencies take public comments under the Administrative Procedure Act, which is open to everyone.",
+           "Federal judges are appointed for life, not elected.",
+           "Members of Congress may introduce bills on their own. No outside request is needed."]),
+        { id: "t57-ca1a", skill: "u5", type: "fr", set: "t57-s3", part: "Concept application", sub: "A", topic: "5.7",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Describe one way the parents' campaign uses social media to influence policy.",
+          earns: "Describes how the social media page recruits and mobilizes supporters (followers who hold meetings, sign petitions, contact reporters) to pressure legislators.",
+          yes: ["The page gathers 90,000 followers and organizes parents in every county to hold meetings and collect petition signatures for the ban.", "Social media lets the parents reach many people at almost no cost and turn them into an organized movement that pressures the legislature."],
+          no: ["\"They post online\" does not earn the point without describing how it influences policy.", "\"The union testifies\" does not earn the point; that is not social media."],
+          example: "The parents use a social media page to recruit supporters across the state. The page grows to 90,000 followers, and those followers hold meetings, gather petition signatures, and invite reporters in every county, which shows legislators that many voters want the ban.",
+          notExample: "Social media is popular with parents." },
+        { id: "t57-ca1b", skill: "u5", type: "fr", set: "t57-s3", part: "Concept application", sub: "B", topic: "5.7",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Explain why the support of the teachers' union and the principals' association could help the bill pass.",
+          earns: "Explains a resource these groups bring, such as expertise in testimony, an organized membership that votes, or established access to legislators, and how it makes passage more likely.",
+          yes: ["Teachers and principals speak with expert knowledge of classrooms, so their testimony makes legislators more confident the ban will work.", "The union has many members who vote and an established relationship with legislators, so lawmakers take its endorsement seriously."],
+          no: ["\"Teachers like the ban\" does not earn the point without explaining the effect on legislators.", "\"They are interest groups\" alone does not earn the point."],
+          example: "The teachers' union and principals' association bring expertise and organization. Their officers can testify about how phones affect classrooms, giving legislators information a parent group lacks, and the union's large voting membership gives lawmakers an electoral reason to listen. Together these make it more likely that undecided legislators will vote for the bill.",
+          notExample: "More groups is better." },
+        { id: "t57-ca1c", skill: "u5", type: "fr", set: "t57-s3", part: "Concept application", sub: "C", topic: "5.7",
+          lead: "Use the scenario to answer parts A, B, and C.",
+          prompt: "Explain how the structure of the legislature limits the parents' campaign.",
+          earns: "Explains that a committee chair controls whether a bill moves, so a single chair who opposes the state rule can stall a bill with broad support, giving opponents such as the trade association an access point.",
+          yes: ["The house committee chair can refuse to move the bill, so even after the senate passes it, the ban cannot become law unless the committee acts.", "Because bills must pass committees in both chambers, the phone makers only need to persuade one chair to stop the bill."],
+          no: ["\"The legislature is slow\" does not earn the point.", "\"The governor could veto it\" does not earn the point; the scenario shows a committee chair stalling the bill."],
+          example: "Bills must clear committees in both chambers, and committee chairs control which bills get a vote. Although the senate passed the ban, the house committee chair opposes a statewide rule and can keep the bill from reaching the floor. This gives opponents, such as the phone makers' trade association, a single point where they can block a popular bill.",
+          notExample: "The bill stalled." },
+      ] },
+  ],
+};

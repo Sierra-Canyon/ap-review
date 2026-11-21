@@ -183,13 +183,19 @@ A section is done when every activity in it is done. The Class tab shows, for ea
 
 ## What the teacher gets (the Class tab, @jd12 only)
 
-- Every student on the roster: last active, answers, percent right, best and last mock score, mastery for each skill.
+- Every student on the roster: last active, time on the site in the last 7 days in this course, answers, percent right, best and last mock score, mastery for each skill. The tiles at the top add the class's total time for the week.
 - Every item, hardest first: percent right, how many missed it the last time, the wrong answer picked most, and every student's latest written response with their self-score.
 - Accounts waiting to be added, and the roster itself. **Download CSV** saves the student table.
 
 ## A student's page (teachers)
 
 On the Class tab, students are listed by last name. Click a name for that student's page: every quiz and test they took, newest first, with the score (open one to see each question and the answer they picked or their self-score), and their review by skill (open a skill for each question, the answer they last gave, and how often they have seen it). Attempts from 11/2 on keep their own answers; earlier ones show the answer kept from the student's latest try. In the roster table, typing a GitHub username in a student's GitHub cell and pressing Enter makes that student a GitHub student, for students in an email course who are not in a computer science course. `tools/e2e-student.mjs` runs it in Chromium.
+
+## Time on the site (from 11/21/2026)
+
+The site counts each student's **active time**: while a page of the site is open and visible and the student has clicked, typed, or scrolled in the last 2 minutes. Time with the tab hidden, or idle longer than that, does not count. A session ends after 10 minutes with no active time. Teachers see it in three places: the class view's "Time, 7 days" column (hover for all time in the course), the student page's **Time on the site** (7 days, 30 days, all time, a bar for each of the last 14 days, and the latest sessions with their day, start, end, and active minutes), and the CSV (`minutes_7_days`, `minutes_all_time`). Students see their own totals on their Account page, with a line saying their teacher sees it too.
+
+It is stored in the student's own progress document as `time` (`days`: seconds a day by course; `sessions`: the last 300), written with their answers and at least once a minute while they are active, so at most a minute can be lost when a tab closes. Only students are timed, not teachers. Time before 11/21/2026 was never recorded. No Firestore rule changed. `tools/e2e-time.mjs` runs it in Chromium with a fake clock.
 
 ## Assessments (teachers)
 

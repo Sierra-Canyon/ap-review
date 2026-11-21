@@ -162,6 +162,63 @@ async function save() {
 }
 let saveTimer = null;
 function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 1500); }
+
+// Time on the site. A student's active time is counted while the page is visible and they have clicked, typed, or
+// scrolled in the last 2 minutes; time away or idle is not. It goes in their progress document as profile.time:
+//   days: { "YYYY-MM-DD": { s: seconds, c: { <courseId>: seconds } } }   (their local date; the last 400 days)
+//   sessions: [{ start, end, s, c }]   (a session ends after 10 minutes with no active time; the last 300)
+// It is saved with their answers, and at least once a minute while they are active, so at most a minute is lost.
+const IDLE = 2 * 60000, GAP = 10 * 60000, TICK = 15000, FLUSH = 60000;
+const usage = { on: false, pid: null, lastInput: 0, lastTick: 0, carry: 0, lastFlush: 0, dirty: false };
+// Counting runs only while the student who started it is still the one signed in.
+const counting = () => usage.on && me && !teacher && profile && progressId() === usage.pid;
+const dayKey = (t) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+function addActive(ms, now) {
+  usage.carry += ms;
+  const secs = Math.floor(usage.carry / 1000);
+  if (!secs || !profile) return;
+  usage.carry -= secs * 1000;
+  const T = (profile.time ||= { days: {}, sessions: [] }), cid = course?.id || "";
+  const day = (T.days[dayKey(now)] ||= { s: 0, c: {} });
+  day.s += secs; day.c[cid] = (day.c[cid] || 0) + secs;
+  const last = T.sessions[T.sessions.length - 1];
+  if (last && now - last.end < GAP && last.c === cid) { last.end = now; last.s += secs; }
+  else T.sessions.push({ start: now - secs * 1000, end: now, s: secs, c: cid });
+  if (T.sessions.length > 300) T.sessions.splice(0, T.sessions.length - 300);
+  const keys = Object.keys(T.days).sort();
+  if (keys.length > 400) for (const k of keys.slice(0, keys.length - 400)) delete T.days[k];
+  usage.dirty = true;
+}
+function usageTick() {
+  const now = Date.now(), dt = Math.min(now - usage.lastTick, 2 * TICK);
+  usage.lastTick = now;
+  if (!counting()) { usage.dirty = false; usage.carry = 0; return; }
+  if (document.visibilityState === "visible" && now - usage.lastInput < IDLE) addActive(dt, now);
+  if (usage.dirty && now - usage.lastFlush >= FLUSH) { usage.lastFlush = now; usage.dirty = false; save(); }
+}
+function startUsage() {
+  usage.pid = progressId(); usage.carry = 0; usage.dirty = false;
+  usage.lastInput = usage.lastTick = usage.lastFlush = Date.now();
+  if (usage.on) return;
+  usage.on = true;
+  const seen = () => { usage.lastInput = Date.now(); };
+  for (const ev of ["pointerdown", "keydown", "wheel", "touchstart", "scroll"]) addEventListener(ev, seen, { passive: true, capture: true });
+  setInterval(usageTick, TICK);
+  const away = () => { usageTick(); if (usage.dirty && counting()) { usage.dirty = false; usage.lastFlush = Date.now(); save(); } };
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") away(); else { usage.lastTick = usage.lastInput = Date.now(); } });
+  addEventListener("pagehide", away);
+}
+// Seconds of active time in one course (or every course) on the days from `from` (a day key) on.
+function secsSince(u, from, cid) {
+  return Object.entries(u?.time?.days || {}).filter(([k]) => k >= from).reduce((t, [, d]) => t + (cid ? d.c?.[cid] || 0 : d.s || 0), 0);
+}
+const daysAgoKey = (n) => dayKey(Date.now() - n * DAY);
+function fmtTime(secs) {
+  if (!secs) return "0 min";
+  const m = Math.round(secs / 60);
+  if (m < 1) return "under 1 min";
+  return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, "0")} min`;
+}
 const bookApi = { book: () => (profile.book ||= {}), saveSoon };
 function record(item, result, extra = {}) {
   const st = deckState();
@@ -317,6 +374,7 @@ function renderAccount() {
     <span class="eyebrow">Your account</span><h1>${esc(displayName())}</h1>
     <div class="tablewrap"><table><tbody>
       ${me?.email || user.email ? `<tr><td>School email</td><td>${esc(me?.email || user.email)}</td></tr>` : ""}
+      ${me && !teacher ? `<tr><td>Time on the site</td><td>${esc(fmtTime(secsSince(profile, daysAgoKey(6))))} in the last 7 days, ${esc(fmtTime(secsSince(profile, "")))} in all. Your teacher sees this too. Only time while you are using the site counts.</td></tr>` : ""}
       ${me?.ghId || user.ghId ? `<tr><td>GitHub</td><td>${me?.login || user.login ? "@" + esc(me?.login || user.login) : "linked"}</td></tr>` : ""}
       <tr><td>Signed in with</td><td>${user.provider === "github" ? "GitHub" : "school email and password"}</td></tr>
       ${me ? `<tr><td>Courses</td><td>${coursesOf(me).map((id) => esc(courseById(id)?.name || id)).join(", ")}</td></tr>` : ""}
@@ -330,6 +388,22 @@ function renderAccount() {
 }
 
 // ------------------------------------------------------------------------------------------ home
+// The student page's "Time on the site": totals, the last 14 days as bars, and the latest sessions, for one course.
+function timeHTML(u, cid) {
+  const T = u?.time;
+  if (!T) return `<section class="panel"><h2>Time on the site</h2><p class="small muted">No time recorded yet. Time is counted from 11/21/2026, while the site is open and in use (idle time is not counted).</p></section>`;
+  const days = Array.from({ length: 14 }, (_, k) => { const t = Date.now() - (13 - k) * DAY, key = dayKey(t); return { t, key, s: T.days[key]?.c?.[cid] || 0 }; });
+  const max = Math.max(60 * 30, ...days.map((d) => d.s));
+  const sess = (T.sessions || []).filter((x) => x.c === cid).slice(-12).reverse();
+  const clock = (t) => new Date(t).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  const date = (t) => new Date(t).toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric" });
+  return `<section class="panel"><h2>Time on the site</h2>
+    <p>${fmtTime(secsSince(u, daysAgoKey(6), cid))} in the last 7 days · ${fmtTime(secsSince(u, daysAgoKey(29), cid))} in the last 30 days · ${fmtTime(secsSince(u, "", cid))} in all</p>
+    <div class="timebars" role="img" aria-label="Minutes on the site each day for the last 14 days">${days.map((d) => `<div class="tb" title="${esc(date(d.t))}: ${esc(fmtTime(d.s))}"><i><span style="height:${Math.round((d.s / max) * 100)}%"></span></i><small>${new Date(d.t).getDate()}</small></div>`).join("")}</div>
+    ${sess.length ? `<div class="tablewrap"><table><thead><tr><th>Day</th><th>From</th><th>To</th><th class="num">Active</th></tr></thead><tbody>${sess.map((x) => `<tr><td>${esc(date(x.start))}</td><td>${esc(clock(x.start))}</td><td>${esc(clock(x.end))}</td><td class="num">${esc(fmtTime(x.s))}</td></tr>`).join("")}</tbody></table></div>` : ""}
+    <p class="small muted">Active time only: the site counts time while it is open and the student has clicked, typed, or scrolled in the last 2 minutes. A session ends after 10 minutes without activity.</p></section>`;
+}
+
 function renderHome() {
   view.className = "";
   const st = deckState();
@@ -1427,6 +1501,7 @@ async function renderStudent(id) {
   view.innerHTML = `<p><a href="#teacher">&larr; ${esc(course.period || course.short)} class</a></p>
     <section class="hero"><span class="eyebrow">${esc(course.name)}</span><h1>${esc(r.name || r.login)}</h1>
       <p class="muted">${esc(r.email || "")}${r.login ? ` · GitHub @${esc(r.login)}` : ""} · ${p ? "last active " + ago(p.lastActive) : "not signed in yet"} · ${n} answers${n ? `, ${pct(c / n)}% right` : ""} · ${missesOf(cards).length} to redo</p></section>
+    ${timeHTML(p, course.id)}
     <section class="panel"><h2>Quizzes and tests</h2>
       ${mocks.length ? mocks.map((mk, k) => `<details class="stuattempt" data-k="${k}"><summary><b>${esc(formName(mk.form))}</b> <span class="small muted">· ${esc(when(mk.ts))}${mk.minutes ? ` · ${mk.minutes} min` : ""}</span> <span class="chip ${mk.score >= mk.total * 0.8 ? "good" : mk.score >= mk.total * 0.5 ? "warn" : "bad"}">${mk.score} / ${mk.total}</span></summary><div class="stack"></div></details>`).join("") : `<p class="muted">None taken yet.</p>`}
     </section>
@@ -1501,6 +1576,7 @@ async function renderTeacher() {
   <section class="kpis">
     <div class="kpi"><b>${rows.filter((r) => !r.off).length}</b><span class="small muted">on the roster</span></div>
     <div class="kpi"><b>${active}</b><span class="small muted">active in the last 7 days</span></div>
+    <div class="kpi"><b>${fmtTime(rows.reduce((t, r) => t + secsSince(r.user, daysAgoKey(6), course.id), 0))}</b><span class="small muted">on the site in the last 7 days, the whole class</span></div>
     <div class="kpi"><b>${totalN}</b><span class="small muted">answers</span></div>
     <div class="kpi"><b>${totalN ? pct(totalC / totalN) + "%" : "–"}</b><span class="small muted">right, all answers</span></div>
     ${!deck.mock ? "" : `<div class="kpi"><b>${mocks.length}</b><span class="small muted">${esc(deck.mock.name.toLowerCase())}s taken${mocks.length ? `, mean ${pct(mocks.reduce((t, x) => t + x.score / (x.total || deck.mock.total), 0) / mocks.length)}%` : ""}</span></div>`}
@@ -1511,10 +1587,11 @@ async function renderTeacher() {
   <section class="panel">
     <div class="row spread"><h2>Students</h2><button class="btn" id="csv">Download CSV</button></div>
     <div class="tablewrap"><table>
-      <thead><tr><th>Student</th><th>Last active</th><th class="num">Answers</th><th class="num">Right</th><th class="num" title="Questions answered wrong the last time, review and mocks">To redo</th>${deck.forms ? mockCols.map((c) => `<th class="num" title="${esc(c.title)}">${esc(c.label)}</th>`).join("") : `<th class="num">Mock best</th><th class="num">Mock last</th>`}${course.book ? `<th class="num" title="Book sections with every activity done">Book</th>` : ""}${revSkills.map((s) => `<th title="${esc(s.name)}">${esc(s.short || s.from)}</th>`).join("")}</tr></thead>
+      <thead><tr><th>Student</th><th>Last active</th><th class="num" title="Active time in this course in the last 7 days (idle time not counted)">Time, 7 days</th><th class="num">Answers</th><th class="num">Right</th><th class="num" title="Questions answered wrong the last time, review and mocks">To redo</th>${deck.forms ? mockCols.map((c) => `<th class="num" title="${esc(c.title)}">${esc(c.label)}</th>`).join("") : `<th class="num">Mock best</th><th class="num">Mock last</th>`}${course.book ? `<th class="num" title="Book sections with every activity done">Book</th>` : ""}${revSkills.map((s) => `<th title="${esc(s.name)}">${esc(s.short || s.from)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map((r) => `<tr>
         <td><a href="#student-${encodeURIComponent(r.id)}"><b>${esc(r.name || r.login)}</b></a><br><span class="small muted">${esc(r.email || (r.login ? "@" + r.login : ""))}</span></td>
         <td class="small">${r.user ? ago(r.user.lastActive) : "not signed in yet"}</td>
+        <td class="num" style="white-space:nowrap" title="${r.user ? `All time in this course: ${fmtTime(secsSince(r.user, "", course.id))}` : ""}">${r.user?.time ? fmtTime(secsSince(r.user, daysAgoKey(6), course.id)) : "–"}</td>
         <td class="num">${r.s?.n || 0}</td>
         <td class="num">${r.s?.n ? pct(r.s.acc) + "%" : "–"}</td>
         <td class="num">${r.s ? missesOf(r.s.cards).length : "–"}</td>
@@ -1627,8 +1704,8 @@ async function renderTeacher() {
   renderAssessPanel();
   if (isAdmin()) renderTeachersPanel();
   $("#csv").addEventListener("click", () => {
-    const head = ["name", "login", "last_active", "answers", "right_pct", "mock_best", "mock_last", "to_redo", ...(deck.forms || []).map((f) => f.id + "_best"), ...deck.skills.map((s) => s.id)];
-    const lines = rows.map((r) => [r.name || "", r.login || "", r.user?.lastActive ? new Date(r.user.lastActive).toISOString() : "", r.s?.n || 0, r.s?.n ? pct(r.s.acc) : "",
+    const head = ["name", "login", "last_active", "minutes_7_days", "minutes_all_time", "answers", "right_pct", "mock_best", "mock_last", "to_redo", ...(deck.forms || []).map((f) => f.id + "_best"), ...deck.skills.map((s) => s.id)];
+    const lines = rows.map((r) => [r.name || "", r.login || "", r.user?.lastActive ? new Date(r.user.lastActive).toISOString() : "", Math.round(secsSince(r.user, daysAgoKey(6), course.id) / 60), Math.round(secsSince(r.user, "", course.id) / 60), r.s?.n || 0, r.s?.n ? pct(r.s.acc) : "",
       r.s?.mocks.length ? Math.max(...r.s.mocks.map((x) => x.score)) : "", r.s?.mocks.length ? r.s.mocks[r.s.mocks.length - 1].score : "", r.s ? missesOf(r.s.cards).length : "",
       ...(deck.forms || []).map((f) => { const t = (r.s?.mocks || []).filter((x) => x.form === f.id); return t.length ? Math.max(...t.map((x) => x.score)) : ""; }),
       ...deck.skills.map((s) => (r.s && r.s.sm[s.id].seen ? pct(r.s.sm[s.id].value) : ""))]);
@@ -1698,6 +1775,7 @@ async function handleUser(u) {
     profile.lastActive = now;
     if (me && u.ghId && !me.login && u.login) me.login = u.login;
     await backend.saveProgress(progressId(), profile).catch((e) => console.error(e));
+    if (me && !teacher) startUsage();
     let saved = null; try { saved = localStorage.getItem("ap-review-course"); } catch (e) { /* storage blocked */ }
     setCourse(params.get("course") || saved || myCourses()[0]?.id, false);
     route();
@@ -1748,6 +1826,17 @@ function seedDemo(s, people) {
       const picks = d.forms ? [d.forms.find((f) => f.col && f.date), d.forms.filter((f) => f.date && !f.col).pop() || d.forms[d.forms.length - 1]].filter(Boolean) : [null];
       const mocks = d.mock && rnd() < 0.7 ? picks.map((f0) => { const tot = f0?.total ?? d.mock.total; return { ts: t, score: Math.round(tot * (0.45 + skill * 0.4)), total: tot, a: 0, b: 0, minutes: 21, form: f0 ? f0.id : null, items: [] }; }) : [];
       s.progress[sid] = { firstSeen: t - DAY, lastActive: t - Math.floor(rnd() * 4) * DAY, pwSet: rnd() < 0.6, decks: { [d.id]: { cards, mocks } } };
+      // Example time on the site: a few sessions on some of the last 14 days.
+      const tm = { days: {}, sessions: [] };
+      for (let k = 13; k >= 0; k--) {
+        if (rnd() < 0.45) continue;
+        const start = new Date(Date.now() - k * DAY); start.setHours(15 + Math.floor(rnd() * 5), Math.floor(rnd() * 60), 0, 0);
+        const secs = 60 * (5 + Math.floor(rnd() * 40)), st0 = +start;
+        if (st0 + secs * 1000 > Date.now()) continue;
+        tm.sessions.push({ start: st0, end: st0 + secs * 1000 + 60000 * Math.floor(rnd() * 6), s: secs, c: c.id });
+        tm.days[dayKey(st0)] = { s: secs, c: { [c.id]: secs } };
+      }
+      s.progress[sid].time = tm;
     }
   }
   s.requests["2000099"] = { login: "example-new-account", name: "Example New Account", ts: Date.now() - 3600000 };

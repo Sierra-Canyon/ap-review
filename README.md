@@ -12,6 +12,7 @@ A review site for AP courses. Students sign in with GitHub and see the courses o
 | AP World History: Modern | B, C, D (Ms. Dias) | all nine units | 903 | 71 topic quizzes (1.1 to 9.9) and 11 unit assessments (2 each for Units 2 and 3) |
 | AP Calculus AB | (another teacher) | all eight AB units | 966 | 81 topic quizzes and 8 unit tests |
 | AP U.S. Government and Politics | B, H (Ms. Salter) | all five units; no dates yet | 730 | 60 topic quizzes (1.1 to 5.13) and 5 unit tests |
+| AP Precalculus | (sections to come) | all four units (1 to 3 are on the AP exam); no dates yet | 530 | 58 topic quizzes (1.1 to 4.14) and 4 unit tests |
 
 The mocks are written only for the mocks: none of their items appear in review, so a mock score shows what a student does on questions they have not practiced.
 
@@ -35,6 +36,17 @@ All five units of the CED (fall 2026), for Ms. Salter's Periods B and H on one d
 - **Topic quizzes** (60): 8 multiple choice and a 3-part concept application, 11 points. **Unit tests** (5): the AP exam in miniature, 20 multiple choice and two free-response questions (one concept application or quantitative analysis, one SCOTUS comparison or argument essay), 27 to 30 points. None of their sources, data, or scenarios is in review, and no two forms share one. Forms: 580 multiple choice, 32/48/20 percent easy, moderate, difficult, 18 percent on a chart or table, key letters spread evenly on every form.
 - **Accuracy:** each writer checked its excerpts against the source page and its data against the cited table; a second reader per unit then solved all 1,280 multiple-choice questions blind (choices shuffled, no key), compared (every pick matched the key), fixed the wording problems and second defensible answers they found, and checked quoted sources and data against their pages (one data set, the Federal Register rule counts, was corrected from the Office of the Federal Register's own tables). `tools/check-gov.mjs` checks shapes, cites, rubric points, `difficulty`, and the writing rules (`node tools/check-gov.mjs decks/gov/*.js decks/gov-topic/*.js decks/gov-mocks/*.js`); `tools/e2e-gov.mjs` takes a unit test and a topic quiz in Chromium.
 - **No dates yet:** there is no countdown. When Ms. Salter sends dates, add `{ name, date }` entries to `dates` in `decks/gov.js` (next first) and a `date` on the forms.
+
+## AP Precalculus
+
+All four units of the CED, in `decks/precalc/` (review), `decks/precalc-topic/` (a quiz per topic) and `decks/precalc-tests/` (a test per unit). Units 1 to 3 are on the AP exam; Unit 4 (parameters, vectors, matrices) is taught but not tested, and its focus menu has no exam button. Built like AP Calc: review that brings back misses, then **Quizzes and tests**. No sections yet (step 17 of `SETUP.md`), so only the admin sees the course for now.
+
+- **Modeled on Albert (11/21).** A reader per unit went through all 684 of Albert's AP Precalculus practice questions (every stem, solution, and graph) and its 20 free-response questions, and wrote pattern notes in `../private/albert-notes/precalc-u<N>.md`: counts and difficulty by topic, what makes the hard ones hard, the stimulus mix, the calculator share, and what each question uses. Every question here is new: no setup repeats Albert's, and none repeats between review and the forms.
+- **Review** (530): 470 multiple choice and 20 free-response questions (60 parts). Every topic has at least 60 percent as many multiple-choice questions as Albert's practice for it. Difficulty is 48/34/19 percent easy, moderate, difficult (Albert's is 48/33/19); graphs and tables are on 23 to 41 percent of a unit's items, near Albert's share for that unit; the key is the longest choice in 10 percent of items and the shortest in 17 percent, at 1.03 times the wrong choices' length. Free response covers the four AP types (Function Concepts, Modeling a Non-Periodic Context, Modeling a Periodic Context, Symbolic Manipulations), 6 points each, split into parts the way the AP scores them.
+- **Topic quizzes** (58): 6 multiple choice and one free-response question of 3 or 4 points for each topic, 1.1 to 4.14.
+- **Unit tests** (4): 27 points: Section I, 10 multiple choice without a calculator then 5 with; Section II, two 6-point free-response questions in the AP's types for the unit, the calculator one first.
+- Every question says **Calculator** or **No calculator**; calculator answers are to three decimal places, as on the exam. Math is LaTeX, graphs are drawn by `plot.js` (polar curves from computed points), and tables are source tables.
+- **Accuracy:** every key, wrong choice, and scoring number was checked by computation (sympy), and a second reader solved all 878 multiple-choice questions blind (choices shuffled, no key); each of its four disagreements was checked by hand and the key was right. `tools/check-precalc.mjs` checks shapes, point totals, topics, formulas, and the writing rules (`review decks/precalc/*.js`, `quiz decks/precalc-topic/*.js`, `test decks/precalc-tests/*.js`); `tools/e2e-precalc.mjs` runs a review set, a quiz and a unit test in Chromium.
 
 ## AP Calculus AB
 

@@ -1,0 +1,97 @@
+// AP Precalculus topic quiz, 2.10 Inverses of Exponential Functions.
+
+export const sets = {
+  "p210-s1": {
+    name: "A table of a logarithmic function",
+    label: "Table",
+    intro: String.raw`The function $h$ is the inverse of an exponential function $k$. Selected values of $h$ are given in the table below.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["$x$", "$1$", "$3$", "$9$", "$27$", "$81$"], rows: [["$h(x)$", "$5$", "$7$", "$9$", "$11$", "$13$"]] } }] }],
+  },
+  "p210-s2": {
+    name: "An exponential function and its inverse",
+    label: "Free response",
+    intro: String.raw`The function $f$ is given by $f(x) = 2 \cdot 5^{x}$ for all real numbers $x$. Answer each part without a calculator, and show the work that leads to each answer.`,
+    sources: [],
+  },
+};
+
+export default {
+  forms: [{
+    id: "p210",
+    name: "Topic 2.10 Quiz: Inverses of Exponential Functions",
+    group: "Unit 2: Exponential and Logarithmic Functions",
+    items: [
+      { id: "p210-m01", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy",
+        question: String.raw`The graph of $y = \log_{6} x$ is reflected over the line $y = x$. Which equation describes the new graph?`,
+        choices: [String.raw`$y = 6^{x}$`, String.raw`$y = -\log_{6} x$`, String.raw`$y = \log_{6}(-x)$`, String.raw`$y = \log_{x} 6$`],
+        why: [
+          String.raw`Reflecting a graph over $y = x$ gives the graph of the inverse. The inverse of $y = \log_{6} x$ is $y = 6^{x}$.`,
+          String.raw`$y = -\log_{6} x$ is the reflection over the $x$-axis, not over $y = x$.`,
+          String.raw`$y = \log_{6}(-x)$ is the reflection over the $y$-axis, not over $y = x$.`,
+          String.raw`$y = \log_{x} 6$ swaps the base and the argument of the log. Reflecting over $y = x$ swaps $x$ and $y$: $x = \log_{6} y$, so $y = 6^{x}$.`,
+        ], answer: 0 },
+      { id: "p210-m02", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "moderate",
+        question: String.raw`The function $f$ is given by $f(x) = 2^{x + 1}$. Which of the following is $f^{-1}(x)$?`,
+        choices: [String.raw`$\log_{2} x - 1$`, String.raw`$\log_{2}(x - 1)$`, String.raw`$\log_{2} x + 1$`, String.raw`$\log_{2}(x + 1)$`],
+        why: [
+          String.raw`Write $x = 2^{y + 1}$ and solve for $y$: $y + 1 = \log_{2} x$, so $f^{-1}(x) = \log_{2} x - 1$. Check: $f(2) = 8$ and $\log_{2} 8 - 1 = 2$.`,
+          String.raw`$\log_{2}(x - 1)$ subtracts $1$ from $x$ before taking the log. The $+1$ is in the exponent, so it is undone after the log: $y + 1 = \log_{2} x$.`,
+          String.raw`$\log_{2} x + 1$ keeps the sign of the shift. Undoing $+1$ means subtracting $1$. Check: $\log_{2} 8 + 1 = 4$, not $2$.`,
+          String.raw`$\log_{2}(x + 1)$ moves the shift into the argument with its sign unchanged. Check: $\log_{2} 9 \ne 2$.`,
+        ], answer: 0 },
+      { id: "p210-m03", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy", set: "p210-s1",
+        question: String.raw`Which statement describes the pattern in the values of $h$?`,
+        choices: [
+          String.raw`When $x$ is multiplied by $3$, $h(x)$ increases by $2$.`,
+          String.raw`When $x$ increases by $2$, $h(x)$ is multiplied by $3$.`,
+          String.raw`When $x$ is multiplied by $3$, $h(x)$ is multiplied by $2$.`,
+          String.raw`When $x$ increases by $3$, $h(x)$ increases by $2$.`,
+        ],
+        why: [
+          String.raw`The inputs $1, 3, 9, 27, 81$ are each $3$ times the one before, and the outputs $5, 7, 9, 11, 13$ each rise by $2$. Equal factors in the input with equal differences in the output is the pattern of a logarithmic function.`,
+          String.raw`This is the pattern of the exponential function $k$, the inverse of $h$. For $h$ the inputs grow by a factor and the outputs by a constant amount.`,
+          String.raw`The outputs do not double: $\dfrac{7}{5}$ and $\dfrac{9}{7}$ are not $2$. They increase by $2$ each time.`,
+          String.raw`The inputs do not increase by $3$: from $3$ to $9$ is an increase of $6$, and from $9$ to $27$ is $18$. They are multiplied by $3$.`,
+        ], answer: 0 },
+      { id: "p210-m04", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "difficult", set: "p210-s1",
+        question: String.raw`Which of the following is an expression for $k(x)$?`,
+        choices: [String.raw`$3^{(x - 5)/2}$`, String.raw`$3^{2(x - 5)}$`, String.raw`$\dfrac{3^{x} - 5}{2}$`, String.raw`$2 \cdot 3^{x} + 5$`],
+        why: [
+          String.raw`The table fits $h(x) = 5 + 2\log_{3} x$: for example, $h(27) = 5 + 2(3) = 11$. Solve $x = 5 + 2\log_{3} y$: $\log_{3} y = \dfrac{x - 5}{2}$, so $k(x) = 3^{(x - 5)/2}$. Check: $k(11) = 3^{3} = 27$.`,
+          String.raw`$3^{2(x - 5)}$ multiplies by $2$ instead of dividing. Check: $k(7)$ should be $3$, but $3^{2(2)} = 81$.`,
+          String.raw`$\dfrac{3^{x} - 5}{2}$ undoes the steps in the wrong order. The log is the innermost step of $h$, so it is undone last. Check: at $x = 5$ this gives $119$, not $1$.`,
+          String.raw`$2 \cdot 3^{x} + 5$ keeps the $2$ and the $5$ of $h$ and only trades the log for an exponential. Check: at $x = 5$ this gives $491$, not $1$.`,
+        ], answer: 0 },
+      { id: "p210-m05", type: "mcq", skill: "u2", topic: "2.10", calc: false, difficulty: "easy",
+        question: String.raw`The function $f$ is given by $f(x) = 7^{x}$, and $g$ is the inverse of $f$. What is the value of $g\left(\dfrac{1}{49}\right)$?`,
+        choices: ["$-2$", "$2$", String.raw`$-\frac{1}{2}$`, String.raw`$7^{1/49}$`],
+        why: [
+          String.raw`$g(x) = \log_{7} x$, so $g\left(\dfrac{1}{49}\right)$ is the exponent with $7^{c} = \dfrac{1}{49} = 7^{-2}$. So $c = -2$.`,
+          String.raw`$7^{2} = 49$, not $\dfrac{1}{49}$. A reciprocal needs a negative exponent.`,
+          String.raw`$-\frac{1}{2}$ treats the exponent for a reciprocal as $\frac{1}{2}$ with a minus sign. Check: $7^{-1/2} = \dfrac{1}{\sqrt{7}}$, not $\dfrac{1}{49}$.`,
+          String.raw`$7^{1/49}$ is $f\left(\dfrac{1}{49}\right)$, the value of $f$, not of its inverse.`,
+        ], answer: 0 },
+      { id: "p210-m06", type: "mcq", skill: "u2", topic: "2.10", calc: true, difficulty: "moderate",
+        question: String.raw`The function $f$ is given by $f(x) = 4e^{0.3x}$, and $g$ is the inverse of $f$. What is the value of $g(10)$, to the nearest thousandth?`,
+        choices: ["$3.054$", "$80.342$", "$1.919$", "$5.973$"],
+        why: [
+          String.raw`$g(10)$ is the $x$ with $4e^{0.3x} = 10$. Then $e^{0.3x} = 2.5$, so $x = \dfrac{\ln 2.5}{0.3} \approx 3.054$.`,
+          String.raw`$80.342$ is $f(10) = 4e^{3}$, the value of $f$, not of its inverse.`,
+          String.raw`$1.919$ is $\dfrac{\ln 10}{1.2}$, which multiplies the $4$ into the exponent instead of dividing both sides by $4$.`,
+          String.raw`$5.973$ is $\dfrac{\ln 6}{0.3}$, which subtracts $4$ from $10$. The $4$ multiplies $e^{0.3x}$, so divide by $4$.`,
+        ], answer: 0 },
+      { id: "p210-f1a", type: "frq", skill: "u2", topic: "2.10", calc: false, set: "p210-s2", part: "(a)",
+        prompt: String.raw`Find an expression for $f^{-1}(x)$.`,
+        rows: [{ name: "Inverse", earns: String.raw`$f^{-1}(x) = \log_{5}\left(\dfrac{x}{2}\right)$, or an equivalent expression, with supporting work.` }],
+        solution: String.raw`Write $x = 2 \cdot 5^{y}$ and solve for $y$: $5^{y} = \dfrac{x}{2}$, so $y = \log_{5}\left(\dfrac{x}{2}\right)$. Then $f^{-1}(x) = \log_{5}\left(\dfrac{x}{2}\right)$, which can also be written $\log_{5} x - \log_{5} 2$.` },
+      { id: "p210-f1b", type: "frq", skill: "u2", topic: "2.10", calc: false, set: "p210-s2", part: "(b)",
+        prompt: String.raw`Find the value of $f^{-1}(50)$.`,
+        rows: [{ name: "Inverse value", earns: String.raw`$f^{-1}(50) = 2$, with supporting work.` }],
+        solution: String.raw`$f^{-1}(50) = \log_{5}\left(\dfrac{50}{2}\right) = \log_{5} 25 = 2$. Check: $f(2) = 2 \cdot 25 = 50$.` },
+      { id: "p210-f1c", type: "frq", skill: "u2", topic: "2.10", calc: false, set: "p210-s2", part: "(c)",
+        prompt: String.raw`For which real numbers $x$ is $f\left(f^{-1}(x)\right) = x$? Give a reason for your answer.`,
+        rows: [{ name: "Values with reason", earns: String.raw`For $x > 0$, because $f^{-1}(x)$ is defined only on the range of $f$, and $2 \cdot 5^{x} > 0$ makes that range $x > 0$.` }],
+        solution: String.raw`$f\left(f^{-1}(x)\right) = x$ wherever $f^{-1}(x)$ is defined. The domain of $f^{-1}$ is the range of $f$. Since $5^{x} > 0$ for every real $x$, $f(x) = 2 \cdot 5^{x}$ takes every positive value and no other, so the range of $f$ is $x > 0$. The equation holds for all $x > 0$; for $x \le 0$, $\log_{5}\left(\dfrac{x}{2}\right)$ is undefined.` },
+    ],
+  }],
+};

@@ -1,0 +1,98 @@
+// AP Precalculus topic quiz, Topic 2.2: Change in Linear and Exponential Functions.
+
+export const sets = {
+  "p202-s1": {
+    name: "An exponential function in a table",
+    label: "Table",
+    intro: String.raw`The function $f$ is exponential. Selected values of $f$ are given in the table.`,
+    sources: [{ title: "", blocks: [{ table: { head: ["$x$", "$1$", "$3$", "$5$", "$7$"], rows: [["$f(x)$", "$2$", "$18$", "$162$", "$1{,}458$"]] } }] }],
+  },
+  "p202-s2": {
+    name: "A growing town",
+    label: "Free response",
+    intro: String.raw`A town had a population of $12{,}000$ at the start of $2020$ and a population of $13{,}230$ at the start of $2022$. Let $t$ be the number of years since the start of $2020$.`,
+    sources: [{ title: "", blocks: [{ p: "Answer each part without a calculator. Show the work that leads to each answer." }] }],
+  },
+};
+
+export default {
+  forms: [{
+    id: "p202",
+    name: "Topic 2.2 Quiz: Linear and Exponential Change",
+    group: "Unit 2: Exponential and Logarithmic Functions",
+    items: [
+      { id: "p202-m01", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "easy",
+        question: String.raw`A geometric sequence has $a_2 = 45$ and common ratio $3$. Which function $f$ satisfies $f(n) = a_n$ for every term?`,
+        choices: [String.raw`$f(x) = 45(3)^{x - 2}$`, String.raw`$f(x) = 45(3)^{x}$`, String.raw`$f(x) = 45(3)^{x + 2}$`, String.raw`$f(x) = 3(45)^{x - 2}$`],
+        why: [
+          String.raw`In point-ratio form, a function through $(2, 45)$ that is multiplied by $3$ each time $x$ increases by $1$ is $f(x) = 45(3)^{x - 2}$. Check: $f(2) = 45$.`,
+          String.raw`$45(3)^{x}$ gives $f(0) = 45$, so it treats $45$ as the term at $n = 0$. The given term is $a_2$.`,
+          String.raw`$45(3)^{x + 2}$ gives $f(-2) = 45$. The shift must make the exponent $0$ at $x = 2$, so it is $x - 2$.`,
+          String.raw`$3(45)^{x - 2}$ swaps the term and the ratio. The ratio is the base and the known term is the coefficient.`,
+        ], answer: 0 },
+      { id: "p202-m02", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "easy", set: "p202-s1",
+        question: String.raw`By what factor is $f(x)$ multiplied each time $x$ increases by $1$?`,
+        choices: ["$3$", "$9$", "$4.5$", "$8$"],
+        why: [
+          String.raw`Each time $x$ increases by $2$, $f$ is multiplied by $\dfrac{18}{2} = 9$. If $b$ is the factor for an increase of $1$, then $b^{2} = 9$, so $b = 3$.`,
+          String.raw`$9$ is the factor over an input interval of length $2$, since the table's inputs are $2$ apart.`,
+          String.raw`$4.5$ divides the factor $9$ by $2$. Two steps of $b$ multiply to $b^{2}$, so take the square root instead.`,
+          String.raw`$8$ is $\dfrac{18 - 2}{2}$, the average rate of change from $x = 1$ to $x = 3$. That is a difference per unit, not a factor.`,
+        ], answer: 0 },
+      { id: "p202-m03", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "moderate", set: "p202-s1",
+        question: String.raw`What is $f(0)$?`,
+        choices: [String.raw`$\frac{2}{3}$`, "$2$", String.raw`$\frac{2}{9}$`, "$-6$"],
+        why: [
+          String.raw`$f$ is multiplied by $3$ for each increase of $1$ in $x$ (since $3^{2} = 9$). Going back one step from $f(1) = 2$ divides by $3$: $f(0) = \dfrac{2}{3}$.`,
+          String.raw`$2$ is the first value in the table, but it is $f(1)$, not $f(0)$.`,
+          String.raw`$\dfrac{2}{9}$ divides by the two-step factor $9$. From $x = 1$ back to $x = 0$ is one step.`,
+          String.raw`$-6$ steps back linearly with the slope $8$ from $x = 1$ to $x = 3$: $2 - 8 = -6$. An exponential function changes by a factor, and its values stay positive here.`,
+        ], answer: 0 },
+      { id: "p202-m04", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "easy",
+        question: String.raw`Which of the following describes a function that is exponential?`,
+        choices: [
+          String.raw`Its output is multiplied by $0.9$ each time its input increases by $2$.`,
+          String.raw`Its output decreases by $0.9$ each time its input increases by $2$.`,
+          String.raw`Its output is multiplied by $0.9$ each time its input is multiplied by $2$.`,
+          String.raw`Its output increases by $0.9$ each time its input is multiplied by $2$.`,
+        ],
+        why: [
+          String.raw`Over equal-length input intervals, an exponential function's output changes by a constant factor. Here the factor is $0.9$ over every interval of length $2$.`,
+          String.raw`A constant difference over equal-length input intervals describes a linear function.`,
+          String.raw`Multiplying the input does not give equal-length input intervals. This pattern describes a power function such as $x^{k}$, not an exponential one.`,
+          String.raw`Adding a constant to the output each time the input is multiplied by a constant is the pattern of a logarithmic function.`,
+        ], answer: 0 },
+      { id: "p202-m05", type: "mcq", skill: "u2", topic: "2.2", calc: true, difficulty: "moderate",
+        question: String.raw`An exponential function $f$ has $f(1) = 5$ and $f(5) = 80$. What is $f(2.5)$, to the nearest thousandth?`,
+        choices: ["$14.142$", "$33.125$", "$40$", "$320$"],
+        why: [
+          String.raw`Write $f(x) = ab^{x}$. Then $b^{4} = \dfrac{80}{5} = 16$, so $b = 2$ and $a = \dfrac{5}{2} = 2.5$. So $f(2.5) = 2.5(2)^{2.5} \approx 14.142$.`,
+          String.raw`$33.125$ is a linear estimate: $5 + \dfrac{75}{4}(1.5)$. An exponential function changes by a factor, not by equal differences.`,
+          String.raw`$40$ uses $b = \dfrac{16}{4} = 4$. Four steps multiply to $b^{4}$, so $b$ is the fourth root of $16$, not $16$ divided by $4$.`,
+          String.raw`$320$ uses $b = 16$, the factor over four units of input, as the factor for one unit.`,
+        ], answer: 0 },
+      { id: "p202-m06", type: "mcq", skill: "u2", topic: "2.2", calc: false, difficulty: "difficult",
+        stem: String.raw`A linear function $f$ and an exponential function $g$ satisfy $f(1) = g(1) = 6$ and $f(3) = g(3) = 54$.`,
+        question: String.raw`Which of the following are true? I. $f(0) < g(0)$ II. $f(2) > g(2)$ III. $f(4) > g(4)$`,
+        choices: ["I and II only", "II only", "I, II, and III", "II and III only"],
+        why: [
+          String.raw`$f$ has slope $\dfrac{54 - 6}{2} = 24$, so $f(0) = -18$, $f(2) = 30$, $f(4) = 78$. For $g$, $b^{2} = 9$, so $b = 3$ and $g(x) = 2(3)^{x}$: $g(0) = 2$, $g(2) = 18$, $g(4) = 162$. I and II are true, and III is false.`,
+          String.raw`I is also true: $f(0) = 6 - 24 = -18$ and $g(0) = \dfrac{6}{3} = 2$.`,
+          String.raw`III is false. Past $x = 3$ the exponential function grows faster: $g(4) = 162$ and $f(4) = 78$.`,
+          String.raw`I is true and III is false: $f(0) = -18 < 2 = g(0)$, and $g(4) = 162 > 78 = f(4)$.`,
+        ], answer: 0 },
+      { id: "p202-f1a", type: "frq", skill: "u2", topic: "2.2", calc: false, set: "p202-s2", part: "(a)",
+        prompt: String.raw`Write a linear function $L$ that models the population $t$ years after the start of $2020$ and agrees with both given values.`,
+        rows: [{ name: "Linear model", earns: String.raw`$L(t) = 12{,}000 + 615t$, with the slope found as $\dfrac{13{,}230 - 12{,}000}{2} = 615$.` }],
+        solution: String.raw`The slope is $\dfrac{13{,}230 - 12{,}000}{2 - 0} = \dfrac{1{,}230}{2} = 615$ people per year, and $L(0) = 12{,}000$, so $L(t) = 12{,}000 + 615t$.` },
+      { id: "p202-f1b", type: "frq", skill: "u2", topic: "2.2", calc: false, set: "p202-s2", part: "(b)",
+        prompt: String.raw`Write an exponential function $E$ of the form $E(t) = ab^{t}$ that models the population and agrees with both given values.`,
+        rows: [{ name: "Exponential model", earns: String.raw`$E(t) = 12{,}000(1.05)^{t}$, with $b^{2} = \dfrac{13{,}230}{12{,}000} = 1.1025$ so $b = 1.05$.` }],
+        solution: String.raw`$E(0) = a = 12{,}000$. Then $12{,}000b^{2} = 13{,}230$, so $b^{2} = 1.1025$ and $b = 1.05$ (taking $b > 0$). So $E(t) = 12{,}000(1.05)^{t}$.` },
+      { id: "p202-f1c", type: "frq", skill: "u2", topic: "2.2", calc: false, set: "p202-s2", part: "(c)",
+        prompt: String.raw`Over every $2$-year interval, how does each model's population change? Give the change for $L$ and for $E$.`,
+        rows: [{ name: "Both patterns", earns: String.raw`$L$ increases by $1{,}230$ people over every $2$-year interval, and $E$ is multiplied by $1.1025$ (a $10.25\%$ increase) over every $2$-year interval.` }],
+        solution: String.raw`A linear function changes by equal differences over equal-length intervals: $L(t + 2) - L(t) = 2(615) = 1{,}230$. An exponential function changes by equal factors: $\dfrac{E(t + 2)}{E(t)} = 1.05^{2} = 1.1025$, an increase of $10.25\%$.` },
+    ],
+  }],
+};

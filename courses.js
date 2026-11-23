@@ -7,6 +7,7 @@ import csa from "./decks/csa.js";
 import whap from "./decks/whap.js";
 import calc from "./decks/calc.js";
 import gov from "./decks/gov.js";
+import precalc from "./decks/precalc.js";
 
 export const courses = [
   { id: "csp", name: "AP Computer Science Principles", short: "AP CSP", period: "Period D", book: true, decks: [cspQ3] },
@@ -28,6 +29,10 @@ export const courses = [
   // username on the roster signs in with GitHub; everyone else uses a school email and the shared first password.
   { id: "gov-b", name: "AP U.S. Government and Politics", short: "AP Gov (B)", period: "Period B", book: false, passwords: true, decks: [gov] },
   { id: "gov-h", name: "AP U.S. Government and Politics", short: "AP Gov (H)", period: "Period H", book: false, passwords: true, decks: [gov] },
+  // AP Precalculus (11/22): built before its teacher and sections are set. No one is on its roster yet, so only an admin
+  // sees it. When the sections are known, give each its own line on the same deck (as AP World and AP Gov) and add the
+  // ids to deckCourses in firestore.rules.
+  { id: "precalc", name: "AP Precalculus", short: "AP Precalc", period: "Sections to come", book: false, passwords: true, decks: [precalc] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

@@ -30,7 +30,8 @@ async function locImage(p) {
   if (!res.ok) throw new Error(`${p.file}: ${res.status} from loc.gov item ${p.loc}`);
   const j = await res.json();
   const rights = [].concat(j.item?.rights_advisory || j.item?.rights || []).join(" ");
-  if (!/no known restrictions/i.test(rights)) throw new Error(`${p.file}: loc.gov item ${p.loc} is not marked "No known restrictions" (${rights.slice(0, 120) || "no rights statement"}); do not use it`);
+  // pre1930: a map or print published before 1930 whose page gives no rights advisory (Geography and Map Division items)
+  if (!p.pre1930 && !/no known restrictions/i.test(rights)) throw new Error(`${p.file}: loc.gov item ${p.loc} is not marked "No known restrictions" (${rights.slice(0, 120) || "no rights statement"}); do not use it`);
   if (p.src) return p.src; // the image file URL the picture's scout opened and looked at
   const urls = [].concat(j.item?.image_url || j.image_url || []).filter((u) => /\.(jpg|jpeg|png|gif)/i.test(u));
   const width = (u) => +(u.match(/[#&?]w=(\d+)/)?.[1] || 0);

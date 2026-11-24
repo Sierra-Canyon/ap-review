@@ -1,7 +1,8 @@
 // Draws the site's history maps as SVG from Natural Earth's public-domain land outlines (the world-atlas package),
 // with only what each question needs on top: places, routes, years, and region names. HANDOFF.md, section 2e.
 //
-// Usage: node tools/build-maps.mjs            (writes decks/whap/maps.js from the specs in tools/maps/whap.mjs)
+// Usage: node tools/build-maps.mjs            (writes decks/whap/maps.js from the specs in tools/maps/whap.mjs and whap-*.mjs)
+//        node tools/build-maps.mjs apush      (writes decks/apush/maps.js from tools/maps/apush-*.mjs)
 //
 // A spec (see tools/maps/whap.mjs):
 //   { id, alt, caption, bbox: [west, south, east, north], width: 640, height: 420,
@@ -10,6 +11,12 @@
 //     regions: [{ name, at: [lon, lat], size: 12 }],   names of seas, deserts, and states, in italics, no borders
 //     legend: [{ kind: "route" | "route2" | "sea" | "city" | "major" | "battle", text }],
 //     checked: ["the two references the places and routes were checked against"] }
+//   For U.S. maps (AP U.S. History) a spec may also have:
+//     states: true                       modern state outlines from the us-atlas package (Census Bureau, public domain), drawn
+//                                        thin as a reference grid; say so in the caption ("present-day state lines shown")
+//     fill: [{ kind: "a" | "b" | "c" | "d", states: ["Virginia", ...] }]   shades whole present-day states: a is solid,
+//                                        b hatched, c gray, d dotted, so the classes differ by pattern as well as shade
+//     legend kinds "a" to "d" draw a shaded square to match
 //
 // The output is markup the site trusts (it comes from this repo, never from a student), styled by the .m-* rules in styles.css,
 // so it follows light and dark mode. Places are drawn only as points with names: the site draws no borders it cannot check.
@@ -26,6 +33,15 @@ const land = feature(JSON.parse(readFileSync(require.resolve("world-atlas/land-5
 // that cancels the other land; no map here reaches it, so it is left out.
 land.features[0].geometry.coordinates = land.features[0].geometry.coordinates.filter((poly) => poly[0].some(([, lat]) => lat > -60));
 const TOL = 0.9, MIN_AREA = 4;
+// Present-day U.S. states (us-atlas, from the Census Bureau's cartographic boundaries), for AP U.S. History maps.
+let usStates = null;
+function states() {
+  if (!usStates) {
+    const topo = JSON.parse(readFileSync(require.resolve("us-atlas/states-10m.json"), "utf8"));
+    usStates = feature(topo, "states").features;
+  }
+  return usStates;
+}
 
 // Douglas-Peucker on one ring of screen points
 function dp(pts, tol) {
@@ -64,7 +80,8 @@ function simplePath(proj, geo) {
 }
 // The specs: tools/maps/whap.mjs, plus any tools/maps/whap-*.mjs (one per batch of writers, so two writers never edit one file).
 import { readdirSync } from "node:fs";
-const specFiles = ["whap.mjs", ...readdirSync(new URL("./maps/", import.meta.url)).filter((f) => /^whap-.+\.mjs$/.test(f)).sort()];
+const COURSE = process.argv[2] && !process.argv[2].startsWith("-") ? process.argv[2] : "whap";
+const specFiles = [...(COURSE === "whap" ? ["whap.mjs"] : []), ...readdirSync(new URL("./maps/", import.meta.url)).filter((f) => new RegExp(`^${COURSE}-.+\\.mjs$`).test(f)).sort()];
 const specs = (await Promise.all(specFiles.map((f) => import("./maps/" + f)))).flatMap((m) => m.maps);
 const dupIds = specs.map((s) => s.id).filter((id, i, a) => a.indexOf(id) !== i);
 if (dupIds.length) throw new Error("two map specs share an id: " + dupIds.join(", "));
@@ -93,6 +110,20 @@ export function drawMap(m) {
   out.push(`<rect class="m-water" x="0" y="0" width="${W}" height="${H}"/>`);
   out.push(`<path class="m-grat" d="${path(geoGraticule10())}"/>`);
   out.push(`<path class="m-land" d="${simplePath(proj, land)}"/>`);
+  if (m.states || m.fill?.length) {
+    const all = states(), byName = new Map(all.map((f) => [f.properties.name, f]));
+    out.push(`<defs><pattern id="${id}-hb" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)"><rect width="6" height="6" class="m-fb-bg"/><path d="M0,0V6" class="m-fb-line"/></pattern>` +
+      `<pattern id="${id}-hd" patternUnits="userSpaceOnUse" width="6" height="6"><rect width="6" height="6" class="m-fd-bg"/><circle cx="3" cy="3" r="1.3" class="m-fd-dot"/></pattern></defs>`);
+    for (const f of m.fill || []) {
+      for (const name of f.states) {
+        const g = byName.get(name);
+        if (!g) throw new Error(`${m.id}: no state named ${name}`);
+        const fillAttr = f.kind === "b" ? ` style="fill:url(#${id}-hb)"` : f.kind === "d" ? ` style="fill:url(#${id}-hd)"` : "";
+        out.push(`<path class="m-f${f.kind}" d="${simplePath(proj, g)}"${fillAttr}/>`);
+      }
+    }
+    if (m.states) out.push(`<path class="m-state" d="${simplePath(proj, { type: "FeatureCollection", features: all })}"/>`);
+  }
   for (const rg of m.regions || []) {
     const [x, y] = pt(rg.at);
     out.push(`<text class="m-region" x="${x}" y="${y}" text-anchor="middle"${rg.size ? ` font-size="${rg.size}"` : ""}>${esc(rg.name)}</text>`);
@@ -120,6 +151,7 @@ export function drawMap(m) {
     m.legend.forEach((it, i) => {
       const cy = ly + 5 + lh * i + lh / 2, x0 = lx + 10;
       if (["route", "route2", "sea"].includes(it.kind)) out.push(`<path class="m-${it.kind}" d="M${x0},${cy}h24"/>`);
+      else if (/^[abcd]$/.test(it.kind)) out.push(`<rect class="m-f${it.kind}" x="${x0 + 4}" y="${cy - 6}" width="16" height="12"${it.kind === "b" ? ` style="fill:url(#${id}-hb)"` : it.kind === "d" ? ` style="fill:url(#${id}-hd)"` : ""}/>`);
       else if (it.kind === "battle") out.push(`<path class="m-battle" d="M${x0 + 8},${cy - 4.5}l9,9M${x0 + 8},${cy + 4.5}l9,-9"/>`);
       else out.push(`<circle class="m-${it.kind}" cx="${x0 + 12}" cy="${cy}" r="${it.kind === "major" ? 4.6 : 3.4}"/>`);
       out.push(`<text class="m-key" x="${x0 + 32}" y="${cy + 4}">${esc(it.text)}</text>`);
@@ -131,10 +163,10 @@ export function drawMap(m) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const lines = ["// Generated by tools/build-maps.mjs from tools/maps/whap.mjs. Do not edit by hand: change the spec and run it again.",
-    "// Land outlines: Natural Earth 1:50m (public domain), from the world-atlas package.", "export const maps = {"];
+  const lines = [`// Generated by tools/build-maps.mjs from tools/maps/${COURSE}*.mjs. Do not edit by hand: change the spec and run it again.`,
+    "// Land outlines: Natural Earth 1:50m (public domain), from the world-atlas package." + (COURSE === "whap" ? "" : " State lines: us-atlas (U.S. Census Bureau)."), "export const maps = {"];
   for (const m of specs) lines.push(`  ${JSON.stringify(m.id)}: ${JSON.stringify(drawMap(m))},`);
   lines.push("};", "");
-  writeFileSync(new URL("../decks/whap/maps.js", import.meta.url), lines.join("\n"));
-  console.log(`decks/whap/maps.js: ${specs.length} maps, ${Math.round(lines.join("\n").length / 1024)} KB`);
+  writeFileSync(new URL(`../decks/${COURSE}/maps.js`, import.meta.url), lines.join("\n"));
+  console.log(`decks/${COURSE}/maps.js: ${specs.length} maps, ${Math.round(lines.join("\n").length / 1024)} KB`);
 }

@@ -1,9 +1,13 @@
-// Downloads the pictures the AP World questions use into images/whap/, about 1200 pixels on the long side and under 300 KB.
-// Every picture here is public domain (The Met's Open Access images are released under CC0). HANDOFF.md, section 2e.
+// Downloads the pictures the history questions use into images/<course>/, about 1200 pixels on the long side and under 300 KB.
+// Every picture here is public domain: The Met's Open Access images (CC0), and Library of Congress prints and photographs
+// the Library marks "No known restrictions on publication" (AP U.S. History; the list is in tools/images/apush.mjs).
+// HANDOFF.md, section 2e.
 // Usage: node tools/fetch-images.mjs        (skips files already there; add --force to fetch again)
 // Resizing uses macOS's built-in sips. Elsewhere it uses sharp if installed (npm i -D sharp), or saves the file as is and says so.
 import { existsSync, writeFileSync, statSync, mkdirSync } from "node:fs";
+import { dirname } from "node:path";
 import { execFileSync } from "node:child_process";
+import { pictures as apush } from "./images/apush.mjs";
 
 export const pictures = [
   { file: "images/whap/paiza.jpg", met: 39624, title: "Safe Conduct Pass (Paiza) with Inscription in Phakpa Script, Yuan dynasty, late 13th century" },
@@ -19,15 +23,36 @@ export const pictures = [
   { file: "images/whap/peace-talks-1895.jpg", met: 55546, title: "Fuenken Tsuneshige, \"Negotiations after the Sino-Japanese War\", March 1895" },
 ];
 
-const force = process.argv.includes("--force");
-mkdirSync("images/whap", { recursive: true });
-for (const p of pictures) {
-  if (existsSync(p.file) && !force) { console.log(`${p.file}: already there`); continue; }
+// The Library of Congress's JSON view of an item (https://www.loc.gov/item/<id>/?fo=json): checks the rights advisory and
+// returns the largest image URL no wider than 2000 pixels.
+async function locImage(p) {
+  const res = await fetch(`https://www.loc.gov/item/${p.loc}/?fo=json`, { headers: { "User-Agent": "ap-review image fetch (school review site)" } });
+  if (!res.ok) throw new Error(`${p.file}: ${res.status} from loc.gov item ${p.loc}`);
+  const j = await res.json();
+  const rights = [].concat(j.item?.rights_advisory || j.item?.rights || []).join(" ");
+  if (!/no known restrictions/i.test(rights)) throw new Error(`${p.file}: loc.gov item ${p.loc} is not marked "No known restrictions" (${rights.slice(0, 120) || "no rights statement"}); do not use it`);
+  if (p.src) return p.src; // the image file URL the picture's scout opened and looked at
+  const urls = [].concat(j.item?.image_url || j.image_url || []).filter((u) => /\.(jpg|jpeg|png|gif)/i.test(u));
+  const width = (u) => +(u.match(/[#&?]w=(\d+)/)?.[1] || 0);
+  const pick = urls.filter((u) => width(u) && width(u) <= 2000).sort((a, b) => width(b) - width(a))[0] || urls[urls.length - 1];
+  if (!pick) throw new Error(`${p.file}: loc.gov item ${p.loc} lists no image`);
+  return pick.startsWith("//") ? "https:" + pick : pick;
+}
+async function metImage(p) {
   const obj = await (await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${p.met}`)).json();
   if (!obj.isPublicDomain) throw new Error(`${p.file}: The Met no longer lists object ${p.met} as public domain; do not use it`);
-  const res = await fetch(obj.primaryImage);
-  if (!res.ok) throw new Error(`${p.file}: ${res.status} from ${obj.primaryImage}`);
-  const tmp = p.file + ".orig.jpg";
+  return obj.primaryImage;
+}
+
+const force = process.argv.includes("--force");
+for (const p of [...pictures, ...apush]) {
+  if (existsSync(p.file) && !force) { console.log(`${p.file}: already there`); continue; }
+  mkdirSync(dirname(p.file), { recursive: true });
+  const url = p.loc ? await locImage(p) : await metImage(p);
+  const obj = { primaryImage: url };
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`${p.file}: ${res.status} from ${url}`);
+  const tmp = p.file + ".orig";
   writeFileSync(tmp, Buffer.from(await res.arrayBuffer()));
   let how = "saved as is";
   try {

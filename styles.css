@@ -469,6 +469,20 @@ svg.map .m-label { fill: var(--fg); font-weight: 700; paint-order: stroke; strok
 svg.map .m-region { fill: var(--muted); font-style: italic; letter-spacing: .04em; paint-order: stroke; stroke: var(--map-halo); stroke-width: 2.6px; stroke-linejoin: round; opacity: .95; }
 svg.map .m-legend rect { fill: var(--surface); stroke: var(--line); opacity: .94; }
 svg.map .m-key { fill: var(--fg); font-size: 12px; }
+/* U.S. maps: present-day state lines as a thin grid, and up to four shaded classes of states that differ by pattern too. */
+svg.map .m-state { fill: none; stroke: var(--map-coast); stroke-width: .5; stroke-linejoin: round; }
+svg.map .m-fa { fill: var(--accent); fill-opacity: .55; stroke: none; }
+svg.map .m-fb-bg { fill: var(--map-land); }
+svg.map .m-fb-line { stroke: var(--fg); stroke-width: 1.4; opacity: .55; }
+svg.map .m-fb { stroke: none; }
+svg.map .m-fc { fill: var(--muted); fill-opacity: .4; stroke: none; }
+svg.map .m-fd-bg { fill: var(--map-land); }
+svg.map .m-fd-dot { fill: var(--fg); opacity: .6; }
+svg.map .m-fd { stroke: none; }
+svg.map .m-legend rect.m-fa { fill: var(--accent); fill-opacity: .55; opacity: 1; }
+svg.map .m-legend rect.m-fc { fill: var(--muted); fill-opacity: .4; opacity: 1; }
+svg.map .m-legend rect.m-fb, svg.map .m-legend rect.m-fd { opacity: 1; }
+svg.map .m-legend rect.m-fa, svg.map .m-legend rect.m-fb, svg.map .m-legend rect.m-fc, svg.map .m-legend rect.m-fd { stroke: var(--fg); stroke-width: .6; }
 math[display="block"] { margin: 8px 0; overflow-x: auto; overflow-y: hidden; }
 .katex math { font-size: 1.08em; }
 

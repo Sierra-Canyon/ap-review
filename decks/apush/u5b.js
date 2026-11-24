@@ -78,7 +78,7 @@ export default [
       "Correct. Abraham Lincoln won the presidency in November 1860 on a Republican platform opposing slavery in the territories, and the Deep South states seceded in the weeks after.",
       "Fort Sumter came in April 1861, after both sources; it set off the war and a second wave of secession, not these documents.",
       "John Brown's raid in October 1859 deepened Southern fears, but secession came only after the 1860 election.",
-      "The Crittenden plan failed in Congress in early 1861, but Mississippi had already seceded on January 9, 1861.",
+      "The Senate's final vote against the Crittenden plan came in March 1861, after both sources; Mississippi had seceded on January 9, 1861.",
     ],
     answer: 0 },
 ];

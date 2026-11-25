@@ -21,7 +21,7 @@ const apportion2010 = {
     { kind: "d", text: "Lost 2 seats" },
   ],
   legendAt: "bottom-left", legendWidth: 190,
-  checked: ["U.S. Census Bureau, 2010 Census Apportionment Results, Table D2 (seats gained and lost by state)", "Congressional Research Service, House Apportionment 2010: States Gaining, Losing, and on the Margin (R41584, 2011)"],
+  checked: ["U.S. Census Bureau, 2010 Census Apportionment Results, Table D2 (seats gained and lost by state)", "Congressional Research Service, House Apportionment 2010: States Gaining, Losing, and on the Margin (R41584, January 13, 2011)"],
 };
 
 export const maps = [apportion2010];

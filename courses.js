@@ -8,6 +8,7 @@ import whap from "./decks/whap.js";
 import calc from "./decks/calc.js";
 import gov from "./decks/gov.js";
 import precalc from "./decks/precalc.js";
+import phys1 from "./decks/phys1.js";
 
 export const courses = [
   { id: "csp", name: "AP Computer Science Principles", short: "AP CSP", period: "Period D", book: true, decks: [cspQ3] },
@@ -33,6 +34,9 @@ export const courses = [
   // sees it. When the sections are known, give each its own line on the same deck (as AP World and AP Gov) and add the
   // ids to deckCourses in firestore.rules.
   { id: "precalc", name: "AP Precalculus", short: "AP Precalc", period: "Sections to come", book: false, passwords: true, decks: [precalc] },
+  // AP Physics 1 (11/25): built before its teacher and sections are set; only an admin sees it until a roster names it.
+  // When the sections are known, give each its own line on the same deck and add the ids to deckCourses.
+  { id: "phys1", name: "AP Physics 1", short: "AP Physics 1", period: "Sections to come", book: false, passwords: true, decks: [phys1] },
 ];
 export const courseById = (id) => courses.find((c) => c.id === id);
 export const coursesOf = (rosterEntry) => (rosterEntry?.courses?.length ? rosterEntry.courses : ["csp"]).filter((id) => courseById(id));

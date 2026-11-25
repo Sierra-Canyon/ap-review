@@ -1,0 +1,78 @@
+// AP Physics 1 topic quiz 3.4: conservation of energy.
+import { tablePulley } from "../../diagrams.js";
+import { bars } from "../../plot.js";
+const R = String.raw;
+
+const chart = (values, alt) => bars({ labels: ["K", "U", "E"], values, y: [0, 10], step: 2, width: 260, height: 190, yname: "Energy (J)", alt });
+
+export const sets = {
+  "q34-s1": { name: "Two blocks and a pulley", label: "Diagram", intro: R`A $2.0$ kg block rests on a frictionless horizontal table. A light string connects it over a frictionless pulley at the edge of the table to a $1.0$ kg block that hangs below the pulley. The blocks are released from rest.`, sources: [{ title: "", blocks: [{ svg: tablePulley({ m1: "2.0 kg", m2: "1.0 kg", alt: "A 2.0 kilogram block on a horizontal table is connected by a string over a pulley at the right edge of the table to a 1.0 kilogram block hanging below the pulley." }) }] }] },
+  "q34-s2": { name: "A ball thrown upward", label: "Bar charts", intro: R`A ball is thrown straight up from the ground. Just after it leaves the thrower's hand, the kinetic energy of the ball is $8$ J. Treat the ball and Earth as the system, take the ground as the zero of gravitational potential energy, and ignore air resistance. Each bar chart shows the kinetic energy $K$, the gravitational potential energy $U$, and the total energy $E$ of the system at the instant the ball is halfway to its highest point.`, sources: [{ title: "", blocks: [
+    { svg: chart([2, 6, 8], "Chart A. Three bars: K is 2 joules, U is 6 joules, and E is 8 joules."), caption: "Chart A" },
+    { svg: chart([4, 4, 8], "Chart B. Three bars: K is 4 joules, U is 4 joules, and E is 8 joules."), caption: "Chart B" },
+    { svg: chart([8, 0, 8], "Chart C. Three bars: K is 8 joules, U is 0, and E is 8 joules."), caption: "Chart C" },
+    { svg: chart([0, 8, 8], "Chart D. Three bars: K is 0, U is 8 joules, and E is 8 joules."), caption: "Chart D" }] }] },
+  "q34-s3": { name: "A child on a slide", label: "Free response", intro: R`A $25$ kg child slides from rest down a playground slide. The top of the slide is $2.0$ m above the bottom, and the child reaches the bottom with a speed of $4.0$ m/s.`, sources: [{ title: "", blocks: [{ p: R`Use $g = 9.8$ m/s$^2$.` }] }] },
+};
+
+const items = [
+  { id: "q34-m1", type: "mcq", skill: "u3", topic: "3.4", difficulty: "easy",
+    stem: R`A stone is dropped from rest from a bridge that is $20$ m above a river. Ignore air resistance.`,
+    question: R`What is the speed of the stone just before it reaches the water?`,
+    choices: [R`$19.8$ m/s`, R`$14.0$ m/s`, R`$196$ m/s`, R`$392$ m/s`],
+    why: [R`The stone and Earth form a closed system, so $mgh = \dfrac{1}{2}mv^2$ and $v = \sqrt{2gh} = \sqrt{2(9.8)(20)} = 19.8$ m/s.`,
+      R`$14.0$ m/s is $\sqrt{gh}$, which leaves out the factor of $2$ from $K = \dfrac{1}{2}mv^2$.`,
+      R`$196$ m/s is $gh$, which is $\dfrac{v^2}{2}$ and has not been solved for $v$.`,
+      R`$392$ m/s is $2gh$, which is $v^2$. The square root has not been taken.`], answer: 0 },
+  { id: "q34-m2", type: "mcq", skill: "u3", topic: "3.4", difficulty: "easy",
+    stem: R`An archer shoots an arrow straight up. Consider the system of the arrow and Earth, and ignore air resistance.`,
+    question: R`During which part of the motion is the mechanical energy of this system constant?`,
+    choices: [R`Only after the arrow leaves the bowstring, because then only gravity does work.`, R`The whole motion, including the launch, because gravity is a conservative force.`, R`Only while the arrow rises, because gravity does negative work then.`, R`Never, because the speed of the arrow keeps changing.`],
+    why: [R`While the bowstring pushes the arrow, the string is outside the system and does work on it. After the arrow leaves the string, gravity, which is internal to the arrow and Earth system, is the only force doing work, so the mechanical energy is constant.`,
+      R`During the launch the bowstring exerts a force on the arrow and does work on the system. The mechanical energy increases during that time.`,
+      R`Gravity is a conservative force on the way up and on the way down. The mechanical energy is constant after the launch for the whole flight.`,
+      R`A changing speed does not mean the mechanical energy changes. Kinetic energy is converted to potential energy while the total stays the same.`], answer: 0 },
+  { id: "q34-m3", type: "mcq", skill: "u3", topic: "3.4", difficulty: "moderate", set: "q34-s1",
+    question: R`What is the speed of the blocks after the hanging block has descended $0.60$ m?`,
+    choices: [R`$1.98$ m/s`, R`$3.43$ m/s`, R`$1.40$ m/s`, R`$2.42$ m/s`],
+    why: [R`Take both blocks and Earth as the system. The hanging block loses $(1.0)(9.8)(0.60) = 5.88$ J of potential energy, and both blocks gain kinetic energy at the same speed: $5.88 = \dfrac{1}{2}(2.0 + 1.0)v^2$, so $v = 1.98$ m/s.`,
+      R`$3.43$ m/s gives all of the energy to the hanging block, $5.88 = \dfrac{1}{2}(1.0)v^2$. The block on the table moves at the same speed and also gains kinetic energy.`,
+      R`$1.40$ m/s uses $5.88 = (2.0 + 1.0)v^2$, which leaves out the factor of $\dfrac{1}{2}$.`,
+      R`$2.42$ m/s gives all of the energy to the block on the table, $5.88 = \dfrac{1}{2}(2.0)v^2$, and leaves out the kinetic energy of the hanging block.`], answer: 0 },
+  { id: "q34-m4", type: "mcq", skill: "u3", topic: "3.4", difficulty: "moderate", set: "q34-s2",
+    question: R`Which bar chart is correct?`,
+    choices: ["Chart B", "Chart A", "Chart C", "Chart D"],
+    why: [R`The system is closed, so $E = 8$ J at every instant. Halfway up, the ball has gained half of its maximum height, so $U = 4$ J and $K = 8 - 4 = 4$ J.`,
+      R`Chart A has $K = 2$ J, a quarter of the launch value, as if the speed were half as large at half the height. Potential energy is proportional to height, so $U$ is half of $8$ J and $K$ is the other half.`,
+      R`Chart C shows the energy at the instant the ball leaves the hand, when all of the energy is kinetic.`,
+      R`Chart D shows the energy at the highest point, where the ball momentarily has no kinetic energy.`], answer: 0 },
+  { id: "q34-m5", type: "mcq", skill: "u3", topic: "3.4", difficulty: "moderate",
+    stem: R`A $0.80$ kg block slides at $3.0$ m/s on a frictionless horizontal surface toward a light spring with spring constant $200$ N/m. The other end of the spring is fixed to a wall.`,
+    question: R`What is the maximum compression of the spring?`,
+    choices: [R`$0.190$ m`, R`$0.268$ m`, R`$0.134$ m`, R`$0.0120$ m`],
+    why: [R`At maximum compression the block is momentarily at rest, so all of the kinetic energy is stored in the spring: $\dfrac{1}{2}mv^2 = \dfrac{1}{2}kx^2$. Then $x = v\sqrt{\dfrac{m}{k}} = 3.0\sqrt{\dfrac{0.80}{200}} = 0.190$ m.`,
+      R`$0.268$ m uses $mv^2 = \dfrac{1}{2}kx^2$, which doubles the kinetic energy.`,
+      R`$0.134$ m uses $\dfrac{1}{2}mv^2 = kx^2$, which leaves out the factor of $\dfrac{1}{2}$ in the spring energy.`,
+      R`$0.0120$ m is $\dfrac{mv}{k}$, a ratio of momentum to spring constant, which does not come from energy conservation.`], answer: 0 },
+  { id: "q34-m6", type: "mcq", skill: "u3", topic: "3.4", difficulty: "difficult",
+    stem: R`A $1.0$ kg block is released from rest at a height of $1.5$ m on a rough ramp. It reaches the bottom of the ramp with a speed of $4.0$ m/s. It then slides without friction up a second ramp.`,
+    question: R`What is the greatest height the block reaches on the second ramp?`,
+    choices: [R`$0.816$ m`, R`$1.50$ m`, R`$0.684$ m`, R`$1.63$ m`],
+    why: [R`The second ramp is frictionless, so the kinetic energy at its base becomes potential energy: $\dfrac{1}{2}mv^2 = mgh$, and $h = \dfrac{v^2}{2g} = \dfrac{16}{19.6} = 0.816$ m. The friction on the first ramp has already lowered the speed.`,
+      R`$1.50$ m assumes no energy was lost on the first ramp. The speed at the bottom shows that some mechanical energy became thermal energy.`,
+      R`$0.684$ m is the difference between $1.50$ m and $0.816$ m, which is the height equivalent of the energy lost to friction, not the height reached.`,
+      R`$1.63$ m is $\dfrac{v^2}{g}$, which leaves out the factor of $2$.`], answer: 0 },
+  { id: "q34-f1a", type: "frq", skill: "u3", topic: "3.4", set: "q34-s3", part: "(a)",
+    prompt: R`Calculate the kinetic energy of the child at the bottom of the slide.`,
+    rows: [{ name: "Kinetic energy", earns: R`Uses $K = \dfrac{1}{2}mv^2$ and obtains $200$ J.` }],
+    solution: R`$K = \dfrac{1}{2}mv^2 = \dfrac{1}{2}(25)(4.0)^2 = 200$ J.` },
+  { id: "q34-f1b", type: "frq", skill: "u3", topic: "3.4", set: "q34-s3", part: "(b)",
+    prompt: R`Calculate the amount of the child's mechanical energy that was converted to thermal energy during the slide. Take the bottom of the slide as the zero of gravitational potential energy.`,
+    rows: [{ name: "Energy converted", earns: R`Compares the initial potential energy, $mgh = 490$ J, with the final kinetic energy and obtains $290$ J.` }],
+    solution: R`The child starts at rest, so the initial mechanical energy is $U_g = mgh = (25)(9.8)(2.0) = 490$ J. The final mechanical energy is $200$ J. The energy converted to thermal energy is $490 - 200 = 290$ J.` },
+  { id: "q34-f1c", type: "frq", skill: "u3", topic: "3.4", set: "q34-s3", part: "(c)",
+    prompt: R`Identify a system for which the total energy is constant during the slide, and state where the $290$ J went.`,
+    rows: [{ name: "System and thermal energy", earns: R`Identifies a system that includes the child, the slide, and Earth, and states that the $290$ J appears as an increase in the thermal energy of the child and the slide.` }],
+    solution: R`The child, the slide, and Earth form a closed system, because no outside object does work on it. The total energy of this system is constant, and the $290$ J of mechanical energy lost appears as thermal energy of the child and the slide.` },
+];
+export default { forms: [{ id: "q34", name: "Topic 3.4 Quiz: Conservation of Energy", group: "Unit 3: Work, Energy, and Power", items }] };

@@ -38,7 +38,8 @@ export function graph(o) {
   // axes
   if (y0 <= 0 && y1 >= 0) out.push(`<line class="g-axis" x1="${PAD}" y1="${p(sy(0))}" x2="${width - PAD + 8}" y2="${p(sy(0))}" marker-end="url(#g-arrow)"/>`);
   if (x0 <= 0 && x1 >= 0) out.push(`<line class="g-axis" x1="${p(sx(0))}" y1="${height - PAD}" x2="${p(sx(0))}" y2="${PAD - 8}" marker-end="url(#g-arrow)"/>`);
-  if (o.xname) out.push(`<text class="g-name" x="${width - PAD + 10}" y="${p(Math.min(height - PAD, Math.max(PAD, sy(0))) + 4)}">${escx(o.xname)}</text>`);
+  // The x name sits just above the right end of the axis, right-aligned, so a long name ("t (s)") is never clipped.
+  if (o.xname) out.push(`<text class="g-name" x="${width - PAD}" y="${p(Math.min(height - PAD, Math.max(PAD, sy(0))) - 7)}" text-anchor="end">${escx(o.xname)}</text>`);
   if (o.yname) out.push(`<text class="g-name" x="${p(Math.min(width - PAD, Math.max(PAD, sx(0))) + 6)}" y="${PAD - 10}">${escx(o.yname)}</text>`);
   // reference lines
   for (const v of o.vlines || []) out.push(`<line class="g-ref${v.dash === false ? "" : " g-dash"}" x1="${p(sx(v.x))}" y1="${PAD}" x2="${p(sx(v.x))}" y2="${height - PAD}"/>`);
@@ -105,12 +106,14 @@ export function bars(o) {
     series.forEach((s, j) => {
       const v = s.values[i], x = x0 + j * w;
       if (v === null || v === undefined) return;
-      out.push(`<rect class="g-bar g-s${j}" x="${p(x + w * 0.06)}" y="${p(sy(v))}" width="${p(w * 0.88)}" height="${p(sy(y0) - sy(v))}"/>`);
-      out.push(`<text class="g-val" x="${p(x + w / 2)}" y="${p(sy(v) - 5)}" text-anchor="middle"${k > 2 ? ' font-size="10"' : ""}>${escx(o.fmt ? o.fmt(v) : String(v))}</text>`);
+      // Bars grow from zero (or from the bottom of the window when it starts above zero), so negative values hang down.
+      const b0 = sy(Math.max(y0, Math.min(0, y1)));
+      out.push(`<rect class="g-bar g-s${j}" x="${p(x + w * 0.06)}" y="${p(Math.min(sy(v), b0))}" width="${p(w * 0.88)}" height="${p(Math.abs(b0 - sy(v)))}"/>`);
+      out.push(`<text class="g-val" x="${p(x + w / 2)}" y="${p(v < 0 ? sy(v) + 14 : sy(v) - 5)}" text-anchor="middle"${k > 2 ? ' font-size="10"' : ""}>${escx(o.fmt ? o.fmt(v) : String(v))}</text>`);
     });
     out.push(`<text class="g-tick" x="${p(L + i * bw + bw / 2)}" y="${height - B + 16}" text-anchor="middle">${escx(lab)}</text>`);
   });
-  out.push(`<line class="g-axis" x1="${L}" y1="${p(sy(y0))}" x2="${width - R}" y2="${p(sy(y0))}"/>`);
+  out.push(`<line class="g-axis" x1="${L}" y1="${p(sy(Math.max(y0, Math.min(0, y1))))}" x2="${width - R}" y2="${p(sy(Math.max(y0, Math.min(0, y1))))}"/>`);
   if (leg) series.forEach((s, j) => {
     const x = L + j * ((width - L - R) / k);
     out.push(`<rect class="g-bar g-s${j}" x="${p(x)}" y="6" width="14" height="12"/><text class="g-tick" x="${p(x + 20)}" y="16">${escx(s.name)}</text>`);

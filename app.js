@@ -489,7 +489,7 @@ const frPrompt = (item) => /^(SAQ|Concept|Quantitative)/.test(item.part)
 const frqPrompt = (item) => `${item.lead ? `<p>${tx(item.lead)}</p>` : ""}<div class="prompt">${item.part ? `<b>${esc(item.part)}</b> ` : ""}${tx(item.prompt)}</div>`;
 
 // In a math course every question says whether a calculator is allowed, as on the AP exam.
-const calcChip = (it) => (deck.lang === "math" && (isChoice(it) || it.type === "frq") ? `<span class="chip ${it.calc ? "accent" : ""}">${it.calc ? "Calculator" : "No calculator"}</span>` : "");
+const calcChip = (it) => (deck.lang === "math" && deck.calcChips !== false && (isChoice(it) || it.type === "frq") ? `<span class="chip ${it.calc ? "accent" : ""}">${it.calc ? "Calculator" : "No calculator"}</span>` : "");
 function itemHTML(item, opts = {}) {
   const head = `<div class="row"><span class="chip accent">${esc(skillName(item.skill))}</span><span class="chip">${esc(typeLabel(item.type))}</span>${calcChip(item)}${opts.tag ? `<span class="chip">${esc(opts.tag)}</span>` : ""}</div>`;
   if (item.type === "frq") {

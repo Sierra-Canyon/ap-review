@@ -148,10 +148,10 @@ export const sets = {
     id: "a3b-s16", name: "Slavery in three Northern states, 1790 to 1830", intro: "Use the chart and table below to answer the questions that follow.", label: "Chart",
     sources: [{ title: "Chart", blocks: [
       { svg: lines({ labels: ["1790", "1800", "1810", "1820", "1830"], series: [
-          { name: "New York", values: [21.3, 20.9, 15.0, 10.1, 0.1] },
-          { name: "New Jersey", values: [11.4, 12.4, 10.9, 7.6, 2.3] },
-          { name: "Pennsylvania", values: [3.7, 1.7, 0.8, 0.2, 0.4], dy: 6 },
-        ], y: [0, 25], step: 5, yname: "Enslaved people, thousands", fmt: (v) => String(v),
+          { name: "New York", values: [21.3, 20.9, 15.0, 10.1, 0.1], dy: -1 },
+          { name: "New Jersey", values: [11.4, 12.4, 10.9, 7.6, 2.3], dy: -9 },
+          { name: "Pennsylvania", values: [3.7, 1.7, 0.8, 0.2, 0.4], dy: 19 },
+        ], y: [0, 25], step: 5, height: 330, yname: "Enslaved people, thousands", fmt: (v) => String(v),
         alt: "Line chart of the number of enslaved people, in thousands, at each census from 1790 to 1830. New York: 21.3, 20.9, 15.0, 10.1, 0.1. New Jersey: 11.4, 12.4, 10.9, 7.6, 2.3. Pennsylvania: 3.7, 1.7, 0.8, 0.2, 0.4." }),
         caption: "Enslaved people in New York, New Jersey, and Pennsylvania at each census, 1790 to 1830, in thousands." },
       { table: { head: ["Census year", "New York, enslaved", "New York, free Black", "New Jersey, enslaved", "New Jersey, free Black", "Pennsylvania, enslaved", "Pennsylvania, free Black"], rows: [

@@ -62,6 +62,53 @@ export const sets = {
       { cite: "Report of the Crimea (Yalta) Conference, Section II, \"Declaration on Liberated Europe,\" signed by Winston Churchill, Franklin D. Roosevelt, and Joseph Stalin, February 11, 1945. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/wwii/yalta.asp", kind: "primary" },
     ] }],
   },
+  "a7b-dbq": {
+    id: "a7b-dbq", name: "From neutrality to undeclared naval war, 1936 to 1941", intro: "Read the seven documents below and use them to answer the document-based question.",
+    sources: [
+      { title: "Document 1", blocks: [
+        { p: "We shun political commitments which might entangle us in foreign wars; we avoid connection with the political activities of the League of Nations; ... I have seen war. I have seen war on land and sea. I have seen blood running from the wounded. I have seen men coughing out their gassed lungs. I have seen the dead in the mud. I have seen cities destroyed. I have seen two hundred limping, exhausted men come out of line—the survivors of a regiment of one thousand that went forward forty-eight hours before. I have seen children starving. I have seen the agony of mothers and wives. I hate war." },
+        { cite: "Franklin D. Roosevelt, Address at Chautauqua, New York, August 14, 1936, during his campaign for reelection.", url: "https://www.presidency.ucsb.edu/documents/address-chautauqua-ny", kind: "primary" },
+      ] },
+      { title: "Document 2", blocks: [
+        { p: "This nation will remain a neutral nation, but I cannot ask that every American remain neutral in thought as well. Even a neutral has a right to take account of facts. Even a neutral cannot be asked to close his mind or his conscience. I have said not once, but many times, that I have seen war and that I hate war. I say that again and again. I hope the United States will keep out of this war. I believe that it will. And I give you assurance and reassurance that every effort of your Government will be directed toward that end." },
+        { cite: "Franklin D. Roosevelt, Fireside Chat (radio address on the war in Europe), September 3, 1939, two days after Germany invaded Poland.", url: "https://www.presidency.ucsb.edu/documents/fireside-chat-13", kind: "primary" },
+      ] },
+      { title: "Document 3", blocks: [
+        { p: "On this tenth day of June, 1940, the hand that held the dagger has struck it into the back of its neighbor. ... Some indeed still hold to the now somewhat obvious delusion that we of the United States can safely permit the United States to become a lone island, a lone island in a world dominated by the philosophy of force. ... In our American unity, we will pursue two obvious and simultaneous courses; we will extend to the opponents of force the material resources of this nation; and, at the same time, we will harness and speed up the use of those resources in order that we ourselves in the Americas may have equipment and training equal to the task of any emergency and every defense." },
+        { cite: "Franklin D. Roosevelt, Address at the University of Virginia, Charlottesville, June 10, 1940, the day Italy declared war on France and Britain.", url: "https://www.presidency.ucsb.edu/documents/address-university-virginia", kind: "primary" },
+      ] },
+      { title: "Document 4", blocks: [
+        { p: "I transmit herewith for the information of the Congress notes exchanged between the British Ambassador at Washington and the Secretary of State on September 2, 1940, under which this Government has acquired the right to lease naval and air bases in Newfoundland, and in the islands of Bermuda, the Bahamas, Jamaica, St. Lucia, Trinidad, and Antigua, and in British Guiana ... Preparation for defense is an inalienable prerogative of a sovereign state. Under present circumstances this exercise of sovereign right is essential to the maintenance of our peace and safety. This is the most important action in the reinforcement of our national defense that has been taken since the Louisiana Purchase." },
+        { cite: "Franklin D. Roosevelt, Message to Congress on Exchanging Destroyers for British Naval and Air Bases, September 3, 1940.", url: "https://www.presidency.ucsb.edu/documents/message-congress-exchanging-destroyers-for-british-naval-and-air-bases", kind: "primary" },
+      ] },
+      { title: "Document 5", blocks: [
+        { p: "The aid-to-democracies bill was agreed on by both houses of the Congress last Tuesday afternoon. I signed it one half hour later. Five minutes after that I approved a list of articles for immediate shipment; and today—Saturday night—many of them are on their way. On Wednesday, I recommended an appropriation for new material to the extent of seven billion dollars; and the Congress is making patriotic speed in making the money available. Here in Washington, we are thinking in terms of speed and speed now." },
+        { cite: "Franklin D. Roosevelt, Address at the Annual Dinner of the White House Correspondents' Association, March 15, 1941, four days after he signed the Lend-Lease Act.", url: "https://www.presidency.ucsb.edu/documents/address-the-annual-dinner-white-house-correspondents-association", kind: "primary" },
+      ] },
+      { title: "Document 6", blocks: [
+        { p: "These Nazi submarines and raiders are the rattlesnakes of the Atlantic. They are a menace to the free pathways of the high seas. They are a challenge to our sovereignty. ... But when you see a rattlesnake poised to strike, you do not wait until he has struck before you crush him. ... It is no act of war on our part when we decide to protect the seas that are vital to American defense. The aggression is not ours. Ours is solely defense. ... From now on, if German or Italian vessels of war enter the waters, the protection of which is necessary for American defense, they do so at their own peril." },
+        { cite: "Franklin D. Roosevelt, Fireside Chat (on the attack on the destroyer Greer), September 11, 1941.", url: "https://www.presidency.ucsb.edu/documents/fireside-chat-11", kind: "primary" },
+      ] },
+      { title: "Document 7", blocks: [
+        { p: "On September 11, 1941, the President of the United States publicly declared that he had ordered the American Navy and Air Force to shoot on sight at any German war vessel. ... Acting under this order, vessels of the American Navy, since early September 1941, have systematically attacked German naval forces. ... Although Germany on her part has strictly adhered to the rules of international law in her relations with the United States during every period of the present war, the Government of the United States from initial violations of neutrality has finally proceeded to open acts of war against Germany. The Government of the United States has thereby virtually created a state of war." },
+        { cite: "German government, note declaring war on the United States, December 11, 1941, four days after Pearl Harbor. Written by the Nazi regime to justify its own declaration of war. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/wwii/gerdec41.asp", kind: "primary" },
+      ] },
+    ],
+  },
+  "a7b-s20": {
+    id: "a7b-s20", name: "Theodore Roosevelt's New Nationalism, 1910", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "I stand for the square deal. But when I say that I am for the square deal, I mean not merely that I stand for fair play under the present rules of the game, but that I stand for having those rules changed so as to work for a more substantial equality of opportunity and of reward for equally good service. ... The New Nationalism puts the national need before sectional or personal advantage. ... This New Nationalism regards the executive power as the steward of the public welfare. It demands of the judiciary that it shall be interested primarily in human welfare rather than in property, just as it demands that the representative body shall represent all the people rather than any one class or section of the people." },
+      { cite: "Theodore Roosevelt, \"The New Nationalism,\" speech at Osawatomie, Kansas, August 31, 1910. Text from the White House archives.", url: "https://obamawhitehouse.archives.gov/blog/2011/12/06/archives-president-teddy-roosevelts-new-nationalism-speech", kind: "primary" },
+    ] }],
+  },
+  "a7b-s22": {
+    id: "a7b-s22", name: "A second Bill of Rights, 1944", intro: "Use the excerpt below to answer all parts of the question that follows.",
+    sources: [{ title: "Source", blocks: [
+      { p: "We have come to a clear realization of the fact that true individual freedom cannot exist without economic security and independence. \"Necessitous men are not free men.\" People who are hungry and out of a job are the stuff of which dictatorships are made. In our day these economic truths have become accepted as self-evident. We have accepted, so to speak, a second Bill of Rights under which a new basis of security and prosperity can be established for all regardless of station, race, or creed. Among these are: The right to a useful and remunerative job in the industries or shops or farms or mines of the Nation; The right to earn enough to provide adequate food and clothing and recreation; The right of every farmer to raise and sell his products at a return which will give him and his family a decent living;" },
+      { cite: "Franklin D. Roosevelt, State of the Union Message to Congress, January 11, 1944.", url: "https://www.presidency.ucsb.edu/documents/state-the-union-message-congress", kind: "primary" },
+    ] }],
+  },
   // SETS-END
 };
 

@@ -90,6 +90,91 @@ export const sets = {
       { cite: "A Gentleman of Elvas (a Portuguese member of the expedition), The Discovery of Florida (first published 1557), chapter 12, on Hernando de Soto's march through northern Florida in 1539. \"The Governor\" is de Soto. Translated by Buckingham Smith (1866), in Frederick W. Hodge, ed., Spanish Explorers in the Southern United States, 1528 to 1543 (New York: Scribner's, 1907). Project Gutenberg eBook #42841.", url: "https://mirror.fi.ossplanet.net/gutenberg/4/2/8/4/42841/42841-0.txt", kind: "primary" },
     ] }],
   },
+  "a1-s11": {
+    id: "a1-s11", name: "Why Prince Henry sent ships to Africa", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The second reason was that if there chanced to be in those lands some population of Christians, or some havens, into which it would be possible to sail without peril, many kinds of merchandise might be brought to this realm, which would find a ready market, and reasonably so, because no other people of these parts traded with them, nor yet people of any other that were known; and also the products of this realm might be taken there, which traffic would bring great profit to our countrymen. ..." },
+      { p: "The fifth reason was his great desire to make increase in the faith of our Lord Jesus Christ and to bring to him all the souls that should be saved ... whom the said Lord Infant by his travail and spending would fain bring into the true path." },
+      { cite: "Gomes Eanes de Zurara, royal chronicler of Portugal, The Chronicle of the Discovery and Conquest of Guinea (written 1453), chapter 7, on the reasons Prince Henry of Portugal (\"the Infant\") sent ships down the West African coast from the 1420s. Translated by Charles Raymond Beazley and Edgar Prestage (London: Hakluyt Society, 1896). Project Gutenberg eBook #35738.", url: "https://mirror.fi.ossplanet.net/gutenberg/3/5/7/3/35738/35738-0.txt", kind: "primary" },
+    ] }],
+  },
+  "a1-s12": {
+    id: "a1-s12", name: "Native farming centers before 1492", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u1-maize"], caption: "Some Native farming centers north of the Valley of Mexico before 1492, with approximate dates (present-day state lines shown)" },
+      { cite: MAPCITE + "Encyclopaedia Britannica's entries for Cahokia, Chaco Culture National Historical Park, Mesa Verde National Park, Moundville, the Iroquois Confederacy, the Powhatan, Tenochtitlán, and maize, and the National Park Service's pages for Chaco Culture and Mesa Verde.", kind: "map" },
+    ] }],
+  },
+  "a1-s13": {
+    id: "a1-s13", name: "Plants, animals, and land after 1492", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "After 1492, ships carried plants, animals, and microbes across the Atlantic in both directions. Spanish settlers brought cattle, pigs, sheep, and horses, which multiplied quickly in the Americas, where they had few natural enemies. In central Mexico, herds of sheep and cattle grazed on land that Native farmers had once planted with maize, and the animals often trampled the fields of Native villages. At the same time, American plants changed diets far from where they were first grown. Maize and cassava became important foods in parts of Africa, and potatoes eventually fed growing populations in northern Europe. Sugarcane, carried from the Atlantic islands to the Caribbean and Brazil, became the base of a plantation economy that demanded huge numbers of workers." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s14": {
+    id: "a1-s14", name: "Why the Mexica Empire fell", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Historians once credited the Spanish conquest of the Mexica (Aztec) Empire mainly to Hernán Cortés's boldness and to Spanish steel, guns, and horses. More recent accounts stress other causes. The Mexica had made many enemies among the peoples they had conquered and taxed, and tens of thousands of Tlaxcalan and other Native warriors fought beside a few hundred Spaniards. A smallpox epidemic struck Tenochtitlan in 1520, killing many of its people, including the new ruler Cuitláhuac, months before the final siege in 1521. In this view, the conquest was less a victory of Europeans over Native peoples than a war among Native peoples in which the Spanish became the final winners." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s15": {
+    id: "a1-s15", name: "Hispaniola after Columbus", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Within a generation of Columbus's arrival, the Taíno population of Hispaniola had collapsed to a small fraction of its size in 1492. Spanish settlers received grants of Native labor called encomiendas, in return for promising to protect the workers and teach them Christianity. In practice, encomenderos worked people hard in gold mines and fields, and overwork, hunger, and epidemic disease, including the smallpox outbreak of 1518, destroyed Native communities. As Native workers died, colonists and the crown turned to enslaved Africans, who were brought to the island in growing numbers after about 1518. Sugar mills built on Hispaniola in the 1510s and 1520s used African labor and set a pattern that later spread to Brazil and across the Caribbean." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s16": {
+    id: "a1-s16", name: "Ancestry and status in New Spain", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "By 1600 the society of New Spain was arranged in a hierarchy based on birth and ancestry. At the top stood peninsulares, officials and merchants born in Spain, followed by criollos, people of Spanish descent born in the Americas. Below them were growing numbers of mestizos, of mixed Spanish and Native ancestry, and mulattoes, of mixed Spanish and African ancestry. Native people, who still made up most of the population, paid tribute and owed labor, while enslaved Africans stood at the bottom. The lines were not perfectly fixed: wealth, marriage, and a family's reputation could sometimes help a person claim a higher place. Still, the system tied a person's legal rights, taxes, and chances for office to an official judgment about ancestry." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s17": {
+    id: "a1-s17", name: "Reformers and the New Laws of 1542", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Spanish rule over Native peoples drew criticism from inside the Spanish Church. Dominican friars on Hispaniola preached against the abuse of encomienda workers as early as 1511, and Bartolomé de las Casas, a former encomendero who became a friar, spent decades urging the crown to protect Native people. In 1542 Charles V issued the New Laws, which banned the enslavement of Native people and ordered that encomiendas would not pass to the holders' heirs. Settlers in Peru rebelled, and colonists in New Spain protested so strongly that the crown soon dropped the rule on inheritance. The reforms did not end forced labor, which continued under other systems such as the repartimiento. Some reformers, Las Casas among them for a time, even proposed bringing enslaved Africans to spare Native workers, a view he later regretted." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s18": {
+    id: "a1-s18", name: "Africans in Spanish America", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Africans in Spanish America were not only field and mine workers. By 1600 tens of thousands of enslaved and free Africans lived in Mexico City, Lima, and Havana, working as servants, artisans, porters, and sailors. Some had come with the conquistadors, such as Juan Garrido, a free African who fought in the conquest of Mexico. Under Spanish law and Catholic teaching, enslaved people could marry in the Church and in some cases buy their freedom, so a free Black population grew. Others escaped. Communities of runaways, called maroons, formed in the hills of Panama, Hispaniola, and Mexico, where in the early 1600s a leader named Yanga won a town of his own from Spanish officials after years of armed resistance." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s19": {
+    id: "a1-s19", name: "Cultural blending in New Spain", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Contact changed Native and European cultures alike, but rarely in the ways missionaries or settlers planned. In central Mexico, Franciscan friars baptized hundreds of thousands of Nahua people in the 1520s and 1530s, yet many converts joined Catholic saints to older beliefs and kept older festivals under new names. Churches were often built on the sites of old temples, sometimes with the temples' own stones. Spaniards, for their part, came to depend on maize, chocolate, and Native knowledge of the land, and Nahuatl remained the language of daily life, and of written town records, for generations. Native leaders who adopted Spanish dress, writing, and law often used them to defend their communities' lands in Spanish courts." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s20": {
+    id: "a1-s20", name: "Horses in Native North America", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Horses had died out in the Americas thousands of years before Europeans arrived, so the animals the Spanish brought were new to Native peoples. Spanish law tried to keep horses out of Native hands, but Native peoples of the Southwest acquired them by trade and raiding, and after the Pueblo Revolt of 1680 many more horses passed north from the Spanish settlements of New Mexico. Over the next century, peoples such as the Comanche, Lakota, and Cheyenne built new ways of life around the horse. Mounted hunters could follow buffalo herds across the Plains, carry larger loads, and wage war over longer distances. Some peoples who had farmed along river valleys left farming behind to hunt buffalo full time." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s21": {
+    id: "a1-s21", name: "How Europeans explained their power", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Sixteenth-century Europeans justified conquest mainly in religious terms. Spanish and Portuguese rulers claimed a duty to bring Christianity to non-Christian peoples, and they treated resistance to that mission as grounds for war and enslavement. Over time, Europeans also came to describe Native Americans and Africans as naturally inferior, pointing to differences in religion, dress, and ways of life. These ideas did not appear all at once, and they were contested: some Spanish theologians argued that Native peoples had the same reason and rights as Europeans. But the belief that Africans could rightly be enslaved for life hardened during the 1500s as the Atlantic slave trade grew, preparing the way for the racial slavery of later English colonies." },
+      PRACTICE,
+    ] }],
+  },
+  "a1-s22": {
+    id: "a1-s22", name: "Why Spain reached the Americas first", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Spain's head start in the Americas came from a meeting of circumstances in 1492. That year Ferdinand and Isabella completed the conquest of Granada, the last Muslim kingdom in Iberia, which freed money and soldiers and gave Castile a class of fighting men used to winning land and wealth through war. Portugal's control of the route around Africa pushed Spain to look west. Once Columbus reached the Caribbean, the crown claimed the new lands under papal grants, and private conquerors paid for most expeditions in hope of a share of the gold and labor they could seize. Within fifty years, the wealth of Mexico and Peru made Spain the most powerful state in Europe, and its rivals hurried to copy its success." },
+      PRACTICE,
+    ] }],
+  },
   // SETS-END
 };
 
@@ -383,6 +468,73 @@ export default [
       "This is half right: the repartimiento was a labor draft, but its wages were low and the work forced, and it was not raiding for captives.",
       "Missions also put converts to work; they did not free them from labor.",
       "Headrights were an English land policy in Virginia from 1618, not a Spanish practice."],
+    answer: 0 },
+  // ---------------------------------------------------------------- 1.3 Zurara on Prince Henry's motives
+  { id: "a1-m035", skill: "u1", type: "mcq", set: "a1-s11", topic: "1.3", difficulty: "easy",
+    question: "The excerpt best shows that early Portuguese exploration was driven by",
+    choices: ["hopes of profit and of spreading Christianity", "a search for land to settle Portugal's poor", "an effort to escape the authority of the pope", "rivalry with England for colonies in Africa"],
+    why: ["Correct. Zurara names trade that \"would bring great profit\" and the desire to \"make increase in the faith\" among Prince Henry's reasons for the voyages.",
+      "The excerpt says nothing of settling the poor; it speaks of trade and converts.",
+      "Portugal was a Catholic kingdom, and the excerpt aims to spread the faith, not escape the Church.",
+      "England did not compete for African colonies in the 1400s."],
+    answer: 0 },
+  { id: "a1-m036", skill: "u1", type: "mcq", set: "a1-s11", topic: "1.3", difficulty: "moderate", reasoning: "Causation",
+    question: "Voyages like those Prince Henry sponsored were made possible mainly by",
+    choices: ["new ships and tools such as the caravel", "steam power on long ocean voyages", "maps of Africa drawn by the Mexica", "profits from colonies held in Brazil"],
+    why: ["Correct. The caravel, which could sail closer to the wind, and tools such as the magnetic compass and the astrolabe let Portuguese crews sail down the African coast and return.",
+      "Steamships came in the 1800s, four centuries later.",
+      "The Mexica of central Mexico had no contact with Africa or Europe before 1492.",
+      "Portugal reached Brazil only in 1500, long after these voyages began."],
+    answer: 0 },
+  { id: "a1-m037", skill: "u1", type: "mcq", set: "a1-s11", topic: "1.3", difficulty: "moderate", reasoning: "Continuity and Change",
+    question: "The motives in the excerpt most closely resemble those that later led Spain to",
+    choices: ["pay for Columbus's voyage west in 1492", "free Native people from all forced labor", "join England in a war against the Dutch", "found joint-stock companies for colonies"],
+    why: ["Correct. Ferdinand and Isabella backed Columbus hoping for a profitable route to Asia and new converts, the same mix of trade and faith that Zurara gives for Prince Henry.",
+      "Spain relied on forced Native labor through the encomienda and later the mita.",
+      "Spain fought the Dutch, who rebelled against it from 1568, but it was not allied with England against them; England backed the Dutch.",
+      "Joint-stock companies were the English and Dutch way of paying for colonies; Spain's were run by the crown."],
+    answer: 0 },
+  { id: "a1-m038", skill: "u1", type: "mcq", set: "a1-s11", topic: "1.3", difficulty: "difficult",
+    question: "The second reason in the excerpt most directly reflects which goal?",
+    choices: ["To trade directly where no rival merchants competed", "To end the African slave trade by finding free workers", "To settle Portuguese farmers along the African coast", "To learn the extent of Muslim military power in Africa"],
+    why: ["Correct. Zurara says the goods would sell well \"because no other people of these parts traded with them,\" so Portugal hoped to reach African markets directly, without Muslim and Italian middlemen.",
+      "Portuguese voyages soon began buying and seizing captives; ending the slave trade was not a goal.",
+      "The second reason is about trade and safe harbors, not farm settlement.",
+      "Zurara does give this as a goal, but it is his third reason, not the second."],
+    answer: 0 },
+
+  // ---------------------------------------------------------------- 1.2 Native farming centers (map)
+  { id: "a1-m039", skill: "u1", type: "mcq", set: "a1-s12", topic: "1.2", difficulty: "easy",
+    question: "The map best supports which conclusion about North America before 1492?",
+    choices: ["Maize farming supported large centers in several regions.", "Large centers existed only in the Valley of Mexico.", "Maize first reached North America from Europe.", "All Native peoples lived in permanent farming towns."],
+    why: ["Correct. The map shows large centers in the Southwest, the Mississippi valley, and central Mexico, all supported by maize.",
+      "Cahokia and Chaco Canyon were large centers far north of the Valley of Mexico.",
+      "This reverses the exchange: maize was first grown in Mexico and spread north long before Europeans arrived.",
+      "The Great Basin has no farming centers on the map, and many peoples there and elsewhere lived by foraging and moving with the seasons."],
+    answer: 0 },
+  { id: "a1-m040", skill: "u1", type: "mcq", set: "a1-s12", topic: "1.2", difficulty: "moderate", reasoning: "Causation",
+    question: "Which development most directly explains the timing of Cahokia's growth shown on the map?",
+    choices: ["Maize became a staple crop in the eastern woodlands.", "Horses from Spain made long-distance trade easier.", "Tribute flowed to Cahokia from the Mexica Empire.", "Europeans traded metal tools along the Mississippi."],
+    why: ["Correct. Maize became a staple in the East after about 900 CE, and the food surplus it gave let Cahokia grow into the largest town north of Mexico by about 1100.",
+      "Horses came with the Spanish after 1492, centuries after Cahokia's peak.",
+      "The Mexica capital was founded about 1325, after Cahokia's peak, and it never ruled the Mississippi valley.",
+      "No Europeans reached the Mississippi valley until de Soto in 1541."],
+    answer: 0 },
+  { id: "a1-m041", skill: "u1", type: "mcq", set: "a1-s12", topic: "1.2", difficulty: "moderate", reasoning: "Comparison",
+    question: "Unlike the Haudenosaunee, the people of Chaco Canyon adapted to their environment mainly by",
+    choices: ["watering crops in a dry land", "fishing for salmon on the coast", "following buffalo on horseback", "clearing forests for longhouses"],
+    why: ["Correct. Ancestral Puebloans in the dry Southwest built dams, ditches, and terraces to catch scarce rain for their maize, beans, and squash.",
+      "Salmon fishing supported peoples of the Pacific Northwest, far from Chaco Canyon.",
+      "Horses did not reach the Southwest until the Spanish brought them after 1540.",
+      "Clearing forests to farm and build longhouses describes the Haudenosaunee of the northeastern woodlands, not Chaco."],
+    answer: 0 },
+  { id: "a1-m042", skill: "u1", type: "mcq", set: "a1-s12", topic: "1.2", difficulty: "difficult", reasoning: "Causation",
+    question: "Which of the following best explains why the map shows no farming centers in the Great Basin?",
+    choices: ["Its dry land favored small, mobile bands of foragers.", "Its people had died of smallpox well before 1492.", "Its people refused all contact with farming neighbors.", "Its people were ruled by the great houses of Chaco."],
+    why: ["Correct. The Great Basin's dry climate and scattered resources suited small bands that moved with the seasons to gather seeds and nuts and hunt.",
+      "Smallpox came with Europeans after 1492.",
+      "Great Basin peoples traded with their neighbors; their way of life came from their environment, not a refusal of contact.",
+      "Chaco did not rule the Great Basin, and it had declined by about 1150."],
     answer: 0 },
   // ITEMS-END
 ];

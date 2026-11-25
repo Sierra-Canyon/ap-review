@@ -96,4 +96,32 @@ const exchange = {
   checked: ["Encyclopaedia Britannica, \"Columbian exchange\"", "Nathan Nunn and Nancy Qian, \"The Columbian Exchange: A History of Disease, Food, and Ideas,\" Journal of Economic Perspectives 24, no. 2 (2010)"],
 };
 
-export const maps = [entradas, footholds, exchange];
+const maize = {
+  id: "u1-maize",
+  caption: "Some Native farming centers north of the Valley of Mexico before 1492, with approximate dates (present-day state lines shown)",
+  alt: "Map of present-day United States and Mexico with present-day state lines. Marked places: Tenochtitlan, the Mexica capital in the Valley of Mexico, founded about 1325; Chaco Canyon in present-day New Mexico, a center of Ancestral Puebloan great houses from about 850 to 1150; the Mesa Verde cliff dwellings in present-day Colorado, about 1200 to 1280; Cahokia near the Mississippi River in present-day Illinois, at its largest about 1050 to 1200; Moundville in present-day Alabama, about 1100 to 1450; towns of the Haudenosaunee (Iroquois) in present-day New York; and towns of the Powhatan peoples in present-day Virginia. Text notes that maize was grown in the Southwest by about 2000 BCE and became a staple crop in the East after about 900 CE. The Great Basin in present-day Nevada and Utah is labeled with no farming centers.",
+  bbox: [-118, 16, -70, 45], width: 720, height: 470, states: true,
+  regions: [
+    { name: "Great Basin", at: [-116.6, 40.3], size: 11 },
+    { name: "Great Plains", at: [-100.5, 41.6], size: 11 },
+    { name: "Gulf of Mexico", at: [-90.5, 25.2], size: 11 },
+    { name: "Maize grown in the Southwest", at: [-110.5, 31.6], size: 10 },
+    { name: "by about 2000 BCE", at: [-110.5, 30.7], size: 10 },
+    { name: "Maize a staple crop in the East", at: [-84.6, 29.2], size: 10 },
+    { name: "after about 900 CE", at: [-84.6, 28.3], size: 10 },
+  ],
+  places: [
+    { name: "Tenochtitlan (Mexica), founded c. 1325", at: [-99.13, 19.43], kind: "major", label: "right" },
+    { name: "Chaco Canyon, c. 850 to 1150", at: [-107.96, 36.06], kind: "major", label: [-8, 14] },
+    { name: "Mesa Verde, c. 1200 to 1280", at: [-108.49, 37.18], label: "left" },
+    { name: "Cahokia, largest c. 1050 to 1200", at: [-90.06, 38.66], kind: "major", label: [-8, -8] },
+    { name: "Moundville, c. 1100 to 1450", at: [-87.63, 33.0], label: "left" },
+    { name: "Haudenosaunee (Iroquois) towns", at: [-76.0, 42.9], label: "below" },
+    { name: "Powhatan towns", at: [-77.0, 37.5], label: "right" },
+  ],
+  legend: [{ kind: "major", text: "Large center" }, { kind: "city", text: "Other farming center or towns" }],
+  legendAt: "bottom-left", legendWidth: 200,
+  checked: ["Encyclopaedia Britannica, \"Cahokia,\" \"Chaco Culture National Historical Park,\" \"Mesa Verde National Park,\" \"Moundville,\" \"Iroquois Confederacy,\" \"Powhatan,\" \"Tenochtitlán,\" and \"maize\"", "National Park Service pages for Chaco Culture National Historical Park and Mesa Verde National Park, and the Cahokia Mounds State Historic Site (Illinois)"],
+};
+
+export const maps = [entradas, footholds, exchange, maize];

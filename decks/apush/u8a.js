@@ -37,7 +37,7 @@ export const sets = {
   "a8a-s07": {
     id: "a8a-s07", name: "Nixon in Peking, 1972", intro: "Use the excerpt below to answer the questions that follow.",
     sources: [{ title: "Source", blocks: [
-      { p: "There is no reason for us to be enemies. Neither of us seeks the territory of the other; neither of us seeks domination over the other; neither of us seeks to stretch out our hands and rule the world. ... So, let us, in these next 5 days, start a long march together, not in lockstep, but on different roads leading to the same goal, the goal of building a world structure of peace and justice in which all may stand together with equal dignity and in which each nation, large or small, has a right to determine its own form of government, free of outside interference or domination." },
+      { p: "So, let us, in these next 5 days, start a long march together, not in lockstep, but on different roads leading to the same goal, the goal of building a world structure of peace and justice in which all may stand together with equal dignity and in which each nation, large or small, has a right to determine its own form of government, free of outside interference or domination. ... There is no reason for us to be enemies. Neither of us seeks the territory of the other; neither of us seeks domination over the other; neither of us seeks to stretch out our hands and rule the world." },
       { cite: "Richard Nixon, toast at a banquet honoring the President given by Premier Chou En-lai, Peking, February 21, 1972. The American Presidency Project.", url: "https://www.presidency.ucsb.edu/documents/toasts-the-president-and-premier-chou-en-lai-the-peoples-republic-china-banquet-honoring", kind: "primary" },
     ] }],
   },
@@ -166,6 +166,55 @@ export const sets = {
       { cite: "U.S. Census Bureau, Historical Population Change Data (1910 to 2020), resident population by region, 1950 and 1980 censuses. Percent change computed for this review.", url: "https://www.census.gov/data/tables/time-series/dec/popchange-data-text.html", kind: "data" },
     ] }],
   },
+  "a8a-s04": {
+    id: "a8a-s04", name: "The Korean War, 1950 to 1953", label: "Map", intro: "Use the map below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { svg: maps["u8a-korea-1950"], caption: "The Korean War, 1950 to 1953" },
+      { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against the National Park Service, Korean War Veterans Memorial, \"Korean War Overview,\" and the U.S. Army, \"The Korean War.\"", url: "https://www.nps.gov/kowa/learn/historyculture/korean-war-overview.htm", kind: "map" },
+    ] }],
+  },
+  "a8a-s23": {
+    id: "a8a-s23", name: "The election of 1948", label: "Map", intro: "Use the map below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { svg: maps["u8a-election-1948"], caption: "The presidential election of 1948: electoral votes by state (present-day state lines shown; Alaska and Hawaii were not yet states). Tennessee, shown for Truman, gave one of its twelve electoral votes to Thurmond." },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against The American Presidency Project, \"1948 Presidential Election,\" and the National Archives, \"1948 Electoral College Results.\"", url: "https://www.archives.gov/electoral-college/1948", kind: "map" },
+    ] }],
+  },
+  "a8a-s24": {
+    id: "a8a-s24", name: "Two views of the Cold War's origins", intro: "Use the passages below to answer all parts of the question that follows.",
+    sources: [
+      { title: "Passage 1", blocks: [
+        { p: "The Cold War began mainly because of Soviet actions after 1945. Stalin broke the promises he made at Yalta to allow free elections in Poland and set up communist governments across Eastern Europe, backed by the Red Army. Soviet pressure on Turkey and Iran, along with a communist uprising in Greece, convinced American leaders that Moscow meant to expand wherever it found weakness. In this view, the Truman administration responded reluctantly and defensively, using economic aid such as the Marshall Plan and later alliances such as NATO to protect democratic nations that had asked for help. American policy was a reaction to a threat that the Soviet Union had created." },
+        { cite: PRACTICE, kind: "practice" },
+      ] },
+      { title: "Passage 2", blocks: [
+        { p: "American leaders bear much of the responsibility for the Cold War. The United States came out of World War II as the strongest nation on earth, with a monopoly on the atomic bomb and an economy that needed open markets abroad. Policymakers wanted a world open to American trade and investment, and they treated Soviet control of Eastern Europe, the route by which Russia had been invaded twice within thirty years, as a threat to that goal rather than as a search for security. By cutting off aid to the Soviet Union, refusing to share atomic secrets, and dividing the world into free and unfree camps in the Truman Doctrine, American leaders turned a rivalry into a lasting conflict." },
+        { cite: PRACTICE, kind: "practice" },
+      ] },
+    ],
+  },
+  "a8a-s25": {
+    id: "a8a-s25", name: "Eisenhower on Little Rock, 1957", intro: "Use the excerpt below to answer all parts of the question that follows.",
+    sources: [{ title: "Source", blocks: [
+      { p: "In that city, under the leadership of demagogic extremists, disorderly mobs have deliberately prevented the carrying out of proper orders from a Federal Court. Local authorities have not eliminated that violent opposition and, under the law, I yesterday issued a Proclamation calling upon the mob to disperse. ... Whenever normal agencies prove inadequate to the task and it becomes necessary for the Executive Branch of the Federal Government to use its powers and authority to uphold Federal Courts, the President's responsibility is inescapable. ... At a time when we face grave situations abroad because of the hatred that Communism bears toward a system of government based on human rights, it would be difficult to exaggerate the harm that is being done to the prestige and influence, and indeed to the safety, of our nation and the world." },
+      { cite: "Dwight D. Eisenhower, Radio and Television Address to the American People on the Situation in Little Rock, September 24, 1957. The American Presidency Project.", url: "https://www.presidency.ucsb.edu/documents/radio-and-television-address-the-american-people-the-situation-little-rock", kind: "primary" },
+    ] }],
+  },
+  "a8a-s26": {
+    id: "a8a-s26", name: "American deaths in Vietnam by year", label: "Chart", intro: "Use the chart and table below to answer all parts of the question that follows.",
+    sources: [{ title: "Source", blocks: [
+      { svg: bars({ labels: ["1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973"], values: [122, 216, 1928, 6350, 11363, 16899, 11780, 6173, 2414, 759, 68], y: [0, 18000], step: 3000, yname: "Deaths", fmt: (v) => v.toLocaleString("en-US"), alt: "Bar chart of U.S. military deaths in the Vietnam War by year of death, 1963 to 1973: 122 in 1963, 216 in 1964, 1,928 in 1965, 6,350 in 1966, 11,363 in 1967, 16,899 in 1968, 11,780 in 1969, 6,173 in 1970, 2,414 in 1971, 759 in 1972, and 68 in 1973." }), caption: "U.S. military deaths in the Vietnam War by year of death, 1963 to 1973" },
+      { table: { head: ["Year", "Deaths", "Year", "Deaths"], rows: [
+        ["1963", "122", "1969", "11,780"],
+        ["1964", "216", "1970", "6,173"],
+        ["1965", "1,928", "1971", "2,414"],
+        ["1966", "6,350", "1972", "759"],
+        ["1967", "11,363", "1973", "68"],
+        ["1968", "16,899", "", ""],
+      ] } },
+      { cite: "National Archives, \"Vietnam War U.S. Military Fatal Casualty Statistics,\" records by year of death, from the Defense Casualty Analysis System extract file current as of April 29, 2008.", url: "https://www.archives.gov/research/military/vietnam-war/casualty-statistics", kind: "data" },
+    ] }],
+  },
 };
 
 export default [
@@ -288,7 +337,7 @@ export default [
       "A formal declaration of war against North Korea",
     ],
     why: [
-      "Correct. The Korean War led Truman to approve the buildup called for in NSC-68, and defense spending roughly tripled between 1950 and 1953.",
+      "Correct. The Korean War led Truman to approve the buildup called for in NSC-68, and defense spending more than tripled between 1950 and 1953.",
       "NATO was founded in April 1949, more than a year before the Korean War began.",
       "American forces stayed in Japan and used it as a base for the war in Korea.",
       "Congress never declared war on North Korea; Truman called the fighting a police action under the United Nations.",
@@ -314,7 +363,7 @@ export default [
   { id: "a8a-m013", skill: "u8", type: "mcq", set: "a8a-s05", topic: "8.2", difficulty: "easy",
     question: "The display in the photograph most directly reflects",
     choices: [
-      "fear of a nuclear attack during the Cold War",
+      "fear of a Soviet nuclear attack",
       "fear of German air raids on American cities",
       "plans to shelter families from hurricanes",
       "worry about food rationing after a war",
@@ -720,7 +769,7 @@ export default [
   { id: "a8a-m045", skill: "u8", type: "mcq", set: "a8a-s15", topic: "8.7", difficulty: "easy",
     question: "Kennedy's main response to the missile sites, as described in the excerpt, was to",
     choices: [
-      "stop further weapons from reaching Cuba by sea",
+      "block weapons shipments to Cuba",
       "launch an immediate air strike on the sites",
       "ask the United Nations to occupy the island",
       "invade Cuba to remove the Castro government",
@@ -764,7 +813,7 @@ export default [
     answer: 0 },
 
   // 8.6, Executive Order 9981
-  { id: "a8a-m048", skill: "u8", type: "mcq", set: "a8a-s16", topic: "8.6", difficulty: "easy", reasoning: "Causation",
+  { id: "a8a-m048", skill: "u8", type: "mcq", set: "a8a-s16", topic: "8.6", difficulty: "moderate", reasoning: "Causation",
     question: "The order in the excerpt most directly led to",
     choices: [
       "the integration of military units in the early 1950s",
@@ -829,7 +878,7 @@ export default [
   { id: "a8a-m052", skill: "u8", type: "mcq", set: "a8a-s17", topic: "8.6", difficulty: "difficult",
     question: "In 1957, two years before this rally, the federal government responded to resistance in Little Rock by",
     choices: [
-      "sending troops to carry out a court order",
+      "using troops to enforce a court order",
       "declaring martial law across Arkansas",
       "closing the city's public high schools",
       "arresting Governor Faubus for contempt",
@@ -841,7 +890,7 @@ export default [
       "Faubus was never arrested; he went on to win reelection.",
     ],
     answer: 0 },
-  { id: "a8a-m053", skill: "u8", type: "mcq", set: "a8a-s17", topic: "8.6", difficulty: "easy", reasoning: "Comparison",
+  { id: "a8a-m053", skill: "u8", type: "mcq", set: "a8a-s17", topic: "8.6", difficulty: "moderate", reasoning: "Comparison",
     question: "Which group would most likely have opposed the goals of the people at this rally?",
     choices: [
       "NAACP lawyers who argued school cases",
@@ -858,7 +907,7 @@ export default [
     answer: 0 },
 
   // 8.8, the Gulf of Tonkin Resolution
-  { id: "a8a-m033", skill: "u8", type: "mcq", set: "a8a-s11", topic: "8.8", difficulty: "easy",
+  { id: "a8a-m033", skill: "u8", type: "mcq", set: "a8a-s11", topic: "8.8", difficulty: "moderate",
     question: "The resolution in the excerpt most directly",
     choices: [
       "let the president widen the war without a declaration of war",
@@ -920,7 +969,7 @@ export default [
       "The Potsdam Conference of 1945 settled occupation zones and reparations; it was not a stand against Soviet pressure.",
     ],
     answer: 0 },
-  { id: "a8a-m017", skill: "u8", type: "mcq", set: "a8a-s06", topic: "8.2", difficulty: "easy", reasoning: "Causation",
+  { id: "a8a-m017", skill: "u8", type: "mcq", set: "a8a-s06", topic: "8.2", difficulty: "moderate", reasoning: "Causation",
     question: "Which of the following happened within weeks of Kennedy's speech?",
     choices: [
       "East Germany built a wall around West Berlin.",
@@ -938,7 +987,7 @@ export default [
   { id: "a8a-m018", skill: "u8", type: "mcq", set: "a8a-s06", topic: "8.2", difficulty: "moderate",
     question: "Kennedy's pledge to defend West Berlin rested most directly on which earlier commitment?",
     choices: [
-      "The NATO alliance formed in 1949",
+      "NATO, formed in 1949",
       "The Truman Doctrine of 1947",
       "The SEATO pact signed in 1954",
       "The Eisenhower Doctrine of 1957",
@@ -1002,7 +1051,7 @@ export default [
   { id: "a8a-m066", skill: "u8", type: "mcq", set: "a8a-s20", topic: "8.4", difficulty: "easy",
     question: "Eisenhower argues for a national highway program mainly on the grounds of",
     choices: [
-      "national unity, economic life, and defense",
+      "unity, the economy, and defense",
       "lower taxes and less federal spending",
       "protecting farmland from new development",
       "replacing private cars with public buses",
@@ -1139,6 +1188,115 @@ export default [
     ],
     answer: 0 },
 
+  // 8.2, the Korean War map
+  { id: "a8a-m010", skill: "u8", type: "mcq", set: "a8a-s04", topic: "8.2", difficulty: "moderate", reasoning: "Causation",
+    question: "Korea was divided at the 38th parallel, as shown on the map, because of",
+    choices: [
+      "the Soviet and American zones set up at the end of World War II",
+      "the armistice that ended the fighting in Korea in July 1953",
+      "a United Nations vote taken after North Korea's invasion",
+      "the treaty that ended the Russo-Japanese War in 1905",
+    ],
+    why: [
+      "Correct. When Japan surrendered in 1945, Soviet troops took the Japanese surrender north of the 38th parallel and American troops south of it, and two rival governments formed in 1948.",
+      "The 1953 armistice left a line near the 38th parallel, but the division began in 1945, before the war.",
+      "The United Nations called on North Korea to withdraw to the 38th parallel in 1950; the line already existed.",
+      "The Treaty of Portsmouth (1905) gave Japan control over Korea; it did not divide the peninsula.",
+    ],
+    answer: 0 },
+  { id: "a8a-m011", skill: "u8", type: "mcq", set: "a8a-s04", topic: "8.2", difficulty: "moderate", reasoning: "Causation",
+    question: "The entry of Chinese forces shown on the map most directly followed",
+    choices: [
+      "UN forces crossing the 38th parallel and advancing north",
+      "North Korea's capture of Seoul in the first days of the war",
+      "the start of armistice talks between the two sides",
+      "the failure of the Inchon landing to retake Seoul",
+    ],
+    why: [
+      "Correct. After the Inchon landing, Truman let UN forces cross the 38th parallel in late September 1950; as they moved toward the Yalu River on China's border, Chinese troops entered in October and November.",
+      "North Korea took Seoul in June 1950, months before China entered the war.",
+      "Armistice talks began in July 1951, after China was already fighting.",
+      "The Inchon landing succeeded, and Seoul was retaken in late September 1950.",
+    ],
+    answer: 0 },
+  { id: "a8a-m012", skill: "u8", type: "mcq", set: "a8a-s04", topic: "8.2", difficulty: "moderate", reasoning: "Continuity and Change",
+    question: "The location of the armistice on the map best supports which conclusion about the war?",
+    choices: [
+      "It restored the prewar division instead of unifying Korea.",
+      "It unified Korea under the government based in Seoul.",
+      "It pushed communist rule south to the area around Pusan.",
+      "It gave China lasting control over all of North Korea.",
+    ],
+    why: [
+      "Correct. The armistice signed at Panmunjom in July 1953 left the border near the 38th parallel, where the war began, so containment held but Korea stayed divided.",
+      "Korea was never unified; two governments remain today.",
+      "UN forces held Pusan in 1950, and the war ended far to the north.",
+      "Chinese troops left North Korea in 1958, and North Korea remained a separate state.",
+    ],
+    answer: 0 },
+  { id: "a8a-m072", skill: "u8", type: "mcq", set: "a8a-s04", topic: "8.2", difficulty: "difficult", reasoning: "Causation",
+    question: "Disagreement over how to respond to the Chinese entry shown on the map led most directly to",
+    choices: [
+      "Truman's firing of MacArthur for urging attacks on China",
+      "a declaration of war on China by Congress in 1951",
+      "the use of atomic bombs against Chinese bases",
+      "the withdrawal of all American troops from Korea",
+    ],
+    why: [
+      "Correct. General Douglas MacArthur publicly called for widening the war into China, and Truman, set on a limited war, relieved him of command in April 1951.",
+      "Congress never declared war on China or North Korea.",
+      "Atomic weapons were discussed but never used in Korea.",
+      "American troops stayed in Korea through the armistice and remain there today.",
+    ],
+    answer: 0 },
+
+  // 8.1, the election of 1948 map
+  { id: "a8a-m073", skill: "u8", type: "mcq", set: "a8a-s23", topic: "8.1", difficulty: "easy", reasoning: "Causation",
+    question: "The states won by Thurmond on the map most directly reflect",
+    choices: [
+      "Deep South anger at Truman's civil rights proposals",
+      "Southern anger at the cost of the Marshall Plan",
+      "farm protest against the falling price of cotton",
+      "Southern support for Dewey's policy on unions",
+    ],
+    why: [
+      "Correct. After the Democrats adopted a civil rights plank in 1948 and Truman proposed civil rights laws, Southern Democrats formed the States' Rights Party and Thurmond carried four Deep South states.",
+      "The Marshall Plan passed Congress with wide support in both parties and was not the issue that split the South.",
+      "Thurmond's campaign was built on segregation, not crop prices.",
+      "Thurmond ran against both major candidates; his voters were not backing Dewey.",
+    ],
+    answer: 0 },
+  { id: "a8a-m074", skill: "u8", type: "mcq", set: "a8a-s23", topic: "8.1", difficulty: "moderate",
+    question: "Which of the following conclusions is best supported by the map?",
+    choices: [
+      "Truman won even though Dewey carried most of the Northeast.",
+      "Truman carried every state of the former Confederacy.",
+      "Dewey won most of the states west of the Mississippi River.",
+      "Thurmond carried at least one state in every region.",
+    ],
+    why: [
+      "Correct. Dewey won New York, Pennsylvania, and most of the Northeast, and Thurmond took four Deep South states, yet Truman still won 303 electoral votes.",
+      "Thurmond carried South Carolina, Alabama, Mississippi, and Louisiana, all former Confederate states.",
+      "Dewey won only Kansas, Nebraska, the Dakotas, and Oregon west of the Mississippi; Truman won the rest.",
+      "Thurmond carried only four Deep South states.",
+    ],
+    answer: 0 },
+  { id: "a8a-m075", skill: "u8", type: "mcq", set: "a8a-s23", topic: "8.1", difficulty: "difficult", reasoning: "Continuity and Change",
+    question: "The Thurmond vote shown on the map was an early sign of which later development?",
+    choices: [
+      "The move of white Southern voters toward the Republicans",
+      "The return of Black voters to the Republican Party",
+      "The end of states' rights arguments after the Brown ruling",
+      "The rise of the Populist Party in the rural South",
+    ],
+    why: [
+      "Correct. The 1948 revolt was the first major break in the Democratic Solid South; Goldwater carried the Deep South in 1964, and Thurmond himself became a Republican that year.",
+      "Black voters kept moving toward the Democrats after 1948, especially after the civil rights laws of the 1960s.",
+      "Southern leaders used states' rights arguments against Brown v. Board of Education, as in the Southern Manifesto of 1956.",
+      "The Populist Party rose in the 1890s, before the 1948 election.",
+    ],
+    answer: 0 },
+
   // 8.5, critics of conformity (practice passage)
   { id: "a8a-m060", skill: "u8", type: "mcq", set: "a8a-s18", topic: "8.5", difficulty: "easy", reasoning: "Causation",
     question: "The critics described in the passage were responding most directly to",
@@ -1185,4 +1343,122 @@ export default [
       "The middle class grew in the 1950s; it did not shrink.",
     ],
     answer: 0 },
+
+  // SAQ 1: two practice passages on the origins of the Cold War
+  { id: "a8a-q1a", skill: "u8", type: "fr", set: "a8a-s24", part: "SAQ 1", sub: "a", topic: "8.2",
+    lead: "Use the passages below to answer all parts of the question that follows.",
+    prompt: "Describe ONE major difference between the two passages' interpretations of the origins of the Cold War.",
+    earns: "Describes a real difference in who or what the passages blame for the Cold War, drawn from both passages.",
+    yes: ["Passage 1 blames Soviet expansion in Eastern Europe, while Passage 2 blames American leaders' pursuit of open markets and power.", "Passage 1 calls American policy a defensive reaction, while Passage 2 says American choices turned a rivalry into a lasting conflict.", "Passage 1 treats Soviet control of Eastern Europe as aggression, while Passage 2 treats it as a search for security."],
+    no: ["\"Passage 1 is about the Soviets and Passage 2 is about the Americans.\" (does not describe a difference in interpretation)", "\"Both passages say the Cold War began after 1945.\" (a similarity)", "A summary of only one passage."],
+    example: "Passage 1 argues that the Cold War began because Stalin broke his Yalta promises and pushed communism into Eastern Europe, so American policy was a defensive response. Passage 2 argues that the United States, strong and seeking open markets, treated Soviet security needs as a threat and made the conflict worse, so American leaders share much of the blame.",
+    notExample: "Passage 1 and Passage 2 both talk about the Cold War and the Soviet Union." },
+  { id: "a8a-q1b", skill: "u8", type: "fr", set: "a8a-s24", part: "SAQ 1", sub: "b", topic: "8.2",
+    lead: "Use the passages below to answer all parts of the question that follows.",
+    prompt: "Explain how ONE specific historical event or development from the period 1945 to 1950 that is not explicitly mentioned in the passages could be used to support the interpretation in Passage 1.",
+    earns: "Names a specific event from 1945 to 1950 not in the passages and explains how it shows Soviet expansion or American defensiveness.",
+    yes: ["The Soviet blockade of West Berlin in 1948 shows Moscow trying to force the West out of the city, and the airlift was a defensive answer.", "The communist coup in Czechoslovakia in 1948 shows the Soviets imposing a communist government on a democratic state.", "North Korea's Soviet-backed invasion of South Korea in 1950 shows communism using force to expand."],
+    no: ["The Marshall Plan or NATO (both are mentioned in Passage 1).", "\"The Soviets were aggressive.\" (no specific event)", "The Cuban Missile Crisis (outside 1945 to 1950)."],
+    example: "In 1948 the Soviet Union cut off road and rail access to West Berlin to force the Western powers out of the city. Truman answered with an airlift rather than force, which supports Passage 1's view that the Soviets pushed outward while the United States responded defensively.",
+    notExample: "The Soviet Union wanted to spread communism everywhere, so the Cold War was their fault." },
+  { id: "a8a-q1c", skill: "u8", type: "fr", set: "a8a-s24", part: "SAQ 1", sub: "c", topic: "8.2",
+    lead: "Use the passages below to answer all parts of the question that follows.",
+    prompt: "Explain how ONE specific historical event or development from the period 1945 to 1950 that is not explicitly mentioned in the passages could be used to support the interpretation in Passage 2.",
+    earns: "Names a specific event from 1945 to 1950 not in the passages and explains how it shows American choices driving the conflict or Soviet fears for security.",
+    yes: ["The creation of West Germany in 1949 revived a German state the Soviets feared, supporting the idea that Soviet actions were about security.", "NSC-68 in 1950 called for a huge military buildup, showing American leaders turning the rivalry into a militarized global conflict.", "The Marshall Plan's terms required open economies and joint planning, which the Soviets saw as a threat and refused, supporting the claim about markets."],
+    no: ["The Truman Doctrine (mentioned in Passage 2).", "The atomic bombings of Japan with no explanation of their link to the Soviet Union.", "The Vietnam War (outside 1945 to 1950)."],
+    example: "In 1949 the United States and its allies joined their zones into the Federal Republic of Germany and later planned to rearm it. The Soviet Union, invaded by Germany in 1941, saw this as a direct threat, which supports Passage 2's argument that Soviet control of Eastern Europe was a search for security and that American choices deepened the conflict.",
+    notExample: "The United States was rich after the war and wanted to trade." },
+
+  // SAQ 2: Eisenhower on Little Rock
+  { id: "a8a-q2a", skill: "u8", type: "fr", set: "a8a-s25", part: "SAQ 2", sub: "a", topic: "8.6",
+    lead: "Use the excerpt below to answer all parts of the question that follows.",
+    prompt: "Describe ONE reason Eisenhower gives in the excerpt for using federal power in Little Rock.",
+    earns: "Describes a reason stated in the excerpt.",
+    yes: ["Mobs were blocking the orders of a federal court, and local authorities had not stopped them.", "The president has a duty to uphold federal courts when normal agencies fail.", "The crisis was harming the nation's prestige and safety abroad during the Cold War."],
+    no: ["\"He wanted to end segregation in the South.\" (Eisenhower frames the action as enforcing a court order, not as his own goal)", "\"Because of Brown v. Board.\" (does not describe a reason given in the excerpt)", "A quotation copied with no explanation."],
+    example: "Eisenhower says that mobs led by extremists were stopping the carrying out of a federal court's orders and that local officials had not ended the resistance, so the president had a responsibility to use federal power to uphold the courts.",
+    notExample: "Eisenhower talked about Little Rock on television." },
+  { id: "a8a-q2b", skill: "u8", type: "fr", set: "a8a-s25", part: "SAQ 2", sub: "b", topic: "8.6",
+    lead: "Use the excerpt below to answer all parts of the question that follows.",
+    prompt: "Explain ONE development in the period 1945 to 1957 that led to the situation Eisenhower describes.",
+    earns: "Explains a specific development and how it led to the crisis at Little Rock.",
+    yes: ["Brown v. Board of Education (1954) ruled school segregation unconstitutional, leading a federal court to order Little Rock's Central High to admit Black students.", "Brown II (1955) ordered desegregation \"with all deliberate speed,\" which Southern officials used to delay and resist.", "Massive resistance, including the Southern Manifesto of 1956, encouraged leaders such as Governor Orval Faubus to defy the courts."],
+    no: ["\"Racism existed in the South.\" (not a specific development)", "The Civil Rights Act of 1964 (after 1957).", "Naming Brown with no explanation of the link."],
+    example: "In Brown v. Board of Education (1954), the Supreme Court ruled that segregated public schools were unconstitutional. When Little Rock moved to admit nine Black students to Central High in 1957 under a federal court order, Governor Orval Faubus used the National Guard to keep them out and mobs gathered, the defiance of a federal court that Eisenhower describes.",
+    notExample: "There were many problems with civil rights in the 1950s." },
+  { id: "a8a-q2c", skill: "u8", type: "fr", set: "a8a-s25", part: "SAQ 2", sub: "c", topic: "8.6",
+    lead: "Use the excerpt below to answer all parts of the question that follows.",
+    prompt: "Explain how the Cold War context reflected in the last sentence of the excerpt affected the federal government's response to civil rights in the period 1945 to 1965.",
+    earns: "Explains how fear for the nation's image abroad or competition with the Soviet Union pushed federal action on civil rights, with a specific example.",
+    yes: ["Truman's civil rights committee argued in 1947 that discrimination hurt the nation's standing abroad, and he desegregated the armed forces in 1948.", "The Justice Department's brief in Brown argued that segregation damaged American foreign relations.", "Soviet propaganda about violence against civil rights marchers pushed Kennedy and Johnson to support the Civil Rights Act of 1964."],
+    no: ["\"The Cold War was a conflict with the Soviet Union.\" (no link to civil rights)", "McCarthyism with no link to federal civil rights action.", "An example from after 1965 with no link to the period."],
+    example: "Leaders knew the Soviet Union used American segregation to win support among newly independent nations in Africa and Asia. This concern helped push federal action: in 1948 Truman ordered the armed forces desegregated, and the Justice Department told the Court in Brown that segregation harmed American foreign relations.",
+    notExample: "The Cold War made people afraid of communists." },
+
+  // SAQ 3: American deaths in Vietnam by year (chart)
+  { id: "a8a-q3a", skill: "u8", type: "fr", set: "a8a-s26", part: "SAQ 3", sub: "a", topic: "8.8",
+    lead: "Use the chart and table below to answer all parts of the question that follows.",
+    prompt: "Describe ONE pattern in American military deaths in Vietnam shown in the chart.",
+    earns: "Describes a pattern accurately from the data.",
+    yes: ["Deaths rose sharply from 216 in 1964 to a peak of 16,899 in 1968.", "Deaths fell every year after 1968, to 759 in 1972 and 68 in 1973.", "Deaths were low before 1965 and then rose about ninefold between 1964 and 1965."],
+    no: ["\"Many Americans died in Vietnam.\" (no pattern)", "\"Deaths peaked in 1970.\" (inaccurate)", "A cause with no description of the data."],
+    example: "American deaths in Vietnam were low in the early 1960s but rose quickly after 1964, from 216 that year to a peak of 16,899 in 1968, and then fell steadily to 68 by 1973.",
+    notExample: "The chart shows that the Vietnam War was bad." },
+  { id: "a8a-q3b", skill: "u8", type: "fr", set: "a8a-s26", part: "SAQ 3", sub: "b", topic: "8.8",
+    lead: "Use the chart and table below to answer all parts of the question that follows.",
+    prompt: "Explain ONE development that contributed to the change in American deaths from 1964 to 1968.",
+    earns: "Explains a specific development that increased the number of Americans fighting or the intensity of the fighting.",
+    yes: ["The Gulf of Tonkin Resolution (1964) let Johnson send combat troops; Marines landed in 1965 and troop levels reached about 536,000 by 1968.", "Johnson's Americanization of the war shifted the ground fighting from South Vietnamese to American forces.", "The Tet Offensive of 1968 brought some of the heaviest fighting of the war."],
+    no: ["\"The war got worse.\" (no specific development)", "Vietnamization (it lowered American deaths after 1969).", "The Paris Peace Accords (1973)."],
+    example: "After Congress passed the Gulf of Tonkin Resolution in August 1964, Johnson began bombing North Vietnam and sent the first combat troops in March 1965. American troop levels climbed to more than half a million by 1968, so many more Americans were in combat and deaths rose sharply.",
+    notExample: "More soldiers died because war is dangerous." },
+  { id: "a8a-q3c", skill: "u8", type: "fr", set: "a8a-s26", part: "SAQ 3", sub: "c", topic: "8.8",
+    lead: "Use the chart and table below to answer all parts of the question that follows.",
+    prompt: "Explain ONE way that the change in American deaths after 1968 reflects a change in American policy in the period 1968 to 1973.",
+    earns: "Explains how a specific policy change reduced the number of Americans in combat.",
+    yes: ["Nixon's Vietnamization handed the fighting to South Vietnam's army and withdrew American troops, so fewer Americans were killed.", "Johnson's partial bombing halt and the start of peace talks in Paris in 1968 began a shift away from escalation.", "The Paris Peace Accords of January 1973 ended American combat and brought troops home, so deaths nearly stopped."],
+    no: ["\"The war ended in 1975.\" (does not explain the 1969 to 1973 decline)", "The invasion of Cambodia in 1970 (it widened the war rather than reducing American combat).", "\"Fewer people died.\" (restates the data)"],
+    example: "After 1968 Nixon adopted Vietnamization, training South Vietnamese forces to take over the fighting while bringing American troops home, from about 540,000 in 1969 to about 24,000 in 1972. With fewer Americans in combat, deaths fell each year, to 759 in 1972.",
+    notExample: "Nixon was president after Johnson." },
+
+  // LEQ
+  { id: "a8a-leq1", skill: "u8", type: "essay", kind: "leq", topic: "8.3", reasoning: "Causation",
+    prompt: "In the decades after 1945, the rivalry with the Soviet Union shaped American foreign policy and also reached into American politics, the economy, and daily life. Evaluate the extent to which the Cold War changed American society and politics at home in the period from 1945 to 1980. You may focus on any example(s) of political, economic, social, or cultural change at home, such as anticommunist campaigns, defense spending, civil defense, or civil rights. You are not expected to address the entire period.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: no claim, a claim that restates the prompt, or one that does not take a position on how much the Cold War changed life at home.",
+        "1 point: a historically defensible claim about the extent of change with a line of reasoning, such as arguing that the Cold War greatly changed politics and the economy through the Red Scare and defense spending, but that suburban growth and civil rights had other main causes.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: no relevant broader context, or only a passing phrase.",
+        "1 point: describes a broader context, such as the breakdown of the wartime alliance after 1945, Soviet control of Eastern Europe, the Soviet atomic bomb and the communist victory in China in 1949, or the earlier Red Scare after World War I.",
+      ] },
+      { name: "Evidence", max: 2, levels: [
+        "0 points: no specific examples, or examples unrelated to change at home.",
+        "1 point: two specific examples relevant to the prompt, such as Truman's loyalty program (1947) and the Interstate Highway Act (1956).",
+        "2 points: uses specific and relevant examples, such as McCarthyism, the National Defense Education Act, and civil defense drills, to support an argument about the extent of change.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: lists events without explaining how the Cold War caused change.",
+        "1 point: uses causation to frame the argument, explaining how specific Cold War pressures led to changes at home.",
+        "2 points: shows complex understanding, for example by weighing the Cold War against other causes (the postwar boom, the baby boom, the civil rights movement's own organizing), by showing that the Cold War both limited dissent in the 1950s and helped civil rights advocates press for change, or by explaining how its effects shifted after Vietnam and détente.",
+      ] },
+    ],
+    evidence: [
+      "Truman's Executive Order 9835 (1947) set up loyalty checks for federal workers.",
+      "The House Un-American Activities Committee's Hollywood hearings (1947) and the blacklist.",
+      "Senator Joseph McCarthy's charges (1950 to 1954) and his censure by the Senate in 1954.",
+      "The McCarran Internal Security Act (1950), passed over Truman's veto.",
+      "The trial and execution of Julius and Ethel Rosenberg (1951 to 1953).",
+      "Defense spending after NSC-68 and the Korean War, and the growth of the Sunbelt's defense and aerospace industries.",
+      "The Federal-Aid Highway Act of 1956, justified partly by civil defense.",
+      "Sputnik (1957) and the National Defense Education Act (1958), which funded science and language teaching.",
+      "Civil defense drills and home fallout shelters in the 1950s and early 1960s.",
+      "\"Under God\" added to the Pledge of Allegiance (1954) and the religious revival as a contrast to \"godless communism.\"",
+      "Cold War concern for the nation's image abroad in Truman's desegregation of the armed forces (1948) and the Justice Department's brief in Brown (1954).",
+      "The Vietnam War's draft and the antiwar movement, the Pentagon Papers (1971), and the War Powers Resolution (1973).",
+    ],
+    model: "Thesis: The Cold War sharply changed American politics and the economy at home from 1945 to 1980, narrowing political dissent in the 1950s and building a lasting defense economy, but its effect on society was mixed, because suburban growth and the civil rights movement drew mainly on other causes even as Cold War pressures shaped them. Outline: (1) Context: the collapse of the wartime alliance, Soviet control of Eastern Europe, and the shocks of 1949. (2) Politics: Truman's loyalty program, HUAC, McCarthyism, and the McCarran Act narrowed acceptable debate until McCarthy's censure in 1954. (3) Economy: NSC-68 and Korea created a permanent arms industry, shifting people and money to the Sunbelt; Eisenhower warned of its influence in 1961. (4) Society and culture: civil defense, the religious revival, and the National Defense Education Act show deep effects, but the baby boom and suburbs grew mainly from prosperity and the GI Bill. (5) Complexity: the Cold War also helped civil rights, since leaders feared Soviet propaganda, and Vietnam turned Cold War policy into a source of division by the late 1960s.",
+  },
 ];

@@ -154,6 +154,47 @@ export const sets = {
       { cite: "Justice Harry A. Blackmun, opinion of the Court, Roe v. Wade, 410 U.S. 113 (1973). Legal Information Institute, Cornell Law School.", url: "https://www.law.cornell.edu/supremecourt/text/410/113", kind: "primary" },
     ] }],
   },
+  "a8b-s19": {
+    id: "a8b-s19", name: "The election of 1968", intro: "Use the map below to answer the questions that follow.",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u8b-election-1968"], caption: "The presidential election of 1968: electoral votes by state (present-day state lines shown; Alaska, won by Nixon, and Hawaii, won by Humphrey, are not shown; North Carolina gave 12 votes to Nixon and 1 to Wallace)" },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against The American Presidency Project, \"1968 Election\" results by state, and the National Archives, \"1968 Electoral College Results.\"", kind: "map" },
+    ] }],
+  },
+  "a8b-s20": {
+    id: "a8b-s20", name: "The Great Society's reach", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Historians often describe the Great Society as the high point of postwar liberalism. Between 1964 and 1966, Lyndon Johnson and large Democratic majorities in Congress passed more social legislation than any Congress since the New Deal. Unlike the New Deal, however, most Great Society programs aimed to give poor Americans opportunity rather than jobs or income: preschool, job training, legal aid, and community action agencies that asked the poor to take part in running programs. The most lasting measures were Medicare and Medicaid, federal aid to schools, and new civil rights and immigration laws. Other programs lost money and support as the cost of the Vietnam War grew, as cities erupted in riots, and as many white voters came to see antipoverty efforts as helping others at their expense." },
+      { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
+  "a8b-s21": {
+    id: "a8b-s21", name: "The Chicano movement", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Historians describe the Chicano movement of the 1960s and 1970s as Mexican Americans' own struggle for civil rights, shaped by the Black freedom struggle but rooted in its own history. In California's fields, César Chávez and Dolores Huerta built the United Farm Workers and led a grape strike and national boycott that won the first union contracts for grape pickers in 1970. In cities, students walked out of East Los Angeles high schools in 1968 to demand bilingual teaching, Mexican American teachers, and courses on their history. Activists in Texas founded La Raza Unida Party to elect their own candidates. The movement joined demands for economic justice with pride in a Mexican American identity, and it helped win federal support for bilingual education." },
+      { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
+  "a8b-s22": {
+    id: "a8b-s22", name: "The New Right's coalition", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Many historians trace the conservative revival of the 1970s to several groups who came together for different reasons. Sunbelt suburbanites resented high taxes, busing, and federal rules; California's Proposition 13 in 1978 showed the power of a revolt against property taxes. Evangelical Protestants, many of whom had avoided politics, organized against legal abortion, the Equal Rights Amendment, and the ban on official school prayer. Anticommunists attacked détente and argued that the Soviet Union was gaining strength while the United States was weak after Vietnam. Free market economists blamed stagflation on government spending and regulation. By 1980, Ronald Reagan had joined these groups into one coalition, and the New Right challenged the liberal ideas that had shaped national politics since the New Deal." },
+      { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
+  "a8b-s23": {
+    id: "a8b-s23", name: "Consensus or conflict, 1945 to 1980", intro: "Use the two passages below to answer the questions that follow.",
+    sources: [
+      { title: "Source 1", blocks: [
+        { p: "For many historians, the years from 1945 to the late 1960s were an age of consensus. Most leaders of both parties agreed that the United States must contain communism abroad, that the federal government should manage the economy and provide a basic safety net, and that rights should slowly be extended to more Americans. Dwight Eisenhower, a Republican, expanded Social Security and built the interstate highways, and Richard Nixon signed laws creating new federal agencies. Rising wages and the spread of home ownership gave most Americans reason to accept this broad agreement, and the political arguments of the era were mostly about how far and how fast to go, not about which direction to take." },
+        { cite: PRACTICE, kind: "practice" },
+      ] },
+      { title: "Source 2", blocks: [
+        { p: "Other historians argue that the postwar consensus was narrow and short lived. The agreement among leaders left out many Americans and hid deep conflicts. Anticommunist purges silenced dissent in the 1950s, white Southerners fought school desegregation with massive resistance, and Black, Latino, and Native American activists exposed how little the era's prosperity reached them. A conservative movement that rejected the New Deal order grew steadily from the 1950s on, while students, feminists, and antiwar protesters attacked liberalism from the left in the 1960s. Seen this way, the upheavals of the late 1960s and 1970s did not destroy a consensus so much as reveal conflicts that had been there all along." },
+        { cite: PRACTICE, kind: "practice" },
+      ] },
+    ],
+  },
 };
 
 export default [
@@ -998,6 +1039,257 @@ export default [
       "Earl Warren retired in 1969; Chief Justice Warren Burger led the Court in 1973.",
       "Nixon chose justices he expected to be law and order conservatives, not allies of the women's movement.",
       "A Court that decided Roe by seven to two had not become conservative; that shift came later, with appointments by Reagan and his successors.",
+    ],
+    answer: 0 },
+  // ---------- 8.14 and 8.15 Election of 1968 map ----------
+  { id: "a8b-m055", skill: "u8", type: "mcq", set: "a8b-s19", topic: "8.14", difficulty: "easy", reasoning: "Causation",
+    question: "Wallace's strength shown on the map most directly reflected",
+    choices: [
+      "white Southern opposition to federal civil rights laws",
+      "support for an immediate end to the war in Vietnam",
+      "Midwestern farmers' anger at falling crop prices",
+      "Western voters' demands for conservation of public land",
+    ],
+    why: [
+      "Correct. George Wallace, the Alabama governor who had stood against integration, ran as a third party candidate in 1968 against federal civil rights enforcement and busing, and he carried five Deep South states.",
+      "Wallace did not call for an immediate end to the war, and his running mate, Curtis LeMay, favored heavier bombing.",
+      "Wallace won no Midwestern state; every state he carried is in the Deep South.",
+      "Wallace won no Western state; the West went to Nixon.",
+    ],
+    answer: 0 },
+  { id: "a8b-m056", skill: "u8", type: "mcq", set: "a8b-s19", topic: "8.14", difficulty: "moderate",
+    question: "The map best supports which claim about the Democratic Party in 1968?",
+    choices: [
+      "It had lost its hold on most of the formerly Solid South",
+      "It won most of the states west of the Mississippi River",
+      "It carried the most populous state in the West, California",
+      "It won a majority of the electoral votes in the Sunbelt",
+    ],
+    why: [
+      "Correct. The South had voted Democratic for most of the century since Reconstruction, but in 1968 Humphrey carried only Texas there, while Wallace took the Deep South and Nixon won Virginia, the Carolinas, Tennessee, and Florida.",
+      "West of the Mississippi, Humphrey won only Minnesota, Texas, and Washington (and Hawaii, not shown).",
+      "Nixon, a Californian, carried California.",
+      "Most Sunbelt states, from Florida to California, went to Nixon or Wallace.",
+    ],
+    answer: 0 },
+  { id: "a8b-m057", skill: "u8", type: "mcq", set: "a8b-s19", topic: "8.14", difficulty: "difficult", reasoning: "Causation",
+    question: "Humphrey's wins in Michigan, Pennsylvania, and New York most likely depended on support from",
+    choices: [
+      "union members and city voters in industrial states",
+      "white voters in rural counties across the South",
+      "suburban homeowners in the Sunbelt who opposed taxes",
+      "antiwar students who had backed Eugene McCarthy",
+    ],
+    why: [
+      "Correct. Organized labor, especially the AFL-CIO and the United Auto Workers, campaigned hard for Humphrey, and urban, Black, and Catholic voters in industrial states held to the New Deal coalition.",
+      "Rural white Southerners voted mainly for Wallace or Nixon, and these three states are not in the South.",
+      "Sunbelt suburbs leaned Republican, and the three states named are not in the Sunbelt.",
+      "Many McCarthy supporters were angry that Humphrey backed Johnson's war policy, and some sat out the election, so they were not the core of his support.",
+    ],
+    answer: 0 },
+  { id: "a8b-m058", skill: "u8", type: "mcq", set: "a8b-s19", topic: "8.15", difficulty: "moderate", reasoning: "Continuity and Change",
+    question: "Compared with Franklin Roosevelt's victories in the 1930s, the map shows most clearly",
+    choices: [
+      "the breakup of the New Deal coalition in the South",
+      "Black voters' return to the party of Abraham Lincoln",
+      "the Republican Party's loss of the Northeast's cities",
+      "Western states' return to support for the Democrats",
+    ],
+    why: [
+      "Correct. Roosevelt carried every Southern state in 1932 and 1936; in 1968 white Southerners split between Nixon and Wallace, a step in the region's shift to the Republicans.",
+      "Black voters had moved to the Democrats in the 1930s and stayed there, voting heavily for Humphrey in 1968.",
+      "Northeastern cities had already voted Democratic in the 1930s, so 1968 shows no new Republican loss there.",
+      "Roosevelt won the West in the 1930s, but in 1968 nearly all of it went to Nixon.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.9 Great Society passage ----------
+  { id: "a8b-m059", skill: "u8", type: "mcq", set: "a8b-s20", topic: "8.9", difficulty: "easy",
+    question: "The \"community action agencies\" described in the passage were created by",
+    choices: [
+      "the Economic Opportunity Act of 1964",
+      "the Social Security Act of 1935",
+      "the Taft-Hartley Act of 1947",
+      "the Interstate Highway Act of 1956",
+    ],
+    why: [
+      "Correct. The Economic Opportunity Act (1964), the core of the War on Poverty, created the Office of Economic Opportunity, community action agencies, the Job Corps, and VISTA.",
+      "The Social Security Act created old age pensions and unemployment insurance during the New Deal.",
+      "The Taft-Hartley Act limited labor unions after World War II.",
+      "The Interstate Highway Act funded a national road network under Eisenhower.",
+    ],
+    answer: 0 },
+  { id: "a8b-m060", skill: "u8", type: "mcq", set: "a8b-s20", topic: "8.9", difficulty: "moderate", reasoning: "Causation",
+    question: "Which development best supports the passage's final sentence?",
+    choices: [
+      "Republican gains in the midterm elections of 1966",
+      "Johnson's landslide win over Goldwater in 1964",
+      "The passage of the Voting Rights Act in 1965",
+      "The creation of Medicare and Medicaid in 1965",
+    ],
+    why: [
+      "Correct. In 1966, with riots in cities and the war growing, Republicans gained 47 House seats, and Congress cut back new Great Society spending.",
+      "Johnson's 1964 landslide gave him the majorities to pass the Great Society, so it shows support, not its loss.",
+      "The Voting Rights Act was a major success of 1965, not a sign of declining support.",
+      "Medicare and Medicaid are among the lasting measures the passage names, not evidence of lost support.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.11 Chicano movement passage ----------
+  { id: "a8b-m061", skill: "u8", type: "mcq", set: "a8b-s21", topic: "8.11", difficulty: "easy", reasoning: "Comparison",
+    question: "The farmworkers' tactics described in the passage most resembled those of",
+    choices: [
+      "the Montgomery bus boycott of 1955",
+      "the Black Panthers' armed patrols",
+      "the Weather Underground's bombings",
+      "the Bonus Army's camp in Washington",
+    ],
+    why: [
+      "Correct. Like the Montgomery bus boycott, the grape boycott used nonviolent economic pressure; Chávez also fasted to keep the movement nonviolent.",
+      "The Black Panthers carried guns on patrols in Oakland, a tactic the UFW rejected.",
+      "The Weather Underground used bombs, the opposite of the UFW's nonviolence.",
+      "The Bonus Army of 1932 camped in Washington to demand early payment of veterans' bonuses, not a boycott.",
+    ],
+    answer: 0 },
+  { id: "a8b-m062", skill: "u8", type: "mcq", set: "a8b-s21", topic: "8.11", difficulty: "moderate", reasoning: "Causation",
+    question: "Which development most directly shaped the movement described in the passage?",
+    choices: [
+      "The successes of the African American civil rights movement",
+      "The rise of the New Right among Sunbelt suburban voters",
+      "The Supreme Court's ruling in Korematsu v. United States",
+      "The 1924 quotas that barred immigration from Mexico",
+    ],
+    why: [
+      "Correct. The passage says the movement was \"shaped by the Black freedom struggle\"; Chicano activists borrowed its marches, boycotts, and demands for equal schooling and political power.",
+      "The New Right opposed many of the movement's goals, such as bilingual education.",
+      "Korematsu (1944) upheld the removal of Japanese Americans; it did not shape the Chicano movement.",
+      "The Immigration Act of 1924 set quotas for Europe and Asia but did not put quotas on the Western Hemisphere, so Mexico was not barred.",
+    ],
+    answer: 0 },
+  { id: "a8b-m063", skill: "u8", type: "mcq", set: "a8b-s21", topic: "8.11", difficulty: "easy",
+    question: "Which group would most likely have opposed the grape boycott described in the passage?",
+    choices: [
+      "Large grape growers in California",
+      "Leaders of the AFL-CIO labor federation",
+      "Students in the East Los Angeles walkouts",
+      "Leaders of the SCLC, including King",
+    ],
+    why: [
+      "Correct. The boycott aimed to force grape growers around Delano, California, to sign union contracts, which they resisted until 1970.",
+      "The UFW joined the AFL-CIO, and organized labor backed the boycott.",
+      "The student walkouts were part of the same Chicano movement as the boycott.",
+      "Martin Luther King Jr. and the SCLC supported Chávez's nonviolent campaign.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.14 New Right passage ----------
+  { id: "a8b-m064", skill: "u8", type: "mcq", set: "a8b-s22", topic: "8.14", difficulty: "easy",
+    question: "Which person best represents the \"evangelical Protestants\" described in the passage?",
+    choices: [
+      "Jerry Falwell, a Baptist minister",
+      "Gloria Steinem, a founder of Ms. magazine",
+      "César Chávez, the farmworkers' leader",
+      "Ralph Nader, a critic of the auto industry",
+    ],
+    why: [
+      "Correct. Jerry Falwell, a Baptist television preacher in Virginia, founded the Moral Majority in 1979 to mobilize religious conservatives against abortion and the ERA.",
+      "Gloria Steinem was a leading feminist who supported the ERA and legal abortion.",
+      "César Chávez led the United Farm Workers, a cause the New Right did not take up.",
+      "Ralph Nader led a consumer movement that called for more federal regulation, not less.",
+    ],
+    answer: 0 },
+  { id: "a8b-m065", skill: "u8", type: "mcq", set: "a8b-s22", topic: "8.14", difficulty: "moderate", reasoning: "Causation",
+    question: "The tax revolt described in the passage most directly reflected",
+    choices: [
+      "anger at property taxes that rose with inflation",
+      "demands for more spending on public schools",
+      "opposition to the newly passed income tax",
+      "support for a graduated tax on large incomes",
+    ],
+    why: [
+      "Correct. Inflation in the 1970s drove up home values and property taxes, and California voters approved Proposition 13 in 1978 to cap them, starting tax revolts in other states.",
+      "Proposition 13 cut the property taxes that paid for schools, so it was not a demand for more school spending.",
+      "The federal income tax dated from the Sixteenth Amendment of 1913, so it was not newly passed in the 1970s.",
+      "A graduated income tax was a Populist demand of the 1890s, not a goal of the 1970s tax revolt.",
+    ],
+    answer: 0 },
+  { id: "a8b-m066", skill: "u8", type: "mcq", set: "a8b-s22", topic: "8.14", difficulty: "difficult", reasoning: "Causation",
+    question: "Which earlier development most directly prepared the way for the coalition described in the passage?",
+    choices: [
+      "Goldwater's 1964 campaign, which built a network of conservative activists",
+      "Truman's 1948 campaign, which won back many Southern Democrats",
+      "Eisenhower's acceptance of New Deal programs such as Social Security",
+      "Johnson's War on Poverty, which won support from suburban taxpayers",
+    ],
+    why: [
+      "Correct. Barry Goldwater lost badly in 1964, but his campaign recruited young conservatives, carried five Deep South states, and launched Ronald Reagan's political career with his televised speech \"A Time for Choosing.\"",
+      "Truman did win in 1948, but the Dixiecrats broke from him, and his campaign was liberal, not a step toward the New Right.",
+      "Eisenhower's Modern Republicanism accepted the New Deal, which the New Right later challenged.",
+      "The War on Poverty was a liberal program; many suburban taxpayers came to resent it.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.15 Consensus or conflict ----------
+  { id: "a8b-m067", skill: "u8", type: "mcq", set: "a8b-s23", topic: "8.15", difficulty: "moderate", reasoning: "Comparison",
+    question: "Which statement best describes a difference between the two passages?",
+    choices: [
+      "Source 1 stresses agreement in the period, and Source 2 stresses conflict",
+      "Source 1 stresses the New Right's rise, and Source 2 stresses its decline",
+      "Source 1 blames liberals for unrest, and Source 2 blames conservatives",
+      "Source 1 covers foreign policy, and Source 2 covers only economic policy",
+    ],
+    why: [
+      "Correct. Source 1 says leaders of both parties agreed on containment, a managed economy, and gradual reform, while Source 2 says that agreement hid deep conflicts that were \"there all along.\"",
+      "Source 1 does not discuss the New Right, and Source 2 describes a conservative movement that \"grew steadily.\"",
+      "Neither passage blames one side for the unrest; Source 2 describes attacks on liberalism from both the right and the left.",
+      "Source 2 covers civil rights, purges, and protest movements, not only economic policy.",
+    ],
+    answer: 0 },
+  { id: "a8b-m068", skill: "u8", type: "mcq", set: "a8b-s23", topic: "8.15", difficulty: "easy", reasoning: "Continuity and Change",
+    question: "Which evidence would best support the argument in Source 1?",
+    choices: [
+      "Republican votes for the Interstate Highway Act of 1956",
+      "Southern states' massive resistance to school integration",
+      "The growth of Young Americans for Freedom after 1960",
+      "The uprisings in Newark and Detroit in the summer of 1967",
+    ],
+    why: [
+      "Correct. The Interstate Highway Act passed Congress with large majorities of both parties and was signed by Eisenhower, showing broad agreement on a strong federal role.",
+      "Massive resistance to Brown shows deep conflict, the argument of Source 2.",
+      "Young Americans for Freedom was part of the conservative movement that Source 2 says rejected the New Deal order.",
+      "The urban uprisings of 1967 show the conflict Source 2 describes.",
+    ],
+    answer: 0 },
+  { id: "a8b-m069", skill: "u8", type: "mcq", set: "a8b-s23", topic: "8.15", difficulty: "easy", reasoning: "Continuity and Change",
+    question: "Which development would best support the argument in Source 2?",
+    choices: [
+      "Southern Democrats' Dixiecrat revolt in 1948",
+      "Bipartisan support for the Marshall Plan in 1948",
+      "Eisenhower's expansion of Social Security in 1954",
+      "Republican votes for the Civil Rights Act of 1964",
+    ],
+    why: [
+      "Correct. In 1948, Southern Democrats who opposed Truman's civil rights proposals formed the States' Rights (Dixiecrat) Party under Strom Thurmond, showing conflict early in the postwar years.",
+      "Support from both parties for the Marshall Plan shows agreement on containment, the argument of Source 1.",
+      "Eisenhower's expansion of Social Security shows Republicans accepting the New Deal, as Source 1 argues.",
+      "Most Republicans in Congress voted for the Civil Rights Act, which shows agreement across parties.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.15 Carter, added ----------
+  { id: "a8b-m070", skill: "u8", type: "mcq", set: "a8b-s14", topic: "8.15", difficulty: "easy", reasoning: "Continuity and Change",
+    question: "Carter's warning in the excerpt best reflects which change from the 1950s and early 1960s?",
+    choices: [
+      "From faith in abundance to worry about limits",
+      "From fear of communism to trust in the Soviets",
+      "From support for unions to support for tariffs",
+      "From reliance on coal to reliance on solar power",
+    ],
+    why: [
+      "Correct. Postwar Americans had come to expect cheap energy and steady growth; by 1977 Carter spoke of \"rapidly shrinking resources\" and sacrifice, a sign of the limits felt in the 1970s.",
+      "Carter's speech is about energy, and the Cold War continued; détente eased tension without ending distrust of the Soviet Union.",
+      "The excerpt says nothing about unions or tariffs.",
+      "Oil and gas, not coal, supplied most energy in 1977, and solar power remained a small share.",
     ],
     answer: 0 },
 ];

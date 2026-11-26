@@ -22,7 +22,7 @@ export const sets = {
     id: "a5b-s02", name: "Secession, 1860 to 1861", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u5b-secession"], caption: "The slave states and secession, December 1860 to June 1861 (present-day state lines shown; West Virginia, then part of Virginia, is left unshaded)" },
-      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against National Park Service, Kennesaw Mountain National Battlefield Park, \"War Declared: States Secede from the Union!\" and Wikipedia, \"Confederate States of America.\"", kind: "map" },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against National Park Service, Kennesaw Mountain National Battlefield Park, \"War Declared: States Secede from the Union!\" and Encyclopaedia Britannica, \"Secession\" (United States history).", kind: "map" },
     ] }],
   },
   "a5b-s03": {

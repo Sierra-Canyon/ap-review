@@ -24,7 +24,7 @@ const secession = {
     { kind: "c", text: "Slave states that stayed in the Union" },
   ],
   legendAt: "bottom-right", legendWidth: 250,
-  checked: ["National Park Service, Kennesaw Mountain National Battlefield Park, \"War Declared: States Secede from the Union!\"", "Wikipedia, \"Confederate States of America\""],
+  checked: ["National Park Service, Kennesaw Mountain National Battlefield Park, \"War Declared: States Secede from the Union!\"", "Encyclopaedia Britannica, \"Secession\" (United States history)"],
 };
 
 export const maps = [secession];

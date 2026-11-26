@@ -26,13 +26,13 @@ const korea = {
   id: "u8a-korea-1950",
   caption: "The Korean War, 1950 to 1953",
   alt: "Map of the Korean peninsula between China and Japan. A line across the peninsula marks the 38th parallel, the dividing line set after World War II. Dots mark Pyongyang in the north and Seoul, Inchon, and Pusan in the south. A sea route runs from Pusan around the southern tip of the peninsula and up the west coast to Inchon, marking the UN landing of September 1950. A second arrow runs south from the Yalu River on the Chinese border, marking the entry of Chinese forces in October and November 1950. A star marks Panmunjom, just south of the 38th parallel near its western end, where the armistice was signed in July 1953.",
-  bbox: [123.3, 33.4, 131.6, 42.6], width: 560, height: 560,
+  bbox: [123.3, 31.6, 131.6, 42.6], width: 560, height: 640,
   places: [
     { name: "Pyongyang", at: [125.75, 39.02], label: "left" },
     { name: "Seoul", at: [126.98, 37.57], label: "right" },
     { name: "Inchon landing,\nSept. 1950", at: [126.63, 37.46], kind: "battle", label: "left" },
     { name: "Pusan", at: [129.04, 35.1], kind: "major", label: "right" },
-    { name: "Panmunjom\n(armistice, July 1953)", at: [126.68, 37.96], kind: "major", label: "right" },
+    { name: "Panmunjom (armistice, July 1953)", at: [126.68, 37.96], kind: "major", label: [8, -12] },
   ],
   routes: [
     { through: [[124.6, 38.0], [128.7, 38.0]], kind: "route" },
@@ -41,10 +41,10 @@ const korea = {
   ],
   regions: [
     { name: "CHINA", at: [124.6, 41.8], size: 14 },
-    { name: "JAPAN", at: [130.6, 33.9], size: 13 },
+    { name: "JAPAN", at: [131.0, 33.6], size: 13 },
     { name: "Yalu River", at: [125.3, 40.65], size: 11 },
     { name: "38th parallel", at: [129.6, 38.0], size: 11 },
-    { name: "Sea of Japan", at: [130.4, 39.5], size: 11 },
+    { name: "Sea of Japan", at: [130.4, 37.0], size: 11 },
     { name: "Yellow Sea", at: [124.3, 36.6], size: 11 },
   ],
   legend: [
@@ -52,7 +52,7 @@ const korea = {
     { kind: "sea", text: "UN landing at Inchon, Sept. 1950" },
     { kind: "route2", text: "Chinese forces enter, Oct. to Nov. 1950" },
   ],
-  legendAt: "bottom-left", legendWidth: 260,
+  legendAt: "bottom-right", legendWidth: 300,
   checked: ["National Park Service, Korean War Veterans Memorial, \"Korean War Overview\" (nps.gov/kowa)", "U.S. Army, \"The Korean War\" (army.mil/article/248681)"],
 };
 

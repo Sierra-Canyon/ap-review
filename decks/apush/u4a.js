@@ -110,6 +110,86 @@ export const sets = {
       { cite: "Campbell Gibson, \"Population of the 100 Largest Cities and Other Urban Places in the United States: 1790 to 1990,\" U.S. Census Bureau, Population Division Working Paper No. 27 (1998), Table 5 (1820) and Table 8 (1850).", url: "https://www2.census.gov/library/working-papers/1998/demo/pop-twps0027/twps0027.html", kind: "data" },
     ] }],
   },
+  "a4a-s10": {
+    id: "a4a-s10", name: "Jefferson on Louisiana, 1803", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Previous, however, to this period, we had not been unaware of the danger to which our peace would be perpetually exposed while so important a key to the commerce of the western country remained under foreign power. ... While the property and sovereignty of the Mississippi and its waters secure an independent outlet for the produce of the western States, and an uncontrolled navigation through their whole course, free from collision with other powers and the dangers to our peace from that source, the fertility of the country, its climate and extent, promise in due season important aids to our treasury, an ample provision for our posterity, and a wide-spread field for the blessings of freedom and equal laws." },
+      { cite: "Thomas Jefferson, Third Annual Message to Congress, October 17, 1803. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/19th_century/jeffmes3.asp", kind: "primary" },
+    ] }],
+  },
+  "a4a-s11": {
+    id: "a4a-s11", name: "Jefferson on commerce and manufactures, 1808", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The suspension of our foreign commerce, produced by the injustice of the belligerent powers, and the consequent losses and sacrifices of our citizens, are subjects of just concern. The situation into which we have thus been forced, has impelled us to apply a portion of our industry and capital to internal manufactures and improvements. The extent of this conversion is daily increasing, and little doubt remains that the establishments formed and forming will -- under the auspices of cheaper materials and subsistence, the freedom of labor from taxation with us, and of protecting duties and prohibitions -- become permanent." },
+      { cite: "Thomas Jefferson, Eighth Annual Message to Congress, November 8, 1808. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/19th_century/jeffmes8.asp", kind: "primary" },
+    ] }],
+  },
+  "a4a-s12": {
+    id: "a4a-s12", name: "The Twelfth Amendment, 1804", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The Electors shall meet in their respective states and vote by ballot for President and Vice-President, one of whom, at least, shall not be an inhabitant of the same state with themselves; they shall name in their ballots the person voted for as President, and in distinct ballots the person voted for as Vice-President, they shall make distinct lists of all persons voted for as President, and of all persons voted for as Vice-President, and of the number of votes for each ... The person having the greatest number of votes for President, shall be the President, if such number be a majority of the whole number of Electors appointed; ..." },
+      { cite: "Amendment XII to the Constitution of the United States, passed by Congress December 9, 1803, ratified June 15, 1804. National Archives.", url: "https://www.archives.gov/founding-docs/amendments-11-27", kind: "primary" },
+    ] }],
+  },
+  "a4a-s13": {
+    id: "a4a-s13", name: "Jefferson to Handsome Lake, 1802", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "You remind me, brother, of what I said to you, when you visited me the last winter, that the lands you then held would remain yours, and shall never go from you but when you should be disposed to sell. This I now repeat, and will ever abide by. We, indeed, are always ready to buy land; but we will never ask but when you wish to sell ..." },
+      { p: "Go on then, brother, in the great reformation you have undertaken. Persuade our red brethren then to be sober, and to cultivate their lands; and their women to spin and weave for their families. You will soon see your women and children well fed and clothed, your men living happily in peace and plenty, and your numbers increasing from year to year." },
+      { cite: "Thomas Jefferson, \"To Brother Handsome Lake,\" Washington, November 3, 1802. Handsome Lake was a Seneca religious leader. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/19th_century/jeffind2.asp", kind: "primary" },
+    ] }],
+  },
+  "a4a-s14": {
+    id: "a4a-s14", name: "John Quincy Adams's first annual message, 1825", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The great object of the institution of civil government is the improvement of the condition of those who are parties to the social compact, and no government, in what ever form constituted, can accomplish the lawful ends of its institution but in proportion as it improves the condition of those over whom it is established. Roads and canals, by multiplying and facilitating the communications and intercourse between distant regions and multitudes of men, are among the most important means of improvement. ..." },
+      { p: "While foreign nations less blessed with that freedom which is power than ourselves are advancing with gigantic strides in the career of public improvement, were we to slumber in indolence or fold up our arms and proclaim to the world that we are palsied by the will of our constituents, would it not be to cast away the bounties of Providence and doom ourselves to perpetual inferiority?" },
+      { cite: "John Quincy Adams, First Annual Message to Congress, December 6, 1825. The American Presidency Project.", url: "https://www.presidency.ucsb.edu/documents/first-annual-message-2", kind: "primary" },
+    ] }],
+  },
+  "a4a-s15": {
+    id: "a4a-s15", name: "What changed most, 1800 to 1848?", intro: "Use the two passages below to answer the questions that follow.",
+    sources: [
+      { title: "Source 1", blocks: [
+        { p: "Between 1800 and 1848, American politics changed more than any other part of national life. States dropped property tests for voting, and by the 1830s nearly all white men could vote. Party organizers built a new kind of politics with nominating conventions, partisan newspapers, parades, and barbecues, and turnout in presidential elections climbed to about 80 percent by 1840. Ordinary farmers and workers came to expect that government should answer to them, and leaders who seemed aristocratic, such as John Quincy Adams, paid a price at the polls. For millions of white men, voting and taking part in party politics became a central part of what it meant to be an American." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      ] },
+      { title: "Source 2", blocks: [
+        { p: "The deepest change of the early nineteenth century was economic, not political. Canals, steamboats, and later railroads tied farms to distant markets, and families that had once made most of what they used now bought cloth, tools, and food. More Americans worked for wages, and many lost the independence of the self-employed artisan or farmer. The widening of the vote was real, but it was limited to white men. In the same years several states took the vote away from free Black men, while women, enslaved people, and Native Americans remained outside the political nation. For most people, the market shaped daily life more than the ballot did." },
+        { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+      ] },
+    ],
+  },
+  "a4a-s16": {
+    id: "a4a-s16", name: "Gibbons v. Ogden, 1824", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Commerce, undoubtedly, is traffic, but it is something more: it is intercourse. It describes the commercial intercourse between nations, and parts of nations, in all its branches, and is regulated by prescribing rules for carrying on that intercourse. ..." },
+      { p: "The power of Congress, then, comprehends navigation, within the limits of every State in the Union, so far as that navigation may be in any manner connected with commerce with foreign nations, or among the several States, or with the Indian tribes. ..." },
+      { p: "The one element [steam or wind] may be as legitimately used as the other for every commercial purpose authorized by the laws of the Union, and the act of a State inhibiting the use of either to any vessel having a license under the act of Congress comes, we think, in direct collision with that act." },
+      { cite: "Chief Justice John Marshall, opinion of the Court, Gibbons v. Ogden, 22 U.S. 1 (1824). The case arose when New York granted Robert Livingston and Robert Fulton's partners the sole right to run steamboats on its waters. Justia.", url: "https://supreme.justia.com/cases/federal/us/22/1/", kind: "primary" },
+    ] }],
+  },
+  "a4a-s17": {
+    id: "a4a-s17", name: "The transportation revolution and the regions", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The transportation revolution of the early 1800s did more than move goods faster. Turnpikes, steamboats, and canals such as the Erie, finished in 1825, cut the cost of shipping so sharply that each region could specialize. The Northeast turned more and more to manufacturing and commerce, the farms of the Old Northwest sent grain and meat east, and the South grew cotton for mills in Britain and New England. These ties made the regions depend on one another in a single national market. Yet the new routes ran mostly east and west, binding the Northeast and the Northwest more closely together, while the South remained tied to the Atlantic cotton trade." },
+      { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+    ] }],
+  },
+  "a4a-s18": {
+    id: "a4a-s18", name: "Immigrants in the 1840s", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Immigration reshaped the United States in the 1840s and 1850s. More than four million Europeans arrived between 1840 and 1860, most of them from Ireland and the German states. The Irish, many fleeing the famine that began in 1845, usually arrived with little money and stayed in eastern port cities, where men dug canals, laid railroad track, and worked on the docks, and women worked as domestic servants. Many Germans had more resources and moved on to farms and towns in the Midwest. Because most of the Irish and many of the Germans were Catholic, their arrival alarmed many Protestant Americans, who feared that immigrants would take jobs, lower wages, and follow the orders of the Pope." },
+      { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+    ] }],
+  },
+  "a4a-s19": {
+    id: "a4a-s19", name: "A new middle class", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The market revolution created a new middle class in the towns and cities of the North. Clerks, shopkeepers, lawyers, and small manufacturers earned their living away from home, and their families came to see the household as a private refuge run by wives and mothers. Members of this class prized self-control, sobriety, hard work, and education, values preached in the revivals of the Second Great Awakening. They read advice books and magazines, kept their children in school longer, and joined voluntary societies to spread their values to others. Much of the era's reform energy came from this group, which believed that individuals, and the nation, could be improved by moral effort." },
+      { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" },
+    ] }],
+  },
 };
 
 export default [

@@ -4,13 +4,12 @@
 const aggression = {
   id: "u7b-aggression",
   caption: "Acts of aggression by Japan, Italy, and Germany, 1931 to 1939, with the year of each",
-  alt: "Map of Europe, Africa, and Asia with eight labeled points. In Asia: Mukden, Manchuria, 1931, and Beijing, China, 1937 (Japan). In Africa: Addis Ababa, Ethiopia, 1935 (Italy). In Europe: the Rhineland at Cologne, 1936; Vienna, Austria, 1938; Munich, site of the 1938 conference that gave Germany the Sudetenland; Prague, 1939; and Warsaw, Poland, 1939 (Germany).",
+  alt: "Map of Europe, Africa, and Asia with seven labeled points. In Asia: Mukden, Manchuria, 1931, and Beijing, China, 1937 (Japan). In Africa: Addis Ababa, Ethiopia, 1935 (Italy). In Europe: the Rhineland at Cologne, 1936; Vienna, Austria, 1938; Prague, 1939; and Warsaw, Poland, 1939 (Germany).",
   bbox: [-14, 2, 128, 58], width: 720, height: 420,
   places: [
-    { name: "Rhineland 1936", at: [6.96, 50.94], label: [-100, -8] },
-    { name: "Munich 1938", at: [11.58, 48.14], label: [-80, 14] },
-    { name: "Vienna 1938", at: [16.37, 48.21], label: [8, 16] },
-    { name: "Prague 1939", at: [14.42, 50.08], label: [-20, -12] },
+    { name: "Rhineland 1936", at: [6.96, 50.94], label: [-7, 18] },
+    { name: "Vienna 1938", at: [16.37, 48.21], label: "below" },
+    { name: "Prague 1939", at: [14.42, 50.08], label: "above" },
     { name: "Warsaw 1939", at: [21.01, 52.23], label: "right" },
     { name: "Addis Ababa 1935", at: [38.75, 9.03], label: "right" },
     { name: "Mukden 1931", at: [123.43, 41.8], label: "left" },
@@ -36,7 +35,7 @@ const camps = {
   places: [
     { name: "Seattle", at: [-122.33, 47.61], kind: "major", label: "right" },
     { name: "Portland", at: [-122.68, 45.52], kind: "major", label: "right" },
-    { name: "San Francisco", at: [-122.42, 37.77], kind: "major", label: "left" },
+    { name: "San Francisco", at: [-122.42, 37.77], kind: "major", label: "right" },
     { name: "Los Angeles", at: [-118.24, 34.05], kind: "major", label: "left" },
     { name: "Tule Lake", at: [-121.37, 41.89], label: "right" },
     { name: "Manzanar", at: [-118.15, 36.73], label: "right" },

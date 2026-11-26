@@ -276,7 +276,7 @@ export const sets = {
   "a2-s31": {
     id: "a2-s31", name: "Population of eight colonies, 1750", intro: "Use the chart and table below to answer all parts of the question that follows.", label: "Chart",
     sources: [{ title: "Chart", blocks: [
-      { svg: bars({ labels: ["Mass.", "Conn.", "N.Y.", "Pa.", "Md.", "Va.", "N.C.", "S.C."], series: [{ name: "Total population", values: c50.map((r) => k(r[1])) }, { name: "Black population", values: c50.map((r) => k(r[2])) }], y: [0, 250], step: 50, yname: "Thousands of people", width: 600, fmt: (v) => String(Math.round(v)),
+      { svg: bars({ labels: ["Mass.", "Conn.", "N.Y.", "Pa.", "Md.", "Va.", "N.C.", "S.C."], series: [{ name: "Total population", values: c50.map((r) => Math.round(r[1] / 1000)) }, { name: "Black population", values: c50.map((r) => Math.round(r[2] / 1000)) }], y: [0, 250], step: 50, yname: "Thousands of people", width: 600, fmt: (v) => String(Math.round(v)),
         alt: "Grouped bar chart of the estimated total and Black population of eight colonies in 1750, in thousands. Massachusetts 188 total, 4 Black. Connecticut 111 and 3. New York 77 and 11. Pennsylvania 120 and 3. Maryland 141 and 43. Virginia 231 and 101. North Carolina 73 and 20. South Carolina 64 and 39." }),
         caption: "Estimated total and Black population of eight British colonies, 1750 (thousands)" },
       { table: { head: ["Colony", "Total population", "Black population"], rows: c50.map((r) => [r[0], n(r[1]), n(r[2])]) } },

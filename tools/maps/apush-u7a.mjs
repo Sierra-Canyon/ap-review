@@ -27,19 +27,18 @@ const caribbean = {
     { kind: "battle", text: "Occupied by U.S. troops" },
   ],
   legendAt: "bottom-left", legendWidth: 200,
-  checked: ["Office of the Historian, U.S. Department of State, Milestones 1899 to 1913 and 1914 to 1920", "Encyclopaedia Britannica's entries for each country"],
+  checked: ["Congressional Research Service, Instances of Use of United States Armed Forces Abroad, 1798 to 2023", "Office of the Historian, U.S. Department of State (Milestones pages on Haiti, the Dominican Republic, and the Panama Canal; the 1916 Danish West Indies treaty), with the Treaty of Paris of 1898"],
 };
 
 const westernFront = {
   id: "u7a-aef",
-  caption: "Major battles of the American Expeditionary Forces in France, 1918, with the main ports where U.S. troops landed",
-  alt: "Map of France, Belgium, and western Germany. Dots mark Paris and Berlin and the French Atlantic ports of Brest and Saint-Nazaire, where many American troops landed. Battle symbols in northeastern France mark Cantigny (May 1918), Chateau-Thierry and Belleau Wood (June 1918), Saint-Mihiel (September 1918), and the Meuse-Argonne (September to November 1918).",
+  caption: "Major battles of the American Expeditionary Forces in France, 1918, with Brest, a main port where U.S. troops landed",
+  alt: "Map of France, Belgium, and western Germany. Dots mark Paris and Berlin and the French Atlantic port of Brest, where many American troops landed. Battle symbols in northeastern France mark Cantigny (May 1918), Chateau-Thierry and Belleau Wood (June 1918), Saint-Mihiel (September 1918), and the Meuse-Argonne (September to November 1918).",
   bbox: [-5.5, 45.5, 14, 53.5], width: 660, height: 440,
   places: [
     { name: "Paris", at: [2.35, 48.86], kind: "major", label: "left" },
     { name: "Berlin", at: [13.4, 52.52], kind: "major", label: "left" },
     { name: "Brest", at: [-4.49, 48.39], kind: "city", label: "below" },
-    { name: "Saint-Nazaire", at: [-2.21, 47.27], kind: "city", label: "below" },
     { name: "Cantigny, May 1918", at: [2.49, 49.66], kind: "battle", label: "above" },
     { name: "Chateau-Thierry and\nBelleau Wood, June 1918", at: [3.35, 49.05], kind: "battle", label: [-10, 30] },
     { name: "Saint-Mihiel, Sept. 1918", at: [5.54, 48.89], kind: "battle", label: [8, 22] },
@@ -57,7 +56,7 @@ const westernFront = {
     { kind: "city", text: "Port where U.S. troops landed" },
   ],
   legendAt: "bottom-right", legendWidth: 230,
-  checked: ["U.S. Army Center of Military History, American Armies and Battlefields in Europe (American Battle Monuments Commission, 1938)", "Encyclopaedia Britannica, \"World War I\" and \"Battle of the Meuse-Argonne\""],
+  checked: ["American Battle Monuments Commission pages on Cantigny, Chateau-Thierry and Belleau Wood, St. Mihiel, and American memorials in Europe", "National Park Service, World War I Memorial, \"The United States and the First World War\""],
 };
 
 const election1928 = {
@@ -77,7 +76,7 @@ const election1928 = {
     { kind: "c", text: "Won by Hoover (Republican)" },
   ],
   legendAt: "bottom-left", legendWidth: 250,
-  checked: ["The American Presidency Project, election tables for 1924 and 1928", "Encyclopaedia Britannica, \"United States presidential election of 1928\""],
+  checked: ["The American Presidency Project, election tables for 1924 and 1928", "National Archives, Electoral College results for 1924 and 1928"],
 };
 
 export const maps = [caribbean, westernFront, election1928];

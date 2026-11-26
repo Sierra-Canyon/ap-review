@@ -4,7 +4,7 @@ import { maps } from "./maps.js";
 
 const PRACTICE = "Practice passage written for this review, summarizing an interpretation held by many historians.";
 const LOC = "public domain, Library of Congress (no known restrictions on publication)";
-const MAP = (refs) => ({ cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against " + refs + ".", kind: "map" });
+const MAP = (refs, states) => ({ cite: "Map drawn for this review from Natural Earth land outlines" + (states ? " and U.S. Census Bureau state boundaries" : "") + " (public domain). Places and dates checked against " + refs + ".", kind: "map" });
 const M = (id, set, topic, difficulty, reasoning, question, choices, why) => {
   const o = { id, skill: "u7", type: "mcq", set, topic, difficulty };
   if (reasoning) o.reasoning = reasoning;
@@ -64,8 +64,8 @@ export const sets = {
   "a7a-s05": {
     id: "a7a-s05", name: "The United States around the Caribbean, 1898 to 1934", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
-      { svg: maps["u7a-caribbean"], caption: "U.S. territories and military occupations around the Caribbean, 1898 to 1934, with the year each began. U.S. troops stayed in Haiti until 1934, in Nicaragua for most of the years 1912 to 1933, and in the Dominican Republic until 1924." },
-      MAP("Office of the Historian, U.S. Department of State, Milestones 1899 to 1913 and 1914 to 1920, and Encyclopaedia Britannica's entries for each country"),
+      { svg: maps["u7a-caribbean"], caption: "U.S. territories and military occupations around the Caribbean, 1898 to 1934, with the year each began. U.S. troops stayed in the Dominican Republic until 1924 and in Haiti until 1934." },
+      MAP("the Congressional Research Service report Instances of Use of United States Armed Forces Abroad, 1798 to 2023, and the Office of the Historian, U.S. Department of State (its pages on Haiti, the Dominican Republic, and the Panama Canal, and the 1916 Danish West Indies treaty), with the Treaty of Paris of 1898"),
     ] }],
   },
   "a7a-s06": {

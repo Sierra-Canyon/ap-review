@@ -43,7 +43,7 @@ const korea = {
     { name: "CHINA", at: [124.6, 41.8], size: 14 },
     { name: "JAPAN", at: [131.0, 33.6], size: 13 },
     { name: "Yalu River", at: [125.3, 40.65], size: 11 },
-    { name: "38th parallel", at: [129.6, 38.0], size: 11 },
+    { name: "38th parallel", at: [130.3, 38.3], size: 11 },
     { name: "Sea of Japan", at: [130.4, 37.0], size: 11 },
     { name: "Yellow Sea", at: [124.3, 36.6], size: 11 },
   ],

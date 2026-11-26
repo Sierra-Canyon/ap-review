@@ -106,6 +106,38 @@ export const sets = {
       { cite: PRACTICE, kind: "practice" },
     ] }],
   },
+  "a2-s10": {
+    id: "a2-s10", name: "Beverley on servants and slaves in Virginia, 1705", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Their servants they distinguish by the names of slaves for life, and servants for a time." },
+      { p: "Slaves are the negroes and their posterity, following the condition of the mother ... They are called slaves, in respect of the time of their servitude, because it is for life." },
+      { p: "Servants, are those which serve only for a few years, according to the time of their indenture, or the custom of the country. ..." },
+      { p: "The male servants, and slaves of both sexes, are employed together in tilling and manuring the ground, in sowing and planting tobacco, corn, &c. Some distinction indeed is made between them in their clothes, and food; but the work of both is no other than what the overseers, the freemen, and the planters themselves do." },
+      { cite: "Robert Beverley, The History and Present State of Virginia (London, 1705; second edition 1722), Book IV, \"Of the Servants and Slaves in Virginia,\" as reprinted in The History of Virginia in Four Parts (Richmond: J. W. Randolph, 1855), p. 219. Internet Archive.", url: "https://archive.org/details/historyvirginia00beverich", kind: "primary" },
+    ] }],
+  },
+  // ---------- 2.4 ----------
+  "a2-s12": {
+    id: "a2-s12", name: "The colonies in the Atlantic trade", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "By the early 1700s British North America sat inside a busy Atlantic trading system. Chesapeake planters shipped tobacco, and South Carolina planters shipped rice and, later, indigo to Britain, which sold much of it on to Europe. New England and the Middle Colonies had few staple crops that Britain wanted, so their merchants sold fish, grain, flour, and lumber to the sugar islands of the Caribbean, where planters grew little food. They brought back molasses, which New England distillers turned into rum, and some of that rum went to West Africa to buy captives. Parliament's laws said colonial trade should enrich Britain, but merchants often bought cheaper French molasses and smuggled it home, and officials rarely stopped them." },
+      { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
+  "a2-s13": {
+    id: "a2-s13", name: "Equiano on the sale at Barbados", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "We were not many days in the merchant's custody before we were sold after their usual manner, ... the buyers rush at once into the yard where the slaves are confined, and make choice of that parcel they like best. The noise and clamour with which this is attended, and the eagerness visible in the countenances of the buyers, serve not a little to increase the apprehensions of the terrified Africans, who may well be supposed to consider them as the ministers of that destruction to which they think themselves devoted. In this manner, without scruple, are relations and friends separated, most of them never to see each other again. ... O, ye nominal Christians! might not an African ask you, learned you this from your God, who says unto you, Do unto all men as you would men should do unto you?" },
+      { cite: "Olaudah Equiano, The Interesting Narrative of the Life of Olaudah Equiano, or Gustavus Vassa, the African, Written by Himself (London, 1789), chapter 2. Project Gutenberg edition, Internet Archive.", url: "https://archive.org/details/theinterestingna15399gut", kind: "primary" },
+    ] }],
+  },
+  "a2-s14": {
+    id: "a2-s14", name: "British goods in colonial homes", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Historians describe a \"consumer revolution\" in the British Atlantic in the 1700s. As British workshops turned out more cloth, pottery, and tools, and as tea and sugar grew cheaper, colonists bought them in growing amounts. By midcentury, families well below the elite owned teapots, printed cottons, and looking glasses that their grandparents had lacked. Chesapeake planters paid for these goods with tobacco, often on credit from London and Glasgow merchants, and many fell deep into debt. Northern merchants paid with earnings from the West Indies trade. The colonies became a large and growing market for British manufactures, and colonists came to share the tastes of people in Britain, a bond that would make boycotts of British goods a powerful weapon after 1765." },
+      { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
   // ---------- 2.5 ----------
   "a2-s16": {
     id: "a2-s16", name: "Penn's treaty with the Lenape, a Currier print", intro: "Use the image below to answer the questions that follow.", label: "Image",
@@ -134,6 +166,14 @@ export const sets = {
       { cite: PRACTICE, kind: "practice" },
     ] }],
   },
+  "a2-s19": {
+    id: "a2-s19", name: "Mary Rowlandson's captivity, 1676", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Now away we must go with those barbarous creatures, with our bodies wounded and bleeding, and our hearts no less than our bodies. ... This was the dolefulest night that ever my eyes saw. Oh the roaring, and singing and dancing, and yelling of those black creatures in the night, which made the place a lively resemblance of hell." },
+      { p: "During my abode in this place, Philip spake to me to make a shirt for his boy, which I did, for which he gave me a shilling. I offered the money to my master, but he bade me keep it; and with it I bought a piece of horse flesh. Afterwards he asked me to make a cap for his boy, for which he invited me to dinner. I went, and he gave me a pancake, about as big as two fingers. It was made of parched wheat, beaten, and fried in bear's grease, but I thought I never tasted pleasanter meat in my life." },
+      { cite: "Mary Rowlandson, The Sovereignty and Goodness of God, Together with the Faithfulness of His Promises Displayed (Cambridge, Massachusetts, 1682), the First Remove and the Eighth Remove. Project Gutenberg edition (modernized spelling), Internet Archive.", url: "https://archive.org/details/narrativeoftheca00851gut", kind: "primary" },
+    ] }],
+  },
   // ---------- 2.6 ----------
   "a2-s20": {
     id: "a2-s20", name: "Black population of Virginia and South Carolina, 1680 to 1750", intro: "Use the chart and table below to answer the questions that follow.", label: "Chart",
@@ -145,6 +185,26 @@ export const sets = {
       { cite: HSUS, url: HSUS_URL, kind: "data" },
     ] }],
   },
+  "a2-s21": {
+    id: "a2-s21", name: "Two Virginia laws on slavery, 1662 and 1667", intro: "Use the two excerpts below to answer the questions that follow.",
+    sources: [
+      { title: "Source 1", blocks: [
+        { p: "WHEREAS some doubts have arrisen whether children got by any Englishman upon a negro woman should be slave or ffree, Be it therefore enacted and declared by this present grand assembly, that all children borne in this country shalbe held bond or free only according to the condition of the mother ..." },
+        { cite: "Virginia General Assembly, \"Negro womens children to serve according to the condition of the mother,\" December 1662, in William Waller Hening, ed., The Statutes at Large, vol. 2 (1823), p. 170. Transcription at Encyclopedia Virginia.", url: "https://encyclopediavirginia.org/primary-documents/negro-womens-children-to-serve-according-to-the-condition-of-the-mother-1662/", kind: "primary" },
+      ] },
+      { title: "Source 2", blocks: [
+        { p: "WHEREAS some doubts have risen whether children that are slaves by birth, and by the charity and piety of their owners made pertakers of the blessed sacrament of baptisme, should be vertue of their baptisme be made ffree; It is enacted and declared by this grand assembly, and the authority thereof, that the conferring of baptisme doth not alter the condition of the person as to his bondage or ffreedome; that diverse masters, ffreed from this doubt, may more carefully endeavor the propagation of christianity ..." },
+        { cite: "Virginia General Assembly, \"An act declaring that baptisme of slaves doth not exempt them from bondage,\" September 1667, in William Waller Hening, ed., The Statutes at Large, vol. 2 (1823), p. 260. Transcription at Encyclopedia Virginia.", url: "https://encyclopediavirginia.org/primary-documents/an-act-declaring-that-baptisme-of-slaves-doth-not-exempt-them-from-bondage-1667/", kind: "primary" },
+      ] },
+    ],
+  },
+  "a2-s22": {
+    id: "a2-s22", name: "The Germantown protest against slavery, 1688", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "These are the reasons why we are against the traffik of men-body, as followeth: Is there any that would be done or handled at this manner? viz., to be sold or made a slave for all the time of his life? ... Now tho they are black, we can not conceive there is more liberty to have them slaves, as it is to have other white ones. There is a saying that we shall doe to all men licke as we will be done ourselves; macking no difference of what generation, descent or Colour they are." },
+      { cite: "Garret Hendericks, Derick op de Graeff, Francis Daniel Pastorius, and Abraham op den Graeff, protest against slavery to the Germantown Monthly Meeting of Friends, Pennsylvania, April 18, 1688. Transcript, National Park Service.", url: "https://www.nps.gov/articles/000/inde-germantown-friends-protest-slavery-1688.htm", kind: "primary" },
+    ] }],
+  },
   // ---------- 2.7 ----------
   "a2-s24": {
     id: "a2-s24", name: "A satire of Whitefield's preaching, 1739", intro: "Use the image below to answer the questions that follow.", label: "Image",
@@ -154,6 +214,20 @@ export const sets = {
         caption: "A British satirical print published in August 1739, when the Anglican preacher George Whitefield drew huge crowds to open-air sermons in London's Moorfields shortly before sailing to the American colonies, where his tours spread the Great Awakening.",
         credit: "Library of Congress, Prints and Photographs Division, LC-USZ62-137507", license: LOC, url: "https://www.loc.gov/item/2006680550/" },
       { cite: "Enthusiasm display'd: or, the Moor Fields congregation, engraving published by C. Corbett, England, August 20, 1739. Library of Congress.", url: "https://www.loc.gov/item/2006680550/", kind: "primary" },
+    ] }],
+  },
+  "a2-s25": {
+    id: "a2-s25", name: "Franklin on Whitefield in Philadelphia, 1739", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "In 1739 arrived among us from Ireland the Reverend Mr. Whitefield, who had made himself remarkable there as an itinerant preacher. He was at first permitted to preach in some of our churches; but the clergy, taking a dislike to him, soon refus'd him their pulpits, and he was oblig'd to preach in the fields. The multitudes of all sects and denominations that attended his sermons were enormous, and it was matter of speculation to me, who was one of the number, to observe the extraordinary influence of his oratory on his hearers, and how much they admir'd and respected him, notwithstanding his common abuse of them, by assuring them they were naturally half beasts and half devils. It was wonderful to see the change soon made in the manners of our inhabitants. From being thoughtless or indifferent about religion, it seem'd as if all the world were growing religious ..." },
+      { cite: "Benjamin Franklin, Autobiography, part 3, written 1788. Project Gutenberg edition, Internet Archive.", url: "https://archive.org/details/autobiographyofb20203gut", kind: "primary" },
+    ] }],
+  },
+  "a2-s26": {
+    id: "a2-s26", name: "Anglicization and the Enlightenment", intro: "Use the passage below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "In the half century before 1754, the colonies grew more British, not less. Wealthy planters and merchants built Georgian houses, bought English furniture, tea sets, and books, and sent sons to London to study law. At the same time, Enlightenment ideas crossed the Atlantic in newspapers, almanacs, and pamphlets. Colonists founded subscription libraries, such as Benjamin Franklin's Library Company of Philadelphia in 1731, and learned societies that traded letters with scientists in Britain. Educated colonists began to judge religion, government, and nature by reason and evidence. These habits tied colonial elites to Britain, but they also gave colonists a shared language of rights and reason that they would later turn against Parliament." },
+      { cite: PRACTICE, kind: "practice" },
     ] }],
   },
   // ---------- 2.8 ----------

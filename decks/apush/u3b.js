@@ -95,7 +95,7 @@ export const sets = {
     id: "a3b-s10", name: "Webster on an American language, 1789", intro: "Use the excerpt below to answer the questions that follow.",
     sources: [{ title: "Source", blocks: [
       { p: "Our political harmony is therefore concerned in a uniformity of language. As an independent nation, our honor requires us to have a system of our own, in language as well as government. Great Britain, whose children we are, and whose language we speak, should no longer be our standard; for the taste of her writers is already corrupted, and her language on the decline. But if it were not so, she is at too great a distance to be our model, and to instruct us in the principles of our own tongue. ... let reason and reputation decide, how far America should be dependent on a transatlantic nation, for her standard and improvements in language." },
-      { cite: "Noah Webster, Dissertations on the English Language (Boston: Isaiah Thomas and Company, 1789), Introduction. Internet Archive full text; the long s of the printing is shown as s.", url: "https://archive.org/stream/dissertationsone00webs/dissertationsone00webs_djvu.txt", kind: "primary" },
+      { cite: "Noah Webster, Dissertations on the English Language (Boston, 1789), Introduction. Internet Archive full text; the long s of the printing is shown as s.", url: "https://archive.org/stream/dissertationsone00webs/dissertationsone00webs_djvu.txt", kind: "primary" },
     ] }],
   },
   "a3b-s11": {
@@ -574,7 +574,7 @@ export default [
     "The figures for enslaved people in the table best support which claim?",
     ["Slavery spread west with settlement south of the Ohio River.", "Most of the settlers in Kentucky were enslaved people.", "Slavery was declining in the western states by 1810.", "Tennessee held more enslaved people than Kentucky in 1800."],
     ["Correct. Kentucky's enslaved population grew from 12,430 in 1790 to 80,561 in 1810, and Tennessee's from 3,417 to 44,535, as settlers from slave states brought enslaved people west.",
-      "Enslaved people were about one in six Kentuckians in 1800 (40,343 of 220,955), not most settlers.",
+      "Enslaved people were fewer than one in five Kentuckians in 1800 (40,343 of 220,955), not most settlers.",
       "The number of enslaved people in both states rose at every census shown.",
       "In 1800 Kentucky had 40,343 enslaved people and Tennessee 13,584."]),
 

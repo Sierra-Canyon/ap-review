@@ -149,7 +149,7 @@ export const sets = {
     ] }],
   },
   "a7b-s10": {
-    id: "a7b-s10", name: "United We Win, 1943", intro: "Use the image below to answer the questions that follow.", label: "Image",
+    id: "a7b-s10", name: "A War Manpower Commission poster, 1943", intro: "Use the image below to answer the questions that follow.", label: "Image",
     sources: [{ title: "Image", blocks: [
       { img: "images/apush/u7-united-we-win.jpg", alt: "A poster made from a black and white photograph set below a large American flag in color that fills the top half. Two young men in work shirts lean over the curved metal frame of an airplane part, working on it together with tools: on the left a Black worker in a cap, on the right a white worker with his sleeves rolled up, their heads close together. Large white capital letters across the bottom read United We Win. Tiny print at the bottom edge names the War Manpower Commission.",
         caption: "A 1943 poster issued by the War Manpower Commission, using a photograph by the Office of War Information's Howard Liberman, at a time when defense plants were under pressure to hire Black workers.",
@@ -225,7 +225,7 @@ export default [
   { id: "a7b-m001", skill: "u7", type: "mcq", set: "a7b-s01", topic: "7.9", difficulty: "easy", reasoning: "Causation",
     question: "Which of the following most directly contributed to the conditions shown in the photograph?",
     choices: [
-      "Drought combined with the plowing of Plains grasslands for wheat",
+      "Drought on Plains grasslands plowed up for wheat",
       "Strip mining for coal across the hills of the southern Plains",
       "The cutting of forests to build railroads across the Plains",
       "Floods caused by new federal dams on the Arkansas River",
@@ -270,7 +270,7 @@ export default [
   { id: "a7b-m004", skill: "u7", type: "mcq", set: "a7b-s02", topic: "7.9", difficulty: "easy",
     question: "Hoover's main argument in the excerpt is that",
     choices: [
-      "federal relief funds would weaken self-reliance and local government",
+      "federal relief would weaken self-help and local rule",
       "the federal budget could not afford any spending on drought relief",
       "states should be forced to raise taxes to pay for local relief",
       "hunger was not a serious problem in the United States in 1931",
@@ -413,7 +413,7 @@ export default [
       "The Republican victory in the congressional elections of 1934",
     ],
     why: [
-      "Correct. Francis Townsend's plan for $200 monthly pensions for the elderly drew millions of supporters by 1935, and with Huey Long's Share Our Wealth movement it pressed Roosevelt to offer a federal old-age insurance program.",
+      "Correct. Francis Townsend's plan for $200 monthly pensions for the elderly drew millions of supporters by 1935, and with Huey Long's plan to tax the rich and share wealth it pressed Roosevelt to offer a federal old-age insurance program.",
       "The Supreme Court struck down the NRA in Schechter Poultry Corp. v. United States in May 1935; it did not approve it.",
       "Most business groups, such as the National Association of Manufacturers, opposed the Social Security Act.",
       "Democrats gained seats in the 1934 midterm elections, which helped the Second New Deal pass.",
@@ -422,7 +422,7 @@ export default [
   { id: "a7b-m014", skill: "u7", type: "mcq", set: "a7b-s05", topic: "7.10", difficulty: "difficult", reasoning: "Continuity and Change",
     question: "Roosevelt's claim that the law was \"by no means complete\" is best supported by which later development?",
     choices: [
-      "The addition of health insurance for the elderly through Medicare in 1965",
+      "Medicare's health insurance for the elderly in 1965",
       "The repeal of the old-age pension system by Congress in the 1950s",
       "The transfer of Social Security to the states in the Great Society",
       "The end of unemployment insurance after the Second World War",
@@ -467,7 +467,7 @@ export default [
   { id: "a7b-m017", skill: "u7", type: "mcq", set: "a7b-s06", topic: "7.10", difficulty: "easy",
     question: "Which of the following provides evidence that supports the passage's final sentence?",
     choices: [
-      "The informal \"Black Cabinet\" of advisers in Roosevelt's government",
+      "Roosevelt's informal \"Black Cabinet\" of advisers",
       "The executive order that desegregated the armed forces in 1948",
       "The Supreme Court's ruling against school segregation in 1954",
       "The Civil Rights Act that banned job discrimination in 1964",
@@ -636,7 +636,7 @@ export default [
   { id: "a7b-m028", skill: "u7", type: "mcq", set: "a7b-s10", topic: "7.12", difficulty: "easy",
     question: "The main purpose of the poster was to",
     choices: [
-      "encourage Black and white Americans to work together in war industries",
+      "urge Black and white Americans to work side by side",
       "recruit young men to enlist in the Army Air Forces as pilots",
       "persuade Americans to buy war bonds to pay for new aircraft",
       "announce the end of segregation in the United States armed forces",
@@ -726,7 +726,7 @@ export default [
   { id: "a7b-m034", skill: "u7", type: "mcq", set: "a7b-s12", topic: "7.12", difficulty: "easy",
     question: "The camps shown on the map were set up as a result of",
     choices: [
-      "Executive Order 9066, issued after Pearl Harbor",
+      "Executive Order 9066",
       "the Chinese Exclusion Act of 1882",
       "the Immigration Act of 1924",
       "the Alien and Sedition Acts of 1798",
@@ -893,7 +893,7 @@ export default [
   { id: "a7b-m045", skill: "u7", type: "mcq", set: "a7b-s15", topic: "7.13", difficulty: "difficult", reasoning: "Causation",
     question: "Which development of the months before the attack most directly shaped Japan's decision to strike as Roosevelt describes?",
     choices: [
-      "The American oil embargo threatened Japan's war in Asia.",
+      "The U.S. oil embargo threatened Japan's war.",
       "The United States had sent troops to fight in China.",
       "Germany had asked Japan to attack the United States.",
       "The Philippines had declared war on Japan in 1941.",
@@ -1032,7 +1032,7 @@ export default [
   { id: "a7b-m054", skill: "u7", type: "mcq", set: "a7b-s19", topic: "7.15", difficulty: "easy",
     question: "Which of the following best describes the trend shown in the chart?",
     choices: [
-      "Spending grew during the New Deal but grew far more during the war.",
+      "It rose in the New Deal but far more in the war.",
       "Spending fell during the New Deal and rose slowly during the war.",
       "Spending stayed level from 1929 until the attack on Pearl Harbor.",
       "Spending peaked in 1934 and declined steadily through 1945.",

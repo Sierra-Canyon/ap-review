@@ -132,6 +132,47 @@ export const sets = {
       { cite: "U.S. Census Bureau, 1990 Census of Population and Housing, Population and Housing Unit Counts (CPH-2), Table 4, \"Population: 1790 to 1990\" (previous urban definition).", url: "https://www2.census.gov/programs-surveys/decennial/1990/tables/cph-2/table-4.pdf", kind: "data" },
     ] }],
   },
+  "a6b-s12": {
+    id: "a6b-s12", name: "High school graduates, 1870 to 1900", intro: "Use the chart and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: bars({ labels: ["1869 to 1870", "1879 to 1880", "1889 to 1890", "1899 to 1900"],
+        series: [{ name: "Male", values: [7, 11, 19, 38] }, { name: "Female", values: [9, 13, 25, 57] }],
+        y: [0, 60], step: 10, yname: "Graduates (thousands)",
+        alt: "Grouped bar chart of high school graduates in the United States, in thousands. 1869 to 1870: 7 male, 9 female. 1879 to 1880: 11 male, 13 female. 1889 to 1890: 19 male, 25 female. 1899 to 1900: 38 male, 57 female." }),
+        caption: "High school graduates in the United States by sex, school years 1869 to 1870 through 1899 to 1900 (thousands)" },
+      { table: {
+        head: ["School year", "Population 17 years old (thousands)", "Graduates (thousands)", "Male", "Female", "Graduates per 100 persons 17 years old"],
+        rows: [
+          ["1869 to 1870", "815", "16", "7", "9", "2.0"],
+          ["1879 to 1880", "946", "24", "11", "13", "2.5"],
+          ["1889 to 1890", "1,259", "44", "19", "25", "3.5"],
+          ["1899 to 1900", "1,489", "95", "38", "57", "6.4"],
+        ],
+      } },
+      { cite: "Thomas D. Snyder, ed., 120 Years of American Education: A Statistical Portrait (National Center for Education Statistics, U.S. Department of Education, 1993), Table 19, \"High school graduates, by sex and control of institution.\"", url: "https://nces.ed.gov/pubs93/93442.pdf", kind: "data" },
+    ] }],
+  },
+  "a6b-s13": {
+    id: "a6b-s13", name: "United States v. E. C. Knight Co., 1895", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Doubtless the power to control the manufacture of a given thing involves, in a certain sense, the control of its disposition, but this is a secondary, and not the primary, sense; and, although the exercise of that power may result in bringing the operation of commerce into play, it does not control it, and affects it only incidentally and indirectly. Commerce succeeds to manufacture, and is not a part of it. The power to regulate commerce is the power to prescribe the rule by which commerce shall be governed, and is a power independent of the power to suppress monopoly. But it may operate in repression of monopoly whenever that comes within the rules by which commerce is governed, or whenever the transaction is itself a monopoly of commerce." },
+      { cite: "Chief Justice Melville Fuller, majority opinion, United States v. E. C. Knight Co., 156 U.S. 1 (1895), a suit by the federal government under the Sherman Antitrust Act against the sugar refining trust. Legal Information Institute, Cornell Law School.", url: "https://www.law.cornell.edu/supremecourt/text/156/1", kind: "primary" },
+    ] }],
+  },
+  "a6b-s14": {
+    id: "a6b-s14", name: "The Pendleton Civil Service Act, 1883", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "SEC. 2. That it shall be the duty of said commissioners: FIRST. To aid the President, as he may request, in preparing suitable rules for carrying this act into effect ... SECOND. And, among other things, said rules shall provide and declare, as nearly as the conditions of good administration will warrant, as follows: First, for open, competitive examinations for testing the fitness of applicants for the public service now classified or to be classified hereunder. ... Second, that all the offices, places, and employments so arranged or to be arranged in classes shall be filled by selections according to grade from among those graded highest as the results of such competitive examinations. ... Fifth, that no person in the public service is for that reason under any obligations to contribute to any political fund, or to render any political service, and that he will not be removed or otherwise prejudiced for refusing to do so." },
+      { cite: "U.S. Congress, \"An act to regulate and improve the civil service of the United States\" (the Pendleton Act), approved January 16, 1883. National Archives.", url: "https://www.archives.gov/milestone-documents/pendleton-act", kind: "primary" },
+    ] }],
+  },
+  "a6b-s15": {
+    id: "a6b-s15", name: "McKinley's inaugural address, 1897", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The responsibilities of the high trust to which I have been called--always of grave importance--are augmented by the prevailing business conditions entailing idleness upon willing labor and loss to useful enterprises. The country is suffering from industrial disturbances from which speedy relief must be had. Our financial system needs some revision; our money is all good now, but its value must not further be threatened. It should all be put upon an enduring basis, not subject to easy attack, nor its stability to doubt or dispute. ... The paramount duty of Congress is to stop deficiencies by the restoration of that protective legislation which has always been the firmest prop of the Treasury." },
+      { cite: "William McKinley, Inaugural Address, March 4, 1897. The American Presidency Project.", url: "https://www.presidency.ucsb.edu/documents/inaugural-address-43", kind: "primary" },
+    ] }],
+  },
 };
 
 export default [

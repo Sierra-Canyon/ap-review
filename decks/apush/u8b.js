@@ -133,6 +133,27 @@ export const sets = {
       { cite: "Gerald R. Ford, Remarks on Signing a Proclamation Granting Pardon to Richard Nixon, September 8, 1974. The American Presidency Project.", url: "https://www.presidency.ucsb.edu/documents/remarks-signing-proclamation-granting-pardon-richard-nixon", kind: "primary" },
     ] }],
   },
+  "a8b-s16": {
+    id: "a8b-s16", name: "Swann v. Charlotte-Mecklenburg, 1971", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "Absent a constitutional violation, there would be no basis for judicially ordering assignment of students on a racial basis. All things being equal, with no history of discrimination, it might well be desirable to assign pupils to schools nearest their homes. But all things are not equal in a system that has been deliberately constructed and maintained to enforce racial segregation. The remedy for such segregation may be administratively awkward, inconvenient, and even bizarre in some situations, and may impose burdens on some; but all awkwardness and inconvenience cannot be avoided in the interim period when remedial adjustments are being made to eliminate the dual school systems. ... Bus transportation has been an integral part of the public education system for years, and was perhaps the single most important factor in the transition from the one-room schoolhouse to the consolidated school." },
+      { cite: "Chief Justice Warren E. Burger, opinion of the Court, Swann v. Charlotte-Mecklenburg Board of Education, 402 U.S. 1 (1971).", url: "https://supreme.justia.com/cases/federal/us/402/1/", kind: "primary" },
+    ] }],
+  },
+  "a8b-s17": {
+    id: "a8b-s17", name: "Regents v. Bakke, 1978", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "The fatal flaw in petitioner's preferential program is its disregard of individual rights as guaranteed by the Fourteenth Amendment. ... In enjoining petitioner from ever considering the race of any applicant, however, the courts below failed to recognize that the State has a substantial interest that legitimately may be served by a properly devised admissions program involving the competitive consideration of race and ethnic origin. ... With respect to respondent's entitlement to an injunction directing his admission to the Medical School, petitioner has conceded that it could not carry its burden of proving that, but for the existence of its unlawful special admissions program, respondent still would not have been admitted. Hence, respondent is entitled to the injunction, and that portion of the judgment must be affirmed." },
+      { cite: "Justice Lewis F. Powell Jr., opinion announcing the judgment of the Court, Regents of the University of California v. Bakke, 438 U.S. 265 (1978). Petitioner is the University of California; respondent is Allan Bakke.", url: "https://supreme.justia.com/cases/federal/us/438/265/", kind: "primary" },
+    ] }],
+  },
+  "a8b-s18": {
+    id: "a8b-s18", name: "Roe v. Wade, 1973", intro: "Use the excerpt below to answer the questions that follow.",
+    sources: [{ title: "Source", blocks: [
+      { p: "This right of privacy, whether it be founded in the Fourteenth Amendment's concept of personal liberty and restrictions upon state action, as we feel it is, or, as the District Court determined, in the Ninth Amendment's reservation of rights to the people, is broad enough to encompass a woman's decision whether or not to terminate her pregnancy. The detriment that the State would impose upon the pregnant woman by denying this choice altogether is apparent." },
+      { cite: "Justice Harry A. Blackmun, opinion of the Court, Roe v. Wade, 410 U.S. 113 (1973). Legal Information Institute, Cornell Law School.", url: "https://www.law.cornell.edu/supremecourt/text/410/113", kind: "primary" },
+    ] }],
+  },
 };
 
 export default [
@@ -837,6 +858,146 @@ export default [
       "The Gulf of Tonkin Resolution expanded the president's power to wage war in Vietnam, the opposite of a check.",
       "The Taft-Hartley Act limited labor unions, not the president.",
       "The Twenty-fifth Amendment (1967) set rules for filling the vice presidency and for presidential disability; it did not limit presidential power, though Ford became vice president under it.",
+    ],
+    answer: 0 },
+  // ---------- 8.14 Swann ----------
+  { id: "a8b-m046", skill: "u8", type: "mcq", set: "a8b-s16", topic: "8.14", difficulty: "easy",
+    question: "The ruling in the excerpt most directly allowed federal courts to",
+    choices: [
+      "order busing of students to desegregate school districts",
+      "stop school districts from busing students across town",
+      "end the use of race in college admissions decisions",
+      "require students to attend the school closest to home",
+    ],
+    why: [
+      "Correct. In Swann v. Charlotte-Mecklenburg (1971), the Court upheld a lower court's order to bus students in Charlotte, North Carolina, to undo segregation, even if the remedy was \"inconvenient, and even bizarre.\"",
+      "The Court approved busing as a remedy; it did not stop it.",
+      "College admissions and race were the subject of Regents v. Bakke (1978), not Swann.",
+      "The Court says neighborhood schools might be desirable only where there is \"no history of discrimination,\" so it did not require them in Charlotte.",
+    ],
+    answer: 0 },
+  { id: "a8b-m047", skill: "u8", type: "mcq", set: "a8b-s16", topic: "8.14", difficulty: "moderate", reasoning: "Causation",
+    question: "Which development in the 1970s was the most direct response to rulings like the one in the excerpt?",
+    choices: [
+      "Protests against court-ordered busing in Boston from 1974 to 1976",
+      "Governor Faubus's use of the National Guard at Little Rock in 1957",
+      "The Southern Manifesto signed by members of Congress in 1956",
+      "The Freedom Summer campaign to register Mississippi voters in 1964",
+    ],
+    why: [
+      "Correct. When a federal judge ordered busing in Boston in 1974, white parents in South Boston and other neighborhoods protested, sometimes violently, showing that resistance to busing reached the North.",
+      "Faubus used the Guard to block nine Black students at Central High in 1957, a response to Brown, years before busing orders.",
+      "Southern members of Congress signed the Southern Manifesto against Brown in 1956, fifteen years before Swann.",
+      "Freedom Summer was a 1964 voter registration drive, not a response to busing.",
+    ],
+    answer: 0 },
+  { id: "a8b-m048", skill: "u8", type: "mcq", set: "a8b-s16", topic: "8.14", difficulty: "difficult", reasoning: "Continuity and Change",
+    question: "Which later Supreme Court ruling most limited the remedy approved in the excerpt?",
+    choices: [
+      "Milliken v. Bradley (1974), barring most busing between city and suburbs",
+      "Brown v. Board II (1955), ordering desegregation with all deliberate speed",
+      "Regents v. Bakke (1978), striking down racial quotas in admissions",
+      "Green v. County School Board (1968), rejecting freedom of choice plans",
+    ],
+    why: [
+      "Correct. In Milliken v. Bradley (1974), the Court ruled that Detroit's suburbs could not be included in a busing plan unless they had caused segregation, leaving many city districts mostly Black while suburbs stayed mostly white.",
+      "Brown II came sixteen years before Swann, so it could not limit Swann's remedy.",
+      "Bakke limited affirmative action in college admissions, not busing in public schools.",
+      "Green (1968) pushed districts to integrate faster, a step toward Swann rather than a limit on it.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.14 Bakke ----------
+  { id: "a8b-m049", skill: "u8", type: "mcq", set: "a8b-s17", topic: "8.14", difficulty: "moderate",
+    question: "The excerpt shows that Powell's opinion in the case held that",
+    choices: [
+      "a quota was unlawful, but race could be one factor in admissions",
+      "race could never be considered by a public university in admissions",
+      "quotas were lawful as long as a university had discriminated before",
+      "admissions should be based only on test scores and grades",
+    ],
+    why: [
+      "Correct. Powell found the medical school's plan, which set aside 16 of 100 places for minority applicants, unlawful and ordered Allan Bakke admitted, but he held that race could be weighed in \"a properly devised admissions program.\"",
+      "Powell reversed the lower court for barring the university from \"ever considering the race of any applicant.\"",
+      "Powell called the special admissions program \"unlawful\" and found its \"fatal flaw\" in its disregard of individual rights.",
+      "Powell allowed \"the competitive consideration of race and ethnic origin,\" so he did not limit admissions to scores and grades.",
+    ],
+    answer: 0 },
+  { id: "a8b-m050", skill: "u8", type: "mcq", set: "a8b-s17", topic: "8.14", difficulty: "difficult", reasoning: "Causation",
+    question: "The admissions program in the case grew most directly out of",
+    choices: [
+      "affirmative action policies begun under Johnson and Nixon",
+      "the Voting Rights Act's federal oversight of Southern states",
+      "the GI Bill's support for veterans attending colleges",
+      "the Higher Education Act's grants for students in need",
+    ],
+    why: [
+      "Correct. Johnson's Executive Order 11246 (1965) required federal contractors to take affirmative action, and Nixon's Philadelphia Plan (1969) set hiring goals; universities adopted similar goals for admissions in the late 1960s and 1970s.",
+      "The Voting Rights Act of 1965 dealt with voting, not university admissions.",
+      "The GI Bill of 1944 helped veterans of all races attend college; it did not set aside seats by race.",
+      "The Higher Education Act of 1965 offered aid based on need, not race-based admissions.",
+    ],
+    answer: 0 },
+  { id: "a8b-m051", skill: "u8", type: "mcq", set: "a8b-s17", topic: "8.14", difficulty: "moderate", reasoning: "Continuity and Change",
+    question: "The case in the excerpt best reflects which development of the 1970s?",
+    choices: [
+      "Growing white opposition to civil rights remedies based on race",
+      "Growing support among conservatives for racial quotas in hiring",
+      "A decline in the number of Black students attending college",
+      "The end of federal court involvement in questions of race",
+    ],
+    why: [
+      "Correct. Bakke, a white applicant, argued that the quota denied him equal protection; his case, like opposition to busing, showed a growing challenge to race-based remedies that conservatives would join in the 1980s.",
+      "Conservatives generally opposed quotas, which the New Right called reverse discrimination.",
+      "Black college enrollment rose in the 1970s, partly because of programs like the one in the case.",
+      "The case itself shows federal courts still deciding questions of race in 1978.",
+    ],
+    answer: 0 },
+
+  // ---------- 8.14 Roe ----------
+  { id: "a8b-m052", skill: "u8", type: "mcq", set: "a8b-s18", topic: "8.14", difficulty: "moderate", reasoning: "Continuity and Change",
+    question: "The \"right of privacy\" in the excerpt had been recognized most directly in which earlier ruling?",
+    choices: [
+      "Griswold v. Connecticut (1965), on birth control for married couples",
+      "Miranda v. Arizona (1966), on warning suspects of their rights",
+      "Gideon v. Wainwright (1963), on lawyers for poor defendants",
+      "Mapp v. Ohio (1961), on evidence taken in illegal searches",
+    ],
+    why: [
+      "Correct. In Griswold v. Connecticut (1965), the Court struck down a ban on birth control for married couples and found a right of privacy in the Bill of Rights; Roe extended it.",
+      "Miranda required police to tell suspects their rights; it did not set out a general right of privacy.",
+      "Gideon required states to give lawyers to poor defendants in felony cases.",
+      "Mapp barred illegally seized evidence from state courts, a Fourth Amendment ruling, not the privacy right Roe built on.",
+    ],
+    answer: 0 },
+  { id: "a8b-m053", skill: "u8", type: "mcq", set: "a8b-s18", topic: "8.14", difficulty: "moderate", reasoning: "Causation",
+    question: "The ruling in the excerpt most directly contributed to",
+    choices: [
+      "the growth of a pro-life movement allied with the New Right",
+      "the ratification of the Equal Rights Amendment by the states",
+      "the decline of religious groups' interest in national politics",
+      "a new consensus between the parties on social issues",
+    ],
+    why: [
+      "Correct. Roe spurred Catholic and later evangelical Protestant activists to organize against abortion, and the issue helped draw religious conservatives into the coalition that elected Reagan in 1980.",
+      "The ERA was never ratified; opponents such as Phyllis Schlafly linked it to abortion, which hurt its chances.",
+      "Religious groups grew more active in politics after Roe, as the founding of the Moral Majority in 1979 shows.",
+      "Roe deepened the divide between the parties on social issues rather than producing agreement.",
+    ],
+    answer: 0 },
+  { id: "a8b-m054", skill: "u8", type: "mcq", set: "a8b-s18", topic: "8.14", difficulty: "difficult", reasoning: "Continuity and Change",
+    question: "The fact that Blackmun, a Nixon appointee, wrote the opinion in the excerpt best supports which claim?",
+    choices: [
+      "Nixon's appointees did not end the Court's expansion of individual rights",
+      "The Warren Court under Earl Warren decided the case before he retired",
+      "Nixon chose justices who shared the goals of the women's movement",
+      "Conservatives had won control of the Court by the early 1970s",
+    ],
+    why: [
+      "Correct. Nixon promised to appoint \"strict constructionists,\" and he named Warren Burger and Harry Blackmun in 1969 and 1970, yet the Burger Court decided Roe (1973) and Swann (1971), continuing the rights decisions of the 1960s.",
+      "Earl Warren retired in 1969; Chief Justice Warren Burger led the Court in 1973.",
+      "Nixon chose justices he expected to be law and order conservatives, not allies of the women's movement.",
+      "A Court that decided Roe by seven to two had not become conservative; that shift came later, with appointments by Reagan and his successors.",
     ],
     answer: 0 },
 ];

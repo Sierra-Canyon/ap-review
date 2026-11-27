@@ -25,7 +25,7 @@ const statehood = {
 
 const plainswars = {
   id: "u6a-plainswars",
-  caption: "Some major clashes between the U.S. Army and Plains nations, 1864 to 1890 (present-day state lines shown; Oklahoma was then Indian Territory, and Montana, Colorado, and the Dakotas were territories)",
+  caption: "Some major clashes between the U.S. Army and Plains nations, 1864 to 1890 (present-day state lines shown; Sand Creek, the Washita, and the Little Bighorn lay in territories at the time, and Oklahoma was then Indian Territory)",
   alt: "Map of the Great Plains and Rocky Mountains with present-day state lines. X marks show four clashes with years: Sand Creek, Colorado, 1864; the Washita River, in Indian Territory (present-day Oklahoma), 1868; the Little Bighorn River, Montana, 1876; and Wounded Knee Creek, South Dakota, 1890. A region label marks the Black Hills in western South Dakota.",
   bbox: [-112.0, 32.5, -92.0, 48.8], width: 600, height: 470,
   states: true,

@@ -38,7 +38,7 @@ export const sets = {
     id: "a6a-s04", name: "New Western states, 1864 to 1896", intro: "Use the map below to answer the questions that follow.",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u6a-statehood"], caption: "Western states admitted to the Union, 1864 to 1896, and the territories still waiting in 1896 (present-day state lines shown; Oklahoma was then Oklahoma Territory and Indian Territory, and the Dakotas were one territory until both became states in 1889)" },
-      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against REF_A and REF_B.", kind: "map" },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against the Congressional Research Service report Admission of States to the Union: A Historical Reference Guide (R47747) and the U.S. Senate's States in the Senate pages.", kind: "map" },
     ] }],
   },
   "a6a-s05": {
@@ -60,8 +60,8 @@ export const sets = {
   "a6a-s07": {
     id: "a6a-s07", name: "Wars on the Plains and in the Far West, 1864 to 1890", intro: "Use the map below to answer the questions that follow.",
     sources: [{ title: "Map", blocks: [
-      { svg: maps["u6a-plainswars"], caption: "Some battles and surrenders in the wars between the United States and Native nations of the West, 1864 to 1890 (present-day state lines shown for reference)" },
-      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against REF_A and REF_B.", kind: "map" },
+      { svg: maps["u6a-plainswars"], caption: "Some major clashes between the U.S. Army and Plains nations, 1864 to 1890 (present-day state lines shown; Sand Creek, the Washita, and the Little Bighorn lay in territories at the time, and Oklahoma was then Indian Territory)" },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against National Park Service pages for the Sand Creek, Washita, and Little Bighorn sites and the Encyclopedia of the Great Plains (University of Nebraska-Lincoln) entries on the Sioux Wars, Sand Creek, the Washita, the Little Bighorn, and Wounded Knee.", kind: "map" },
     ] }],
   },
   "a6a-s08": {
@@ -177,6 +177,33 @@ export const sets = {
     sources: [{ title: "Source", blocks: [
       { p: "Union membership in the United States stayed small in the late nineteenth century, and historians have offered several reasons. Employers held great power: they hired strikebreakers, blacklisted organizers, and called on Pinkerton guards. Courts issued injunctions against strikes, and governors and presidents sent troops, as in 1877 and 1894. But many historians also stress divisions inside the working class. Skilled craftsmen often saw little in common with unskilled laborers, native-born workers distrusted new immigrants, and many unions shut out Black and Chinese workers. Employers used these divisions, hiring one group to replace another during strikes. In this view, the weakness of labor came as much from its own fractures as from the strength of capital." },
       { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
+  "a6a-s21": {
+    id: "a6a-s21", name: "Was the New South new?", intro: "Use the two passages below to answer all parts of the question that follows.",
+    sources: [
+      { title: "Source 1", blocks: [
+        { p: "After Reconstruction the South changed more than its boosters' critics admit. Railroad mileage in the region grew rapidly in the 1880s, cotton mills rose in the Carolina and Georgia Piedmont, and Birmingham, Alabama, became an iron and steel center almost overnight. A new group of merchants, lawyers, and industrialists, many of them men who had never owned plantations, took control of Democratic politics and preached investment, factories, and town growth. The old planter class lost much of its power to these businessmen. In this view the New South was a real break with the plantation world of the Old South, even if its benefits were shared unequally." },
+        { cite: PRACTICE + " Historian A.", kind: "practice" },
+      ] },
+      { title: "Source 2", blocks: [
+        { p: "The New South's promoters promised a region remade, but the deeper patterns of Southern life held. Most Southerners still worked the land, and cotton remained king. Formerly enslaved families and poor whites became sharecroppers and tenants, bound by crop liens to merchants and landlords who controlled credit. Mill owners paid some of the lowest wages in the nation, and Northern investors owned many of the railroads and mines, so profits flowed out of the region. By the 1890s white Democrats had used poll taxes, literacy tests, and segregation laws to restore a racial order much like the one before the war. The South, in this view, changed its masters more than its structure." },
+        { cite: PRACTICE + " Historian B.", kind: "practice" },
+      ] },
+    ],
+  },
+  "a6a-s22": {
+    id: "a6a-s22", name: "The Dawes Act, 1887", intro: "Use the excerpt below to answer all parts of the question that follows.",
+    sources: [{ title: "Source", blocks: [
+      { p: "That in all cases where any tribe or band of Indians has been, or shall hereafter be, located upon any reservation created for their use, ... the President of the United States be, and he hereby is, authorized, whenever in his opinion any reservation or any part thereof of such Indians is advantageous for agricultural and grazing purposes, to cause said reservation, or any part thereof, to be surveyed, or resurveyed if necessary, and to allot the lands in said reservation in severalty to any Indian located thereon in quantities as follows: To each head of a family, one-quarter of a section; To each single person over eighteen years of age, one-eighth of a section; ... And every Indian born within the territorial limits of the United States to whom allotments shall have been made under the provisions of this act, ... is hereby declared to be a citizen of the United States, and is entitled to all the rights, privileges, and immunities of such citizens ..." },
+      { cite: "An Act to Provide for the Allotment of Lands in Severalty to Indians on the Various Reservations (the Dawes Act, or General Allotment Act), Sections 1 and 6, February 8, 1887. National Archives. A quarter section is 160 acres.", url: "https://www.archives.gov/milestone-documents/dawes-act", kind: "primary" },
+    ] }],
+  },
+  "a6a-s23": {
+    id: "a6a-s23", name: "Cattle trails from Texas, 1866 to the 1880s", intro: "Use the map below to answer all parts of the question that follows.",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u6a-cattle"], caption: "Three cattle trails from Texas, 1866 to the 1880s, and the railroad towns where many drives ended (present-day state lines shown; Oklahoma was then Indian Territory)" },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against the Texas State Historical Association's Handbook of Texas entries on the Chisholm, Western, and Goodnight-Loving Trails and the Encyclopedia of the Great Plains (University of Nebraska-Lincoln) entries Cattle Trails and Western Trail.", kind: "map" },
     ] }],
   },
   // FREE-RESPONSE SETS

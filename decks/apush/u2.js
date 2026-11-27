@@ -3,7 +3,7 @@ import { lines, bars } from "../../plot.js";
 import { maps } from "./maps.js";
 
 const PRACTICE = "Practice passage written for this review, summarizing an interpretation held by many historians.";
-const HSUS = "U.S. Census Bureau, Historical Statistics of the United States, Colonial Times to 1970 (1975), part 2, chapter Z, Series Z 1 to 19, \"Estimated Population of American Colonies: 1610 to 1780,\" p. 1168.";
+const HSUS = "U.S. Bureau of the Census, Historical Statistics of the United States, Colonial Times to 1957 (1960), chapter Z, Series Z 1 to 19, \"Estimated Population of American Colonies: 1610 to 1780.\"";
 const HSUS_URL = "https://www2.census.gov/library/publications/1960/compendia/hist_stats_colonial-1957/hist_stats_colonial-1957-chZ.pdf";
 const LOC = "public domain, Library of Congress (no known restrictions on publication)";
 
@@ -63,7 +63,7 @@ export const sets = {
     id: "a2-s05", name: "French, Spanish, and Dutch settlements, 1610 to 1718", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u2-settlements"], caption: "Some French, Spanish, and Dutch settlements in North America founded from 1610 to 1718, with the founding power (present-day state lines shown; they did not exist then)" },
-      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and founding powers checked against National Park Service pages for each site and Encyclopaedia Britannica.", kind: "map" },
+      { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and founding powers checked against Encyclopaedia Britannica and National Park Service pages, with the Encyclopedia of Alabama for Mobile and The Canadian Encyclopedia for Montreal.", kind: "map" },
     ] }],
   },
   // ---------- 2.3 ----------

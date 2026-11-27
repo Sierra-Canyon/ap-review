@@ -1,7 +1,8 @@
 // AP U.S. History Unit 2 maps (review bank, decks/apush/u2.js). Spec format: tools/build-maps.mjs. HANDOFF.md, section 2e.
-// Each place and its founding power was checked with WebFetch against National Park Service pages (Santa Fe, San Antonio
-// Missions, Jean Lafitte NHP on New Orleans, Cadillac and Detroit, Martin Van Buren NHS on New Netherland) and Encyclopaedia
-// Britannica (Pensacola, Montreal, Alabama history on Mobile, Detroit).
+// Each place and its founding power was checked against two fetched references: Santa Fe (NPS, Britannica), San Antonio
+// (NPS, Britannica), Pensacola (NPS Gulf Islands, Britannica), Montreal (Britannica, The Canadian Encyclopedia), Detroit
+// (Britannica, NPS), Mobile (Britannica, Encyclopedia of Alabama), New Orleans 1718 (NPS Jean Lafitte, Britannica),
+// New Amsterdam (NPS Martin Van Buren NHS, Britannica).
 
 const settlements = {
   id: "u2-settlements",
@@ -24,7 +25,7 @@ const settlements = {
     { name: "New Orleans (France)", at: [-90.07, 29.95], label: "below" },
     { name: "New Amsterdam (Dutch)", at: [-74.01, 40.71], label: "right" },
   ],
-  checked: ["National Park Service pages for each site", "Encyclopaedia Britannica"],
+  checked: ["Encyclopaedia Britannica", "National Park Service pages", "Encyclopedia of Alabama (Mobile)", "The Canadian Encyclopedia (Montreal)"],
 };
 
 export const maps = [settlements];

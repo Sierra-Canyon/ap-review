@@ -235,6 +235,49 @@ export const sets = {
       { cite: "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Electoral votes checked against the National Archives, \"Electoral College Results, 1892,\" and the American Presidency Project, \"Election of 1892.\"", url: "https://www.archives.gov/electoral-college/1892", kind: "map" },
     ] }],
   },
+  "a6b-dbq": {
+    id: "a6b-dbq", name: "Women in public life, 1865 to 1898", intro: "Use the documents below to answer the question that follows.",
+    sources: [
+      { title: "Document 1", blocks: [
+        { p: "Section 1. That every woman of the age of twenty-one years, residing in this Territory, may, at every election to be holden under the laws thereof, cast her vote. And her rights to the elective franchise and to hold office shall be the same under the election laws of the Territory, as those of electors." },
+        { p: "[Wyoming state constitution, 1890:] Section1. The rights of citizens of the state of Wyoming to vote and hold office shall not be denied or abridged on account of sex. Both male and female citizens of this state shall equally enjoy all civil, political and religious rights and privileges." },
+        { cite: "Wyoming Territory, \"Female Suffrage\" (Chapter 50), approved December 10, 1869; Constitution of the State of Wyoming, Article VI, Section 1, 1890. Text from the Wyoming State Library.", url: "https://gowyld.libguides.com/wyomingwomenssuffrage/voting", kind: "primary" },
+      ] },
+      { title: "Document 2", blocks: [
+        { p: "Fourteenth. The Republican party is mindful of its obligations to the loyal women of America for their noble devotion to the cause of freedom. Their admission to wider fields of usefulness is viewed with satisfaction, and the honest demand of any class of citizens for additional rights should be treated with respectful consideration." },
+        { cite: "Republican Party Platform of 1872, adopted at Philadelphia, June 1872. The American Presidency Project.", url: "https://www.presidency.ucsb.edu/documents/republican-party-platform-1872", kind: "primary" },
+      ] },
+      { title: "Document 3", blocks: [
+        { p: "The natural and proper timidity and delicacy which belongs to the female sex evidently unfits it for many of the occupations of civil life. The constitution of the family organization, which is founded in the divine ordinance, as well as in the nature of things, indicates the domestic sphere as that which properly belongs to the domain and functions of womanhood. ... It is true that many women are unmarried and not affected by any of the duties, complications, and incapacities arising out of the married state, but these are exceptions to the general rule. The paramount destiny and mission of woman are to fulfil the noble and benign offices of wife and mother. This is the law of the Creator." },
+        { cite: "Justice Joseph P. Bradley, concurring opinion, Bradwell v. Illinois, 83 U.S. 130 (1873), upholding Illinois's refusal to license Myra Bradwell to practice law. Legal Information Institute, Cornell Law School.", url: "https://www.law.cornell.edu/supremecourt/text/83/130", kind: "primary" },
+      ] },
+      { title: "Document 4", blocks: [
+        { p: "We have given this case the careful consideration its importance demands. If the law is wrong, it ought to be changed; but the power for that is not with us. ... No argument as to woman's need of suffrage can be considered. We can only act upon her rights as they exist. It is not for us to look at the hardship of withholding. Our duty is at an end if we find it is within the power of a State to withhold. Being unanimously of the opinion that the Constitution of the United States does not confer the right of suffrage upon any one, and that the constitutions and laws of the several States which commit that important trust to men alone are not necessarily void, we AFFIRM THE JUDGMENT." },
+        { cite: "Chief Justice Morrison Waite, opinion of the Court, Minor v. Happersett, 88 U.S. 162 (1875), a suit by Virginia Minor, a Missouri suffragist refused registration as a voter. Legal Information Institute, Cornell Law School.", url: "https://www.law.cornell.edu/supremecourt/text/88/162", kind: "primary" },
+      ] },
+      { title: "Document 5", blocks: [
+        { p: "We want that ballot because the liquor traffic is entrenched in law, and law grows out of the will of majorities, and majorities of women are against the liquor traffic. But as steam can be applied to locomotion only through an engine, and as electricity can be utilized only through a battery, so, in a Republic, we can condense the opinion of this majority of women into law only through the magical little paper ... \"Home Protection\" is the general name given to a movement already endorsed by the W. C. T. Unions of eight states, the object of which is to secure for all women above the age of twenty-one years the ballot as one means for the protection of their homes from the devastation caused by the legalized traffic in strong drink." },
+        { cite: "Frances E. Willard, president of the Illinois Woman's Christian Temperance Union, Home Protection Manual (New York: The Independent, 1879). Internet Archive.", url: "https://archive.org/stream/homeprotectionma00will/homeprotectionma00will_djvu.txt", kind: "primary" },
+      ] },
+      { title: "Document 6", blocks: [
+        { p: "Enrollment in colleges and universities in the United States, by sex (thousands)." },
+        { table: {
+          head: ["School year", "Total enrollment", "Men", "Women"],
+          rows: [
+            ["1869 to 1870", "63", "49", "13"],
+            ["1879 to 1880", "116", "78", "38"],
+            ["1889 to 1890", "157", "100", "56"],
+            ["1899 to 1900", "238", "152", "85"],
+          ],
+        } },
+        { cite: "Thomas D. Snyder, ed., 120 Years of American Education: A Statistical Portrait (National Center for Education Statistics, 1993), Table 24, \"Enrollment in institutions of higher education, by sex.\" Figures are rounded in the source, so men and women may not add to the total.", url: "https://nces.ed.gov/pubs93/93442.pdf", kind: "data" },
+      ] },
+      { title: "Document 7", blocks: [
+        { p: "We are the only animal species in which the female depends on the male for food, the only animal species in which the sex-relation is also an economic relation. With us an entire sex lives in a relation of economic dependence upon the other sex, and the economic relation is combined with the sex-relation. The economic status of the human female is relative to the sex-relation." },
+        { cite: "Charlotte Perkins Gilman (then Charlotte Perkins Stetson), Women and Economics (Boston: Small, Maynard, 1898), chapter 1. Text from the 1900 printing, Internet Archive.", url: "https://archive.org/stream/womeneconomicsst00gilmuoft/womeneconomicsst00gilmuoft_djvu.txt", kind: "primary" },
+      ] },
+    ],
+  },
 };
 
 export default [
@@ -1412,4 +1455,51 @@ export default [
       "Cleveland's 1887 veto of the Texas Seed Bill, refusing federal aid to drought-stricken farmers.",
     ],
     model: "Thesis: Between 1865 and 1898 the federal government took its first steps toward regulating the economy, with the Interstate Commerce Act and the Sherman Antitrust Act, but these changes were limited; its main role, promoting business through land grants, tariffs, sound money, and force against strikers, continued largely unchanged. Context: the Civil War had expanded federal power over railroads and money, and the rapid rise of corporations after the war raised new demands for regulation. Body 1: continuity in promotion of business (railroad land grants, high tariffs from Morrill to Dingley, the gold standard defended by Cleveland and McKinley). Body 2: change in regulation (Granger laws and Munn, then Wabash pushing the issue to Congress, the ICC in 1887, the Sherman Act in 1890, the Pendleton Act). Body 3: limits on change (E. C. Knight, In re Debs, troops in 1877 and 1894, the income tax struck down in Pollock). Complexity: the new laws created tools that Progressive Era presidents such as Theodore Roosevelt later used, so the period laid groundwork even where it achieved little at the time." },
+
+  // DBQ
+  { id: "a6b-dbq1", skill: "u6", type: "essay", kind: "dbq", set: "a6b-dbq", topic: "6.11", reasoning: "Continuity and Change",
+    prompt: "Evaluate the extent to which women's roles in American public life changed in the period from 1865 to 1898.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: no claim, a claim that restates the prompt (for example, \"Women's roles changed in many ways\"), or a claim that is not historically defensible.",
+        "1 point: a historically defensible claim that evaluates how much women's public roles changed and sets out a line of reasoning, such as arguing that women greatly widened their public work through reform groups, schooling, and a few Western suffrage victories, while courts and most states kept them out of the vote and the professions.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: no relevant broader context, or only a passing phrase.",
+        "1 point: describes a broader context relevant to the prompt, such as the antebellum women's rights movement and the Seneca Falls Convention (1848), the split among suffragists over the Fifteenth Amendment (1869 to 1870), or the growth of cities, industry, and a middle class that gave women new work and leisure.",
+      ] },
+      { name: "Evidence", max: 3, levels: [
+        "0 points: no accurate use of the documents, or only quotes without explanation.",
+        "1 point: accurately describes the content of at least three documents in a way that addresses the prompt.",
+        "2 points: supports an argument in response to the prompt using at least four documents.",
+        "3 points: earns the 2 points for document evidence and also uses at least one additional piece of specific outside evidence relevant to the argument, such as Hull House (1889), the National American Woman Suffrage Association (1890), or Susan B. Anthony's arrest for voting in 1872.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: no sourcing and no complex understanding.",
+        "1 point: for at least two documents, explains how or why the document's point of view, purpose, historical situation, or audience is relevant to the argument, for example that the 1872 Republican plank was written to hold suffragists' support while promising nothing specific, or that Willard framed the vote as \"home protection\" to win over women who saw politics as unladylike.",
+        "2 points: earns the sourcing point and shows complex understanding, for example by explaining that change came first in Western territories and in voluntary associations rather than in national law, by showing how the ideal of domesticity was used both to limit women (Bradley) and to justify their public action (Willard), or by noting differences of race and class among women.",
+      ] },
+    ],
+    docs: [
+      "Document 1 (Wyoming law of 1869 and state constitution of 1890): Wyoming gave women the vote and the right to hold office, and kept equal suffrage when it became a state. Use it for real change in the West; sourcing: a small territorial legislature acted partly to draw settlers and attention, so the change was local, not national.",
+      "Document 2 (Republican platform, 1872): the party praises women's \"noble devotion to the cause of freedom\" and welcomes their \"admission to wider fields of usefulness\" but does not endorse suffrage. Use it for limited change; sourcing: a campaign document meant to keep suffragists' goodwill without committing the party.",
+      "Document 3 (Justice Bradley, Bradwell v. Illinois, 1873): says woman's \"paramount destiny\" is to be wife and mother and upholds denying Myra Bradwell a law license. Use it for continuity of separate spheres; sourcing: a Supreme Court justice whose ruling carried the force of law and reflected common male views.",
+      "Document 4 (Minor v. Happersett, 1875): the Court rules unanimously that the Constitution does not give anyone the right to vote and that states may limit voting to men. Use it for continuity in political exclusion; sourcing: the Court says the remedy lies with lawmakers, pushing suffragists toward state campaigns and a federal amendment.",
+      "Document 5 (Frances Willard, Home Protection Manual, 1879): the WCTU seeks the ballot to protect homes from the liquor traffic and has organized in eight states. Use it for growing public action by women through reform groups; sourcing: Willard, a WCTU leader, frames the vote as an extension of women's home duties to win cautious supporters.",
+      "Document 6 (college enrollment by sex, 1870 to 1900): women students rose from about 13,000 to about 85,000, from about a fifth to more than a third of all students. Use it for change in education and preparation for public roles; sourcing: national statistics show the trend but not the barriers women faced in particular schools and professions.",
+      "Document 7 (Charlotte Perkins Gilman, Women and Economics, 1898): argues that women live in economic dependence on men. Use it for continuity in women's economic position, or for the new boldness of feminist argument; sourcing: a feminist writer seeking to persuade readers that economic independence must come before real equality.",
+    ],
+    evidence: [
+      "The National Woman Suffrage Association (Stanton and Anthony) and the American Woman Suffrage Association (Stone) formed in 1869 and merged as NAWSA in 1890.",
+      "Susan B. Anthony was arrested for voting in Rochester, New York, in 1872 and fined.",
+      "Utah Territory gave women the vote in 1870; Colorado (1893) and Idaho (1896) adopted woman suffrage.",
+      "The Woman's Christian Temperance Union was founded in 1874; under Willard it adopted a \"Do Everything\" policy.",
+      "Jane Addams and Ellen Gates Starr opened Hull House in Chicago in 1889.",
+      "The General Federation of Women's Clubs (1890) and the National Association of Colored Women (1896) organized women's reform work.",
+      "Ida B. Wells began her anti-lynching campaign in 1892.",
+      "Women's colleges such as Vassar (1865), Smith (1875), and Wellesley (1875) opened.",
+      "Women took growing numbers of jobs as teachers, typists, clerks, and saleswomen.",
+      "The Comstock Act (1873) barred mailing information about contraception.",
+    ],
+    model: "Thesis: From 1865 to 1898 women greatly expanded their roles in public life through reform organizations, higher education, and suffrage victories in a few Western states, but national law and most states still kept them from voting and from many professions, so the change was real but partial. Context: the antebellum women's rights movement and the split over the Fifteenth Amendment, along with the rise of cities and a middle class. Body 1, continuity in law: Bradwell (Doc 3) and Minor (Doc 4) kept women out of the professions and the vote; the 1872 platform (Doc 2) offered only praise; Gilman (Doc 7) shows economic dependence still defined women's lives in 1898. Body 2, change through organization and education: Willard and the WCTU (Doc 5) used the ideal of the home to justify political action; college enrollment (Doc 6) rose sharply; outside evidence such as Hull House and the women's clubs. Body 3, change in the West: Wyoming (Doc 1), Utah, Colorado, and Idaho gave women the vote. Complexity: the same ideal of domesticity that Bradley used to limit women became, in Willard's hands, a reason for women to act in public, and change came first through states and voluntary associations rather than federal law." },
 ];

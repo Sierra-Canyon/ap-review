@@ -145,7 +145,7 @@ export const sets = {
     id: "a7b-s07", name: "Aggression in Europe, Africa, and Asia, 1931 to 1939", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u7b-aggression"], caption: "Acts of aggression by Japan, Italy, and Germany, 1931 to 1939, with the year of each" },
-      { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against the United States Holocaust Memorial Museum's Holocaust Encyclopedia (\"World War II: Key Dates\" and \"German Foreign Policy, 1933 to 1945\") and Wikipedia, \"Causes of World War II.\"", kind: "map" },
+      { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against the United States Holocaust Memorial Museum's Holocaust Encyclopedia (\"World War II: Key Dates\" and \"German Foreign Policy, 1933 to 1945\") and \"German Prewar Expansion\") and the Office of the Historian, U.S. Department of State (Milestones pages on the Mukden Incident, the road to Pearl Harbor, and the Neutrality Acts, and its country guide for Ethiopia).", kind: "map" },
     ] }],
   },
   "a7b-s10": {
@@ -175,7 +175,7 @@ export const sets = {
     id: "a7b-s14", name: "The war in the Pacific, 1941 to 1945", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u7b-pacific"], caption: "Major battles of the war in the Pacific, 1941 to 1945, with the year of each" },
-      { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against the National Park Service, Pearl Harbor National Memorial, \"Pacific Battles,\" PBS American Experience, \"The War in the Pacific, 1944 to 1945,\" and Wikipedia, \"Pacific War.\"", kind: "map" },
+      { cite: "Map drawn for this review from Natural Earth land outlines (public domain). Places and dates checked against the National Park Service, Pearl Harbor National Memorial, \"Pacific Battles,\" the Naval History and Heritage Command, \"Pacific Air Attacks and Land Campaigns,\" and PBS American Experience, \"The War in the Pacific, 1944 to 1945.\"", kind: "map" },
     ] }],
   },
   "a7b-s17": {
@@ -214,7 +214,7 @@ export const sets = {
     id: "a7b-s23", name: "The election of 1932", intro: "Use the map below to answer all parts of the question that follows.", label: "Map",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u7b-election-1932"], caption: "The presidential election of 1932 by state (present-day state lines shown). Four years earlier, in 1928, Hoover had carried 40 of the 48 states." },
-      { cite: MAPCITE("The American Presidency Project's election results for 1928 and 1932 and Wikipedia, \"1928 United States presidential election\" and \"1932 United States presidential election\""), kind: "map" },
+      { cite: MAPCITE("The American Presidency Project's election results for 1928 and 1932 and the National Archives' Electoral College results for 1928 and 1932"), kind: "map" },
     ] }],
   },
   // SETS-END

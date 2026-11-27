@@ -23,7 +23,7 @@ const aggression = {
     { name: "JAPAN", at: [127.5, 35], size: 10 },
     { name: "SOVIET UNION", at: [62, 54], size: 12 },
   ],
-  checked: ["United States Holocaust Memorial Museum, Holocaust Encyclopedia, \"World War II: Key Dates\" and \"German Foreign Policy, 1933 to 1945\"", "Wikipedia, \"Causes of World War II\""],
+  checked: ["United States Holocaust Memorial Museum, Holocaust Encyclopedia, \"World War II: Key Dates,\" \"German Foreign Policy, 1933 to 1945,\" and \"German Prewar Expansion\"", "Office of the Historian, U.S. Department of State, Milestones: \"The Mukden Incident of 1931 and the Stimson Doctrine,\" \"Japan, China, the United States and the Road to Pearl Harbor, 1937 to 1941,\" \"The Neutrality Acts, 1930s,\" and the country guide for Ethiopia"],
 };
 
 const camps = {
@@ -84,7 +84,7 @@ const pacific = {
     { kind: "major", text: "Atomic bombing" },
   ],
   legendAt: "bottom-right", legendWidth: 170,
-  checked: ["National Park Service, Pearl Harbor National Memorial, \"Pacific Battles\"", "PBS American Experience, \"The War in the Pacific, 1944 to 1945\", and Wikipedia, \"Pacific War\""],
+  checked: ["National Park Service, Pearl Harbor National Memorial, \"Pacific Battles\"", "Naval History and Heritage Command, \"Pacific Air Attacks and Land Campaigns,\" and PBS American Experience, \"The War in the Pacific, 1944 to 1945\""],
 };
 
 const elections = {
@@ -102,7 +102,7 @@ const elections = {
     { kind: "c", text: "Hoover (Republican), 59 electoral votes" },
   ],
   legendAt: "bottom-left", legendWidth: 270,
-  checked: ["The American Presidency Project, election results for 1928 and 1932", "Wikipedia, \"1928 United States presidential election\" and \"1932 United States presidential election\""],
+  checked: ["The American Presidency Project, election results for 1928 and 1932", "National Archives, Electoral College results for 1928 and 1932"],
 };
 
 export const maps = [aggression, camps, pacific, elections];

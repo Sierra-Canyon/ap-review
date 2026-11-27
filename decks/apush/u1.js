@@ -47,7 +47,7 @@ export const sets = {
     id: "a1-s05", name: "Spanish expeditions into North America, 1528 to 1543", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
       { svg: maps["u1-entradas"], caption: "Three Spanish expeditions into North America, 1528 to 1543 (routes approximate; present-day state lines shown)" },
-      { cite: MAPCITE + "Encyclopaedia Britannica, \"Hernando de Soto,\" \"Francisco Vázquez de Coronado,\" and \"Álvar Núñez Cabeza de Vaca,\" and the National Park Service's pages for De Soto National Memorial and Coronado National Memorial.", kind: "map" },
+      { cite: MAPCITE + "the National Park Service (De Soto National Memorial brochure, its Hernando De Soto page, and Coronado National Memorial history) and the Texas State Historical Association's Handbook of Texas entries on Cabeza de Vaca, the Coronado Expedition, and the Moscoso Expedition.", kind: "map" },
     ] }],
   },
   "a1-s06": {
@@ -63,8 +63,8 @@ export const sets = {
   "a1-s07": {
     id: "a1-s07", name: "European footholds in North America, 1564 to 1608", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
-      { svg: maps["u1-footholds"], caption: "European colonies and settlements in North America north of Mexico, 1564 to 1608, with the European power and the year founded (present-day state lines shown)" },
-      { cite: MAPCITE + "Encyclopaedia Britannica's entries for St. Augustine, Fort Caroline, Roanoke Island, Jamestown Colony, Port-Royal, Quebec, and New Mexico, and the National Park Service's pages for Castillo de San Marcos, Fort Caroline National Memorial, Fort Raleigh National Historic Site, and Historic Jamestowne.", kind: "map" },
+      { svg: maps["u1-footholds"], caption: "Some European colonies and settlements in North America north of Mexico, 1564 to 1608, with the European power and the year founded (present-day state lines shown)" },
+      { cite: MAPCITE + "the National Park Service's Chronology of Fort Caroline (Timucuan Preserve) and the National Park Service's pages for Fort Raleigh National Historic Site, Historic Jamestowne, El Camino Real de Tierra Adentro, and the Saint Croix Island timeline.", kind: "map" },
     ] }],
   },
   "a1-s08": {
@@ -401,10 +401,10 @@ export default [
   { id: "a1-m021", skill: "u1", type: "mcq", set: "a1-s07", topic: "1.1", difficulty: "easy",
     question: "The map best supports which conclusion about European colonization north of Mexico before 1610?",
     choices: ["Several powers competed, and many early tries failed.", "Spain alone tried to colonize the region.", "England founded the region's first lasting colony.", "French colonies clustered along the Gulf of Mexico coast."],
-    why: ["Correct. Spain, France, and England all founded settlements, and Fort Caroline, Santa Elena, Roanoke, and Port Royal were abandoned or destroyed.",
+    why: ["Correct. Spain, France, and England all founded settlements, and the French at Fort Caroline and the English at Roanoke were destroyed or vanished.",
       "The map shows French and English settlements as well as Spanish ones.",
       "St. Augustine (1565) was older than Jamestown (1607) by more than forty years.",
-      "The map shows French settlements in Florida, Nova Scotia, and on the St. Lawrence, none on the Gulf of Mexico."],
+      "The map shows French settlements in Florida and on the St. Lawrence River, none on the Gulf of Mexico."],
     answer: 0 },
   { id: "a1-m022", skill: "u1", type: "mcq", set: "a1-s07", topic: "1.1", difficulty: "moderate", reasoning: "Causation",
     question: "Which development best explains why England and France held no lasting colonies on the map until after 1600?",

@@ -88,22 +88,20 @@ const pacific = {
 };
 
 const elections = {
-  id: "u7b-elections",
-  caption: "The presidential elections of 1928 and 1932 by state (present-day state lines shown)",
-  alt: "Map of the 48 contiguous states. Eight states are solid: Massachusetts, Rhode Island, South Carolina, Georgia, Alabama, Mississippi, Louisiana, and Arkansas, which voted Democratic in both 1928 and 1932. Six states are gray: Maine, Vermont, New Hampshire, Connecticut, Pennsylvania, and Delaware, which voted Republican, for Herbert Hoover, in both years. The other 34 states are hatched: they voted for Hoover in 1928 and for the Democrat Franklin D. Roosevelt in 1932.",
+  id: "u7b-election-1932",
+  caption: "The presidential election of 1932 by state (present-day state lines shown). Four years earlier, in 1928, Hoover had carried 40 of the 48 states.",
+  alt: "Map of the 48 contiguous states. Six states are gray: Maine, Vermont, New Hampshire, Connecticut, Pennsylvania, and Delaware, which voted for the Republican Herbert Hoover in 1932. The other 42 states are hatched: they voted for the Democrat Franklin D. Roosevelt.",
   bbox: [-124.5, 24.5, -67, 49.5], width: 680, height: 420,
   states: true,
   fill: [
-    { kind: "a", states: ["Massachusetts", "Rhode Island", "South Carolina", "Georgia", "Alabama", "Mississippi", "Louisiana", "Arkansas"] },
-    { kind: "b", states: ["Washington", "Oregon", "California", "Nevada", "Idaho", "Montana", "Wyoming", "Utah", "Arizona", "New Mexico", "Colorado", "North Dakota", "South Dakota", "Nebraska", "Kansas", "Oklahoma", "Texas", "Minnesota", "Iowa", "Missouri", "Wisconsin", "Illinois", "Michigan", "Indiana", "Ohio", "Kentucky", "Tennessee", "West Virginia", "Virginia", "North Carolina", "Florida", "Maryland", "New Jersey", "New York"] },
+    { kind: "b", states: ["Washington", "Oregon", "California", "Nevada", "Idaho", "Montana", "Wyoming", "Utah", "Arizona", "New Mexico", "Colorado", "North Dakota", "South Dakota", "Nebraska", "Kansas", "Oklahoma", "Texas", "Minnesota", "Iowa", "Missouri", "Wisconsin", "Illinois", "Michigan", "Indiana", "Ohio", "Kentucky", "Tennessee", "West Virginia", "Virginia", "North Carolina", "Florida", "Maryland", "New Jersey", "New York", "Massachusetts", "Rhode Island", "South Carolina", "Georgia", "Alabama", "Mississippi", "Louisiana", "Arkansas"] },
     { kind: "c", states: ["Maine", "Vermont", "New Hampshire", "Connecticut", "Pennsylvania", "Delaware"] },
   ],
   legend: [
-    { kind: "a", text: "Democratic in 1928 and 1932" },
-    { kind: "b", text: "Hoover in 1928, Roosevelt in 1932" },
-    { kind: "c", text: "Hoover in 1928 and 1932" },
+    { kind: "b", text: "Roosevelt (Democrat), 472 electoral votes" },
+    { kind: "c", text: "Hoover (Republican), 59 electoral votes" },
   ],
-  legendAt: "bottom-left", legendWidth: 250,
+  legendAt: "bottom-left", legendWidth: 270,
   checked: ["The American Presidency Project, election results for 1928 and 1932", "Wikipedia, \"1928 United States presidential election\" and \"1932 United States presidential election\""],
 };
 

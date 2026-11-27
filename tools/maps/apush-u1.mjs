@@ -40,13 +40,13 @@ const entradas = {
   ],
   legend: [{ kind: "route", text: "De Soto and Coronado" }, { kind: "route2", text: "Narváez and Cabeza de Vaca" }, { kind: "battle", text: "Battle" }],
   legendAt: "bottom-left", legendWidth: 220,
-  checked: ["Encyclopaedia Britannica, \"Hernando de Soto,\" \"Francisco Vázquez de Coronado,\" and \"Álvar Núñez Cabeza de Vaca\"", "National Park Service, De Soto National Memorial and Coronado National Memorial"],
+  checked: ["National Park Service: De Soto National Memorial brochure (2023), \"Hernando De Soto\" (nps.gov/people), and Coronado National Memorial history", "Texas State Historical Association, Handbook of Texas: \"Cabeza de Vaca, Álvar Núñez,\" \"Coronado Expedition,\" and \"Moscoso Expedition\""],
 };
 
 const footholds = {
   id: "u1-footholds",
-  caption: "European colonies and settlements in North America north of Mexico, 1564 to 1608, with the European power and the year founded (present-day state lines shown)",
-  alt: "Map of eastern and southwestern North America with present-day state lines. Places founded by Spain: St. Augustine in Florida, 1565, which lasted; Santa Elena on the South Carolina coast, 1566, abandoned in 1587; and the colony of New Mexico on the upper Rio Grande, 1598, which lasted. Places founded by France: Fort Caroline in Florida, 1564, destroyed by Spain in 1565; Port Royal in Nova Scotia, 1605, abandoned in 1607; and Quebec on the St. Lawrence River, 1608, which lasted. Places founded by England: Roanoke on the North Carolina coast, 1585 and 1587, abandoned and lost by 1590; and Jamestown in Virginia, 1607, which lasted.",
+  caption: "Some European colonies and settlements in North America north of Mexico, 1564 to 1608, with the European power and the year founded (present-day state lines shown)",
+  alt: "Map of eastern and southwestern North America with present-day state lines. Places founded by Spain: St. Augustine in Florida, 1565, which lasted; and the colony of New Mexico on the upper Rio Grande, 1598, which lasted. Places founded by France: Fort Caroline in Florida, 1564, destroyed by Spain in 1565; and Quebec on the St. Lawrence River, 1608, which lasted. Places founded by England: Roanoke on the North Carolina coast, 1585 and 1587, abandoned and lost by 1590; and Jamestown in Virginia, 1607, which lasted.",
   bbox: [-110, 25, -60, 49], width: 720, height: 430, states: true,
   regions: [
     { name: "Atlantic Ocean", at: [-68.5, 33.5], size: 12 },
@@ -57,16 +57,14 @@ const footholds = {
   places: [
     { name: "St. Augustine (Spain) 1565", at: [-81.31, 29.9], kind: "major", label: "left" },
     { name: "Fort Caroline (France) 1564", at: [-81.5, 30.39], label: [7, 2] },
-    { name: "Santa Elena (Spain) 1566", at: [-80.68, 32.31], label: "right" },
     { name: "Jamestown (England) 1607", at: [-76.78, 37.21], kind: "major", label: "left" },
     { name: "Roanoke (England) 1585, 1587", at: [-75.66, 35.9], label: "right" },
     { name: "New Mexico (Spain) 1598", at: [-106.07, 36.05], kind: "major", label: "right" },
-    { name: "Port Royal (France) 1605", at: [-65.6, 44.7], label: "below" },
     { name: "Quebec (France) 1608", at: [-71.21, 46.81], kind: "major", label: "left" },
   ],
   legend: [{ kind: "major", text: "Still held by its founders in 1610" }, { kind: "city", text: "Abandoned or destroyed by 1610" }],
   legendAt: "bottom-left", legendWidth: 260,
-  checked: ["Encyclopaedia Britannica, \"St. Augustine,\" \"Fort Caroline,\" \"Roanoke Island,\" \"Jamestown Colony,\" \"Port-Royal,\" \"Quebec,\" and \"New Mexico: History\"", "National Park Service pages for Castillo de San Marcos, Fort Caroline National Memorial, Fort Raleigh National Historic Site, and Historic Jamestowne, and the Santa Elena Foundation on Santa Elena"],
+  checked: ["National Park Service, Timucuan Preserve, \"Chronology of Fort Caroline\"", "National Park Service pages for Fort Raleigh National Historic Site, Historic Jamestowne, El Camino Real de Tierra Adentro, and the Saint Croix Island timeline"],
 };
 
 const exchange = {

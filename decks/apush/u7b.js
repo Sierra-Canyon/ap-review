@@ -37,7 +37,7 @@ export const sets = {
   "a7b-s11": {
     id: "a7b-s11", name: "Executive Order 8802, 1941", intro: "Use the excerpt below to answer the questions that follow.",
     sources: [{ title: "Source", blocks: [
-      { p: "Whereas there is evidence that available and needed workers have been barred from employment in industries engaged in defense production solely because of consideration of race, creed, color, or national origin, to the detriment of workers' morale and of national unity: Now, Therefore, by virtue of the authority vested in me by the Constitution and the statutes, and as a prerequisite to the successful conduct of our national defense production effort, I do hereby reaffirm the policy of the United States that there shall be no discrimination in the employment of workers in defense industries or government because of race, creed, color, or national origin, and I do hereby declare that it is the duty of employers and of labor organizations ... to provide for the full and equitable participation of all workers in defense industries, without discrimination because of race, creed, color, or national origin;" },
+      { p: "Whereas there is evidence that available and needed workers have been barred from employment in industries engaged in defense production solely because of consideration of race, creed, color, or national origin, to the detriment of workers' morale and of national unity: Now, Therefore, ... as a prerequisite to the successful conduct of our national defense production effort, I do hereby reaffirm the policy of the United States that there shall be no discrimination in the employment of workers in defense industries or government because of race, creed, color, or national origin, and I do hereby declare that it is the duty of employers and of labor organizations ... to provide for the full and equitable participation of all workers in defense industries, without discrimination because of race, creed, color, or national origin;" },
       { cite: "Franklin D. Roosevelt, Executive Order 8802, Reaffirming Policy of Full Participation in the Defense Program by All Persons, Regardless of Race, Creed, Color, or National Origin, June 25, 1941.", url: "https://www.presidency.ucsb.edu/documents/executive-order-8802-reaffirming-policy-full-participation-the-defense-program-all-persons", kind: "primary" },
     ] }],
   },
@@ -105,7 +105,7 @@ export const sets = {
   "a7b-s22": {
     id: "a7b-s22", name: "A second Bill of Rights, 1944", intro: "Use the excerpt below to answer all parts of the question that follows.",
     sources: [{ title: "Source", blocks: [
-      { p: "We have come to a clear realization of the fact that true individual freedom cannot exist without economic security and independence. \"Necessitous men are not free men.\" People who are hungry and out of a job are the stuff of which dictatorships are made. In our day these economic truths have become accepted as self-evident. We have accepted, so to speak, a second Bill of Rights under which a new basis of security and prosperity can be established for all regardless of station, race, or creed. Among these are: The right to a useful and remunerative job in the industries or shops or farms or mines of the Nation; The right to earn enough to provide adequate food and clothing and recreation; The right of every farmer to raise and sell his products at a return which will give him and his family a decent living;" },
+      { p: "We have come to a clear realization of the fact that true individual freedom cannot exist without economic security and independence. \"Necessitous men are not free men.\" People who are hungry and out of a job are the stuff of which dictatorships are made. In our day these economic truths have become accepted as self-evident. We have accepted, so to speak, a second Bill of Rights under which a new basis of security and prosperity can be established for all regardless of station, race, or creed. Among these are: The right to a useful and remunerative job in the industries or shops or farms or mines of the Nation; The right to earn enough to provide adequate food and clothing and recreation; ..." },
       { cite: "Franklin D. Roosevelt, State of the Union Message to Congress, January 11, 1944.", url: "https://www.presidency.ucsb.edu/documents/state-the-union-message-congress", kind: "primary" },
     ] }],
   },
@@ -211,9 +211,9 @@ export const sets = {
     ],
   },
   "a7b-s23": {
-    id: "a7b-s23", name: "The elections of 1928 and 1932", intro: "Use the map below to answer all parts of the question that follows.", label: "Map",
+    id: "a7b-s23", name: "The election of 1932", intro: "Use the map below to answer all parts of the question that follows.", label: "Map",
     sources: [{ title: "Map", blocks: [
-      { svg: maps["u7b-elections"], caption: "The presidential elections of 1928 and 1932 by state (present-day state lines shown)" },
+      { svg: maps["u7b-election-1932"], caption: "The presidential election of 1932 by state (present-day state lines shown). Four years earlier, in 1928, Hoover had carried 40 of the 48 states." },
       { cite: MAPCITE("The American Presidency Project's election results for 1928 and 1932 and Wikipedia, \"1928 United States presidential election\" and \"1932 United States presidential election\""), kind: "map" },
     ] }],
   },
@@ -1238,23 +1238,23 @@ export default [
   // ---------- SAQ 3: non-text, the 1928 and 1932 election map ----------
   { id: "a7b-q3a", skill: "u7", type: "fr", set: "a7b-s23", part: "SAQ 3", sub: "a", topic: "7.9",
     lead: "Use the map below to answer all parts of the question that follows.",
-    prompt: "Describe ONE change in voting patterns between 1928 and 1932 shown on the map.",
-    earns: "The answer accurately describes a change the map shows, such as the swing of most states from Hoover to Roosevelt.",
+    prompt: "Describe ONE pattern in the results of the 1932 presidential election shown on the map.",
+    earns: "The answer accurately describes a pattern the map and caption show, such as Roosevelt's sweep of nearly every region or the Northeastern location of Hoover's few states.",
     yes: [
-      "Hoover won 40 states in 1928, but in 1932 he kept only six, all in the Northeast, while Roosevelt won the rest.",
-      "Most Western and Midwestern states, which voted Republican in 1928, voted Democratic in 1932.",
-      "In 1928 the Democrats won only eight states, mostly in the Deep South plus Massachusetts and Rhode Island, but in 1932 they won 42.",
+      "Roosevelt won 42 of the 48 states, carrying every region of the country.",
+      "Hoover's six states were all in the Northeast, in New England and the Middle Atlantic.",
+      "Hoover fell from 40 states in 1928 to only six in 1932, so most states that had voted for him switched to Roosevelt.",
     ],
     no: [
-      "\"Roosevelt won.\" Does not describe a change.",
-      "\"The South voted Republican in 1932.\" Inaccurate.",
-      "\"Hoover won in both years.\" Inaccurate for 1932.",
+      "\"Roosevelt won.\" Names the winner without describing a pattern.",
+      "\"Hoover won the South.\" Inaccurate.",
+      "\"The West voted Republican.\" Inaccurate for 1932.",
     ],
-    example: "In 1928 Herbert Hoover carried 40 of 48 states, but in 1932 he held only six Northeastern states, such as Pennsylvania and Maine. Large areas of the West and Midwest that had voted Republican in 1928 voted for Franklin Roosevelt in 1932.",
-    notExample: "The map shows elections with different colors." },
+    example: "Roosevelt carried 42 states, including every state in the South, the Midwest, and the West, while Hoover held only six Northeastern states such as Pennsylvania and Maine. This was a collapse from 1928, when Hoover had carried 40 states.",
+    notExample: "The map shows an election with two shadings." },
   { id: "a7b-q3b", skill: "u7", type: "fr", set: "a7b-s23", part: "SAQ 3", sub: "b", topic: "7.9",
     lead: "Use the map below to answer all parts of the question that follows.",
-    prompt: "Explain ONE cause of the change in voting patterns shown on the map.",
+    prompt: "Explain ONE cause of the election result shown on the map.",
     earns: "The answer names a specific cause from about 1929 to 1932 and explains how it turned voters against Hoover or toward Roosevelt.",
     yes: [
       "The Great Depression, which began after the stock market crash of 1929, threw millions out of work, and many voters blamed the party in power.",
@@ -1270,7 +1270,7 @@ export default [
     notExample: "Hoover was not popular anymore." },
   { id: "a7b-q3c", skill: "u7", type: "fr", set: "a7b-s23", part: "SAQ 3", sub: "c", topic: "7.10",
     lead: "Use the map below to answer all parts of the question that follows.",
-    prompt: "Explain ONE effect of the change in voting patterns shown on the map in the period 1933 to 1945.",
+    prompt: "Explain ONE effect of the election result shown on the map in the period 1933 to 1945.",
     earns: "The answer names a specific effect from 1933 to 1945 and connects it to the Democratic victory of 1932.",
     yes: [
       "Democrats controlled the presidency and Congress, which let Roosevelt pass the First New Deal, including the Emergency Banking Act, the AAA, and the CCC, in his first hundred days.",
@@ -1285,5 +1285,92 @@ export default [
     example: "The 1932 landslide gave Democrats the White House and large majorities in Congress. In the first hundred days of 1933, Congress passed the Emergency Banking Act, the Agricultural Adjustment Act, and the law creating the Civilian Conservation Corps, beginning the New Deal.",
     notExample: "Things changed after the election." },
 
+  // ---------- Long essay question ----------
+  { id: "a7b-leq1", skill: "u7", type: "essay", kind: "leq", topic: "7.12", reasoning: "Continuity and Change",
+    prompt: "Mobilizing for World War II drew millions of Americans into new jobs, new places, and military service, while the federal government took on new powers at home. Evaluate the extent to which mobilization for World War II changed opportunities for women and minority groups in the United States in the period from 1939 to 1945. You may focus on any example(s) of women, African Americans, Mexican Americans, Japanese Americans, or Native Americans. You are not expected to address the entire period.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: no claim, a claim that restates the prompt, or one too vague to judge the extent of change (for example, \"The war changed many things for women and minorities\").",
+        "1 point: a historically defensible claim about how much mobilization changed opportunities, with a line of reasoning, such as arguing that war work and military service opened real economic doors but that segregation, unequal pay, and the incarceration of Japanese Americans show sharp limits.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: no relevant broader context, or only a passing phrase.",
+        "1 point: describes a broader context, such as the Great Depression's mass unemployment and the New Deal's uneven help to women and minorities, Jim Crow segregation in the South and the Great Migration, or the arms buildup after 1939 and the shift to war production after Pearl Harbor.",
+      ] },
+      { name: "Evidence", max: 2, levels: [
+        "0 points: no specific examples, or examples unrelated to the prompt.",
+        "1 point: two specific examples relevant to the topic, such as Executive Order 8802 (1941) and the Bracero Program (1942).",
+        "2 points: uses specific and relevant examples, such as women in shipyards and aircraft plants, the Double V campaign, the Navajo Code Talkers, or Executive Order 9066, to support an argument about the extent of change.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: lists developments without explaining change or continuity.",
+        "1 point: uses continuity and change to frame the argument, explaining how mobilization changed or did not change opportunities for at least one group.",
+        "2 points: shows complex understanding, for example by comparing groups whose experiences differed sharply (Black war workers gaining jobs while Japanese Americans lost homes and freedom), by explaining how gains were temporary for some (women laid off in 1945) but lasting for others (veterans who later used the GI Bill or joined the civil rights movement), or by connecting wartime protest to the civil rights struggles of the 1950s.",
+      ] },
+    ],
+    evidence: [
+      "A. Philip Randolph's planned March on Washington (1941) and Executive Order 8802, which banned discrimination in defense industries and created the Fair Employment Practice Committee.",
+      "The Pittsburgh Courier's Double V campaign (1942) for victory over fascism abroad and racism at home.",
+      "The growth of the NAACP during the war and the founding of the Congress of Racial Equality (CORE) in 1942.",
+      "The Second Great Migration of Black Southerners to war plants in the North and West, and the Detroit race riot of 1943.",
+      "The segregated armed forces, the Tuskegee Airmen, and the limits on Black service until Truman's order of 1948.",
+      "About six million more women in paid work, many in shipyards and aircraft plants, and women's military units such as the WAC, WAVES, and the WASP pilots.",
+      "Unequal pay for women and layoffs of women war workers after 1945.",
+      "The Bracero Program (1942), which brought Mexican workers to American farms and railroads under contracts that often went unenforced.",
+      "The Zoot Suit Riots in Los Angeles (1943), in which servicemen attacked young Mexican Americans.",
+      "Executive Order 9066 (1942), the removal of about 120,000 Japanese Americans from the West Coast, Korematsu v. United States (1944), and the Nisei soldiers of the 442nd Regimental Combat Team.",
+      "Navajo Code Talkers in the Marine Corps and the movement of many Native Americans to cities and war jobs.",
+    ],
+    model: "Thesis: Mobilization for World War II opened real economic and military opportunities for women and many minority groups, but those gains were limited by segregation, unequal pay, and the government's own discrimination, most sharply the incarceration of Japanese Americans. Outline: (1) Context: the Depression had left many women and minorities jobless or in low-paid work, and New Deal programs often excluded them; after 1940, war orders created a labor shortage. (2) Change for African Americans: Randolph's march threat forced Executive Order 8802, Black workers moved north and west for war jobs, and the Double V campaign and CORE sharpened demands for equality. (3) Change for women: millions took industrial jobs and served in uniform. (4) Limits: the armed forces stayed segregated, race riots broke out in 1943, women earned less and were laid off in 1945, and braceros faced harsh conditions. (5) The sharpest limit: Executive Order 9066 sent Japanese Americans to camps even as Nisei soldiers fought in Europe. (6) Complexity: the war's gains were uneven and often temporary, but they gave many people new skills and expectations that fed the civil rights movement after 1945.",
+  },
+
+  // ---------- Document-based question ----------
+  { id: "a7b-dbq1", skill: "u7", type: "essay", kind: "dbq", set: "a7b-dbq", topic: "7.11", reasoning: "Continuity and Change",
+    prompt: "Evaluate the extent to which United States policy toward the war in Europe changed in the period from 1936 to 1941.",
+    rows: [
+      { name: "Thesis/Claim", max: 1, levels: [
+        "0 points: no claim, a claim that restates the prompt, or one too vague to judge the extent of change (for example, \"Policy changed a lot over time\").",
+        "1 point: a historically defensible claim about how much policy changed, with a line of reasoning, such as arguing that policy moved from strict neutrality to open aid and an undeclared naval war, while Roosevelt kept describing each step as defense meant to keep the nation out of war.",
+      ] },
+      { name: "Contextualization", max: 1, levels: [
+        "0 points: no relevant broader context, or only a passing phrase.",
+        "1 point: describes a broader context, such as disillusion with World War I and the Nye Committee's hearings on munitions makers (1934 to 1936), the Great Depression's focus on problems at home, or the rise of Hitler, Mussolini, and Japanese militarism in the 1930s.",
+      ] },
+      { name: "Evidence", max: 3, levels: [
+        "0 points: no accurate use of the documents, or only quotes without explanation.",
+        "1 point: accurately describes the content of at least three documents in a way that addresses the prompt.",
+        "2 points: supports an argument in response to the prompt using at least four documents.",
+        "3 points: earns the 2 points for document evidence and also uses at least one additional piece of specific outside evidence relevant to the argument, such as the Neutrality Act of 1939's cash-and-carry rule, the Selective Service Act of 1940, or the America First Committee.",
+      ] },
+      { name: "Analysis and Reasoning", max: 2, levels: [
+        "0 points: no sourcing and no complex understanding.",
+        "1 point: for at least two documents, explains how or why the document's point of view, purpose, historical situation, or audience is relevant to the argument, for example that Roosevelt spoke at Chautauqua during a reelection campaign before voters who feared war, or that the German declaration was written to blame the United States for a war Germany chose to declare.",
+        "2 points: earns the sourcing point and shows complex understanding, for example by explaining both change (from neutrality to aid and naval escort) and continuity (Roosevelt's steady claim that each step was defensive and that he hated war), by weighing how public opinion and Congress limited Roosevelt, or by connecting the shift to the Cold War commitments that followed.",
+      ] },
+    ],
+    docs: [
+      "Document 1 (Roosevelt at Chautauqua, 1936): he rejects political commitments and the League and says he hates war. Use it for the starting point of neutrality; sourcing: a reelection speech to voters who feared another European war.",
+      "Document 2 (Roosevelt's fireside chat, September 1939): the nation will stay neutral but Americans need not be neutral in thought. Use it for neutrality with sympathy for the Allies; sourcing: a radio talk two days after Germany invaded Poland, meant to calm a worried public.",
+      "Document 3 (Roosevelt at the University of Virginia, June 1940): he calls isolation a delusion and promises the nation's material resources to the opponents of force. Use it for the turn to aid after the fall of France; sourcing: spoken the day Italy attacked France, which explains the dagger image.",
+      "Document 4 (Roosevelt's message on destroyers for bases, September 1940): he presents the trade for British bases as the greatest step for defense since the Louisiana Purchase. Use it for aid to Britain framed as defense; sourcing: written to persuade Congress after he acted by executive agreement without its vote.",
+      "Document 5 (Roosevelt to White House correspondents, March 1941): he describes signing the aid-to-democracies (Lend-Lease) bill and shipping goods at once. Use it for open, large-scale aid; sourcing: a speech to the press, meant to show speed and resolve to Americans and to Britain.",
+      "Document 6 (Roosevelt's Greer fireside chat, September 1941): he calls Nazi submarines rattlesnakes and orders the Navy to fire on Axis warships in waters vital to defense. Use it for an undeclared naval war; sourcing: Roosevelt gave the public an incomplete account of the Greer incident to build support for shoot-on-sight orders.",
+      "Document 7 (German declaration of war, December 1941): Germany says American shoot-on-sight orders and attacks on its ships had already created a state of war. Use it to show how far American policy had moved by late 1941; sourcing: written by the Nazi regime to justify its own declaration, so its claims about German respect for international law are self-serving.",
+    ],
+    evidence: [
+      "The Nye Committee hearings (1934 to 1936) blamed bankers and munitions makers for drawing the United States into World War I.",
+      "The Neutrality Acts of 1935, 1936, and 1937 banned arms sales and loans to nations at war.",
+      "Roosevelt's Quarantine speech (October 1937) and the cool public response to it.",
+      "The Neutrality Act of 1939 allowed cash-and-carry arms sales, which favored Britain and France.",
+      "The fall of France in June 1940 and the Battle of Britain.",
+      "The Selective Training and Service Act (September 1940), the first peacetime draft.",
+      "The America First Committee (1940), with Charles Lindbergh as its best-known speaker, and the Committee to Defend America by Aiding the Allies led by William Allen White.",
+      "Roosevelt's \"arsenal of democracy\" fireside chat (December 1940) and Four Freedoms message (January 1941).",
+      "The Atlantic Charter (August 1941) and American naval escorts of convoys to Iceland.",
+      "The sinking of the destroyer Reuben James in October 1941.",
+      "The oil embargo on Japan (1941) and the attack on Pearl Harbor (December 7, 1941).",
+    ],
+    model: "Thesis: Between 1936 and 1941 American policy toward the European war changed from strict neutrality to large-scale aid for Britain and an undeclared naval war against Germany, but the change came in steps that Roosevelt always presented as defense, because a strong isolationist public and Congress limited how fast he could move. Outline: (1) Context: disillusion with World War I, the Nye hearings, and the Depression produced the Neutrality Acts. (2) Neutrality, 1936 to 1939: Documents 1 and 2 show Roosevelt rejecting commitments while hinting at sympathy for the Allies; outside evidence: cash-and-carry in 1939. (3) Aid short of war, 1940 to 1941: after the fall of France, Documents 3, 4, and 5 show promises of material aid, the destroyers deal, and Lend-Lease, each justified as defense of the Americas. (4) Undeclared naval war, 1941: Document 6's shoot-on-sight orders and Document 7's German complaint show the United States was fighting at sea before Pearl Harbor. (5) Complexity: continuity in Roosevelt's language of defense and his hatred of war, and the role of opponents such as America First, explain why the United States entered the war formally only after Pearl Harbor and Germany's declaration.",
+  },
   // ITEMS-END
 ];

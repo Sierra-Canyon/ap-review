@@ -59,24 +59,4 @@ const westernFront = {
   checked: ["American Battle Monuments Commission pages on Cantigny, Chateau-Thierry and Belleau Wood, St. Mihiel, and American memorials in Europe", "National Park Service, World War I Memorial, \"The United States and the First World War\""],
 };
 
-const election1928 = {
-  id: "u7a-1928",
-  caption: "The presidential election of 1928 by state, showing the southern states that had voted Democratic in 1924 (present-day state lines; Alaska and Hawaii were not yet states)",
-  alt: "Map of the 48 states. Eight states won by the Democrat Alfred E. Smith are shaded solid: Massachusetts and Rhode Island in New England and South Carolina, Georgia, Alabama, Mississippi, Louisiana, and Arkansas in the Deep South. Six southern states won by the Republican Herbert Hoover that had voted Democratic in 1924 are hatched: Virginia, North Carolina, Tennessee, Florida, Texas, and Oklahoma. All other states, won by Hoover, are gray.",
-  bbox: [-124.8, 24.3, -66.9, 49.4], width: 700, height: 440,
-  states: true,
-  fill: [
-    { kind: "a", states: ["Massachusetts", "Rhode Island", "South Carolina", "Georgia", "Alabama", "Mississippi", "Louisiana", "Arkansas"] },
-    { kind: "b", states: ["Virginia", "North Carolina", "Tennessee", "Florida", "Texas", "Oklahoma"] },
-    { kind: "c", states: ["Washington", "Oregon", "California", "Nevada", "Idaho", "Montana", "Wyoming", "Utah", "Arizona", "New Mexico", "Colorado", "North Dakota", "South Dakota", "Nebraska", "Kansas", "Minnesota", "Iowa", "Missouri", "Wisconsin", "Illinois", "Michigan", "Indiana", "Ohio", "Kentucky", "West Virginia", "Pennsylvania", "New York", "New Jersey", "Delaware", "Maryland", "Connecticut", "Vermont", "New Hampshire", "Maine"] },
-  ],
-  legend: [
-    { kind: "a", text: "Won by Smith (Democrat)" },
-    { kind: "b", text: "Won by Hoover; Democratic in 1924" },
-    { kind: "c", text: "Won by Hoover (Republican)" },
-  ],
-  legendAt: "bottom-left", legendWidth: 250,
-  checked: ["The American Presidency Project, election tables for 1924 and 1928", "National Archives, Electoral College results for 1924 and 1928"],
-};
-
-export const maps = [caribbean, westernFront, election1928];
+export const maps = [caribbean, westernFront];

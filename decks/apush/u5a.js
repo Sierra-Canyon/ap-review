@@ -39,6 +39,31 @@ export const sets = {
       { cite: "Treaty of Peace, Friendship, Limits and Settlement between the United States of America and the Mexican Republic (Treaty of Guadalupe Hidalgo), February 2, 1848, Articles VIII and IX. The punctuation is that of the Avalon Project's text. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/19th_century/guadhida.asp", kind: "primary" },
     ] }],
   },
+  "a5a-s04": {
+    id: "a5a-s04", name: "Free labor and the meaning of freedom", intro: PAS,
+    sources: [{ title: "Source", blocks: [
+      { p: "In the middle of the nineteenth century, many white Northerners came to define American freedom through the idea of free labor. A man who worked for wages, they believed, could save, buy land in the West, and in time become his own employer. Slavery threatened this ideal in two ways: it degraded all work done by hand, and it competed with free farmers for western land. This belief explains why so many Northerners who cared little about the rights of enslaved people still opposed the spread of slavery. It also helps explain why emancipation, when it came during the Civil War, was followed by efforts to make freedpeople into wage workers rather than landowners." },
+      { cite: PRACTICE, kind: "practice" },
+    ] }],
+  },
+  "a5a-s09": {
+    id: "a5a-s09", name: "Popular vote for president, 1848 to 1856", intro: "Use the chart and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: bars({ labels: ["1848", "1852", "1856"], series: [
+          { name: "Democratic", values: [42.5, 50.8, 45.3] },
+          { name: "Whig (1848, 1852); American (1856)", values: [47.3, 43.9, 21.5] },
+          { name: "Free Soil (1848, 1852); Republican (1856)", values: [10.1, 4.9, 33.1] },
+        ], y: [0, 60], step: 10, yname: "Percent of popular vote", width: 560, height: 300,
+        alt: "Grouped bar chart of the share of the popular vote for president. 1848: Democratic 42.5 percent, Whig 47.3, Free Soil 10.1. 1852: Democratic 50.8, Whig 43.9, Free Soil 4.9. 1856: Democratic 45.3, American 21.5, Republican 33.1." }),
+        caption: "Share of the national popular vote for president by party, 1848, 1852, and 1856" },
+      { table: { head: ["Year", "Democratic", "Whig or American", "Free Soil or Republican"], rows: [
+        ["1848", "Lewis Cass, 42.5%", "Zachary Taylor (Whig), 47.3%", "Martin Van Buren (Free Soil), 10.1%"],
+        ["1852", "Franklin Pierce, 50.8%", "Winfield Scott (Whig), 43.9%", "John P. Hale (Free Soil), 4.9%"],
+        ["1856", "James Buchanan, 45.3%", "Millard Fillmore (American), 21.5%", "John C. Frémont (Republican), 33.1%"],
+      ] } },
+      { cite: "Gerhard Peters and John T. Woolley, The American Presidency Project, election statistics for 1848, 1852, and 1856 (national popular vote totals).", url: "https://www.presidency.ucsb.edu/statistics/elections/1856", kind: "data" },
+    ] }],
+  },
   "a5a-s05": {
     id: "a5a-s05", name: "The independent gold hunter, about 1850", intro: IMG, label: "Image",
     sources: [{ title: "Image", blocks: [
@@ -54,6 +79,47 @@ export const sets = {
     sources: [{ title: "Source", blocks: [
       { p: "Nor will it become in a less degree my duty to assert and maintain by all Constitutional means the right of the United States to that portion of our territory which lies beyond the Rocky Mountains. Our title to the country of the Oregon is \"clear and unquestionable,\" and already are our people preparing to perfect that title by occupying it with their wives and children. But eighty years ago our population was confined on the west by the ridge of the Alleghanies. Within that period ... our people, increasing to many millions, have filled the eastern valley of the Mississippi, adventurously ascended the Missouri to its headsprings, and are already engaged in establishing the blessings of self-government in valleys of which the rivers flow to the Pacific. ..." },
       { cite: "James K. Polk, Inaugural Address, March 4, 1845. The Avalon Project, Yale Law School.", url: "https://avalon.law.yale.edu/19th_century/polk.asp", kind: "primary" },
+    ] }],
+  },
+  "a5a-s26": {
+    id: "a5a-s26", name: "Trails to the Far West", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u5a-trails"], caption: "The Oregon, California, and Mormon trails, 1840s and 1850s (routes approximate; present-day state lines shown)" },
+      { cite: MAPCITE("Encyclopaedia Britannica, \"Oregon Trail,\"", "the National Park Service's Oregon and Mormon Pioneer National Historic Trail history pages"), kind: "map" },
+    ] }],
+  },
+  "a5a-s27": {
+    id: "a5a-s27", name: "Campaigns of the war with Mexico", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u5a-war"], caption: "Major campaigns of the war with Mexico, 1846 to 1847 (routes approximate; present-day U.S. state lines shown)" },
+      { cite: MAPCITE("Encyclopaedia Britannica, \"Mexican-American War,\"", "the National Park Service, Palo Alto Battlefield National Historical Park, \"An Extended War\""), kind: "map" },
+    ] }],
+  },
+  "a5a-s28": {
+    id: "a5a-s28", name: "The election of 1856", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    sources: [{ title: "Map", blocks: [
+      { svg: maps["u5a-1856"], caption: "The presidential election of 1856: the states each candidate won (present-day state lines shown; West Virginia was then part of Virginia and is shaded with it; unshaded areas were territories)" },
+      { cite: MAPCITE("The American Presidency Project, \"Presidential Election of 1856,\"", "the National Archives, \"Electoral College Results, 1856\""), kind: "map" },
+    ] }],
+  },
+  "a5a-s29": {
+    id: "a5a-s29", name: "Immigration by country, 1820s to 1860s", intro: "Use the chart and table below to answer the questions that follow.", label: "Chart",
+    sources: [{ title: "Chart", blocks: [
+      { svg: bars({ labels: ["1820s", "1830s", "1840s", "1850s", "1860s"], series: [
+          { name: "Ireland", values: [52, 171, 656, 1029, 427] },
+          { name: "German states", values: [6, 125, 385, 976, 724] },
+          { name: "United Kingdom", values: [26, 74, 219, 445, 533] },
+        ], y: [0, 1200], step: 200, yname: "Arrivals (thousands)", width: 580, height: 300,
+        alt: "Grouped bar chart of immigrant arrivals in thousands by decade. Ireland: 52 in the 1820s, 171 in the 1830s, 656 in the 1840s, 1,029 in the 1850s, 427 in the 1860s. German states: 6, 125, 385, 976, 724. United Kingdom: 26, 74, 219, 445, 533." }),
+        caption: "Immigrants arriving in the United States from Ireland, the German states, and the United Kingdom, by decade, 1820 to 1869 (thousands, rounded)" },
+      { table: { head: ["Decade", "Ireland", "Germany", "United Kingdom", "All countries"], rows: [
+        ["1820 to 1829", "51,617", "5,753", "26,336", "128,502"],
+        ["1830 to 1839", "170,672", "124,726", "74,350", "538,381"],
+        ["1840 to 1849", "656,145", "385,434", "218,572", "1,427,337"],
+        ["1850 to 1859", "1,029,486", "976,072", "445,322", "2,814,554"],
+        ["1860 to 1869", "427,419", "723,734", "532,956", "2,081,261"],
+      ] } },
+      { cite: "U.S. Department of Homeland Security, Office of Homeland Security Statistics, Yearbook of Immigration Statistics 2022, Table 2, \"Persons Obtaining Lawful Permanent Resident Status by Region and Selected Country of Last Residence: Fiscal Years 1820 to 2022.\" Before 1868 the figures count foreign passengers arriving at seaports; before 1906, country means country of origin. Ireland includes Northern Ireland.", url: "https://ohss.dhs.gov/topics/immigration/yearbook/2022/table2", kind: "data" },
     ] }],
   },
   "a5a-s07": {

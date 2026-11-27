@@ -2,7 +2,7 @@
 import { maps } from "./maps.js";
 
 const MAPCITE = "Map drawn for this review from Natural Earth land outlines and U.S. Census Bureau state boundaries (public domain). Places and dates checked against ";
-const MAPCITE_EXCHANGE = "Map drawn for this review from Natural Earth land outlines (public domain). Plants, animals, and diseases checked against REFS.";
+const MAPCITE_EXCHANGE = "Map drawn for this review from Natural Earth land outlines (public domain). Plants, animals, and diseases checked against Encyclopaedia Britannica, \"Columbian Exchange\" (J. R. McNeill), and Smithsonian Magazine, \"Alfred W. Crosby on the Columbian Exchange\" (2011).";
 const PRACTICE = { cite: "Practice passage written for this review, summarizing an interpretation held by many historians.", kind: "practice" };
 
 export const sets = {
@@ -100,10 +100,10 @@ export const sets = {
     ] }],
   },
   "a1-s12": {
-    id: "a1-s12", name: "Native farming centers before 1492", intro: "Use the map below to answer the questions that follow.", label: "Map",
+    id: "a1-s12", name: "Large Native centers before 1492", intro: "Use the map below to answer the questions that follow.", label: "Map",
     sources: [{ title: "Map", blocks: [
-      { svg: maps["u1-maize"], caption: "Some Native farming centers north of the Valley of Mexico before 1492, with approximate dates (present-day state lines shown)" },
-      { cite: MAPCITE + "Encyclopaedia Britannica's entries for Cahokia, Chaco Culture National Historical Park, Mesa Verde National Park, Moundville, the Iroquois Confederacy, the Powhatan, Tenochtitlán, and maize, and the National Park Service's pages for Chaco Culture and Mesa Verde.", kind: "map" },
+      { svg: maps["u1-maize"], caption: "Some large Native centers north of the Valley of Mexico before 1492, with approximate dates (present-day state lines shown)" },
+      { cite: MAPCITE + "the National Park Service's History and Culture page for Chaco Culture National Historical Park and its Cliff Dwellings page for Mesa Verde National Park, and the UNESCO World Heritage Centre's page on Cahokia Mounds State Historic Site.", kind: "map" },
     ] }],
   },
   "a1-s13": {
@@ -552,8 +552,8 @@ export default [
   // ---------------------------------------------------------------- 1.2 Native farming centers (map)
   { id: "a1-m039", skill: "u1", type: "mcq", set: "a1-s12", topic: "1.2", difficulty: "easy",
     question: "The map best supports which conclusion about North America before 1492?",
-    choices: ["Maize supported large centers in several regions.", "Large centers existed only in the Valley of Mexico.", "Maize first reached North America from Europe.", "All Native peoples lived in permanent farming towns."],
-    why: ["Correct. The map shows large centers in the Southwest, the Mississippi valley, and central Mexico, all supported by maize.",
+    choices: ["Large centers arose in several regions before 1492.", "Large centers existed only in the Valley of Mexico.", "Maize first reached North America from Europe.", "All Native peoples lived in permanent farming towns."],
+    why: ["Correct. The map shows large centers in the Southwest, the Mississippi valley, and central Mexico, each supported by farming, chiefly of maize.",
       "Cahokia and Chaco Canyon were large centers far north of the Valley of Mexico.",
       "This reverses the exchange: maize was first grown in Mexico and spread north long before Europeans arrived.",
       "The Great Basin has no farming centers on the map, and many peoples there and elsewhere lived by foraging and moving with the seasons."],
@@ -561,7 +561,7 @@ export default [
   { id: "a1-m040", skill: "u1", type: "mcq", set: "a1-s12", topic: "1.2", difficulty: "easy", reasoning: "Causation",
     question: "Which development most directly explains the timing of Cahokia's growth shown on the map?",
     choices: ["Maize became a staple crop in the eastern woodlands.", "Horses from Spain made long-distance trade easier.", "Tribute flowed to Cahokia from the Mexica Empire.", "Europeans traded metal tools along the Mississippi River."],
-    why: ["Correct. Maize became a staple in the East after about 900 CE, and the food surplus it gave let Cahokia grow into the largest town north of Mexico by about 1100.",
+    why: ["Correct. Maize became a staple crop in the Mississippi valley in the centuries before Cahokia's peak, and the food surplus it gave let Cahokia grow into the largest town north of Mexico, at its height about 1050 to 1150.",
       "Horses came with the Spanish after 1492, centuries after Cahokia's peak.",
       "The Mexica capital was founded about 1325, after Cahokia's peak, and it never ruled the Mississippi valley.",
       "No Europeans reached the Mississippi valley until de Soto in 1541."],
@@ -667,7 +667,7 @@ export default [
       "Sugar production was growing, which raised the demand for labor.",
       "The Spanish stayed on Hispaniola; the passage blames overwork and disease, not revolts."],
     answer: 0 },
-  { id: "a1-m051", skill: "u1", type: "mcq", set: "a1-s15", topic: "1.4", difficulty: "moderate",
+  { id: "a1-m051", skill: "u1", type: "mcq", set: "a1-s15", topic: "1.5", difficulty: "moderate",
     question: "The passage's account of Hispaniola best supports which broader claim?",
     choices: ["Disease and forced labor together ruined Native life.", "Disease alone explains the fall of Native populations.", "Native peoples gained more than they lost from contact.", "Spanish rule raised Native standards of living."],
     why: ["Correct. The passage names overwork, hunger, and epidemics such as smallpox together as the causes of the Taíno collapse.",
@@ -1004,7 +1004,7 @@ export default [
     no: ["\"Wheat changed Europe.\" Wheat went to the Americas, not from them.",
       "\"Crops went to Europe.\" This does not explain an effect.",
       "\"Tomatoes made Europeans sick.\" This is not an accurate, accepted effect."],
-    example: "Potatoes, first grown in the Andes, produced far more food per acre than wheat or rye in cool northern European climates. As they spread in the 1600s and 1700s they helped feed growing populations in places such as Ireland and the German states.",
+    example: "Potatoes, first grown in the Andes, produced far more food per acre than wheat or rye in cool northern European climates. As farmers across northern Europe adopted them between 1700 and 1900, they improved nutrition, checked famine, and helped populations grow.",
     notExample: "Potatoes went to Europe." },
   { id: "a1-q3c", skill: "u1", type: "fr", set: "a1-s25", part: "SAQ 3", sub: "c", topic: "1.5",
     lead: "Use the map below to answer all parts of the question that follows.",
